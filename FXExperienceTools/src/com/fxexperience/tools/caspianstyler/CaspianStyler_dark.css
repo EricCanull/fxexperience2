@@ -44,15 +44,21 @@ and open the template in the editor.
     -fx-background-color: rgb(144,144, 144); 
 }
 .title {
+     -fx-font-size: 16pt;
     -fx-text-fill: #e3e3e3;
+    -fx-font-weight: bold;
+    
 }
 .tab:selected:top .tab-container .tab-label {
     -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+     -fx-font-size: 12pt;
 }
 .big-button {
    -fx-background-insets: -1;
 }
 .prop {
+    -fx-font-size: 12pt;
     -fx-text-fill: #e3e3e3;
 }
 
