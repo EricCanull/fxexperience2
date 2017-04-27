@@ -13,6 +13,14 @@ and open the template in the editor.
     -fx-padding: 0 0 0 0;
     -fx-cell-size: 40;
 }
+.split-pane-caspian:horizontal {
+    -fx-padding: 0;
+}
+
+.split-pane-caspian:horizontal .split-pane-divider {
+    -fx-background-insets: -1 -1 -1 -1;
+    -fx-background-color: rgb(28,28,28);  
+}
 
 #gradientComboBox .combo-box-popup .list-view .list-cell {
     -fx-padding: 4 0 4 5;
@@ -38,7 +46,12 @@ and open the template in the editor.
 .title {
     -fx-text-fill: #e3e3e3;
 }
-
+.tab:selected:top .tab-container .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+.big-button {
+   -fx-background-insets: -1;
+}
 .prop {
     -fx-text-fill: #e3e3e3;
 }
@@ -56,7 +69,10 @@ and open the template in the editor.
     -fx-text-fill: #e3e3e3;
 
 }
-
+.floating:top .tab-content-area {
+    -fx-padding: 0;
+    -fx-border-color: rgb(144,144,144);
+}
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
     -fx-background-color:  rgb(74,74, 74); 
