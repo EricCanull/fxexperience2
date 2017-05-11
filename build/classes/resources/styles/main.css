@@ -24,7 +24,7 @@ different terms and without source code for the larger work.
 }
 .nav-box {
     
-    -fx-background-color: rgba(29,30,42, .8);
+    -fx-background-color: rgba(29,30,42, 0.8);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
      -fx-background-insets: 6, 6, 6, 6;
     -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;

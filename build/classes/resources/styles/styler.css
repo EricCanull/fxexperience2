@@ -34,7 +34,7 @@ different terms and without source code for the larger work.
     -fx-background-color:  #1D1E2A; 
 }
 .properties-pane {
-    -fx-background-color: #14151F;
+    -fx-background-color: rgba(29,30,42, 0.8);
 }
 .slider-prop .track{
     -fx-background-color: #3f4258;
@@ -103,7 +103,8 @@ different terms and without source code for the larger work.
 }
 
 #GridPane-Properties {
-    -fx-background-color: #14151F; 
+/*    -fx-background-color: #14151F; */
+ -fx-background-color: rgba(29,30,42, 0.6);
 }
 
 #input-text-field {
@@ -113,7 +114,12 @@ different terms and without source code for the larger work.
 }
 .floating:top .tab-content-area {
     -fx-padding: 0;
+    -fx-border-insets: 6, 6;
+    -fx-border-radius: 6, 6;
     -fx-border-color: #484848;
+    -fx-background-color: transparent;
+    -fx-background-insets: 6, 6, 6;
+    -fx-background-radius: 6, 6, 6;
 }
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
