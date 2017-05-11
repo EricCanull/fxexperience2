@@ -63,6 +63,8 @@ different terms and without source code for the larger work.
 .menu-item:hover{
     -fx-text-fill: #FFF;
      -fx-background-color: #205081;
+       -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
 }
 .menu-button .menu {
     -fx-text-fill: #FFF;
@@ -77,9 +79,9 @@ different terms and without source code for the larger work.
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
     -fx-background-color: rgba(13,13,13,0.9);
     -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
-    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
 
 #ContentArea {
