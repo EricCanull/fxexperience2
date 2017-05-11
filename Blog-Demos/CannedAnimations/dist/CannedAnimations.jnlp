@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CannedAnimations.jnlp">
+  <information>
+    <title>CannedAnimations</title>
+    <vendor>jp202575</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CannedAnimations.jar" size="112024" download="eager" />
+    <jar href="lib/FXExperienceControls.jar" size="208306" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CannedAnimations" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="cannedanimations.CannedAnimations"  name="CannedAnimations" />
+  <update check="background"/>
+</jnlp>

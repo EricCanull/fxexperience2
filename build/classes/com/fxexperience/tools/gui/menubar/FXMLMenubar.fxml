@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="TOP_CENTER" spacing="10.0" styleClass="menubar-root" stylesheets="@menubar.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.gui.menubar.MenubarController">
+   <children>
+      <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="100.0" prefWidth="165.0" styleClass="menu-toggle-button" text="Styler Tool" textAlignment="CENTER" wrapText="true">
+         <graphic>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/caspianstyler-icon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="11.0" />
+         </font>
+         <effect>
+            <ColorAdjust saturation="0.02" />
+         </effect>
+      </ToggleButton>
+      <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="100.0" prefWidth="165.0" styleClass="menu-toggle-button" text="Spline Editor" textAlignment="CENTER" wrapText="true">
+         <graphic>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/spline-editor-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="11.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="100.0" prefWidth="165.0" styleClass="menu-toggle-button" text="Derived Color Calculator" textAlignment="CENTER" wrapText="true">
+         <graphic>
+            <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/derive-color-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="11.0" />
+         </font>
+      </ToggleButton>
+   </children>
+</HBox>

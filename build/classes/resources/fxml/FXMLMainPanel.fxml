@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="root" styleClass="main-border-pane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" stylesheets="@../styles/main.css">
+          <children>
+              <StackPane fx:id="rootContainer" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+
+            </children>
+              </StackPane>
+      
+          </children>
+      
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" onAction="#closeButtonAction" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox fx:id="menuPane" spacing="5.0" styleClass="nav-box" BorderPane.alignment="CENTER">
+         <children>
+            <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/styler-icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <effect>
+                  <ColorAdjust saturation="0.02" />
+               </effect>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/spline-editor-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/derive-color-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </ToggleButton>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
