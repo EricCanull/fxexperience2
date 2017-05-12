@@ -77,9 +77,20 @@
 }
 
 #animateTestArea {
-    -fx-background-color: #205081;
+     -fx-background-color: radial-gradient(center 35% 40%, radius 70%, rgba(255,255,255,0.3), rgba(255,255,255,0.05)); 
 }
 
+#Background {
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-padding: 0;
+    
+}
+.canned-split-pane {
+    -fx-padding: 0;
+}
 .section-label {
     -fx-font-family: 'Francois One';
     -fx-font-weight: bold;
