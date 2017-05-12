@@ -23,7 +23,8 @@ different terms and without source code for the larger work.
 
 .split-pane-caspian:horizontal .split-pane-divider {
     -fx-background-insets: -1 -1 -1 -1;
-    -fx-background-color: #1D1E2A; 
+    -fx-background-color: linear-gradient(rgb(28, 28, 28), rgb(27, 33, 39)),
+        linear-gradient(rgb(33, 33, 33), rgb(44, 44, 44));
 }
 
 #gradientComboBox .combo-box-popup .list-view .list-cell {
@@ -34,7 +35,7 @@ different terms and without source code for the larger work.
     -fx-background-color:  #1D1E2A; 
 }
 .properties-pane {
-    -fx-background-color: rgba(29,30,42, 0.8);
+    -fx-background-color: rgba(29,30,42, 0.9);
 }
 .slider-prop .track{
     -fx-background-color: #3f4258;
@@ -104,10 +105,10 @@ different terms and without source code for the larger work.
 
 #GridPane-Properties {
 /*    -fx-background-color: #14151F; */
- -fx-background-color: rgba(29,30,42, 0.6);
+ -fx-background-color: rgba(29,30,42, 0.3);
 }
 #Gridpane-advanced {
-     -fx-background-color: rgba(29,30,42, 0.6);
+     -fx-background-color: rgba(29,30,42, 0.5);
 }
 
 #input-text-field {

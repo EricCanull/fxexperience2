@@ -30,8 +30,7 @@ import javafx.scene.paint.Color;
  * @author Jasper Potts
  */
 public class DerivationController implements Initializable {
-    
-  
+      
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gridPane;
     @FXML private Label forwardDerivationLabel;
@@ -46,7 +45,6 @@ public class DerivationController implements Initializable {
     private Region reverseResultColor;
     
     @Override public void initialize(URL url, ResourceBundle rb) {
-        anchorPane.getStylesheets().add(DerivationController.class.getResource("/com/resources/styles/derivation.css").toString());  
         gridPane.getChildren().addAll(baseColorPicker,desiredColorPicker);
         GridPane.setConstraints(baseColorPicker, 1, 1);
         baseColorPicker.setPrefWidth(120);

@@ -4,9 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/controller/AbstractController.java</file>
+            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/controller/impl/DerivationController.java</file>
+            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/handler/impl/AppViewHandler.java</file>
+            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/resources/styles/derivation.css</file>
             <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/app/MainApp.java</file>
-            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/util/colorpicker/ColorPicker.java</file>
-            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/resources/styles/main.css</file>
+            <file>file:/home/andje22/Documents/repos/fxexperience-2/FXExperienceTools/src/com/fxexperience/tools/view/window/AbstractWindow.java</file>
         </group>
     </open-files>
 </project-private>
