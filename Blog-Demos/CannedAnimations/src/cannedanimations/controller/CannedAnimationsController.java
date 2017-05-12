@@ -124,7 +124,7 @@ public class CannedAnimationsController implements Initializable {
     @FXML private void bounceOutUpAction(ActionEvent event)         { new BounceOutUpTransition(btn).play(); bringBackAfter(); }
     @FXML private void bounceOutDownAction(ActionEvent event)       { new BounceOutDownTransition(btn).play(); bringBackAfter(); }
     @FXML private void bounceOutLeftAction(ActionEvent event)       { new BounceOutLeftTransition(btn).play(); bringBackAfter(); }
-    @FXML private void bounceOutRightAction(ActionEvent event)      { new BounceOutRightTransition(btn).play(); bringBackAfter();}
+    @FXML private void bounceOutRightAction(ActionEvent event)      { new BounceOutRightTransition(btn).play(); bringBackAfter(); }
     @FXML private void rotateAction(ActionEvent event)              { new RotateInTransition(btn).play(); }
     @FXML private void rotateInDownLeftAction(ActionEvent event)    { new RotateInDownLeftTransition(btn).play(); }
     @FXML private void rotateInDownRightAction(ActionEvent event)   { new RotateInDownRightTransition(btn).play(); }
@@ -138,7 +138,7 @@ public class CannedAnimationsController implements Initializable {
     @FXML private void hingeAction(ActionEvent event)               { new HingeTransition(btn).play(); }
     @FXML private void rollInAction(ActionEvent event)              { new RollInTransition(btn).play(); }
     @FXML private void rollOutAction(ActionEvent event)             { new RollOutTransition(btn).play(); bringBackAfter(); }
- 
+    
     private void bringBackAfter() {
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(1.5));

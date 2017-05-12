@@ -16,7 +16,7 @@
          <children>
             <StackPane id="animateTestArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button id="animateTest" fx:id="btn" mnemonicParsing="false" text="Dude This Is A Button" />
+                  <Button id="animateTest" fx:id="btn" mnemonicParsing="false" text="Test Animation Button" wrapText="true" />
                </children>
                <padding>
                   <Insets bottom="25.0" top="25.0" />

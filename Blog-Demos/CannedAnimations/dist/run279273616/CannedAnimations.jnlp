@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CannedAnimations.jar" size="111411" download="eager" />
+    <jar href="CannedAnimations.jar" size="111339" download="eager" />
     <jar href="lib/FXExperienceControls.jar" size="208426" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CannedAnimations" >

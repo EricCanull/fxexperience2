@@ -81,9 +81,16 @@
 }
 
 #Background {
-    -fx-padding: 0;
+    -fx-background-insets: 0, 0 1 0 1;
 }
-
+.scroll-bar:focused {
+    -fx-background-color: derive(-fx-box-border,30%), linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));
+    -fx-background-insets: 0, 1 0 1 0;
+}
+.scroll-bar:vertical:focused {
+    -fx-background-color: derive(-fx-box-border,30%), linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));
+    -fx-background-insets: 0, 0 1 0 1;
+}
 
 .canned-split-pane {
     -fx-padding: -1;
