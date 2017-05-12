@@ -8,12 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CannedAnimations.jar" size="112116" download="eager" />
-    <jar href="lib/FXExperienceControls.jar" size="217278" download="eager" />
+    <jar href="CannedAnimations.jar" size="111357" download="eager" />
+    <jar href="lib/FXExperienceControls.jar" size="208426" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CannedAnimations" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="cannedanimations.CannedAnimations"  name="CannedAnimations" />
+  <jfx:javafx-desc  width="800" height="600" main-class="cannedanimations.app.MainApp"  name="CannedAnimations" />
   <update check="background"/>
 </jnlp>

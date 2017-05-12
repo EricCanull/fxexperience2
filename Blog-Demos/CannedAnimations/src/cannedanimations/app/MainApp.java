@@ -1,4 +1,4 @@
-package cannedanimations;
+package cannedanimations.app;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -13,11 +13,11 @@ import javafx.stage.Stage;
  * 
  * @author Jasper Potts, Eric Canull
  */
-public class CannedAnimations extends Application {
+public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLCannedAnimations.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/FXMLCannedAnimations.fxml"));
        
         Scene scene = new Scene(root);
 

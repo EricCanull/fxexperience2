@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" styleClass="canned-split-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannedanimations.CannedAnimationsController">
+<SplitPane dividerPositions="0.5" orientation="VERTICAL" styleClass="canned-split-pane" stylesheets="@../styles/dark_theme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannedanimations.controller.CannedAnimationsController">
   <items>
     <AnchorPane maxHeight="200.0">
          <children>

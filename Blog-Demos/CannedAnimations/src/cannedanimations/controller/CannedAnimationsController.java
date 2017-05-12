@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cannedanimations;
+package cannedanimations.controller;
 
 import com.fxexperience.javafx.animation.BounceInDownTransition;
 import com.fxexperience.javafx.animation.BounceInLeftTransition;
