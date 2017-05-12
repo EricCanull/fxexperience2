@@ -84,12 +84,9 @@
     -fx-padding: 0;
 }
 
-.scroll-pane .scroll-bar:vertical {
-    -fx-padding: 0;
-    
-}
+
 .canned-split-pane {
-    -fx-padding: 0;
+    -fx-padding: -1;
 }
 .section-label {
     -fx-font-family: 'Francois One';
