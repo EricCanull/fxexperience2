@@ -1,3 +1,4 @@
+package com.fxexperience.tools.controller;
 /*
  * Permissions of this copy-left license are conditioned on making available 
  * complete source code of licensed works and modifications under the same 
@@ -7,17 +8,13 @@
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
-package com.fxexperience.tools.controller;
 
 import com.fxexperience.tools.handler.ViewHandler;
 import java.net.URL;
+
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-/**
- *
- * @author Paweł Gawędzki 
- */
 public abstract class AbstractController implements Initializable {
 
     protected final ViewHandler viewHandler;

@@ -1,3 +1,4 @@
+package com.fxexperience.tools.app;
 /*
  * Permissions of this copy-left license are conditioned on making available 
  * complete source code of licensed works and modifications under the same 
@@ -7,28 +8,27 @@
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
-package com.fxexperience.tools.app;
 
-import com.fxexperience.tools.handler.impl.AppViewHandler;
+import com.fxexperience.tools.handler.AppViewHandler;
 import static com.fxexperience.tools.util.AppPaths.RESOURCE_BUNDLE;
-
+import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Paweł Gawędzki 
- */
 public class MainApp extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-          new AppViewHandler(primaryStage, ResourceBundle.getBundle(RESOURCE_BUNDLE, Locale.ENGLISH))
+    public void start(Stage stage) throws IOException {
+
+        new AppViewHandler(stage, ResourceBundle.getBundle(RESOURCE_BUNDLE, Locale.ENGLISH))
                 .launchMainWindow();
+
     }
 
+    /* @param args the command line arguments */
     public static void main(String[] args) {
         launch(args);
     }

@@ -96,7 +96,7 @@ public class StylerController implements Initializable {
     @Override public void initialize(URL url, ResourceBundle rb) {
        
         try {
-            previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource("/com/resources/fxml/FXMLPreviewPanel.fxml"));
+            previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource("/resources/fxml/FXMLPreviewPanel.fxml"));
             previewAnchorPane.getChildren().add(previewPanel);
         } catch (IOException ex) {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);

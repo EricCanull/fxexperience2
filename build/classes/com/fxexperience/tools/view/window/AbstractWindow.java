@@ -20,10 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * 
- * @author Paweł Gawędzki
- */
+
 public abstract class AbstractWindow {
 
 	private final AbstractController controller;

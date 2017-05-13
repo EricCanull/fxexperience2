@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.011834319526627219" style="-fx-background-color: transparent;" styleClass="split-pane-caspian" stylesheets="@../styles/styler.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.impl.StylerController">
+<SplitPane dividerPositions="0.011834319526627219" style="-fx-background-color: transparent;" styleClass="split-pane-caspian" stylesheets="@../styles/styler.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.StylerController">
   <items>
     <AnchorPane id="ContentArea" fx:id="previewAnchorPane" />
     <AnchorPane styleClass="properties-pane">

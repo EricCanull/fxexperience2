@@ -9,10 +9,6 @@
  */
 package com.fxexperience.tools.util;
 
-/**
- *
- * @author Eric Canull
- */
 public class StringUtil {
 
     public static String padWithSpaces(String s, boolean newLine, int length) {

@@ -11,10 +11,6 @@ package com.fxexperience.tools.util;
 
 import javafx.scene.Parent;
 
-
-/**
- * @author Jasper Potts
- */
 public class Tool {
     private final String name;
     private final Parent content;

@@ -1,3 +1,4 @@
+package com.fxexperience.tools.util;
 /*
  * Permissions of this copy-left license are conditioned on making available 
  * complete source code of licensed works and modifications under the same 
@@ -7,17 +8,9 @@
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
-package com.fxexperience.tools.util;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- * String constants that are used to build the gradient syntax.
- *
- * @author Sai.Dandem
- *
- */
 public interface SyntaxConstants {
 
     public String SPACER = " ";

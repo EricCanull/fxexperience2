@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" styleClass="main-border-pane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" styleClass="main-border-pane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" >
    <center>
       <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" stylesheets="@../styles/main.css">
           <children>

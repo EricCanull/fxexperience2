@@ -1,3 +1,4 @@
+package com.fxexperience.tools.util;
 /*
  * Permissions of this copy-left license are conditioned on making available 
  * complete source code of licensed works and modifications under the same 
@@ -6,13 +7,6 @@
  * work using the licensed work through interfaces provided by the licensed 
  * work may be distributed under different terms and without source code 
  * for the larger work.
- */
-package com.fxexperience.tools.util;
-
-/**
- * Gradient Descriptor
- * 
- * @author Jasper Potts
  */
 public class Gradient {
     private final String css;

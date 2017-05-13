@@ -93,7 +93,7 @@ different terms and without source code for the larger work.
 }
 
 #ContentArea {
-    -fx-background-image: url("/images/background.png");
+    -fx-background-image: url("/resources/images/background.png");
     -fx-background: black;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }

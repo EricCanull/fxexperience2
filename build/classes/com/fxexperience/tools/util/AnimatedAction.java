@@ -9,11 +9,6 @@
  */
 package com.fxexperience.tools.util;
 
-/**
- * Simple interface for tool panels that support animation.
- * 
- * @author Jasper Potts
- */
 public interface AnimatedAction {
     public void startAnimations();
     public void stopAnimations();

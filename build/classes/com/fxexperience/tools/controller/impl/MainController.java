@@ -10,8 +10,6 @@
 package com.fxexperience.tools.controller.impl;
 
 import com.fxexperience.tools.util.Tool;
-import com.fxexperience.tools.controller.AbstractController;
-import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AnimatedAction;
 import com.fxexperience.tools.util.AppPaths;
 import java.io.IOException;
@@ -38,7 +36,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -49,7 +46,7 @@ import javafx.util.Duration;
  *
  * @author Jasper Potts, Eric Canull
  */
-public class MainController extends AbstractController implements Initializable {
+public class MainController implements Initializable {
    
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
     private ToggleGroup toggleGroup;
@@ -73,10 +70,7 @@ public class MainController extends AbstractController implements Initializable 
     @FXML private ToggleButton splineToggle;
     @FXML private ToggleButton derivedColorToggle;
 
-    public MainController(ViewHandler viewHandler) {
-        super(viewHandler);
-    }
-    
+  
     /**
      * Initializes the controller class.
      *
