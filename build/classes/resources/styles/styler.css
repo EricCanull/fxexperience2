@@ -13,8 +13,12 @@ different terms and without source code for the larger work.
 #gradientComboBox .list-cell {
     -fx-background-color:  #3f4258;
     -fx-text-fill: #e3e3e3;
+    -fx-background-insets: -1 -1 -1 -1;
     -fx-padding: 3 3 3 3;
-   
+
+}
+.border-pane-styler {
+    -fx-background-color: transparent;
 }
 
 .split-pane-caspian:horizontal {
@@ -23,59 +27,67 @@ different terms and without source code for the larger work.
 
 .split-pane-caspian:horizontal .split-pane-divider {
     -fx-background-insets: -1 -1 -1 -1;
-    -fx-background-color: linear-gradient(rgb(28, 28, 28), rgb(27, 33, 39)),
-        linear-gradient(rgb(33, 33, 33), rgb(44, 44, 44));
+    -fx-background-color: #212121
+
 }
 
 #gradientComboBox .combo-box-popup .list-view .list-cell {
     -fx-padding: 3 3 3 3;
-   
+
 }
 .choice-box-font {
-    -fx-background-color:  #1D1E2A; 
+    -fx-background-color: #1D1E2A; 
 }
-.properties-pane {
-    -fx-background-color: rgba(29,30,42, 0.9);
-}
+
 .slider-prop .track{
     -fx-background-color: #3f4258;
 }
-.slider-prop .thumb{
-    -fx-background-color: #7986cb;
-    -fx-focus-color: #65eEF1;  
+.slider-prop .thumb {
+     -fx-background-color: #7986cb;
+     
 }
-.slider-prop .thumb:hover {
-    -fx-background-color:  #6EFFFF;
+
+.slider-prop .thumb:hover{
+    -fx-background-color: #cc86cb;
 }
+
 #Gridpane-advanced, #PropertiesPanel {
-    -fx-background-color:  #14151F;
+    /*    -fx-background-color:  #14151F;*/
+}
+
+/*******************************************************************************
+ * Title Pane    	                                                       *
+ ******************************************************************************/
+.title {
+    -fx-text-fill: #C7D7C0;
+}
+.titled-pane {
+    -fx-text-fill: #C7D7C0;
+}
+.titled-pane > .title {
+    -fx-background-color: #1C1C1C;
+    -fx-text-fill: #C7D7C0;
+    -fx-border-color: #3f4258;
+    -fx-background-radius: 0, 0, 0;
+}
+.titled-pane > *.content {
+    -fx-background-color: transparent;
+    -fx-text-fill: #C7D7C0;
+    -fx-background-insets: 0, 0 0 0 0;
+    -fx-padding: 0;
+    -fx-border-color: null;
 }
 
 .title {
     -fx-font-family: "Sans-Serif";
-     -fx-font-size: 11pt;
+    -fx-font-size: 11pt;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
-    
+
 }
-.properties-tab {
-     -fx-background-color:  #1D1E2A; 
-}
-.properties-tab .tab-container .tab-label {
-    -fx-text-fill: #BCBCBC;
-}
-.properties-tab:selected:top {
-    
-    -fx-background-color:  #1D1E3C; 
-   
-}
-.properties-tab:selected:top .tab-container .tab-label {
-    -fx-text-fill: #FFFFFF;
+
+/*.big-button {
     -fx-font-weight: bold;
-     -fx-font-size: 10pt;
-}
-.big-button {
-   -fx-font-weight: bold;
     -fx-background-color:
         linear-gradient(#c5cae9, #7986cb),
         radial-gradient(center 50% -40%, radius 200%, #5c6bc0 45%, #1a237e 50%);
@@ -85,7 +97,7 @@ different terms and without source code for the larger work.
     -fx-text-fill: #FFF;
 }
 .big-button:hover {
-   -fx-font-weight: bold;
+    -fx-font-weight: bold;
     -fx-background-color:
         linear-gradient(#1288ff, #1188ff),
         radial-gradient(center 50% -40%, radius 200%, #a2b2ee 45%, #1162cc 50%);
@@ -93,9 +105,44 @@ different terms and without source code for the larger work.
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #111;
+}*/
+.big-button {
+    -fx-background-color: 
+        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
+        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+        linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-padding: 5 10 5 10;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+.big-button:hover {
+    -fx-background-color: 
+        linear-gradient(#786778 0%, #283033 25%, #373837 75%, #757575 100%),
+        linear-gradient(#181b18, #4a4a4a),
+        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #444544 80%, #323232 100%),
+        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+        linear-gradient(#888888 0%, #606060 50%, #606260 51%, #2a2b2a 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 6,6,5,4,3;
+    -fx-padding: 5 5 5 5;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+.big-button Text {
+    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
 }
 .prop {
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
     -fx-text-fill: #e3e3e3;
 }
 
@@ -104,11 +151,11 @@ different terms and without source code for the larger work.
 }
 
 #GridPane-Properties {
-/*    -fx-background-color: #14151F; */
- -fx-background-color: rgba(29,30,42, 0.3);
+    /*    -fx-background-color: #14151F; */
+    /* -fx-background-color: rgba(29,30,42, 0.3);*/
 }
 #Gridpane-advanced {
-     -fx-background-color: rgba(29,30,42, 0.5);
+    /*     -fx-background-color: rgba(29,30,42, 0.5);*/
 }
 
 #input-text-field {
@@ -205,23 +252,18 @@ different terms and without source code for the larger work.
     -fx-opacity: -fx-disabled-opacity;
 }
 
-#gradientComboBox .list-cell {
-    -fx-text-fill: #DCDCDC;
-   -fx-padding: 0 0 0 7;
-   -fx-background-insets: -1;
-    -fx-cell-size: 15;
-}
+
 
 .properties-combo-box .arrow-button {
     -fx-background-color: #3f4258; 
     -fx-background-insets: -1;
 }
 .font-choice-box .context-menu {
-     -fx-text-fill:  #DCDCDC;
-      -fx-background-color: #3f4258; 
+    -fx-text-fill:  #DCDCDC;
+    -fx-background-color: #3f4258; 
 }
 .font-choice-box .label {
-     -fx-text-fill:  #DCDCDC;
+    -fx-text-fill:  #DCDCDC;
 }
 
 .font-choice-box{

@@ -16,10 +16,9 @@ different terms and without source code for the larger work.
 }
 
 .main-border-pane {
-    
-       -fx-background-color: linear-gradient(rgb(88.0, 88.0, 88.0), rgb(77.0, 77.0, 77.0)),
-        linear-gradient(rgb(66.0, 66, 66), rgb(44.0, 44.0, 44));
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
+   
+       -fx-background-color:  #282828;
+   
     
 }
 .nav-box {
@@ -53,8 +52,10 @@ different terms and without source code for the larger work.
      -fx-background-color: #383838;
   
     -fx-background-insets: 0, 1, 2;
-    -fx-background-color: linear-gradient(rgb(28, 28, 28), rgb(27, 33, 39)),
-        linear-gradient(rgb(33, 33, 33), rgb(44, 44, 44));
+   -fx-background-color: linear-gradient(rgb(99.0, 99.0, 99.0), rgb(77.0, 77.0, 77.0)),
+        linear-gradient(rgb(66.0, 66, 66), rgb(44.0, 44.0, 44));
+/*    -fx-background-color: linear-gradient(rgb(28, 28, 28), rgb(27, 33, 39)),
+        linear-gradient(rgb(33, 33, 33), rgb(44, 44, 44));*/
     -fx-border-width: 0 0 0.5 0;
     -fx-border-insets: -0.5, 0.0 ;
     -fx-border-color: linear-gradient(rgb(88.0, 88.0, 88.0), rgb(77.0, 77.0, 77.0)),
@@ -71,8 +72,8 @@ different terms and without source code for the larger work.
 .menu-item:hover{
     -fx-text-fill: #FFF;
      -fx-background-color: #205081;
-       -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
+/*       -fx-background-insets: 1, 1, 1;*/
+    -fx-background-radius: 1, 1, 1;
 }
 .menu-button .menu {
     -fx-text-fill: #FFF;
@@ -86,8 +87,8 @@ different terms and without source code for the larger work.
 .context-menu {
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
     -fx-background-color: rgba(32,32,32,0.9);
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
+/*    -fx-background-insets: 0, 1, 2;*/
+   -fx-background-radius: 1;
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
@@ -171,22 +172,22 @@ different terms and without source code for the larger work.
 .switch .box{
     -fx-background-color: transparent;
     -fx-padding: 16 53 0 0;
-    -fx-background-image: url("/images/off.png");
+    -fx-background-image: url("/resources/images/off.png");
 }
 .switch:selected .box {
     -fx-background-color: transparent;
-    -fx-background-image: url("/images/on.png");
+    -fx-background-image: url("/resources/images/on.png");
 }
 .switch:focused .box{
     -fx-background-color: -fx-focus-color;
     -fx-padding: 16 53 0 0;
-    -fx-background-image: url("/images/off.png");   
+    -fx-background-image: url("/resources/images/off.png");   
     -fx-background-insets: -1.4;
     -fx-background-radius: 3;
 }
 .switch:focused:selected .box {
     -fx-background-color: -fx-focus-color;
-    -fx-background-image: url("/images/on.png");    
+    -fx-background-image: url("/resources/images/on.png");    
     -fx-background-insets: -1.4;
     -fx-background-radius: 4;
 }
@@ -222,4 +223,3 @@ different terms and without source code for the larger work.
 .menubar-root {
    -fx-background-color: transparent;  
 }
-

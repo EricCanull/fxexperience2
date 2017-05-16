@@ -22,10 +22,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        new AppViewHandler(stage, ResourceBundle.getBundle(RESOURCE_BUNDLE, Locale.ENGLISH))
+        new AppViewHandler(stage, ResourceBundle.getBundle(RESOURCE_BUNDLE, Locale.getDefault()))
                 .launchMainWindow();
-
     }
 
     /* @param args the command line arguments */

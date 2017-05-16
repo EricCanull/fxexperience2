@@ -11,9 +11,8 @@ package com.fxexperience.tools.controller;
 
 import com.fxexperience.tools.util.StringUtil;
 import com.fxexperience.javafx.scene.control.IntegerField;
-import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
 import com.fxexperience.tools.util.Gradient;
-import com.fxexperience.tools.util.paintpicker.PaintPicker;
+import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import java.io.*;
 import java.net.URL;
 import java.util.Collections;
@@ -43,6 +42,7 @@ public class StylerController implements Initializable {
     private String css;
     
     // Common Properties
+    @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
     @FXML private ChoiceBox<String> fontChoiceBox;
     @FXML private CheckBox fontDefaultCheckBox;
@@ -56,14 +56,13 @@ public class StylerController implements Initializable {
     @FXML private CheckBox textColorAutoComboBox;
     @FXML private CheckBox fieldTextAutoCheckBox;
     
-    private final PaintPicker testPicker = new PaintPicker(PaintPicker.Mode.COLOR);
-    private final ColorPickerTool baseColorPicker = new ColorPickerTool(Color.web("#d0d0d0"));
-    private final ColorPickerTool backgroundColorPicker = new ColorPickerTool(Color.web("#f4f4f4"));
-    private final ColorPickerTool focusColorPicker = new ColorPickerTool(Color.web("#0093ff"));
-    private final ColorPickerTool textColorPicker = new ColorPickerTool(Color.web("#000000"));
-    private final ColorPickerTool bkgdTextColorPicker = new ColorPickerTool(Color.web("#000000"));
-    private final ColorPickerTool fieldBackgroundPicker = new ColorPickerTool(Color.web("#ffffff"));
-    private final ColorPickerTool fieldTextColorPicker = new ColorPickerTool(Color.web("#000000"));
+    private final PopupEditor basePicker = new PopupEditor(Color.web("#d0d0d0"));
+    private final PopupEditor backgroundColorPicker = new PopupEditor(Color.web("#f4f4f4"));
+    private final PopupEditor focusColorPicker = new PopupEditor(Color.web("#0093ff"));
+    private final PopupEditor textColorPicker = new PopupEditor(Color.web("#000000"));
+    private final PopupEditor bkgdTextColorPicker = new PopupEditor(Color.web("#000000"));
+    private final PopupEditor fieldBackgroundPicker = new PopupEditor(Color.web("#ffffff"));
+    private final PopupEditor fieldTextColorPicker = new PopupEditor(Color.web("#000000"));
    
     @FXML private Slider topHighlightSlider;
     @FXML private Slider bottomHighlightSlider;
@@ -126,14 +125,15 @@ public class StylerController implements Initializable {
         borderWidthSlider.valueProperty().addListener(updateCssListener);
        
         // create Integer Fields
-        createNumberFieldForSlider(fontSizeSlider, sizeGridPanel, 2, 3);
-        createNumberFieldForSlider(paddingSlider, sizeGridPanel, 2, 4);
-        createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 2, 5);
-        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel, 2, 6);
+        createNumberFieldForSlider(fontSizeSlider, textGridPanel, 2, 1);
+        createNumberFieldForSlider(paddingSlider, sizeGridPanel, 2, 0);
+        createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 2, 1);
+        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel, 2, 2);
         
         // ------------- SIMPLE TAB --------------------------------------------
         simpleGridPane.getChildren().addAll(
-                baseColorPicker,
+                basePicker,
+//                baseColorPicker,
                 backgroundColorPicker, 
                 focusColorPicker, 
                 textColorPicker, 
@@ -142,17 +142,17 @@ public class StylerController implements Initializable {
                 bkgdTextColorPicker);
        
         // create color pickers
-        GridPane.setConstraints(baseColorPicker, 1, 1);
-        GridPane.setConstraints(textColorPicker, 1, 2);
-        GridPane.setConstraints(backgroundColorPicker, 1, 3);
-        GridPane.setConstraints(bkgdTextColorPicker, 1, 4);
-        GridPane.setConstraints(fieldBackgroundPicker, 1, 5);
-        GridPane.setConstraints(fieldTextColorPicker, 1, 6);
-        GridPane.setConstraints(focusColorPicker, 1, 7);
-        GridPane.setConstraints(testPicker, 1, 8);
+       // GridPane.setConstraints(baseColorPicker, 1, 1);
+         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
+        GridPane.setConstraints(textColorPicker, 1, 1);
+        GridPane.setConstraints(backgroundColorPicker, 1, 2);
+        GridPane.setConstraints(bkgdTextColorPicker, 1, 3);
+        GridPane.setConstraints(fieldBackgroundPicker, 1, 4);
+        GridPane.setConstraints(fieldTextColorPicker, 1, 5);
+        GridPane.setConstraints(focusColorPicker, 1, 6);
+      
         
-        
-        baseColorPicker.colorProperty().addListener(updateCssListener);
+        basePicker.colorProperty().addListener(updateCssListener);
         backgroundColorPicker.colorProperty().addListener(updateCssListener);
         focusColorPicker.colorProperty().addListener(updateCssListener);
         textColorPicker.colorProperty().addListener(updateCssListener);
@@ -269,7 +269,7 @@ public class StylerController implements Initializable {
          //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: "+ "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;",true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + baseColorPicker.getWebColor() + ";",true, 4));
+       cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getWebColor() + ";",true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getWebColor() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getWebColor() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getWebColor() + ";", true, 4));

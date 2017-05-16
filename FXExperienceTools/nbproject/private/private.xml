@@ -3,36 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/fxml/FXMLStylerPanel.fxml</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/SplineEditorControl.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/view/AbstractWindow.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/AppPaths.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/styles/main.css</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/AbstractController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/AnimatedAction.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/styles/styler.css</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/view/MainWindow.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/fxml/FXMLSplinePanel.fxml</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/app/MainApp.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/MainController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/DerivationController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/Tool.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/StylerController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/SplinePanelController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/fxml/FXMLDerivationPanel.fxml</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/Gradient.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/StringUtil.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/PreviewPanelController.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/bundle/appResources.properties</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/handler/ViewHandler.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/SyntaxConstants.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/handler/AppViewHandler.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/view/WindowFactory.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/fxml/FXMLPreviewPanel.fxml</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/util/FileUtils.java</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/resources/fxml/FXMLMainPanel.fxml</file>
-            <file>file:/home/andje22/Downloads/fxexperience-2-master/FXExperienceTools/src/com/fxexperience/tools/controller/SplineEditor.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
