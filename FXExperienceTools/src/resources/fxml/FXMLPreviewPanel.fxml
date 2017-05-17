@@ -24,9 +24,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<StackPane id="Preview-area" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
+<StackPane id="Preview-area" alignment="CENTER_LEFT" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
    <children>
-      <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="10.0" StackPane.alignment="CENTER">
+      <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0" StackPane.alignment="CENTER_LEFT">
          <children>
             <Button id="button1" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <ToggleButton id="toggleButton1" text="ToggleButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
@@ -112,10 +112,10 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
          </children>
          <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
             <ColumnConstraints hgrow="NEVER" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
             <ColumnConstraints hgrow="NEVER" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="190.0" minWidth="190.0" prefWidth="190.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="60.0" vgrow="NEVER" />
@@ -126,7 +126,7 @@
             <RowConstraints minHeight="120.0" vgrow="NEVER" />
          </rowConstraints>
          <StackPane.margin>
-            <Insets left="10.0" right="10.0" />
+            <Insets left="2.0" right="8.0" />
          </StackPane.margin>
       </GridPane>
    </children>
