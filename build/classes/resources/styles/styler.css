@@ -11,8 +11,8 @@ different terms and without source code for the larger work.
     Author     : ericc
 */
 #gradientComboBox .list-cell {
-    -fx-background-color:  #3f4258;
-    -fx-text-fill: #e3e3e3;
+    -fx-background-color: derive(rgb(147, 147, 147), -60%);
+    -fx-text-fill:  derive(rgb(147, 147, 147), 25%);
     -fx-background-insets: -1 -1 -1 -1;
     -fx-padding: 3 3 3 3;
 
@@ -22,69 +22,87 @@ different terms and without source code for the larger work.
 }
 
 .split-pane-caspian:horizontal {
+     -fx-background-insets: -1 -1 -1 -1;
     -fx-padding: 0;
 }
 
 .split-pane-caspian:horizontal .split-pane-divider {
     -fx-background-insets: -1 -1 -1 -1;
-    -fx-background-color: #212121
+    -fx-background-color: transparent;
+    -fx-padding: 0;
 
 }
 
 #gradientComboBox .combo-box-popup .list-view .list-cell {
     -fx-padding: 3 3 3 3;
+}
 
+
+#font-box {
+    -fx-background-color: derive(rgb(147, 147, 147), -60%);
 }
-.choice-box-font {
-    -fx-background-color: #1D1E2A; 
+#font-box .context-menu {
+    -fx-text-fill:  #DCDCDC;
+    -fx-background-color: derive(rgb(147, 147, 147),-60%); 
 }
+#font-box .label {
+    -fx-text-fill:  #DCDCDC;
+}
+
+
 
 .slider-prop .track{
-    -fx-background-color: #3f4258;
+    -fx-background-color:derive(rgb(147, 147, 147), -35%);
 }
 .slider-prop .thumb {
-     -fx-background-color: #7986cb;
+     -fx-background-color: rgb(147, 147, 147);
      
 }
 
 .slider-prop .thumb:hover{
-    -fx-background-color: #cc86cb;
+    -fx-background-color: rgb(147, 147, 147);
 }
 
-#Gridpane-advanced, #PropertiesPanel {
-    /*    -fx-background-color:  #14151F;*/
-}
+
 
 /*******************************************************************************
  * Title Pane    	                                                       *
  ******************************************************************************/
-.title {
-    -fx-text-fill: #C7D7C0;
-}
-.titled-pane {
-    -fx-text-fill: #C7D7C0;
-}
+
 .titled-pane > .title {
-    -fx-background-color: #1C1C1C;
-    -fx-text-fill: #C7D7C0;
-    -fx-border-color: #3f4258;
-    -fx-background-radius: 0, 0, 0;
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
+    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
+    -fx-font-size: 0.875em;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
 }
-.titled-pane > *.content {
-    -fx-background-color: transparent;
-    -fx-text-fill: #C7D7C0;
-    -fx-background-insets: 0, 0 0 0 0;
-    -fx-padding: 0;
-    -fx-border-color: null;
+.titled-pane:expanded .content {
+    
+     -fx-background-color: derive(rgb(122, 122, 122), -43%);
+  -fx-border-color: transparent;
+    
+}
+.titled-pane .context-menu {
+     -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
 }
 
-.title {
-    -fx-font-family: "Sans-Serif";
-    -fx-font-size: 11pt;
-    -fx-text-fill: #FFFFFF;
-    -fx-font-weight: bold;
-
+.titled-pane > .title > .text {
+    -fx-fill: derive(rgb(147, 147, 147), -70%)
 }
+
+.titled-pane > .title > .arrow-button {
+    -fx-padding: -0.154em 0.583em 0.0em 0.0em; 
+}
+.titled-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: derive(rgb(147, 147, 147), -32%);
+    -fx-padding: 0.154em 0.231em 0.231em 0.231em; /* 2 3 3 3 */
+}
+.pane-shadow {
+    -fx-background-color: derive(rgb(147, 147, 147), -87%);
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
+}
+
 
 /*.big-button {
     -fx-font-weight: bold;
@@ -106,7 +124,7 @@ different terms and without source code for the larger work.
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
     -fx-text-fill: #111;
 }*/
-.big-button {
+/*.big-button {
     -fx-background-color: 
         linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
         linear-gradient(#020b02, #3a3a3a),
@@ -140,23 +158,17 @@ different terms and without source code for the larger work.
 }
 .big-button Text {
     -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
-}
+}*/
 .prop {
-    -fx-font-size: 12pt;
-    -fx-text-fill: #e3e3e3;
+    -fx-font-size: 0.875em;
+   -fx-text-fill:white;
+   
 }
 
 .check-box-prop {
     -fx-text-fill: #e3e3e3;
 }
 
-#GridPane-Properties {
-    /*    -fx-background-color: #14151F; */
-    /* -fx-background-color: rgba(29,30,42, 0.3);*/
-}
-#Gridpane-advanced {
-    /*     -fx-background-color: rgba(29,30,42, 0.5);*/
-}
 
 #input-text-field {
     -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
@@ -174,7 +186,7 @@ different terms and without source code for the larger work.
 }
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
-    -fx-background-color:  #3f4258;  
+    -fx-background-color:   derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -183,7 +195,7 @@ different terms and without source code for the larger work.
 }
 
 .input-field:focused {
-    -fx-background-color: #3f4258; 
+    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -194,7 +206,7 @@ different terms and without source code for the larger work.
 
 .integer-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
-    -fx-background-color: #3f4258; 
+    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -203,7 +215,7 @@ different terms and without source code for the larger work.
 }
 
 .integer-field:focused {
-    -fx-background-color:  #3f4258; 
+    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -214,7 +226,7 @@ different terms and without source code for the larger work.
 
 .double-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
-    -fx-background-color: #3f4258; 
+    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -223,7 +235,7 @@ different terms and without source code for the larger work.
 }
 
 .double-field:focused {
-    -fx-background-color:  #3f4258; 
+    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -234,7 +246,7 @@ different terms and without source code for the larger work.
 
 .webcolor-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
-    -fx-background-color:  #3f4258;  
+    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -243,7 +255,7 @@ different terms and without source code for the larger work.
 }
 
 .webcolor-field:focused {
-    -fx-background-color: #3f4258; 
+    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -255,19 +267,8 @@ different terms and without source code for the larger work.
 
 
 .properties-combo-box .arrow-button {
-    -fx-background-color: #3f4258; 
+    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -1;
 }
-.font-choice-box .context-menu {
-    -fx-text-fill:  #DCDCDC;
-    -fx-background-color: #3f4258; 
-}
-.font-choice-box .label {
-    -fx-text-fill:  #DCDCDC;
-}
 
-.font-choice-box{
-    -fx-text-fill:  #DCDCDC;
-    -fx-background-color: #3f4258; 
-}
 

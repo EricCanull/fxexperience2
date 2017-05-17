@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" styleClass="main-border-pane" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane fx:id="root" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" stylesheets="@../styles/main.css">
           <children>
-              <StackPane fx:id="rootContainer" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <StackPane fx:id="rootContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
 
             </children>
@@ -32,9 +32,11 @@
    <top>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" onAction="#closeButtonAction" text="File">
+          <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#copyButtonAction" text="Copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveButtonAction" text="Save As" />
+              <MenuItem mnemonicParsing="false" onAction="#closeButtonAction" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

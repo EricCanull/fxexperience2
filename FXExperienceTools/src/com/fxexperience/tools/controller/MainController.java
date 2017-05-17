@@ -46,6 +46,9 @@ public class MainController extends AbstractController implements Initializable 
    
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
     private ToggleGroup toggleGroup;
+    
+    StylerController styleController;
+    FXMLLoader loader;
     private StackPane currentPane, sparePane;
      
     final SimpleDoubleProperty width = new SimpleDoubleProperty(85);
@@ -95,10 +98,14 @@ public class MainController extends AbstractController implements Initializable 
     }
 
     private void initTools() {
+
         try {
-            tools = new Tool[] {
-                new Tool("Styler", (Parent) FXMLLoader.load(StylerController.class.getResource(
-                AppPaths.FXML_PATH + "FXMLStylerPanel.fxml")), 0),
+          loader = new FXMLLoader(StylerController.class.getResource(
+                    AppPaths.FXML_PATH + "FXMLStylerPanel.fxml"));
+            
+            
+            tools = new Tool[]{
+                new Tool("Styler", (Parent) loader.load(), 0),
                 new Tool("Animation Spline Editor", new SplineEditor(), 1),
                 new Tool("Derived Color Calculator", (Parent) FXMLLoader.load(DerivationController.class.getResource(
                 AppPaths.FXML_PATH + "FXMLDerivationPanel.fxml")), 2)
@@ -339,6 +346,18 @@ public class MainController extends AbstractController implements Initializable 
             return;
         }
         switchTool(tools[2]);
+    }
+    
+     @FXML
+    private void copyButtonAction(ActionEvent event) {
+       styleController = (StylerController) loader.getController();
+      styleController.getCopiedStyleSheet();
+    }
+    
+     @FXML
+    private void saveButtonAction(ActionEvent event) {
+       styleController = (StylerController) loader.getController();
+      styleController.getSaveStyleSheet();
     }
 
     @FXML

@@ -4,7 +4,6 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -44,7 +43,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <ChoiceBox fx:id="fontChoiceBox" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" styleClass="font-choice-box" GridPane.columnIndex="1">
+                                          <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxWidth="174.0" minWidth="174.0" prefWidth="174.0" GridPane.columnIndex="1">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="Item 1" />
@@ -117,7 +116,7 @@
                       </TitledPane>
                       <TitledPane animated="false" text="Colors">
                         <content>
-                          <AnchorPane>
+                          <AnchorPane styleClass="anchor-pane">
                                  <children>
                                     <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="4.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
@@ -364,14 +363,6 @@
                     </panes>
                   </Accordion>
                </center>
-               <bottom>
-                  <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button alignment="CENTER" minHeight="40.0" minWidth="160.0" onAction="#copyButtonAction" styleClass="big-button" text="Copy Stylesheet" HBox.hgrow="NEVER" />
-                        <Button alignment="CENTER" minHeight="40.0" minWidth="160.0" onAction="#saveButtonAction" styleClass="big-button" text="Save Stylesheet" HBox.hgrow="NEVER" />
-                     </children>
-                  </HBox>
-               </bottom>
             </BorderPane>
          </children>
       </AnchorPane>

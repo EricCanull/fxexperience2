@@ -8,16 +8,16 @@ and open the template in the editor.
     Author     : ericc
 */
 .root {
-    -fx-base: #131313;
-    -fx-background-color: #131313;
-    -fx-focus-color: #131313;
+    -fx-base:rgb(147, 147, 147);
+   -fx-background-color: derive(-fx-base, -60%);
+     -fx-focus-color: rgb(105, 255, 205);
     -fx-padding: 0;
 }
 .color-picker-popover {
     -fx-font-size: 10px;
     
-    -fx-background: #313131;
-    -fx-control-inner-background: #5f5f5f;
+    -fx-background: derive(-fx-base, -60%);
+  -fx-focus-color: rgb(105, 255, 205);
 }
 
 .label {

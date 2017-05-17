@@ -33,17 +33,10 @@
     -fx-font-size: 0.750em;
     -fx-padding: 0;
 }
-.vbox-root {
-    -fx-background-color: #131313;
-}
-.vbox-root:selected {
-    -fx-focus-color: transparent;
-    -fx-padding: 0;
-}
 .chip-background {
     -fx-border-color: -fx-box-border, white;
     -fx-border-insets: 0, 1;
-    -fx-background-color: -fx-base;
+    -fx-background-color: white;
     -fx-background-image: url("/resources/images/chequers.png");
     -fx-background-position: center;
 }
@@ -56,7 +49,6 @@
 }
 /* opacity slider background is applied to a region behind the slider itself */
 .opacity-slider-background {
-/*     -fx-background-color: darkgray;*/
     -fx-background-image: url("/resources/images/chequers.png");
     -fx-background-position: left center;
     -fx-background-radius: 0;
@@ -66,10 +58,4 @@
 }
 .saturationRect {
     -fx-background-color: linear-gradient(to bottom right, white, transparent);
-}
-
-.text-field {
-     -fx-font-size: 0.875em;
-     -fx-padding: 0.166667em 0 0.166667em 0.5;
-/*     -fx-background-color: #666666;*/
 }

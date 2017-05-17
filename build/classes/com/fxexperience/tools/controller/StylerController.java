@@ -415,15 +415,15 @@ public class StylerController implements Initializable {
     private void updateCssAction(MouseEvent event) {
     }
 
-    @FXML
-    private void copyButtonAction(ActionEvent event) {
+   
+    public void getCopiedStyleSheet() {
         Clipboard.getSystemClipboard().setContent(
                 Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) createCSS(true)));
 
     }
 
-    @FXML
-    private void saveButtonAction(ActionEvent event) {
+  
+    public void getSaveStyleSheet() {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showSaveDialog(sizeGridPanel.getScene().getWindow());
         if (file != null && !file.exists() && file.getParentFile().isDirectory()) {

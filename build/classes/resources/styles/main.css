@@ -11,19 +11,17 @@ different terms and without source code for the larger work.
     Author     : andje22
 */
 
-
-.rootPane {
+.root {
+  -fx-background-color: derive(rgb(122, 122, 122), -60%);
+  -fx-focus-color: rgb(147, 147, 147);
 }
-
-.main-border-pane {
-   
-       -fx-background-color:  #282828;
+       
    
     
-}
+
 .nav-box {
     
-    -fx-background-color: rgba(29,30,42, 0.9);
+    -fx-background-color:derive(rgb(147, 147, 147), -72%);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
      -fx-background-insets: 6, 6, 6, 6;
     -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
@@ -41,25 +39,18 @@ different terms and without source code for the larger work.
 }
 .menu:hover,
 .menu-button .menu:hover {
-    -fx-text-fill: #FFF;
-    -fx-background-color: #205081;
+    -fx-text-fill: white;
+    -fx-background-color:  derive(rgb(147, 147, 147), -26%);
+     
 } 
 .menu-bar {
+  -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
+    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
+    -fx-font-size: 0.875em;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
     
-    -fx-background-insets: 0, 0 0 0 0;
-    -fx-padding: 0.0em 0.666667em 0.0em 0.666667em; /* 0 8 0 8 */
-    -fx-spacing: 0.166667em;
-     -fx-background-color: #383838;
-  
-    -fx-background-insets: 0, 1, 2;
-   -fx-background-color: linear-gradient(rgb(99.0, 99.0, 99.0), rgb(77.0, 77.0, 77.0)),
-        linear-gradient(rgb(66.0, 66, 66), rgb(44.0, 44.0, 44));
-/*    -fx-background-color: linear-gradient(rgb(28, 28, 28), rgb(27, 33, 39)),
-        linear-gradient(rgb(33, 33, 33), rgb(44, 44, 44));*/
-    -fx-border-width: 0 0 0.5 0;
-    -fx-border-insets: -0.5, 0.0 ;
-    -fx-border-color: linear-gradient(rgb(88.0, 88.0, 88.0), rgb(77.0, 77.0, 77.0)),
-        linear-gradient(rgb(66.0, 66, 66), rgb(44.0, 44.0, 44));
 
     /* Nothing more needed for Mac OS X than the following property!
      * All other definitions kept from caspian, to ensure, that MenuBar
@@ -70,68 +61,47 @@ different terms and without source code for the larger work.
 
 .menu-item:focused,
 .menu-item:hover{
-    -fx-text-fill: #FFF;
-     -fx-background-color: #205081;
+    
+  -fx-background-color: derive(rgb(147, 147, 147), -26%);
 /*       -fx-background-insets: 1, 1, 1;*/
-    -fx-background-radius: 1, 1, 1;
+    
 }
 .menu-button .menu {
-    -fx-text-fill: #FFF;
+   -fx-text-fill: derive(rgb(147, 147, 147), -70%)
 }
 .menu-bar .menu .label {
-    -fx-text-fill: #DCDCDC;
+    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
 }
 .menu-button menu showing {
-    -fx-background-color: #1C1C1C;
+    -fx-background-color: derive(rgb(147, 147, 147),60%); 
 }
 .context-menu {
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
-    -fx-background-color: rgba(32,32,32,0.9);
+     -fx-text-fill: derive(rgb(147, 147, 147), -70%);
+     -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
 /*    -fx-background-insets: 0, 1, 2;*/
-   -fx-background-radius: 1;
+   
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
 
 #ContentArea {
     -fx-background-image: url("/resources/images/background.png");
-    -fx-background: black;
+    -fx-background: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }
 #ContentPanel {
     -fx-background-color: transparent;
     -fx-background-color: -fx-background;
-    -fx-border-color: black;
+    -fx-border-color: derive(rgb(147, 147, 147),60%); 
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
 }
-#PropertiesPanel {
-    -fx-background-color: #eeeeee;
-    -fx-background: #eeeeee;
-    -fx-base: #dddddd;
-    -fx-font-size: 12px;
-    -fx-padding: 10px;
-    -fx-border-color: transparent transparent transparent black;
-    
-    -fx-shadow-highlight-color: white;
-    -fx-outer-border: derive(-fx-color, -20%);
-    -fx-inner-border: linear-gradient(
-        to bottom,
-        derive(-fx-color, 58%) 0%,
-        derive(-fx-color, 2%) 100%
-    );
-    -fx-body-color: linear-gradient(
-        to bottom,
-        derive(-fx-color, 35%) 0%,
-        derive(-fx-color, -6%) 100%
-    );
-}
+
 #PropertiesPanel .title {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
-#PropertiesPanel .prop-label{
-    -fx-text-fill: #555555;
-}
+
 .integer-field {
     -fx-alignment: BASELINE_LEFT;
 }
@@ -150,9 +120,7 @@ different terms and without source code for the larger work.
     -fx-background-radius: 4;
     -fx-padding: 4;
 }
-.drawer {
-    -fx-background-color: #4E4E4E;
-}
+
 .big-button {
     -fx-base: #73BEE1;
     -fx-font-size: 14px;
@@ -162,7 +130,7 @@ different terms and without source code for the larger work.
         derive(-fx-color, 35%) 0%,
         derive(-fx-color, -6%) 100%
     );
-    -fx-text-fill: #444444;
+    -fx-text-fill: derive(rgb(147, 147, 147),70%); 
     -fx-padding: 5 10 5 10;
 }
 .big-button Text {
@@ -213,13 +181,11 @@ different terms and without source code for the larger work.
 .menu-toggle-button:selected {
     -fx-font-weight: bold;
      -fx-background-color:
-        linear-gradient(#99ccff, #99ccff),
-        radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);
+        linear-gradient(derive(rgb(147,147, 147), -13%),derive(rgb(147,147, 147), -22%)),
+        radial-gradient(center 50% -40%, radius 200%, derive(rgb(147,147, 147), -32%) 45%, derive(rgb(147,147, 147), -49%) 50%);
 /*    -fx-background-color: #0011114D;*/
     -fx-background-radius: 6, 6, 6, 6;
     -fx-background-insets: 6, 6, 6, 6;
     -fx-text-fill: #cccc00;
 }
-.menubar-root {
-   -fx-background-color: transparent;  
-}
+
