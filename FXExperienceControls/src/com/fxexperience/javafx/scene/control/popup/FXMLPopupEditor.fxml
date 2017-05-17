@@ -40,7 +40,7 @@
 
 <fx:root spacing="2.0" styleClass="color-hbox" stylesheets="@PopupEditor.css" type="HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-    <MenuButton fx:id="menuButton" alignment="BOTTOM_LEFT" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="160.0" styleClass="custom-menu-button" text="value" HBox.hgrow="ALWAYS">
+    <MenuButton fx:id="menuButton" alignment="BOTTOM_LEFT" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="125.0" styleClass="custom-menu-button" text="value" HBox.hgrow="ALWAYS">
       <items>
         <CustomMenuItem fx:id="popupMenuItem" hideOnClick="false" mnemonicParsing="false" styleClass="custom-menu-item" text="Unspecified Action">
           <content>
