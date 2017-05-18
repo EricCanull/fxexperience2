@@ -40,6 +40,7 @@ different terms and without source code for the larger work.
 
 #font-box {
     -fx-background-color: derive(rgb(147, 147, 147), -60%);
+     -fx-font-size: 0.875em;
 }
 #font-box .context-menu {
     -fx-text-fill:  #DCDCDC;
@@ -47,16 +48,14 @@ different terms and without source code for the larger work.
 }
 #font-box .label {
     -fx-text-fill:  #DCDCDC;
+    -fx-font-size: 0.875em;
 }
-
-
 
 .slider-prop .track{
     -fx-background-color:derive(rgb(147, 147, 147), -35%);
 }
 .slider-prop .thumb {
      -fx-background-color: rgb(147, 147, 147);
-     
 }
 
 .slider-prop .thumb:hover{
@@ -98,81 +97,42 @@ different terms and without source code for the larger work.
     -fx-background-color: derive(rgb(147, 147, 147), -32%);
     -fx-padding: 0.154em 0.231em 0.231em 0.231em; /* 2 3 3 3 */
 }
+
+.sub-title {
+   
+     -fx-text-fill: derive(rgb(147, 147, 147), 85%);
+    -fx-font-size: 0.875em;
+    -fx-border-width: 0.5 0 0.5 0;
+    -fx-border-color: derive(rgb(122, 122, 122), -85%);
+    -fx-background-color: 
+        linear-gradient(to left, derive(rgb(147, 147, 147), -40%), derive(rgb(147, 147, 147), -40%)),
+        linear-gradient(to left, derive(rgb(147, 147, 147), -50%) 0%, derive(rgb(147, 147, 147), -60%));
+}
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
 }
 
-
-/*.big-button {
-    -fx-font-weight: bold;
-    -fx-background-color:
-        linear-gradient(#c5cae9, #7986cb),
-        radial-gradient(center 50% -40%, radius 200%, #5c6bc0 45%, #1a237e 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #FFF;
-}
-.big-button:hover {
-    -fx-font-weight: bold;
-    -fx-background-color:
-        linear-gradient(#1288ff, #1188ff),
-        radial-gradient(center 50% -40%, radius 200%, #a2b2ee 45%, #1162cc 50%);
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #111;
-}*/
-/*.big-button {
-    -fx-background-color: 
-        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
-        linear-gradient(#020b02, #3a3a3a),
-        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
-        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
-        linear-gradient(#777777 0%, #606060 50%, #505250 51%, #2a2b2a 100%);
-    -fx-background-insets: 0,1,4,5,6;
-    -fx-background-radius: 9,8,5,4,3;
-    -fx-padding: 5 10 5 10;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
-}
-.big-button:hover {
-    -fx-background-color: 
-        linear-gradient(#786778 0%, #283033 25%, #373837 75%, #757575 100%),
-        linear-gradient(#181b18, #4a4a4a),
-        linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #444544 80%, #323232 100%),
-        linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
-        linear-gradient(#888888 0%, #606060 50%, #606260 51%, #2a2b2a 100%);
-    -fx-background-insets: 0,1,4,5,6;
-    -fx-background-radius: 6,6,5,4,3;
-    -fx-padding: 5 5 5 5;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
-}
-.big-button Text {
-    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
-}*/
 .prop {
     -fx-font-size: 0.875em;
    -fx-text-fill:white;
    
 }
-
+.title-label {
+      -fx-font-size: 0.875em;
+   -fx-text-fill:white;
+   
+}
 .check-box-prop {
     -fx-text-fill: #e3e3e3;
+    -fx-font-size: 0.875em;
 }
 
 
 #input-text-field {
     -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
     -fx-text-fill: #e3e3e3;
+    -fx-font-size: 0.875em;
 
 }
 .floating:top .tab-content-area {
@@ -192,6 +152,7 @@ different terms and without source code for the larger work.
     -fx-padding: 3 5 3 5;
     -fx-prompt-text-fill: #e3e3e3;
     -fx-cursor: text;
+    
 }
 
 .input-field:focused {
@@ -226,6 +187,7 @@ different terms and without source code for the larger work.
 
 .double-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
+    -fx-font-size: 0.875em;
     -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -246,6 +208,7 @@ different terms and without source code for the larger work.
 
 .webcolor-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
+    -fx-font-size: 0.875em;
     -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -264,11 +227,10 @@ different terms and without source code for the larger work.
     -fx-opacity: -fx-disabled-opacity;
 }
 
-
-
 .properties-combo-box .arrow-button {
     -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
     -fx-background-insets: -1;
+    -fx-font-size: 0.875em;
 }
 
 

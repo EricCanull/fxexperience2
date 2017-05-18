@@ -22,7 +22,6 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -45,13 +44,14 @@ import javafx.util.Duration;
 public class MainController extends AbstractController implements Initializable {
    
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
+   
+    private StackPane currentPane, sparePane;
+    private StylerController styleController;
+    private FXMLLoader loader;
+   
     private ToggleGroup toggleGroup;
     
-    StylerController styleController;
-    FXMLLoader loader;
-    private StackPane currentPane, sparePane;
-     
-    final SimpleDoubleProperty width = new SimpleDoubleProperty(85);
+    private final SimpleDoubleProperty width = new SimpleDoubleProperty(85);
     private int currentToolIndex = 0;
     private int nextToolIndex = 0;
     
@@ -59,8 +59,7 @@ public class MainController extends AbstractController implements Initializable 
     private Tool nextTool;
      
     private Tool[] tools;
-   
-  
+     
     @FXML private BorderPane root;
     @FXML private StackPane rootContainer;
     @FXML private VBox menuPane;
@@ -193,7 +192,7 @@ public class MainController extends AbstractController implements Initializable 
         StackPane temp = currentPane;
         currentPane = sparePane;
         sparePane = temp;
-        
+
         // cleanup
         timeline = null;
         currentPane.setTranslateY(0);
@@ -240,14 +239,18 @@ public class MainController extends AbstractController implements Initializable 
     
      @FXML
     private void copyButtonAction(ActionEvent event) {
-       styleController = (StylerController) loader.getController();
-      styleController.getCopiedStyleSheet();
+        if (tools[0].getIndex() == currentToolIndex) {
+            styleController = (StylerController) loader.getController();
+            styleController.getCopiedStyleSheet();
+        }
     }
     
      @FXML
     private void saveButtonAction(ActionEvent event) {
-       styleController = (StylerController) loader.getController();
-      styleController.getSaveStyleSheet();
+        if (tools[0].getIndex() == currentToolIndex) {
+            styleController = (StylerController) loader.getController();
+            styleController.getSaveStyleSheet();
+        }
     }
 
     @FXML

@@ -15,9 +15,6 @@ different terms and without source code for the larger work.
   -fx-background-color: derive(rgb(122, 122, 122), -60%);
   -fx-focus-color: rgb(147, 147, 147);
 }
-       
-   
-    
 
 .nav-box {
     
@@ -122,16 +119,14 @@ different terms and without source code for the larger work.
 }
 
 .big-button {
-    -fx-base: #73BEE1;
-    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
-    -fx-inner-border: linear-gradient(
-        to bottom,
-        derive(-fx-color, 35%) 0%,
-        derive(-fx-color, -6%) 100%
-    );
-    -fx-text-fill: derive(rgb(147, 147, 147),70%); 
-    -fx-padding: 5 10 5 10;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.big-button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 .big-button Text {
     -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.6) , 0, 0.0 , 0 , 1 );
