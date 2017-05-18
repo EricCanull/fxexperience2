@@ -86,6 +86,7 @@ public class SplineEditor extends GridPane implements AnimatedAction {
         background.setId("Background");
         background.setManaged(false);
         background.setCache(true);
+       
         getStylesheets().add(SplineEditor.class.getResource("/resources/styles/spline.css").toExternalForm());
         setPadding(new Insets(10, 20, 10, 10));
         setVgap(10);

@@ -21,7 +21,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +29,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -85,7 +85,7 @@ public class StylerController implements Initializable {
     @FXML private CheckBox inputBorderComboBox;
     @FXML private CheckBox inputOuterBorderComboBox;
     @FXML private CheckBox bkgdTextColorAutoComboBox;
-    @FXML private AnchorPane previewAnchorPane;
+    @FXML private BorderPane previewPane;
    
     private StackPane previewPanel;
    
@@ -93,7 +93,7 @@ public class StylerController implements Initializable {
        
         try {
             previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource("/resources/fxml/FXMLPreviewPanel.fxml"));
-            previewAnchorPane.getChildren().add(previewPanel);
+            previewPane.setCenter(previewPanel);
         } catch (IOException ex) {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -86,9 +86,7 @@ public class MainController extends AbstractController implements Initializable 
         initToggleGroup();
         
         initTools();
-        
-        prepareNavigationBarAnimation();
-        
+                
         currentPane = new StackPane();
         currentPane.getChildren().add(tools[0].getContent());
         sparePane = new StackPane();
@@ -134,114 +132,6 @@ public class MainController extends AbstractController implements Initializable 
         });
     }
 
-    private void prepareNavigationBarAnimation() {
-//        
-//        final double expandedWidth = 85;
-//
-//       // apply the animations when the button is pressed.
-//      navPane.setOnMouseClicked((MouseEvent event) -> {
-//          // create an animation to hide sidebar.
-//          final Animation hideSidebar = new Transition() {
-//              { setCycleDuration(Duration.millis(250)); }
-//              @Override
-//              protected void interpolate(double frac) {
-//                  final double curWidth = expandedWidth * (1.0 - frac);
-//                  menuPane.setPrefWidth(curWidth);
-//                  
-//                  menuPane.setTranslateX(-expandedWidth + curWidth);
-//                  navPane.setTranslateX(-expandedWidth + curWidth);
-//              }
-//          };
-//          hideSidebar.onFinishedProperty().set((EventHandler<ActionEvent>) (ActionEvent actionEvent1) -> {
-//              menuPane.setVisible(false);
-//               navPane.setPrefWidth(15);
-////              controlButton.setText(">");
-////              controlButton.getStyleClass().remove("hide-left");
-////              controlButton.getStyleClass().add("show-right");
-//          });
-//  
-//          // create an animation to show a sidebar.
-//          final Animation showSidebar = new Transition() {
-//              { setCycleDuration(Duration.millis(250)); }
-//              @Override
-//              protected void interpolate(double frac) {
-//                  
-//                  final double curWidth = expandedWidth * frac;
-//                  menuPane.setPrefWidth(curWidth);
-//                  navPane.setPrefWidth(curWidth);
-//                  menuPane.setTranslateX(-expandedWidth + curWidth);
-//                  navPane.setTranslateX(-expandedWidth + curWidth);
-//                  System.out.println(curWidth);
-//              }
-//          };
-//          showSidebar.onFinishedProperty().set((EventHandler<ActionEvent>) (ActionEvent actionEvent1) -> {
-////              controlButton.setText("<");
-////              controlButton.getStyleClass().add("hide-left");
-////              controlButton.getStyleClass().remove("show-right");
-//          });
-//  
-//          if (showSidebar.statusProperty().get() == Animation.Status.STOPPED && hideSidebar.statusProperty().get() == Animation.Status.STOPPED) {
-//              if (menuPane.isVisible()) {
-//                  hideSidebar.play();
-//              } else {
-//                  menuPane.setVisible(true);
-//                  showSidebar.play();
-//              }
-//          }
-//      });
-//    }
-
-//        menuPane.setOnMouseEntered((MouseEvent event) -> {
-//
-//            System.out.println(menuPane.isVisible());
-//            // create an animation to hide sidebar.
-//            final Animation showSidebar = new Transition() {
-//                {
-//                    setCycleDuration(Duration.millis(250));
-//                }
-//
-//                @Override
-//                protected void interpolate(double frac) {
-//
-//                    final double curWidth = expandedWidth * frac;
-//                    menuPane.setPrefWidth(curWidth + 75);
-//                    menuPane.setTranslateX(-expandedWidth + curWidth);
-//                }
-//            };
-//
-//            // menuPane.setVisible(true);
-//            showSidebar.play();
-//
-//        });
-        TranslateTransition openNav = new TranslateTransition(new Duration(350), menuPane);
-        openNav.setToX(0);
-        TranslateTransition closeNav = new TranslateTransition(new Duration(350), menuPane);
-
-//        menuPane.setOnMouseEntered((MouseEvent event) -> {
-//
-//            if (menuPane.getTranslateX() < 0) {
-//               
-//                openNav.play();
-//                
-//               //rootContainer.setTranslateX(0);
-//            }
-//        });
-//
-//        menuPane.setOnMouseExited((MouseEvent event) -> {
-//
-//            if (menuPane.getTranslateX() == 0) {
-//                closeNav.setToX(-95);
-//                closeNav.play();
-//               
-//               // root.setMaxWidth(root.getWidth()-95);
-//                 //rootContainer.setTranslateX(-95);
-//                 
-//                
-//
-//            }
-//        });
-   }
-    
      public void switchTool(Tool newTool) {
          
         // check if existing animation running
