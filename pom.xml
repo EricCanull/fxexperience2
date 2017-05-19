@@ -27,5 +27,13 @@
             </plugin>
         </plugins>
     </build>
-
+    <dependencies>
+        <dependency>
+            <groupId>javafx</groupId>
+            <artifactId>jfxrt</artifactId>
+            <version>${java.version}</version>
+	    <scope>system</scope>
+	    <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
+        </dependency>
+    </dependencies>
 </project>
