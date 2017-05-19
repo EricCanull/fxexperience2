@@ -123,7 +123,7 @@
                               </AnchorPane>
                         </content>
                       </TitledPane>
-                      <TitledPane animated="false" maxWidth="300.0" minWidth="300.0" text="Colors">
+                      <TitledPane maxWidth="300.0" minWidth="300.0" text="Colors">
                         <content>
                           <AnchorPane maxWidth="300.0" minWidth="300.0" styleClass="anchor-pane">
                                  <children>
@@ -149,9 +149,9 @@
                                                 <Label styleClass="prop" text="Field Background:" />
                                              </children>
                                           </HBox>
-                                          <CheckBox fx:id="textColorAutoComboBox" selected="true" styleClass="check-box-prop" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                                          <CheckBox fx:id="textColorAutoComboBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
                                              <GridPane.margin>
-                                                <Insets left="5.0" />
+                                                <Insets left="2.0" />
                                              </GridPane.margin>
                                           </CheckBox>
                                           <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
@@ -159,9 +159,9 @@
                                                 <Label styleClass="prop" text="Field Text:" />
                                              </children>
                                           </HBox>
-                                          <CheckBox fx:id="fieldTextAutoCheckBox" selected="true" styleClass="check-box-prop" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
+                                          <CheckBox fx:id="fieldTextAutoCheckBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
                                              <GridPane.margin>
-                                                <Insets left="5.0" />
+                                                <Insets left="2.0" />
                                              </GridPane.margin>
                                           </CheckBox>
                                           <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
@@ -172,9 +172,9 @@
                                                 <Label styleClass="prop" text="Background Text:" />
                                              </children>
                                           </HBox>
-                                          <CheckBox fx:id="bkgdTextColorAutoComboBox" selected="true" styleClass="check-box-prop" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
+                                          <CheckBox fx:id="bkgdTextColorAutoComboBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
                                              <GridPane.margin>
-                                                <Insets left="5.0" />
+                                                <Insets left="2.0" />
                                              </GridPane.margin>
                                           </CheckBox>
                                           <HBox alignment="CENTER_LEFT">
