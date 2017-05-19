@@ -31,7 +31,6 @@
  */
 package com.fxexperience.javafx.util.encoders;
 
-import static com.sun.javafx.util.Utils.RGBtoHSB;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
@@ -265,13 +264,51 @@ public class ColorEncoder {
         
         return result;
     }
-    private static double calculateBrightness(Color c) {
-   return Math.sqrt(
-      c.getRed() * c.getRed()* .241 + 
-      c.getGreen() * c.getGreen() * .691 + 
-      c.getBlue() * c.getBlue() * .068);
-}
     
+    private static double[] RGBtoHSB(double r, double g, double b, double[] hsbvals) {
+        double hue, saturation, brightness;
+        if (hsbvals == null) {
+            hsbvals = new double[3];
+        }
+        double cmax = (r > g) ? r : g;
+        if (b > cmax) cmax = b;
+        double cmin = (r < g) ? r : g;
+        if (b < cmin) cmin = b;
+
+        brightness = ((float) cmax) / 255.0f;
+        if (cmax != 0)
+            saturation = ((float) (cmax - cmin)) / ((float) cmax);
+        else
+            saturation = 0;
+        if (saturation == 0)
+            hue = 0;
+        else {
+            float redc = ((float) (cmax - r)) / ((float) (cmax - cmin));
+            float greenc = ((float) (cmax - g)) / ((float) (cmax - cmin));
+            float bluec = ((float) (cmax - b)) / ((float) (cmax - cmin));
+            if (r == cmax)
+                hue = bluec - greenc;
+            else if (g == cmax)
+                hue = 2.0f + redc - bluec;
+            else
+                hue = 4.0f + greenc - redc;
+            hue = hue / 6.0f;
+            if (hue < 0)
+                hue = hue + 1.0f;
+        }
+        hsbvals[0] = hue;
+        hsbvals[1] = saturation;
+        hsbvals[2] = brightness;
+        return hsbvals;
+    
+    }
+    private static double calculateBrightness(Color c) {
+        return Math.sqrt(
+                c.getRed() * c.getRed() * .241
+                + c.getGreen() * c.getGreen() * .691
+                + c.getBlue() * c.getBlue() * .068);
+    }
+
       public static Color deriveColor(Color c, double brightness) {
         double baseBrightness = calculateBrightness(c);
         double calcBrightness = brightness;
@@ -301,8 +338,9 @@ public class ColorEncoder {
         } else if (calcBrightness > 1) {
             calcBrightness = 1;
         }
+        double[] hsb = null;
         // window two take the calculated brightness multiplyer and derive color based on source color
-        double[] hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue());
+        hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), hsb);
         // change brightness
         if (calcBrightness > 0) { // brighter
             hsb[1] *= 1 - calcBrightness;
