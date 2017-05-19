@@ -1,5 +1,7 @@
 language: java
 
+jdk: Maven 3.2
+
 install: true
 
 script: mvn clean install
