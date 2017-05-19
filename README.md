@@ -1,6 +1,8 @@
+****************************
 * FX Experience 2 
+****************************
 
-[![Build Status](https://travis-ci.org/EricCanull/fxexperience-2.svg?branch=master)](https://travis-ci.org/EricCanull/fxexperience-2)                                        
+- [![Build Status](https://travis-ci.org/EricCanull/fxexperience-2.svg?branch=master)](https://travis-ci.org/EricCanull/fxexperience-2)                                        
 
 This is an updated repo to the original fxexperience created by
 Jasper Potts. Originally intended to coincide with the fxexperience 
