@@ -1,17 +1,4 @@
 language: java
+sudo: false
+script: mvn clean verify
 
-jdk:
-  - oraclejdk8
-
-os:
-  - linux
-
-branches:
-  only:
-    - master
-
-before_script:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-script:
-  - mvn test -B
