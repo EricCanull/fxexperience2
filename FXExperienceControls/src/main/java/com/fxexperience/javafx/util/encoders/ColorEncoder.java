@@ -32,7 +32,6 @@
 package com.fxexperience.javafx.util.encoders;
 
 import static com.sun.javafx.util.Utils.RGBtoHSB;
-import static com.sun.javafx.util.Utils.calculateBrightness;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
