@@ -26,7 +26,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
-import resources.encoders.ColorEncoder;
+import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.scene.control.ColorPicker;
 
 /**
