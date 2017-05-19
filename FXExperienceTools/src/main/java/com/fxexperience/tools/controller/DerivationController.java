@@ -11,7 +11,7 @@ package com.fxexperience.tools.controller;
 
 
 import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
-import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import com.sun.javafx.util.Utils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -72,8 +72,7 @@ public class DerivationController implements Initializable {
             @Override protected String computeValue() {
                 Color base = baseColorPicker.getColor();
                 double derivation = derivationSlider.getValue();
-                
-                Color result = ColorEncoder.deriveColor(base, derivation/100);
+                Color result = Utils.deriveColor(base, derivation/100);
                 return getColorString(result);
             }
         });
@@ -103,7 +102,7 @@ public class DerivationController implements Initializable {
 //                    System.out.println("derivation = " + derivation);
 //                    System.out.println("max = " + max);
 //                    System.out.println("min = " + min);
-            derivedColor = ColorEncoder.deriveColor(base, derivation);
+            derivedColor = Utils.deriveColor(base, derivation);
             double derivedBrightness = derivedColor.getBrightness();
 //                    System.out.println("derivedBrightness = " + derivedBrightness);
             double derivedSaturation = derivedColor.getSaturation();

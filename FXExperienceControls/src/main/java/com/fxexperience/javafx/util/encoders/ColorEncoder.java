@@ -31,7 +31,6 @@
  */
 package com.fxexperience.javafx.util.encoders;
 
-import static com.sun.javafx.util.Utils.RGBtoHSB;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
@@ -223,9 +222,9 @@ public class ColorEncoder {
         
         if (standardColorNames == null) {
             standardColorNames = new HashMap<>();
-            for (Map.Entry<String, Color> e : getStandardColors().entrySet()) {
+            getStandardColors().entrySet().forEach((e) -> {
                 standardColorNames.put(e.getValue(), e.getKey());
-            }
+            });
             standardColorNames = Collections.unmodifiableMap(standardColorNames);
         }
         
@@ -265,86 +264,85 @@ public class ColorEncoder {
         
         return result;
     }
-    private static double calculateBrightness(Color c)
-{
+    private static double calculateBrightness(Color c) {
    return Math.sqrt(
       c.getRed() * c.getRed()* .241 + 
       c.getGreen() * c.getGreen() * .691 + 
       c.getBlue() * c.getBlue() * .068);
 }
     
-      public static Color deriveColor(Color c, double brightness) {
-        double baseBrightness = calculateBrightness(c);
-        double calcBrightness = brightness;
-        // Fine adjustments to colors in ranges of brightness to adjust the contrast for them
-        if (brightness > 0) {
-            if (baseBrightness > 0.85) {
-                calcBrightness = calcBrightness * 1.6;
-            } else if (baseBrightness > 0.6) {
-                // no change
-            } else if (baseBrightness > 0.5) {
-                calcBrightness = calcBrightness * 0.9;
-            } else if (baseBrightness > 0.4) {
-                calcBrightness = calcBrightness * 0.8;
-            } else if (baseBrightness > 0.3) {
-                calcBrightness = calcBrightness * 0.7;
-            } else {
-                calcBrightness = calcBrightness * 0.6;
-            }
-        } else {
-            if (baseBrightness < 0.2) {
-                calcBrightness = calcBrightness * 0.6;
-            }
-        }
-        // clamp brightness
-        if (calcBrightness < -1) {
-            calcBrightness = -1;
-        } else if (calcBrightness > 1) {
-            calcBrightness = 1;
-        }
-        // window two take the calculated brightness multiplyer and derive color based on source color
-        double[] hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue());
-        // change brightness
-        if (calcBrightness > 0) { // brighter
-            hsb[1] *= 1 - calcBrightness;
-            hsb[2] += (1 - hsb[2]) * calcBrightness;
-        } else { // darker
-            hsb[2] *= calcBrightness + 1;
-        }
-        // clip saturation and brightness
-        if (hsb[1] < 0) {
-            hsb[1] = 0;
-        } else if (hsb[1] > 1) {
-            hsb[1] = 1;
-        }
-        if (hsb[2] < 0) {
-            hsb[2] = 0;
-        } else if (hsb[2] > 1) {
-            hsb[2] = 1;
-        }
-        // convert back to color
-        Color c2 = Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
-        return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
-
-        /*   var hsb:Number[] = RGBtoHSB(c.red,c.green,c.blue);
-       // change brightness
-       if (brightness > 0) {
-           //var bright:Number = brightness * (1-calculateBrightness(c));
-           var bright:Number = if (calculateBrightness(c)<0.65 and brightness > 0.5) {
-                   if (calculateBrightness(c)<0.2) then brightness * 0.55 else brightness * 0.7
-           } else brightness;
-           // brighter
-           hsb[1] *= 1 - bright;
-           hsb[2] += (1 - hsb[2]) * bright;
-       } else {
-           // darker
-           hsb[2] *= brightness+1;
-       }
-       // clip saturation and brightness
-       if (hsb[1] < 0) { hsb[1] = 0;} else if (hsb[1] > 1) {hsb[1] = 1}
-       if (hsb[2] < 0) { hsb[2] = 0;} else if (hsb[2] > 1) {hsb[2] = 1}
-       // convert back to color
-       return Color.hsb(hsb[0],hsb[1],hsb[2]) */
-    }
+//      public static Color deriveColor(Color c, double brightness) {
+//        double baseBrightness = calculateBrightness(c);
+//        double calcBrightness = brightness;
+//        // Fine adjustments to colors in ranges of brightness to adjust the contrast for them
+//        if (brightness > 0) {
+//            if (baseBrightness > 0.85) {
+//                calcBrightness = calcBrightness * 1.6;
+//            } else if (baseBrightness > 0.6) {
+//                // no change
+//            } else if (baseBrightness > 0.5) {
+//                calcBrightness = calcBrightness * 0.9;
+//            } else if (baseBrightness > 0.4) {
+//                calcBrightness = calcBrightness * 0.8;
+//            } else if (baseBrightness > 0.3) {
+//                calcBrightness = calcBrightness * 0.7;
+//            } else {
+//                calcBrightness = calcBrightness * 0.6;
+//            }
+//        } else {
+//            if (baseBrightness < 0.2) {
+//                calcBrightness = calcBrightness * 0.6;
+//            }
+//        }
+//        // clamp brightness
+//        if (calcBrightness < -1) {
+//            calcBrightness = -1;
+//        } else if (calcBrightness > 1) {
+//            calcBrightness = 1;
+//        }
+//        // window two take the calculated brightness multiplyer and derive color based on source color
+//        double[] hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue());
+//        // change brightness
+//        if (calcBrightness > 0) { // brighter
+//            hsb[1] *= 1 - calcBrightness;
+//            hsb[2] += (1 - hsb[2]) * calcBrightness;
+//        } else { // darker
+//            hsb[2] *= calcBrightness + 1;
+//        }
+//        // clip saturation and brightness
+//        if (hsb[1] < 0) {
+//            hsb[1] = 0;
+//        } else if (hsb[1] > 1) {
+//            hsb[1] = 1;
+//        }
+//        if (hsb[2] < 0) {
+//            hsb[2] = 0;
+//        } else if (hsb[2] > 1) {
+//            hsb[2] = 1;
+//        }
+//        // convert back to color
+//        Color c2 = Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
+//        return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
+//
+//        /*   var hsb:Number[] = RGBtoHSB(c.red,c.green,c.blue);
+//       // change brightness
+//       if (brightness > 0) {
+//           //var bright:Number = brightness * (1-calculateBrightness(c));
+//           var bright:Number = if (calculateBrightness(c)<0.65 and brightness > 0.5) {
+//                   if (calculateBrightness(c)<0.2) then brightness * 0.55 else brightness * 0.7
+//           } else brightness;
+//           // brighter
+//           hsb[1] *= 1 - bright;
+//           hsb[2] += (1 - hsb[2]) * bright;
+//       } else {
+//           // darker
+//           hsb[2] *= brightness+1;
+//       }
+//       // clip saturation and brightness
+//       if (hsb[1] < 0) { hsb[1] = 0;} else if (hsb[1] > 1) {hsb[1] = 1}
+//       if (hsb[2] < 0) { hsb[2] = 0;} else if (hsb[2] > 1) {hsb[2] = 1}
+//       // convert back to color
+//       return Color.hsb(hsb[0],hsb[1],hsb[2]) */
+//    }
 
 }
