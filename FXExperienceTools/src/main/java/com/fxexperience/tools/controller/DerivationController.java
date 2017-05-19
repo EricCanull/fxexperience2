@@ -11,7 +11,8 @@ package com.fxexperience.tools.controller;
 
 
 import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
-import com.sun.javafx.util.Utils;
+import com.sun.javafx.Utils;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.StringBinding;
