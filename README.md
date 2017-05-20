@@ -1,4 +1,4 @@
-# FX Experience 2 
+# FX Experience-Tools 2 
 
 [![Build Status](https://travis-ci.org/EricCanull/fxexperience-2.svg?branch=master)](https://travis-ci.org/EricCanull/fxexperience-2)                                        
 
@@ -8,7 +8,7 @@ blog](http://fxexperience.com/).
 
 ### What's Included? 
 1. FXExperience-Tools 
-	- Create quick-&-spiffy JavaFX color-compatiable CSS themes. 
+	- Create JavaFX color-compatiable CSS themes. 
 	- Derived color calculator.
 	- Interpolation animation effect graph calculator.
 2. FXExperience-Controls

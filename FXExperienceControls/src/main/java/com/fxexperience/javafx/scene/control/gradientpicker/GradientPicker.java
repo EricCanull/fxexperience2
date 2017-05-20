@@ -235,7 +235,7 @@ public class GradientPicker extends VBox {
     private void initialize() {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GradientPicker.class.getResource("/resources/fxml/GradientPicker.fxml")); //NOI18N
+        loader.setLocation(GradientPicker.class.getResource("/resources/fxml/FXMLGradientPicker.fxml")); //NOI18N
         loader.setController(this);
         loader.setRoot(this);
         try {
