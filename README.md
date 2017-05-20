@@ -1,4 +1,4 @@
-# FX Experience-Tools 2 
+# FXExperience-Tools 2 
 
 [![Build Status](https://travis-ci.org/EricCanull/fxexperience-2.svg?branch=master)](https://travis-ci.org/EricCanull/fxexperience-2)                                        
 
