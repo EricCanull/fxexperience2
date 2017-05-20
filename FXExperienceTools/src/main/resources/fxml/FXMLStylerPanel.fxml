@@ -29,7 +29,7 @@
          <children>
             <BorderPane styleClass="border-pane-styler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
-                  <Accordion maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+                  <Accordion maxWidth="300.0" minWidth="300.0" prefWidth="300.0" styleClass="accordian-prop">
                     <panes>
                       <TitledPane animated="false" text="Text">
                         <content>
@@ -81,7 +81,7 @@
                       </TitledPane>
                       <TitledPane animated="false" text="Sizes">
                         <content>
-                          <AnchorPane>
+                          <AnchorPane styleClass="anchor-pane">
                                  <children>
                                     <GridPane fx:id="sizeGridPanel" hgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>
@@ -125,7 +125,7 @@
                       </TitledPane>
                       <TitledPane maxWidth="300.0" minWidth="300.0" text="Colors">
                         <content>
-                          <AnchorPane maxWidth="300.0" minWidth="300.0" styleClass="anchor-pane">
+                          <AnchorPane maxHeight="500.0" maxWidth="300.0" minWidth="300.0" prefHeight="500.0" styleClass="anchor-pane">
                                  <children>
                                     <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
                                        <children>
@@ -205,7 +205,7 @@
                       </TitledPane>
                         <TitledPane animated="false" layoutX="10.0" layoutY="97.0" text="Style">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchor-pane">
                                  <children>
                                     <GridPane fx:id="textGridPanel11" hgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>

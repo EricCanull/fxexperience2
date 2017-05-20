@@ -35,7 +35,7 @@ public abstract class AbstractWindow {
 	}
 
 	private URL url() {
-		return getClass().getClassLoader().getResource("resources/fxml/FXMLMainPanel.fxml");
+		return getClass().getClassLoader().getResource("fxml/FXMLMainPanel.fxml");
 	}
 
 	public String iconFilePath() {

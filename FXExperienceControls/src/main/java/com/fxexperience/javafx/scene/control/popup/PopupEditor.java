@@ -75,7 +75,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
 
     private void initialize(Object startColor) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/fxml/FXMLPopupEditor.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/FXMLPopupEditor.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             fxmlLoader.load();

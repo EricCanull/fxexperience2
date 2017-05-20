@@ -98,7 +98,7 @@ public class MainController extends AbstractController implements Initializable 
 
         try {
           loader = new FXMLLoader(StylerController.class.getResource(
-                    "/resources/fxml/FXMLStylerPanel.fxml"));
+                    AppPaths.FXML_PATH + "FXMLStylerPanel.fxml"));
             
             
             tools = new Tool[]{

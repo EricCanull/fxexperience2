@@ -11,11 +11,11 @@ package com.fxexperience.tools.util;
 
 public final class AppPaths {
 
-    public static final String RESOURCE_BUNDLE = "resources.bundle.appResources";
-    public static final String RESOURCE_PATH = "/resources/";
+    public static final String RESOURCE_BUNDLE = "bundle.appResources";
     public static final String CONTROLLER_PATH = "com/fxexperience/tools/controller/";
-    public static final String IMG_PATH = RESOURCE_PATH + "images/";
-    public static final String FXML_PATH = RESOURCE_PATH + "fxml/";
+     public static final String STYLE_PATH = "/styles/";
+    public static final String IMG_PATH = "images/";
+    public static final String FXML_PATH ="/fxml/";
 
     private AppPaths() {
     }

@@ -127,7 +127,7 @@ public class ColorPickerControl extends VBox {
     private void initialize() {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ColorPickerControl.class.getResource("/resources/fxml/FXMLColorPicker.fxml")); //NOI18N
+        loader.setLocation(ColorPickerControl.class.getResource("/fxml/FXMLColorPicker.fxml")); //NOI18N
         loader.setController(this);
         loader.setRoot(this);
         try {

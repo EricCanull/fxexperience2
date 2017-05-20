@@ -29,6 +29,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import com.fxexperience.tools.util.AnimatedAction;
+import com.fxexperience.tools.util.AppPaths;
 
 public class SplineEditor extends GridPane implements AnimatedAction {
 
@@ -87,7 +88,7 @@ public class SplineEditor extends GridPane implements AnimatedAction {
         background.setManaged(false);
         background.setCache(true);
        
-        getStylesheets().add(SplineEditor.class.getResource("/resources/styles/spline.css").toExternalForm());
+        getStylesheets().add(SplineEditor.class.getResource(AppPaths.STYLE_PATH +"spline.css").toExternalForm());
         setPadding(new Insets(10, 20, 10, 10));
         setVgap(10);
         setHgap(10);

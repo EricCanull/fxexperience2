@@ -92,6 +92,6 @@ public class InputField extends Control {
     }
 
     @Override public String getUserAgentStylesheet() {
-        return getClass().getResource("/resources/styles/InputField.css").toExternalForm();
+        return getClass().getResource("/styles/InputField.css").toExternalForm();
     }
 }

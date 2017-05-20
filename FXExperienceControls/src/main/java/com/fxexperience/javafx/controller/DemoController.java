@@ -73,7 +73,7 @@ import javafx.util.Duration;
  * 
  * @author Jasper Potts, Eric Canull
  */
-public class CannedAnimationsController implements Initializable {
+public class DemoController implements Initializable {
 
     @FXML
     private Button btn;

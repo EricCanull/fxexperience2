@@ -87,7 +87,7 @@ public class RotatorControl extends GridPane {
     private void initialize(String text) {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(RotatorControl.class.getResource("/resources/fxml/FXMLRotatorControl.fxml")); //NOI18N
+        loader.setLocation(RotatorControl.class.getResource("/fxml/FXMLRotatorControl.fxml")); //NOI18N
         loader.setController(this);
         loader.setRoot(this);
         try {

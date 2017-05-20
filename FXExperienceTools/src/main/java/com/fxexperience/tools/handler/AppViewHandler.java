@@ -9,6 +9,7 @@
  */
 package com.fxexperience.tools.handler;
 
+import com.fxexperience.tools.util.AppPaths;
 import com.fxexperience.tools.view.AbstractWindow;
 import com.fxexperience.tools.view.WindowFactory;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class AppViewHandler implements ViewHandler {
     }
 
     private void buildAndShowScene(Stage stage, AbstractWindow window) throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("resources/images/fxexperience-128.png")) {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(AppPaths.IMG_PATH + "fxexperience-128.png")) {
             stage.getIcons().add(new Image(is));
         }
         

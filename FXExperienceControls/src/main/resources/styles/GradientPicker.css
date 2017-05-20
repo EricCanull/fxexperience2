@@ -29,33 +29,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+.root {
+    -sb-base: rgb(147, 147, 147);
+     -sb-content-text-dimmed: derive(-sb-base, 25%);
+      -sb-content-background: derive(-sb-base, -32%);
+      -fx-focus-color: transparent;
+}
 .small-label {
     -fx-font-size: 0.750em;
+    -fx-text-fill: derive(rgb(147, 147, 147), 25%);
     -fx-padding: 0;
 }
-.chip-background {
+
+.gradient-background {
     -fx-border-color: -fx-box-border, white;
     -fx-border-insets: 0, 1;
     -fx-background-color: white;
-    -fx-background-image: url("/resources/images/chequers.png");
+    -fx-background-image: url("/images/chequers.png");
     -fx-background-position: center;
 }
-.hue-slider {
-    -fx-background-insets: 0 4 0 4;
-    -fx-background-radius: 0;
-}
-.theme-presets .property-sheet .slider > .track {
-    -fx-background-color: transparent;
-}
-/* opacity slider background is applied to a region behind the slider itself */
-.opacity-slider-background {
-    -fx-background-image: url("/resources/images/chequers.png");
-    -fx-background-position: left center;
-    -fx-background-radius: 0;
-}
-.brightnessRect {
-    -fx-background-color: linear-gradient(to bottom, transparent, black);
-}
-.saturationRect {
-    -fx-background-color: linear-gradient(to bottom right, white, transparent);
+
+.track-background {
+    -fx-background-color: derive(rgb(147, 147, 147), -35%), derive(rgb(147, 147, 147), 32%);
+    -fx-background-insets: 0, 1;
 }

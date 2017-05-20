@@ -13,6 +13,7 @@ import com.fxexperience.tools.util.StringUtil;
 import com.fxexperience.javafx.scene.control.IntegerField;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
+import com.fxexperience.tools.util.AppPaths;
 import java.io.*;
 import java.net.URL;
 import java.util.Collections;
@@ -91,7 +92,7 @@ public class StylerController implements Initializable {
     @Override public void initialize(URL url, ResourceBundle rb) {
        
         try {
-            previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource("/resources/fxml/FXMLPreviewPanel.fxml"));
+            previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
             previewPane.setCenter(previewPanel);
         } catch (IOException ex) {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);

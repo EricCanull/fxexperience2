@@ -140,7 +140,7 @@ public class GradientPickerStop extends VBox {
     private void initialize() {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GradientPickerStop.class.getResource("/resources/fxml/FXMLGradientPickerStop.fxml")); //NOI18N
+        loader.setLocation(GradientPickerStop.class.getResource("/fxml/FXMLGradientPickerStop.fxml")); //NOI18N
         loader.setController(this);
         loader.setRoot(this);
         try {

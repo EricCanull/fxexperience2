@@ -33,10 +33,13 @@
          <children>
             <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
                <children>
-                  <Button id="button1" minWidth="120.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                  <Button id="button1" minWidth="120.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
                   <ToggleButton id="toggleButton1" minWidth="120.0" prefWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                      <GridPane.margin>
-                        <Insets top="5.0" />
+                        <Insets />
                      </GridPane.margin>
                   </ToggleButton>
                   <RadioButton id="radioButton1" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
@@ -126,7 +129,7 @@
                   <ColumnConstraints hgrow="NEVER" maxWidth="190.0" minWidth="190.0" prefWidth="190.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="60.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="50.0" vgrow="NEVER" />
                   <RowConstraints minHeight="50.0" vgrow="NEVER" />
                   <RowConstraints minHeight="40.0" vgrow="NEVER" />
                   <RowConstraints minHeight="50.0" vgrow="NEVER" />
