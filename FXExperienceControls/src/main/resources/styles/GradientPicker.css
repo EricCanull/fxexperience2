@@ -32,7 +32,7 @@
 .root {
     -sb-base: rgb(147, 147, 147);
      -sb-content-text-dimmed: derive(-sb-base, 25%);
-      -sb-content-background: derive(-sb-base, -32%);
+      -sb-content-background: derive(-sb-base, -10%);
       -fx-focus-color: transparent;
 }
 .small-label {
@@ -50,6 +50,6 @@
 }
 
 .track-background {
-    -fx-background-color: derive(rgb(147, 147, 147), -35%), derive(rgb(147, 147, 147), 32%);
+    -fx-background-color: derive(rgb(147, 147, 147), -0%), derive(rgb(147, 147, 147), 32%);
     -fx-background-insets: 0, 1;
 }

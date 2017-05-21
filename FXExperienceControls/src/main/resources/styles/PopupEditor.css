@@ -33,15 +33,15 @@
 /* Need to remove the blue color when hovering the menu item */
 
 .popup-pane {
-     -fx-background-color: derive(rgb(147, 147, 147), -60%);
-    -fx-focus-color: derive(rgb(147, 147, 147), -60%);
+     -fx-background-color: derive(rgb(147, 147, 147), -00%);
+    -fx-focus-color: derive(rgb(147, 147, 147), -23%);
    -fx-padding: 0;
 }
 .menu-item:focused,
 .menu-item:hover{
     -fx-text-fill: #FFF;
-    -fx-background-color: derive(rgb(147, 147, 147), -60%);
-    -fx-focus-color: derive(rgb(147, 147, 147), -60%);
+    -fx-background-color: derive(rgb(147, 147, 147), -0%);
+    -fx-focus-color: derive(rgb(147, 147, 147), -0%);
 /*       -fx-background-insets: 1, 1, 1;*/
     -fx-background-radius: 1, 1, 1;
 }

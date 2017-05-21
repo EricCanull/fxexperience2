@@ -88,12 +88,12 @@ accordian-prop .titled-pane {
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
 }
 .titled-pane:expanded .content {
-  -fx-background-color: derive(rgb(122, 122, 122), -43%);
+  -fx-background-color: derive(rgb(122, 122, 122), -50%);
   -fx-border-color: transparent;
     
 }
 .titled-pane .content {
-  -fx-background-color: derive(rgb(122, 122, 122), -43%);
+  -fx-background-color: derive(rgb(122, 122, 122), -50%);
   -fx-border-color: transparent;
     
 }
@@ -250,7 +250,8 @@ accordian-prop .titled-pane {
 /* ==== SWITCH STYLED CHECKBOX ============================================== */
 .auto-switch .box{
     -fx-background-color: transparent;
-    -fx-padding: 16 53 0 0;
+    -fx-focus-color: transparent;
+    -fx-padding: 16 28 0 0;
     -fx-background-image: url("/images/on.png");
 }
 .auto-switch:selected .box {
@@ -259,7 +260,7 @@ accordian-prop .titled-pane {
 }
 .auto-switch:focused .box{
     -fx-background-color: -fx-focus-color;
-    -fx-padding: 16 53 0 0;
+    -fx-padding: 16 28 0 0;
     -fx-background-image: url("/images/on.png");   
     -fx-background-insets: -1.4;
     -fx-background-radius: 3;
