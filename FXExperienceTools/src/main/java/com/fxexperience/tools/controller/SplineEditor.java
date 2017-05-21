@@ -25,7 +25,7 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 
-public final class SplineEditorControl extends XYChart<Number, Number> {
+public final class SplineEditor extends XYChart<Number, Number> {
 
     private final DoubleProperty controlPoint1x = new SimpleDoubleProperty(0.8);
 
@@ -75,7 +75,7 @@ public final class SplineEditorControl extends XYChart<Number, Number> {
 
     private double dragStartX, dragStartY;
 
-    public SplineEditorControl() {
+    public SplineEditor() {
         super(new NumberAxis(0, 1, 0.1), new NumberAxis(0, 1, 0.1));
         controlPoint1Circle = createCircle(Color.WHITE, Color.RED, 3d, 6d, Cursor.HAND);
         controlPoint2Circle = createCircle(Color.WHITE, Color.RED, 3d, 6d, Cursor.HAND);
