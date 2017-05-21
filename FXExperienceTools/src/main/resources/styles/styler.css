@@ -17,11 +17,19 @@ different terms and without source code for the larger work.
     -fx-padding: 3 3 3 3;
 
 }
+
+#ContentArea {
+    -fx-background: black;
+}
 anchor-pane {
      -fx-background-color: derive(rgb(147, 147, 147), -60%); 
 }
 accordian-prop .titled-pane {
      -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+}
+.animation-label {
+    -fx-font-weight: bold; 
+    -fx-font-size: 1.1em;
 }
 
 .split-pane-caspian:horizontal {

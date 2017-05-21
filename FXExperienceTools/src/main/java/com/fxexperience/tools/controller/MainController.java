@@ -103,7 +103,8 @@ public class MainController extends AbstractController implements Initializable 
             
             tools = new Tool[]{
                 new Tool("Styler", (Parent) loader.load(), 0),
-                new Tool("Animation Spline Editor", new SplineEditor(), 1),
+                new Tool("Animation Spline Editor", (Parent) FXMLLoader.load(SplinePanelController.class.getResource(
+                AppPaths.FXML_PATH + "FXMLSplinePanel.fxml")), 1),
                 new Tool("Derived Color Calculator", (Parent) FXMLLoader.load(DerivationController.class.getResource(
                 AppPaths.FXML_PATH + "FXMLDerivationPanel.fxml")), 2)
             };

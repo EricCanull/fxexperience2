@@ -7,226 +7,199 @@
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
+
 package com.fxexperience.tools.controller;
 
-import java.util.Collections;
-import javafx.animation.*;
-import javafx.beans.binding.StringBinding;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.VPos;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.DataFormat;
-import javafx.scene.layout.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.scene.Cursor;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
-import com.fxexperience.tools.util.AnimatedAction;
-import com.fxexperience.tools.util.AppPaths;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 
-public class SplineEditor extends GridPane implements AnimatedAction {
+public final class SplineEditorControl extends XYChart<Number, Number> {
 
-    private Circle scaleCircle;
-    private Rectangle rotateSquare;
-    private Rectangle fadeSquare;
-    private Circle linearCircle;
-    private Rectangle linearTrack;
-    private Group linearGroup;
-    private Timeline timeline;
-    private SplineEditorControl splineEditorControl;
-    private Region background = new Region();
+    private final DoubleProperty controlPoint1x = new SimpleDoubleProperty(0.8);
 
-    public SplineEditor() {
-        scaleCircle = new Circle();
-        scaleCircle.setStroke(Color.WHITE);
-        scaleCircle.setFill(Color.web("#9ef2ff"));
-        scaleCircle.setRadius(50);
-        
-        rotateSquare = new Rectangle();
-        rotateSquare.setWidth(80);
-        rotateSquare.setHeight(80);
-        rotateSquare.setStroke(Color.WHITE);
-        rotateSquare.setFill(Color.web("#9ef2ff"));
-        
-        fadeSquare = new Rectangle();
-        fadeSquare.setWidth(100);
-        fadeSquare.setHeight(100);
-        fadeSquare.setStroke(Color.WHITE);
-        fadeSquare.setFill(Color.web("#9ef2ff"));
-        
-        linearCircle = new Circle();
-        linearCircle.setStroke(Color.WHITE);
-        linearCircle.setFill(Color.web("#9ef2ff"));
-        linearCircle.setRadius(10);
-        linearCircle.setCenterX(10);
-        linearCircle.setCenterY(10);
-        
-        linearTrack = new Rectangle();
-        linearTrack.setWidth(200);
-        linearTrack.setHeight(20);
-        linearTrack.setStroke(Color.rgb(255, 255, 255, 0.5));
-        linearTrack.setFill(null);
-        linearTrack.setArcWidth(20);
-        linearTrack.setArcHeight(20);
-        
-        linearGroup = new Group();
-        linearGroup.setTranslateX(0.5);
-        linearGroup.setTranslateY(0.5);
-        linearGroup.getChildren().addAll(linearTrack, linearCircle);
-        
-        splineEditorControl = new SplineEditorControl();
+    public double getControlPoint1x() {
+        return controlPoint1x.get();
+    }
 
-        setId("SplineEditor");
-        background.setId("Background");
-        background.setManaged(false);
-        background.setCache(true);
-       
-        getStylesheets().add(SplineEditor.class.getResource(AppPaths.STYLE_PATH +"spline.css").toExternalForm());
-        setPadding(new Insets(10, 20, 10, 10));
-        setVgap(10);
-        setHgap(10);
-        GridPane.setConstraints(splineEditorControl, 0, 0, 1, 10,
-                 HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        final Label codeLabel = new Label();
-        codeLabel.setId("CodeLabel");
-        codeLabel.textProperty().bind(new StringBinding() {
-            {
-                bind(splineEditorControl.controlPoint1xProperty(),
-                        splineEditorControl.controlPoint1yProperty(),
-                        splineEditorControl.controlPoint2xProperty(),
-                        splineEditorControl.controlPoint2yProperty());
-            }
+    public DoubleProperty controlPoint1xProperty() {
+        return controlPoint1x;
+    }
+    private final DoubleProperty controlPoint1y = new SimpleDoubleProperty(0.2);
 
-            @Override
-            protected String computeValue() {
-                return String.format("Interpolator.SPLINE(%.4f, %.4f, %.4f, %.4f);",
-                        splineEditorControl.getControlPoint1x(),
-                        splineEditorControl.getControlPoint1y(),
-                        splineEditorControl.getControlPoint2x(),
-                        splineEditorControl.getControlPoint2y());
-            }
+    public double getControlPoint1y() {
+        return controlPoint1y.get();
+    }
+
+    public DoubleProperty controlPoint1yProperty() {
+        return controlPoint1y;
+    }
+    private final DoubleProperty controlPoint2x = new SimpleDoubleProperty(0.2);
+
+    public double getControlPoint2x() {
+        return controlPoint2x.get();
+    }
+
+    public DoubleProperty controlPoint2xProperty() {
+        return controlPoint2x;
+    }
+    private final DoubleProperty controlPoint2y = new SimpleDoubleProperty(0.8);
+
+    public double getControlPoint2y() {
+        return controlPoint2y.get();
+    }
+
+    public DoubleProperty controlPoint2yProperty() {
+        return controlPoint2y;
+    }
+
+    private final Circle controlPoint1Circle;
+    private final Circle controlPoint2Circle;
+
+    private final Line cp1Line;
+    private final Line cp2Line;
+
+    private final Path dottedLinesPath;
+    private final Path splinePath;
+
+    private double dragStartX, dragStartY;
+
+    public SplineEditorControl() {
+        super(new NumberAxis(0, 1, 0.1), new NumberAxis(0, 1, 0.1));
+        controlPoint1Circle = createCircle(Color.WHITE, Color.RED, 3d, 6d, Cursor.HAND);
+        controlPoint2Circle = createCircle(Color.WHITE, Color.RED, 3d, 6d, Cursor.HAND);
+
+        cp1Line = createLine(Color.RED, 2);
+        cp2Line = createLine(Color.RED, 2);
+
+        dottedLinesPath = createPath(Color.WHITE, 1d, 1d, 8d);
+        splinePath = createPath(Color.WHITE, 2d, 1d, 1d);
+        initialize();
+    }
+
+    public void initialize() {
+        setAnimated(false);
+        getXAxis().setAutoRanging(false);
+        getXAxis().setAutoRanging(false);
+        setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        setAlternativeRowFillVisible(false);
+        getPlotChildren().addAll(splinePath, dottedLinesPath, cp1Line, cp2Line, controlPoint1Circle, controlPoint2Circle);
+
+        setData(FXCollections.observableArrayList(new Series<>()));
+
+        controlPoint1Circle.setOnMouseDragged((MouseEvent event) -> {
+            final double x = event.getX() + controlPoint1Circle.getLayoutX();
+            final double y = event.getY() + controlPoint1Circle.getLayoutY();
+            final double dataX = getXAxis().getValueForDisplay(x).doubleValue();
+            final double dataY = getYAxis().getValueForDisplay(y).doubleValue();
+            controlPoint1x.set(clamp(dataX));
+            controlPoint1y.set(clamp(dataY));
+            requestChartLayout();
         });
-        GridPane.setConstraints(codeLabel, 0, 10, 1, 1,
-                 HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        Button copyButton = new Button("Copy Code");
-        copyButton.getStyleClass().add("big-button");
-        copyButton.setOnAction((ActionEvent t) -> {
-            Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) codeLabel.getText()));
+        controlPoint2Circle.setOnMouseDragged((MouseEvent event) -> {
+            final double x = event.getX() + controlPoint2Circle.getLayoutX();
+            final double y = event.getY() + controlPoint2Circle.getLayoutY();
+            final double dataX = getXAxis().getValueForDisplay(x).doubleValue();
+            final double dataY = getYAxis().getValueForDisplay(y).doubleValue();
+            controlPoint2x.set(clamp(dataX));
+            controlPoint2y.set(clamp(dataY));
+            requestChartLayout();
         });
-        GridPane.setConstraints(copyButton, 1, 10, 1, 1,
-                 HPos.CENTER, VPos.CENTER, Priority.NEVER, Priority.NEVER);
-
-        // preview
-        Label previewLabel = new Label("Animation Preview");
-        previewLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 1.1em;");
-        GridPane.setConstraints(previewLabel, 1, 0, 1, 1, HPos.CENTER, VPos.CENTER);
-        // scale
-        Label scaleLabel = new Label("Scale");
-        GridPane.setConstraints(scaleLabel, 1, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(scaleCircle, 1, 2, 1, 1, HPos.CENTER, VPos.CENTER);
-        // rotate
-        Label rotateLabel = new Label("Rotate");
-        GridPane.setConstraints(rotateLabel, 1, 3, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(rotateSquare, 1, 4, 1, 1, HPos.CENTER, VPos.CENTER);
-        // fade
-        Label fadeLabel = new Label("Fade");
-        GridPane.setConstraints(fadeLabel, 1, 5, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(fadeSquare, 1, 6, 1, 1, HPos.CENTER, VPos.CENTER);
-        // linear
-        Label linearLabel = new Label("Linear");
-        GridPane.setConstraints(linearLabel, 1, 7, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(linearGroup, 1, 8, 1, 1, HPos.CENTER, VPos.CENTER);
-
-        getColumnConstraints().addAll(
-                new ColumnConstraints(300, USE_COMPUTED_SIZE, Double.MAX_VALUE, Priority.ALWAYS, HPos.CENTER, true),
-                new ColumnConstraints(200)
-        );
-        getRowConstraints().addAll(
-                new RowConstraints(),
-                new RowConstraints(), // scale
-                new RowConstraints(120),
-                new RowConstraints(), // rotate
-                new RowConstraints(120),
-                new RowConstraints(), // fade
-                new RowConstraints(120),
-                new RowConstraints(), // linear
-                new RowConstraints(30),
-                new RowConstraints(0, 0, Double.MAX_VALUE, Priority.ALWAYS, VPos.CENTER, true), // spacer
-                new RowConstraints() // code
-        );
-
-        getChildren().addAll(background, splineEditorControl, codeLabel, copyButton,
-                previewLabel,
-                scaleLabel, scaleCircle,
-                rotateLabel, rotateSquare,
-                fadeLabel, fadeSquare,
-                linearLabel, linearGroup);
-
-        // create anaimation updater
-        ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> {
-            updateAnimation();
-        };
-        splineEditorControl.controlPoint1xProperty().addListener(animUpdater);
-        splineEditorControl.controlPoint1yProperty().addListener(animUpdater);
-        splineEditorControl.controlPoint2xProperty().addListener(animUpdater);
-        splineEditorControl.controlPoint2yProperty().addListener(animUpdater);
     }
 
     @Override
-    protected void layoutChildren() {
-        super.layoutChildren();
-        background.resize(getWidth(), getHeight());
-    }
-
-    @Override
-    public void startAnimations() {
-        updateAnimation();
-    }
-
-    @Override
-    public void stopAnimations() {
-        if (timeline != null) {
-            timeline.stop();
-        }
-    }
-
-    public void updateAnimation() {
-        if (timeline != null) {
-            timeline.stop();
-        }
-        Interpolator spline = Interpolator.SPLINE(
-                splineEditorControl.getControlPoint1x(),
-                splineEditorControl.getControlPoint1y(),
-                splineEditorControl.getControlPoint2x(),
-                splineEditorControl.getControlPoint2y());
-        timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.getKeyFrames().addAll(
-                new KeyFrame(
-                        Duration.ZERO,
-                        new KeyValue(scaleCircle.scaleXProperty(), 0d, spline),
-                        new KeyValue(scaleCircle.scaleYProperty(), 0d, spline),
-                        new KeyValue(rotateSquare.rotateProperty(), 0d, spline),
-                        new KeyValue(fadeSquare.opacityProperty(), 0d, spline),
-                        new KeyValue(linearCircle.translateXProperty(), 0d, spline)
-                ),
-                new KeyFrame(
-                        Duration.seconds(5),
-                        new KeyValue(scaleCircle.scaleXProperty(), 1d, spline),
-                        new KeyValue(scaleCircle.scaleYProperty(), 1d, spline),
-                        new KeyValue(rotateSquare.rotateProperty(), 360d, spline),
-                        new KeyValue(fadeSquare.opacityProperty(), 1d, spline),
-                        new KeyValue(linearCircle.translateXProperty(), 180d, spline)
-                )
+    protected void layoutPlotChildren() {
+        double cp1x = getXAxis().getDisplayPosition(controlPoint1x.get());
+        double cp1y = getYAxis().getDisplayPosition(controlPoint1y.get());
+        double cp2x = getXAxis().getDisplayPosition(controlPoint2x.get());
+        double cp2y = getYAxis().getDisplayPosition(controlPoint2y.get());
+        double minx = getXAxis().getZeroPosition();
+        double miny = getYAxis().getZeroPosition();
+        double maxx = getXAxis().getDisplayPosition(1);
+        double maxy = getYAxis().getDisplayPosition(1);
+        controlPoint1Circle.setLayoutX(cp1x);
+        controlPoint1Circle.setLayoutY(cp1y);
+        controlPoint2Circle.setLayoutX(cp2x);
+        controlPoint2Circle.setLayoutY(cp2y);
+        cp1Line.setStartX(minx);
+        cp1Line.setStartY(miny);
+        cp1Line.setEndX(cp1x);
+        cp1Line.setEndY(cp1y);
+        cp2Line.setStartX(maxx);
+        cp2Line.setStartY(maxy);
+        cp2Line.setEndX(cp2x);
+        cp2Line.setEndY(cp2y);
+        dottedLinesPath.getElements().setAll(
+                new MoveTo(minx - 0.5, cp1y - 0.5),
+                new LineTo(cp1x - 0.5, cp1y - 0.5),
+                new LineTo(cp1x - 0.5, miny - 0.5),
+                new MoveTo(minx - 0.5, cp2y - 0.5),
+                new LineTo(cp2x - 0.5, cp2y - 0.5),
+                new LineTo(cp2x - 0.5, miny - 0.5)
         );
-        timeline.play();
+        splinePath.getElements().setAll(
+                new MoveTo(minx, miny),
+                new CubicCurveTo(cp1x, cp1y, cp2x, cp2y, maxx, maxy));
+    }
+
+    private Circle createCircle(Color fill, Color stroke, double width, double radius, Cursor cursor) {
+        Circle circle = new Circle();
+        circle.fillProperty().set(fill);
+        circle.setStroke(stroke);
+        circle.strokeWidthProperty().set(width);
+        circle.setRadius(radius);
+        circle.setCursor(cursor);
+
+        return circle;
+    }
+
+    private Line createLine(Color stroke, double width) {
+        Line line = new Line();
+        line.setStroke(stroke);
+        line.strokeWidthProperty().set(width);
+        return line;
+    }
+
+    private Path createPath(Color stroke, double width, double a, double b) {
+        Path path = new Path();
+        path.setStroke(stroke);
+        path.strokeWidthProperty().set(width);
+        path.getStrokeDashArray().addAll(a, b);
+        return path;
+    }
+
+    private static double clamp(double value) {
+        return value < 0 ? 0 : value > 1 ? 1 : value;
+    }
+
+    @Override
+    protected void dataItemAdded(Series<Number, Number> series, int i, Data<Number, Number> data) {
+    }
+
+    @Override
+    protected void dataItemRemoved(Data<Number, Number> data, Series<Number, Number> series) {
+    }
+
+    @Override
+    protected void dataItemChanged(Data<Number, Number> data) {
+    }
+
+    @Override
+    protected void seriesAdded(Series<Number, Number> series, int i) {
+    }
+
+    @Override
+    protected void seriesRemoved(Series<Number, Number> series) {
     }
 }

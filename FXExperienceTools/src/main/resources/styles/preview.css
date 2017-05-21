@@ -11,6 +11,7 @@ different terms and without source code for the larger work.
     Author     : andje22
 */
 
-.mainFxmlClass {
-
+#Preview-area {
+     -fx-background-image: url("/images/background.png");
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }

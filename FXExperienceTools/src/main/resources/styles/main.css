@@ -125,12 +125,7 @@ different terms and without source code for the larger work.
     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
-.big-button:hover {
-    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
-}
-.big-button Text {
-    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.6) , 0, 0.0 , 0 , 1 );
-}
+
 /* ==== SWITCH STYLED CHECKBOX ============================================== */
 .switch .box{
     -fx-background-color: transparent;

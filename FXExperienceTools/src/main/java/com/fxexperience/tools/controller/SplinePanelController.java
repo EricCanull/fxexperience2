@@ -9,17 +9,43 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.tools.util.AnimatedAction;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.binding.StringBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.StackPane;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.DataFormat;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
-public class SplinePanelController implements Initializable {
-
-    @FXML
-    private StackPane rootPane;
-    
+public class SplinePanelController implements Initializable, AnimatedAction {
+    @FXML private GridPane gridPane;
+    @FXML private Label codeLabel;
+    @FXML private Button copyButton;
+    @FXML private Rectangle fadeSquare;
+    @FXML private Circle linearCircle;
+    @FXML private Circle scaleCircle;
+    @FXML private Rectangle rotateSquare;
+  
+    private Timeline timeline;
+    private SplineEditor SplineEditor;
   
     /**
      * Initializes the controller class.
@@ -28,7 +54,87 @@ public class SplinePanelController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-           
-       
+        SplineEditor = new SplineEditor();
+        GridPane.setConstraints(SplineEditor, 0, 0, 1, 10,
+                HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        gridPane.add(SplineEditor, 0, 0);
+
+        codeLabel.textProperty().bind(new StringBinding() {
+            {
+                bind(SplineEditor.controlPoint1xProperty(),
+                        SplineEditor.controlPoint1yProperty(),
+                        SplineEditor.controlPoint2xProperty(),
+                        SplineEditor.controlPoint2yProperty());
+            }
+
+            @Override
+            protected String computeValue() {
+                return String.format("Interpolator.SPLINE(%.4f, %.4f, %.4f, %.4f);",
+                        SplineEditor.getControlPoint1x(),
+                        SplineEditor.getControlPoint1y(),
+                        SplineEditor.getControlPoint2x(),
+                        SplineEditor.getControlPoint2y());
+            }
+        });
+        
+          copyButton.setOnAction((ActionEvent t) -> {
+            Clipboard.getSystemClipboard().setContent(
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) codeLabel.getText()));
+        });
+          
+           // create anaimation updater
+        ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> {
+            updateAnimation();
+        };
+        
+        SplineEditor.controlPoint1xProperty().addListener(animUpdater);
+        SplineEditor.controlPoint1yProperty().addListener(animUpdater);
+        SplineEditor.controlPoint2xProperty().addListener(animUpdater);
+        SplineEditor.controlPoint2yProperty().addListener(animUpdater);
+        startAnimations();
+    }
+
+    @Override
+    public void startAnimations() {
+        updateAnimation();
+    }
+
+    @Override
+    public void stopAnimations() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+    }
+
+    public void updateAnimation() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+        
+        Interpolator spline = Interpolator.SPLINE(SplineEditor.getControlPoint1x(),
+                SplineEditor.getControlPoint1y(),
+                SplineEditor.getControlPoint2x(),
+                SplineEditor.getControlPoint2y());
+        timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(
+                        Duration.ZERO,
+                        new KeyValue(scaleCircle.scaleXProperty(), 0d, spline),
+                        new KeyValue(scaleCircle.scaleYProperty(), 0d, spline),
+                        new KeyValue(rotateSquare.rotateProperty(), 0d, spline),
+                        new KeyValue(fadeSquare.opacityProperty(), 0d, spline),
+                        new KeyValue(linearCircle.translateXProperty(), 0d, spline)
+                ),
+                new KeyFrame(
+                        Duration.seconds(5),
+                        new KeyValue(scaleCircle.scaleXProperty(), 1d, spline),
+                        new KeyValue(scaleCircle.scaleYProperty(), 1d, spline),
+                        new KeyValue(rotateSquare.rotateProperty(), 360d, spline),
+                        new KeyValue(fadeSquare.opacityProperty(), 1d, spline),
+                        new KeyValue(linearCircle.translateXProperty(), 180d, spline)
+                )
+        );
+        timeline.play();
     }
 }
