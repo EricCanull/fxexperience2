@@ -11,21 +11,30 @@ different terms and without source code for the larger work.
     Author     : ericc
 */
 #gradientComboBox .list-cell {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%);
-    -fx-text-fill:  derive(rgb(147, 147, 147), 25%);
-    -fx-background-insets: -1 -1 -1 -1;
-    -fx-padding: 3 3 3 3;
+    
+    -fx-background-color: #5A5A5A;
+    -fx-text-fill:  derive(rgb(147, 147, 147), -79%);
+    
+  
 
 }
+#gradientComboBox {
+ -fx-border-color: #878787;
+ -fx-background-color: #5A5A5A;
+}
+#gradientComboBox .label{
+ -fx-border-color: #878787;
+}
+
 
 #ContentArea {
     -fx-background: black;
 }
 anchor-pane {
-     -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+     -fx-background-color:  #5A5A5A;
 }
 accordian-prop .titled-pane {
-     -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+     -fx-background-color: #5A5A5A;
 }
 .animation-label {
     -fx-font-weight: bold; 
@@ -50,12 +59,14 @@ accordian-prop .titled-pane {
 
 
 #font-box {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%);
+    -fx-background-color: #5A5A5A;
+     -fx-border-color: #878787;
      -fx-font-size: 0.875em;
 }
 #font-box .context-menu {
     -fx-text-fill:  #DCDCDC;
-    -fx-background-color: derive(rgb(147, 147, 147),-60%); 
+    -fx-background-color: #5A5A5A; 
+     -fx-border-color: #878787;
 }
 #font-box .label {
     -fx-text-fill:  #DCDCDC;
@@ -63,7 +74,9 @@ accordian-prop .titled-pane {
 }
 
 .slider-prop .track{
-    -fx-background-color:derive(rgb(147, 147, 147), -35%);
+    -fx-background-color: #5A5A5A; 
+    -fx-fill: #878787;
+    -fx-border-color: #878787;
 }
 .slider-prop .thumb {
      -fx-background-color: rgb(147, 147, 147);
@@ -88,12 +101,12 @@ accordian-prop .titled-pane {
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
 }
 .titled-pane:expanded .content {
-  -fx-background-color: derive(rgb(122, 122, 122), -50%);
+  -fx-background-color: #636363;
   -fx-border-color: transparent;
     
 }
 .titled-pane .content {
-  -fx-background-color: derive(rgb(122, 122, 122), -50%);
+  -fx-background-color: #636363;
   -fx-border-color: transparent;
     
 }
@@ -119,22 +132,24 @@ accordian-prop .titled-pane {
     -fx-border-width: 0.5 0 0.5 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
     -fx-background-color: 
-        linear-gradient(to left, derive(rgb(147, 147, 147), -40%), derive(rgb(147, 147, 147), -40%)),
-        linear-gradient(to left, derive(rgb(147, 147, 147), -50%) 0%, derive(rgb(147, 147, 147), -60%));
+        linear-gradient(to left, derive(rgb(147, 147, 147), -20%), derive(rgb(147, 147, 147), -30%)),
+        linear-gradient(to left, derive(rgb(147, 147, 147), -30%) 0%, derive(rgb(147, 147, 147), -50%));
 }
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
 }
-
-.prop {
+.prop-label .text {
     -fx-font-size: 0.875em;
-   -fx-text-fill:white;
-   
 }
+
+.prop-label {
+    -fx-text-fill: #e3e3e3;
+}
+
 .title-label {
       -fx-font-size: 0.875em;
-   -fx-text-fill:white;
+   -fx-text-fill:#e3e3e3;
    
 }
 .check-box-prop {
@@ -153,14 +168,15 @@ accordian-prop .titled-pane {
     -fx-padding: 0;
     -fx-border-insets: 3, 3;
     -fx-border-radius: 3, 3;
-    -fx-border-color: #484848;
+     -fx-border-color: #878787;
     -fx-background-color: transparent;
     -fx-background-insets: 3, 3;
     -fx-background-radius: 3, 3;
 }
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
-    -fx-background-color:   derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color: #5A5A5A; 
+     -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -170,7 +186,8 @@ accordian-prop .titled-pane {
 }
 
 .input-field:focused {
-    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color: #5A5A5A; 
+     -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -181,7 +198,8 @@ accordian-prop .titled-pane {
 
 .integer-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
-    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+   -fx-background-color: #5A5A5A; 
+    -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -190,7 +208,7 @@ accordian-prop .titled-pane {
 }
 
 .integer-field:focused {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color: #5A5A5A; 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -202,7 +220,8 @@ accordian-prop .titled-pane {
 .double-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
     -fx-font-size: 0.875em;
-    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
+   -fx-background-color: #5A5A5A; 
+    -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -211,7 +230,8 @@ accordian-prop .titled-pane {
 }
 
 .double-field:focused {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+  -fx-background-color: #5A5A5A; 
+   -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -223,7 +243,8 @@ accordian-prop .titled-pane {
 .webcolor-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
     -fx-font-size: 0.875em;
-    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color: #5A5A5A; 
+     -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
@@ -232,7 +253,8 @@ accordian-prop .titled-pane {
 }
 
 .webcolor-field:focused {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color: #5A5A5A; 
+     -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -242,37 +264,29 @@ accordian-prop .titled-pane {
 }
 
 .properties-combo-box .arrow-button {
-    -fx-background-color:  derive(rgb(147, 147, 147), -60%); 
+    -fx-background-color:  #5A5A5A;
+    -fx-border-color: #878787;
     -fx-background-insets: -1;
     -fx-font-size: 0.875em;
 }
 
-/* ==== SWITCH STYLED CHECKBOX ============================================== */
-.auto-switch .box{
-    -fx-background-color: transparent;
-    -fx-focus-color: transparent;
-    -fx-padding: 16 28 0 0;
-    -fx-background-image: url("/images/on.png");
+.properties-combo-box .text {
+    -fx-text-fill:  #99c2C1;
 }
-.auto-switch:selected .box {
-    -fx-background-color: transparent;
-    -fx-background-image: url("/images/off.png");
+
+.toggle-switch {
+   -fx-background-color: 
+        #878787,
+        linear-gradient(#797979, #686868),
+        linear-gradient(#585858, #474752),
+        linear-gradient(#585858, #535353);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: #C98989;
+     -fx-font-size: 0.765em;
 }
-.auto-switch:focused .box{
-    -fx-background-color: -fx-focus-color;
-    -fx-padding: 16 28 0 0;
-    -fx-background-image: url("/images/on.png");   
-    -fx-background-insets: -1.4;
-    -fx-background-radius: 3;
-}
-.auto-switch:focused:selected .box {
-    -fx-background-color: -fx-focus-color;
-    -fx-background-image: url("/images/off.png");    
-    -fx-background-insets: -1.4;
-    -fx-background-radius: 4;
-}
-.auto-switch .mark {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
-    -fx-shape: null;
+
+.toggle-switch:selected {
+    -fx-text-fill: #6699ff;
+     -fx-font-size: 0.765em;
 }

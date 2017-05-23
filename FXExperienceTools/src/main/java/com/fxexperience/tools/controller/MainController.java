@@ -24,7 +24,6 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -51,10 +50,7 @@ public class MainController extends AbstractController implements Initializable 
    
     private ToggleGroup toggleGroup;
     
-    private final SimpleDoubleProperty width = new SimpleDoubleProperty(85);
     private int currentToolIndex = 0;
-    private int nextToolIndex = 0;
-    
     private Timeline timeline;
     private Tool nextTool;
      
@@ -137,16 +133,16 @@ public class MainController extends AbstractController implements Initializable 
         // check if existing animation running
         if (timeline != null) {
             nextTool = newTool;
-            nextToolIndex = newTool.getIndex();
+            newTool.getIndex();
             timeline.setRate(4);
             return;
         } else {
             nextTool = null;
-            nextToolIndex = -1;
         }
         
         // stop any animations
         if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
+            System.out.println("Stop");
             ((AnimatedAction) tools[currentToolIndex].getContent()).stopAnimations();
         }
         
@@ -201,10 +197,12 @@ public class MainController extends AbstractController implements Initializable 
         currentPane.setCache(false);
         sparePane.setVisible(false);
         sparePane.getChildren().clear();
+        
         // start any animations
         if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
             ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
         }
+        
         // check if we have a animation waiting
         if (nextTool != null) {
             switchTool(nextTool);

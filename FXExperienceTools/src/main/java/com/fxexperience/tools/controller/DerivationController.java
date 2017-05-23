@@ -93,7 +93,7 @@ public class DerivationController implements Initializable {
 //                System.out.println("base = " + base);
         double desiredBrightness = desiredColor.getBrightness();
 //                System.out.println("desiredBrightness = " + desiredBrightness);
-        double desiredSaturation = desiredColor.getSaturation();
+    //    double desiredSaturation = desiredColor.getSaturation();
 //                System.out.println("desiredSaturation = " + desiredSaturation);
         double derivation = 0, max = 1, min = -1;
         Color derivedColor = Color.WHITE;
@@ -105,9 +105,9 @@ public class DerivationController implements Initializable {
             derivedColor = ColorEncoder.deriveColor(base, derivation);
             double derivedBrightness = derivedColor.getBrightness();
 //                    System.out.println("derivedBrightness = " + derivedBrightness);
-            double derivedSaturation = derivedColor.getSaturation();
+        //    double derivedSaturation = derivedColor.getSaturation();
 //                    System.out.println("derivedSaturation = " + derivedSaturation);
-            double saturationDifference = Math.abs(derivedSaturation-desiredSaturation);
+      //     double saturationDifference = Math.abs(derivedSaturation-desiredSaturation);
 //                    System.out.println("saturationDifference = " + saturationDifference);
             double difference = Math.abs(derivedBrightness-desiredBrightness);
 //                    System.out.println("brightness difference = " + difference);
@@ -126,7 +126,7 @@ public class DerivationController implements Initializable {
             }
         }
 
-//                System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
+//       System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
         reverseDerivationLabel.setText(String.format("%3.3f%%", derivation));
         reverseResultLabel.setText(getColorString(derivedColor));
         reverseResultColor.setStyle("-fx-border-color: black; "
@@ -137,7 +137,7 @@ public class DerivationController implements Initializable {
     
     
     private static String getColorString(Color color) {
-        final int red = (int)(color.getRed()*255);
+        final int red = (int) (color.getRed()*255);
         final int green = (int)(color.getGreen()*255);
         final int blue = (int)(color.getBlue()*255);
         return String.format("#%02X%02X%02X R:%d G:%d B:%d", red,green,blue, red,green,blue);

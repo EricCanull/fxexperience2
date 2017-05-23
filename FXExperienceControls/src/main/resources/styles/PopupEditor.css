@@ -33,14 +33,14 @@
 /* Need to remove the blue color when hovering the menu item */
 
 .popup-pane {
-     -fx-background-color: derive(rgb(147, 147, 147), -00%);
+     -fx-background-color: #636363;
     -fx-focus-color: derive(rgb(147, 147, 147), -23%);
    -fx-padding: 0;
 }
 .menu-item:focused,
 .menu-item:hover{
     -fx-text-fill: #FFF;
-    -fx-background-color: derive(rgb(147, 147, 147), -0%);
+     -fx-background-color: #636363;
     -fx-focus-color: derive(rgb(147, 147, 147), -0%);
 /*       -fx-background-insets: 1, 1, 1;*/
     -fx-background-radius: 1, 1, 1;
@@ -48,8 +48,8 @@
 .custom-menu-button{
      -fx-font-size: 0.875em;
    
-      -fx-background-color: derive(rgb(147, 147, 147), -60%);
-     -fx-border-color: #4E4E4E;
+       -fx-background-color: #5A5A5A;
+     -fx-border-color: #878787;
 }
 .custom-menu-button .label .text {
      -fx-fill: derive(rgb(147, 147, 147), 25%);

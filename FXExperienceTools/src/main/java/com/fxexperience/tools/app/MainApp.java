@@ -9,13 +9,13 @@ package com.fxexperience.tools.app;
  * for the larger work.
  */
 
+
 import com.fxexperience.tools.handler.AppViewHandler;
 import static com.fxexperience.tools.util.AppPaths.RESOURCE_BUNDLE;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {

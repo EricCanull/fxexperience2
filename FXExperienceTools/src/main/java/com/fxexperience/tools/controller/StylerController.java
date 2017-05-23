@@ -25,6 +25,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
@@ -32,7 +33,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
@@ -53,9 +53,7 @@ public class StylerController implements Initializable {
    
     // Tabs
     @FXML private GridPane simpleGridPane;
-    @FXML private CheckBox textColorAutoComboBox;
-    @FXML private CheckBox fieldTextAutoCheckBox;
-    
+      
     private final PopupEditor basePicker = new PopupEditor(Color.web("#d0d0d0"));
     private final PopupEditor backgroundColorPicker = new PopupEditor(Color.web("#f4f4f4"));
     private final PopupEditor focusColorPicker = new PopupEditor(Color.web("#0093ff"));
@@ -78,21 +76,25 @@ public class StylerController implements Initializable {
     @FXML private Slider inputBorderSlider;
     @FXML private Slider inputOuterBorderSlider;
     
+    
+    @FXML private ToggleButton baseTextToggle;
+    @FXML private ToggleButton backgroundTextToggle;
+    @FXML private ToggleButton fieldTextToggle;
+   
     @FXML private CheckBox bodyTopMiddleComboBox;
     @FXML private CheckBox bodyBottomMiddleComboBox;
     @FXML private CheckBox borderComboBox;
     @FXML private CheckBox shadowComboBox;
     @FXML private CheckBox inputBorderComboBox;
     @FXML private CheckBox inputOuterBorderComboBox;
-    @FXML private CheckBox bkgdTextColorAutoComboBox;
     @FXML private BorderPane previewPane;
    
-    private StackPane previewPanel;
+    private Parent previewPanel;
    
     @Override public void initialize(URL url, ResourceBundle rb) {
        
         try {
-            previewPanel = (StackPane) FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
+            previewPanel = (Parent) FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
             previewPane.setCenter(previewPanel);
         } catch (IOException ex) {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,7 +115,7 @@ public class StylerController implements Initializable {
         });
         
         // create listener to call update css
-        ChangeListener updateCssListener = (ChangeListener) (ObservableValue arg0, Object arg1, Object arg2) -> {
+        ChangeListener<Object> updateCssListener = (ChangeListener<Object>) (ObservableValue<? extends Object> arg0, Object arg1, Object arg2) -> {
             updateCss();
         };
         
@@ -143,7 +145,7 @@ public class StylerController implements Initializable {
        
         // create color pickers
        // GridPane.setConstraints(baseColorPicker, 1, 1);
-         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
+        GridPane.setConstraints(basePicker, 1, 0, 2, 1);
         GridPane.setConstraints(textColorPicker, 1, 1);
         GridPane.setConstraints(backgroundColorPicker, 1, 2);
         GridPane.setConstraints(bkgdTextColorPicker, 1, 3);
@@ -156,15 +158,15 @@ public class StylerController implements Initializable {
         backgroundColorPicker.colorProperty().addListener(updateCssListener);
         focusColorPicker.colorProperty().addListener(updateCssListener);
         textColorPicker.colorProperty().addListener(updateCssListener);
-        textColorAutoComboBox.selectedProperty().addListener(updateCssListener);
-        textColorPicker.disableProperty().bind(textColorAutoComboBox.selectedProperty());
+        baseTextToggle.selectedProperty().addListener(updateCssListener);
+        textColorPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
         fieldBackgroundPicker.colorProperty().addListener(updateCssListener);
         fieldTextColorPicker.colorProperty().addListener(updateCssListener);
-        fieldTextAutoCheckBox.selectedProperty().addListener(updateCssListener);
-        fieldTextColorPicker.disableProperty().bind(fieldTextAutoCheckBox.selectedProperty());
+        fieldTextToggle.selectedProperty().addListener(updateCssListener);
+        fieldTextColorPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
         bkgdTextColorPicker.colorProperty().addListener(updateCssListener);
-        bkgdTextColorAutoComboBox.selectedProperty().addListener(updateCssListener);
-        bkgdTextColorPicker.disableProperty().bind(bkgdTextColorAutoComboBox.selectedProperty());
+        backgroundTextToggle.selectedProperty().addListener(updateCssListener);
+        bkgdTextColorPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
       
         // add listeners to sliders
         topHighlightSlider.valueProperty().addListener(updateCssListener);
@@ -274,17 +276,26 @@ public class StylerController implements Initializable {
         cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getWebColor() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getWebColor() + ";", true, 4));
         
-        if (!textColorAutoComboBox.isSelected()) {
+        if (baseTextToggle.isSelected()) {
+            baseTextToggle.setText("ON"); 
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-base-color: "
                     + textColorPicker.getWebColor() + ";", true, 4));
+        } else {
+             baseTextToggle.setText("AUTO");
         }
-        if (!bkgdTextColorAutoComboBox.isSelected()) {
+        if (backgroundTextToggle.isSelected()) {
+            backgroundTextToggle.setText("ON"); 
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-background-color: "
                     + bkgdTextColorPicker.getWebColor() + ";", true, 4));
+        } else {
+             backgroundTextToggle.setText("AUTO");
         }
-        if (!fieldTextAutoCheckBox.isSelected()) {
+        if (fieldTextToggle.isSelected()) {
+             fieldTextToggle.setText("ON"); 
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-inner-color: "
                     + fieldTextColorPicker.getWebColor() + ";", true, 4));
+        } else {
+             fieldTextToggle.setText("AUTO");
         }
 
         double innerTopDerivation = bodyTopSlider.getValue() 
@@ -369,7 +380,7 @@ public class StylerController implements Initializable {
         cssBuffer.append(".radio-button .radio {\n");
         cssBuffer.append(StringUtil.padWithSpaces("-fx-padding: " + radioPadding + "em;", true, 4));
         cssBuffer.append("}\n");
-        if (!textColorAutoComboBox.isSelected()) {
+        if (!baseTextToggle.isSelected()) {
             cssBuffer.append(".hyperlink, {\n");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-fill: -fx-text-background-color;", true, 4));
             cssBuffer.append("}\n");

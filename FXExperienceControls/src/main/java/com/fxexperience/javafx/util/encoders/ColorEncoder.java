@@ -266,47 +266,45 @@ public class ColorEncoder {
     }
     
     private static double[] RGBtoHSB(double r, double g, double b, double[] hsbvals) {
-        double hue, saturation, brightness;
-        if (hsbvals == null) {
-            hsbvals = new double[3];
-        }
+       double hue, saturation, brightness;
+       hsbvals = new double[3];
         double cmax = (r > g) ? r : g;
         if (b > cmax) cmax = b;
         double cmin = (r < g) ? r : g;
         if (b < cmin) cmin = b;
 
-        brightness = ((float) cmax) / 255.0f;
+        brightness = cmax;
         if (cmax != 0)
-            saturation = ((float) (cmax - cmin)) / ((float) cmax);
+            saturation = (double) (cmax - cmin) / cmax;
         else
             saturation = 0;
-        if (saturation == 0)
+
+        if (saturation == 0) {
             hue = 0;
-        else {
-            float redc = ((float) (cmax - r)) / ((float) (cmax - cmin));
-            float greenc = ((float) (cmax - g)) / ((float) (cmax - cmin));
-            float bluec = ((float) (cmax - b)) / ((float) (cmax - cmin));
+        } else {
+            double redc = (cmax - r) / (cmax - cmin);
+            double greenc = (cmax - g) / (cmax - cmin);
+            double bluec = (cmax - b) / (cmax - cmin);
             if (r == cmax)
                 hue = bluec - greenc;
             else if (g == cmax)
-                hue = 2.0f + redc - bluec;
+                hue = 2.0 + redc - bluec;
             else
-                hue = 4.0f + greenc - redc;
-            hue = hue / 6.0f;
+                hue = 4.0 + greenc - redc;
+            hue = hue / 6.0;
             if (hue < 0)
-                hue = hue + 1.0f;
+                hue = hue + 1.0;
         }
-        hsbvals[0] = hue;
+        hsbvals[0] = hue * 360;
         hsbvals[1] = saturation;
         hsbvals[2] = brightness;
         return hsbvals;
-    
     }
     
     private static double calculateBrightness(Color c) {
-        float red = (float) c.getRed();
-        float green = (float) c.getGreen();
-        float blue = (float) c.getBlue();
+        double red = c.getRed();
+        double green =  c.getGreen();
+        double blue =  c.getBlue();
         
         return Math.sqrt(
                 red * red * 0.241
@@ -370,9 +368,7 @@ public class ColorEncoder {
             hsb[2] = 1;
         }
 
-        // convert back to color
-        Color c2 = Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
-
+      
         // return hsb
         return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
     }

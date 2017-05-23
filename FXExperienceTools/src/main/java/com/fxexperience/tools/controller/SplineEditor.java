@@ -13,6 +13,7 @@ package com.fxexperience.tools.controller;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Cursor;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -73,7 +74,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
     private final Path dottedLinesPath;
     private final Path splinePath;
 
-    private double dragStartX, dragStartY;
+//    private double dragStartX, dragStartY;
 
     public SplineEditor() {
         super(new NumberAxis(0, 1, 0.1), new NumberAxis(0, 1, 0.1));
@@ -95,8 +96,10 @@ public final class SplineEditor extends XYChart<Number, Number> {
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         setAlternativeRowFillVisible(false);
         getPlotChildren().addAll(splinePath, dottedLinesPath, cp1Line, cp2Line, controlPoint1Circle, controlPoint2Circle);
-
-        setData(FXCollections.observableArrayList(new Series<>()));
+        
+        ObservableList<XYChart.Series<Number, Number>> answer = FXCollections.observableArrayList();
+        
+        setData(FXCollections.observableArrayList(answer));
 
         controlPoint1Circle.setOnMouseDragged((MouseEvent event) -> {
             final double x = event.getX() + controlPoint1Circle.getLayoutX();
@@ -117,7 +120,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
             requestChartLayout();
         });
     }
-
+    
     @Override
     protected void layoutPlotChildren() {
         double cp1x = getXAxis().getDisplayPosition(controlPoint1x.get());
@@ -182,6 +185,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
     private static double clamp(double value) {
         return value < 0 ? 0 : value > 1 ? 1 : value;
     }
+    
 
     @Override
     protected void dataItemAdded(Series<Number, Number> series, int i, Data<Number, Number> data) {

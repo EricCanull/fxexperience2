@@ -52,8 +52,6 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
 
     private PaintPicker paintPicker;
 
-    private Object paint = new Object();
-
     private ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
 
     public ObjectProperty<Color> colorProperty() {
@@ -128,7 +126,6 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
     }
 
     private final ChangeListener<Paint> paintChangeListener = (ov, oldValue, newValue) -> {
-        this.paint = newValue;
         if (newValue == null) {
             return;
         }

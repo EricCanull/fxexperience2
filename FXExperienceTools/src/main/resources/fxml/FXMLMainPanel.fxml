@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane id="AnchorPane" stylesheets="@../styles/main.css" BorderPane.alignment="CENTER">
           <children>
@@ -30,21 +30,21 @@
       </AnchorPane>
    </center>
    <top>
-      <MenuBar>
+      <MenuBar styleClass="main-menu">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" styleClass="menu-item" text="File">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#copyButtonAction" text="Copy" />
                   <MenuItem mnemonicParsing="false" onAction="#saveButtonAction" text="Save As" />
               <MenuItem mnemonicParsing="false" onAction="#closeButtonAction" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" styleClass="menu-item" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" styleClass="menu-item" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>

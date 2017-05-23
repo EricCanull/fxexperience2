@@ -8,11 +8,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<BorderPane id="SplineEditor" prefHeight="500.0" prefWidth="900.0" stylesheets="@../styles/spline.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.SplinePanelController">
+<BorderPane id="SplineEditor" prefHeight="600.0" prefWidth="900.0" stylesheets="@../styles/spline.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.SplinePanelController">
    <center>
       <GridPane id="Background" fx:id="gridPane">
         <columnConstraints>
@@ -20,21 +21,21 @@
           <ColumnConstraints maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="codeLabel" text="Label" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Button fx:id="copyButton" mnemonicParsing="false" styleClass="big-button" text="Copy Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+            <Button fx:id="copyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" styleClass="big-button" text="Copy Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
             <Label styleClass="animation-label" text="Animation Preview" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
@@ -42,17 +43,49 @@
             </Label>
             <Label text="Scale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label layoutX="822.0" layoutY="57.0" text="Rotate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="800.0" layoutY="241.0" stroke="WHITE" strokeType="INSIDE" width="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+            <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" fill="#7a7b7c" height="90.0" layoutX="800.0" layoutY="241.0" stroke="#f7070700" strokeType="INSIDE" width="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                <children>
-                  <Circle fx:id="linearCircle" centerX="10.0" centerY="10.0" fill="#b5c3d0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#1f93ff00" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="200.0" />
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="200.0">
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" focusDistance="0.047619047619047894" radius="0.8571428571428571">
+                           <stops>
+                              <Stop color="#403f3f" />
+                              <Stop color="#121112d5" offset="0.7718518518518523" />
+                              <Stop color="#4d484800" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill></Rectangle>
+                  <Circle fx:id="linearCircle" centerX="10.0" centerY="10.0" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.5112359550561798" centerY="0.5" focusDistance="-0.09523809523809512" radius="0.5476190476190477">
+                           <stops>
+                              <Stop color="#6e47c9" />
+                              <Stop color="#ccc6da" offset="0.007407407407407408" />
+                              <Stop color="#140d25" offset="0.7348148148148149" />
+                              <Stop color="#72171700" offset="0.7962962962962966" />
+                              <Stop color="#72171700" offset="0.9037037037037039" />
+                              <Stop color="#72171700" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill></Circle>
                </children>
             </Group>
-            <Label prefHeight="0.0" prefWidth="36.0" text="Fade" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-            <Label text="Linear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-            <Circle fx:id="scaleCircle" fill="DODGERBLUE" radius="40.0" stroke="#f8f3f3" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-            <Rectangle fx:id="rotateSquare" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="80.0" layoutX="633.0" layoutY="301.0" stroke="WHITE" strokeType="INSIDE" width="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Label alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="36.0" text="Fade" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Label text="Linear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Circle fx:id="scaleCircle" radius="55.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" focusDistance="-0.33333333333333326" radius="0.7380952380952381">
+                     <stops>
+                        <Stop color="#6e47c9" />
+                        <Stop color="#cecdd3" offset="0.007407407407407408" />
+                        <Stop color="#140d25" offset="0.7200000000000001" />
+                        <Stop color="#72171700" offset="0.7296296296296297" />
+                        <Stop color="#72171700" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill></Circle>
+            <Rectangle fx:id="rotateSquare" arcHeight="5.0" arcWidth="5.0" fill="#8d8c8c" height="50.0" layoutX="633.0" layoutY="301.0" stroke="#85858500" strokeType="INSIDE" width="85.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />

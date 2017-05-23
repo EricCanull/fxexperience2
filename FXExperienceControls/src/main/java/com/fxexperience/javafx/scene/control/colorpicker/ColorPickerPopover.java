@@ -327,7 +327,6 @@ class ColorPickerPopover extends Group {
         Point2D point = ownerControl.localToScene(ownerControl.getWidth() / 2, ownerControl.getHeight());
         double x = point.getX() + ownerControl.getScene().getX() + ownerControl.getScene().getWindow().getX();
         double y = point.getY() + ownerControl.getScene().getY() + ownerControl.getScene().getWindow().getY();
-        ColorPickerPopover colorPickerPopover = new ColorPickerPopover();
         popup.show(ownerControl, x - getPopoverPointX(), y - getPopoverPointY());
     }
 

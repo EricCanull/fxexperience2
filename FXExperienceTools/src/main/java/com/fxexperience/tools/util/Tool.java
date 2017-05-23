@@ -9,9 +9,13 @@
  */
 package com.fxexperience.tools.util;
 
+import com.fxexperience.tools.controller.StylerController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class Tool {
+    
+    private FXMLLoader loader;
     private final String name;
     private final Parent content;
     private final int index;
@@ -22,6 +26,13 @@ public class Tool {
         this.index = index;
         
     }
+    
+    public FXMLLoader getLoader(String fxml) {
+        loader = new FXMLLoader(StylerController.class.getResource(
+                    AppPaths.FXML_PATH + fxml));
+        return loader;
+    }
+            
 
     public Parent getContent() {
         return content;

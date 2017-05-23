@@ -14,6 +14,7 @@ import javafx.scene.input.InputEvent;
 
 /**
  */
+@SuppressWarnings("restriction")
 public abstract class InputFieldSkin implements Skin<InputField> {
     /**
      * The {@code Control} that is referencing this Skin. There is a

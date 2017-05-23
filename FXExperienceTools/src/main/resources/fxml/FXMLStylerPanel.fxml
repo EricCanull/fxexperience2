@@ -11,6 +11,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,24 +19,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <SplitPane dividerPositions="0.011834319526627219" style="-fx-background-color: transparent;" styleClass="split-pane-caspian" stylesheets="@../styles/styler.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.StylerController">
   <items>
     <AnchorPane id="ContentArea" fx:id="previewAnchorPane">
          <children>
-            <BorderPane id="Border-pane" fx:id="previewPane" prefHeight="630.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane id="Border-pane" fx:id="previewPane" prefHeight="530.0" style="-fx-background-color: #111;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children></AnchorPane>
-      <AnchorPane maxWidth="300.0" minHeight="500.0" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0">
+      <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0">
          <children>
-            <BorderPane styleClass="border-pane-styler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <BorderPane prefHeight="600.0" prefWidth="300.0" styleClass="border-pane-styler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
-                  <Accordion maxWidth="300.0" minWidth="300.0" prefWidth="300.0" styleClass="accordian-prop">
+                  <Accordion maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" styleClass="accordian-prop">
                     <panes>
                       <TitledPane animated="false" text="Text">
                         <content>
                           <AnchorPane>
                                  <children>
-                                    <GridPane fx:id="textGridPanel" alignment="CENTER_LEFT" hgap="2.0" minWidth="300.0" prefHeight="65.0" prefWidth="300.0" vgap="2.0" AnchorPane.bottomAnchor="433.6" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                    <GridPane fx:id="textGridPanel" alignment="CENTER_LEFT" hgap="2.0" minWidth="300.0" prefHeight="65.0" prefWidth="300.0" vgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="84.0" minWidth="-Infinity" prefWidth="61.0" />
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="133.0" />
@@ -56,23 +58,17 @@
                                              </items>
                                           </ChoiceBox>
                                           <CheckBox fx:id="fontDefaultCheckBox" alignment="BOTTOM_RIGHT" selected="true" styleClass="check-box-prop" text="Default" GridPane.columnIndex="2" />
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label alignment="CENTER" minWidth="-Infinity" styleClass="prop" text="Font Type:">
-                                                   <padding>
-                                                      <Insets left="5.0" />
-                                                   </padding></Label>
-                                             </children>
-                                          </HBox>
+                                          <Label alignment="CENTER" minWidth="-Infinity" styleClass="prop-label" text="Font Type:">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
                                           <Slider fx:id="fontSizeSlider" max="30.0" min="6.0" onDragDetected="#updateCssAction" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label id="label12" styleClass="prop" text="Font Size:">
-                                                   <padding>
-                                                      <Insets left="5.0" />
-                                                   </padding></Label>
-                                             </children>
-                                          </HBox>
+                                          <Label id="label12" styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -83,36 +79,21 @@
                         <content>
                           <AnchorPane styleClass="anchor-pane">
                                  <children>
-                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" />
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label id="label3" styleClass="prop" text="Padding:" />
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label id="label5" styleClass="prop" text="Border Width:" />
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.rowIndex="2">
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                             <children>
-                                                <Label id="label7" styleClass="prop" text="Radius:" />
-                                             </children>
-                                          </HBox>
+                                          <Label id="label3" styleClass="prop-label" text="Padding:" />
+                                          <Label id="label5" styleClass="prop-label" text="Border Width:" GridPane.rowIndex="1" />
+                                          <Label id="label7" styleClass="prop-label" text="Radius:" GridPane.rowIndex="2" />
                                           <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" />
                                           <Slider fx:id="borderWidthSlider" max="20.0" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Slider fx:id="borderRadiusSlider" max="30.0" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -123,86 +104,66 @@
                               </AnchorPane>
                         </content>
                       </TitledPane>
-                      <TitledPane maxWidth="300.0" minWidth="300.0" text="Colors">
-                        <content>
-                          <AnchorPane maxHeight="500.0" maxWidth="300.0" minWidth="300.0" prefHeight="500.0" styleClass="anchor-pane">
+                        <TitledPane animated="false" text="Colors">
+                          <content>
+                            <AnchorPane>
                                  <children>
-                                    <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                    <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                                             <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Background:" />
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-                                             <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Focus Color:" />
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Base Text:" />
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                                             <children>
-                                                <Label styleClass="prop" text="Field Background:" />
-                                             </children>
-                                          </HBox>
-                                          <CheckBox fx:id="textColorAutoComboBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="2" />
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="6" />
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="1" />
+                                          <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="4" />
+                                          <Label styleClass="prop-label" text="Field Text:" GridPane.rowIndex="5" />
+                                          <Label styleClass="prop-label" text="Background Text:" GridPane.rowIndex="3" />
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
+                                          <ToggleButton fx:id="backgroundTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="SansSerif Bold" size="8.0" />
+                                             </font>
                                              <GridPane.margin>
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
-                                          </CheckBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                                             <children>
-                                                <Label styleClass="prop" text="Field Text:" />
-                                             </children>
-                                          </HBox>
-                                          <CheckBox fx:id="fieldTextAutoCheckBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
+                                          </ToggleButton>
+                                          <ToggleButton fx:id="baseTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="SansSerif Bold" size="8.0" />
+                                             </font>
                                              <GridPane.margin>
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
-                                          </CheckBox>
-                                          <HBox alignment="CENTER_LEFT" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                             <children>
-                                                <Label styleClass="prop" text="Background Text:" />
-                                             </children>
-                                          </HBox>
-                                          <CheckBox fx:id="bkgdTextColorAutoComboBox" selected="true" styleClass="auto-switch" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
+                                          </ToggleButton>
+                                          <ToggleButton fx:id="fieldTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="SansSerif Bold" size="8.0" />
+                                             </font>
                                              <GridPane.margin>
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
-                                          </CheckBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Base:" />
-                                             </children>
-                                          </HBox>
+                                          </ToggleButton>
                                        </children>
                                        <columnConstraints>
-                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="104.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="105.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="125.0" minWidth="-Infinity" prefWidth="125.0" />
-                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="80.0" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="-Infinity" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
                                        </rowConstraints>
+                                       <padding>
+                                          <Insets left="8.0" />
+                                       </padding>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
-                        </content>
-                      </TitledPane>
+                          </content>
+                        </TitledPane>
                         <TitledPane animated="false" layoutX="10.0" layoutY="97.0" text="Style">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchor-pane">
@@ -221,12 +182,12 @@
                                        <children>
                                           <HBox alignment="CENTER_RIGHT">
                                              <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Top Highlight:" />
+                                                <Label minWidth="-Infinity" styleClass="prop-label" text="Top Highlight:" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="1">
                                              <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Bottom Highlight:" />
+                                                <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom Highlight:" />
                                              </children>
                                           </HBox>
                                           <Slider fx:id="topHighlightSlider" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" />
@@ -234,7 +195,7 @@
                                           <ComboBox fx:id="gradientComboBox" maxWidth="100.0" minWidth="-Infinity" pickOnBounds="true" prefHeight="25.0" styleClass="properties-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="2">
                                              <children>
-                                                <Label minWidth="-Infinity" styleClass="prop" text="Gradient:" />
+                                                <Label minWidth="-Infinity" styleClass="prop-label" text="Gradient:" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -261,30 +222,36 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </HBox>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Top Middle:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top Middle:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label id="label26" minWidth="-Infinity" styleClass="prop" text="Bottom Middle:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label id="label26" minWidth="-Infinity" styleClass="prop-label" text="Bottom Middle:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Shadow:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Shadow:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
+                                             </GridPane.margin>
+                                          </Label>
                                           <HBox alignment="CENTER_LEFT" styleClass="sub-title" GridPane.columnSpan="3" GridPane.rowIndex="7">
                                              <children>
                                                 <Label styleClass="title-label" text="Input Fields">
@@ -300,14 +267,16 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </HBox>
-                                          <Label id="label23" minWidth="-Infinity" styleClass="prop" text="Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8">
+                                          <Label id="label23" minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
-                                          <Label minWidth="-Infinity" styleClass="prop" text="Outer Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Outer Border:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="9">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
-                                             </GridPane.margin></Label>
+                                             </GridPane.margin>
+                                          </Label>
                                           <CheckBox fx:id="bodyTopMiddleComboBox" minWidth="-Infinity" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="2.0" />
