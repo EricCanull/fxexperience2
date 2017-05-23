@@ -42,7 +42,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
     @FXML private Rectangle fadeSquare;
     @FXML private Circle linearCircle;
     @FXML private Circle scaleCircle;
-    @FXML private Rectangle rotateSquare;
+    @FXML private Rectangle rotateRectangle;
   
     private Timeline timeline;
     private SplineEditor SplineEditor;
@@ -55,6 +55,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SplineEditor = new SplineEditor();
+       
         GridPane.setConstraints(SplineEditor, 0, 0, 1, 10,
                 HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         gridPane.add(SplineEditor, 0, 0);
@@ -122,7 +123,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                         Duration.ZERO,
                         new KeyValue(scaleCircle.scaleXProperty(), 0d, spline),
                         new KeyValue(scaleCircle.scaleYProperty(), 0d, spline),
-                        new KeyValue(rotateSquare.rotateProperty(), 0d, spline),
+                        new KeyValue(rotateRectangle.rotateProperty(), 0d, spline),
                         new KeyValue(fadeSquare.opacityProperty(), 0d, spline),
                         new KeyValue(linearCircle.translateXProperty(), 0d, spline)
                 ),
@@ -130,7 +131,8 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                         Duration.seconds(5),
                         new KeyValue(scaleCircle.scaleXProperty(), 1d, spline),
                         new KeyValue(scaleCircle.scaleYProperty(), 1d, spline),
-                        new KeyValue(rotateSquare.rotateProperty(), 360d, spline),
+                        new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
+                            new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
                         new KeyValue(fadeSquare.opacityProperty(), 1d, spline),
                         new KeyValue(linearCircle.translateXProperty(), 180d, spline)
                 )
@@ -138,3 +140,4 @@ public class SplinePanelController implements Initializable, AnimatedAction {
         timeline.play();
     }
 }
+   

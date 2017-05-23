@@ -79,7 +79,7 @@ accordian-prop .titled-pane {
     -fx-border-color: #878787;
 }
 .slider-prop .thumb {
-     -fx-background-color: rgb(147, 147, 147);
+     -fx-background-color: rgba(147, 147, 147, .5);
 }
 
 .slider-prop .thumb:hover{

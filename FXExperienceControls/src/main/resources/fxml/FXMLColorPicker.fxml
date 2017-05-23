@@ -48,7 +48,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import com.fxexperience.javafx.scene.control.paintpicker.*?>
 
-<fx:root maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="" styleClass="vbox-root" stylesheets="@../styles/ColorPicker_1.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="" styleClass="vbox-root" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0">
       <children>

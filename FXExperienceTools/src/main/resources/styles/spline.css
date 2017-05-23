@@ -23,6 +23,7 @@ different terms and without source code for the larger work.
     -fx-font-size: 16px;
 }
 .big-button {
+       -fx-font-size: 0.875em;
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
@@ -33,6 +34,7 @@ different terms and without source code for the larger work.
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 .big-button Text {
+     -fx-font-size: 0.875em;
     -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.6) , 0, 0.0 , 0 , 1 );
 }
 .chart-plot-background {
