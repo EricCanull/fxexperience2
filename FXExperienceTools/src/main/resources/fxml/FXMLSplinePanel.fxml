@@ -43,7 +43,7 @@
             </Label>
             <Label text="Scale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label layoutX="822.0" layoutY="57.0" text="Rotate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" fill="#7a7b7c" height="90.0" layoutX="800.0" layoutY="241.0" stroke="#f7070700" strokeType="INSIDE" width="90.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" fill="RED" height="75.0" layoutX="800.0" layoutY="241.0" stroke="#f7070700" strokeType="INSIDE" width="175.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
             <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                <children>
                   <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="200.0">
@@ -78,14 +78,25 @@
                   <RadialGradient centerX="0.5" centerY="0.5" focusDistance="-0.33333333333333326" radius="0.7380952380952381">
                      <stops>
                         <Stop color="#6e47c9" />
-                        <Stop color="#cecdd3" offset="0.007407407407407408" />
+                        <Stop color="#7e6ae4" offset="0.007246376811594203" />
                         <Stop color="#140d25" offset="0.7200000000000001" />
                         <Stop color="#72171700" offset="0.7296296296296297" />
                         <Stop color="#72171700" offset="1.0" />
                      </stops>
                   </RadialGradient>
                </fill></Circle>
-            <Rectangle fx:id="rotateSquare" arcHeight="5.0" arcWidth="5.0" fill="#8d8c8c" height="50.0" layoutX="633.0" layoutY="301.0" stroke="#85858500" strokeType="INSIDE" width="85.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Rectangle fx:id="rotateSquare" arcHeight="5.0" arcWidth="5.0" height="50.0" layoutX="633.0" layoutY="301.0" stroke="#85858500" strokeType="INSIDE" width="85.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <fill>
+                  <RadialGradient centerX="0.5056818181818182" centerY="0.5" focusAngle="173.42" focusDistance="-0.41463414634146356" radius="0.4878048780487806">
+                     <stops>
+                        <Stop color="#d1d1d1" />
+                        <Stop color="#ff1443" offset="0.007246376811594203" />
+                        <Stop color="#9e1818" offset="0.3079710144927536" />
+                        <Stop color="#211e1e" offset="0.9927536231884058" />
+                        <Stop color="TRANSPARENT" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill></Rectangle>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />

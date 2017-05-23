@@ -37,18 +37,20 @@
                         <content>
                           <AnchorPane>
                                  <children>
-                                    <GridPane fx:id="textGridPanel" alignment="CENTER_LEFT" hgap="2.0" minWidth="300.0" prefHeight="65.0" prefWidth="300.0" vgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                    <GridPane fx:id="textGridPanel" hgap="5.0" layoutX="24.0" layoutY="34.0" vgap="2.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="84.0" minWidth="-Infinity" prefWidth="61.0" />
-                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="133.0" />
-                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="135.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" prefWidth="55.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
-                                          <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" GridPane.columnIndex="1">
+                                          <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="130.0" GridPane.columnIndex="1">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="Item 1" />
@@ -57,18 +59,9 @@
                                                 </FXCollections>
                                              </items>
                                           </ChoiceBox>
-                                          <CheckBox fx:id="fontDefaultCheckBox" alignment="BOTTOM_RIGHT" selected="true" styleClass="check-box-prop" text="Default" GridPane.columnIndex="2" />
-                                          <Label alignment="CENTER" minWidth="-Infinity" styleClass="prop-label" text="Font Type:">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
+                                          <Label alignment="CENTER" styleClass="prop-label" text="Font Type:" />
                                           <Slider fx:id="fontSizeSlider" max="30.0" min="6.0" onDragDetected="#updateCssAction" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label id="label12" styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
+                                          <Label id="label12" styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -117,7 +110,7 @@
                                           <Label styleClass="prop-label" text="Field Text:" GridPane.rowIndex="5" />
                                           <Label styleClass="prop-label" text="Background Text:" GridPane.rowIndex="3" />
                                           <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
-                                          <ToggleButton fx:id="backgroundTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                          <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
@@ -125,7 +118,7 @@
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="baseTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                          <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
@@ -133,7 +126,7 @@
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="fieldTextToggle" maxHeight="17.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                          <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
@@ -145,7 +138,7 @@
                                        <columnConstraints>
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="105.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="125.0" minWidth="-Infinity" prefWidth="125.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="-Infinity" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="80.0" minWidth="-Infinity" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />

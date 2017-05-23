@@ -16,6 +16,9 @@ import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.tools.util.AppPaths;
 import java.io.*;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
+import java.net.URLStreamHandlerFactory;
 import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -45,7 +48,6 @@ public class StylerController implements Initializable {
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
     @FXML private ChoiceBox<String> fontChoiceBox;
-    @FXML private CheckBox fontDefaultCheckBox;
     @FXML private Slider fontSizeSlider;
     @FXML private Slider paddingSlider;
     @FXML private Slider borderWidthSlider;
@@ -104,16 +106,7 @@ public class StylerController implements Initializable {
         fontChoiceBox.getItems().setAll(Font.getFamilies());
         fontChoiceBox.getSelectionModel().select("System");
         
-        fontDefaultCheckBox.selectedProperty().addListener((ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean newValue) -> {
-            if (newValue) fontChoiceBox.getSelectionModel().select("System");
-        });
-        
-        fontChoiceBox.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> arg0, String arg1, String newValue) -> {
-            if (!"System".equalsIgnoreCase(newValue)) {
-                fontDefaultCheckBox.setSelected(true);
-            }
-        });
-        
+     
         // create listener to call update css
         ChangeListener<Object> updateCssListener = (ChangeListener<Object>) (ObservableValue<? extends Object> arg0, Object arg1, Object arg2) -> {
             updateCss();

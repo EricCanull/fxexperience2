@@ -157,6 +157,10 @@ accordian-prop .titled-pane {
     -fx-font-size: 0.875em;
 }
 
+.check-box-prop > .box {
+    -fx-background-color: #5A5A5A;
+}
+
 
 #input-text-field {
     -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
