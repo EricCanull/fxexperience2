@@ -12,7 +12,7 @@ different terms and without source code for the larger work.
 */
 
 .root {
-  -fx-background-color: derive(rgb(122, 122, 122), -60%);
+  -fx-background-color: #2D3136;
   -fx-focus-color: rgb(147, 147, 147);
   
 }

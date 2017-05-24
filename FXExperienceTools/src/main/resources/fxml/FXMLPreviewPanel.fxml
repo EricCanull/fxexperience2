@@ -29,7 +29,7 @@
 
 <StackPane id="Preview-area" alignment="CENTER_LEFT" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="450.0" prefWidth="650.0">
          <children>
             <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
                <children>
@@ -82,7 +82,7 @@
                         </FXCollections>
                      </items>
                   </ComboBox>
-                  <ComboBox editable="true" maxHeight="-Infinity" maxWidth="180.0" minWidth="-Infinity" prefWidth="180.0" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                  <ComboBox editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="172.0" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Editable ComboBox" />
@@ -104,12 +104,20 @@
                         <Slider id="sliderVertical1" orientation="VERTICAL" prefHeight="60.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_RIGHT" spacing="8.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
+                  <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
                      <children>
-                        <ScrollBar id="scrollBarHorizontal1" maxWidth="-Infinity" prefWidth="100.0" />
-                        <ScrollBar id="scrollBarVertical1" orientation="VERTICAL" prefHeight="60.0" />
+                        <ScrollBar id="scrollBarHorizontal1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets right="30.0" />
+                           </VBox.margin>
+                        </ScrollBar>
+                        <ScrollBar id="scrollBarVertical1" minHeight="-Infinity" orientation="VERTICAL" prefHeight="115.0">
+                           <VBox.margin>
+                              <Insets right="15.0" />
+                           </VBox.margin>
+                        </ScrollBar>
                      </children>
-                  </HBox>
+                  </VBox>
                   <VBox spacing="5.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                      <children>
                         <TextField id="textField1" maxHeight="-Infinity" minWidth="171.0" prefWidth="171.0" text="TextField" />

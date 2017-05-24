@@ -59,13 +59,13 @@ accordian-prop .titled-pane {
 
 
 #font-box {
-    -fx-background-color: #5A5A5A;
+    -fx-background-color: #2D3136;
      -fx-border-color: #878787;
      -fx-font-size: 0.875em;
 }
 #font-box .context-menu {
     -fx-text-fill:  #DCDCDC;
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
      -fx-border-color: #878787;
 }
 #font-box .label {
@@ -74,7 +74,7 @@ accordian-prop .titled-pane {
 }
 
 .slider-prop .track{
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
     -fx-fill: #878787;
     -fx-border-color: #878787;
 }
@@ -101,12 +101,12 @@ accordian-prop .titled-pane {
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
 }
 .titled-pane:expanded .content {
-  -fx-background-color: #636363;
+  -fx-background-color: #31363B;
   -fx-border-color: transparent;
     
 }
 .titled-pane .content {
-  -fx-background-color: #636363;
+  -fx-background-color: #31363B;
   -fx-border-color: transparent;
     
 }
@@ -179,7 +179,7 @@ accordian-prop .titled-pane {
 }
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
      -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -190,7 +190,7 @@ accordian-prop .titled-pane {
 }
 
 .input-field:focused {
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
      -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
@@ -202,7 +202,7 @@ accordian-prop .titled-pane {
 
 .integer-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
-   -fx-background-color: #5A5A5A; 
+   -fx-background-color: #2D3136; 
     -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -212,7 +212,7 @@ accordian-prop .titled-pane {
 }
 
 .integer-field:focused {
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
 }
@@ -224,7 +224,7 @@ accordian-prop .titled-pane {
 .double-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
     -fx-font-size: 0.875em;
-   -fx-background-color: #5A5A5A; 
+   -fx-background-color: #2D3136; 
     -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -234,7 +234,7 @@ accordian-prop .titled-pane {
 }
 
 .double-field:focused {
-  -fx-background-color: #5A5A5A; 
+  -fx-background-color: #2D3136; 
    -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
@@ -247,7 +247,7 @@ accordian-prop .titled-pane {
 .webcolor-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
     -fx-font-size: 0.875em;
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
      -fx-border-color: #878787;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -257,7 +257,7 @@ accordian-prop .titled-pane {
 }
 
 .webcolor-field:focused {
-    -fx-background-color: #5A5A5A; 
+    -fx-background-color: #2D3136; 
      -fx-border-color: #878787;
     -fx-background-insets: -0.4, 1, 2;
     -fx-background-radius: 3.4, 2, 2;
@@ -268,7 +268,7 @@ accordian-prop .titled-pane {
 }
 
 .properties-combo-box .arrow-button {
-    -fx-background-color:  #5A5A5A;
+    -fx-background-color:  #2D3136;
     -fx-border-color: #878787;
     -fx-background-insets: -1;
     -fx-font-size: 0.875em;
@@ -283,7 +283,7 @@ accordian-prop .titled-pane {
         #878787,
         linear-gradient(#797979, #686868),
         linear-gradient(#585858, #474752),
-        linear-gradient(#585858, #535353);
+        linear-gradient(#2D4846, #2D3136);
     -fx-background-insets: 0,1,2,3;
     -fx-background-radius: 3,2,2,2;
     -fx-text-fill: #C98989;
