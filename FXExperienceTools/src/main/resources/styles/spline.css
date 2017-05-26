@@ -11,19 +11,31 @@ different terms and without source code for the larger work.
     Author     : andje22
 */
 #SplineEditor {
-    -fx-background: black;
+    -fx-background: -fe-dark-body-background;
 }
+
 #Background {
-    
     -fx-background-image: url("/images/darkdenim.png");
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }
-#CodeLabel {
+
+.label {
+    -fx-text-fill: -fe-light-body-text;
+}
+.animation-label {
+    -fx-font-family: "Calibre";
+    -fx-font-weight: bold; 
+    -fx-font-size: 16px;
+    -fx-text-fill: #66ffff;
+    -fx-underline: true;
+}
+
+.code-text {
     -fx-font-family: "Courier New";
     -fx-font-size: 16px;
 }
 .big-button {
-       -fx-font-size: 0.875em;
+    -fx-font-size: 0.875em;
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
@@ -34,7 +46,7 @@ different terms and without source code for the larger work.
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 .big-button Text {
-     -fx-font-size: 0.875em;
+    -fx-font-size: 0.875em;
     -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.6) , 0, 0.0 , 0 , 1 );
 }
 .chart-plot-background {
@@ -50,6 +62,5 @@ different terms and without source code for the larger work.
     -fx-fill: white;
     -fx-font-size: 11px;
 }
-.label {
-    -fx-text-fill: white;
-}
+
+

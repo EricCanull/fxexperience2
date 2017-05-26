@@ -23,23 +23,23 @@
           <ColumnConstraints maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints prefHeight="30.0" vgrow="NEVER" />
             <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="35.0" vgrow="NEVER" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="140.0" vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="25.0" vgrow="NEVER" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
+            <RowConstraints prefHeight="25.0" vgrow="NEVER" />
             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" vgrow="ALWAYS" />
           <RowConstraints vgrow="NEVER" />
-          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="NEVER" />
           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="55.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <HBox alignment="TOP_CENTER" spacing="30.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+            <HBox alignment="CENTER" spacing="30.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="codeLabel" text="Label" />
-                  <Button fx:id="copyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="90.0" styleClass="big-button" text="Copy Code" />
+                  <Label fx:id="codeLabel" alignment="CENTER" styleClass="code-text" text="Label" />
+                  <Button fx:id="copyButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="42.0" prefWidth="98.0" styleClass="big-button" text="Copy Code" />
                </children>
             </HBox>
             <Label styleClass="animation-label" text="Animation Preview" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -47,7 +47,7 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Label text="Scale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label text="Scale" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <Label layoutX="822.0" layoutY="57.0" text="Rotate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" height="80.0" layoutX="800.0" layoutY="241.0" stroke="#65655fab" strokeType="INSIDE" strokeWidth="3.0" width="130.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                <fill>
@@ -61,7 +61,7 @@
                      </stops>
                   </LinearGradient>
                </fill></Rectangle>
-            <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+            <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <children>
                   <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="200.0">
                      <fill>
@@ -91,7 +91,7 @@
                </children>
             </Group>
             <Label alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="36.0" text="Fade" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <Label text="Linear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Label text="Linear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
             <Circle fx:id="scaleCircle" radius="55.0" stroke="TRANSPARENT" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                <fill>
                   <RadialGradient centerX="0.5" centerY="0.5" focusDistance="-0.33333333333333326" radius="0.7380952380952381">

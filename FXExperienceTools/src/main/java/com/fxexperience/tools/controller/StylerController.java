@@ -259,7 +259,7 @@ public class StylerController implements Initializable {
         if (isRoot) {
             cssBuffer.append(".root {\n");
         } else {
-            cssBuffer.append("#ContentPane \n");
+            cssBuffer.append("#Preview-area \n");
         }
          //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: "+ "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 

@@ -12,22 +12,26 @@ different terms and without source code for the larger work.
 */
 
 .root {
-  -fx-background-color: #2D3136;
-  -fx-focus-color: #93CCE9;
-  
+    -fe-dark-body-background: #31363B;
+    -fe-dark-inner-background: #2D3136;
+    -fe-light-border: #65d2c6;
+    -fe-light-body-text: #C3C3C4;
+    -fe-light-inner-text: #C2C2C3;
+    -fx-background-color: #444;
+    -fx-focus-color: #93CCE9;
+
 }
 
 .nav-box {
-    
     -fx-background-color:derive(rgb(147, 147, 147), -72%);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
-     -fx-background-insets: 6, 6, 6, 6;
+    -fx-background-insets: 6, 6, 6, 6;
     -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
 }
 /*******************************************************************************
  * Menu Bar			                                               *
  ******************************************************************************/
- .menu {
+.menu {
     -fx-background-color: transparent;
     -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; 
 }
@@ -39,16 +43,17 @@ different terms and without source code for the larger work.
 .menu-button .menu:hover {
     -fx-text-fill: white;
     -fx-background-color:  derive(rgb(147, 147, 147), -26%);
-     
+
 } 
 .main-menu {
-  -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
     -fx-font-size: 0.875em;
     -fx-alignment: center-left;
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
-    
+
 
     /* Nothing more needed for Mac OS X than the following property!
      * All other definitions kept from caspian, to ensure, that MenuBar
@@ -59,13 +64,12 @@ different terms and without source code for the larger work.
 
 .menu-item:focused,
 .menu-item:hover{
-    
-  -fx-background-color: derive(rgb(147, 147, 147), -26%);
-/*       -fx-background-insets: 1, 1, 1;*/
-    
+    -fx-background-color: derive(rgb(147, 147, 147), -26%);
+    /*       -fx-background-insets: 1, 1, 1;*/
+
 }
 .menu-button .menu {
-   -fx-text-fill: derive(rgb(147, 147, 147), -70%)
+    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
 }
 .menu-bar .menu .label {
     -fx-text-fill: derive(rgb(147, 147, 147), -70%)
@@ -75,9 +79,9 @@ different terms and without source code for the larger work.
 }
 .context-menu {
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
-     -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
-/*    -fx-background-insets: 0, 1, 2;*/
-   
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    /*    -fx-background-insets: 0, 1, 2;*/
+
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
@@ -161,9 +165,9 @@ different terms and without source code for the larger work.
 }
 .menu-toggle-button {
     -fx-font-weight: bold;
-/*    -fx-background-color:
-        linear-gradient(#99ccff, #99ccff),
-        radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
+    /*    -fx-background-color:
+            linear-gradient(#99ccff, #99ccff),
+            radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
     -fx-background-radius: 6, 6, 6, 6;
     -fx-background-insets: 6, 6, 6, 6;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
@@ -171,12 +175,13 @@ different terms and without source code for the larger work.
 }
 .menu-toggle-button:selected {
     -fx-font-weight: bold;
-     -fx-background-color:
+    -fx-background-color:
         linear-gradient(derive(rgb(147,147, 147), -13%),derive(rgb(147,147, 147), -22%)),
         radial-gradient(center 50% -40%, radius 200%, derive(rgb(147,147, 147), -32%) 45%, derive(rgb(147,147, 147), -49%) 50%);
-/*    -fx-background-color: #0011114D;*/
+    /*    -fx-background-color: #0011114D;*/
     -fx-background-radius: 6, 6, 6, 6;
     -fx-background-insets: 6, 6, 6, 6;
-   
+
 }
+
 
