@@ -1,5 +1,5 @@
 /*
- * Permissions of this copy-left license are conditioned on making available 
+ * Permissions of this Copyleft license are conditioned on making available 
  * complete source code of licensed works and modifications under the same 
  * license or the GNU GPLv3. Copyright and license notices must be preserved.
  * Contributors provide an express grant of patent rights. However, a larger 
@@ -16,9 +16,6 @@ import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.tools.util.AppPaths;
 import java.io.*;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLStreamHandler;
-import java.net.URLStreamHandlerFactory;
 import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,7 +74,6 @@ public class StylerController implements Initializable {
     @FXML private Slider shadowSlider;
     @FXML private Slider inputBorderSlider;
     @FXML private Slider inputOuterBorderSlider;
-    
     
     @FXML private ToggleButton baseTextToggle;
     @FXML private ToggleButton backgroundTextToggle;

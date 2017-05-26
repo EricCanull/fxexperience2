@@ -135,7 +135,7 @@ public class DemoController implements Initializable {
     @FXML private void rotateOutDownRightAction(ActionEvent event)  { new RotateOutDownRightTransition(btn).play(); bringBackAfter(); }
     @FXML private void rotateOutUpLeftAction(ActionEvent event)     { new RotateOutUpLeftTransition(btn).play(); bringBackAfter(); }
     @FXML private void rotateOutUpRightAction(ActionEvent event)    { new RotateOutUpRightTransition(btn).play(); bringBackAfter(); }
-    @FXML private void hingeAction(ActionEvent event)               { new HingeTransition(btn).play(); }
+    @FXML private void hingeAction(ActionEvent event)               { new HingeTransition(btn).play(); bringBackAfter(); }
     @FXML private void rollInAction(ActionEvent event)              { new RollInTransition(btn).play(); }
     @FXML private void rollOutAction(ActionEvent event)             { new RollOutTransition(btn).play(); bringBackAfter(); }
     
