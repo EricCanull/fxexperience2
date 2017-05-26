@@ -17,6 +17,9 @@ different terms and without source code for the larger work.
 #gradientComboBox {
     -fx-border-color: -fe-light-border;
     -fx-background-color: -fe-dark-inner-background;
+    -fx-background-insets: -2 -2 -2 -2;  
+    -fx-border-radius: 3 3 3 3;
+    -fx-background-radius: 3 3 3 3;
 }
 
 #gradientComboBox .label{
@@ -47,14 +50,14 @@ accordian-prop .titled-pane {
 }
 
 #gradientComboBox .combo-box-popup .list-view .list-cell {
-    -fx-padding: 3 3 3 3;
+    -fx-padding: 0;
 }
 
 #font-box {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
     -fx-font-size:  0.9750em;
 }
 
@@ -228,7 +231,7 @@ accordian-prop .titled-pane {
     -fx-border-color: -fe-light-border;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
-    -fx-border-radius: 3.4, 2, 2;
+    -fx-border-radius: 3, 2, 2;
     -fx-padding: 3 5 3 5;
     -fx-prompt-text-fill: -fe-light-inner-text;
     -fx-cursor: text;
@@ -238,7 +241,7 @@ accordian-prop .titled-pane {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
     -fx-background-insets: -0.4, 1, 2;
-    -fx-background-radius: 3.4, 2, 2;
+    -fx-background-radius: 3, 2, 2;
     -fx-border-radius: 3.4, 2, 2;
 }
 
