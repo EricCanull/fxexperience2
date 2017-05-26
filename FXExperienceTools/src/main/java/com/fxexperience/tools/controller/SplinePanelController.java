@@ -118,6 +118,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                 SplineEditor.getControlPoint2y());
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(true);
         timeline.getKeyFrames().addAll(
                 new KeyFrame(
                         Duration.ZERO,
