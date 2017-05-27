@@ -24,8 +24,10 @@ different terms and without source code for the larger work.
 }
 
 .nav-box {
+/*     -fx-background-image: url("/images/binding_dark.png");*/
+/*    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );*/
     -fx-background-color:derive(rgb(147, 147, 147), -72%);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
+  
     -fx-background-insets: 6, 6, 6, 6;
     -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
 }

@@ -43,7 +43,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
     @FXML private Circle linearCircle;
     @FXML private Circle scaleCircle;
     @FXML private Rectangle rotateRectangle;
-  
+    
     private Timeline timeline;
     private SplineEditor SplineEditor;
   
@@ -116,6 +116,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                 SplineEditor.getControlPoint1y(),
                 SplineEditor.getControlPoint2x(),
                 SplineEditor.getControlPoint2y());
+        
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
@@ -126,16 +127,16 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                         new KeyValue(scaleCircle.scaleYProperty(), 0d, spline),
                         new KeyValue(rotateRectangle.rotateProperty(), 0d, spline),
                         new KeyValue(fadeSquare.opacityProperty(), 0d, spline),
-                        new KeyValue(linearCircle.translateXProperty(), 0d, spline)
+                        new KeyValue(linearCircle.translateXProperty(), 0d, spline)                                           
                 ),
                 new KeyFrame(
                         Duration.seconds(5),
                         new KeyValue(scaleCircle.scaleXProperty(), 1d, spline),
                         new KeyValue(scaleCircle.scaleYProperty(), 1d, spline),
                         new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
-                            new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
+                        new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
                         new KeyValue(fadeSquare.opacityProperty(), 1d, spline),
-                        new KeyValue(linearCircle.translateXProperty(), 180d, spline)
+                        new KeyValue(linearCircle.translateXProperty(), 180d, spline)                      
                 )
         );
         timeline.play();

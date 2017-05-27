@@ -21,12 +21,13 @@ different terms and without source code for the larger work.
 
 .label {
     -fx-text-fill: -fe-light-body-text;
+    -fx-underline: true;
 }
 .animation-label {
-    -fx-font-family: "Calibre";
+    -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold; 
     -fx-font-size: 16px;
-    -fx-text-fill: #66ffff;
+    -fx-text-fill: -fe-light-body-text;
     -fx-underline: true;
 }
 
