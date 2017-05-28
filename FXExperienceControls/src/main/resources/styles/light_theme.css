@@ -1,6 +1,6 @@
 .root {
     -fx-font-family: "System";
-    -fx-font-size: 13.0px;
+    -fx-font-size: 1em;
     -fx-base: #E7E7E7;
     -fx-background: #FFFFFF;
     -fx-focus-color: #0093FF;

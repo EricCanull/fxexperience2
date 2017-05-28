@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FXExperienceControls/FXExperienceControls.iml" filepath="$PROJECT_DIR$/FXExperienceControls/FXExperienceControls.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FXExperienceTools/FXExperienceTools.iml" filepath="$PROJECT_DIR$/FXExperienceTools/FXExperienceTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxexperience2.iml" filepath="$PROJECT_DIR$/fxexperience2.iml" />
+    </modules>
+  </component>
+</project>

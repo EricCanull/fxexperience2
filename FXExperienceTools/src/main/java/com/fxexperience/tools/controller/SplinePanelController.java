@@ -10,9 +10,6 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.tools.util.AnimatedAction;
-import java.net.URL;
-import java.util.Collections;
-import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -20,25 +17,27 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.Collections;
+import java.util.ResourceBundle;
+
 public class SplinePanelController implements Initializable, AnimatedAction {
     @FXML private GridPane gridPane;
-    @FXML private Label codeLabel;
-    @FXML private Button copyButton;
+    @FXML private TextField codeTextField;  
     @FXML private Rectangle fadeSquare;
     @FXML private Circle linearCircle;
     @FXML private Circle scaleCircle;
@@ -60,7 +59,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                 HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         gridPane.add(SplineEditor, 0, 0);
 
-        codeLabel.textProperty().bind(new StringBinding() {
+        codeTextField.textProperty().bind(new StringBinding() {
             {
                 bind(SplineEditor.controlPoint1xProperty(),
                         SplineEditor.controlPoint1yProperty(),
@@ -78,10 +77,7 @@ public class SplinePanelController implements Initializable, AnimatedAction {
             }
         });
         
-          copyButton.setOnAction((ActionEvent t) -> {
-            Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) codeLabel.getText()));
-        });
+     
           
            // create anaimation updater
         ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> {
@@ -140,6 +136,12 @@ public class SplinePanelController implements Initializable, AnimatedAction {
                 )
         );
         timeline.play();
+    }
+    
+    @FXML
+    private void copyCodeAction(MouseEvent event) {
+         Clipboard.getSystemClipboard().setContent(
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) codeTextField.getText()));
     }
 }
    

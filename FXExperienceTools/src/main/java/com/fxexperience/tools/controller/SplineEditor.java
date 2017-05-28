@@ -102,19 +102,20 @@ public final class SplineEditor extends XYChart<Number, Number> {
         setData(FXCollections.observableArrayList(answer));
 
         controlPoint1Circle.setOnMouseDragged((MouseEvent event) -> {
-            final double x = event.getX() + controlPoint1Circle.getLayoutX();
-            final double y = event.getY() + controlPoint1Circle.getLayoutY();
-            final double dataX = getXAxis().getValueForDisplay(x).doubleValue();
-            final double dataY = getYAxis().getValueForDisplay(y).doubleValue();
+            double x = event.getX() + controlPoint1Circle.getLayoutX();
+            double y = event.getY() + controlPoint1Circle.getLayoutY();
+            double dataX = getXAxis().getValueForDisplay(x).doubleValue();
+            double dataY = getYAxis().getValueForDisplay(y).doubleValue();
             controlPoint1x.set(clamp(dataX));
             controlPoint1y.set(clamp(dataY));
             requestChartLayout();
         });
+
         controlPoint2Circle.setOnMouseDragged((MouseEvent event) -> {
-            final double x = event.getX() + controlPoint2Circle.getLayoutX();
-            final double y = event.getY() + controlPoint2Circle.getLayoutY();
-            final double dataX = getXAxis().getValueForDisplay(x).doubleValue();
-            final double dataY = getYAxis().getValueForDisplay(y).doubleValue();
+            double x = event.getX() + controlPoint2Circle.getLayoutX();
+            double y = event.getY() + controlPoint2Circle.getLayoutY();
+            double dataX = getXAxis().getValueForDisplay(x).doubleValue();
+            double dataY = getYAxis().getValueForDisplay(y).doubleValue();
             controlPoint2x.set(clamp(dataX));
             controlPoint2y.set(clamp(dataY));
             requestChartLayout();

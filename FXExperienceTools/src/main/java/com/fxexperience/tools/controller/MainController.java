@@ -47,9 +47,7 @@ public class MainController extends AbstractController implements Initializable 
     private StackPane currentPane, sparePane;
     private StylerController styleController;
     private FXMLLoader loader;
-   
-    private ToggleGroup toggleGroup;
-    
+
     private int currentToolIndex = 0;
     private Timeline timeline;
     private Tool nextTool;
@@ -110,7 +108,7 @@ public class MainController extends AbstractController implements Initializable 
     }
     
    private void initToggleGroup() {
-        toggleGroup = new ToggleGroup();
+       ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);

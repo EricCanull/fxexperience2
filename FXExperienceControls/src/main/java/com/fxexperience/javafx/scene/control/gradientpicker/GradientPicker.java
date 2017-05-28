@@ -108,7 +108,6 @@ public class GradientPicker extends VBox {
     private final SliderControl radiusSlider
             = new SliderControl("Radius", 0.0, 1.0, 0.5); //NOI18N
     private final List<GradientPickerStop> gradientPickerStops = new ArrayList<>();
-    private final int maxStops = 12; // the numbers of stops supported in platform
 
     public GradientPicker(PaintPickerController pe) {
         paintPicker = pe;
@@ -346,6 +345,7 @@ public class GradientPicker extends VBox {
     }
 
     GradientPickerStop addStop(double min, double max, double value, Color color) {
+        int maxStops = 12;
         if (gradientPickerStops.size() < maxStops) {
             final GradientPickerStop gradientStop
                     = new GradientPickerStop(this, min, max, value, color);

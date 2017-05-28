@@ -265,9 +265,9 @@ public class ColorEncoder {
         return result;
     }
     
-    private static double[] RGBtoHSB(double r, double g, double b, double[] hsbvals) {
+    private static double[] RGBtoHSB(double r, double g, double b) {
        double hue, saturation, brightness;
-       hsbvals = new double[3];
+        double[] hsbvals = new double[3];
         double cmax = (r > g) ? r : g;
         if (b > cmax) cmax = b;
         double cmin = (r < g) ? r : g;
@@ -347,7 +347,7 @@ public class ColorEncoder {
 
         // window two take the calculated brightness multiplyer and derive color based on source color
         double[] hsb = null;
-        hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), hsb);
+        hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue());
         // change brightness
         if (calcBrightness > 0) { // brighter
             hsb[1] *= 1 - calcBrightness;

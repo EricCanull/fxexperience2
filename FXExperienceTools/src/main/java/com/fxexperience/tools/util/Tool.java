@@ -14,8 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class Tool {
-    
-    private FXMLLoader loader;
+
     private final String name;
     private final Parent content;
     private final int index;
@@ -28,8 +27,8 @@ public class Tool {
     }
     
     public FXMLLoader getLoader(String fxml) {
-        loader = new FXMLLoader(StylerController.class.getResource(
-                    AppPaths.FXML_PATH + fxml));
+        FXMLLoader loader = new FXMLLoader(StylerController.class.getResource(
+                AppPaths.FXML_PATH + fxml));
         return loader;
     }
             

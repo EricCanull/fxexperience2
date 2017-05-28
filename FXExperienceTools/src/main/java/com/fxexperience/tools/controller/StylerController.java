@@ -38,9 +38,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
 public class StylerController implements Initializable {
-    
-    private String css;
-    
+
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -92,7 +90,7 @@ public class StylerController implements Initializable {
     @Override public void initialize(URL url, ResourceBundle rb) {
        
         try {
-            previewPanel = (Parent) FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
+            previewPanel = FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
             previewPane.setCenter(previewPanel);
         } catch (IOException ex) {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +102,7 @@ public class StylerController implements Initializable {
         
      
         // create listener to call update css
-        ChangeListener<Object> updateCssListener = (ChangeListener<Object>) (ObservableValue<? extends Object> arg0, Object arg1, Object arg2) -> {
+        ChangeListener<Object> updateCssListener = (ObservableValue<?> arg0, Object arg1, Object arg2) -> {
             updateCss();
         };
         
@@ -237,7 +235,7 @@ public class StylerController implements Initializable {
     }
     
     private void updateCss() {
-        css = createCSS(true);
+        String css = createCSS(true);
         previewPanel.setStyle(css);
     }
     
@@ -418,7 +416,7 @@ public class StylerController implements Initializable {
    
     public void getCopiedStyleSheet() {
         Clipboard.getSystemClipboard().setContent(
-                Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) createCSS(true)));
+                Collections.singletonMap(DataFormat.PLAIN_TEXT, createCSS(true)));
 
     }
 

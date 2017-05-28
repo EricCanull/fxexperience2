@@ -6,6 +6,9 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Node;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  */
 public class DoubleFieldSkin extends InputFieldSkin {
@@ -51,11 +54,13 @@ public class DoubleFieldSkin extends InputFieldSkin {
     @Override
     protected boolean accept(String text) {
         if (text.length() == 0) return true;
-        if (text.matches("[0-9\\.]*")) {
+        if (text.matches("[0-9\"\".]*")) {
             try {
                 Double.parseDouble(text);
                 return true;
-            } catch (NumberFormatException ex) { }
+            } catch (NumberFormatException ex) {
+                Logger.getLogger(DoubleFieldSkin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return false;
     }

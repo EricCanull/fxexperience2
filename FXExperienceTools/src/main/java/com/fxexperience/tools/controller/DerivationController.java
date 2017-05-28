@@ -1,10 +1,10 @@
-/**
- * Permissions of this Copyleft license are conditioned on making available 
- * complete source code of licensed works and modifications under the same 
+/*
+ * Permissions of this Copyleft license are conditioned on making available
+ * complete source code of licensed works and modifications under the same
  * license or the GNU GPLv3. Copyright and license notices must be preserved.
- * Contributors provide an express grant of patent rights. However, a larger 
- * work using the licensed work through interfaces provided by the licensed 
- * work may be distributed under different terms and without source code 
+ * Contributors provide an express grant of patent rights. However, a larger
+ * work using the licensed work through interfaces provided by the licensed
+ * work may be distributed under different terms and without source code
  * for the larger work.
  */
 package com.fxexperience.tools.controller;
@@ -40,7 +40,6 @@ public class DerivationController implements Initializable {
     @FXML private ImageView alert;
     private final ColorPickerTool baseColorPicker = new ColorPickerTool(Color.GREY);
     private final ColorPickerTool desiredColorPicker = new ColorPickerTool(Color.GREY);
-    private Region derivedResultColor;
     private Region reverseResultColor;
     
     @Override public void initialize(URL url, ResourceBundle rb) {
@@ -58,7 +57,7 @@ public class DerivationController implements Initializable {
                 return String.format("%3.1f%%", derivationSlider.getValue());
             }
         });
-        derivedResultColor = new Region();
+        Region derivedResultColor = new Region();
         derivedResultColor.setPrefSize(50, 20);
         derivedResultLabel.setGraphic(derivedResultColor);
         derivedResultColor.styleProperty().bind(new StringBinding() {

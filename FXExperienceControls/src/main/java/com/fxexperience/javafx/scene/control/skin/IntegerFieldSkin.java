@@ -6,6 +6,9 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Node;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  */
 public class IntegerFieldSkin extends InputFieldSkin {
@@ -55,7 +58,9 @@ public class IntegerFieldSkin extends InputFieldSkin {
             try {
                 Integer.parseInt(text);
                 return true;
-            } catch (NumberFormatException ex) { }
+            } catch (NumberFormatException ex) {
+                Logger.getLogger(IntegerFieldSkin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return false;
     }
