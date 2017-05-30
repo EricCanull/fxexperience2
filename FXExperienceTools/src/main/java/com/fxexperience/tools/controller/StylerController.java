@@ -13,6 +13,7 @@ import com.fxexperience.tools.util.StringUtil;
 import com.fxexperience.javafx.scene.control.IntegerField;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
+import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.util.AppPaths;
 import java.io.*;
 import java.net.URL;
@@ -25,6 +26,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
@@ -37,8 +39,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
-public class StylerController implements Initializable {
-
+public class StylerController implements Initializable, ToolsHandler {
+    private Node stylerController;
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -432,6 +434,26 @@ public class StylerController implements Initializable {
                 Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @Override
+    public void setScreenParent(Node screenParent) {
+       stylerController = screenParent;
+    }
+
+    @Override
+    public String getCodeOutput() {
+     return createCSS(true);
+    }
+
+    @Override
+    public void startAnimations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void stopAnimations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

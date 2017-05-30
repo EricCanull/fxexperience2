@@ -39,7 +39,7 @@
          <children>
             <HBox alignment="CENTER" spacing="5.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <children>
-                  <TextField fx:id="codeTextField" onMouseClicked="#copyCodeAction" prefWidth="550.0" styleClass="code-text" text="Text" HBox.hgrow="NEVER" />
+                  <TextField fx:id="codeTextField" alignment="CENTER" onMouseClicked="#copyCodeAction" prefHeight="55.0" prefWidth="585.0" styleClass="code-text" text="Text" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <Label styleClass="animation-label" text="Animation Preview" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">

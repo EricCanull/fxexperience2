@@ -9,12 +9,15 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.handler.ViewHandler;
-import com.fxexperience.tools.util.Tool;
-import com.fxexperience.tools.util.AnimatedAction;
 import com.fxexperience.tools.util.AppPaths;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,35 +32,38 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import static javafx.scene.control.ButtonType.OK;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.DataFormat;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 public class MainController extends AbstractController implements Initializable {
-   
+
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
-   
+
+    //Holds the screens to be displayed
+    private final HashMap<Integer, Node> screens = new HashMap<>();
+
     private StackPane currentPane, sparePane;
-    private StylerController styleController;
-    private FXMLLoader loader;
+
+    private StylerController stylerController;
 
     private int currentToolIndex = 0;
     private Timeline timeline;
-    private Tool nextTool;
-     
-    private Tool[] tools;
-     
-    @FXML private BorderPane root;
+    private Node nextTool;
+
     @FXML private StackPane rootContainer;
-    @FXML private VBox menuPane;
-   
+
     @FXML private ToggleButton stylerToggle;
     @FXML private ToggleButton splineToggle;
     @FXML private ToggleButton derivedColorToggle;
@@ -66,7 +72,6 @@ public class MainController extends AbstractController implements Initializable 
         super(viewHandler);
     }
 
-  
     /**
      * Initializes the controller class.
      *
@@ -75,49 +80,63 @@ public class MainController extends AbstractController implements Initializable 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+
+        loadScreen(AppPaths.STYLER_ID, AppPaths.STYLER_FXML_PATH);
+        loadScreen(AppPaths.SPLINE_ID, AppPaths.SPLINE_FXML_PATH);
+        loadScreen(AppPaths.DERIVED_ID, AppPaths.DERIVED_FXML_PATH);
+
         initToggleGroup();
-        
-        initTools();
-                
+
         currentPane = new StackPane();
-        currentPane.getChildren().add(tools[0].getContent());
+        currentPane.getChildren().add(screens.get(AppPaths.STYLER_ID));
         sparePane = new StackPane();
         sparePane.setVisible(false);
 
         rootContainer.getChildren().addAll(currentPane, sparePane);
     }
+    //Add the screen to the collection
 
-    private void initTools() {
+    public void addScreen(int id, Node screen) {
+        screens.put(id, screen);
+    }
 
+    //Returns the Node with the appropriate name
+    public Node getScreen(int id) {
+        return screens.get(id);
+    }
+
+    //Loads the fxml file, add the screen to the screens collection and
+    //finally injects the screenPane to the controller.
+    public boolean loadScreen(int id, String fxml) {
         try {
-          loader = new FXMLLoader(StylerController.class.getResource(
-                    AppPaths.FXML_PATH + "FXMLStylerPanel.fxml"));
-            
-            
-            tools = new Tool[]{
-                new Tool("Styler", (Parent) loader.load(), 0),
-                new Tool("Animation Spline Editor", (Parent) FXMLLoader.load(SplinePanelController.class.getResource(
-                AppPaths.FXML_PATH + "FXMLSplinePanel.fxml")), 1),
-                new Tool("Derived Color Calculator", (Parent) FXMLLoader.load(DerivationController.class.getResource(
-                AppPaths.FXML_PATH + "FXMLDerivationPanel.fxml")), 2)
-            };
-        } catch (IOException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(fxml));
+            Parent loadScreen = (Parent) myLoader.load();
+            ToolsHandler toolsHandler = ((ToolsHandler) myLoader.getController());
+            toolsHandler.setScreenParent(rootContainer);
+            addScreen(id, loadScreen);
+            if(id == AppPaths.STYLER_ID) {
+                stylerController = (StylerController) toolsHandler;
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
-    
-   private void initToggleGroup() {
-       ToggleGroup toggleGroup = new ToggleGroup();
+
+    private void initToggleGroup() {
+        ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);
     }
-   
+
     private void setIconBinding(ToggleButton toggle) {
         ImageView icon = (ImageView) toggle.getGraphic();
         icon.effectProperty().bind(new ObjectBinding<Effect>() {
-            { bind(toggle.selectedProperty()); }
+            {
+                bind(toggle.selectedProperty());
+            }
 
             @Override
             protected Effect computeValue() {
@@ -126,33 +145,27 @@ public class MainController extends AbstractController implements Initializable 
         });
     }
 
-     public void switchTool(Tool newTool) {
-         
+    public void setScreen(Integer id) {
+
         // check if existing animation running
         if (timeline != null) {
-            nextTool = newTool;
-            newTool.getIndex();
+            nextTool = screens.get(id);
+
             timeline.setRate(4);
             return;
         } else {
             nextTool = null;
         }
-        
-        // stop any animations
-        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
-            System.out.println("Stop");
-            ((AnimatedAction) tools[currentToolIndex].getContent()).stopAnimations();
-        }
-        
+
         // load new content
-        sparePane.getChildren().setAll(newTool.getContent());
+        sparePane.getChildren().setAll(screens.get(id));
         sparePane.setCache(true);
         currentPane.setCache(true);
         // wait one pulse then animate
         Platform.runLater(() -> {
             // animate switch
-            if (newTool.getIndex() > currentToolIndex) { // animate from bottom
-                currentToolIndex = newTool.getIndex();
+            if (id > currentToolIndex) { // animate from bottom
+                currentToolIndex = id;
                 sparePane.setTranslateY(rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -166,7 +179,7 @@ public class MainController extends AbstractController implements Initializable 
                 timeline.play();
 
             } else { // from top
-                currentToolIndex = newTool.getIndex();
+                currentToolIndex = id;
                 sparePane.setTranslateY(-rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -183,6 +196,7 @@ public class MainController extends AbstractController implements Initializable 
     }
 
     private final EventHandler<ActionEvent> animationEndEventHandler = (ActionEvent t) -> {
+
         // switch panes
         StackPane temp = currentPane;
         currentPane = sparePane;
@@ -195,58 +209,76 @@ public class MainController extends AbstractController implements Initializable 
         currentPane.setCache(false);
         sparePane.setVisible(false);
         sparePane.getChildren().clear();
-        
-        // start any animations
-        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
-            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
-        }
-        
+
+//        // start any animations
+//        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
+//            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
+//        }
         // check if we have a animation waiting
         if (nextTool != null) {
-            switchTool(nextTool);
+            // switchTool(id);
         }
     };
 
     @FXML
     private void stylerToggleAction(ActionEvent event) {
-        if (tools[0].getIndex() == currentToolIndex) {
+        if (stylerToggle.isSelected()) {
+            setScreen(AppPaths.STYLER_ID);
+        } else {
             stylerToggle.setSelected(true);
-            return;
         }
-        switchTool(tools[0]);
     }
 
     @FXML
     private void splineToggleAction(ActionEvent event) {
-        if (tools[1].getIndex() == currentToolIndex) {
+        if (splineToggle.isSelected()) {
+            setScreen(AppPaths.SPLINE_ID);
+        } else {
             splineToggle.setSelected(true);
-            return;
         }
-        switchTool(tools[1]);
     }
 
     @FXML
     private void derivedToggleAction(ActionEvent event) {
-        if (tools[2].getIndex() == currentToolIndex) {
+        if (derivedColorToggle.isSelected()) {
+            setScreen(AppPaths.DERIVED_ID);
+        } else {
             derivedColorToggle.setSelected(true);
-            return;
         }
-        switchTool(tools[2]);
     }
-    
-     @FXML
+
+    @FXML
     private void copyButtonAction(ActionEvent event) {
-        if (tools[0].getIndex() == currentToolIndex) {
-            styleController = (StylerController) loader.getController();
-            styleController.getCopiedStyleSheet();
-        }
+        Clipboard.getSystemClipboard().setContent(
+                Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been copied to the clipboard.", OK);
+        alert.getDialogPane().setId("Code-dialog");
+        alert.setHeaderText(null);
+        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+        alert.showAndWait();
+
     }
-    
-     @FXML
+
+    @FXML
     private void saveButtonAction(ActionEvent event) {
-        if (tools[0].getIndex() == currentToolIndex) {
-            styleController = (StylerController) loader.getController();
-            styleController.getSaveStyleSheet();
+        if (stylerToggle.isSelected()) {
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
+            if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write(stylerController.getCodeOutput());
+                    writer.flush();
+                } catch (IOException ex) {
+                    Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been saved.", OK);
+            alert.getDialogPane().setId("Code-dialog");
+            alert.setHeaderText(null);
+            alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+            alert.showAndWait();
         }
     }
 

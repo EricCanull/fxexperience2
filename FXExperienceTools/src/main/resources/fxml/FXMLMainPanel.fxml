@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane id="AnchorPane" stylesheets="@../styles/main.css" BorderPane.alignment="CENTER">
           <children>
@@ -53,7 +53,7 @@
       </MenuBar>
    </top>
    <left>
-      <VBox fx:id="menuPane" spacing="5.0" styleClass="nav-box" BorderPane.alignment="CENTER">
+      <VBox spacing="5.0" styleClass="nav-box" BorderPane.alignment="CENTER">
          <children>
             <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>

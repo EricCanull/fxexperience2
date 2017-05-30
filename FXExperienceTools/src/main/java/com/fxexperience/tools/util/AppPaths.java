@@ -16,6 +16,13 @@ public final class AppPaths {
      public static final String STYLE_PATH = "/styles/";
     public static final String IMG_PATH = "images/";
     public static final String FXML_PATH ="/fxml/";
+    
+    public static Integer STYLER_ID = 0;
+    public static String STYLER_FXML_PATH = FXML_PATH + "FXMLStylerPanel.fxml";
+    public static Integer SPLINE_ID = 1;
+    public static String SPLINE_FXML_PATH = FXML_PATH + "FXMLSplinePanel.fxml";
+    public static Integer DERIVED_ID = 2;
+    public static String DERIVED_FXML_PATH = FXML_PATH + "FXMLDerivationPanel.fxml";
 
     private AppPaths() {
     }

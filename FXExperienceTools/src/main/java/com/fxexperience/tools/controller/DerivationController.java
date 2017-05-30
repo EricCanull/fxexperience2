@@ -12,6 +12,7 @@ package com.fxexperience.tools.controller;
 
 import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import com.fxexperience.tools.handler.ToolsHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
@@ -28,8 +30,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 
-public class DerivationController implements Initializable {
-      
+public class DerivationController implements Initializable, ToolsHandler {
+      private Node derivationController;
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gridPane;
     @FXML private Label forwardDerivationLabel;
@@ -147,5 +149,25 @@ public class DerivationController implements Initializable {
         final int green = (int)(color.getGreen()*255);
         final int blue = (int)(color.getBlue()*255);
         return String.format("#%02X%02X%02X", red,green,blue);
+    }
+
+    @Override
+    public void setScreenParent(Node screenParent) {
+        derivationController = screenParent;
+    }
+
+    @Override
+    public String getCodeOutput() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void startAnimations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void stopAnimations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

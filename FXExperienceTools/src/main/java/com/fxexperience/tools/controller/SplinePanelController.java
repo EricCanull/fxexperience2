@@ -9,7 +9,8 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.tools.util.AnimatedAction;
+import com.fxexperience.tools.handler.ToolsHandler;
+import com.fxexperience.tools.util.AppPaths;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -30,12 +31,17 @@ import javafx.scene.layout.Priority;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import static javafx.scene.control.ButtonType.OK;
 
-public class SplinePanelController implements Initializable, AnimatedAction {
+public class SplinePanelController implements Initializable, ToolsHandler {
+   
+    private Node splinePanelController;
+    
     @FXML private GridPane gridPane;
     @FXML private TextField codeTextField;  
     @FXML private Rectangle fadeSquare;
@@ -77,8 +83,6 @@ public class SplinePanelController implements Initializable, AnimatedAction {
             }
         });
         
-     
-          
            // create anaimation updater
         ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> {
             updateAnimation();
@@ -137,11 +141,28 @@ public class SplinePanelController implements Initializable, AnimatedAction {
         );
         timeline.play();
     }
-    
-    @FXML
+   
+      @FXML
     private void copyCodeAction(MouseEvent event) {
+        String code = codeTextField.getText();
          Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, (Object) codeTextField.getText()));
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, code));
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", OK);
+        alert.getDialogPane().setId("Code-dialog");
+        alert.setHeaderText(null);
+        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+        alert.showAndWait();
+    }
+
+    @Override
+    public String getCodeOutput() {
+       return codeTextField.getText();
+    }
+
+    @Override
+    public void setScreenParent(Node screenParent) {
+       splinePanelController = screenParent;
     }
 }
    
