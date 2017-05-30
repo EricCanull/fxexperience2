@@ -94,8 +94,8 @@ public class MainController extends AbstractController implements Initializable 
 
         rootContainer.getChildren().addAll(currentPane, sparePane);
     }
+    
     //Add the screen to the collection
-
     public void addScreen(int id, Node screen) {
         screens.put(id, screen);
     }
@@ -114,6 +114,7 @@ public class MainController extends AbstractController implements Initializable 
             ToolsHandler toolsHandler = ((ToolsHandler) myLoader.getController());
             toolsHandler.setScreenParent(rootContainer);
             addScreen(id, loadScreen);
+          
             if(id == AppPaths.STYLER_ID) {
                 stylerController = (StylerController) toolsHandler;
             }
