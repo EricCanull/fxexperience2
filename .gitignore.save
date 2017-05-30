@@ -7,8 +7,8 @@
 /fxexperience-2-master/FXExperienceTools/target/
 /target/
 .idea/workspace.xml
-.idea/
+/.idea/
 
 FXExperienceTools/src/test/
-.directory/
+/.directory/
 
