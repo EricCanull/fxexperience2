@@ -161,8 +161,8 @@ public class SplinePanelController implements Initializable, ToolsHandler {
     }
 
     @Override
-    public void setScreenParent(Node screenParent) {
-       splinePanelController = screenParent;
+    public void setParentTool(Node parentTool) {
+       splinePanelController = parentTool;
     }
 }
    

@@ -48,12 +48,14 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 public class MainController extends AbstractController implements Initializable {
-
+    
+    // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
-    //Holds the screens to be displayed
+    // Holds the tools to be displayed
     private final HashMap<Integer, Node> screens = new HashMap<>();
-
+    
+    // Holds the tools for slide animation
     private StackPane currentPane, sparePane;
 
     private StylerController stylerController;
@@ -81,9 +83,9 @@ public class MainController extends AbstractController implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        loadScreen(AppPaths.STYLER_ID, AppPaths.STYLER_FXML_PATH);
-        loadScreen(AppPaths.SPLINE_ID, AppPaths.SPLINE_FXML_PATH);
-        loadScreen(AppPaths.DERIVED_ID, AppPaths.DERIVED_FXML_PATH);
+        loadTool(AppPaths.STYLER_ID, AppPaths.STYLER_FXML_PATH);
+        loadTool(AppPaths.SPLINE_ID, AppPaths.SPLINE_FXML_PATH);
+        loadTool(AppPaths.DERIVED_ID, AppPaths.DERIVED_FXML_PATH);
 
         initToggleGroup();
 
@@ -95,25 +97,25 @@ public class MainController extends AbstractController implements Initializable 
         rootContainer.getChildren().addAll(currentPane, sparePane);
     }
     
-    //Add the screen to the collection
-    public void addScreen(int id, Node screen) {
+    // Add the tool to the collection
+    public void addTool(int id, Node screen) {
         screens.put(id, screen);
     }
 
-    //Returns the Node with the appropriate name
-    public Node getScreen(int id) {
+    // Returns the Node with the appropriate name
+    public Node getTool(int id) {
         return screens.get(id);
     }
 
-    //Loads the fxml file, add the screen to the screens collection and
-    //finally injects the screenPane to the controller.
-    public boolean loadScreen(int id, String fxml) {
+    // Loads the fxml file, add the tool to the screens collection and
+    // finally injects the screenPane to the controller.
+    public boolean loadTool(int id, String fxml) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(fxml));
             Parent loadScreen = (Parent) myLoader.load();
             ToolsHandler toolsHandler = ((ToolsHandler) myLoader.getController());
-            toolsHandler.setScreenParent(rootContainer);
-            addScreen(id, loadScreen);
+            toolsHandler.setParentTool(rootContainer);
+            addTool(id, loadScreen);
           
             if(id == AppPaths.STYLER_ID) {
                 stylerController = (StylerController) toolsHandler;
@@ -124,7 +126,8 @@ public class MainController extends AbstractController implements Initializable 
             return false;
         }
     }
-
+    
+    // Creates toggle group to bind color icon effect
     private void initToggleGroup() {
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
@@ -132,6 +135,7 @@ public class MainController extends AbstractController implements Initializable 
         toggleGroup.selectToggle(stylerToggle);
     }
 
+    // Adjusts the color of the toogle icons upon selection
     private void setIconBinding(ToggleButton toggle) {
         ImageView icon = (ImageView) toggle.getGraphic();
         icon.effectProperty().bind(new ObjectBinding<Effect>() {
@@ -145,8 +149,9 @@ public class MainController extends AbstractController implements Initializable 
             }
         });
     }
-
-    public void setScreen(Integer id) {
+    
+    // Displays a new tool and applies the slide transitions
+    public void setTool(Integer id) {
 
         // check if existing animation running
         if (timeline != null) {
@@ -210,7 +215,8 @@ public class MainController extends AbstractController implements Initializable 
         currentPane.setCache(false);
         sparePane.setVisible(false);
         sparePane.getChildren().clear();
-
+        
+        // Attempt to turn off animations in the spline tool
 //        // start any animations
 //        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
 //            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
@@ -223,27 +229,30 @@ public class MainController extends AbstractController implements Initializable 
 
     @FXML
     private void stylerToggleAction(ActionEvent event) {
+          // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
-            setScreen(AppPaths.STYLER_ID);
-        } else {
+            setTool(AppPaths.STYLER_ID);
+        } else { // tool is already active
             stylerToggle.setSelected(true);
         }
     }
 
     @FXML
     private void splineToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
-            setScreen(AppPaths.SPLINE_ID);
-        } else {
+            setTool(AppPaths.SPLINE_ID);
+        } else { // tool is already active
             splineToggle.setSelected(true);
         }
     }
 
     @FXML
     private void derivedToggleAction(ActionEvent event) {
+          // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
-            setScreen(AppPaths.DERIVED_ID);
-        } else {
+            setTool(AppPaths.DERIVED_ID);
+        } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }
     }

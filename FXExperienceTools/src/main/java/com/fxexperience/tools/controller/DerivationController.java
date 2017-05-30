@@ -152,8 +152,8 @@ public class DerivationController implements Initializable, ToolsHandler {
     }
 
     @Override
-    public void setScreenParent(Node screenParent) {
-        derivationController = screenParent;
+    public void setParentTool(Node parentTool) {
+        derivationController = parentTool;
     }
 
     @Override

@@ -437,8 +437,8 @@ public class StylerController implements Initializable, ToolsHandler {
     }
 
     @Override
-    public void setScreenParent(Node screenParent) {
-       stylerController = screenParent;
+    public void setParentTool(Node parentTool) {
+       stylerController = parentTool;
     }
 
     @Override
