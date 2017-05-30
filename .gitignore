@@ -7,6 +7,6 @@
 /fxexperience-2-master/FXExperienceTools/target/
 /target/
 .idea/workspace.xml
-/.directory/
-.directory/
+.directory
+FXExperienceControls.iml
 FXExperienceTools/src/test/
