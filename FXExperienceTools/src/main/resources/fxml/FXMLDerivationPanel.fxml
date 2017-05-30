@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.DerivationController">
+  <children>
+    <GridPane fx:id="gridPane" hgap="5.0" prefHeight="579.0" prefWidth="1005.0" styleClass="derivation-hbox" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label fx:id="label" maxWidth="-Infinity" minHeight="16.0" minWidth="-Infinity" prefHeight="16.0" text="Base Color:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ImageView id="note" fitHeight="397.0" fitWidth="292.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="10" GridPane.valignment="TOP">
+          <image>
+            <Image url="@../images/note.png" />
+          </image>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+        </ImageView>
+        <ImageView id="forward" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+          <image>
+            <Image url="@../images/forward.png" />
+          </image>
+        </ImageView>
+        <Label id="label1" text="Derivation:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Slider fx:id="derivationSlider" min="-100.0" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label fx:id="forwardDerivationLabel" prefWidth="50.0" text="0%" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Label id="label3" text="Derived Result:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label id="label4" text="Desired Color:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <ImageView id="reverse" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+          <image>
+            <Image url="@../images/reverse.png" />
+          </image>
+        </ImageView>
+        <Label id="label5" text="Derivation:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+        <Label fx:id="reverseDerivationLabel" text="30%" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label id="label7" text="Result Color:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Label fx:id="reverseResultLabel" prefHeight="21.0" prefWidth="250.0" text="#EEEEEE....." GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+        <Label fx:id="derivedResultLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+        <ImageView fx:id="alert" fitHeight="115.0" fitWidth="441.0" visible="false" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.rowSpan="3">
+          <image>
+            <Image url="@../images/alert.png" />
+          </image>
+        </ImageView>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <padding>
+        <Insets bottom="20.0" left="40.0" right="20.0" top="20.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="40.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="85.0" minHeight="2.0" prefHeight="20.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>

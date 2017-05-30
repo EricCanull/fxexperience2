@@ -1,0 +1,190 @@
+/*
+Permissions of this copyleft license are conditioned on making available complete 
+source code of licensed works and modifications under the same license or the 
+GNU GPLv3. Copyright and license notices must be preserved. Contributors provide
+an express grant of patent rights. However, a larger work using the licensed work
+through interfaces provided by the licensed work may be distributed under
+different terms and without source code for the larger work.
+*/
+/* 
+    Created on : May 8, 2017, 12:05:37 AM
+    Author     : andje22
+*/
+
+.root {
+    -fe-dark-body-background: #31363B;
+    -fe-dark-inner-background: #2D3136;
+    -fe-light-border: #65d2c6;
+    -fe-light-body-text: #C3C3C4;
+    -fe-light-inner-text: #C2C2C3;
+    
+    -fx-background-color: #444;
+    -fx-focus-color: #93CCE9;
+
+}
+
+.nav-box {
+/*     -fx-background-image: url("/images/binding_dark.png");*/
+/*    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );*/
+    -fx-background-color:derive(rgb(147, 147, 147), -72%);
+  
+    -fx-background-insets: 6, 6, 6, 6;
+    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
+}
+/*******************************************************************************
+ * Menu Bar			                                               *
+ ******************************************************************************/
+.menu {
+    -fx-background-color: transparent;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; 
+}
+
+.menu-item:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-base-color;
+}
+.menu:hover,
+.menu-button .menu:hover {
+    -fx-text-fill: white;
+    -fx-background-color:  derive(rgb(147, 147, 147), -26%);
+
+} 
+.main-menu {
+    /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
+    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
+    -fx-font-size: 0.875em;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+
+
+    /* Nothing more needed for Mac OS X than the following property!
+     * All other definitions kept from caspian, to ensure, that MenuBar
+     * is shown properly on non-mac systems.
+     */
+    -fx-use-system-menu-bar: true;
+}
+
+.menu-item:focused,
+.menu-item:hover{
+    -fx-background-color: derive(rgb(147, 147, 147), -26%);
+    /*       -fx-background-insets: 1, 1, 1;*/
+
+}
+.menu-button .menu {
+    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
+}
+.menu-bar .menu .label {
+    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
+}
+.menu-button menu showing {
+    -fx-background-color: derive(rgb(147, 147, 147),-26%); 
+}
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    /*    -fx-background-insets: 0, 1, 2;*/
+
+    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+
+#ContentArea {
+    -fx-background-image: url("/resources/images/background.png");
+    -fx-background: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
+}
+#ContentPanel {
+    -fx-background-color: transparent;
+    -fx-background-color: -fx-background;
+    -fx-border-color: derive(rgb(147, 147, 147),60%); 
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
+}
+
+#PropertiesPanel .title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.integer-field {
+    -fx-alignment: BASELINE_LEFT;
+}
+.color-picker {
+    -fx-background-color: transparent;
+}
+.highlight-off-symbol {
+    -fx-background-color: #888888, -fx-background;
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 4,3;
+    -fx-padding: 4;
+}
+.highlight-on-symbol {
+    -fx-background-color: #888888;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-padding: 4;
+}
+
+.big-button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+/* ==== SWITCH STYLED CHECKBOX ============================================== */
+.switch .box{
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-padding: 17 53 0 0;
+    -fx-background-image: url("/images/off.png");
+}
+.switch:selected .box {
+    -fx-background-color: transparent;
+    -fx-background-image: url("/images/on.png");
+}
+.switch:focused .box{
+    -fx-background-color: -fx-focus-color;
+    -fx-padding: 17 53 0 0;
+    -fx-background-image: url("/images/off.png");   
+    -fx-background-insets: -1.4;
+    -fx-background-radius: 3;
+}
+.switch:focused:selected .box {
+    -fx-background-color: -fx-focus-color;
+    -fx-background-image: url("/images/on.png");    
+    -fx-background-insets: -1.4;
+    -fx-background-radius: 4;
+}
+.switch .mark {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+.menu-toggle-button {
+    -fx-base: #00111100;
+    -fx-background-color: #00111100;
+}
+.menu-toggle-button {
+    -fx-font-weight: bold;
+    /*    -fx-background-color:
+            linear-gradient(#99ccff, #99ccff),
+            radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
+    -fx-background-radius: 6, 6, 6, 6;
+    -fx-background-insets: 6, 6, 6, 6;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #AAA;
+}
+.menu-toggle-button:selected {
+    -fx-font-weight: bold;
+    -fx-background-color:
+        linear-gradient(derive(rgb(147,147, 147), -13%),derive(rgb(147,147, 147), -22%)),
+        radial-gradient(center 50% -40%, radius 200%, derive(rgb(147,147, 147), -32%) 45%, derive(rgb(147,147, 147), -49%) 50%);
+    /*    -fx-background-color: #0011114D;*/
+    -fx-background-radius: 6, 6, 6, 6;
+    -fx-background-insets: 6, 6, 6, 6;
+
+}
+
+
