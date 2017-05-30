@@ -8,4 +8,5 @@
 /target/
 .idea/workspace.xml
 /.directory/
+.directory/
 FXExperienceTools/src/test/
