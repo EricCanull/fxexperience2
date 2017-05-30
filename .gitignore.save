@@ -8,6 +8,7 @@
 /target/
 .idea/workspace.xml
 .idea/
-nb.configuration.xml
-.directory/
+
 FXExperienceTools/src/test/
+.directory/
+
