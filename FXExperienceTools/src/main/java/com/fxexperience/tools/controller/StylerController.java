@@ -412,7 +412,7 @@ public class StylerController implements Initializable, ToolsHandler {
     } 
 
     @FXML
-    private void updateCssAction(MouseEvent event) {
+    private void updateCssAction(MouseEvent ev) {
     }
 
    

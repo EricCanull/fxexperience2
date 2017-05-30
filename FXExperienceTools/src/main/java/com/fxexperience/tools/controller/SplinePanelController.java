@@ -36,7 +36,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import static javafx.scene.control.ButtonType.OK;
+import javafx.scene.control.ButtonType;
 
 public class SplinePanelController implements Initializable, ToolsHandler {
    
@@ -148,7 +148,7 @@ public class SplinePanelController implements Initializable, ToolsHandler {
          Clipboard.getSystemClipboard().setContent(
                     Collections.singletonMap(DataFormat.PLAIN_TEXT, code));
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", ButtonType.OK);
         alert.getDialogPane().setId("Code-dialog");
         alert.setHeaderText(null);
         alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
