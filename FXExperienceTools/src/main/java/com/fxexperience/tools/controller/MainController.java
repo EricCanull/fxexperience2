@@ -34,6 +34,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
@@ -251,11 +253,11 @@ public class MainController extends AbstractController implements Initializable 
         Clipboard.getSystemClipboard().setContent(
                 Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
 
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been copied to the clipboard.", ButtonType.OK);
-//        alert.getDialogPane().setId("Code-dialog");
-//        alert.setHeaderText(null);
-//        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-//        alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been copied to the clipboard.", ButtonType.OK);
+        alert.getDialogPane().setId("Code-dialog");
+        alert.setHeaderText(null);
+        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+        alert.showAndWait();
 
     }
 
@@ -273,11 +275,11 @@ public class MainController extends AbstractController implements Initializable 
                 }
             }
 
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been saved.", ButtonType.OK);
-//            alert.getDialogPane().setId("Code-dialog");
-//            alert.setHeaderText(null);
-//            alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-//            alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been saved.", ButtonType.OK);
+            alert.getDialogPane().setId("Code-dialog");
+            alert.setHeaderText(null);
+            alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+            alert.showAndWait();
         }
     }
 

@@ -10,6 +10,7 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.tools.handler.ToolsHandler;
+import com.fxexperience.tools.util.AppPaths;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -34,6 +35,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class SplinePanelController implements Initializable, ToolsHandler {
    
@@ -145,11 +148,11 @@ public class SplinePanelController implements Initializable, ToolsHandler {
          Clipboard.getSystemClipboard().setContent(
                     Collections.singletonMap(DataFormat.PLAIN_TEXT, code));
 
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", ButtonType.OK);
-//        alert.getDialogPane().setId("Code-dialog");
-//        alert.setHeaderText(null);
-//        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-//        alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", ButtonType.OK);
+        alert.getDialogPane().setId("Code-dialog");
+        alert.setHeaderText(null);
+        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
+        alert.showAndWait();
     }
 
     @Override
