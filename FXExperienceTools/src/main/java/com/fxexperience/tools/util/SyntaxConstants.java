@@ -13,34 +13,34 @@ import javafx.collections.ObservableList;
 
 public interface SyntaxConstants {
 
-    public String SPACER = " ";
-    public String SEPARATOR = ", ";
-    public String BGCOLOR = "-fx-background-color: ";
-    public String BGRADIAL = "radial-gradient(";
-    public String BGLINEAR = "linear-gradient(";
-    public String BGGRADEND = ");";
-    public String FOCUSANGLESTART = "focus-angle ";
-    public String FOCUSANGLEUNIT = "deg ";
-    public String FOCUSDISTSTART = "focus-distance ";
-    public String FOCUSDISTUNIT = "% ";
-    public String CENTERSTART = "center ";
-    public String CENTERUNIT = "% ";
-    public String RADIUS = "radius ";
-    public String RADIUSPERCENTUNIT = "% ";
-    public String RADIUSPIXELUNIT = "px ";
-    public String REPEAT = "repeat ";
-    public String REFLECT = "reflect ";
-    public String COLORSTOPUNIT = "% ";
-    public String POINTPERCENTUNIT = "% ";
-    public String POINTPIXELUNIT = "px ";
-    public String FROM = "from ";
-    public String FROMPIXELUNIT = "px ";
-    public String FROMPERCENTUNIT = "% ";
-    public String TO = "to ";
-    public String TOPIXELUNIT = "px ";
-    public String TOPERCENTUNIT = "% ";
+    String SPACER = " ";
+    String SEPARATOR = ", ";
+    String BGCOLOR = "-fx-background-color: ";
+    String BGRADIAL = "radial-gradient(";
+    String BGLINEAR = "linear-gradient(";
+    String BGGRADEND = ");";
+    String FOCUSANGLESTART = "focus-angle ";
+    String FOCUSANGLEUNIT = "deg ";
+    String FOCUSDISTSTART = "focus-distance ";
+    String FOCUSDISTUNIT = "% ";
+    String CENTERSTART = "center ";
+    String CENTERUNIT = "% ";
+    String RADIUS = "radius ";
+    String RADIUSPERCENTUNIT = "% ";
+    String RADIUSPIXELUNIT = "px ";
+    String REPEAT = "repeat ";
+    String REFLECT = "reflect ";
+    String COLORSTOPUNIT = "% ";
+    String POINTPERCENTUNIT = "% ";
+    String POINTPIXELUNIT = "px ";
+    String FROM = "from ";
+    String FROMPIXELUNIT = "px ";
+    String FROMPERCENTUNIT = "% ";
+    String TO = "to ";
+    String TOPIXELUNIT = "px ";
+    String TOPERCENTUNIT = "% ";
 
-    public enum RepeatOrReflect {
+    enum RepeatOrReflect {
         NONE("None"), 
         REPEAT("repeat"), 
         REFLECT("reflect");
@@ -63,7 +63,7 @@ public interface SyntaxConstants {
         }
     }
 
-    public enum LinearDirection {
+    enum LinearDirection {
         TOP("top"), 
         LEFT("left"), 
         BOTTOM("bottom"), 

@@ -112,8 +112,8 @@ public class MainController extends AbstractController implements Initializable 
     public boolean loadTool(int id, String fxml) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(fxml));
-            Parent loadScreen = (Parent) myLoader.load();
-            ToolsHandler toolsHandler = ((ToolsHandler) myLoader.getController());
+            Parent loadScreen = myLoader.load();
+            ToolsHandler toolsHandler = myLoader.getController();
             toolsHandler.setParentTool(rootContainer);
             addTool(id, loadScreen);
           

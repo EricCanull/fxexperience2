@@ -261,8 +261,8 @@ public class StylerController implements Initializable, ToolsHandler {
          //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: "+ "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;",true, 4));
-       cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getWebColor() + ";",true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getWebColor() + ";", true, 4));
+       cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getMenuButton().getText() + ";",true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getMenuButton().getText() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getWebColor() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getWebColor() + ";", true, 4));
         

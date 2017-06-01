@@ -152,7 +152,7 @@ public class ColorPickerControl extends VBox {
         // Investigate why height + width listeners do not work
         // Indeed, the picker_handle_stackpane bounds may still be null at this point
         // UPDATE BELOW TO BE CALLED ONCE ONLY AT DISPLAY TIME
-        picker_region.boundsInParentProperty().addListener((ChangeListener<Bounds>) (ov, oldb, newb) -> {
+        picker_region.boundsInParentProperty().addListener((ov, oldb, newb) -> {
             picker_scrollpane.setHvalue(0.5);
             picker_scrollpane.setVvalue(0.5);
             // Init time only
@@ -210,7 +210,7 @@ public class ColorPickerControl extends VBox {
         hexa_textfield.focusedProperty().addListener(onHexaFocusedChange);
 
         // Slider ON VALUE CHANGE event handler
-        hue_slider.valueProperty().addListener((ChangeListener<Number>) (ov, oldValue, newValue) -> {
+        hue_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
             if (updating == true) {
                 return;
             }
@@ -224,7 +224,7 @@ public class ColorPickerControl extends VBox {
             // Update model
             setPaintProperty(color);
         });
-        alpha_slider.valueProperty().addListener((ChangeListener<Number>) (ov, oldValue, newValue) -> {
+        alpha_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
             if (updating == true) {
                 return;
             }

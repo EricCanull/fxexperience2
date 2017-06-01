@@ -275,7 +275,7 @@ public class ColorEncoder {
 
         brightness = cmax;
         if (cmax != 0)
-            saturation = (double) (cmax - cmin) / cmax;
+            saturation = (cmax - cmin) / cmax;
         else
             saturation = 0;
 

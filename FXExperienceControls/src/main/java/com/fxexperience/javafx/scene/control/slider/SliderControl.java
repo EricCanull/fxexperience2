@@ -91,7 +91,7 @@ public class SliderControl extends GridPane {
         slider_slider.setValue(initVal);
         slider_textfield.setText(Double.toString(initVal));
 
-        slider_slider.valueProperty().addListener((ChangeListener<Number>) (ov, oldValue, newValue) -> {
+        slider_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
             double rounded = round(newValue.doubleValue(), roundingFactor);
             slider_textfield.setText(Double.toString(rounded));
         });

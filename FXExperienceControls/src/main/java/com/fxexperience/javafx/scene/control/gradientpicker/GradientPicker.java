@@ -259,7 +259,7 @@ public class GradientPicker extends VBox {
         // Select first default stop
         setSelectedStop(black);
         proportional_checkbox.setSelected(true);
-        proportional_checkbox.selectedProperty().addListener((ChangeListener<Boolean>) (ov, oldValue, newValue) -> {
+        proportional_checkbox.selectedProperty().addListener((ov, oldValue, newValue) -> {
             final Mode mode = paintPicker.getMode();
             final Paint value = getValue(mode);
             // Update UI
@@ -273,7 +273,7 @@ public class GradientPicker extends VBox {
 
         cycleMethod_choicebox.setItems(FXCollections.observableArrayList(CycleMethod.values()));
         cycleMethod_choicebox.getSelectionModel().selectFirst();
-        cycleMethod_choicebox.getSelectionModel().selectedItemProperty().addListener((ChangeListener<CycleMethod>) (ov, oldValue, newValue) -> {
+        cycleMethod_choicebox.getSelectionModel().selectedItemProperty().addListener((ov, oldValue, newValue) -> {
             final Mode mode = paintPicker.getMode();
             final Paint value = getValue(mode);
             // Update UI

@@ -162,9 +162,9 @@ public class PaintPickerController {
             if (value instanceof Color) {
                 colorPicker.updateUI((Color) value);
             } else if (value instanceof LinearGradient) {
-                gradientPicker.updateUI((LinearGradient) value);
+                gradientPicker.updateUI(value);
             } else if (value instanceof RadialGradient) {
-                gradientPicker.updateUI((RadialGradient) value);
+                gradientPicker.updateUI(value);
             } else {
                 // Case not yet handled
                 assert value instanceof ImagePattern;
@@ -186,7 +186,7 @@ public class PaintPickerController {
         setPaintProperty(DEFAULT_COLOR);
 
         // Resize the window so it matches the selected editor size
-        root_vbox.heightProperty().addListener((ChangeListener<Number>) (ov, t, t1) -> {
+        root_vbox.heightProperty().addListener((ov, t, t1) -> {
             final Window window = root_vbox.getScene().getWindow();
             window.sizeToScene();
         });

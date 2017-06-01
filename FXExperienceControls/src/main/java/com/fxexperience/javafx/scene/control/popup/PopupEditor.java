@@ -27,6 +27,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.ColorPicker;
 
 /**
@@ -42,9 +43,10 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
     private StackPane editorHost;
     @FXML
     private Rectangle rectangle;
+    
+   // private SimpleStringProperty colorText = new SimpleStringProperty();
 
-    @FXML
-    private MenuButton menuButton;
+    @FXML private MenuButton menuButton;
 
     ColorPicker colorPicker = new ColorPicker();
 
@@ -56,6 +58,10 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
 
     public ObjectProperty<Color> colorProperty() {
         return color;
+    }
+    
+    public MenuButton getMenuButton() {
+        return this.menuButton;
     }
 
     public Color getColor() {
@@ -99,7 +105,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
                 return getWebColor();
             }
         });
-        menuButton.showingProperty().addListener((ChangeListener<Boolean>) (ov, previousVal, newVal) -> {
+        menuButton.showingProperty().addListener((ov, previousVal, newVal) -> {
             if (newVal) {
                 if (!initialized) {
 
@@ -114,9 +120,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
         });
 
         rectangle.fillProperty().bind(new ObjectBinding<Paint>() {
-            {
-                bind(color);
-            }
+            { bind(color); }
 
             @Override
             protected Paint computeValue() {

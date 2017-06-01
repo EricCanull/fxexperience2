@@ -97,7 +97,7 @@ public class PaintPicker extends Pane {
         return controller.isLiveUpdate();
     }
     
-    public static interface Delegate {
-        public void handleError(String warningKey, Object... arguments);
+    public interface Delegate {
+        void handleError(String warningKey, Object... arguments);
     }
 }
