@@ -8,5 +8,9 @@
 /target/
 .idea/workspace.xml
 .directory
+fxexperience2.iml
 FXExperienceControls.iml
 FXExperienceTools/src/test/
+FXExperienceTools.iml
+
+\.idea/
