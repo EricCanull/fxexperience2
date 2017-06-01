@@ -37,7 +37,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root_vbox" spacing="5.0" styleClass="root" stylesheets="@../styles/paintpicker.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
+<VBox fx:id="root_vbox" spacing="5.0" styleClass="paint-picker-container" stylesheets="@../styles/paintpicker.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
   <children>
     <HBox alignment="TOP_CENTER">
       <children>

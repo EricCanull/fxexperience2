@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import com.fxexperience.javafx.scene.control.paintpicker.DoubleTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -46,9 +47,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import com.fxexperience.javafx.scene.control.paintpicker.*?>
 
-<fx:root maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="" styleClass="vbox-root" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0">
       <children>
@@ -107,13 +107,13 @@
           </GridPane.margin>
         </StackPane>
         <DoubleTextField fx:id="alpha_textfield" onAction="#onActionAlpha" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="6" GridPane.margin="$x2" GridPane.rowIndex="0" />
-        <DoubleTextField fx:id="hue_textfield" onAction="#onActionHue" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <DoubleTextField fx:id="hue_textfield" onAction="#onActionHue" prefColumnCount="3" prefWidth="-1.0" GridPane.rowIndex="1" />
         <DoubleTextField fx:id="saturation_textfield" onAction="#onActionSaturation" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <DoubleTextField fx:id="brightness_textfield" onAction="#onActionBrightness" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
         <DoubleTextField fx:id="red_textfield" onAction="#onActionRed" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
         <DoubleTextField fx:id="green_textfield" onAction="#onActionGreen" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
         <DoubleTextField fx:id="blue_textfield" onAction="#onActionBlue" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-        <Label styleClass="small-label" text="H°" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label styleClass="small-label" text="H°" GridPane.rowIndex="2" />
         <Label styleClass="small-label" text="S %" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <Label styleClass="small-label" text="B %" GridPane.columnIndex="2" GridPane.rowIndex="2" />
         <Label styleClass="small-label" text="R" GridPane.columnIndex="4" GridPane.rowIndex="2" />
@@ -131,8 +131,8 @@
       </columnConstraints>
       <rowConstraints>
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="5.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
   </children>

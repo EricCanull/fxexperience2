@@ -9,6 +9,7 @@ import javafx.scene.control.Control;
  *
  */
 public class InputField extends Control {
+
     /**
      * The default value for {@link #prefColumnCount}.
      */
@@ -20,16 +21,26 @@ public class InputField extends Control {
      * pseudo class will be true.
      */
     private BooleanProperty editable = new SimpleBooleanProperty(this, "editable", true);
-    public final boolean isEditable() { return editable.getValue(); }
-    public final void setEditable(boolean value) { editable.setValue(value); }
-    public final BooleanProperty editableProperty() { return editable; }
+
+    public final boolean isEditable() {
+        return editable.getValue();
+    }
+
+    public final void setEditable(boolean value) {
+        editable.setValue(value);
+    }
+
+    public final BooleanProperty editableProperty() {
+        return editable;
+    }
 
     /**
      * The {@code InputField}'s prompt text to display, or
      * <tt>null</tt> if no prompt text is displayed.
      */
     private StringProperty promptText = new StringPropertyBase("") {
-        @Override protected void invalidated() {
+        @Override
+        protected void invalidated() {
             // Strip out newlines
             String txt = get();
             if (txt != null && txt.contains("\n")) {
@@ -38,20 +49,36 @@ public class InputField extends Control {
             }
         }
 
-        @Override public Object getBean() { return InputField.this; }
-        @Override public String getName() { return "promptText"; }
-    };
-    public final StringProperty promptTextProperty() { return promptText; }
-    public final String getPromptText() { return promptText.get(); }
-    public final void setPromptText(String value) { promptText.set(value); }
+        @Override
+        public Object getBean() {
+            return InputField.this;
+        }
 
+        @Override
+        public String getName() {
+            return "promptText";
+        }
+    };
+
+    public final StringProperty promptTextProperty() {
+        return promptText;
+    }
+
+    public final String getPromptText() {
+        return promptText.get();
+    }
+
+    public final void setPromptText(String value) {
+        promptText.set(value);
+    }
 
     /**
-     * The preferred number of text columns. This is used for
-     * calculating the {@code InputField}'s preferred width.
+     * The preferred number of text columns. This is used for calculating the
+     * {@code InputField}'s preferred width.
      */
     private IntegerProperty prefColumnCount = new IntegerPropertyBase(DEFAULT_PREF_COLUMN_COUNT) {
-        @Override public void set(int value) {
+        @Override
+        public void set(int value) {
             if (value < 0) {
                 throw new IllegalArgumentException("value cannot be negative.");
             }
@@ -59,12 +86,28 @@ public class InputField extends Control {
             super.set(value);
         }
 
-        @Override public Object getBean() { return InputField.this; }
-        @Override public String getName() { return "prefColumnCount"; }
+        @Override
+        public Object getBean() {
+            return InputField.this;
+        }
+
+        @Override
+        public String getName() {
+            return "prefColumnCount";
+        }
     };
-    public final IntegerProperty prefColumnCountProperty() { return prefColumnCount; }
-    public final int getPrefColumnCount() { return prefColumnCount.getValue(); }
-    public final void setPrefColumnCount(int value) { prefColumnCount.setValue(value); }
+
+    public final IntegerProperty prefColumnCountProperty() {
+        return prefColumnCount;
+    }
+
+    public final int getPrefColumnCount() {
+        return prefColumnCount.getValue();
+    }
+
+    public final void setPrefColumnCount(int value) {
+        prefColumnCount.setValue(value);
+    }
 
     /**
      * The action handler associated with this InputField, or
@@ -73,16 +116,33 @@ public class InputField extends Control {
      * The action handler is normally called when the user types the ENTER key.
      */
     private final ObjectProperty<EventHandler<ActionEvent>> onAction = new ObjectPropertyBase<EventHandler<ActionEvent>>() {
-        @Override protected void invalidated() {
+        @Override
+        protected void invalidated() {
             setEventHandler(ActionEvent.ACTION, get());
         }
 
-        @Override public Object getBean() { return InputField.this; }
-        @Override public String getName() { return "onAction"; }
+        @Override
+        public Object getBean() {
+            return InputField.this;
+        }
+
+        @Override
+        public String getName() {
+            return "onAction";
+        }
     };
-    public final ObjectProperty<EventHandler<ActionEvent>> onActionProperty() { return onAction; }
-    public final EventHandler<ActionEvent> getOnAction() { return onActionProperty().get(); }
-    public final void setOnAction(EventHandler<ActionEvent> value) { onActionProperty().set(value); }
+
+    public final ObjectProperty<EventHandler<ActionEvent>> onActionProperty() {
+        return onAction;
+    }
+
+    public final EventHandler<ActionEvent> getOnAction() {
+        return onActionProperty().get();
+    }
+
+    public final void setOnAction(EventHandler<ActionEvent> value) {
+        onActionProperty().set(value);
+    }
 
     /**
      * Creates a new InputField. The style class is set to "money-field".
@@ -91,7 +151,8 @@ public class InputField extends Control {
         getStyleClass().setAll("input-field");
     }
 
-    @Override public String getUserAgentStylesheet() {
+    @Override
+    public String getUserAgentStylesheet() {
         return getClass().getResource("/styles/InputField.css").toExternalForm();
     }
 }

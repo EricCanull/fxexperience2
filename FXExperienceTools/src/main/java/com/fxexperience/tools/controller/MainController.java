@@ -122,7 +122,7 @@ public class MainController extends AbstractController implements Initializable 
             }
             return true;
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+           Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }

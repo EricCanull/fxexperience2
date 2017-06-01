@@ -30,6 +30,7 @@
     -fx-padding: 3 5 3 5;
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
     -fx-cursor: text;
+   -fx-font-size: 0.875em;
 }
 
 .integer-field:focused {

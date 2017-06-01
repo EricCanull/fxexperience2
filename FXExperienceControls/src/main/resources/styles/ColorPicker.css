@@ -37,7 +37,7 @@
     -fx-border-color: -fx-box-border, white;
     -fx-border-insets: 0, 1;
     -fx-background-color: white;
-    -fx-background-image: url("/images/chequers.png");
+    -fx-background-image: url("../images/chequers.png");
     -fx-background-position: center;
 }
 .hue-slider {
@@ -49,7 +49,7 @@
 }
 /* opacity slider background is applied to a region behind the slider itself */
 .opacity-slider-background {
-    -fx-background-image: url("/images/chequers.png");
+    -fx-background-image: url("../images/chequers.png");
     -fx-background-position: left center;
     -fx-background-radius: 0;
 }
