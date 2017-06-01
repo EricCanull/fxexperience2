@@ -44,9 +44,13 @@
     -fx-background-insets: 0 4 0 4;
     -fx-background-radius: 0;
 }
-.theme-presets .property-sheet .slider > .track {
+.hue-slider .track {
     -fx-background-color: transparent;
 }
+.opacity-slider .track {
+    -fx-background-color: transparent;
+}
+
 /* opacity slider background is applied to a region behind the slider itself */
 .opacity-slider-background {
     -fx-background-image: url("../images/chequers.png");

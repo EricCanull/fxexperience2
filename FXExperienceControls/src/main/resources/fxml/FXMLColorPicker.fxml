@@ -48,7 +48,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0">
       <children>
@@ -100,7 +100,7 @@
               </StackPane.margin>
             </Region>
             <Region fx:id="alpha_region" maxWidth="1000.0" prefHeight="-1.0" prefWidth="-1.0" style="" />
-            <Slider fx:id="alpha_slider" blockIncrement="0.01" max="1.0" styleClass="opacity-slider" />
+            <Slider fx:id="alpha_slider" blockIncrement="0.01" max="1.0" styleClass="opacity-slider" value="1.0" />
           </children>
           <GridPane.margin>
             <Insets bottom="2.0" fx:id="x2" />
