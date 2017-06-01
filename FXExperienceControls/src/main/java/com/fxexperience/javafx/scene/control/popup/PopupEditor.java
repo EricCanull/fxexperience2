@@ -16,9 +16,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.MenuButton;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -27,7 +25,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.ColorPicker;
 
 /**
@@ -35,18 +32,11 @@ import javafx.scene.control.ColorPicker;
  *
  * @author ericc
  */
-public class PopupEditor extends HBox implements PopupEditorValidation {
+public class PopupEditor extends MenuButton implements PopupEditorValidation {
 
-    @FXML
-    private CustomMenuItem customMenuItem;
-    @FXML
-    private StackPane editorHost;
-    @FXML
-    private Rectangle rectangle;
-    
-   // private SimpleStringProperty colorText = new SimpleStringProperty();
-
-    @FXML private MenuButton menuButton;
+  
+    @FXML private StackPane editorHost;
+    @FXML private Rectangle rectangle;
 
     ColorPicker colorPicker = new ColorPicker();
 
@@ -59,11 +49,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
     public ObjectProperty<Color> colorProperty() {
         return color;
     }
-    
-    public MenuButton getMenuButton() {
-        return this.menuButton;
-    }
-
+  
     public Color getColor() {
         return color.get();
     }
@@ -92,10 +78,10 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
     }
 
     private void initializePopup(Object startColor) {
-        menuButton.setText(getPreviewString(startColor));
+        setText(getPreviewString(startColor));
         color.set((Color) startColor);
 
-        menuButton.textProperty().bind(new StringBinding() {
+        this.textProperty().bind(new StringBinding() {
             {
                 bind(color);
             }
@@ -105,7 +91,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
                 return getWebColor();
             }
         });
-        menuButton.showingProperty().addListener((ov, previousVal, newVal) -> {
+        this.showingProperty().addListener((ov, previousVal, newVal) -> {
             if (newVal) {
                 if (!initialized) {
 
@@ -146,7 +132,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
     };
 
     public final String getColorText() {
-        return getPreviewString(menuButton);
+        return getPreviewString(this.color.getValue());
     }
 
     public String getPreviewString(Object value) {

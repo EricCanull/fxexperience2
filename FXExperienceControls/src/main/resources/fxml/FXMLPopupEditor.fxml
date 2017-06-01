@@ -34,23 +34,18 @@
 
 <?import javafx.scene.control.CustomMenuItem?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root spacing="2.0" styleClass="color-hbox" stylesheets="@../styles/PopupEditor.css" type="HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-    <MenuButton fx:id="menuButton" alignment="BOTTOM_LEFT" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="125.0" styleClass="custom-menu-button" text="value" HBox.hgrow="ALWAYS">
-      <items>
-        <CustomMenuItem fx:id="popupMenuItem" hideOnClick="false" mnemonicParsing="false" styleClass="custom-menu-item" text="Unspecified Action">
-          <content>
-            <StackPane fx:id="editorHost" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="popup-pane" />
-          </content>
-        </CustomMenuItem>
-      </items>
-         <graphic>
-            <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#0084ff" height="15.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
-         </graphic>
-    </MenuButton>
-   </children>
+<fx:root alignment="BOTTOM_LEFT" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="125.0" styleClass="custom-menu-button" stylesheets="@../styles/PopupEditor.css" text="value" type="MenuButton" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<items>
+  <CustomMenuItem hideOnClick="false" mnemonicParsing="false" styleClass="custom-menu-item" text="Unspecified Action">
+    <content>
+      <StackPane fx:id="editorHost" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="popup-pane" />
+    </content>
+  </CustomMenuItem>
+</items>
+   <graphic>
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#0084ff" height="15.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+   </graphic>
 </fx:root>
