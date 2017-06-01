@@ -21,11 +21,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.011834319526627219" style="-fx-background-color: transparent;" styleClass="split-pane-caspian" stylesheets="@../styles/styler.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.StylerController">
+<SplitPane dividerPositions="0.011834319526627219" styleClass="split-pane" stylesheets="@../styles/styler.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.StylerController">
   <items>
     <AnchorPane id="ContentArea" fx:id="previewAnchorPane">
          <children>
-            <BorderPane id="Border-pane" fx:id="previewPane" prefHeight="530.0" style="-fx-background-color: #111;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane id="Border-pane" fx:id="previewPane" prefHeight="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children></AnchorPane>
       <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0">
          <children>
@@ -60,7 +60,7 @@
                                              </items>
                                           </ChoiceBox>
                                           <Label alignment="CENTER" styleClass="prop-label" text="Font Name:" />
-                                          <Slider fx:id="fontSizeSlider" max="30.0" min="6.0" onDragDetected="#updateCssAction" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Slider fx:id="fontSizeSlider" max="30.0" min="6.0" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label id="label12" styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>

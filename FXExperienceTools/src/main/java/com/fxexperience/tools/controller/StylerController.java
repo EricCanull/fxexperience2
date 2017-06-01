@@ -31,7 +31,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -40,6 +39,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
 public class StylerController implements Initializable, ToolsHandler {
+
     private Node stylerController;
     // Common Properties
     @FXML private GridPane textGridPanel;
@@ -53,7 +53,7 @@ public class StylerController implements Initializable, ToolsHandler {
     // Tabs
     @FXML private GridPane simpleGridPane;
       
-    private final PopupEditor basePicker = new PopupEditor(Color.web("#d0d0d0"));
+    private final PopupEditor basePicker = new PopupEditor(Color.web("#D0D0D0"));
     private final PopupEditor backgroundColorPicker = new PopupEditor(Color.web("#f4f4f4"));
     private final PopupEditor focusColorPicker = new PopupEditor(Color.web("#0093ff"));
     private final PopupEditor textColorPicker = new PopupEditor(Color.web("#000000"));
@@ -241,6 +241,7 @@ public class StylerController implements Initializable, ToolsHandler {
         previewPanel.setStyle(css);
     }
     
+     
     private String createCSS(boolean isRoot) {
        
         int fontSize = (int) fontSizeSlider.getValue();
@@ -255,7 +256,7 @@ public class StylerController implements Initializable, ToolsHandler {
         if (isRoot) {
             cssBuffer.append(".root {\n");
         } else {
-            cssBuffer.append("#Preview-area \n");
+            cssBuffer.append("#Preview-area {\n");
         }
          //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: "+ "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
@@ -410,10 +411,6 @@ public class StylerController implements Initializable, ToolsHandler {
 
         return cssBuffer.toString();
     } 
-
-    @FXML
-    private void updateCssAction(MouseEvent ev) {
-    }
 
    
     public void getCopiedStyleSheet() {

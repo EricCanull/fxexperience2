@@ -31,12 +31,13 @@
    <children>
       <AnchorPane prefHeight="450.0" prefWidth="650.0">
          <children>
-            <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
+            <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0">
                <children>
                   <Button id="button1" minWidth="120.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <GridPane.margin>
                         <Insets />
-                     </GridPane.margin></Button>
+                     </GridPane.margin>
+                  </Button>
                   <ToggleButton id="toggleButton1" minWidth="120.0" prefWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets />

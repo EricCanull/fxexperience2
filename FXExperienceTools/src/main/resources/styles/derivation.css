@@ -12,7 +12,6 @@ different terms and without source code for the larger work.
 */
 .derivation-root {
     -fx-background-image: url("/images/dirtyshirt.png");
-    -fx-background: black;
 }
 
 #gridPane {

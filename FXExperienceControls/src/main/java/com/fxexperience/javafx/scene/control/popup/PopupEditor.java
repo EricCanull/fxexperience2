@@ -96,7 +96,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
 
             @Override
             protected String computeValue() {
-                return getWebColor(getColor());
+                return getWebColor();
             }
         });
         menuButton.showingProperty().addListener((ChangeListener<Boolean>) (ov, previousVal, newVal) -> {
@@ -107,7 +107,7 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
                     editorHost.getChildren().add(getPopupContentNode());
                     paintPicker.paintProperty().addListener(paintChangeListener);
                 }
-
+               
                 paintPicker.setPaintProperty(color.get());
             }
 
@@ -160,17 +160,9 @@ public class PopupEditor extends HBox implements PopupEditorValidation {
         return ColorEncoder.encodeColor((Color) value);
     }
 
-    private static String getWebColor(Color color) {
-        final int red = (int) (color.getRed() * 255);
-        final int green = (int) (color.getGreen() * 255);
-        final int blue = (int) (color.getBlue() * 255);
-        return "#" + String.format("%02X", red)
-                + String.format("%02X", green)
-                + String.format("%02X", blue);
-    }
-
     public String getWebColor() {
-        return getWebColor(getColor());
+        String webColor = color.get().toString();
+        return "#" + webColor.substring(2, webColor.length());
     }
 
     private Node getPopupContentNode() {

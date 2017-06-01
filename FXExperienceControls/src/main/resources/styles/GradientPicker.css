@@ -45,7 +45,7 @@
     -fx-border-color: -fx-box-border, white;
     -fx-border-insets: 0, 1;
     -fx-background-color: white;
-    -fx-background-image: url("/images/chequers.png");
+    -fx-background-image: url("../images/chequers.png");
     -fx-background-position: center;
 }
 

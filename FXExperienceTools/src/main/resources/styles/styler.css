@@ -21,17 +21,16 @@ different terms and without source code for the larger work.
     -fx-border-radius: 3 3 3 3;
     -fx-background-radius: 3 3 3 3;
 }
+.split-pane {
+       -fx-background-color: #444;
+ 
+}
 
+.split-pane-divider {
+    -fx-background-color: transparent;
+}
 #gradientComboBox .label{
     -fx-border-color: -fe-light-border;
-}
-
-#ContentArea {
-    -fx-background: black;
-}
-
-anchor-pane {
-    -fx-background-color:  #5A5A5A;
 }
 
 accordian-prop .titled-pane {

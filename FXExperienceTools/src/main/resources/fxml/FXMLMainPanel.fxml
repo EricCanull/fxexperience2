@@ -17,7 +17,7 @@
 
 <BorderPane minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane id="AnchorPane" stylesheets="@../styles/main.css" BorderPane.alignment="CENTER">
+      <AnchorPane BorderPane.alignment="CENTER">
           <children>
               <StackPane fx:id="rootContainer" alignment="TOP_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>

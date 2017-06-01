@@ -40,7 +40,7 @@
 }
 .rotation-handle {
     -fx-background-color: null;
-    -fx-background-image: url("/images/rotate-handle.png");
+    -fx-background-image: url("../images/rotate-handle.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: right;
 }

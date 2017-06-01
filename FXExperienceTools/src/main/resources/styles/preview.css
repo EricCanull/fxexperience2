@@ -15,6 +15,6 @@ different terms and without source code for the larger work.
 }
 
 #Preview-area {
-    -fx-background-image: url("/images/background.png");
+    -fx-background-image: url("../images/chequers.png");
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }

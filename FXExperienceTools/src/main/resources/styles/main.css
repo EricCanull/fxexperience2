@@ -89,14 +89,10 @@ different terms and without source code for the larger work.
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
 
-#ContentArea {
-    -fx-background-image: url("/resources/images/background.png");
-    -fx-background: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
-}
+
 #ContentPanel {
-    -fx-background-color: transparent;
-    -fx-background-color: -fx-background;
+/*    -fx-background-color: transparent;*/
+  -fx-background-color: -fx-background;
     -fx-border-color: derive(rgb(147, 147, 147),60%); 
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
 }
