@@ -5,7 +5,6 @@
 This is an updated repo to the original fxexperience created by
 Jasper Potts. Originally intended to coincide with the [fxexperience 
 blog](http://fxexperience.com/). 
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/fxtoolscreenshot.png "Screenshot")
 
 ### What's Included? 
 1. FXExperience-Tools 
@@ -19,5 +18,8 @@ blog](http://fxexperience.com/).
 	- Jasper's colorpicker tool.
 	
 			
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/fxtoolscreenshot.png "Screenshot")
+
+
 For more info about this app and other JavaFX features please
  see this [blog announcement](http://fxexperience.com/2012/03/announcing-fx-experience-tools/).
