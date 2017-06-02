@@ -151,7 +151,7 @@ public class PopupEditor extends MenuButton implements PopupEditorValidation {
     }
 
     public String getWebColor() {
-        String webColor = color.get().toString();
+        String webColor = color.get().toString().toUpperCase();
         return "#" + webColor.substring(2, webColor.length());
     }
 

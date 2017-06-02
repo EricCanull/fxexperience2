@@ -11,18 +11,63 @@ different terms and without source code for the larger work.
     Author     : ericc
 */
 .root {
-    -fe-dark-body-background: #525252;
-    -fe-dark-inner-background: #454545;
-    -fe-light-border: #565656;
+    -fe-dark-body-background: #494949;
+    -fe-dark-inner-background: #424242;
+    -fe-light-border: #797979;
     -fe-light-body-text: #DCDCDC;
     -fe-light-inner-text: #C2C2C3;
 
     -fx-background-color: #323232;
     -fx-focus-color: #339797;
 }
+/*******************************************************************************
+ * Popup Color Picker MenuButton 			                                               *
+ ******************************************************************************/
+.popup-pane {
+    -fx-background-color: -fe-dark-body-background;
+    -fx-border-color: -fe-light-border;
+    -fx-focus-color:-fe-light-border;
+    -fx-padding: 0;
+}
+.custom-menu-button {
+    -fx-border-insets: -2;
+    -fx-background-insets: -2;
+}
+.custom-menu-button .arrow {
+    -fx-background-color: #c9c7c8;
+}
+
+.custom-menu-button {
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), -fe-light-border, derive(rgb(147, 147, 147), 40%), -fe-dark-inner-background;
+    -fx-border-color: -fe-light-border;
+    -fx-font-size: 0.875em;
+}
+.custom-menu-item:focused,
+.custom-menu-item:hover{
+    -fx-text-fill: #FFF;
+    -fx-border-color: -fe-light-border;
+    -fx-focus-color: -fe-light-border;
+    /*       -fx-background-insets: 1, 1, 1;*/
+    -fx-background-radius: 1, 1, 1;
+}
+
+.custom-menu-button .label .text {
+    -fx-fill: -fe-light-inner-text;
+}
+.color-label {
+    -fx-text-fill: -fe-light-body-text;
+    -fx-font-size: 0.1em;
+    /*     -fx-padding: 0 0 0 5;*/
+}
+.color-text-field {
+    -fx-text-fill: -fe-light-body-text;
+    -fx-font-size: 0.1em;
+    -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
+}
 
 #gradientComboBox .list-cell {
     -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-light-border;
     -fx-text-fill:  -fe-light-inner-text;
 }
 #gradientComboBox {
@@ -41,9 +86,7 @@ different terms and without source code for the larger work.
     -fx-background-color: transparent;
 
 }
-#gradientComboBox .label{
-    -fx-border-color: -fe-light-border;
-}
+
 
 
 

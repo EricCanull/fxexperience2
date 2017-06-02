@@ -12,14 +12,14 @@ different terms and without source code for the larger work.
 */
 
 .root {
-    -fe-dark-body-background: #525252;
-    -fe-dark-inner-background: #454545;
-    -fe-light-border: #878787;
+    -fe-dark-body-background: #494949;
+    -fe-dark-inner-background: #424242;
+    -fe-light-border: #797979;
     -fe-light-body-text: #DCDCDC;
     -fe-light-inner-text: #C2C2C3;
 
     -fx-background-color: #323232;
-    -fx-focus-color: #93CCE9;
+    -fx-focus-color: #339797;
 }
 .nav-box {
 /*     -fx-background-image: url("/images/binding_dark.png");*/
@@ -85,43 +85,6 @@ different terms and without source code for the larger work.
 
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
-}
-/*******************************************************************************
- * Popup Color Picker MenuButton 			                                               *
- ******************************************************************************/
-.popup-pane {
-    -fx-background-color: -fe-dark-body-background;
-    -fx-border-color: -fe-light-border;
-    -fx-focus-color: derive(rgb(147, 147, 147), -23%);
-    -fx-padding: 0;
-}
-
-.custom-menu-button {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), -fe-light-border, derive(rgb(147, 147, 147), 40%), -fe-dark-inner-background;
-    -fx-border-color: -fe-light-border;
-    -fx-font-size: 0.875em;
-}
-.custom-menu-item:focused,
-.custom-menu-item:hover{
-    -fx-text-fill: #FFF;
-    -fx-border-color: -fe-light-border;
-    -fx-focus-color: -fe-light-border;
-    /*       -fx-background-insets: 1, 1, 1;*/
-    -fx-background-radius: 1, 1, 1;
-}
-
-.custom-menu-button .label .text {
-    -fx-fill: derive(rgb(147, 147, 147), 25%);
-}
-.color-label {
-    -fx-text-fill: derive(rgb(147, 147, 147), 35%);
-    -fx-font-size: 0.875em;
-    /*     -fx-padding: 0 0 0 5;*/
-}
-.color-text-field {
-    -fx-text-fill: derive(rgb(147, 147, 147), 35%);
-    -fx-font-size: 0.875em;
-    -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
 }
 
 /*******************************************************************************

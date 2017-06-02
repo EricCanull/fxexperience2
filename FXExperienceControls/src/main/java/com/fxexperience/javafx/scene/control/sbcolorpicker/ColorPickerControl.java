@@ -440,7 +440,7 @@ public class ColorPickerControl extends VBox {
         int blue = (int) (color.getBlue() * 255);
 
       //  final String hexa = String.format("#%02x%02x%02x", red, green, blue); //NOI18N
-        final String hexa = "#" + color.toString().substring(2, color.toString().length());
+        final String hexa = "#" + color.toString().toUpperCase().substring(2, color.toString().length());
 
         // Set TextFields value
         hue_textfield.setText(String.valueOf((int) hue));

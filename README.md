@@ -5,6 +5,7 @@
 This is an updated repo to the original fxexperience created by
 Jasper Potts. Originally intended to coincide with the [fxexperience 
 blog](http://fxexperience.com/). 
+![alt text](https://ibb.co/bvL0Xa "Screenshot")
 
 ### What's Included? 
 1. FXExperience-Tools 
