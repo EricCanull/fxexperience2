@@ -41,6 +41,7 @@ import javafx.stage.FileChooser;
 public class StylerController implements Initializable, ToolsHandler {
 
     private Node stylerController;
+
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -73,18 +74,17 @@ public class StylerController implements Initializable, ToolsHandler {
     @FXML private Slider borderSlider;
     @FXML private Slider shadowSlider;
     @FXML private Slider inputBorderSlider;
-    @FXML private Slider inputOuterBorderSlider;
-    
+
     @FXML private ToggleButton baseTextToggle;
     @FXML private ToggleButton backgroundTextToggle;
     @FXML private ToggleButton fieldTextToggle;
    
-    @FXML private CheckBox bodyTopMiddleComboBox;
-    @FXML private CheckBox bodyBottomMiddleComboBox;
-    @FXML private CheckBox borderComboBox;
-    @FXML private CheckBox shadowComboBox;
-    @FXML private CheckBox inputBorderComboBox;
-    @FXML private CheckBox inputOuterBorderComboBox;
+    @FXML private ToggleButton topMiddleToggle;
+    @FXML private ToggleButton bottomMiddleToggle;
+    @FXML private ToggleButton borderToggle;
+    @FXML private ToggleButton shadowToggle;
+    @FXML private ToggleButton inputBorderToggle;
+
     @FXML private BorderPane previewPane;
    
     private Parent previewPanel;
@@ -121,19 +121,11 @@ public class StylerController implements Initializable, ToolsHandler {
         createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 2, 1);
         createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel, 2, 2);
         
-        // ------------- SIMPLE TAB --------------------------------------------
-        simpleGridPane.getChildren().addAll(
-                basePicker,
-//                baseColorPicker,
-                backgroundColorPicker, 
-                focusColorPicker, 
-                textColorPicker, 
-                fieldBackgroundPicker, 
-                fieldTextColorPicker,
-                bkgdTextColorPicker);
+        // Add color pickers Title Pane
+        simpleGridPane.getChildren().addAll(basePicker, backgroundColorPicker, focusColorPicker,
+                textColorPicker, fieldBackgroundPicker, fieldTextColorPicker, bkgdTextColorPicker);
        
-        // create color pickers
-       // GridPane.setConstraints(baseColorPicker, 1, 1);
+        // Set color pickers grid constraints
         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
         GridPane.setConstraints(textColorPicker, 1, 1);
         GridPane.setConstraints(backgroundColorPicker, 1, 2);
@@ -187,20 +179,27 @@ public class StylerController implements Initializable, ToolsHandler {
             bodyTopSlider.setValue(newGradient.getTopDerivation());
             bodyBottomSlider.setValue(newGradient.getBottomDerivation());
             if (newGradient.isShinny()) {
-                bodyTopMiddleComboBox.setSelected(true);
-                bodyBottomMiddleComboBox.setSelected(true);
+                topMiddleToggle.setSelected(true);
+                bottomMiddleToggle.setSelected(true);
                 bodyTopMiddleSlider.setValue(newGradient.getTopMidDerivation());
                 bodyBottomMiddleSlider.setValue(newGradient.getBottomMidDerivation());
             } else {
-                bodyTopMiddleComboBox.setSelected(false);
-                bodyBottomMiddleComboBox.setSelected(false);
+                topMiddleToggle.setSelected(false);
+                bottomMiddleToggle.setSelected(false);
             }
             updateCss();
         });
         
         gradientComboBox.getSelectionModel().select(0);
-        
-        // ------------- ADVANCED TAB --------------------------------------------
+
+        // Advanced toggle buttons
+        topMiddleToggle.selectedProperty().addListener(updateCssListener);
+        bottomMiddleToggle.selectedProperty().addListener(updateCssListener);
+        borderToggle.selectedProperty().addListener(updateCssListener);
+        shadowToggle.selectedProperty().addListener(updateCssListener);
+        inputBorderToggle.selectedProperty().addListener(updateCssListener);
+
+
         bodyTopSlider.valueProperty().addListener(updateCssListener);
         bodyTopMiddleSlider.valueProperty().addListener(updateCssListener);
         bodyBottomMiddleSlider.valueProperty().addListener(updateCssListener);
@@ -208,14 +207,14 @@ public class StylerController implements Initializable, ToolsHandler {
         borderSlider.valueProperty().addListener(updateCssListener);
         shadowSlider.valueProperty().addListener(updateCssListener);
         inputBorderSlider.valueProperty().addListener(updateCssListener);
-        inputOuterBorderSlider.valueProperty().addListener(updateCssListener);
-        
-        bodyTopMiddleSlider.disableProperty().bind(bodyTopMiddleComboBox.selectedProperty().not());
-        bodyBottomMiddleSlider.disableProperty().bind(bodyBottomMiddleComboBox.selectedProperty().not());
-        borderSlider.disableProperty().bind(borderComboBox.selectedProperty().not());
-        shadowSlider.disableProperty().bind(shadowComboBox.selectedProperty().not());
-        inputBorderSlider.disableProperty().bind(inputBorderComboBox.selectedProperty().not());
-        inputOuterBorderSlider.disableProperty().bind(inputOuterBorderComboBox.selectedProperty().not());
+
+
+        bodyTopMiddleSlider.disableProperty().bind(topMiddleToggle.selectedProperty().not());
+        bodyBottomMiddleSlider.disableProperty().bind(bottomMiddleToggle.selectedProperty().not());
+        borderSlider.disableProperty().bind(borderToggle.selectedProperty().not());
+        shadowSlider.disableProperty().bind(shadowToggle.selectedProperty().not());
+        inputBorderSlider.disableProperty().bind(inputBorderToggle.selectedProperty().not());
+
     }
    
     /**
@@ -300,31 +299,50 @@ public class StylerController implements Initializable, ToolsHandler {
         cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
                 + bodyTopSlider.getValue() + "%) 0%, ", false, 0));
         
-        if (bodyTopMiddleComboBox.isSelected()) {
+        if (topMiddleToggle.isSelected()) {
+            topMiddleToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
                     + bodyTopMiddleSlider.getValue() + "%) 50%, ", false, 0));
+        } else {
+            topMiddleToggle.setText("AUTO");
         }
-        if (bodyBottomMiddleComboBox.isSelected()) {
+
+        if (bottomMiddleToggle.isSelected()) {
+            bottomMiddleToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
                     + bodyBottomMiddleSlider.getValue() + "%) 50.5%, ", false, 0));
+        } else {
+            bottomMiddleToggle.setText("AUTO");
         }
+
         cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
                 + bodyBottomSlider.getValue() + "%) 100%);",true, 0));
         
-        if (borderComboBox.isSelected()) {
+        if (borderToggle.isSelected()) {
+            borderToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-outer-border: derive(-fx-color,"
                     + borderSlider.getValue() + "%);", true, 4));
+        } else {
+            borderToggle.setText("AUTO");
         }
 
-        if (shadowComboBox.isSelected()) {
+        if (shadowToggle.isSelected()) {
+            shadowToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-shadow-highlight-color: derive(-fx-background,"
                     + shadowSlider.getValue() + "%);", true, 4));
+        } else {
+            shadowToggle.setText("AUTO");
         }
 
-        if (inputBorderComboBox.isSelected()) {
+        if (inputBorderToggle.isSelected()) {
+            inputBorderToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-box-border: derive(-fx-background,"
                     + inputBorderSlider.getValue() + "%);", true, 4));
+        } else {
+            inputBorderToggle.setText("AUTO");
         }
+
+
 
         cssBuffer.append("}\n");
         cssBuffer.append(".button, .toggle-button, .choice-box {\n");

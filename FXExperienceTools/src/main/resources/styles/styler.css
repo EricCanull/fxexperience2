@@ -10,32 +10,42 @@ different terms and without source code for the larger work.
     Created on : Apr 24, 2017, 4:00:53 AM
     Author     : ericc
 */
+.root {
+    -fe-dark-body-background: #525252;
+    -fe-dark-inner-background: #454545;
+    -fe-light-border: #565656;
+    -fe-light-body-text: #DCDCDC;
+    -fe-light-inner-text: #C2C2C3;
+
+    -fx-background-color: #323232;
+    -fx-focus-color: #339797;
+}
+
 #gradientComboBox .list-cell {
     -fx-background-color: -fe-dark-inner-background;
     -fx-text-fill:  -fe-light-inner-text;
 }
 #gradientComboBox {
     -fx-border-color: -fe-light-border;
-    -fx-background-color: -fe-dark-inner-background;
-    -fx-background-insets: -2 -2 -2 -2;  
-    -fx-border-radius: 3 3 3 3;
-    -fx-background-radius: 3 3 3 3;
+    -fx-border-radius: 3.4, 2, 2;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 0;
 }
 .split-pane {
-       -fx-background-color: #444;
+       -fx-background-color: -fe-dark-inner-background;
  
 }
 
 .split-pane-divider {
     -fx-background-color: transparent;
+
 }
 #gradientComboBox .label{
     -fx-border-color: -fe-light-border;
 }
 
-accordian-prop .titled-pane {
-    -fx-background-color: #5A5A5A;
-}
+
 
 .split-pane-caspian:horizontal {
     -fx-background-insets: -1 -1 -1 -1;
@@ -271,7 +281,11 @@ accordian-prop .titled-pane {
 .webcolor-field:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
-
+.properties-combo-box {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-light-border;
+    -fx-background-insets: -1;
+}
 .properties-combo-box .arrow-button {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
@@ -284,7 +298,7 @@ accordian-prop .titled-pane {
 }
 
 .toggle-switch {
-    -fx-background-color: transparent;
+    -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
     -fx-border-radius: 6;
     -fx-text-fill: #C98989;

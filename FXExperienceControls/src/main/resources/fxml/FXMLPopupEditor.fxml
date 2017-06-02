@@ -37,11 +37,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root alignment="BOTTOM_LEFT" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="125.0" styleClass="custom-menu-button" stylesheets="@../styles/PopupEditor.css" text="value" type="MenuButton" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="BOTTOM_LEFT" cache="true" cacheShape="false" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="155.0" styleClass="custom-menu-button" stylesheets="@../styles/PopupEditor.css" text="value" type="MenuButton" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
 <items>
   <CustomMenuItem hideOnClick="false" mnemonicParsing="false" styleClass="custom-menu-item" text="Unspecified Action">
     <content>
-      <StackPane fx:id="editorHost" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="popup-pane" />
+      <StackPane fx:id="editorHost" alignment="BOTTOM_LEFT" cacheShape="false" layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="popup-pane" />
     </content>
   </CustomMenuItem>
 </items>
