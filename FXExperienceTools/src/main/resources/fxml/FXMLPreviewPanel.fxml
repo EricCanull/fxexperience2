@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<StackPane id="Preview-area" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
+<StackPane id="Preview-area" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
    <children>
       <VBox alignment="CENTER" StackPane.alignment="CENTER">
          <children>
@@ -40,7 +40,7 @@
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -59,7 +59,7 @@
                         </VBox>
                         <RadioButton id="radioButton2" maxWidth="1.7976931348623157E308" selected="true" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
                         <ToggleButton id="toggleButton2" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                        <MenuButton id="menuButton1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <MenuButton id="menuButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                            <items>
                               <MenuItem text="Action 1" />
                               <MenuItem text="Action 2" />
@@ -95,26 +95,29 @@
                               </FXCollections>
                            </items>
                         </ComboBox>
-                        <Hyperlink id="hyperlink1" maxWidth="1.7976931348623157E308" text="Hyperlink" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                        <Hyperlink id="hyperlink1" maxWidth="1.7976931348623157E308" text="Hyperlink" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></Hyperlink>
                         <Label maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
                            <GridPane.margin>
-                              <Insets top="5.0" />
+                              <Insets left="5.0" />
                            </GridPane.margin>
                         </Label>
                         <HBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
                            <children>
-                              <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="130.0" />
-                              <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" orientation="VERTICAL" prefHeight="60.0" />
+                              <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="134.0" HBox.hgrow="ALWAYS" />
+                              <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0" />
                            </children>
                         </HBox>
                         <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
                            <children>
-                              <ScrollBar id="scrollBarHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="140.0" VBox.vgrow="NEVER">
+                              <ScrollBar id="scrollBarHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="140.0">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </ScrollBar>
-                              <ScrollBar id="scrollBarVertical1" orientation="VERTICAL" prefHeight="115.0">
+                              <ScrollBar id="scrollBarVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -131,7 +134,10 @@
                               <Insets bottom="5.0" left="5.0" />
                            </GridPane.margin>
                         </VBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin></Text>
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
