@@ -142,8 +142,9 @@ different terms and without source code for the larger work.
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     /*-fx-border-color: -fe-light-border;*/
-     -fx-background-insets: 2, -3, 2, -3;
-    -fx-background-radius: 6;
+     -fx-background-insets: 3.4, 2, 1;
+    -fx-background-radius: 1.2, 2, 3.4;
+    -fx-border-insets: 2, -3, 2, -3;
      -fx-border-width: 0 4 0 0;
     /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );*/
 }

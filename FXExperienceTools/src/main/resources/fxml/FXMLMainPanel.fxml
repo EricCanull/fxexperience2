@@ -108,11 +108,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <BorderPane.margin>
-            <Insets top="1.0" />
+            <Insets />
          </BorderPane.margin>
          <effect>
             <DropShadow color="#6c6d6f8f" height="0.0" radius="11.58" width="48.32" />
          </effect>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </VBox>
    </left>
 </BorderPane>
