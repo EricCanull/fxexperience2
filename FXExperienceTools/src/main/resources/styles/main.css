@@ -22,9 +22,9 @@ different terms and without source code for the larger work.
     -fx-focus-color: #339797;
 }
 .nav-box {
-/*   -fx-background-image: url("../images/binding_dark.png");*/
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
-    -fx-background-color:  -fe-dark-inner-background;
+   -fx-background-image: url("../images/binding_dark.png");
+    -fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );
+/*    -fx-background-color:  -fe-dark-inner-background;*/
     -fx-background-insets: 1, -5, 1, -5;
     -fx-background-radius: 9;
   
@@ -151,7 +151,7 @@ different terms and without source code for the larger work.
     -fx-font-weight: bold;
     -fx-background-color:
             linear-gradient(-fe-light-border, -fe-light-border),
-            radial-gradient(center 50% -40%, radius 200%, #747574 45%, #4C4F53 50%);
+            radial-gradient(center 50% -40%, radius 200%, #4C4F53  45%, #4C4F53 50%);
 /*     -fx-background-color:
             linear-gradient(#99ccff, #99ccff),
             radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
