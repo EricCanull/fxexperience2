@@ -53,7 +53,7 @@
       </MenuBar>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefWidth="115.0" spacing="5.0" styleClass="nav-box">
+      <VBox alignment="TOP_CENTER" prefWidth="105.0" spacing="5.0" styleClass="nav-box">
          <children>
             <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>

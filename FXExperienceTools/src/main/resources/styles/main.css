@@ -142,9 +142,8 @@ different terms and without source code for the larger work.
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     /*-fx-border-color: -fe-light-border;*/
-     -fx-background-insets: 3.4, 2, 1;
-    -fx-background-radius: 1.2, 2, 3.4;
-    -fx-border-insets: 2, -3, 2, -3;
+    -fx-background-radius: 3.4;
+    -fx-border-insets: 2, 3, 2, 3;
      -fx-border-width: 0 4 0 0;
     /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );*/
 }
@@ -157,8 +156,8 @@ different terms and without source code for the larger work.
             linear-gradient(#99ccff, #99ccff),
             radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
 /*    -fx-background-color: #4C4F53;*/
-   -fx-background-insets: 2, -3, 2, -3;
-    -fx-background-radius: 6;
+    -fx-background-radius: 3.4;
+    -fx-border-insets: 2, 3, 2, 3;
     -fx-border-color: #1C82E8;
     -fx-border-width: 0 4 0 0;   
 
@@ -167,8 +166,8 @@ different terms and without source code for the larger work.
     -fx-font-weight: bold;
 /*   -fx-background-color: derive(-fe-dark-body-background, 32%);*/
     /*    -fx-background-color: #0011114D;*/
-     -fx-background-insets: 2, -3, 2, -3;
-    -fx-background-radius: 6;
+    -fx-background-radius: 3.4;
+    -fx-border-insets: 2, 3, 2, 3;
     -fx-border-color: -fe-light-border;
     -fx-border-width: 0 4 0 0;
     
