@@ -12,22 +12,21 @@ different terms and without source code for the larger work.
 */
 
 .root {
-    -fe-dark-body-background: #494949;
-    -fe-dark-inner-background: #424242;
-    -fe-light-border: #797979;
+    -fe-dark-body-background: #31363B;
+    -fe-dark-inner-background: #2E3134;
+    -fe-light-border: #616569;
     -fe-light-body-text: #DCDCDC;
     -fe-light-inner-text: #C2C2C3;
 
-    -fx-background-color: #323232;
+    -fx-background-color: #2E3134;
     -fx-focus-color: #339797;
 }
 .nav-box {
-/*     -fx-background-image: url("/images/binding_dark.png");*/
-/*    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );*/
-    -fx-background-color:derive(rgb(147, 147, 147), -72%);
+   -fx-background-image: url("../images/darkleather.png");
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
+    -fx-background-color: transparent;
   
-    -fx-background-insets: 6, 6, 6, 6;
-    -fx-background-radius: 6 6 6 6, 6 6 6 6, 6 6 6 6;
+
 }
 /*******************************************************************************
  * Menu Bar			                                               *
@@ -132,57 +131,30 @@ different terms and without source code for the larger work.
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
-/* ==== SWITCH STYLED CHECKBOX ============================================== */
-.switch .box{
-    -fx-background-color: transparent;
-    -fx-focus-color: transparent;
-    -fx-padding: 17 53 0 0;
-    -fx-background-image: url("/images/off.png");
-}
-.switch:selected .box {
-    -fx-background-color: transparent;
-    -fx-background-image: url("/images/on.png");
-}
-.switch:focused .box{
-    -fx-background-color: -fx-focus-color;
-    -fx-padding: 17 53 0 0;
-    -fx-background-image: url("/images/off.png");   
-    -fx-background-insets: -1.4;
-    -fx-background-radius: 3;
-}
-.switch:focused:selected .box {
-    -fx-background-color: -fx-focus-color;
-    -fx-background-image: url("/images/on.png");    
-    -fx-background-insets: -1.4;
-    -fx-background-radius: 4;
-}
-.switch .mark {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
-    -fx-shape: null;
-}
+
 .menu-toggle-button {
     -fx-base: #00111100;
     -fx-background-color: #00111100;
 }
 .menu-toggle-button {
     -fx-font-weight: bold;
+    -fx-background-color: -fe-dark-inner-background;
+    /*-fx-border-color: -fe-light-border;*/
     /*    -fx-background-color:
             linear-gradient(#99ccff, #99ccff),
             radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
-    -fx-background-radius: 6, 6, 6, 6;
-    -fx-background-insets: 6, 6, 6, 6;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #AAA;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );*/
 }
 .menu-toggle-button:selected {
     -fx-font-weight: bold;
-    -fx-background-color:
-        linear-gradient(derive(rgb(147,147, 147), -13%),derive(rgb(147,147, 147), -22%)),
-        radial-gradient(center 50% -40%, radius 200%, derive(rgb(147,147, 147), -32%) 45%, derive(rgb(147,147, 147), -49%) 50%);
+    -fx-background-color: derive(-fe-dark-body-background, 32%);
     /*    -fx-background-color: #0011114D;*/
-    -fx-background-radius: 6, 6, 6, 6;
-    -fx-background-insets: 6, 6, 6, 6;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 
 }
 

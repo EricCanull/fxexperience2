@@ -10,14 +10,15 @@ different terms and without source code for the larger work.
     Created on : Apr 24, 2017, 4:00:53 AM
     Author     : ericc
 */
+
 .root {
-    -fe-dark-body-background: #494949;
-    -fe-dark-inner-background: #424242;
-    -fe-light-border: #797979;
+    -fe-dark-body-background: #31363B;
+    -fe-dark-inner-background: #2E3134;
+    -fe-light-border: #616569;
     -fe-light-body-text: #DCDCDC;
     -fe-light-inner-text: #C2C2C3;
 
-    -fx-background-color: #323232;
+    -fx-background-color: #2E3134;
     -fx-focus-color: #339797;
 }
 /*******************************************************************************
@@ -128,8 +129,9 @@ different terms and without source code for the larger work.
 .slider-prop .track{
     -fx-background-color: -fe-dark-inner-background; 
     -fx-border-color: -fe-light-border;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;   
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
 
 .slider-prop .thumb {
@@ -233,10 +235,9 @@ different terms and without source code for the larger work.
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: #65d2c6;
-    -fx-border-radius: 3.4, 2, 2;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-padding: 3 5 3 5;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
     -fx-prompt-text-fill: -fe-light-inner-text;
     -fx-cursor: text;
 
@@ -245,9 +246,9 @@ different terms and without source code for the larger work.
 .input-field:focused {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-border-radius: 3.4, 2, 2;
-    -fx-background-insets: -0.4, 1, 2;
-    -fx-background-radius: 3.4, 2, 2;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
 
 .input-field:disabled {
@@ -258,19 +259,18 @@ different terms and without source code for the larger work.
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-border-radius: 3.4, 2, 2;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-padding: 3 5 3 5;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
     -fx-prompt-text-fill: -fe-light-inner-text;
     -fx-cursor: text;
 }
 
 .integer-field:focused {
     -fx-background-color: -fe-dark-inner-background;
-    -fx-background-insets: -0.4, 1, 2;
-    -fx-background-radius: 3.4, 2, 2;
-    -fx-border-radius: 3.4, 2, 2;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
 
 .integer-field:disabled {
@@ -282,10 +282,9 @@ different terms and without source code for the larger work.
     -fx-font-size: 0.875em;
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-border-radius: 3, 2, 2;
-    -fx-padding: 3 5 3 5;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
     -fx-prompt-text-fill: -fe-light-inner-text;
     -fx-cursor: text;
 }
@@ -293,9 +292,9 @@ different terms and without source code for the larger work.
 .double-field:focused {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-background-insets: -0.4, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-border-radius: 3.4, 2, 2;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
 
 .double-field:disabled {
@@ -307,10 +306,9 @@ different terms and without source code for the larger work.
     -fx-font-size: 0.875em;
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-border-radius: 3.4, 2, 2;
-    -fx-padding: 3 5 3 5;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
     -fx-prompt-text-fill: -fe-light-inner-text;
     -fx-cursor: text;
 }
@@ -318,8 +316,9 @@ different terms and without source code for the larger work.
 .webcolor-field:focused {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-background-insets: -0.4, 1, 2;
-    -fx-background-radius: 3.4, 2, 2;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
 
 .webcolor-field:disabled {
@@ -344,7 +343,9 @@ different terms and without source code for the larger work.
 .toggle-switch {
     -fx-background-color: -fe-dark-inner-background;
     -fx-border-color: -fe-light-border;
-    -fx-border-radius: 6;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
     -fx-text-fill: #C98989;
     -fx-font-size: 0.765em;
 }

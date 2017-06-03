@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<StackPane id="Preview-area" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
+<StackPane id="Preview-area" minWidth="-Infinity" prefHeight="600.0" prefWidth="620.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
    <children>
       <VBox alignment="CENTER" StackPane.alignment="CENTER">
          <children>
@@ -35,12 +35,12 @@
                <children>
                   <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="490.0" vgap="2.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
-                        <Button id="button1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Button id="button1" minWidth="120.0" text="Button" GridPane.columnIndex="2">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                        <ToggleButton id="toggleButton1" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -58,14 +58,14 @@
                            </children>
                         </VBox>
                         <RadioButton id="radioButton2" maxWidth="1.7976931348623157E308" selected="true" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                        <ToggleButton id="toggleButton2" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                        <MenuButton id="menuButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <ToggleButton id="toggleButton2" minWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <MenuButton id="menuButton1" minWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <items>
                               <MenuItem text="Action 1" />
                               <MenuItem text="Action 2" />
                            </items>
                         </MenuButton>
-                        <ChoiceBox fx:id="choiceBox" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.vgrow="NEVER">
+                        <ChoiceBox fx:id="choiceBox" minWidth="180.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="ChoiceBox" />
@@ -75,7 +75,7 @@
                               </FXCollections>
                            </items>
                         </ChoiceBox>
-                        <ComboBox fx:id="comboBox" maxWidth="1.7976931348623157E308" value="ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                        <ComboBox fx:id="comboBox" minWidth="180.0" value="ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="ComboBox" />
@@ -85,7 +85,7 @@
                               </FXCollections>
                            </items>
                         </ComboBox>
-                        <ComboBox editable="true" maxHeight="-Infinity" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                        <ComboBox editable="true" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Editable ComboBox" />
@@ -142,7 +142,7 @@
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="140.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="190.0" prefWidth="190.0" />
                      </columnConstraints>
                      <rowConstraints>

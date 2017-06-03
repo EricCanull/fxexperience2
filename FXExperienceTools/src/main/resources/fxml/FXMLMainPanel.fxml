@@ -6,7 +6,10 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,9 +27,9 @@
 
             </children>
               </StackPane>
-      
+
           </children>
-      
+
       </AnchorPane>
    </center>
    <top>
@@ -53,7 +56,7 @@
       </MenuBar>
    </top>
    <left>
-      <VBox spacing="5.0" styleClass="nav-box" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefWidth="110.0" spacing="5.0" styleClass="nav-box">
          <children>
             <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
@@ -69,12 +72,19 @@
                <font>
                   <Font size="11.0" />
                </font>
-               <effect>
-                  <ColorAdjust saturation="0.02" />
-               </effect>
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+               <effect>
+                  <Lighting specularExponent="23.81" surfaceScale="4.35">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="40.71" />
+                     </light>
+                  </Lighting>
+               </effect>
             </ToggleButton>
             <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
@@ -90,6 +100,16 @@
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+               <effect>
+                  <Lighting specularExponent="23.81" surfaceScale="4.35">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="40.71" />
+                     </light>
+                  </Lighting>
+               </effect>
             </ToggleButton>
             <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
@@ -105,8 +125,27 @@
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+               <effect>
+                  <Lighting specularExponent="23.81" surfaceScale="4.35">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="40.71" />
+                     </light>
+                  </Lighting>
+               </effect>
             </ToggleButton>
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <BorderPane.margin>
+            <Insets top="1.0" />
+         </BorderPane.margin>
+         <effect>
+            <DropShadow color="#6c6d6f8f" height="0.0" radius="11.58" width="48.32" />
+         </effect>
       </VBox>
    </left>
 </BorderPane>
