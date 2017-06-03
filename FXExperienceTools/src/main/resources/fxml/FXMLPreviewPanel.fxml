@@ -29,123 +29,127 @@
 
 <StackPane id="Preview-area" prefHeight="600.0" prefWidth="590.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
    <children>
-      <AnchorPane StackPane.alignment="CENTER">
+      <VBox alignment="CENTER" StackPane.alignment="CENTER">
          <children>
-            <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" vgap="2.0">
+            <AnchorPane prefHeight="500.0">
                <children>
-                  <Button id="button1" minWidth="120.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Button>
-                  <ToggleButton id="toggleButton1" minWidth="120.0" prefWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </ToggleButton>
-                  <RadioButton id="radioButton1" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets top="5.0" />
-                     </GridPane.margin>
-                  </RadioButton>
-                  <VBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                  <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="490.0" vgap="2.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
-                        <CheckBox id="checkBox2" indeterminate="true" selected="true" text="CheckBox" />
-                        <CheckBox id="checkBox1" text="CheckBox" />
-                        <CheckBox id="checkBox3" selected="true" text="CheckBox" />
+                        <Button id="button1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ToggleButton>
+                        <RadioButton id="radioButton1" maxWidth="1.7976931348623157E308" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
+                        </RadioButton>
+                        <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                           <children>
+                              <CheckBox id="checkBox2" indeterminate="true" maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
+                              <CheckBox id="checkBox1" maxWidth="1.7976931348623157E308" text="CheckBox" />
+                              <CheckBox id="checkBox3" maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
+                           </children>
+                        </VBox>
+                        <RadioButton id="radioButton2" maxWidth="1.7976931348623157E308" selected="true" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                        <ToggleButton id="toggleButton2" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                        <MenuButton id="menuButton1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <items>
+                              <MenuItem text="Action 1" />
+                              <MenuItem text="Action 2" />
+                           </items>
+                        </MenuButton>
+                        <ChoiceBox fx:id="choiceBox" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.vgrow="NEVER">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ChoiceBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                        <ComboBox fx:id="comboBox" maxWidth="1.7976931348623157E308" value="ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ComboBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <ComboBox editable="true" maxHeight="-Infinity" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Editable ComboBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <Hyperlink id="hyperlink1" maxWidth="1.7976931348623157E308" text="Hyperlink" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                        <Label maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <HBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
+                           <children>
+                              <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="130.0" />
+                              <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" orientation="VERTICAL" prefHeight="60.0" />
+                           </children>
+                        </HBox>
+                        <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
+                           <children>
+                              <ScrollBar id="scrollBarHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="140.0" VBox.vgrow="NEVER">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </ScrollBar>
+                              <ScrollBar id="scrollBarVertical1" orientation="VERTICAL" prefHeight="115.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </ScrollBar>
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                           <children>
+                              <TextField id="textField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" />
+                              <PasswordField id="passwordField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="Password" />
+                              <TextArea id="textArea1" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
                      </children>
-                  </VBox>
-                  <RadioButton id="radioButton2" selected="true" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                  <ToggleButton id="toggleButton2" minWidth="120.0" prefWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                  <MenuButton id="menuButton1" minWidth="-Infinity" prefWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                     <items>
-                        <MenuItem text="Action 1" />
-                        <MenuItem text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <ChoiceBox fx:id="choiceBox" minWidth="120.0" prefWidth="120.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="ChoiceBox" />
-                           <String fx:value="Item 1" />
-                           <String fx:value="Item 2" />
-                           <String fx:value="Item 3" />
-                        </FXCollections>
-                     </items>
-                  </ChoiceBox>
-                  <ComboBox fx:id="comboBox" maxWidth="-Infinity" minWidth="120.0" prefWidth="120.0" value="ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="ComboBox" />
-                           <String fx:value="Item 1" />
-                           <String fx:value="Item 2" />
-                           <String fx:value="Item 3" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <ComboBox editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="172.0" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Editable ComboBox" />
-                           <String fx:value="Item 1" />
-                           <String fx:value="Item 2" />
-                           <String fx:value="Item 3" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
-                  <Hyperlink id="hyperlink1" text="Hyperlink" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
-                  <Label text="Label" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
-                     <GridPane.margin>
-                        <Insets top="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <HBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
-                     <children>
-                        <Slider id="sliderHorizontal1" prefWidth="130.0" />
-                        <Slider id="sliderVertical1" orientation="VERTICAL" prefHeight="60.0" />
-                     </children>
-                  </HBox>
-                  <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
-                     <children>
-                        <ScrollBar id="scrollBarHorizontal1" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="140.0" VBox.vgrow="NEVER">
-                           <VBox.margin>
-                              <Insets right="30.0" />
-                           </VBox.margin>
-                        </ScrollBar>
-                        <ScrollBar id="scrollBarVertical1" minHeight="-Infinity" orientation="VERTICAL" prefHeight="115.0">
-                           <VBox.margin>
-                              <Insets right="15.0" />
-                           </VBox.margin>
-                        </ScrollBar>
-                     </children>
-                  </VBox>
-                  <VBox spacing="5.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                     <children>
-                        <TextField id="textField1" maxHeight="-Infinity" minWidth="171.0" prefWidth="171.0" text="TextField" />
-                        <PasswordField id="passwordField1" maxHeight="-Infinity" minWidth="171.0" prefWidth="171.0" text="Password" />
-                        <TextArea id="textArea1" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </GridPane.margin>
-                  </VBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="140.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="190.0" prefWidth="190.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="50.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="40.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="50.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="120.0" vgrow="NEVER" />
+                     </rowConstraints>
+                  </GridPane>
                </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="NEVER" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" />
-                  <ColumnConstraints hgrow="NEVER" maxWidth="200.0" minWidth="190.0" prefWidth="190.0" />
-                  <ColumnConstraints hgrow="NEVER" maxWidth="190.0" minWidth="190.0" prefWidth="190.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="50.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="50.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="50.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="120.0" vgrow="NEVER" />
-               </rowConstraints>
-            </GridPane>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
 </StackPane>

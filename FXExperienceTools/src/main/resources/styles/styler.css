@@ -84,6 +84,7 @@ different terms and without source code for the larger work.
 
 .split-pane-divider {
     -fx-background-color: transparent;
+    -fx-padding: 0;
 
 }
 
