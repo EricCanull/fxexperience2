@@ -133,6 +133,7 @@ public class MainController extends AbstractController implements Initializable 
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);
+
     }
 
     // Adjusts the color of the toogle icons upon selection
@@ -235,6 +236,7 @@ public class MainController extends AbstractController implements Initializable 
         } else { // tool is already active
             stylerToggle.setSelected(true);
         }
+        event.consume();
     }
 
     @FXML
@@ -245,6 +247,7 @@ public class MainController extends AbstractController implements Initializable 
         } else { // tool is already active
             splineToggle.setSelected(true);
         }
+        event.consume();
     }
 
     @FXML
@@ -255,6 +258,7 @@ public class MainController extends AbstractController implements Initializable 
         } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }
+        event.consume();
     }
 
     @FXML
@@ -289,6 +293,7 @@ public class MainController extends AbstractController implements Initializable 
             alert.setHeaderText(null);
             alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
             alert.showAndWait();
+            event.consume();
         }
     }
 
