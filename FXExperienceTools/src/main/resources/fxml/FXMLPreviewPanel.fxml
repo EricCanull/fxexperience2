@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<StackPane id="Preview-area" minWidth="-Infinity" prefHeight="600.0" prefWidth="620.0" stylesheets="@../styles/preview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.PreviewPanelController">
+<fx:root id="Preview-area" minWidth="-Infinity" prefHeight="600.0" prefWidth="620.0" stylesheets="@../styles/preview.css" type="StackPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" StackPane.alignment="CENTER">
          <children>
@@ -158,4 +158,4 @@
          </children>
       </VBox>
    </children>
-</StackPane>
+</fx:root>

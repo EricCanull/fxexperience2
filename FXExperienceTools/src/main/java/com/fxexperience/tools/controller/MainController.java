@@ -238,7 +238,7 @@ public class MainController extends AbstractController implements Initializable 
     private void displayStatusAlert(String textMessage) {
         StatusAlertController alert = new StatusAlertController(textMessage);
         alert.setOpacity(0);
-
+        alert.setPrefWidth(rootContainer.getLayoutBounds().getWidth() - 350d);
         alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
         AnchorPane.setTopAnchor(alert, 0d);
         rootAnchorPane.getChildren().add(alert);

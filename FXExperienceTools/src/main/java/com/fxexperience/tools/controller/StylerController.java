@@ -9,25 +9,16 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.tools.util.StringUtil;
 import com.fxexperience.javafx.scene.control.IntegerField;
-import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.tools.handler.ToolsHandler;
-import com.fxexperience.tools.util.AppPaths;
-import java.io.*;
-import java.net.URL;
-import java.util.Collections;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.fxexperience.tools.util.Gradient;
+import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
@@ -38,9 +29,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
-public class StylerController implements Initializable, ToolsHandler {
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collections;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-    private Node stylerController;
+public class StylerController implements Initializable, ToolsHandler {
 
     // Common Properties
     @FXML private GridPane textGridPanel;
@@ -87,16 +85,12 @@ public class StylerController implements Initializable, ToolsHandler {
 
     @FXML private BorderPane previewPane;
    
-    private Parent previewPanel;
+    private PreviewPanelController previewPanel;
    
     @Override public void initialize(URL url, ResourceBundle rb) {
-       
-        try {
-            previewPanel = FXMLLoader.load(PreviewPanelController.class.getResource(AppPaths.FXML_PATH + "FXMLPreviewPanel.fxml"));
-            previewPane.setCenter(previewPanel);
-        } catch (IOException ex) {
-            Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+    previewPanel = new PreviewPanelController();
+    previewPane.setCenter(previewPanel);
             
         // populate fonts choicebox
         fontChoiceBox.getItems().setAll(Font.getFamilies());
@@ -237,7 +231,8 @@ public class StylerController implements Initializable, ToolsHandler {
     
     private void updateCss() {
         String css = createCSS(true);
-        previewPanel.setStyle(css);
+
+       previewPanel.setPreviewPanelStyle(css);
     }
     
      
@@ -453,7 +448,7 @@ public class StylerController implements Initializable, ToolsHandler {
 
     @Override
     public void setParentTool(Node parentTool) {
-       stylerController = parentTool;
+        Node stylerController = parentTool;
     }
 
     @Override

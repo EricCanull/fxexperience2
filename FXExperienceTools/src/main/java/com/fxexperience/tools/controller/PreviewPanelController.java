@@ -9,36 +9,53 @@
  */
 package com.fxexperience.tools.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class PreviewPanelController implements Initializable {
+public class PreviewPanelController extends StackPane {
 
     @FXML private GridPane contentPanel;
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public PreviewPanelController() {
+        initialize();
+    }
 
-        // tweek preview content panel
+    /**
+     * Private
+     */
+    private void initialize() {
+
+        final FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(PreviewPanelController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
+        loader.setController(this);
+        loader.setRoot(this);
+
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(PreviewPanelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setMenuBoxPresets();
+    }
+
+    private void setMenuBoxPresets() {
+        // set presets for menu-boxes
         choiceBox.getSelectionModel().select(0);
         comboBox.getSelectionModel().select(0);
     }
 
-    public void setStyle(String css) {
-        contentPanel.setStyle(css);
+    public void setPreviewPanelStyle(String style) {
+        contentPanel.setStyle(style);
     }
 }
