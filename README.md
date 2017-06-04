@@ -21,11 +21,11 @@ blog](http://fxexperience.com/).
 For more info about this app and other JavaFX features please
  see this [blog announcement](http://fxexperience.com/2012/03/announcing-fx-experience-tools/).
 
-# FX-Style Tool
+### FX-Styler Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/fxtoolscreenshot.png "CSS Styler")
-# FX-Spline Tool
+### FX-Spline Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
-# FX-Derivation Tool
+### FX-Derivation Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/derivationscreenshot.png "Derivation calculator")
 
 
