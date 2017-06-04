@@ -1,5 +1,5 @@
 /*
- * Permissions of this Copyleft license are conditioned on making available 
+ * Permissions of this free software license are conditioned on making available
  * complete source code of licensed works and modifications under the same 
  * license or the GNU GPLv3. Copyright and license notices must be preserved.
  * Contributors provide an express grant of patent rights. However, a larger 
@@ -9,6 +9,7 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
@@ -21,12 +22,11 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,22 +39,24 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.control.Label;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 public class MainController extends AbstractController implements Initializable {
-    
+
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> screens = new HashMap<>();
-    
+
     // Holds the tools for slide animation
     private StackPane currentPane, sparePane;
 
@@ -64,11 +66,16 @@ public class MainController extends AbstractController implements Initializable 
     private Timeline timeline;
     private Node nextTool;
 
-    @FXML private StackPane rootContainer;
+    @FXML private AnchorPane rootAnchorPane;
+    @FXML
+    private StackPane rootContainer;
 
-    @FXML private ToggleButton stylerToggle;
-    @FXML private ToggleButton splineToggle;
-    @FXML private ToggleButton derivedColorToggle;
+    @FXML
+    private ToggleButton stylerToggle;
+    @FXML
+    private ToggleButton splineToggle;
+    @FXML
+    private ToggleButton derivedColorToggle;
 
     public MainController(ViewHandler viewHandler) {
         super(viewHandler);
@@ -96,7 +103,7 @@ public class MainController extends AbstractController implements Initializable 
 
         rootContainer.getChildren().addAll(currentPane, sparePane);
     }
-    
+
     // Add the tool to the collection
     public void addTool(int id, Node screen) {
         screens.put(id, screen);
@@ -116,17 +123,17 @@ public class MainController extends AbstractController implements Initializable 
             ToolsHandler toolsHandler = myLoader.getController();
             toolsHandler.setParentTool(rootContainer);
             addTool(id, loadScreen);
-          
-            if(id == AppPaths.STYLER_ID) {
+
+            if (id == AppPaths.STYLER_ID) {
                 stylerController = (StylerController) toolsHandler;
             }
             return true;
         } catch (IOException e) {
-           Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
     }
-    
+
     // Creates toggle group to bind color icon effect
     private void initToggleGroup() {
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -150,7 +157,7 @@ public class MainController extends AbstractController implements Initializable 
             }
         });
     }
-    
+
     // Displays a new tool and applies the slide transitions
     public void setTool(Integer id) {
 
@@ -216,7 +223,7 @@ public class MainController extends AbstractController implements Initializable 
         currentPane.setCache(false);
         sparePane.setVisible(false);
         sparePane.getChildren().clear();
-        
+
         // Attempt to turn off animations in the spline tool
 //        // start any animations
 //        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
@@ -228,72 +235,80 @@ public class MainController extends AbstractController implements Initializable 
         }
     };
 
+    private void displayStatusAlert(String textMessage) {
+        StatusAlertController alert = new StatusAlertController(textMessage);
+        alert.setOpacity(0);
+
+        alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
+        AnchorPane.setTopAnchor(alert, 0d);
+        rootAnchorPane.getChildren().add(alert);
+
+        new FadeInDownBigTransition(alert).play();
+        removeAlert(alert);
+    }
+
+    private void removeAlert(Node alert) {
+        PauseTransition pauseTransition = new PauseTransition();
+        pauseTransition.setDuration(Duration.seconds(4.5));
+        pauseTransition.play();
+        pauseTransition.setOnFinished((ActionEvent t) -> rootAnchorPane.getChildren().remove(alert));
+    }
+
     @FXML
     private void stylerToggleAction(ActionEvent event) {
+        event.consume();
           // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
             setTool(AppPaths.STYLER_ID);
         } else { // tool is already active
             stylerToggle.setSelected(true);
         }
-        event.consume();
     }
 
     @FXML
     private void splineToggleAction(ActionEvent event) {
+        event.consume();
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
             setTool(AppPaths.SPLINE_ID);
         } else { // tool is already active
             splineToggle.setSelected(true);
         }
-        event.consume();
     }
 
     @FXML
     private void derivedToggleAction(ActionEvent event) {
+        event.consume();
           // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
             setTool(AppPaths.DERIVED_ID);
         } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }
-        event.consume();
     }
 
     @FXML
     private void copyButtonAction(ActionEvent event) {
         Clipboard.getSystemClipboard().setContent(
                 Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been copied to the clipboard.", ButtonType.OK);
-        alert.getDialogPane().setId("Code-dialog");
-        alert.setHeaderText(null);
-        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-        alert.showAndWait();
-
+        displayStatusAlert("Code has been copied to the clipboard.");
     }
 
     @FXML
     private void saveButtonAction(ActionEvent event) {
+        event.consume();
         if (stylerToggle.isSelected()) {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
             if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
                 try (FileWriter writer = new FileWriter(file)) {
                     writer.write(stylerController.getCodeOutput());
+                    displayStatusAlert("Code saved to " + file.getAbsolutePath());
                     writer.flush();
                 } catch (IOException ex) {
                     Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Code has been saved.", ButtonType.OK);
-            alert.getDialogPane().setId("Code-dialog");
-            alert.setHeaderText(null);
-            alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-            alert.showAndWait();
-            event.consume();
         }
     }
 

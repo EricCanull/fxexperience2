@@ -15,15 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minHeight="600.0" styleClass="root" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
-              <StackPane fx:id="rootContainer" alignment="TOP_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                  <children>
-
-            </children>
-              </StackPane>
+              <StackPane fx:id="rootContainer" alignment="TOP_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
           </children>
 
@@ -53,9 +49,9 @@
       </MenuBar>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefWidth="105.0" spacing="5.0" styleClass="nav-box">
+      <VBox alignment="TOP_CENTER" prefWidth="100.0" spacing="10.0" styleClass="nav-box" BorderPane.alignment="TOP_CENTER">
          <children>
-            <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+            <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="80.0" prefWidth="80.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,10 +66,13 @@
                   <Font size="11.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </ToggleButton>
-            <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+            <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="80.0" prefWidth="80.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,10 +84,10 @@
                   <Font size="11.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets />
                </VBox.margin>
             </ToggleButton>
-            <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="95.0" prefWidth="95.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+            <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="80.0" prefWidth="80.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
                <graphic>
                   <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,7 +99,7 @@
                   <Font size="11.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" right="5.0" top="5.0" />
+                  <Insets />
                </VBox.margin>
             </ToggleButton>
          </children>

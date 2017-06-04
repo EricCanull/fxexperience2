@@ -27,11 +27,20 @@ different terms and without source code for the larger work.
 /*    -fx-background-color:  -fe-dark-inner-background;*/
     -fx-background-insets: 1, -5, 1, -5;
     -fx-background-radius: 9;
-  
-
 }
 /*******************************************************************************
- * Menu Bar			                                               *
+ * Alert Notification		                                                   *
+ ******************************************************************************/
+.status-dialog {
+   -fx-background-color: #C0E0F2;
+}
+.status-label {
+    -fx-text-fill: black;
+    -fx-font-family: sans-serif;
+    -fx-font: 1em bold;
+}
+/*******************************************************************************
+ * Menu Bar			                                                           *
  ******************************************************************************/
 .menu {
     -fx-background-color: transparent;
@@ -133,41 +142,17 @@ different terms and without source code for the larger work.
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
-
 .menu-toggle-button {
-    -fx-base: #00111100;
-    -fx-background-color: #00111100;
-}
-.menu-toggle-button {
-    -fx-font-weight: bold;
     -fx-background-color: transparent;
-    /*-fx-border-color: -fe-light-border;*/
-    -fx-background-radius: 3.4;
-    -fx-border-insets: 2, 3, 2, 3;
+    -fx-border-color: transparent;
      -fx-border-width: 0 4 0 0;
-    /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );*/
 }
-.menu-toggle-button:selected {
-    -fx-font-weight: bold;
-    -fx-background-color:
-            linear-gradient(-fe-light-border, -fe-light-border),
-            radial-gradient(center 50% -40%, radius 200%, #4C4F53  45%, #4C4F53 50%);
-/*     -fx-background-color:
-            linear-gradient(#99ccff, #99ccff),
-            radial-gradient(center 50% -40%, radius 200%, #b8eeff 45%, #80c8ff 50%);*/
-/*    -fx-background-color: #4C4F53;*/
-    -fx-background-radius: 3.4;
-    -fx-border-insets: 2, 3, 2, 3;
-    -fx-border-color: #1C82E8;
-    -fx-border-width: 0 4 0 0;   
 
+.menu-toggle-button:selected {
+    -fx-border-color: #1C82E8;
+    -fx-border-width: 0 4 0 0;
 }
 .menu-toggle-button:hover {
-    -fx-font-weight: bold;
-/*   -fx-background-color: derive(-fe-dark-body-background, 32%);*/
-    /*    -fx-background-color: #0011114D;*/
-    -fx-background-radius: 3.4;
-    -fx-border-insets: 2, 3, 2, 3;
     -fx-border-color: -fe-light-border;
     -fx-border-width: 0 4 0 0;
     

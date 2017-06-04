@@ -12,7 +12,7 @@ package com.fxexperience.tools.util;
 import java.io.File;
 import javafx.stage.FileChooser;
 /*
- * Permissions of this copy-left license are conditioned on making available 
+ * Permissions of this free software license are conditioned on making available
  * complete source code of licensed works and modifications under the same 
  * license or the GNU GPLv3. Copyright and license notices must be preserved.
  * Contributors provide an express grant of patent rights. However, a larger 
