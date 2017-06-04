@@ -21,7 +21,6 @@
       <GridPane id="Background" fx:id="gridPane">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-          <ColumnConstraints maxWidth="200.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints prefHeight="30.0" vgrow="ALWAYS" />
@@ -42,15 +41,60 @@
                   <TextField fx:id="codeTextField" alignment="CENTER" onMouseClicked="#copyCodeAction" prefHeight="55.0" prefWidth="585.0" styleClass="code-text" text="Text" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <Label styleClass="animation-label" text="Animation Preview" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <right>
+      <GridPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="40.0" valignment="TOP" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Rotate">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding></Label>
+                  <Rectangle fx:id="rotateRectangle" arcHeight="10.0" arcWidth="10.0" height="110.0" stroke="#545454" strokeLineCap="ROUND" strokeType="INSIDE" width="110.0">
+                     <fill>
+                        <RadialGradient centerX="0.5056818181818182" centerY="0.5" cycleMethod="REPEAT" focusAngle="173.42" focusDistance="-2.220446049250313E-16" radius="0.07317073170731717">
+                           <stops>
+                              <Stop color="#795d5d" />
+                              <Stop color="#795d5d" offset="0.007246376811594203" />
+                              <Stop color="#363636" offset="0.34782608695652173" />
+                              <Stop color="#17171700" offset="0.7971014492753623" />
+                              <Stop color="#aeaeae" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Rectangle>
+               </children>
+            </VBox>
+            <Label styleClass="animation-label" text="Animation Preview" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <padding>
-                  <Insets top="10.0" />
+                  <Insets top="5.0" />
                </padding>
             </Label>
-            <VBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.rowSpan="2" GridPane.vgrow="NEVER">
+            <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <children>
                   <Label alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="36.0" text="Fade" />
                   <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="#65655fab" strokeType="INSIDE" strokeWidth="3.0" width="140.0">
@@ -68,9 +112,10 @@
                   </Rectangle>
                </children>
             </VBox>
-            <Group translateX="0.5" translateY="0.5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Label text="Linear" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+            <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="TOP">
                <children>
-                  <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="200.0">
+                  <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="190.0">
                      <fill>
                         <RadialGradient centerX="0.5" centerY="0.5" focusDistance="0.047619047619047894" radius="0.8571428571428571">
                            <stops>
@@ -97,8 +142,7 @@
                   </Circle>
                </children>
             </Group>
-            <Label text="Linear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-            <VBox alignment="TOP_CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.vgrow="NEVER">
+            <VBox alignment="TOP_CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                <children>
                   <Label text="Scale" />
                   <Circle fx:id="scaleCircle" radius="55.0" stroke="TRANSPARENT" strokeType="INSIDE">
@@ -116,34 +160,7 @@
                   </Circle>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" spacing="25.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
-               <children>
-                  <Label text="Rotate">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding></Label>
-                  <Rectangle fx:id="rotateRectangle" arcHeight="10.0" arcWidth="10.0" height="110.0" stroke="#545454" strokeLineCap="ROUND" strokeType="INSIDE" width="110.0">
-                     <fill>
-                        <RadialGradient centerX="0.5056818181818182" centerY="0.5" cycleMethod="REPEAT" focusAngle="173.42" focusDistance="-2.220446049250313E-16" radius="0.07317073170731717">
-                           <stops>
-                              <Stop color="#795d5d" />
-                              <Stop color="#795d5d" offset="0.007246376811594203" />
-                              <Stop color="#363636" offset="0.34782608695652173" />
-                              <Stop color="#17171700" offset="0.7971014492753623" />
-                              <Stop color="#aeaeae" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Rectangle>
-               </children>
-            </VBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
-         </padding>
       </GridPane>
-   </center>
+   </right>
 </BorderPane>

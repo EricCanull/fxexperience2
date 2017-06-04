@@ -136,7 +136,7 @@ public class SplinePanelController implements Initializable, ToolsHandler {
                         new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
                         new KeyValue(rotateRectangle.rotateProperty(), 360d, spline),
                         new KeyValue(fadeSquare.opacityProperty(), 1d, spline),
-                        new KeyValue(linearCircle.translateXProperty(), 180d, spline)                      
+                        new KeyValue(linearCircle.translateXProperty(), 170d, spline)
                 )
         );
         timeline.play();
