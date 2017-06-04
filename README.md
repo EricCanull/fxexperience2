@@ -18,10 +18,15 @@ blog](http://fxexperience.com/).
 	- Jasper's colorpicker tool.
 	
 			
+For more info about this app and other JavaFX features please
+ see this [blog announcement](http://fxexperience.com/2012/03/announcing-fx-experience-tools/).
+
+#FX-Style Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/fxtoolscreenshot.png "CSS Styler")
+#FX-Spline Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
+#FX-Derivation Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/derivationscreenshot.png "Derivation calculator")
 
 
-For more info about this app and other JavaFX features please
- see this [blog announcement](http://fxexperience.com/2012/03/announcing-fx-experience-tools/).
+
