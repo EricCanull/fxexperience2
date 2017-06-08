@@ -1,0 +1,358 @@
+/*
+Permissions of this copyleft license are conditioned on making available complete
+source code of licensed works and modifications under the same license or the
+GNU GPLv3. Copyright and license notices must be preserved. Contributors provide
+an express grant of patent rights. However, a larger work using the licensed work
+through interfaces provided by the licensed work may be distributed under
+different terms and without source code for the larger work.
+*/
+/*
+    Created on : Apr 24, 2017, 4:00:53 AM
+    Author     : ericc
+*/
+
+.root {
+    -fe-dark-header-background: #00466B;
+    -fe-light-body-background: #F0EEDF;
+    -fe-dark-inner-background: #2E3134;
+    -fe-light-header-text: #F1F4F6;
+    -fe-dark-border: #131313;
+    -fe-dark-body-text: #131313;
+    -fe-dark-inner-text: #131313;
+
+    -fx-background-color: #F0EEDF;
+    -fx-focus-color: #339797;
+}
+/*******************************************************************************
+ * Popup Color Picker MenuButton 			                                               *
+ ******************************************************************************/
+.popup-pane {
+    -fx-background-color: -fe-light-body-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-focus-color:-fe-dark-border;
+    -fx-padding: 0;
+}
+.custom-menu-button {
+    -fx-border-insets: -2;
+    -fx-background-insets: -2;
+}
+.custom-menu-button .arrow {
+    -fx-background-color: -fe-dark-border;
+}
+
+.custom-menu-button {
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), -fe-light-border, derive(rgb(147, 147, 147), 40%), -fe-dark-header-background;
+    -fx-border-color: -fe-light-border;
+    -fx-font-size: 0.875em;
+}
+.custom-menu-item:focused,
+.custom-menu-item:hover{
+    -fx-text-fill: #FFF;
+    -fx-border-color: -fe-dark-border;
+    -fx-focus-color: -fe-dark-border;
+    /*       -fx-background-insets: 1, 1, 1;*/
+    -fx-background-radius: 1, 1, 1;
+}
+
+.custom-menu-button .label .text {
+    -fx-fill: -fe-dark-inner-text;
+}
+.color-label {
+    -fx-text-fill: -fe-dark-body-text;
+    -fx-font-size: 0.1em;
+    /*     -fx-padding: 0 0 0 5;*/
+}
+.color-text-field {
+    -fx-text-fill: -fe-dark-body-text;
+    -fx-font-size: 0.1em;
+    -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
+}
+
+#gradientComboBox .list-cell {
+    -fx-background-color: -fe-light-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-text-fill:  -fe-dark-inner-text;
+}
+#gradientComboBox {
+    -fx-border-color: -fe-dark-border;
+    -fx-border-radius: 3.4, 2, 2;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 0;
+}
+.split-pane {
+    -fx-background-color: -fe-light-inner-background;
+
+}
+
+.split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+
+}
+
+
+
+
+.split-pane-caspian:horizontal {
+    -fx-background-insets: -1 -1 -1 -1;
+    -fx-padding: 0;
+}
+
+.split-pane-caspian:horizontal .split-pane-divider {
+    -fx-background-insets: -1 -1 -1 -1;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+#gradientComboBox .combo-box-popup .list-view .list-cell {
+    -fx-padding: 0;
+}
+
+#font-box {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size:  0.9750em;
+}
+
+#font-box .context-menu {
+    -fx-text-fill: -fe-dark-inner-text;
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-light-border;
+}
+
+#font-box .label {
+    -fx-text-fill: -fe-light-body-text;
+    -fx-font-size: 1em;
+}
+
+.slider-prop .track{
+    -fx-background-color: -fe-light-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slider-prop .thumb {
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.slider-prop .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+
+
+/*******************************************************************************
+ * Title Pane    	                                                       *
+ ******************************************************************************/
+
+.titled-pane > .title {
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), fe-dark-header-background);
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
+    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
+    -fx-font-size: 0.875em;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+}
+.titled-pane:expanded .content {
+    -fx-background-color: -fe-light-body-background;
+    -fx-border-color: transparent;
+
+}
+.titled-pane .content {
+    -fx-background-color: -fe-light-body-background;
+    -fx-border-color: transparent;
+
+}
+.titled-pane .context-menu {
+    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), fe-dark-header-background);
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: derive(rgb(147, 147, 147), -70%)
+}
+
+.titled-pane > .title > .arrow-button {
+    -fx-padding: -0.154em 0.583em 0.0em 0.0em;
+}
+.titled-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: derive(rgb(147, 147, 147), -32%);
+    -fx-padding: 0.154em 0.231em 0.231em 0.231em; /* 2 3 3 3 */
+}
+
+.sub-title {
+    -fx-text-fill: -fe-dark-body-text;
+    -fx-font-size: 0.875em;
+    -fx-border-width: 0.5 0 0.5 0;
+    -fx-border-color: -fe-dark-border-text;
+    -fx-background-color:
+            linear-gradient(to left, derive(rgb(147, 147, 147), -20%), derive(rgb(147, 147, 147), -30%)),
+            linear-gradient(to left, derive(rgb(147, 147, 147), -30%) 0%, derive(rgb(147, 147, 147), -50%));
+}
+.pane-shadow {
+    -fx-background-color: derive(rgb(147, 147, 147), -87%);
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
+}
+.prop-label .text {
+    -fx-font-size:  0.9375em
+}
+
+.prop-label {
+    -fx-text-fill: -fe-dark-body-text;
+}
+
+.title-label {
+    -fx-font-size: 0.875em;
+    -fx-text-fill: -fe-light-body-text;
+}
+.check-box-prop {
+    -fx-text-fill: -fe-light-inner-text;
+    -fx-font-size: 0.875em;
+}
+
+.check-box-prop > .box {
+    -fx-background-color: -fe-dark-inner-background;
+}
+
+
+#input-text-field {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
+    -fx-text-fill: -fe-dark-inner-text;
+    -fx-font-size: 0.875em;
+
+}
+.floating:top .tab-content-area {
+    -fx-padding: 0;
+    -fx-border-insets: 3, 3;
+    -fx-border-radius: 3, 3;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-color: transparent;
+    -fx-background-insets: 3, 3;
+    -fx-background-radius: 3, 3;
+}
+.input-field {
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: #65d2c6;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-prompt-text-fill: -fe-dark-inner-text;
+    -fx-cursor: text;
+
+}
+
+.input-field:focused {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.input-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.integer-field {
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-prompt-text-fill: -fe-dark-inner-text;
+    -fx-cursor: text;
+}
+
+.integer-field:focused {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.integer-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.double-field {
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
+    -fx-font-size: 0.875em;
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-prompt-text-fill: -fe-dark-inner-text;
+    -fx-cursor: text;
+}
+
+.double-field:focused {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.double-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.webcolor-field {
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
+    -fx-font-size: 0.875em;
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-prompt-text-fill: -fe-dark-inner-text;
+    -fx-cursor: text;
+}
+
+.webcolor-field:focused {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.webcolor-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+.properties-combo-box {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -1;
+}
+.properties-combo-box .arrow-button {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -1;
+    -fx-font-size: 0.875em;
+}
+
+.properties-combo-box .text {
+    -fx-text-fill: -fe-dark-inner-text;
+}
+
+.toggle-switch {
+    -fx-background-color: -fe-dark-inner-background;
+    -fx-border-color: -fe-dark-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-text-fill: #C98989;
+    -fx-font-size: 0.765em;
+}
+
+.toggle-switch:selected {
+    -fx-text-fill: #6699ff;
+    -fx-font-size: 0.765em;
+}

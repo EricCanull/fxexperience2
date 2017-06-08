@@ -1,0 +1,163 @@
+/*
+Permissions of this copyleft license are conditioned on making available complete
+source code of licensed works and modifications under the same license or the
+GNU GPLv3. Copyright and license notices must be preserved. Contributors provide
+an express grant of patent rights. However, a larger work using the licensed work
+through interfaces provided by the licensed work may be distributed under
+different terms and without source code for the larger work.
+*/
+/*
+    Created on : May 8, 2017, 12:05:37 AM
+    Author     : andje22
+*/
+
+.root {
+    -fe-light-body-background: #F0EEDF;
+    -fe-dark-inner-background: #2E3134;
+    -fe-light-header-text: #F1F4F6;
+    -fe-dark-border: #131313;
+    -fe-dark-body-text: #131313;
+    -fe-dark-inner-text: #131313;
+
+    -fx-background-color: #F0EEDF;
+    -fx-focus-color: #339797;
+}
+.nav-box {
+    -fx-background-image: url("../images/binding_dark.png");
+    -fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );
+    /*    -fx-background-color:  -fe-dark-inner-background;*/
+    -fx-background-insets: 1, -5, 1, -5;
+    -fx-background-radius: 9;
+}
+/*******************************************************************************
+ * Alert Notification		                                                   *
+ ******************************************************************************/
+.status-dialog {
+    -fx-background-color: #3BA9E3;
+}
+.status-label {
+    -fx-text-fill: black;
+    -fx-font-family: sans-serif;
+    -fx-font: 1em bold;
+}
+/*******************************************************************************
+ * Menu Bar			                                                           *
+ ******************************************************************************/
+.menu {
+    -fx-background-color: transparent;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.menu-item:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-base-color;
+}
+.menu:hover,
+.menu-button .menu:hover {
+    -fx-text-fill: white;
+    -fx-background-color:  derive(rgb(147, 147, 147), -26%);
+
+}
+.main-menu {
+    /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
+    -fx-background-color: #00466B;
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
+    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
+    -fx-font-size: 0.875em;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+
+
+    /* Nothing more needed for Mac OS X than the following property!
+     * All other definitions kept from caspian, to ensure, that MenuBar
+     * is shown properly on non-mac systems.
+     */
+    -fx-use-system-menu-bar: true;
+}
+
+.menu-item:focused,
+.menu-item:hover{
+    -fx-background-color: derive(rgb(147, 147, 147), -26%);
+    /*       -fx-background-insets: 1, 1, 1;*/
+
+}
+.menu-button .menu {
+    -fx-text-fill: -fe-light-header-text;
+}
+.menu-bar .menu .label {
+    -fx-text-fill: -fe-light-header-text;
+}
+.menu-button menu showing {
+    -fx-background-color: derive(rgb(147, 147, 147),-26%);
+}
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: #00466B;
+    /*    -fx-background-insets: 0, 1, 2;*/
+
+    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+
+/*******************************************************************************
+ * Preview panel background		                                               *
+ ******************************************************************************/
+#ContentPanel {
+    /*    -fx-background-color: transparent;*/
+    -fx-background-color: -fx-background;
+    -fx-border-color: derive(rgb(147, 147, 147),60%);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
+}
+
+#PropertiesPanel .title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/*******************************************************************************
+ * Properties input fields		                                               *
+ ******************************************************************************/
+.integer-field {
+    -fx-alignment: BASELINE_LEFT;
+}
+.color-picker {
+    -fx-background-color: transparent;
+}
+.highlight-off-symbol {
+    -fx-background-color: #888888, -fx-background;
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 4,3;
+    -fx-padding: 4;
+}
+.highlight-on-symbol {
+    -fx-background-color: #888888;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-padding: 4;
+}
+
+.big-button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.menu-toggle-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 4 0 0;
+}
+
+.menu-toggle-button:selected {
+    -fx-border-color: #1C82E8;
+    -fx-border-width: 0 4 0 0;
+}
+.menu-toggle-button:hover {
+    -fx-border-color: -fe-dark-border;
+    -fx-border-width: 0 4 0 0;
+
+
+}
+
+

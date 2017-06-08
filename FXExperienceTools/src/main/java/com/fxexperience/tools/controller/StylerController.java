@@ -13,7 +13,9 @@ import com.fxexperience.javafx.scene.control.IntegerField;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.util.Gradient;
+import com.fxexperience.tools.util.PropertyValue;
 import com.fxexperience.tools.util.StringUtil;
+import com.fxexperience.tools.util.SyntaxConstants;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -29,17 +31,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
+import java.net.URLStreamHandlerFactory;
 import java.util.Collections;
+
+
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StylerController implements Initializable, ToolsHandler {
-
+    private final HashMap<String, Object> styleMap = new HashMap<>();
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -95,11 +101,15 @@ public class StylerController implements Initializable, ToolsHandler {
         // populate fonts choicebox
         fontChoiceBox.getItems().setAll(Font.getFamilies());
         fontChoiceBox.getSelectionModel().select("System");
-        
      
         // create listener to call update css
         ChangeListener<Object> updateCssListener = (ObservableValue<?> arg0, Object arg1, Object arg2) -> {
             updateCss();
+        };
+
+        // create listener to call update css
+        ChangeListener<Object> basePickerListener = (ObservableValue<?> arg0, Object arg1, Object arg2) -> {
+            basePickerAction();
         };
         
         // add listeners to call update css
@@ -110,10 +120,10 @@ public class StylerController implements Initializable, ToolsHandler {
         borderWidthSlider.valueProperty().addListener(updateCssListener);
        
         // create Integer Fields
-        createNumberFieldForSlider(fontSizeSlider, textGridPanel, 2, 1);
-        createNumberFieldForSlider(paddingSlider, sizeGridPanel, 2, 0);
-        createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 2, 1);
-        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel, 2, 2);
+        createNumberFieldForSlider(fontSizeSlider, textGridPanel, 1);
+        createNumberFieldForSlider(paddingSlider, sizeGridPanel, 0);
+        createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 1);
+        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel,  2);
         
         // Add color pickers Title Pane
         simpleGridPane.getChildren().addAll(basePicker, backgroundColorPicker, focusColorPicker,
@@ -127,8 +137,9 @@ public class StylerController implements Initializable, ToolsHandler {
         GridPane.setConstraints(fieldBackgroundPicker, 1, 4);
         GridPane.setConstraints(fieldTextColorPicker, 1, 5);
         GridPane.setConstraints(focusColorPicker, 1, 6);
-      
-        
+
+       // basePicker.colorProperty().addListener(basePickerListener);
+
         basePicker.colorProperty().addListener(updateCssListener);
         backgroundColorPicker.colorProperty().addListener(updateCssListener);
         focusColorPicker.colorProperty().addListener(updateCssListener);
@@ -193,7 +204,6 @@ public class StylerController implements Initializable, ToolsHandler {
         shadowToggle.selectedProperty().addListener(updateCssListener);
         inputBorderToggle.selectedProperty().addListener(updateCssListener);
 
-
         bodyTopSlider.valueProperty().addListener(updateCssListener);
         bodyTopMiddleSlider.valueProperty().addListener(updateCssListener);
         bodyBottomMiddleSlider.valueProperty().addListener(updateCssListener);
@@ -201,7 +211,6 @@ public class StylerController implements Initializable, ToolsHandler {
         borderSlider.valueProperty().addListener(updateCssListener);
         shadowSlider.valueProperty().addListener(updateCssListener);
         inputBorderSlider.valueProperty().addListener(updateCssListener);
-
 
         bodyTopMiddleSlider.disableProperty().bind(topMiddleToggle.selectedProperty().not());
         bodyBottomMiddleSlider.disableProperty().bind(bottomMiddleToggle.selectedProperty().not());
@@ -218,7 +227,9 @@ public class StylerController implements Initializable, ToolsHandler {
      * @param slider The slider to bind to and sit next to
      * @param parent The GridPane to add to
      */
-    private void createNumberFieldForSlider(Slider slider, GridPane parent, int column, int row){
+    private void createNumberFieldForSlider(Slider slider, GridPane parent, int row){
+       final int column = 2;
+
         IntegerField field = new IntegerField();
         field.setMaxHeight(IntegerField.USE_PREF_SIZE);
         field.setMaxWidth(IntegerField.USE_PREF_SIZE);
@@ -234,10 +245,39 @@ public class StylerController implements Initializable, ToolsHandler {
 
        previewPanel.setPreviewPanelStyle(css);
     }
-    
+
+    private void basePickerAction() {
+        String property = SyntaxConstants.TAB + SyntaxConstants.BASE;
+        String value = basePicker.getColorText();
+        PropertyValue p = new PropertyValue(property, value);
+
+        addStyleElement(".root { \n", p);
+    }
+
+    private void addStyleElement(String element, PropertyValue propertyValue) {
+        if(styleMap.isEmpty()) {
+         styleMap.put(element, propertyValue);
+        } else {
+            styleMap.forEach((String k, Object v) ->{
+//                System.out.printf("%s%s%n", k, v.toString());
+                if (element.equals(k) &&
+                    propertyValue.toString().equals(v)) {
+                    System.out.printf("%s%s%s%n", "Prop same:", k, v.toString());
+                    return;
+                } else  if (element.equals(k) &&
+                        !propertyValue.toString().equals(v)) {
+                    System.out.printf("%s%s%s%n", "Prop not same: ", k, v.toString());
+                }
+
+
+            });
+
+        }
+
+    }
      
-    private String createCSS(boolean isRoot) {
-       
+    private String createCSS(Boolean isRoot) {
+
         int fontSize = (int) fontSizeSlider.getValue();
         int borderWidth = (int) borderWidthSlider.getValue();
         int borderWidthForPadding = (borderWidth <= 1) ? 0 : borderWidth - 1;
@@ -245,6 +285,7 @@ public class StylerController implements Initializable, ToolsHandler {
         int borderRadius = (int) borderRadiusSlider.getValue();
         double checkPadding = (((0.25 * fontSize) + borderWidthForPadding) / fontSize);
         double radioPadding = (((0.333333 * fontSize) + borderWidthForPadding) / fontSize);
+
        
         StringBuilder cssBuffer = new StringBuilder();
         if (isRoot) {
@@ -337,8 +378,6 @@ public class StylerController implements Initializable, ToolsHandler {
             inputBorderToggle.setText("AUTO");
         }
 
-
-
         cssBuffer.append("}\n");
         cssBuffer.append(".button, .toggle-button, .choice-box {\n");
         cssBuffer.append(StringUtil.padWithSpaces("-fx-background-radius: " 
@@ -384,7 +423,7 @@ public class StylerController implements Initializable, ToolsHandler {
         cssBuffer.append(StringUtil.padWithSpaces("-fx-padding: " + radioPadding + "em;", true, 4));
         cssBuffer.append("}\n");
         if (!baseTextToggle.isSelected()) {
-            cssBuffer.append(".hyperlink, {\n");
+            cssBuffer.append(".hyperlink {\n");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-fill: -fx-text-background-color;", true, 4));
             cssBuffer.append("}\n");
             cssBuffer.append(".toggle-button:selected {\n");
@@ -423,27 +462,6 @@ public class StylerController implements Initializable, ToolsHandler {
         cssBuffer.append("}\n");
 
         return cssBuffer.toString();
-    } 
-
-   
-    public void getCopiedStyleSheet() {
-        Clipboard.getSystemClipboard().setContent(
-                Collections.singletonMap(DataFormat.PLAIN_TEXT, createCSS(true)));
-
-    }
-
-  
-    public void getSaveStyleSheet() {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showSaveDialog(sizeGridPanel.getScene().getWindow());
-        if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
-            try (FileWriter writer = new FileWriter(file)) {
-                writer.write(createCSS(true));
-                writer.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     @Override
@@ -465,5 +483,6 @@ public class StylerController implements Initializable, ToolsHandler {
     public void stopAnimations() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
 

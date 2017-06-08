@@ -32,7 +32,7 @@ different terms and without source code for the larger work.
  * Alert Notification		                                                   *
  ******************************************************************************/
 .status-dialog {
-   -fx-background-color: #C0E0F2;
+   -fx-background-color: #3BA9E3;
 }
 .status-label {
     -fx-text-fill: black;

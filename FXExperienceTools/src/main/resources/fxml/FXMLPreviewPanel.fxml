@@ -31,9 +31,9 @@
    <children>
       <VBox alignment="CENTER" StackPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="500.0">
+            <AnchorPane prefHeight="510.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="490.0" vgap="2.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                  <GridPane id="ContentPanel" fx:id="contentPanel" alignment="CENTER" hgap="2.0" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="490.0" vgap="2.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                      <children>
                         <Button id="button1" minWidth="120.0" text="Button" GridPane.columnIndex="2">
                            <GridPane.margin>

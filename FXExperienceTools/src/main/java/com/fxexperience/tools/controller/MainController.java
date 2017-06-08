@@ -10,36 +10,18 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
-import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.animation.*;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.control.Label;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
@@ -49,33 +31,25 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collections;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class MainController extends AbstractController implements Initializable {
 
-    // Custom interpolator for the slide animation transition
-    private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
-
-    // Holds the tools to be displayed
-    private final HashMap<Integer, Node> screens = new HashMap<>();
-
-    // Holds the tools for slide animation
-    private StackPane currentPane, sparePane;
-
-    private StylerController stylerController;
-
-    private int currentToolIndex = 0;
-    private Timeline timeline;
-    private Node nextTool;
-
     @FXML private AnchorPane rootAnchorPane;
-    @FXML
-    private StackPane rootContainer;
+    @FXML private StackPane rootContainer;
 
-    @FXML
-    private ToggleButton stylerToggle;
-    @FXML
-    private ToggleButton splineToggle;
-    @FXML
-    private ToggleButton derivedColorToggle;
+    @FXML private ToggleButton stylerToggle;
+    @FXML private ToggleButton splineToggle;
+    @FXML private ToggleButton derivedColorToggle;
+
+    private ToolsController toolsController;
 
     public MainController(ViewHandler viewHandler) {
         super(viewHandler);
@@ -90,48 +64,10 @@ public class MainController extends AbstractController implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        loadTool(AppPaths.STYLER_ID, AppPaths.STYLER_FXML_PATH);
-        loadTool(AppPaths.SPLINE_ID, AppPaths.SPLINE_FXML_PATH);
-        loadTool(AppPaths.DERIVED_ID, AppPaths.DERIVED_FXML_PATH);
+        toolsController = new ToolsController(rootContainer);
 
         initToggleGroup();
 
-        currentPane = new StackPane();
-        currentPane.getChildren().add(screens.get(AppPaths.STYLER_ID));
-        sparePane = new StackPane();
-        sparePane.setVisible(false);
-
-        rootContainer.getChildren().addAll(currentPane, sparePane);
-    }
-
-    // Add the tool to the collection
-    public void addTool(int id, Node screen) {
-        screens.put(id, screen);
-    }
-
-    // Returns the Node with the appropriate name
-    public Node getTool(int id) {
-        return screens.get(id);
-    }
-
-    // Loads the fxml file, add the tool to the screens collection and
-    // finally injects the screenPane to the controller.
-    public boolean loadTool(int id, String fxml) {
-        try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(fxml));
-            Parent loadScreen = myLoader.load();
-            ToolsHandler toolsHandler = myLoader.getController();
-            toolsHandler.setParentTool(rootContainer);
-            addTool(id, loadScreen);
-
-            if (id == AppPaths.STYLER_ID) {
-                stylerController = (StylerController) toolsHandler;
-            }
-            return true;
-        } catch (IOException e) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, e);
-            return false;
-        }
     }
 
     // Creates toggle group to bind color icon effect
@@ -158,87 +94,15 @@ public class MainController extends AbstractController implements Initializable 
         });
     }
 
-    // Displays a new tool and applies the slide transitions
-    public void setTool(Integer id) {
-
-        // check if existing animation running
-        if (timeline != null) {
-            nextTool = screens.get(id);
-
-            timeline.setRate(4);
-            return;
-        } else {
-            nextTool = null;
-        }
-
-        // load new content
-        sparePane.getChildren().setAll(screens.get(id));
-        sparePane.setCache(true);
-        currentPane.setCache(true);
-        // wait one pulse then animate
-        Platform.runLater(() -> {
-            // animate switch
-            if (id > currentToolIndex) { // animate from bottom
-                currentToolIndex = id;
-                sparePane.setTranslateY(rootContainer.getHeight());
-                sparePane.setVisible(true);
-                timeline = new Timeline(
-                        new KeyFrame(Duration.millis(0),
-                                new KeyValue(currentPane.translateYProperty(), 0, INTERPOLATOR),
-                                new KeyValue(sparePane.translateYProperty(), rootContainer.getHeight(), INTERPOLATOR)),
-                        new KeyFrame(Duration.millis(800),
-                                animationEndEventHandler,
-                                new KeyValue(currentPane.translateYProperty(), -rootContainer.getHeight(), INTERPOLATOR),
-                                new KeyValue(sparePane.translateYProperty(), 0, INTERPOLATOR)));
-                timeline.play();
-
-            } else { // from top
-                currentToolIndex = id;
-                sparePane.setTranslateY(-rootContainer.getHeight());
-                sparePane.setVisible(true);
-                timeline = new Timeline(
-                        new KeyFrame(Duration.millis(0),
-                                new KeyValue(currentPane.translateYProperty(), 0, INTERPOLATOR),
-                                new KeyValue(sparePane.translateYProperty(), -rootContainer.getHeight(), INTERPOLATOR)),
-                        new KeyFrame(Duration.millis(800),
-                                animationEndEventHandler,
-                                new KeyValue(currentPane.translateYProperty(), rootContainer.getHeight(), INTERPOLATOR),
-                                new KeyValue(sparePane.translateYProperty(), 0, INTERPOLATOR)));
-                timeline.play();
-            }
-        });
-    }
-
-    private final EventHandler<ActionEvent> animationEndEventHandler = (ActionEvent t) -> {
-
-        // switch panes
-        StackPane temp = currentPane;
-        currentPane = sparePane;
-        sparePane = temp;
-
-        // cleanup
-        timeline = null;
-        currentPane.setTranslateY(0);
-        sparePane.setCache(false);
-        currentPane.setCache(false);
-        sparePane.setVisible(false);
-        sparePane.getChildren().clear();
-
-        // Attempt to turn off animations in the spline tool
-//        // start any animations
-//        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
-//            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
-//        }
-        // check if we have a animation waiting
-        if (nextTool != null) {
-            // switchTool(id);
-        }
-    };
 
     private void displayStatusAlert(String textMessage) {
         StatusAlertController alert = new StatusAlertController(textMessage);
         alert.setOpacity(0);
-        alert.setPrefWidth(rootContainer.getLayoutBounds().getWidth() - 350d);
+
+        double prefWidth = toolsController.getCurrentToolIndex() == 0 ? rootContainer.getLayoutBounds().getWidth() - 350d :
+                rootContainer.getLayoutBounds().getWidth() - 200d;
+        alert.setPrefWidth(prefWidth);
+
         alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
         AnchorPane.setTopAnchor(alert, 0d);
         rootAnchorPane.getChildren().add(alert);
@@ -256,10 +120,9 @@ public class MainController extends AbstractController implements Initializable 
 
     @FXML
     private void stylerToggleAction(ActionEvent event) {
-        event.consume();
-          // Prevent setting the same tool twice
+        // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
-            setTool(AppPaths.STYLER_ID);
+            toolsController.setTool(AppPaths.STYLER_ID);
         } else { // tool is already active
             stylerToggle.setSelected(true);
         }
@@ -267,10 +130,9 @@ public class MainController extends AbstractController implements Initializable 
 
     @FXML
     private void splineToggleAction(ActionEvent event) {
-        event.consume();
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
-            setTool(AppPaths.SPLINE_ID);
+            toolsController.setTool(AppPaths.SPLINE_ID);
         } else { // tool is already active
             splineToggle.setSelected(true);
         }
@@ -278,10 +140,9 @@ public class MainController extends AbstractController implements Initializable 
 
     @FXML
     private void derivedToggleAction(ActionEvent event) {
-        event.consume();
-          // Prevent setting the same tool twice
+        // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
-            setTool(AppPaths.DERIVED_ID);
+            toolsController.setTool(AppPaths.DERIVED_ID);
         } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }
@@ -290,19 +151,18 @@ public class MainController extends AbstractController implements Initializable 
     @FXML
     private void copyButtonAction(ActionEvent event) {
         Clipboard.getSystemClipboard().setContent(
-                Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
+                Collections.singletonMap(DataFormat.PLAIN_TEXT, toolsController.getStylerController().getCodeOutput()));
         displayStatusAlert("Code has been copied to the clipboard.");
     }
 
     @FXML
     private void saveButtonAction(ActionEvent event) {
-        event.consume();
         if (stylerToggle.isSelected()) {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
             if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
                 try (FileWriter writer = new FileWriter(file)) {
-                    writer.write(stylerController.getCodeOutput());
+                    writer.write(toolsController.getStylerController().getCodeOutput());
                     displayStatusAlert("Code saved to " + file.getAbsolutePath());
                     writer.flush();
                 } catch (IOException ex) {
