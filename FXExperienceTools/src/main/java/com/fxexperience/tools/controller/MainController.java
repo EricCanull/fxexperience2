@@ -40,7 +40,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainController extends AbstractController implements Initializable {
+public final class MainController extends AbstractController implements Initializable {
 
     @FXML private AnchorPane rootAnchorPane;
     @FXML private StackPane rootContainer;

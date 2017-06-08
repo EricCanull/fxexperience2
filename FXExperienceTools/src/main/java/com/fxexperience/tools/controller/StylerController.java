@@ -45,7 +45,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StylerController implements Initializable, ToolsHandler {
+
     private final HashMap<String, Object> styleMap = new HashMap<>();
+
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;

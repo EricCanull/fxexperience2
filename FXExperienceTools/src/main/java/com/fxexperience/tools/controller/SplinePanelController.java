@@ -39,8 +39,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 public class SplinePanelController implements Initializable, ToolsHandler {
-   
-    private Node splinePanelController;
+
+    protected Node splinePanelController;
     
     @FXML private GridPane gridPane;
     @FXML private TextField codeTextField;  
@@ -51,7 +51,7 @@ public class SplinePanelController implements Initializable, ToolsHandler {
     
     private Timeline timeline;
     private SplineEditor SplineEditor;
-  
+
     /**
      * Initializes the controller class.
      * @param url
@@ -83,10 +83,8 @@ public class SplinePanelController implements Initializable, ToolsHandler {
             }
         });
         
-           // create anaimation updater
-        ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> {
-            updateAnimation();
-        };
+        // create animation updater
+        ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> updateAnimation();
         
         SplineEditor.controlPoint1xProperty().addListener(animUpdater);
         SplineEditor.controlPoint1yProperty().addListener(animUpdater);
@@ -107,7 +105,7 @@ public class SplinePanelController implements Initializable, ToolsHandler {
         }
     }
 
-    public void updateAnimation() {
+    private void updateAnimation() {
         if (timeline != null) {
             timeline.stop();
         }

@@ -1,5 +1,7 @@
+package com.fxexperience.tools.controller;
+
 /*
- * Permissions of this Copyleft license are conditioned on making available 
+ * Permissions of this free software license are conditioned on making available
  * complete source code of licensed works and modifications under the same 
  * license or the GNU GPLv3. Copyright and license notices must be preserved.
  * Contributors provide an express grant of patent rights. However, a larger 
@@ -7,8 +9,6 @@
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
-
-package com.fxexperience.tools.controller;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -37,7 +37,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
     public DoubleProperty controlPoint1xProperty() {
         return controlPoint1x;
     }
-    private final DoubleProperty controlPoint1y = new SimpleDoubleProperty(0.2);
+    public final DoubleProperty controlPoint1y = new SimpleDoubleProperty(0.2);
 
     public double getControlPoint1y() {
         return controlPoint1y.get();
@@ -46,7 +46,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
     public DoubleProperty controlPoint1yProperty() {
         return controlPoint1y;
     }
-    private final DoubleProperty controlPoint2x = new SimpleDoubleProperty(0.2);
+    public final DoubleProperty controlPoint2x = new SimpleDoubleProperty(0.2);
 
     public double getControlPoint2x() {
         return controlPoint2x.get();
@@ -55,7 +55,7 @@ public final class SplineEditor extends XYChart<Number, Number> {
     public DoubleProperty controlPoint2xProperty() {
         return controlPoint2x;
     }
-    private final DoubleProperty controlPoint2y = new SimpleDoubleProperty(0.8);
+    public final DoubleProperty controlPoint2y = new SimpleDoubleProperty(0.8);
 
     public double getControlPoint2y() {
         return controlPoint2y.get();
@@ -96,30 +96,29 @@ public final class SplineEditor extends XYChart<Number, Number> {
         setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         setAlternativeRowFillVisible(false);
         getPlotChildren().addAll(splinePath, dottedLinesPath, cp1Line, cp2Line, controlPoint1Circle, controlPoint2Circle);
-        
+
         ObservableList<XYChart.Series<Number, Number>> answer = FXCollections.observableArrayList();
-        
+
         setData(FXCollections.observableArrayList(answer));
 
-        controlPoint1Circle.setOnMouseDragged((MouseEvent event) -> {
-            double x = event.getX() + controlPoint1Circle.getLayoutX();
-            double y = event.getY() + controlPoint1Circle.getLayoutY();
-            double dataX = getXAxis().getValueForDisplay(x).doubleValue();
-            double dataY = getYAxis().getValueForDisplay(y).doubleValue();
-            controlPoint1x.set(clamp(dataX));
-            controlPoint1y.set(clamp(dataY));
-            requestChartLayout();
-        });
+        controlPoint1Circle.setOnMouseDragged((event) ->
+            setPointCircles(event, controlPoint1Circle, controlPoint1x, controlPoint1y));
 
-        controlPoint2Circle.setOnMouseDragged((MouseEvent event) -> {
-            double x = event.getX() + controlPoint2Circle.getLayoutX();
-            double y = event.getY() + controlPoint2Circle.getLayoutY();
-            double dataX = getXAxis().getValueForDisplay(x).doubleValue();
-            double dataY = getYAxis().getValueForDisplay(y).doubleValue();
-            controlPoint2x.set(clamp(dataX));
-            controlPoint2y.set(clamp(dataY));
-            requestChartLayout();
-        });
+        controlPoint2Circle.setOnMouseDragged((event) ->
+            setPointCircles(event, controlPoint2Circle, controlPoint2x, controlPoint2y));
+    }
+
+
+    public void setPointCircles(MouseEvent event, Circle controlPointCircle, DoubleProperty controlPointX,
+                                DoubleProperty controlPointY) {
+
+        double x = event.getX() + controlPointCircle.getLayoutX();
+        double y = event.getY() + controlPointCircle.getLayoutY();
+        double dataX = getXAxis().getValueForDisplay(x).doubleValue();
+        double dataY = getYAxis().getValueForDisplay(y).doubleValue();
+        controlPointX.set(clamp(dataX));
+        controlPointY.set(clamp(dataY));
+        requestChartLayout();
     }
     
     @Override

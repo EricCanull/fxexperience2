@@ -20,9 +20,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by Eric Canull on 6/3/17.
- */
 public class StatusAlertController extends AnchorPane {
 
     @FXML private AnchorPane statusDialog;
@@ -32,7 +29,6 @@ public class StatusAlertController extends AnchorPane {
     public StatusAlertController(String text) {
         initialize(text);
     }
-
 
     /**
      * Private
