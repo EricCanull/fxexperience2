@@ -35,7 +35,7 @@ public class ToolsController {
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
     // Holds the tools to be displayed
-    private final HashMap<Integer, Node> screens = new HashMap<>();
+    private final HashMap<Integer, Node> tools = new HashMap<>();
 
     // Containers for the tools for slide animation
     private StackPane currentPane, sparePane;
@@ -59,7 +59,7 @@ public class ToolsController {
         loadTool(AppPaths.DERIVED_ID, AppPaths.DERIVED_FXML_PATH);
 
         currentPane = new StackPane();
-        currentPane.getChildren().add(screens.get(AppPaths.STYLER_ID));
+        currentPane.getChildren().add(tools.get(AppPaths.STYLER_ID));
         sparePane = new StackPane();
         sparePane.setVisible(false);
 
@@ -69,12 +69,12 @@ public class ToolsController {
 
     // Add the tool to the collection
     private void addTool(int id, Node screen) {
-        screens.put(id, screen);
+        tools.put(id, screen);
     }
 
     // Returns the Node with the appropriate name
     private Node getTool(int id) {
-        return screens.get(id);
+        return tools.get(id);
     }
 
     // Loads the fxml file, add the tool to the screens collection and
@@ -89,6 +89,7 @@ public class ToolsController {
 
             if (id == AppPaths.STYLER_ID) {
                 stylerController = (StylerController) toolsHandler;
+
             }
             return true;
         } catch (IOException e) {
@@ -98,12 +99,11 @@ public class ToolsController {
     }
 
     // Displays a new tool and applies the slide transitions
-    public void setTool(Integer id) {
+    public void setTool(int id) {
 
         // check if existing animation running
         if (timeline != null) {
-            nextTool = screens.get(id);
-
+            nextTool = tools.get(id);
             timeline.setRate(4);
             return;
         } else {
@@ -111,9 +111,10 @@ public class ToolsController {
         }
 
         // load new content
-        sparePane.getChildren().setAll(screens.get(id));
+        sparePane.getChildren().setAll(tools.get(id));
         sparePane.setCache(true);
         currentPane.setCache(true);
+
         // wait one pulse then animate
         Platform.runLater(() -> {
             // animate switch
@@ -131,7 +132,7 @@ public class ToolsController {
                                 new KeyValue(sparePane.translateYProperty(), 0, INTERPOLATOR)));
                 timeline.play();
 
-            } else { // from top
+            } else { // animate from top
                 currentToolIndex = id;
                 sparePane.setTranslateY(-rootContainer.getHeight());
                 sparePane.setVisible(true);
@@ -164,8 +165,8 @@ public class ToolsController {
         sparePane.getChildren().clear();
 
         // Attempt to turn off animations in the spline tool
-//        // start any animations
-//        if (tools[currentToolIndex].getContent() instanceof AnimatedAction) {
+        // start any animations
+//        if (tools.get(currentToolIndex) instanceof AnimatedAction) {
 //            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
 //        }
         // check if we have a animation waiting

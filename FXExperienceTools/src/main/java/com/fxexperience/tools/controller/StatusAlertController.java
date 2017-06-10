@@ -9,6 +9,7 @@ package com.fxexperience.tools.controller;
  * for the larger work.
  */
 
+import com.fxexperience.tools.util.AppPaths;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -36,7 +37,7 @@ public class StatusAlertController extends AnchorPane {
     private void initialize(String text) {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(StatusAlertController.class.getResource("/fxml/FXMLStatusDialog.fxml")); //NOI18N
+        loader.setLocation(StatusAlertController.class.getResource(AppPaths.FXML_PATH + "FXMLStatusDialog.fxml"));
         loader.setController(this);
         loader.setRoot(this);
 

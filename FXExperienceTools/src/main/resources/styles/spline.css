@@ -11,23 +11,19 @@ different terms and without source code for the larger work.
     Author     : andje22
 */
 #SplineEditor {
-    -fx-background: -fe-dark-body-background;
-}
-
-#Background {
     -fx-background-image: url("/images/darkdenim.png");
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }
 
 .label {
-    -fx-text-fill: -fe-light-body-text;
+    -fx-text-fill: white;
     -fx-underline: true;
 }
 .animation-label {
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold; 
     -fx-font-size: 16px;
-    -fx-text-fill: -fe-light-body-text;
+    -fx-text-fill: #C2C2C3;
     -fx-underline: true;
 }
 
@@ -37,21 +33,7 @@ different terms and without source code for the larger work.
     -fx-text-fill: white;
     -fx-background-color: transparent;
 }
-.big-button {
-    -fx-font-size: 0.875em;
-    -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-}
-.big-button:hover {
-    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
-}
-.big-button Text {
-    -fx-font-size: 0.875em;
-    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.6) , 0, 0.0 , 0 , 1 );
-}
+
 .chart-plot-background {
     -fx-background-color: rgba(255,255,255,0.05);
 }
@@ -62,7 +44,7 @@ different terms and without source code for the larger work.
     -fx-stroke: rgba(255,255,255,0.1);
 }
 .tick-mark {
-    -fx-fill: white;
+    -fx-fill: #DCDCDC;
     -fx-font-size: 11px;
 }
 

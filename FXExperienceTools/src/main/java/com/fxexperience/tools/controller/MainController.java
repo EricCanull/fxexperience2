@@ -19,14 +19,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -42,12 +42,14 @@ import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
 
+    @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
     @FXML private StackPane rootContainer;
 
     @FXML private ToggleButton stylerToggle;
     @FXML private ToggleButton splineToggle;
     @FXML private ToggleButton derivedColorToggle;
+    @FXML private CheckMenuItem themeMenuItem;
 
     private ToolsController toolsController;
 
@@ -100,7 +102,7 @@ public final class MainController extends AbstractController implements Initiali
         alert.setOpacity(0);
 
         double prefWidth = toolsController.getCurrentToolIndex() == 0 ? rootContainer.getLayoutBounds().getWidth() - 350d :
-                rootContainer.getLayoutBounds().getWidth() - 200d;
+                rootContainer.getLayoutBounds().getWidth();
         alert.setPrefWidth(prefWidth);
 
         alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
@@ -116,6 +118,23 @@ public final class MainController extends AbstractController implements Initiali
         pauseTransition.setDuration(Duration.seconds(4.5));
         pauseTransition.play();
         pauseTransition.setOnFinished((ActionEvent t) -> rootAnchorPane.getChildren().remove(alert));
+    }
+
+    private void loadStyle(boolean isDarkThemeSelected) {
+        String mainControllerCSS = isDarkThemeSelected ? getClass().getResource("/styles/main_dark.css").toExternalForm()
+                : getClass().getResource("/styles/main_light.css").toExternalForm();
+        String stylerControllerCSS = isDarkThemeSelected ? getClass().getResource("/styles/styler_dark.css").toExternalForm()
+                : getClass().getResource("/styles/styler_light.css").toExternalForm();
+        rootBorderPane.getStylesheets().clear();
+        rootBorderPane.getStylesheets().add(mainControllerCSS);
+        toolsController.getStylerController().getRootSplitPane().getStylesheets().clear();
+        toolsController.getStylerController().getRootSplitPane().getStylesheets().add(stylerControllerCSS);
+    }
+
+
+    @FXML
+    private void setThemeAction() {
+        loadStyle(themeMenuItem.isSelected());
     }
 
     @FXML
@@ -166,7 +185,7 @@ public final class MainController extends AbstractController implements Initiali
                     displayStatusAlert("Code saved to " + file.getAbsolutePath());
                     writer.flush();
                 } catch (IOException ex) {
-                    Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

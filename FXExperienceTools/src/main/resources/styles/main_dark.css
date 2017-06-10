@@ -8,15 +8,15 @@ different terms and without source code for the larger work.
 */
 /* 
     Created on : May 8, 2017, 12:05:37 AM
-    Author     : andje22
+    Author     : Eric Canull
 */
 
 .root {
-    -fe-dark-body-background: #31363B;
-    -fe-dark-inner-background: #2E3134;
-    -fe-light-border: #616569;
-    -fe-light-body-text: #DCDCDC;
-    -fe-light-inner-text: #C2C2C3;
+    -fe-body-background: #31363B;
+    -fe-inner-background: #2E3134;
+    -fe-border: #616569;
+    -fe-body-text: #DCDCDC;
+    -fe-inner-text: #C2C2C3;
 
     -fx-background-color: #2E3134;
     -fx-focus-color: #339797;
@@ -32,7 +32,7 @@ different terms and without source code for the larger work.
  * Alert Notification		                                                   *
  ******************************************************************************/
 .status-dialog {
-   -fx-background-color: #3BA9E3;
+   -fx-background-color: #3AA6DF;
 }
 .status-label {
     -fx-text-fill: black;
@@ -77,7 +77,6 @@ different terms and without source code for the larger work.
 .menu-item:hover{
     -fx-background-color: derive(rgb(147, 147, 147), -26%);
     /*       -fx-background-insets: 1, 1, 1;*/
-
 }
 .menu-button .menu {
     -fx-text-fill: derive(rgb(147, 147, 147), -70%)
@@ -153,7 +152,7 @@ different terms and without source code for the larger work.
     -fx-border-width: 0 4 0 0;
 }
 .menu-toggle-button:hover {
-    -fx-border-color: -fe-light-border;
+    -fx-border-color: -fe-border;
     -fx-border-width: 0 4 0 0;
     
 

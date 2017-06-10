@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane id="SplineEditor" prefHeight="600.0" prefWidth="900.0" stylesheets="@../styles/spline.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.SplinePanelController">
+<BorderPane id="SplineEditor" prefHeight="600.0" prefWidth="900.0" stylesheets="@../styles/spline.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.SplinePanelController">
    <center>
       <GridPane id="Background" fx:id="gridPane">
         <columnConstraints>
@@ -48,30 +48,30 @@
       </GridPane>
    </center>
    <right>
-      <GridPane style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+      <GridPane id="Animation-preview" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" prefHeight="25.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <Label text="Rotate">
+                  <Label styleClass="animation-label" text="Rotate">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <padding>
                         <Insets bottom="5.0" />
                      </padding></Label>
-                  <Rectangle fx:id="rotateRectangle" arcHeight="10.0" arcWidth="10.0" height="110.0" stroke="#545454" strokeLineCap="ROUND" strokeType="INSIDE" width="110.0" VBox.vgrow="SOMETIMES">
+                  <Rectangle fx:id="rotateRectangle" arcHeight="10.0" arcWidth="10.0" height="105.0" stroke="#545454" strokeLineCap="ROUND" strokeType="INSIDE" width="105.0" VBox.vgrow="SOMETIMES">
                      <fill>
                         <RadialGradient centerX="0.5056818181818182" centerY="0.5" cycleMethod="REPEAT" focusAngle="173.42" focusDistance="-2.220446049250313E-16" radius="0.07317073170731717">
                            <stops>
@@ -86,18 +86,10 @@
                   </Rectangle>
                </children>
             </VBox>
-            <Label styleClass="animation-label" text="Animation Preview" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </Label>
             <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <children>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="36.0" text="Fade" />
-                  <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="#65655fab" strokeType="INSIDE" strokeWidth="3.0" width="140.0" VBox.vgrow="SOMETIMES">
+                  <Label alignment="BOTTOM_CENTER" prefHeight="0.0" styleClass="animation-label" text="Fade" />
+                  <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" height="95.0" stroke="#65655fab" strokeType="INSIDE" strokeWidth="3.0" width="140.0" VBox.vgrow="SOMETIMES">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -112,8 +104,8 @@
                   </Rectangle>
                </children>
             </VBox>
-            <Label text="Linear" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-            <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label styleClass="animation-label" text="Linear" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+            <Group GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="TOP">
                <children>
                   <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="190.0">
                      <fill>
@@ -141,11 +133,14 @@
                      </fill>
                   </Circle>
                </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
             </Group>
             <VBox alignment="TOP_CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                <children>
-                  <Label text="Scale" />
-                  <Circle fx:id="scaleCircle" radius="55.0" stroke="TRANSPARENT" strokeType="INSIDE" VBox.vgrow="SOMETIMES">
+                  <Label styleClass="animation-label" text="Scale" />
+                  <Circle fx:id="scaleCircle" radius="50.0" stroke="TRANSPARENT" strokeType="INSIDE" VBox.vgrow="SOMETIMES">
                      <fill>
                         <RadialGradient centerX="0.5" centerY="0.5" focusDistance="-0.33333333333333326" radius="0.7380952380952381">
                            <stops>

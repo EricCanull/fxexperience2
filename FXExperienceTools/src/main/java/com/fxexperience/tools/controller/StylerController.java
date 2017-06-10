@@ -48,6 +48,8 @@ public class StylerController implements Initializable, ToolsHandler {
 
     private final HashMap<String, Object> styleMap = new HashMap<>();
 
+    @FXML private SplitPane rootSplitPane;
+
     // Common Properties
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -241,7 +243,12 @@ public class StylerController implements Initializable, ToolsHandler {
         GridPane.setRowIndex(field, row);
         field.valueProperty().bindBidirectional(slider.valueProperty());
     }
-    
+    public SplitPane getRootSplitPane() {
+        return rootSplitPane;
+    }
+
+
+
     private void updateCss() {
         String css = createCSS(true);
 
@@ -273,9 +280,7 @@ public class StylerController implements Initializable, ToolsHandler {
 
 
             });
-
         }
-
     }
      
     private String createCSS(Boolean isRoot) {
@@ -295,12 +300,13 @@ public class StylerController implements Initializable, ToolsHandler {
         } else {
             cssBuffer.append("#Preview-area {\n");
         }
-         //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: "+ "\"" + fontChoiceBox.getValue() + "\";", true, 4)); 
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;",true, 4));
-       cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorText()+ ";",true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorText()+ ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorText()+ ";", true, 4));
+
+        //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorText() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorText() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorText() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getWebColor() + ";", true, 4));
         
         if (baseTextToggle.isSelected()) {
@@ -426,7 +432,7 @@ public class StylerController implements Initializable, ToolsHandler {
         cssBuffer.append("}\n");
         if (!baseTextToggle.isSelected()) {
             cssBuffer.append(".hyperlink {\n");
-            cssBuffer.append(StringUtil.padWithSpaces("-fx-text-fill: -fx-text-background-color;", true, 4));
+            cssBuffer.append(StringUtil.padWithSpaces("-fx-fill: -fx-text-background-color;", true, 4));
             cssBuffer.append("}\n");
             cssBuffer.append(".toggle-button:selected {\n");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-fill: -fx-text-base-color;", true, 4));

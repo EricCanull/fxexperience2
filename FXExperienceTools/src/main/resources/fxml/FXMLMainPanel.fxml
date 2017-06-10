@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -40,6 +41,11 @@
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                  <CheckMenuItem fx:id="themeMenuItem" mnemonicParsing="false" onAction="#setThemeAction" selected="true" text="Dark Theme" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" styleClass="menu-item" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
