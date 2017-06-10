@@ -37,8 +37,8 @@
                                  <children>
                                     <GridPane fx:id="textGridPanel" hgap="5.0" layoutX="5.0" layoutY="34.0" vgap="5.0" AnchorPane.topAnchor="5.0">
                                        <columnConstraints>
-                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="79.0" />
-                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="190.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="65.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="205.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
@@ -48,7 +48,7 @@
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" valignment="TOP" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
-                                          <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                          <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="Item 1" />
@@ -59,7 +59,7 @@
                                           </ChoiceBox>
                                           <Label alignment="CENTER" styleClass="prop-label" text="Font Name:" />
                                           <Slider fx:id="fontSizeSlider" majorTickUnit="5.0" max="30.0" min="6.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label id="label12" styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
+                                          <Label styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -70,10 +70,10 @@
                         <content>
                           <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" styleClass="anchor-pane">
                                  <children>
-                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" AnchorPane.topAnchor="10.0">
+                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" vgap="5.0" AnchorPane.topAnchor="10.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" />
-                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="190.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" />
                                           <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
                                        </columnConstraints>
                                        <rowConstraints>
@@ -107,7 +107,7 @@
                                              </padding>
                                           </Label>
                                           <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" />
-                                          <Slider fx:id="borderWidthSlider" majorTickUnit="5.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" GridPane.columnIndex="1" />
                                        </children>
@@ -176,7 +176,7 @@
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" text="Buttons &amp; Inputfields">
+                        <TitledPane animated="false" text="Components">
                            <content>
                               <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="350.0">
                                  <children>

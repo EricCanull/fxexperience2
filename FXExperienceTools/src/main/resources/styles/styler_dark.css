@@ -132,7 +132,7 @@
 }
 .slider-prop .axis:bottom {
     -fx-tick-label-fill: -fe-body-text;
-    -fx-font-size: .73333em;
+    -fx-font-size: .63333em;
 }
 
 
@@ -192,6 +192,7 @@
 
 .prop-label {
     -fx-text-fill: -fe-body-text;
+    -fx-font-size:  0.73333em;
 }
 
 .title-label {
@@ -339,10 +340,10 @@
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
     -fx-text-fill: #C98989;
-    -fx-font-size: 0.765em;
+    -fx-font-size: 0.63333em;
 }
 
 .toggle-switch:selected {
     -fx-text-fill: #6699ff;
-    -fx-font-size: 0.765em;
+    -fx-font-size: 0.63333em;
 }

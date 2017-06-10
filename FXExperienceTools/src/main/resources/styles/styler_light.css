@@ -106,6 +106,10 @@ different terms and without source code for the larger work.
     -fx-border-radius: 2.2, 2, 2;
 }
 
+.slider-prop .axis:bottom {
+    -fx-font-size: .63333em;
+}
+
 /*******************************************************************************
  * Title Pane    	                                                       *
  ******************************************************************************/
@@ -134,7 +138,7 @@ different terms and without source code for the larger work.
     -fx-border-width: 0.5 0 0.5 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
     -fx-background-color:
-            linear-gradient(to left, derive(rgb(197, 198, 197), 10%), derive(rgb(233, 233, 233), -18%));
+            linear-gradient(to left, derive(#E5E5E5, 10%), derive(#F2F2F2, -18%));
 }
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);
@@ -145,11 +149,11 @@ different terms and without source code for the larger work.
 }
 
 .prop-label {
-    -fx-font-size: 0.83333em;
+    -fx-font-size: 0.73333em;
 }
 
 .title-label {
-    -fx-font-size: 0.83333em;
+    -fx-font-size: 0.875em;
 }
 .check-box-prop {
     -fx-font-size: 0.83333em;
@@ -262,10 +266,10 @@ different terms and without source code for the larger work.
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
     -fx-text-fill: #C98989;
-    -fx-font-size: 0.765em;
+    -fx-font-size: 0.63333em;
 }
 
 .toggle-switch:selected {
     -fx-text-fill: #6699ff;
-    -fx-font-size: 0.765em;
+    -fx-font-size: 0.63333em;
 }
