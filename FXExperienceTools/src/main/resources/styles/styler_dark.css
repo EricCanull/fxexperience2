@@ -180,7 +180,8 @@
     -fx-border-width: 0.5 0 0.5 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
 
-    -fx-background-color: linear-gradient(to left, derive(#939393, -42%), derive(#939393, -58%));
+    -fx-background-color: linear-gradient(to left, derive(#31363B, 21%) 18%, #31363B 90%);
+
 }
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);

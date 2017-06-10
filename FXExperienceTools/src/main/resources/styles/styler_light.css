@@ -136,9 +136,9 @@ different terms and without source code for the larger work.
     -fx-text-fill: white;
     -fx-font-size: 0.875em;
     -fx-border-width: 0.5 0 0.5 0;
-    -fx-border-color: derive(rgb(122, 122, 122), -85%);
+    -fx-border-color: #B2B2B2;
     -fx-background-color:
-            linear-gradient(to left, derive(#E5E5E5, 10%), derive(#F2F2F2, -18%));
+            linear-gradient(to left,  white 18%, derive(#B2B2B2, 21%) 90%);
 }
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);

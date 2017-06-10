@@ -74,8 +74,6 @@ public final class SplineEditor extends XYChart<Number, Number> {
     private final Path dottedLinesPath;
     private final Path splinePath;
 
-//    private double dragStartX, dragStartY;
-
     public SplineEditor() {
         super(new NumberAxis(0, 1, 0.1), new NumberAxis(0, 1, 0.1));
         controlPoint1Circle = createCircle(Color.WHITE, Color.RED, 3d, 6d, Cursor.HAND);
