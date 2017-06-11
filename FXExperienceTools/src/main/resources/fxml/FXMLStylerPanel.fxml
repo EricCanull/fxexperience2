@@ -180,7 +180,7 @@
                            <content>
                               <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="350.0">
                                  <children>
-                                    <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" alignment="CENTER_LEFT" hgap="2.0" vgap="5.0" AnchorPane.topAnchor="5.0">
+                                    <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" alignment="CENTER" hgap="2.0" vgap="5.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
                                              <children>
@@ -231,27 +231,27 @@
                                           <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                           <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                                           <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                          <ToggleButton fx:id="topMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                                          <ToggleButton fx:id="topMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="bottomMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                          <ToggleButton fx:id="bottomMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="10">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="borderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                          <ToggleButton fx:id="borderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="shadowToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                          <ToggleButton fx:id="shadowToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="inputBorderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="48.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <ToggleButton fx:id="inputBorderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
@@ -268,7 +268,7 @@
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.rowIndex="7">
+                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
                                              <children>
                                                 <Label styleClass="title-label" text="Buttons (Gradients)">
                                                    <HBox.margin>
@@ -280,15 +280,15 @@
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Preset:" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+                                          <Label alignment="CENTER_RIGHT" minWidth="-Infinity" styleClass="prop-label" text="Preset:" GridPane.halignment="LEFT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets top="10.0" />
                                              </GridPane.margin>
                                              <padding>
-                                                <Insets bottom="3.0" />
+                                                <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <ComboBox fx:id="gradientComboBox" pickOnBounds="true" prefWidth="180.0" styleClass="properties-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <ComboBox fx:id="gradientComboBox" pickOnBounds="true" prefWidth="180.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets left="5.0" top="10.0" />
                                              </GridPane.margin>
@@ -300,7 +300,7 @@
                                           </Label>
                                           <Slider fx:id="shadowSlider" majorTickUnit="50.0" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                           <Slider fx:id="borderSlider" majorTickUnit="50.0" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3">
+                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS">
                                              <children>
                                                 <Label styleClass="title-label" text="Inputfield Borders">
                                                    <padding>
@@ -313,13 +313,13 @@
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
-                                          <ColumnConstraints hgrow="ALWAYS" prefWidth="215.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="60.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" prefWidth="218.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="62.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />

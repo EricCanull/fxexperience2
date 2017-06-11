@@ -28,9 +28,11 @@ different terms and without source code for the larger work.
  * Popup Color Picker MenuButton 			                                   *
  ******************************************************************************/
 .popup-pane {
+    -fx-background-color: transparent;
     -fx-padding: 0;
 }
 .custom-menu-button {
+    -fx-background-color: linear-gradient(to bottom, #F2F2F2 20%, #A2A2A2 80%);
     -fx-border-insets: -2;
     -fx-background-insets: -2;
 }
@@ -155,6 +157,7 @@ different terms and without source code for the larger work.
 .title-label {
     -fx-font-size: 0.875em;
 }
+
 .check-box-prop {
     -fx-font-size: 0.83333em;
 }

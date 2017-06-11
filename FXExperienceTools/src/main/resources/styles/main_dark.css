@@ -6,17 +6,13 @@ an express grant of patent rights. However, a larger work using the licensed wor
 through interfaces provided by the licensed work may be distributed under
 different terms and without source code for the larger work.
 */
-/* 
-    Created on : May 8, 2017, 12:05:37 AM
-    Author     : Eric Canull
-*/
-
 .root {
     -fe-body-background: #31363B;
     -fe-inner-background: #2E3134;
     -fe-border: #616569;
     -fe-body-text: #DCDCDC;
     -fe-inner-text: #C2C2C3;
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 
     -fx-background-color: #2E3134;
     -fx-focus-color: #339797;
@@ -36,7 +32,6 @@ different terms and without source code for the larger work.
 }
 .status-label {
     -fx-text-fill: black;
-    -fx-font-family: sans-serif;
     -fx-font: 1em bold;
 }
 /*******************************************************************************
@@ -87,6 +82,9 @@ different terms and without source code for the larger work.
 .menu-button menu showing {
     -fx-background-color: derive(rgb(147, 147, 147),-26%); 
 }
+.main-menu .container .menu:openvertically .label .text {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+}
 .context-menu {
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
     -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
@@ -101,7 +99,7 @@ different terms and without source code for the larger work.
  ******************************************************************************/
 #ContentPanel {
 /*    -fx-background-color: transparent;*/
-  -fx-background-color: -fx-background;
+    -fx-background-color: -fx-background;
     -fx-border-color: derive(rgb(147, 147, 147),60%); 
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
 }
@@ -117,15 +115,18 @@ different terms and without source code for the larger work.
 .integer-field {
     -fx-alignment: BASELINE_LEFT;
 }
+
 .color-picker {
     -fx-background-color: transparent;
 }
+
 .highlight-off-symbol {
     -fx-background-color: #888888, -fx-background;
     -fx-background-insets: 0,1;
     -fx-background-radius: 4,3;
     -fx-padding: 4;
 }
+
 .highlight-on-symbol {
     -fx-background-color: #888888;
     -fx-background-insets: 0;
@@ -135,7 +136,7 @@ different terms and without source code for the larger work.
 
 .big-button {
     -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-weight: bold;
     -fx-background-color: linear-gradient(#61a2b1, #2A5058);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
@@ -154,8 +155,6 @@ different terms and without source code for the larger work.
 .menu-toggle-button:hover {
     -fx-border-color: -fe-border;
     -fx-border-width: 0 4 0 0;
-    
-
 }
 
 

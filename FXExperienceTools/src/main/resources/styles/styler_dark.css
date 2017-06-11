@@ -3,7 +3,6 @@
     Author     : Eric Canull
 */
 .root {
-
     -fe-body-background: #31363B;
     -fe-inner-background: #2E3134;
     -fe-border: #616569;
@@ -65,10 +64,6 @@
     -fx-text-fill:  -fe-inner-text;
 }
 #gradientComboBox {
-    -fx-border-radius: 3, 2, 2;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 2;
-    -fx-padding: 0;
 }
 .split-pane {
        -fx-background-color: -fe-inner-background;
@@ -90,8 +85,20 @@
     -fx-padding: 0;
 }
 
-#gradientComboBox .combo-box-popup .list-view .list-cell {
+.gradient-combo-box .combo-box-popup .list-view .list-cell {
     -fx-padding: 0;
+}
+
+.gradient-combo-box {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: 0;
+}
+.gradient-combo-box .arrow-button {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: 0;
+    -fx-font-size: 0.875em;
 }
 
 #font-box {
@@ -131,16 +138,17 @@
     -fx-background-color: rgb(147, 147, 147);
 }
 .slider-prop .axis:bottom {
+    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
     -fx-tick-label-fill: -fe-body-text;
     -fx-font-size: .63333em;
 }
-
 
 /*******************************************************************************
  * Title Pane    	                                                       *
  ******************************************************************************/
 
 .titled-pane > .title {
+    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
     -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
@@ -175,29 +183,32 @@
 }
 
 .sub-title {
+    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
     -fx-text-fill: derive(rgb(147, 147, 147), 85%);
-    -fx-font-size: 0.83333em;
     -fx-border-width: 0.5 0 0.5 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
 
-    -fx-background-color: linear-gradient(to left, derive(#31363B, 21%) 18%, #31363B 90%);
-
+     -fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(#31363B, 21%), derive(#31363B, 10%));
 }
+
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
 }
+
 .prop-label .text {
-    -fx-font-size:  0.83333em;
+    -fx-font-size:  0.8457em;
 }
 
 .prop-label {
+    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
     -fx-text-fill: -fe-body-text;
-    -fx-font-size:  0.73333em;
+    -fx-font-size:  0.9333em;
 }
 
 .title-label {
-    -fx-font-size: 0.83333em;
+    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
+    -fx-font-size: 0.93333em;
     -fx-text-fill: -fe-body-text;
 }
 .check-box-prop {
@@ -209,13 +220,12 @@
     -fx-background-color: -fe-inner-background;
 }
 
-
 #input-text-field {
     -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
     -fx-text-fill: -fe-inner-text;
     -fx-font-size: 0.833335em;
-
 }
+
 .floating:top .tab-content-area {
     -fx-padding: 0;
     -fx-border-insets: 3, 3;
@@ -225,6 +235,7 @@
     -fx-background-insets: 3, 3;
     -fx-background-radius: 3, 3;
 }
+
 .input-field {
     -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
     -fx-background-color: -fe-inner-background;
@@ -234,7 +245,6 @@
     -fx-border-radius: 2.2, 2, 2;
     -fx-prompt-text-fill: -fe-inner-text;
     -fx-cursor: text;
-
 }
 
 .input-field:focused {
@@ -318,11 +328,13 @@
 .webcolor-field:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
+
 .properties-combo-box {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;
     -fx-background-insets: -1;
 }
+
 .properties-combo-box .arrow-button {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;

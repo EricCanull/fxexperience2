@@ -9,6 +9,7 @@ package com.fxexperience.tools.util;
  * for the larger work.
  */
 public class Gradient {
+
     private final String css;
     private final String name;
     private final double topDerivation;
@@ -24,7 +25,9 @@ public class Gradient {
         this.topMidDerivation = Double.NaN;
         this.bottomMidDerivation = Double.NaN;
         this.shinny = false;
-        this.css = "linear-gradient( to bottom, derive(-fx-color, "+topDerivation+"%) 0%, derive(-fx-color, "+bottomDerivation+"%) 100%);";
+        this.css = "linear-gradient(to bottom, "
+                + "derive(-fx-color, "+topDerivation+"%) 0%, "
+                + "derive(-fx-color, "+bottomDerivation+"%) 100%);";
     }
 
     public Gradient(String name, double topDerivation, double topMidDerivation, double bottomMidDerivation, double bottomDerivation) {
@@ -34,11 +37,11 @@ public class Gradient {
         this.bottomMidDerivation = bottomMidDerivation;
         this.bottomDerivation = bottomDerivation;
         this.shinny = true;
-        this.css = "linear-gradient( to bottom, "
-                + "derive(-fx-color, "+topDerivation+"%) 0%, "
-                + "derive(-fx-color, "+topMidDerivation+"%) 50%, "
-                + "derive(-fx-color, "+bottomMidDerivation+"%) 50.5%, "
-                + "derive(-fx-color, "+bottomDerivation+"%) 100%);";
+        this.css = "linear-gradient(to bottom, "
+                 + "derive(-fx-color, "+topDerivation+"%) 0%, "
+                 + "derive(-fx-color, "+topMidDerivation+"%) 50%, "
+                 + "derive(-fx-color, "+bottomMidDerivation+"%) 50.5%, "
+                 + "derive(-fx-color, "+bottomDerivation+"%) 100%);";
     }
 
     public String getCss() {

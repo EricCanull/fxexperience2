@@ -99,13 +99,13 @@ public class StylerController implements Initializable, ToolsHandler {
    
     @Override public void initialize(URL url, ResourceBundle rb) {
 
-    previewPanel = new PreviewPanelController();
-    previewPane.setCenter(previewPanel);
-            
+        previewPanel = new PreviewPanelController();
+        previewPane.setCenter(previewPanel);
+
         // populate fonts choicebox
         fontChoiceBox.getItems().setAll(Font.getFamilies());
         fontChoiceBox.getSelectionModel().select("System");
-     
+
         // create listener to call update css
         ChangeListener<Object> updateCssListener = (ObservableValue<?> arg0, Object arg1, Object arg2) -> {
             updateCss();
@@ -115,24 +115,24 @@ public class StylerController implements Initializable, ToolsHandler {
         ChangeListener<Object> basePickerListener = (ObservableValue<?> arg0, Object arg1, Object arg2) -> {
             basePickerAction();
         };
-        
+
         // add listeners to call update css
         fontChoiceBox.valueProperty().addListener(updateCssListener);
         fontSizeSlider.valueProperty().addListener(updateCssListener);
         paddingSlider.valueProperty().addListener(updateCssListener);
         borderRadiusSlider.valueProperty().addListener(updateCssListener);
         borderWidthSlider.valueProperty().addListener(updateCssListener);
-       
+
         // create Integer Fields
         createNumberFieldForSlider(fontSizeSlider, textGridPanel, 1);
         createNumberFieldForSlider(paddingSlider, sizeGridPanel, 0);
         createNumberFieldForSlider(borderWidthSlider, sizeGridPanel, 1);
-        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel,  2);
-        
+        createNumberFieldForSlider(borderRadiusSlider, sizeGridPanel, 2);
+
         // Add color pickers Title Pane
         simpleGridPane.getChildren().addAll(basePicker, backgroundColorPicker, focusColorPicker,
                 textColorPicker, fieldBackgroundPicker, fieldTextColorPicker, bkgdTextColorPicker);
-       
+
         // Set color pickers grid constraints
         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
         GridPane.setConstraints(textColorPicker, 1, 1);
@@ -142,7 +142,7 @@ public class StylerController implements Initializable, ToolsHandler {
         GridPane.setConstraints(fieldTextColorPicker, 1, 5);
         GridPane.setConstraints(focusColorPicker, 1, 6);
 
-       // basePicker.colorProperty().addListener(basePickerListener);
+        // basePicker.colorProperty().addListener(basePickerListener);
 
         basePicker.colorProperty().addListener(updateCssListener);
         backgroundColorPicker.colorProperty().addListener(updateCssListener);
@@ -157,7 +157,7 @@ public class StylerController implements Initializable, ToolsHandler {
         bkgdTextColorPicker.colorProperty().addListener(updateCssListener);
         backgroundTextToggle.selectedProperty().addListener(updateCssListener);
         bkgdTextColorPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
-      
+
         // add listeners to sliders
         topHighlightSlider.valueProperty().addListener(updateCssListener);
         bottomHighlightSlider.valueProperty().addListener(updateCssListener);
@@ -243,15 +243,13 @@ public class StylerController implements Initializable, ToolsHandler {
         GridPane.setRowIndex(field, row);
         field.valueProperty().bindBidirectional(slider.valueProperty());
     }
+
     public SplitPane getRootSplitPane() {
         return rootSplitPane;
     }
 
-
-
     private void updateCss() {
-        String css = createCSS(true);
-
+       String css = createCSS(true);
        previewPanel.setPreviewPanelStyle(css);
     }
 
@@ -277,8 +275,6 @@ public class StylerController implements Initializable, ToolsHandler {
                         !propertyValue.toString().equals(v)) {
                     System.out.printf("%s%s%s%n", "Prop not same: ", k, v.toString());
                 }
-
-
             });
         }
     }
