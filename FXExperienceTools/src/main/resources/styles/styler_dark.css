@@ -31,22 +31,25 @@
 }
 
 .custom-menu-button {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), -fe-border, derive(rgb(147, 147, 147), 40%), -fe-inner-background;
+    -fx-background-color: derive(rgb(147, 147, 147), -48%), -fe-border,
+                          derive(rgb(147, 147, 147), 40%), -fe-inner-background;
+
     -fx-border-color: -fe-border;
     -fx-font-size: 0.875em;
 }
+
 .custom-menu-item:focused,
 .custom-menu-item:hover{
     -fx-text-fill: #FFF;
     -fx-border-color: -fe-border;
     -fx-focus-color: -fe-border;
-    /*       -fx-background-insets: 1, 1, 1;*/
     -fx-background-radius: 1, 1, 1;
 }
 
 .custom-menu-button .label .text {
     -fx-fill: -fe-inner-text;
 }
+
 .color-label {
     -fx-text-fill: -fe-body-text;
     -fx-font-size: 0.1em;
@@ -58,13 +61,6 @@
     -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
 }
 
-#gradientComboBox .list-cell {
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: transparent;
-    -fx-text-fill:  -fe-inner-text;
-}
-#gradientComboBox {
-}
 .split-pane {
        -fx-background-color: -fe-inner-background;
  }
@@ -85,8 +81,14 @@
     -fx-padding: 0;
 }
 
+.gradient-combo-box .list-cell .text {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: 0.8666em;
+    -fx-fill: -fe-body-text;
+}
 .gradient-combo-box .combo-box-popup .list-view .list-cell {
-    -fx-padding: 0;
+    -fx-background-color: -fe-inner-background;
+    -fx-text-fill: -fe-body-text;
 }
 
 .gradient-combo-box {
@@ -96,9 +98,10 @@
 }
 .gradient-combo-box .arrow-button {
     -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: 0;
-    -fx-font-size: 0.875em;
+    -fx-border-color: transparent;
+    -fx-border-width: 0.2 .2 0.2 .2;
+    -fx-background-insets: 1;
+    -fx-border-insets: 1;
 }
 
 #font-box {
@@ -106,7 +109,7 @@
     -fx-border-color: -fe-border;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-font-size:  0.9750em;
+    -fx-font-size:  0.93333em;
 }
 
 #font-box .context-menu {
@@ -138,7 +141,7 @@
     -fx-background-color: rgb(147, 147, 147);
 }
 .slider-prop .axis:bottom {
-    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-tick-label-fill: -fe-body-text;
     -fx-font-size: .63333em;
 }
@@ -196,18 +199,14 @@
     -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
 }
 
-.prop-label .text {
-    -fx-font-size:  0.8457em;
-}
-
 .prop-label {
-    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-text-fill: -fe-body-text;
-    -fx-font-size:  0.9333em;
+    -fx-font-size:  0.8666em;
 }
 
 .title-label {
-    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-size: 0.93333em;
     -fx-text-fill: -fe-body-text;
 }

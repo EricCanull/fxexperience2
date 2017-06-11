@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.fxexperience.javafx.scene.control.IntegerField?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -37,15 +38,15 @@
                                  <children>
                                     <GridPane fx:id="textGridPanel" hgap="5.0" layoutX="5.0" layoutY="34.0" vgap="5.0" AnchorPane.topAnchor="5.0">
                                        <columnConstraints>
-                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="65.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="72.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="205.0" />
-                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="53.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
                                           <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" valignment="TOP" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" valignment="TOP" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
                                           <ChoiceBox id="font-box" fx:id="fontChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
@@ -60,6 +61,11 @@
                                           <Label alignment="CENTER" styleClass="prop-label" text="Font Name:" />
                                           <Slider fx:id="fontSizeSlider" majorTickUnit="5.0" max="30.0" min="6.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
+                                          <IntegerField fx:id="fontTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefColumnCount="3" prefHeight="28.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </IntegerField>
                                        </children>
                                     </GridPane>
                                  </children>
@@ -70,19 +76,19 @@
                         <content>
                           <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" styleClass="anchor-pane">
                                  <children>
-                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" vgap="5.0" AnchorPane.topAnchor="10.0">
+                                    <GridPane fx:id="sizeGridPanel" hgap="2.0" vgap="10.0" AnchorPane.topAnchor="10.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" />
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" />
                                           <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="35.0" prefHeight="35.0" valignment="TOP" vgrow="NEVER" />
-                                          <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
-                                          <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
-                                          <Label id="label3" styleClass="prop-label" text="Padding:">
+                                          <Label id="label3" styleClass="prop-label" text="Padding:" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
@@ -106,10 +112,12 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                                          <IntegerField fx:id="paddingTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.valignment="TOP" />
                                           <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" GridPane.columnIndex="1" />
+                                          <IntegerField fx:id="borderWidthTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                          <IntegerField fx:id="borderRadiusTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -176,15 +184,15 @@
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" text="Components">
+                        <TitledPane animated="false" text="Buttons">
                            <content>
                               <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="350.0">
                                  <children>
-                                    <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" alignment="CENTER" hgap="2.0" vgap="5.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" alignment="CENTER" hgap="2.0" vgap="2.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS">
                                              <children>
-                                                <Label styleClass="title-label" text="Buttons (Borders &amp; Highlighting)">
+                                                <Label styleClass="title-label" text="Highlights &amp; Shadows">
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
@@ -197,80 +205,70 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </HBox>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Mid Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Mid Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label id="label26" minWidth="-Infinity" styleClass="prop-label" text="Mid Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                                          <Label id="label26" minWidth="-Infinity" styleClass="prop-label" text="Mid Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="TOP">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="9" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label id="label23" minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <Slider fx:id="bodyTopSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                          <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                          <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                          <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                          <ToggleButton fx:id="topMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                                          <Slider fx:id="bodyTopSlider" majorTickUnit="50.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <ToggleButton fx:id="topMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="bottomMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                          <ToggleButton fx:id="bottomMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="8">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="borderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                          <ToggleButton fx:id="borderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="shadowToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                          <ToggleButton fx:id="shadowToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                              <font>
                                                 <Font name="SansSerif Bold" size="8.0" />
                                              </font>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="inputBorderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font name="SansSerif Bold" size="8.0" />
-                                             </font>
-                                          </ToggleButton>
-                                          <Slider fx:id="topHighlightSlider" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                          <Slider fx:id="topHighlightSlider" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Top:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Slider fx:id="bottomHighlightSlider" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom:" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                                          <Slider fx:id="bottomHighlightSlider" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Bottom:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
+                                          <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
                                              <children>
-                                                <Label styleClass="title-label" text="Buttons (Gradients)">
+                                                <Label styleClass="title-label" text="Gradients">
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
@@ -280,7 +278,7 @@
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <Label alignment="CENTER_RIGHT" minWidth="-Infinity" styleClass="prop-label" text="Preset:" GridPane.halignment="LEFT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+                                          <Label alignment="CENTER_RIGHT" minWidth="-Infinity" styleClass="prop-label" text="Preset:" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                                              <GridPane.margin>
                                                 <Insets top="10.0" />
                                              </GridPane.margin>
@@ -288,18 +286,58 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <ComboBox fx:id="gradientComboBox" pickOnBounds="true" prefWidth="180.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <ComboBox fx:id="gradientComboBox" pickOnBounds="true" prefWidth="180.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                              <GridPane.margin>
                                                 <Insets left="5.0" top="10.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Shadow:" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Shadow:" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Slider fx:id="shadowSlider" majorTickUnit="50.0" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                          <Slider fx:id="borderSlider" majorTickUnit="50.0" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Slider fx:id="shadowSlider" majorTickUnit="50.0" maxHeight="1.7976931348623157E308" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Slider fx:id="borderSlider" majorTickUnit="50.0" min="-100.0" prefWidth="215.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                                          <ColumnConstraints hgrow="ALWAYS" prefWidth="218.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="54.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="79.0" text="Components">
+                           <content>
+                              <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="350.0">
+                                 <children>
+                                    <GridPane id="Gridpane-advanced" fx:id="buttonGridPane1" hgap="2.0" vgap="2.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <ToggleButton fx:id="inputBorderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="SansSerif Bold" size="8.0" />
+                                             </font>
+                                          </ToggleButton>
                                           <HBox alignment="CENTER" styleClass="sub-title" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS">
                                              <children>
                                                 <Label styleClass="title-label" text="Inputfield Borders">
@@ -313,23 +351,12 @@
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
-                                          <ColumnConstraints hgrow="ALWAYS" prefWidth="218.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="62.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" prefWidth="234.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="65.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>
                                  </children>

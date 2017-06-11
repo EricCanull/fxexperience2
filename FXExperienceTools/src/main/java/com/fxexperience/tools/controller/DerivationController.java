@@ -31,6 +31,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 
 public class DerivationController implements Initializable, ToolsHandler {
+
+    protected Node derivationController;
+
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gridPane;
     @FXML private Label forwardDerivationLabel;
@@ -152,7 +155,7 @@ public class DerivationController implements Initializable, ToolsHandler {
 
     @Override
     public void setParentTool(Node parentTool) {
-        Node derivationController = parentTool;
+        derivationController = parentTool;
     }
 
     @Override
