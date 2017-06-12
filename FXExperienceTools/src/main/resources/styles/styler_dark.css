@@ -147,12 +147,17 @@
 }
 
 /*******************************************************************************
- * Title Pane    	                                                       *
+ * Title Pane    	                                                           *
  ******************************************************************************/
 
 .titled-pane > .title {
-    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+
+    -fx-background-color: derive(rgb(147, 147, 147), -60%),
+                          derive(rgb(147, 147, 147), -60%),
+                          derive(rgb(147, 147, 147), 40%),
+                          rgb(147, 147, 147);
+
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
     -fx-font-size: 0.875em;
@@ -170,7 +175,10 @@
 
 }
 .titled-pane .context-menu {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-color: derive(rgb(147, 147, 147), -60%),
+                          derive(rgb(147, 147, 147), -60%),
+                          derive(rgb(147, 147, 147), 40%),
+                          rgb(147, 147, 147);
 }
 
 .titled-pane > .title > .text {
@@ -186,12 +194,11 @@
 }
 
 .sub-title {
-    -fx-font-family: Helvetica Neue, Lucida Grande, sans-serif;
     -fx-text-fill: derive(rgb(147, 147, 147), 85%);
     -fx-border-width: 0.5 0 0.5 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
 
-     -fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(#31363B, 21%), derive(#31363B, 10%));
+    -fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(#31363B, 21%), derive(#31363B, 10%));
 }
 
 .pane-shadow {

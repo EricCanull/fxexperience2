@@ -83,9 +83,9 @@
                                           <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
-                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
-                                          <RowConstraints minHeight="35.0" prefHeight="42.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
                                           <Label id="label3" styleClass="prop-label" text="Padding:" GridPane.valignment="TOP">
@@ -113,9 +113,9 @@
                                              </padding>
                                           </Label>
                                           <IntegerField fx:id="paddingTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.valignment="TOP" />
-                                          <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" GridPane.columnIndex="1" />
+                                          <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" GridPane.columnIndex="1" />
                                           <IntegerField fx:id="borderWidthTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                                           <IntegerField fx:id="borderRadiusTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                                        </children>
@@ -306,15 +306,15 @@
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" valignment="CENTER" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>

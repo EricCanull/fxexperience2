@@ -14,7 +14,7 @@ different terms and without source code for the larger work.
     -fe-inner-text: #C2C2C3;
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 
-    -fx-background-color: #2E3134;
+    -fx-background-color: #84b6eb;
     -fx-focus-color: #339797;
 }
 .nav-box {
@@ -28,7 +28,7 @@ different terms and without source code for the larger work.
  * Alert Notification		                                                   *
  ******************************************************************************/
 .status-dialog {
-   -fx-background-color: #3AA6DF;
+   -fx-background-color: #84b6eb;
 }
 .status-label {
     -fx-text-fill: black;
@@ -148,13 +148,13 @@ different terms and without source code for the larger work.
      -fx-border-width: 0 4 0 0;
 }
 
-.menu-toggle-button:selected {
-    -fx-border-color: #1C82E8;
-    -fx-border-width: 0 4 0 0;
-}
-.menu-toggle-button:hover {
-    -fx-border-color: -fe-border;
-    -fx-border-width: 0 4 0 0;
-}
+/*.menu-toggle-button:selected {*/
+    /*-fx-border-color: */
+    /*-fx-border-width: 0 4 0 0;*/
+/*}*/
+/*.menu-toggle-button:hover {*/
+    /*-fx-border-color: -fe-border;*/
+    /*-fx-border-width: 0 4 0 0;*/
+/*}*/
 
 

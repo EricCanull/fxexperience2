@@ -19,9 +19,7 @@ public class MainWindow extends AbstractWindow {
     }
 
     @Override
-    protected String iconFileName() {
-        return "fxexperience-128.png";
-    }
+    protected String iconFileName() { return "fxexperience.png"; }
 
     @Override
     protected String fxmlFileName() {

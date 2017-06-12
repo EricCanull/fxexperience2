@@ -20,6 +20,7 @@ public abstract class AbstractController implements Initializable {
     protected final ViewHandler viewHandler;
 
     public AbstractController(ViewHandler viewHandler) {
+        assert viewHandler != null;
         this.viewHandler = viewHandler;
     }
 

@@ -15,6 +15,8 @@ import com.fxexperience.tools.util.AppPaths;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,13 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.ClosePath;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
@@ -41,6 +50,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
+    private DoubleProperty arrowHeight = new SimpleDoubleProperty(50);
+    private static double TOOLBAR_WIDTH = 90;
+
+    @FXML private StackPane toolBar;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
@@ -70,6 +83,13 @@ public final class MainController extends AbstractController implements Initiali
 
         initToggleGroup();
 
+        // create toolbar background path
+
+        toolBar.setClip(createToolBarPath(Color.BLACK, null));
+        Path toolBarBackground = createToolBarPath(null,Color.web("#606060"));
+        toolBar.getChildren().add(toolBarBackground);
+
+
     }
 
     // Creates toggle group to bind color icon effect
@@ -78,7 +98,6 @@ public final class MainController extends AbstractController implements Initiali
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);
-
     }
 
     // Adjusts the color of the toogle icons upon selection
@@ -101,8 +120,10 @@ public final class MainController extends AbstractController implements Initiali
         StatusAlertController alert = new StatusAlertController(textMessage);
         alert.setOpacity(0);
 
-        double prefWidth = toolsController.getCurrentToolIndex() == 0 ? rootContainer.getLayoutBounds().getWidth() - 350d :
-                rootContainer.getLayoutBounds().getWidth();
+        double prefWidth = toolsController.getCurrentToolIndex() == 0
+                ? rootContainer.getLayoutBounds().getWidth() - 350d
+                : rootContainer.getLayoutBounds().getWidth();
+
         alert.setPrefWidth(prefWidth);
 
         alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
@@ -121,16 +142,49 @@ public final class MainController extends AbstractController implements Initiali
     }
 
     private void loadStyle(boolean isDarkThemeSelected) {
-        String mainControllerCSS = isDarkThemeSelected ? getClass().getResource("/styles/main_dark.css").toExternalForm()
-                : getClass().getResource("/styles/main_light.css").toExternalForm();
-        String stylerControllerCSS = isDarkThemeSelected ? getClass().getResource("/styles/styler_dark.css").toExternalForm()
-                : getClass().getResource("/styles/styler_light.css").toExternalForm();
+        String mainControllerCSS = isDarkThemeSelected
+                ? getClass().getResource(AppPaths.STYLE_PATH + "main_dark.css").toExternalForm()
+                : getClass().getResource(AppPaths.STYLE_PATH + "main_light.css").toExternalForm();
+        String stylerControllerCSS = isDarkThemeSelected
+                ? getClass().getResource(AppPaths.STYLE_PATH + "styler_dark.css").toExternalForm()
+                : getClass().getResource(AppPaths.STYLE_PATH + "styler_light.css").toExternalForm();
+
         rootBorderPane.getStylesheets().clear();
         rootBorderPane.getStylesheets().add(mainControllerCSS);
         toolsController.getStylerController().getRootSplitPane().getStylesheets().clear();
         toolsController.getStylerController().getRootSplitPane().getStylesheets().add(stylerControllerCSS);
     }
 
+    private void setArrowSelected(Node toggleButton) {
+        double minY = toggleButton.getBoundsInParent().getMinY();
+        double centerY = toggleButton.getLayoutBounds().getHeight() / 2.0;
+        arrowHeight.set(minY + centerY);
+    }
+
+    private Path createToolBarPath(Paint fill, Paint stroke) {
+        Path toolPath = new Path();
+        toolPath.setFill(fill);
+        toolPath.setStroke(stroke);
+        toolPath.setStrokeType(StrokeType.CENTERED);
+        LineTo arrowTop = new LineTo(TOOLBAR_WIDTH,0);
+        arrowTop.yProperty().bind(arrowHeight.add(-8));
+        LineTo arrowTip = new LineTo(TOOLBAR_WIDTH-10,0);
+        arrowTip.yProperty().bind(arrowHeight);
+        LineTo arrowBottom = new LineTo(TOOLBAR_WIDTH,0);
+        arrowBottom.yProperty().bind(arrowHeight.add(8));
+        LineTo bottomRight = new LineTo(TOOLBAR_WIDTH,0);
+        bottomRight.yProperty().bind(rootContainer.heightProperty());
+        LineTo bottomLeft = new LineTo(0,0);
+        bottomLeft.yProperty().bind(rootContainer.heightProperty());
+        toolPath.getElements().addAll(
+                new MoveTo(0,0),
+                new LineTo(TOOLBAR_WIDTH,0),
+                arrowTop, arrowTip, arrowBottom,
+                bottomRight, bottomLeft,
+                new ClosePath()
+        );
+        return toolPath;
+    }
 
     @FXML
     private void setThemeAction() {
@@ -142,6 +196,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
             toolsController.setTool(AppPaths.STYLER_ID);
+            setArrowSelected(stylerToggle);
         } else { // tool is already active
             stylerToggle.setSelected(true);
         }
@@ -152,6 +207,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
             toolsController.setTool(AppPaths.SPLINE_ID);
+            setArrowSelected(splineToggle);
         } else { // tool is already active
             splineToggle.setSelected(true);
         }
@@ -162,6 +218,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
             toolsController.setTool(AppPaths.DERIVED_ID);
+           setArrowSelected(derivedColorToggle);
         } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }

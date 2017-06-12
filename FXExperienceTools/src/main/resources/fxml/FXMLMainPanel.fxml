@@ -55,72 +55,73 @@
       </MenuBar>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefWidth="91.0" spacing="10.0" styleClass="nav-box" BorderPane.alignment="TOP_CENTER">
-         <children>
-            <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="87.0" prefWidth="87.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/styler-icon.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="11.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </ToggleButton>
-            <ToggleButton fx:id="splineToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="87.0" prefWidth="87.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
-               <graphic>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/spline-editor-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="11.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ToggleButton>
-            <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="87.0" prefWidth="87.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
-               <graphic>
-                  <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/derive-color-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="11.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ToggleButton>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
+      <StackPane fx:id="toolBar" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
-         <effect>
-            <DropShadow color="#6c6d6f8f" height="0.0" radius="11.58" width="48.32" />
-         </effect>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
+         <children>
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" spacing="5.0" styleClass="nav-box">
+               <children>
+                  <ToggleButton fx:id="stylerToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="90.0" prefWidth="90.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/styler-icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="splineToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="90.0" prefWidth="90.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/spline-editor-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="90.0" prefWidth="90.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/derive-color-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ToggleButton>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow color="#6c6d6f8f" height="0.0" radius="11.58" width="48.32" />
+               </effect>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </StackPane>
    </left>
 </BorderPane>

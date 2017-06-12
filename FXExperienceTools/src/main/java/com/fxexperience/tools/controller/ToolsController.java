@@ -37,10 +37,11 @@ public class ToolsController {
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> tools = new HashMap<>();
 
+    private StylerController stylerController;
+    private SplinePanelController splineController;
+
     // Containers for the tools for slide animation
     private StackPane currentPane, sparePane;
-
-    private StylerController stylerController;
 
     private StackPane rootContainer;
 
@@ -87,11 +88,17 @@ public class ToolsController {
             toolsHandler.setParentTool(rootContainer);
             addTool(id, loadScreen);
 
-            if (id == AppPaths.STYLER_ID) {
-                stylerController = (StylerController) toolsHandler;
-
+            switch (id) {
+                case 0: stylerController = (StylerController) toolsHandler;
+                    break;
+                case 1: splineController = (SplinePanelController) toolsHandler;
+                    break;
+                default:
+                    break;
             }
+
             return true;
+
         } catch (IOException e) {
             Logger.getLogger(ToolsController.class.getName()).log(Level.SEVERE, null, e);
             return false;
@@ -110,8 +117,13 @@ public class ToolsController {
             nextTool = null;
         }
 
+        // start any animations
+        if (currentToolIndex == AppPaths.SPLINE_ID) {
+            splineController.stopAnimations();
+        }
+
         // load new content
-        sparePane.getChildren().setAll(tools.get(id));
+        sparePane.getChildren().setAll((Parent) tools.get(id));
         sparePane.setCache(true);
         currentPane.setCache(true);
 
@@ -166,12 +178,15 @@ public class ToolsController {
 
         // Attempt to turn off animations in the spline tool
         // start any animations
-//        if (tools.get(currentToolIndex) instanceof AnimatedAction) {
-//            ((AnimatedAction) tools[currentToolIndex].getContent()).startAnimations();
-//        }
+        if (currentToolIndex == AppPaths.SPLINE_ID) {
+            splineController.startAnimations();
+        }
+
         // check if we have a animation waiting
         if (nextTool != null) {
-            // switchTool(id);
+
+            System.out.println("next tool waiting: " + nextTool.getId());
+            // setTool(Integer.parseInt(nextTool.getId()));
         }
     };
 

@@ -10,33 +10,25 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.tools.handler.ToolsHandler;
-import com.fxexperience.tools.util.AppPaths;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
 import java.net.URL;
-import java.util.Collections;
 import java.util.ResourceBundle;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 public class SplinePanelController implements Initializable, ToolsHandler {
 
@@ -90,7 +82,6 @@ public class SplinePanelController implements Initializable, ToolsHandler {
         SplineEditor.controlPoint1yProperty().addListener(animUpdater);
         SplineEditor.controlPoint2xProperty().addListener(animUpdater);
         SplineEditor.controlPoint2yProperty().addListener(animUpdater);
-        startAnimations();
     }
 
     @Override
@@ -101,15 +92,21 @@ public class SplinePanelController implements Initializable, ToolsHandler {
     @Override
     public void stopAnimations() {
         if (timeline != null) {
+            PauseTransition pauseTransition = new PauseTransition();
+            pauseTransition.setDuration(Duration.seconds(1.5));
+            pauseTransition.play();
+            pauseTransition.setOnFinished((ActionEvent t) -> {
+                timeline.stop();
+                scaleCircle.setScaleX(0d);
+                rotateRectangle.setRotate(0d);
+                fadeSquare.setOpacity(1);
+                linearCircle.translateXProperty().setValue(0d);
+            });
             timeline.stop();
         }
     }
 
     private void updateAnimation() {
-        if (timeline != null) {
-            timeline.stop();
-        }
-        
         Interpolator spline = Interpolator.SPLINE(SplineEditor.getControlPoint1x(),
                 SplineEditor.getControlPoint1y(),
                 SplineEditor.getControlPoint2x(),
@@ -138,19 +135,6 @@ public class SplinePanelController implements Initializable, ToolsHandler {
                 )
         );
         timeline.play();
-    }
-   
-      @FXML
-    private void copyCodeAction(MouseEvent event) {
-        String code = codeTextField.getText();
-         Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, code));
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "CSS copied to the clipboard.", ButtonType.OK);
-        alert.getDialogPane().setId("Code-dialog");
-        alert.setHeaderText(null);
-        alert.getDialogPane().getStylesheets().add(AppPaths.STYLE_PATH + "dialog.css");
-        alert.showAndWait();
     }
 
     @Override

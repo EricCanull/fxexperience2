@@ -9,15 +9,14 @@
  */
 package com.fxexperience.tools.handler;
 
-import com.fxexperience.tools.util.AppPaths;
 import com.fxexperience.tools.view.AbstractWindow;
 import com.fxexperience.tools.view.WindowFactory;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class AppViewHandler implements ViewHandler {
  
@@ -35,10 +34,8 @@ public class AppViewHandler implements ViewHandler {
     }
 
     private void buildAndShowScene(Stage stage, AbstractWindow window) throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(AppPaths.IMG_PATH + "fxexperience-128.png")) {
-            stage.getIcons().add(new Image(is));
-        }
-        
+
+        stage.getIcons().add(new Image(window.iconFilePath()));
         stage.setTitle(bundle.getString(window.titleBundleKey()));
         stage.setResizable(window.resizable());
         stage.setScene(new Scene(window.root()));

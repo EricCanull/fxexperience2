@@ -20,9 +20,9 @@ different terms and without source code for the larger work.
     -fx-underline: true;
 }
 .animation-label {
-    -fx-font-family: "Arial Narrow";
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-weight: bold; 
-    -fx-font-size: 16px;
+    -fx-font-size: 12px;
     -fx-text-fill: #C2C2C3;
     -fx-underline: true;
 }
