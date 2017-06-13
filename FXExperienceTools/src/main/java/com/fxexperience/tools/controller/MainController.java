@@ -88,8 +88,6 @@ public final class MainController extends AbstractController implements Initiali
         toolBar.setClip(createToolBarPath(Color.BLACK, null));
         Path toolBarBackground = createToolBarPath(null,Color.web("#606060"));
         toolBar.getChildren().add(toolBarBackground);
-
-
     }
 
     // Creates toggle group to bind color icon effect
@@ -173,9 +171,9 @@ public final class MainController extends AbstractController implements Initiali
         LineTo arrowBottom = new LineTo(TOOLBAR_WIDTH,0);
         arrowBottom.yProperty().bind(arrowHeight.add(8));
         LineTo bottomRight = new LineTo(TOOLBAR_WIDTH,0);
-        bottomRight.yProperty().bind(rootContainer.heightProperty());
+        bottomRight.yProperty().bind(toolBar.heightProperty());
         LineTo bottomLeft = new LineTo(0,0);
-        bottomLeft.yProperty().bind(rootContainer.heightProperty());
+        bottomLeft.yProperty().bind(toolBar.heightProperty());
         toolPath.getElements().addAll(
                 new MoveTo(0,0),
                 new LineTo(TOOLBAR_WIDTH,0),
