@@ -51,7 +51,7 @@ import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
     private DoubleProperty arrowHeight = new SimpleDoubleProperty(50);
-    private static double TOOLBAR_WIDTH = 90;
+
 
     @FXML private StackPane toolBar;
 
@@ -84,8 +84,7 @@ public final class MainController extends AbstractController implements Initiali
         initToggleGroup();
 
         // create toolbar background path
-
-        toolBar.setClip(createToolBarPath(Color.BLACK, null));
+        toolBar.setClip(createToolBarPath(Color.WHEAT, null));
         Path toolBarBackground = createToolBarPath(null,Color.web("#606060"));
         toolBar.getChildren().add(toolBarBackground);
     }
@@ -153,30 +152,32 @@ public final class MainController extends AbstractController implements Initiali
         toolsController.getStylerController().getRootSplitPane().getStylesheets().add(stylerControllerCSS);
     }
 
-    private void setArrowSelected(Node toggleButton) {
+    private void setArrow(Node toggleButton) {
         double minY = toggleButton.getBoundsInParent().getMinY();
         double centerY = toggleButton.getLayoutBounds().getHeight() / 2.0;
         arrowHeight.set(minY + centerY);
     }
 
     private Path createToolBarPath(Paint fill, Paint stroke) {
-        Path toolPath = new Path();
+        final double toolbarWidth = 90;
+        final Path toolPath = new Path();
+
         toolPath.setFill(fill);
         toolPath.setStroke(stroke);
         toolPath.setStrokeType(StrokeType.CENTERED);
-        LineTo arrowTop = new LineTo(TOOLBAR_WIDTH,0);
+        LineTo arrowTop = new LineTo(toolbarWidth,0);
         arrowTop.yProperty().bind(arrowHeight.add(-8));
-        LineTo arrowTip = new LineTo(TOOLBAR_WIDTH-10,0);
+        LineTo arrowTip = new LineTo(toolbarWidth-9,0);
         arrowTip.yProperty().bind(arrowHeight);
-        LineTo arrowBottom = new LineTo(TOOLBAR_WIDTH,0);
+        LineTo arrowBottom = new LineTo(toolbarWidth,0);
         arrowBottom.yProperty().bind(arrowHeight.add(8));
-        LineTo bottomRight = new LineTo(TOOLBAR_WIDTH,0);
+        LineTo bottomRight = new LineTo(toolbarWidth,0);
         bottomRight.yProperty().bind(toolBar.heightProperty());
         LineTo bottomLeft = new LineTo(0,0);
         bottomLeft.yProperty().bind(toolBar.heightProperty());
         toolPath.getElements().addAll(
                 new MoveTo(0,0),
-                new LineTo(TOOLBAR_WIDTH,0),
+                new LineTo(toolbarWidth,0),
                 arrowTop, arrowTip, arrowBottom,
                 bottomRight, bottomLeft,
                 new ClosePath()
@@ -194,7 +195,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
             toolsController.setTool(AppPaths.STYLER_ID);
-            setArrowSelected(stylerToggle);
+            setArrow(stylerToggle);
         } else { // tool is already active
             stylerToggle.setSelected(true);
         }
@@ -205,7 +206,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
             toolsController.setTool(AppPaths.SPLINE_ID);
-            setArrowSelected(splineToggle);
+            setArrow(splineToggle);
         } else { // tool is already active
             splineToggle.setSelected(true);
         }
@@ -216,7 +217,7 @@ public final class MainController extends AbstractController implements Initiali
         // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
             toolsController.setTool(AppPaths.DERIVED_ID);
-           setArrowSelected(derivedColorToggle);
+           setArrow(derivedColorToggle);
         } else { // tool is already active
             derivedColorToggle.setSelected(true);
         }

@@ -149,17 +149,16 @@ different terms and without source code for the larger work.
 
 .menu-toggle-button {
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0 4 0 0;
+
 }
 
 .menu-toggle-button:selected {
-    -fx-border-color: #1C82E8;
-    -fx-border-width: 0 4 0 0;
+
+
 }
 .menu-toggle-button:hover {
-    -fx-border-color: -fe-border;
-    -fx-border-width: 0 4 0 0;
+
+   
 }
 
 
