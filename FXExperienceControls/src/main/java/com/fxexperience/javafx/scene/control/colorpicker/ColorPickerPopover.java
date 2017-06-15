@@ -46,9 +46,9 @@ class ColorPickerPopover extends Group {
     private static final int PICKER_HEIGHT = 262;
     private static final int RADIUS = 8;
 
-    private Popup popup = new Popup();
+    private final Popup popup = new Popup();
     private boolean changeIsLocal = false;
-    private DoubleProperty hue = new SimpleDoubleProperty() {
+    private final DoubleProperty hue = new SimpleDoubleProperty() {
         @Override
         protected void invalidated() {
             if (!changeIsLocal) {
@@ -58,7 +58,7 @@ class ColorPickerPopover extends Group {
             }
         }
     };
-    private DoubleProperty sat = new SimpleDoubleProperty() {
+    private final DoubleProperty sat = new SimpleDoubleProperty() {
         @Override
         protected void invalidated() {
             if (!changeIsLocal) {
@@ -68,7 +68,7 @@ class ColorPickerPopover extends Group {
             }
         }
     };
-    private DoubleProperty bright = new SimpleDoubleProperty() {
+    private final DoubleProperty bright = new SimpleDoubleProperty() {
         @Override
         protected void invalidated() {
             if (!changeIsLocal) {
@@ -78,7 +78,7 @@ class ColorPickerPopover extends Group {
             }
         }
     };
-    private ObjectProperty<Color> color = new SimpleObjectProperty<Color>(Color.RED) {
+    private final ObjectProperty<Color> color = new SimpleObjectProperty<Color>(Color.RED) {
         @Override
         protected void invalidated() {
             if (!changeIsLocal) {
@@ -92,7 +92,7 @@ class ColorPickerPopover extends Group {
         }
     };
 
-    public ObjectProperty<Color> colorProperty() {
+    public final ObjectProperty<Color> colorProperty() {
         return color;
     }
 

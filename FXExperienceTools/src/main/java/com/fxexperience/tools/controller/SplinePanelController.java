@@ -107,6 +107,10 @@ public class SplinePanelController implements Initializable, ToolsHandler {
     }
 
     private void updateAnimation() {
+        if(timeline != null) {
+            timeline.stop();
+        }
+
         Interpolator spline = Interpolator.SPLINE(SplineEditor.getControlPoint1x(),
                 SplineEditor.getControlPoint1y(),
                 SplineEditor.getControlPoint2x(),

@@ -280,15 +280,15 @@
                                           </HBox>
                                           <Label alignment="CENTER_RIGHT" minWidth="-Infinity" styleClass="prop-label" text="Preset:" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                                              <GridPane.margin>
-                                                <Insets top="10.0" />
+                                                <Insets />
                                              </GridPane.margin>
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <ComboBox fx:id="gradientComboBox" pickOnBounds="true" prefWidth="180.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                          <ComboBox fx:id="gradientComboBox" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true" prefHeight="32.0" prefWidth="160.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                              <GridPane.margin>
-                                                <Insets left="5.0" top="10.0" />
+                                                <Insets left="5.0" />
                                              </GridPane.margin>
                                           </ComboBox>
                                           <Label minWidth="-Infinity" styleClass="prop-label" text="Shadow:" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
@@ -315,7 +315,7 @@
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="32.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                     </GridPane>
                                  </children>

@@ -10,6 +10,8 @@ package com.fxexperience.tools.controller;
  */
 
 import com.fxexperience.tools.util.AppPaths;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -22,6 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StatusAlertController extends AnchorPane {
+
+    protected double panelWidth;
 
     @FXML private AnchorPane statusDialog;
     @FXML private Label statusLabel;
@@ -48,6 +52,24 @@ public class StatusAlertController extends AnchorPane {
         }
 
         statusLabel.setText(text);
+    }
+
+    public void setPanelWidth(double panelWidth, int toolIndex) {
+        this.panelWidth = panelWidth;
+
+        if (this != null) {
+            switch (toolIndex) {
+                case 0:
+                    setPrefWidth(panelWidth - 350d);
+                    break;
+                case 1:
+                    setPrefWidth(panelWidth);
+                    break;
+                default:
+                    setPrefWidth(panelWidth);
+                    break;
+            }
+        }
     }
 }
 

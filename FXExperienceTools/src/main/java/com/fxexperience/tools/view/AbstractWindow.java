@@ -42,7 +42,7 @@ public abstract class AbstractWindow {
 		return AppPaths.IMG_PATH + iconFileName();
 	}
         
-        public boolean nonresizable() {
+	public boolean nonresizable() {
             return false;
         }
 

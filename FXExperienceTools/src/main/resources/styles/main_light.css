@@ -16,7 +16,7 @@ different terms and without source code for the larger work.
     -fe-inner-text: #000;
     -fe-border: #282828;
 
-    -fx-background-color: #F1F4F6;
+    -fx-background-color:  #f0f5fa;
     -fx-focus-color: #339797;
 }
 .nav-box {
@@ -158,7 +158,7 @@ different terms and without source code for the larger work.
 }
 .menu-toggle-button:hover {
 
-   
+
 }
 
 

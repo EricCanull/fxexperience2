@@ -3,17 +3,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <fx:root fx:id="statusDialog" maxHeight="35.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="618" styleClass="status-dialog" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="618.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="statusLabel" styleClass="status-label" text="alert text">
-               <padding>
-                  <Insets left="5.0" top="10.0" />
-               </padding>
-            </Label>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <Label fx:id="statusLabel" styleClass="status-label" text="alert text">
+                     <padding>
+                        <Insets left="5.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

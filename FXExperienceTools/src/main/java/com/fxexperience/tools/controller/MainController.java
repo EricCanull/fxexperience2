@@ -21,22 +21,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.ClosePath;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.StrokeType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.*;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
@@ -50,8 +48,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
-    private DoubleProperty arrowHeight = new SimpleDoubleProperty(50);
-
+    private DoubleProperty arrowHeight = new SimpleDoubleProperty(52);
 
     @FXML private StackPane toolBar;
 
@@ -107,21 +104,23 @@ public final class MainController extends AbstractController implements Initiali
 
             @Override
             protected Effect computeValue() {
-                return toggle.isSelected() ? null : new ColorAdjust(0, -1, 0, 0);
+                return toggle.isSelected()
+                        ? null : new ColorAdjust(0, -1, 0, 0);
             }
         });
     }
 
-
     private void displayStatusAlert(String textMessage) {
+        double prefWidth = rootContainer.getLayoutBounds().getWidth();
+
         StatusAlertController alert = new StatusAlertController(textMessage);
         alert.setOpacity(0);
 
-        double prefWidth = toolsController.getCurrentToolIndex() == 0
-                ? rootContainer.getLayoutBounds().getWidth() - 350d
-                : rootContainer.getLayoutBounds().getWidth();
+        alert.setPanelWidth(prefWidth, toolsController.getCurrentToolIndex());
 
-        alert.setPrefWidth(prefWidth);
+        rootContainer.widthProperty().addListener((observable, oldValue, newValue) ->
+        alert.setPanelWidth(newValue.doubleValue(), toolsController.getCurrentToolIndex()));
+
 
         alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
         AnchorPane.setTopAnchor(alert, 0d);
@@ -196,7 +195,7 @@ public final class MainController extends AbstractController implements Initiali
         if (stylerToggle.isSelected()) {
             toolsController.setTool(AppPaths.STYLER_ID);
             setArrow(stylerToggle);
-        } else { // tool is already active
+        } else { // tool is already active reselect toggle
             stylerToggle.setSelected(true);
         }
     }
@@ -207,7 +206,7 @@ public final class MainController extends AbstractController implements Initiali
         if (splineToggle.isSelected()) {
             toolsController.setTool(AppPaths.SPLINE_ID);
             setArrow(splineToggle);
-        } else { // tool is already active
+        } else { // tool is already active reselect toggle
             splineToggle.setSelected(true);
         }
     }
@@ -218,7 +217,7 @@ public final class MainController extends AbstractController implements Initiali
         if (derivedColorToggle.isSelected()) {
             toolsController.setTool(AppPaths.DERIVED_ID);
            setArrow(derivedColorToggle);
-        } else { // tool is already active
+        } else { // tool is already active reselect toggle
             derivedColorToggle.setSelected(true);
         }
     }

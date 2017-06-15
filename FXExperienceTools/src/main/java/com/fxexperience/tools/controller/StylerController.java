@@ -215,11 +215,11 @@ public class StylerController implements Initializable, ToolsHandler {
     }
 
     private void updateCSS() {
-       String css = createCSS(true);
+       String css = createCSS();
        previewPanel.setPreviewPanelStyle(css);
     }
 
-    private String createCSS(Boolean isRoot) {
+    private String createCSS() {
 
         int fontSize = (int) fontSizeSlider.getValue();
         int borderWidth = (int) borderWidthSlider.getValue();
@@ -229,21 +229,16 @@ public class StylerController implements Initializable, ToolsHandler {
         double checkPadding = (((0.25 * fontSize) + borderWidthForPadding) / fontSize);
         double radioPadding = (((0.333333 * fontSize) + borderWidthForPadding) / fontSize);
 
-
         StringBuilder cssBuffer = new StringBuilder();
-        if (isRoot) {
-            cssBuffer.append(".root {\n");
-        } else {
-            cssBuffer.append("#Preview-area {\n");
-        }
 
+        cssBuffer.append(".root {\n");
         //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorText() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorText() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorText() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getWebColor() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getColorText() + ";", true, 4));
 
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
@@ -415,7 +410,7 @@ public class StylerController implements Initializable, ToolsHandler {
 
 
     public String getCodeOutput() {
-     return createCSS(true);
+     return createCSS();
     }
 
 

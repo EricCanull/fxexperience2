@@ -17,9 +17,9 @@ import javafx.fxml.Initializable;
 
 public abstract class AbstractController implements Initializable {
 
-    protected final ViewHandler viewHandler;
+    private final ViewHandler viewHandler;
 
-    public AbstractController(ViewHandler viewHandler) {
+    AbstractController(ViewHandler viewHandler) {
         assert viewHandler != null;
         this.viewHandler = viewHandler;
     }

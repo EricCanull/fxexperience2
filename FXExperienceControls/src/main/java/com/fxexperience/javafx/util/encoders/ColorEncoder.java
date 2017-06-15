@@ -58,7 +58,7 @@ public class ColorEncoder {
         return result;
     }
 
-    public static synchronized Map<String, Color> getStandardColors() {
+    private static synchronized Map<String, Color> getStandardColors() {
         
         if (standardColors == null) {
             standardColors = new HashMap<>();

@@ -84,7 +84,7 @@
                      <graphic>
                         <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/spline-editor-icon.png" />
+                              <Image url="@../images/spline-icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -99,7 +99,7 @@
                      <graphic>
                         <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/derive-color-icon.png" />
+                              <Image url="@../images/derivation-icon.png" />
                            </image>
                         </ImageView>
                      </graphic>

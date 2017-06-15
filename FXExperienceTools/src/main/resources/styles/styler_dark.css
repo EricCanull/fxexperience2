@@ -94,14 +94,16 @@
 .gradient-combo-box {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;
-    -fx-background-insets: 0;
+    /*-fx-border-color: -fe-border;*/
+    /*-fx-background-insets: 0;*/
 }
 .gradient-combo-box .arrow-button {
     -fx-background-color: -fe-inner-background;
-    -fx-border-color: transparent;
-    -fx-border-width: 0.2 .2 0.2 .2;
-    -fx-background-insets: 1;
-    -fx-border-insets: 1;
+    -fx-border-color: -fe-border;
+    /*-fx-border-color: transparent;*/
+    /*-fx-border-width: 0.2 .2 0.2 .2;*/
+    /*-fx-background-insets: 0;*/
+    /*-fx-border-insets: 1;*/
 }
 
 #font-box {

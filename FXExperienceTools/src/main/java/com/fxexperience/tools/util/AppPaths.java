@@ -18,11 +18,11 @@ public final class AppPaths {
     public static final String FXML_PATH ="/fxml/";
     
     public final static Integer STYLER_ID = 0;
-    public static String STYLER_FXML_PATH = FXML_PATH + "FXMLStylerPanel.fxml";
-    public static Integer SPLINE_ID = 1;
-    public static String SPLINE_FXML_PATH = FXML_PATH + "FXMLSplinePanel.fxml";
-    public static Integer DERIVED_ID = 2;
-    public static String DERIVED_FXML_PATH = FXML_PATH + "FXMLDerivationPanel.fxml";
+    public final static String STYLER_FXML_PATH = FXML_PATH + "FXMLStylerPanel.fxml";
+    public final static Integer SPLINE_ID = 1;
+    public final static String SPLINE_FXML_PATH = FXML_PATH + "FXMLSplinePanel.fxml";
+    public final static Integer DERIVED_ID = 2;
+    public final static String DERIVED_FXML_PATH = FXML_PATH + "FXMLDerivationPanel.fxml";
 
     private AppPaths() {
     }

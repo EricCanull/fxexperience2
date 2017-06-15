@@ -20,7 +20,7 @@ public class InputField extends Control {
      * "readonly" pseudo class will be false, but if false, the "readonly"
      * pseudo class will be true.
      */
-    private BooleanProperty editable = new SimpleBooleanProperty(this, "editable", true);
+    private final BooleanProperty editable = new SimpleBooleanProperty(this, "editable", true);
 
     public final boolean isEditable() {
         return editable.getValue();
@@ -38,7 +38,7 @@ public class InputField extends Control {
      * The {@code InputField}'s prompt text to display, or
      * <tt>null</tt> if no prompt text is displayed.
      */
-    private StringProperty promptText = new StringPropertyBase("") {
+    private final StringProperty promptText = new StringPropertyBase("") {
         @Override
         protected void invalidated() {
             // Strip out newlines
@@ -76,7 +76,7 @@ public class InputField extends Control {
      * The preferred number of text columns. This is used for calculating the
      * {@code InputField}'s preferred width.
      */
-    private IntegerProperty prefColumnCount = new IntegerPropertyBase(DEFAULT_PREF_COLUMN_COUNT) {
+    private final IntegerProperty prefColumnCount = new IntegerPropertyBase(DEFAULT_PREF_COLUMN_COUNT) {
         @Override
         public void set(int value) {
             if (value < 0) {

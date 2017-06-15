@@ -80,7 +80,7 @@ public class ToolsController {
 
     // Loads the fxml file, add the tool to the screens collection and
     // finally injects the screenPane to the controller.
-    private boolean loadTool(int id, String fxml) {
+    private void loadTool(int id, String fxml) {
         try {
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(fxml));
             Parent loadScreen = myLoader.load();
@@ -96,12 +96,8 @@ public class ToolsController {
                 default:
                     break;
             }
-
-            return true;
-
         } catch (IOException e) {
             Logger.getLogger(ToolsController.class.getName()).log(Level.SEVERE, null, e);
-            return false;
         }
     }
 

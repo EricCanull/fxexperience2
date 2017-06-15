@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class ColorPickerTool extends Button {
     
-    private ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
+    private final ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
     public ObjectProperty<Color> colorProperty() { return color; }
     public Color getColor() { return color.get(); }
     public void setColor(Color newColor) { color.set(newColor); }

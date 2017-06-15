@@ -37,16 +37,11 @@ import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPickerStop;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
-import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -58,6 +53,10 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Circle;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controller class for the color part of the paint editor.
@@ -171,7 +170,7 @@ public class ColorPickerControl extends VBox {
         });
 
         final ChangeListener<Boolean> onHSBFocusedChange = (ov, oldValue, newValue) -> {
-            if (newValue == false) {
+            if (newValue) {
                 // Update UI
                 final Color color = updateUI_OnHSBChange();
                 // Update model
@@ -179,7 +178,7 @@ public class ColorPickerControl extends VBox {
             }
         };
         final ChangeListener<Boolean> onRGBFocusedChange = (ov, oldValue, newValue) -> {
-            if (newValue == false) {
+            if (newValue) {
                 // Update UI
                 final Color color = updateUI_OnRGBChange();
                 // Update model
@@ -187,7 +186,7 @@ public class ColorPickerControl extends VBox {
             }
         };
         final ChangeListener<Boolean> onHexaFocusedChange = (ov, oldValue, newValue) -> {
-            if (newValue == false) {
+            if (newValue) {
                 try {
                     // Update UI
                     final Color color = updateUI_OnHexaChange();
@@ -211,7 +210,7 @@ public class ColorPickerControl extends VBox {
 
         // Slider ON VALUE CHANGE event handler
         hue_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
-            if (updating == true) {
+            if (updating) {
                 return;
             }
             double hue = newValue.doubleValue();
@@ -225,7 +224,7 @@ public class ColorPickerControl extends VBox {
             setPaintProperty(color);
         });
         alpha_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
-            if (updating == true) {
+            if (updating) {
                 return;
             }
             double alpha = newValue.doubleValue();
@@ -446,7 +445,7 @@ public class ColorPickerControl extends VBox {
         hue_textfield.setText(String.valueOf((int) hue));
         saturation_textfield.setText(String.valueOf((int) (saturation * 100)));
         brightness_textfield.setText(String.valueOf((int) (brightness * 100)));
-        double alpha_rounded = round(alpha, 100); // 2 decimals rounding
+        double alpha_rounded = round(alpha); // 2 decimals rounding
         alpha_textfield.setText(Double.toString(alpha_rounded));
         red_textfield.setText(Integer.toString(red));
         green_textfield.setText(Integer.toString(green));
@@ -506,9 +505,9 @@ public class ColorPickerControl extends VBox {
         return sb.toString();
     }
 
-    private double round(double value, int roundingFactor) {
-        double doubleRounded = Math.round(value * roundingFactor);
-        return doubleRounded / roundingFactor;
+    private double round(double value) {
+        double doubleRounded = Math.round(value * 100);
+        return doubleRounded / 100;
     }
 
     private void handleHexaException() {

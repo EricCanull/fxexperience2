@@ -22,15 +22,15 @@ public abstract class InputFieldSkin implements Skin<InputField> {
      * When a {@code Skin} is set on a {@code Control}, this variable is
      * automatically updated.
      */
-    protected InputField control;
+    protected final InputField control;
 
     /**
      * This textField is used to represent the InputField.
      */
     private InnerTextField textField;
 
-    private InvalidationListener InputFieldFocusListener;
-    private InvalidationListener InputFieldStyleClassListener;
+    private final InvalidationListener InputFieldFocusListener;
+    private final InvalidationListener InputFieldStyleClassListener;
 
     /**
      * Create a new InputFieldSkin.
