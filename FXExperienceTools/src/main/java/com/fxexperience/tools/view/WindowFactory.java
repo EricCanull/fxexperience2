@@ -9,7 +9,7 @@ package com.fxexperience.tools.view;
  * for the larger work.
  */
 
-import com.fxexperience.tools.controller.AbstractMainController;
+import com.fxexperience.tools.controller.AbstractController;
 import com.fxexperience.tools.controller.MainController;
 import com.fxexperience.tools.handler.ViewHandler;
 import java.util.ResourceBundle;
@@ -19,7 +19,7 @@ public enum WindowFactory {
     MAIN {
         @Override
         public AbstractWindow createWindow(ViewHandler viewHandler, ResourceBundle bundle) {
-            final AbstractMainController controller = new MainController(viewHandler);
+            final AbstractController controller = new MainController(viewHandler);
             return new MainWindow(controller, bundle);
         }
     };

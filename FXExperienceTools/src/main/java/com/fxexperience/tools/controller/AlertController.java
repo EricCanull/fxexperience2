@@ -9,9 +9,6 @@ package com.fxexperience.tools.controller;
  * for the larger work.
  */
 
-import com.fxexperience.tools.util.AppPaths;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -23,7 +20,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class StatusAlertController extends AnchorPane {
+public class AlertController extends AnchorPane {
 
     protected double panelWidth;
 
@@ -31,7 +28,7 @@ public class StatusAlertController extends AnchorPane {
     @FXML private Label statusLabel;
 
 
-    public StatusAlertController(String text) {
+    public AlertController(String text) {
         initialize(text);
     }
 
@@ -41,13 +38,13 @@ public class StatusAlertController extends AnchorPane {
     private void initialize(String text) {
         try {
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StatusAlertController.class.getResource("/fxml/FXMLStatusDialog.fxml"));
+            loader.setLocation(AlertController.class.getResource("/fxml/FXMLStatusDialog.fxml"));
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
 
         } catch (IOException ex) {
-            Logger.getLogger(StatusAlertController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlertController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         statusLabel.setText(text);

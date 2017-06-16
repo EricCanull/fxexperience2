@@ -1,4 +1,4 @@
-package com.fxexperience.tools.controller;
+package com.fxexperience.tools.util;
 
 /*
  * Permissions of this free software license are conditioned on making available
@@ -29,40 +29,34 @@ import javafx.scene.shape.Path;
 public final class SplineEditor extends XYChart<Number, Number> {
 
     private final DoubleProperty controlPoint1x = new SimpleDoubleProperty(0.8);
-
-    public double getControlPoint1x() {
-        return controlPoint1x.get();
-    }
+    private final DoubleProperty controlPoint1y = new SimpleDoubleProperty(0.2);
+    private final DoubleProperty controlPoint2y = new SimpleDoubleProperty(0.8);
+    private final DoubleProperty controlPoint2x = new SimpleDoubleProperty(0.2);
 
     public DoubleProperty controlPoint1xProperty() {
         return controlPoint1x;
     }
-    public final DoubleProperty controlPoint1y = new SimpleDoubleProperty(0.2);
-
-    public double getControlPoint1y() {
-        return controlPoint1y.get();
-    }
-
     public DoubleProperty controlPoint1yProperty() {
         return controlPoint1y;
     }
-    public final DoubleProperty controlPoint2x = new SimpleDoubleProperty(0.2);
-
-    public double getControlPoint2x() {
-        return controlPoint2x.get();
+    public DoubleProperty controlPoint2yProperty() {
+        return controlPoint2y;
     }
-
     public DoubleProperty controlPoint2xProperty() {
         return controlPoint2x;
     }
-    public final DoubleProperty controlPoint2y = new SimpleDoubleProperty(0.8);
 
+    public double getControlPoint1x() {
+        return controlPoint1x.get();
+    }
+    public double getControlPoint1y() {
+        return controlPoint1y.get();
+    }
+    public double getControlPoint2x() {
+        return controlPoint2x.get();
+    }
     public double getControlPoint2y() {
         return controlPoint2y.get();
-    }
-
-    public DoubleProperty controlPoint2yProperty() {
-        return controlPoint2y;
     }
 
     private final Circle controlPoint1Circle;
@@ -105,7 +99,6 @@ public final class SplineEditor extends XYChart<Number, Number> {
         controlPoint2Circle.setOnMouseDragged((event) ->
             setPointCircles(event, controlPoint2Circle, controlPoint2x, controlPoint2y));
     }
-
 
     public void setPointCircles(MouseEvent event, Circle controlPointCircle, DoubleProperty controlPointX,
                                 DoubleProperty controlPointY) {

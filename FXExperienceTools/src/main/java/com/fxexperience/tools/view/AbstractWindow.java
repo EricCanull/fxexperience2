@@ -10,7 +10,7 @@
 
 package com.fxexperience.tools.view;
 
-import com.fxexperience.tools.controller.AbstractMainController;
+import com.fxexperience.tools.controller.AbstractController;
 import com.fxexperience.tools.util.AppPaths;
 import java.io.IOException;
 import java.net.URL;
@@ -20,10 +20,10 @@ import javafx.scene.Parent;
 
 public abstract class AbstractWindow {
 
-	private final AbstractMainController controller;
+	private final AbstractController controller;
 	private final ResourceBundle bundle;
 
-	public AbstractWindow(AbstractMainController controller, ResourceBundle bundle) {
+	public AbstractWindow(AbstractController controller, ResourceBundle bundle) {
 		this.controller = controller;
 		this.bundle = bundle;
 	}

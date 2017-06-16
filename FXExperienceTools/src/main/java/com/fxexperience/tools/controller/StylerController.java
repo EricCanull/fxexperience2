@@ -36,7 +36,7 @@ public class StylerController extends SplitPane {
     @FXML private SplitPane rootSplitPane;
     @FXML private BorderPane previewPane;
 
-    private PreviewPanelController previewPanel;
+    private PreviewController previewPanel;
 
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
@@ -97,7 +97,7 @@ public class StylerController extends SplitPane {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        previewPanel = new PreviewPanelController();
+        previewPanel = new PreviewController();
         previewPane.setCenter(previewPanel);
 
         addListeners();

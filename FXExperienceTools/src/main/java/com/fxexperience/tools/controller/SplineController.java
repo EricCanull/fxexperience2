@@ -9,6 +9,7 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.tools.util.SplineEditor;
 import javafx.animation.*;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
@@ -30,7 +31,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SplinePanelController extends BorderPane {
+public class SplineController extends BorderPane {
     public static final int INDEX_POS = 1;
 
     @FXML
@@ -48,9 +49,9 @@ public class SplinePanelController extends BorderPane {
 
     private Timeline timeline;
 
-    private SplineEditor SplineEditor;
+    private com.fxexperience.tools.util.SplineEditor SplineEditor;
 
-    public SplinePanelController() {
+    public SplineController() {
         initialize();
     }
 
@@ -58,14 +59,14 @@ public class SplinePanelController extends BorderPane {
     private void initialize() {
 
         final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(SplinePanelController.class.getResource("/fxml/FXMLSplinePanel.fxml")); //NOI18N
+        loader.setLocation(SplineController.class.getResource("/fxml/FXMLSplinePanel.fxml")); //NOI18N
         loader.setController(this);
         loader.setRoot(this);
 
         try {
             loader.load();
         } catch (IOException ex) {
-            Logger.getLogger(PreviewPanelController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         loadSpineEditor();

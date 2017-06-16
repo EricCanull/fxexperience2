@@ -21,13 +21,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class PreviewPanelController extends StackPane {
+public class PreviewController extends StackPane {
 
     @FXML private GridPane contentPanel;
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
 
-    public PreviewPanelController() {
+    public PreviewController() {
         initialize();
     }
 
@@ -37,13 +37,13 @@ public class PreviewPanelController extends StackPane {
     private void initialize() {
         try {
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(PreviewPanelController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
+            loader.setLocation(PreviewController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
 
         } catch (IOException ex) {
-            Logger.getLogger(PreviewPanelController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
         setMenuBoxPresets();
     }

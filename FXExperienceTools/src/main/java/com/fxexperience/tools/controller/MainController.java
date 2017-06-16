@@ -49,7 +49,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class MainController extends AbstractMainController implements Initializable {
+public final class MainController extends AbstractController implements Initializable {
 
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
@@ -70,14 +70,15 @@ public final class MainController extends AbstractMainController implements Init
     @FXML private CheckMenuItem themeMenuItem;
 
     private StylerController stylerController;
-    private SplinePanelController splinePanelController;
+    private SplineController splineController;
     private DerivationController derivationController;
 
     // Containers for the tools for slide animation
     private StackPane currentPane, sparePane;
 
-    private int currentToolIndex;
     private Timeline timeline;
+
+    private int currentToolIndex;
     private int nextTool;
 
     public MainController(ViewHandler viewHandler) {
@@ -92,31 +93,26 @@ public final class MainController extends AbstractMainController implements Init
 
         initializeTools();
 
-        // create toolbar background path
-        toolBar.setClip(createToolBarPath(Color.WHEAT, null));
-        Path toolBarBackground = createToolBarPath(null, Color.web("#606060"));
-        toolBar.getChildren().add(toolBarBackground);
+        initToolBarArrow();
+
     }
 
     private void initializeTools() {
-
         stylerController = new StylerController();
-        tools.put(StylerController.INDEX_POS, stylerController);
-
-        splinePanelController = new SplinePanelController();
-        tools.put(SplinePanelController.INDEX_POS, splinePanelController);
-
+        splineController = new SplineController();
         derivationController = new DerivationController();
+
+        tools.put(StylerController.INDEX_POS, stylerController);
+        tools.put(SplineController.INDEX_POS, splineController);
         tools.put(DerivationController.INDEX_POS, derivationController);
 
         currentPane = new StackPane();
-        currentPane.getChildren().add(stylerController);
-        currentToolIndex = StylerController.INDEX_POS;
-
         sparePane = new StackPane();
         sparePane.setVisible(false);
 
+        currentPane.getChildren().add(stylerController);
         rootContainer.getChildren().addAll(currentPane, sparePane);
+        currentToolIndex = StylerController.INDEX_POS;
     }
 
     // Creates toggle group to bind color icon effect
@@ -143,6 +139,13 @@ public final class MainController extends AbstractMainController implements Init
         });
     }
 
+    private void initToolBarArrow() {
+        // create toolbar background path
+        toolBar.setClip(createToolBarPath(Color.WHEAT, null));
+        Path toolBarBackground = createToolBarPath(null, Color.web("#606060"));
+        toolBar.getChildren().add(toolBarBackground);
+    }
+
     // Displays a new tool and applies the slide transitions
     private void setTool(int index) {
 
@@ -156,12 +159,12 @@ public final class MainController extends AbstractMainController implements Init
         }
 
         // start any animations
-        if (currentToolIndex == 0) {
-           splinePanelController.stopAnimations();
+        if (currentToolIndex == SplineController.INDEX_POS) {
+           splineController.stopAnimations();
         }
 
         // load new content
-       sparePane.getChildren().setAll(tools.get(index));
+        sparePane.getChildren().setAll(tools.get(index));
         sparePane.setCache(true);
         currentPane.setCache(true);
 
@@ -216,8 +219,8 @@ public final class MainController extends AbstractMainController implements Init
 
         // Attempt to turn off animations in the spline tool
         // start any animations
-        if (currentToolIndex == splinePanelController.INDEX_POS) {
-           splinePanelController.startAnimations();
+        if (currentToolIndex == SplineController.INDEX_POS) {
+           splineController.startAnimations();
         }
 
         // check if we have a animation waiting
@@ -274,7 +277,7 @@ public final class MainController extends AbstractMainController implements Init
     private void splineToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
-            setTool(SplinePanelController.INDEX_POS);
+            setTool(SplineController.INDEX_POS);
             setArrow(splineToggle);
         } else { // tool is already active reselect toggle
             splineToggle.setSelected(true);
@@ -295,7 +298,7 @@ public final class MainController extends AbstractMainController implements Init
     private void displayStatusAlert(String textMessage) {
         double prefWidth = rootContainer.getLayoutBounds().getWidth();
 
-        StatusAlertController alert = new StatusAlertController(textMessage);
+        AlertController alert = new AlertController(textMessage);
         alert.setOpacity(0);
 
        alert.setPanelWidth(prefWidth, currentToolIndex);
@@ -347,7 +350,7 @@ public final class MainController extends AbstractMainController implements Init
             displayStatusAlert("Code has been copied to the clipboard.");
         } else if (splineToggle.isSelected()) {
             Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, splinePanelController.getCodeOutput()));
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, splineController.getCodeOutput()));
             displayStatusAlert("Code has been copied to the clipboard.");
         }
     }
