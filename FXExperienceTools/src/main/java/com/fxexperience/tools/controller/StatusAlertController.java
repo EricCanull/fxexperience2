@@ -39,14 +39,13 @@ public class StatusAlertController extends AnchorPane {
      * Private
      */
     private void initialize(String text) {
-
-        final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(StatusAlertController.class.getResource(AppPaths.FXML_PATH + "FXMLStatusDialog.fxml"));
-        loader.setController(this);
-        loader.setRoot(this);
-
         try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(StatusAlertController.class.getResource("/fxml/FXMLStatusDialog.fxml"));
+            loader.setController(this);
+            loader.setRoot(this);
             loader.load();
+
         } catch (IOException ex) {
             Logger.getLogger(StatusAlertController.class.getName()).log(Level.SEVERE, null, ex);
         }

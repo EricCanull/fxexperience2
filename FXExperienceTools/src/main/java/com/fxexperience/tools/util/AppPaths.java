@@ -12,17 +12,9 @@ package com.fxexperience.tools.util;
 public final class AppPaths {
 
     public static final String RESOURCE_BUNDLE = "bundle.appResources";
-    public static final String CONTROLLER_PATH = "com/fxexperience/tools/controller/";
     public static final String STYLE_PATH = "/styles/";
     public static final String IMG_PATH = "images/";
-    public static final String FXML_PATH ="/fxml/";
-    
-    public final static Integer STYLER_ID = 0;
-    public final static String STYLER_FXML_PATH = FXML_PATH + "FXMLStylerPanel.fxml";
-    public final static Integer SPLINE_ID = 1;
-    public final static String SPLINE_FXML_PATH = FXML_PATH + "FXMLSplinePanel.fxml";
-    public final static Integer DERIVED_ID = 2;
-    public final static String DERIVED_FXML_PATH = FXML_PATH + "FXMLDerivationPanel.fxml";
+    public static final String FXML_PATH ="fxml/";
 
     private AppPaths() {
     }

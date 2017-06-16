@@ -9,12 +9,12 @@ package com.fxexperience.tools.view;
  * for the larger work.
  */
 
-import com.fxexperience.tools.controller.AbstractController;
+import com.fxexperience.tools.controller.AbstractMainController;
 import java.util.ResourceBundle;
 
 public class MainWindow extends AbstractWindow {
 
-    public MainWindow(AbstractController controller, ResourceBundle bundle) {
+    public MainWindow(AbstractMainController controller, ResourceBundle bundle) {
         super(controller, bundle);
     }
 

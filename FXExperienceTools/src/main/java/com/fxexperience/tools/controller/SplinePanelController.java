@@ -9,50 +9,72 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.tools.handler.ToolsHandler;
 import javafx.animation.*;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class SplinePanelController implements Initializable, ToolsHandler {
+public class SplinePanelController extends BorderPane {
+    public static final int INDEX_POS = 1;
 
-    protected Node splinePanelController;
-    
-    @FXML private GridPane gridPane;
-    @FXML private TextField codeTextField;  
-    @FXML private Rectangle fadeSquare;
-    @FXML private Circle linearCircle;
-    @FXML private Circle scaleCircle;
-    @FXML private Rectangle rotateRectangle;
-    
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    private TextField codeTextField;
+    @FXML
+    private Rectangle fadeSquare;
+    @FXML
+    private Circle linearCircle;
+    @FXML
+    private Circle scaleCircle;
+    @FXML
+    private Rectangle rotateRectangle;
+
     private Timeline timeline;
+
     private SplineEditor SplineEditor;
 
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public SplinePanelController() {
+        initialize();
+    }
+
+    /* Initializes the controller class. */
+    private void initialize() {
+
+        final FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(SplinePanelController.class.getResource("/fxml/FXMLSplinePanel.fxml")); //NOI18N
+        loader.setController(this);
+        loader.setRoot(this);
+
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(PreviewPanelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        loadSpineEditor();
+    }
+
+    public void loadSpineEditor() {
+
         SplineEditor = new SplineEditor();
-       
+
         GridPane.setConstraints(SplineEditor, 0, 0, 1, 10,
                 HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         gridPane.add(SplineEditor, 0, 0);
@@ -74,22 +96,20 @@ public class SplinePanelController implements Initializable, ToolsHandler {
                         SplineEditor.getControlPoint2y());
             }
         });
-        
+
         // create animation updater
         ChangeListener<Number> animUpdater = (ObservableValue<? extends Number> ov, Number t, Number t1) -> updateAnimation();
-        
+
         SplineEditor.controlPoint1xProperty().addListener(animUpdater);
         SplineEditor.controlPoint1yProperty().addListener(animUpdater);
         SplineEditor.controlPoint2xProperty().addListener(animUpdater);
         SplineEditor.controlPoint2yProperty().addListener(animUpdater);
     }
 
-    @Override
     public void startAnimations() {
         updateAnimation();
     }
 
-    @Override
     public void stopAnimations() {
         if (timeline != null) {
             PauseTransition pauseTransition = new PauseTransition();
@@ -141,14 +161,10 @@ public class SplinePanelController implements Initializable, ToolsHandler {
         timeline.play();
     }
 
-    @Override
+
     public String getCodeOutput() {
        return codeTextField.getText();
     }
 
-    @Override
-    public void setParentTool(Node parentTool) {
-       splinePanelController = parentTool;
-    }
 }
    

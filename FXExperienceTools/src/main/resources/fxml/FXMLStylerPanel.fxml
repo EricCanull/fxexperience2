@@ -20,12 +20,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="rootSplitPane" dividerPositions="0.011834319526627219" styleClass="split-pane" stylesheets="@../styles/styler_dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.StylerController">
+<fx:root fx:id="rootSplitPane" dividerPositions="0.011834319526627219" styleClass="split-pane" stylesheets="@../styles/styler_dark.css" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <items>
     <AnchorPane id="ContentArea" fx:id="previewAnchorPane">
          <children>
             <BorderPane id="Border-pane" fx:id="previewPane" prefHeight="530.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0">
          <children>
             <BorderPane prefHeight="600.0" prefWidth="350.0" styleClass="border-pane-styler" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -373,4 +374,4 @@
    <padding>
       <Insets bottom="-1.0" left="-1.0" right="-1.0" />
    </padding>
-</SplitPane>
+</fx:root>

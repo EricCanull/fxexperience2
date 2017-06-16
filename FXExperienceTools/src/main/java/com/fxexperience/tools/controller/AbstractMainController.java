@@ -15,16 +15,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-public abstract class AbstractController implements Initializable {
+public abstract class AbstractMainController implements Initializable {
 
     private final ViewHandler viewHandler;
 
-    AbstractController(ViewHandler viewHandler) {
+    AbstractMainController(ViewHandler viewHandler) {
         assert viewHandler != null;
         this.viewHandler = viewHandler;
     }
 
     @Override
     public abstract void initialize(URL location, ResourceBundle bundle);
-
 }

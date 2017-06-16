@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane id="SplineEditor" prefHeight="600.0" prefWidth="900.0" stylesheets="@../styles/spline.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.SplinePanelController">
+<fx:root id="SplineEditor" prefHeight="600.0" prefWidth="900.0" stylesheets="@../styles/spline.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane id="Background" fx:id="gridPane">
         <columnConstraints>
@@ -161,4 +161,4 @@
          </children>
       </GridPane>
    </right>
-</BorderPane>
+</fx:root>

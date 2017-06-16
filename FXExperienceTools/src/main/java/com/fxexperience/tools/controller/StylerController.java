@@ -11,14 +11,12 @@ package com.fxexperience.tools.controller;
 
 import com.fxexperience.javafx.scene.control.IntegerField;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
-import com.fxexperience.tools.handler.ToolsHandler;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -26,11 +24,14 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class StylerController implements Initializable, ToolsHandler {
+public class StylerController extends SplitPane {
+
+    public static final int INDEX_POS = 0;
 
     @FXML private SplitPane rootSplitPane;
     @FXML private BorderPane previewPane;
@@ -80,8 +81,21 @@ public class StylerController implements Initializable, ToolsHandler {
     private final PopupEditor fieldBackgroundPicker = new PopupEditor(Color.web("#ffffff"));
     private final PopupEditor fieldTextColorPicker = new PopupEditor(Color.web("#000000"));
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public StylerController() {
+        initialize();
+    }
+
+    private void initialize() {
+        try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(StylerController.class.getResource("/fxml/FXMLStylerPanel.fxml")); //NOI18N
+            loader.setController(this);
+            loader.setRoot(this);
+            loader.load();
+
+        } catch (IOException ex) {
+            Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         previewPanel = new PreviewPanelController();
         previewPane.setCenter(previewPanel);
@@ -159,7 +173,7 @@ public class StylerController implements Initializable, ToolsHandler {
         inputBorderSlider.disableProperty().bind(inputBorderToggle.selectedProperty().not());
     }
 
-    public void addListeners() {
+    private void addListeners() {
         // create listener to call update css
         AtomicReference<ChangeListener<Object>> updateCssListener =
                 new AtomicReference<>((ObservableValue<?> arg0, Object arg1, Object arg2) -> updateCSS());
@@ -208,10 +222,6 @@ public class StylerController implements Initializable, ToolsHandler {
      */
     private void addTextFieldBinding(Slider slider, IntegerField field) {
         field.valueProperty().bindBidirectional(slider.valueProperty());
-    }
-
-    public SplitPane getRootSplitPane() {
-        return rootSplitPane;
     }
 
     private void updateCSS() {
@@ -403,10 +413,10 @@ public class StylerController implements Initializable, ToolsHandler {
         return cssBuffer.toString();
     }
 
-    @Override
-    public void setParentTool(Node parentTool) {
-        Node stylerController = parentTool;
-    }
+//    @Override
+//    public void setParentTool(Node parentTool) {
+//        Node stylerController = parentTool;
+//    }
 
 
     public String getCodeOutput() {

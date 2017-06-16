@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.tools.controller.DerivationController">
+<fx:root fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <GridPane fx:id="gridPane" hgap="5.0" prefHeight="579.0" prefWidth="1005.0" styleClass="derivation-hbox" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -72,7 +72,8 @@
         <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="85.0" minHeight="2.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints />
       </rowConstraints>
     </GridPane>
   </children>
-</AnchorPane>
+</fx:root>

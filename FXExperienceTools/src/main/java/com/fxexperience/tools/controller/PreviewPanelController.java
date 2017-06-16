@@ -35,14 +35,13 @@ public class PreviewPanelController extends StackPane {
      * Private
      */
     private void initialize() {
-
-        final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(PreviewPanelController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
-        loader.setController(this);
-        loader.setRoot(this);
-
         try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(PreviewPanelController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
+            loader.setController(this);
+            loader.setRoot(this);
             loader.load();
+
         } catch (IOException ex) {
             Logger.getLogger(PreviewPanelController.class.getName()).log(Level.SEVERE, null, ex);
         }

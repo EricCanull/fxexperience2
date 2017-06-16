@@ -55,10 +55,7 @@
       </MenuBar>
    </top>
    <left>
-      <StackPane fx:id="toolBar" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" BorderPane.alignment="TOP_CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
+      <StackPane fx:id="toolBar" maxWidth="90.0" minWidth="90.0" prefWidth="90.0">
          <children>
             <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" spacing="5.0" styleClass="nav-box">
                <children>

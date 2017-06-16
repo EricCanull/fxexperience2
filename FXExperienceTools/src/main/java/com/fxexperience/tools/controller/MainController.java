@@ -12,12 +12,13 @@ package com.fxexperience.tools.controller;
 import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
-import javafx.animation.PauseTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -43,47 +44,79 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class MainController extends AbstractController implements Initializable {
+public final class MainController extends AbstractMainController implements Initializable {
+
+    // Custom interpolator for the slide animation transition
+    private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
+
     private DoubleProperty arrowHeight = new SimpleDoubleProperty(52);
 
+    // Holds the tools to be displayed
+    private final HashMap<Integer, Node> tools = new HashMap<>();
+
     @FXML private StackPane toolBar;
+    @FXML private ToggleButton stylerToggle;
+    @FXML private ToggleButton splineToggle;
+    @FXML private ToggleButton derivedColorToggle;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
     @FXML private StackPane rootContainer;
-
-    @FXML private ToggleButton stylerToggle;
-    @FXML private ToggleButton splineToggle;
-    @FXML private ToggleButton derivedColorToggle;
     @FXML private CheckMenuItem themeMenuItem;
 
-    private ToolsController toolsController;
+    private StylerController stylerController;
+    private SplinePanelController splinePanelController;
+    private DerivationController derivationController;
+
+    // Containers for the tools for slide animation
+    private StackPane currentPane, sparePane;
+
+    private int currentToolIndex;
+    private Timeline timeline;
+    private int nextTool;
 
     public MainController(ViewHandler viewHandler) {
-        super(viewHandler);
+       super(viewHandler);
     }
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
+    /* @param url @param rb */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        toolsController = new ToolsController(rootContainer);
-
         initToggleGroup();
+
+        initializeTools();
 
         // create toolbar background path
         toolBar.setClip(createToolBarPath(Color.WHEAT, null));
-        Path toolBarBackground = createToolBarPath(null,Color.web("#606060"));
+        Path toolBarBackground = createToolBarPath(null, Color.web("#606060"));
         toolBar.getChildren().add(toolBarBackground);
+    }
+
+    private void initializeTools() {
+
+        stylerController = new StylerController();
+        tools.put(StylerController.INDEX_POS, stylerController);
+
+        splinePanelController = new SplinePanelController();
+        tools.put(SplinePanelController.INDEX_POS, splinePanelController);
+
+        derivationController = new DerivationController();
+        tools.put(DerivationController.INDEX_POS, derivationController);
+
+        currentPane = new StackPane();
+        currentPane.getChildren().add(stylerController);
+        currentToolIndex = StylerController.INDEX_POS;
+
+        sparePane = new StackPane();
+        sparePane.setVisible(false);
+
+        rootContainer.getChildren().addAll(currentPane, sparePane);
     }
 
     // Creates toggle group to bind color icon effect
@@ -110,46 +143,88 @@ public final class MainController extends AbstractController implements Initiali
         });
     }
 
-    private void displayStatusAlert(String textMessage) {
-        double prefWidth = rootContainer.getLayoutBounds().getWidth();
+    // Displays a new tool and applies the slide transitions
+    private void setTool(int index) {
 
-        StatusAlertController alert = new StatusAlertController(textMessage);
-        alert.setOpacity(0);
+        // check if existing animation running
+        if (timeline != null) {
+            nextTool = index;
+            timeline.setRate(4);
+            return;
+        } else {
+            nextTool = 99;
+        }
 
-        alert.setPanelWidth(prefWidth, toolsController.getCurrentToolIndex());
+        // start any animations
+        if (currentToolIndex == 0) {
+           splinePanelController.stopAnimations();
+        }
 
-        rootContainer.widthProperty().addListener((observable, oldValue, newValue) ->
-        alert.setPanelWidth(newValue.doubleValue(), toolsController.getCurrentToolIndex()));
+        // load new content
+       sparePane.getChildren().setAll(tools.get(index));
+        sparePane.setCache(true);
+        currentPane.setCache(true);
 
+        // wait one pulse then animate
+        Platform.runLater(() -> {
+            // animate switch
+            if (index > currentToolIndex) { // animate from bottom
+                currentToolIndex = index;
+                sparePane.setTranslateY(rootContainer.getHeight());
+                sparePane.setVisible(true);
+                timeline = new Timeline(
+                        new KeyFrame(Duration.millis(0),
+                                new KeyValue(currentPane.translateYProperty(), 0, INTERPOLATOR),
+                                new KeyValue(sparePane.translateYProperty(), rootContainer.getHeight(), INTERPOLATOR)),
+                        new KeyFrame(Duration.millis(800),
+                                animationEndEventHandler,
+                                new KeyValue(currentPane.translateYProperty(), -rootContainer.getHeight(), INTERPOLATOR),
+                                new KeyValue(sparePane.translateYProperty(), 0, INTERPOLATOR)));
+                timeline.play();
 
-        alert.setTranslateY(rootContainer.getHeight()+alert.getPrefHeight());
-        AnchorPane.setTopAnchor(alert, 0d);
-        rootAnchorPane.getChildren().add(alert);
-
-        new FadeInDownBigTransition(alert).play();
-        removeAlert(alert);
+            } else { // animate from top
+                currentToolIndex = index;
+                sparePane.setTranslateY(-rootContainer.getHeight());
+                sparePane.setVisible(true);
+                timeline = new Timeline(
+                        new KeyFrame(Duration.millis(0),
+                                new KeyValue(currentPane.translateYProperty(), 0, INTERPOLATOR),
+                                new KeyValue(sparePane.translateYProperty(), -rootContainer.getHeight(), INTERPOLATOR)),
+                        new KeyFrame(Duration.millis(800),
+                                animationEndEventHandler,
+                                new KeyValue(currentPane.translateYProperty(), rootContainer.getHeight(), INTERPOLATOR),
+                                new KeyValue(sparePane.translateYProperty(), 0, INTERPOLATOR)));
+                timeline.play();
+            }
+        });
     }
 
-    private void removeAlert(Node alert) {
-        PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(4.5));
-        pauseTransition.play();
-        pauseTransition.setOnFinished((ActionEvent t) -> rootAnchorPane.getChildren().remove(alert));
-    }
+    private final EventHandler<ActionEvent> animationEndEventHandler = (ActionEvent t) -> {
 
-    private void loadStyle(boolean isDarkThemeSelected) {
-        String mainControllerCSS = isDarkThemeSelected
-                ? getClass().getResource(AppPaths.STYLE_PATH + "main_dark.css").toExternalForm()
-                : getClass().getResource(AppPaths.STYLE_PATH + "main_light.css").toExternalForm();
-        String stylerControllerCSS = isDarkThemeSelected
-                ? getClass().getResource(AppPaths.STYLE_PATH + "styler_dark.css").toExternalForm()
-                : getClass().getResource(AppPaths.STYLE_PATH + "styler_light.css").toExternalForm();
+        // switch panes
+        StackPane temp = currentPane;
+        currentPane = sparePane;
+        sparePane = temp;
 
-        rootBorderPane.getStylesheets().clear();
-        rootBorderPane.getStylesheets().add(mainControllerCSS);
-        toolsController.getStylerController().getRootSplitPane().getStylesheets().clear();
-        toolsController.getStylerController().getRootSplitPane().getStylesheets().add(stylerControllerCSS);
-    }
+        // cleanup
+        timeline = null;
+        currentPane.setTranslateY(0);
+        sparePane.setCache(false);
+        currentPane.setCache(false);
+        sparePane.setVisible(false);
+        sparePane.getChildren().clear();
+
+        // Attempt to turn off animations in the spline tool
+        // start any animations
+        if (currentToolIndex == splinePanelController.INDEX_POS) {
+           splinePanelController.startAnimations();
+        }
+
+        // check if we have a animation waiting
+        if (nextTool != 99) {
+           setTool(nextTool);
+        }
+    };
 
     private void setArrow(Node toggleButton) {
         double minY = toggleButton.getBoundsInParent().getMinY();
@@ -185,15 +260,10 @@ public final class MainController extends AbstractController implements Initiali
     }
 
     @FXML
-    private void setThemeAction() {
-        loadStyle(themeMenuItem.isSelected());
-    }
-
-    @FXML
     private void stylerToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
-            toolsController.setTool(AppPaths.STYLER_ID);
+            setTool(StylerController.INDEX_POS);
             setArrow(stylerToggle);
         } else { // tool is already active reselect toggle
             stylerToggle.setSelected(true);
@@ -204,7 +274,7 @@ public final class MainController extends AbstractController implements Initiali
     private void splineToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
-            toolsController.setTool(AppPaths.SPLINE_ID);
+            setTool(SplinePanelController.INDEX_POS);
             setArrow(splineToggle);
         } else { // tool is already active reselect toggle
             splineToggle.setSelected(true);
@@ -215,18 +285,71 @@ public final class MainController extends AbstractController implements Initiali
     private void derivedToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
-            toolsController.setTool(AppPaths.DERIVED_ID);
-           setArrow(derivedColorToggle);
+            setTool(DerivationController.INDEX_POS);
+            setArrow(derivedColorToggle);
         } else { // tool is already active reselect toggle
             derivedColorToggle.setSelected(true);
         }
     }
 
+    private void displayStatusAlert(String textMessage) {
+        double prefWidth = rootContainer.getLayoutBounds().getWidth();
+
+        StatusAlertController alert = new StatusAlertController(textMessage);
+        alert.setOpacity(0);
+
+       alert.setPanelWidth(prefWidth, currentToolIndex);
+
+       rootContainer.layoutXProperty().addListener((observable, oldValue, newValue) ->
+               alert.setPanelWidth(newValue.doubleValue(), currentToolIndex));
+
+        alert.setTranslateY(rootContainer.getLayoutY()+alert.getPrefHeight());
+
+        AnchorPane.setTopAnchor(alert, 0d);
+        rootAnchorPane.getChildren().add(alert);
+
+        new FadeInDownBigTransition(alert).play();
+        removeAlert(alert);
+    }
+
+    private void removeAlert(Node alert) {
+        PauseTransition pauseTransition = new PauseTransition();
+        pauseTransition.setDuration(Duration.seconds(4.5));
+        pauseTransition.play();
+        pauseTransition.setOnFinished((ActionEvent t) -> rootAnchorPane.getChildren().remove(alert));
+    }
+
+    private void loadStyle(boolean isDarkThemeSelected) {
+        String mainControllerCSS = isDarkThemeSelected
+                ? getClass().getResource(AppPaths.STYLE_PATH + "main_dark.css").toExternalForm()
+                : getClass().getResource(AppPaths.STYLE_PATH + "main_light.css").toExternalForm();
+        String stylerControllerCSS = isDarkThemeSelected
+                ? getClass().getResource(AppPaths.STYLE_PATH + "styler_dark.css").toExternalForm()
+                : getClass().getResource(AppPaths.STYLE_PATH + "styler_light.css").toExternalForm();
+
+        rootBorderPane.getStylesheets().clear();
+        rootBorderPane.getStylesheets().add(mainControllerCSS);
+        stylerController.getStylesheets().clear();
+        stylerController.getStylesheets().add(stylerControllerCSS);
+    }
+
+    @FXML
+    private void setThemeAction() {
+        loadStyle(themeMenuItem.isSelected());
+    }
+
+
     @FXML
     private void copyButtonAction(ActionEvent event) {
-        Clipboard.getSystemClipboard().setContent(
-                Collections.singletonMap(DataFormat.PLAIN_TEXT, toolsController.getStylerController().getCodeOutput()));
-        displayStatusAlert("Code has been copied to the clipboard.");
+        if (stylerToggle.isSelected()) {
+            Clipboard.getSystemClipboard().setContent(
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
+            displayStatusAlert("Code has been copied to the clipboard.");
+        } else if (splineToggle.isSelected()) {
+            Clipboard.getSystemClipboard().setContent(
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, splinePanelController.getCodeOutput()));
+            displayStatusAlert("Code has been copied to the clipboard.");
+        }
     }
 
     @FXML
@@ -236,7 +359,7 @@ public final class MainController extends AbstractController implements Initiali
             File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
             if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
                 try (FileWriter writer = new FileWriter(file)) {
-                    writer.write(toolsController.getStylerController().getCodeOutput());
+                   writer.write(stylerController.getCodeOutput());
                     displayStatusAlert("Code saved to " + file.getAbsolutePath());
                     writer.flush();
                 } catch (IOException ex) {
