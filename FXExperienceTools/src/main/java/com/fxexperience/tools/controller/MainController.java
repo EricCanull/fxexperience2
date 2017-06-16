@@ -51,6 +51,11 @@ import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
 
+    public enum Tool {
+
+        STYLER, SPLINE, DERIVATION
+    }
+
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
@@ -79,7 +84,7 @@ public final class MainController extends AbstractController implements Initiali
     private Timeline timeline;
 
     private int currentToolIndex;
-    private int nextTool;
+    private Tool nextTool;
 
     public MainController(ViewHandler viewHandler) {
        super(viewHandler);
@@ -147,15 +152,15 @@ public final class MainController extends AbstractController implements Initiali
     }
 
     // Displays a new tool and applies the slide transitions
-    private void setTool(int index) {
+    private void setTool(Tool tool) {
 
         // check if existing animation running
         if (timeline != null) {
-            nextTool = index;
+            nextTool = tool;
             timeline.setRate(4);
             return;
         } else {
-            nextTool = 99;
+            nextTool = null;
         }
 
         // stop spline tool animations
@@ -164,15 +169,15 @@ public final class MainController extends AbstractController implements Initiali
         }
 
         // load new content
-        sparePane.getChildren().setAll(tools.get(index));
+        sparePane.getChildren().setAll(tools.get(tool.ordinal()));
         sparePane.setCache(true);
         currentPane.setCache(true);
 
         // wait one pulse then animate
         Platform.runLater(() -> {
             // animate switch
-            if (index > currentToolIndex) { // animate from bottom
-                currentToolIndex = index;
+            if (tool.ordinal() > currentToolIndex) { // animate from bottom
+                currentToolIndex = tool.ordinal();
                 sparePane.setTranslateY(rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -186,7 +191,7 @@ public final class MainController extends AbstractController implements Initiali
                 timeline.play();
 
             } else { // animate from top
-                currentToolIndex = index;
+                currentToolIndex = tool.ordinal();
                 sparePane.setTranslateY(-rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -223,7 +228,7 @@ public final class MainController extends AbstractController implements Initiali
         }
 
         // Check if we have a animation waiting
-        if (nextTool != 99) {
+        if (nextTool != null) {
            setTool(nextTool);
         }
     };
@@ -305,7 +310,7 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private void stylerToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (stylerToggle.isSelected()) {
-            setTool(StylerController.INDEX_POS);
+            setTool(Tool.STYLER);
             setArrow(stylerToggle);
         } else { // tool is already active reselect toggle
             stylerToggle.setSelected(true);
@@ -315,7 +320,7 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private void splineToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (splineToggle.isSelected()) {
-            setTool(SplineController.INDEX_POS);
+            setTool(Tool.SPLINE);
             setArrow(splineToggle);
         } else { // tool is already active reselect toggle
             splineToggle.setSelected(true);
@@ -325,7 +330,7 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private void derivedToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
         if (derivedColorToggle.isSelected()) {
-            setTool(DerivationController.INDEX_POS);
+            setTool(Tool.DERIVATION);
             setArrow(derivedColorToggle);
         } else { // tool is already active reselect toggle
             derivedColorToggle.setSelected(true);
