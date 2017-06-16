@@ -54,7 +54,7 @@ public final class MainController extends AbstractController implements Initiali
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
-    private DoubleProperty arrowHeight = new SimpleDoubleProperty(52);
+    private final DoubleProperty arrowHeight = new SimpleDoubleProperty(52);
 
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> tools = new HashMap<>();
@@ -97,24 +97,6 @@ public final class MainController extends AbstractController implements Initiali
 
     }
 
-    private void initializeTools() {
-        stylerController = new StylerController();
-        splineController = new SplineController();
-        derivationController = new DerivationController();
-
-        tools.put(StylerController.INDEX_POS, stylerController);
-        tools.put(SplineController.INDEX_POS, splineController);
-        tools.put(DerivationController.INDEX_POS, derivationController);
-
-        currentPane = new StackPane();
-        sparePane = new StackPane();
-        sparePane.setVisible(false);
-
-        currentPane.getChildren().add(stylerController);
-        rootContainer.getChildren().addAll(currentPane, sparePane);
-        currentToolIndex = StylerController.INDEX_POS;
-    }
-
     // Creates toggle group to bind color icon effect
     private void initToggleGroup() {
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -139,6 +121,24 @@ public final class MainController extends AbstractController implements Initiali
         });
     }
 
+    private void initializeTools() {
+        stylerController = new StylerController();
+        splineController = new SplineController();
+        derivationController = new DerivationController();
+
+        tools.put(StylerController.INDEX_POS, stylerController);
+        tools.put(SplineController.INDEX_POS, splineController);
+        tools.put(DerivationController.INDEX_POS, derivationController);
+
+        currentPane = new StackPane();
+        sparePane = new StackPane();
+        sparePane.setVisible(false);
+
+        currentPane.getChildren().add(stylerController);
+        rootContainer.getChildren().addAll(currentPane, sparePane);
+        currentToolIndex = StylerController.INDEX_POS;
+    }
+
     private void initToolBarArrow() {
         // create toolbar background path
         toolBar.setClip(createToolBarPath(Color.WHEAT, null));
@@ -158,8 +158,8 @@ public final class MainController extends AbstractController implements Initiali
             nextTool = 99;
         }
 
-        // start any animations
-        if (currentToolIndex == SplineController.INDEX_POS) {
+        // stop spline tool animations
+        if (tools.get(currentToolIndex) instanceof SplineController) {
            splineController.stopAnimations();
         }
 
@@ -217,13 +217,12 @@ public final class MainController extends AbstractController implements Initiali
         sparePane.setVisible(false);
         sparePane.getChildren().clear();
 
-        // Attempt to turn off animations in the spline tool
-        // start any animations
-        if (currentToolIndex == SplineController.INDEX_POS) {
+        // start spline tool animations
+        if (tools.get(currentToolIndex) instanceof SplineController) {
            splineController.startAnimations();
         }
 
-        // check if we have a animation waiting
+        // Check if we have a animation waiting
         if (nextTool != 99) {
            setTool(nextTool);
         }
@@ -260,39 +259,6 @@ public final class MainController extends AbstractController implements Initiali
                 new ClosePath()
         );
         return toolPath;
-    }
-
-    @FXML
-    private void stylerToggleAction(ActionEvent event) {
-        // Prevent setting the same tool twice
-        if (stylerToggle.isSelected()) {
-            setTool(StylerController.INDEX_POS);
-            setArrow(stylerToggle);
-        } else { // tool is already active reselect toggle
-            stylerToggle.setSelected(true);
-        }
-    }
-
-    @FXML
-    private void splineToggleAction(ActionEvent event) {
-        // Prevent setting the same tool twice
-        if (splineToggle.isSelected()) {
-            setTool(SplineController.INDEX_POS);
-            setArrow(splineToggle);
-        } else { // tool is already active reselect toggle
-            splineToggle.setSelected(true);
-        }
-    }
-
-    @FXML
-    private void derivedToggleAction(ActionEvent event) {
-        // Prevent setting the same tool twice
-        if (derivedColorToggle.isSelected()) {
-            setTool(DerivationController.INDEX_POS);
-            setArrow(derivedColorToggle);
-        } else { // tool is already active reselect toggle
-            derivedColorToggle.setSelected(true);
-        }
     }
 
     private void displayStatusAlert(String textMessage) {
@@ -335,6 +301,37 @@ public final class MainController extends AbstractController implements Initiali
         stylerController.getStylesheets().clear();
         stylerController.getStylesheets().add(stylerControllerCSS);
     }
+
+    @FXML private void stylerToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
+        if (stylerToggle.isSelected()) {
+            setTool(StylerController.INDEX_POS);
+            setArrow(stylerToggle);
+        } else { // tool is already active reselect toggle
+            stylerToggle.setSelected(true);
+        }
+    }
+
+    @FXML private void splineToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
+        if (splineToggle.isSelected()) {
+            setTool(SplineController.INDEX_POS);
+            setArrow(splineToggle);
+        } else { // tool is already active reselect toggle
+            splineToggle.setSelected(true);
+        }
+    }
+
+    @FXML private void derivedToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
+        if (derivedColorToggle.isSelected()) {
+            setTool(DerivationController.INDEX_POS);
+            setArrow(derivedColorToggle);
+        } else { // tool is already active reselect toggle
+            derivedColorToggle.setSelected(true);
+        }
+    }
+
 
     @FXML
     private void setThemeAction() {
