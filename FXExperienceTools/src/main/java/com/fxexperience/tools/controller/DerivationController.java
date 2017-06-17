@@ -21,15 +21,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DerivationController extends AnchorPane {
+public class DerivationController extends BorderPane {
 
     public final static int INDEX_POS = 2;
 
@@ -41,9 +44,11 @@ public class DerivationController extends AnchorPane {
     @FXML private Label reverseDerivationLabel;
     @FXML private Label reverseResultLabel;
     @FXML private ImageView alert;
-    private final ColorPickerTool baseColorPicker = new ColorPickerTool(Color.GREY);
-    private final ColorPickerTool desiredColorPicker = new ColorPickerTool(Color.GREY);
+    @FXML private ColorPickerTool baseColorPicker;
+    @FXML private ColorPickerTool desiredColorPicker;
     private Region reverseResultColor;
+
+    private DecimalFormat df = new DecimalFormat("#.###");
 
     public DerivationController() {
         initialize();
@@ -61,27 +66,29 @@ public class DerivationController extends AnchorPane {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        gridPane.getChildren().addAll(baseColorPicker,desiredColorPicker);
-        GridPane.setConstraints(baseColorPicker, 1, 1);
-        baseColorPicker.setPrefWidth(120);
-        baseColorPicker.setMaxWidth(120);
-        GridPane.setConstraints(desiredColorPicker, 1, 6);
-        desiredColorPicker.setPrefWidth(120);
-        desiredColorPicker.setMaxWidth(120);
-        // FORWARD
-        forwardDerivationLabel.textProperty().bind(new StringBinding() {
-            { bind(derivationSlider.valueProperty()); }
-            @Override protected String computeValue() {
-                return String.format("%3.1f%%", derivationSlider.getValue());
-            }
-        });
+        df.setRoundingMode(RoundingMode.CEILING);
+
+        // Set the socket values whenever the range changes
+        derivationSlider.valueProperty().addListener((o) ->
+                       forwardDerivationLabel.setText(df.format(derivationSlider.getValue())));
+
+//        // FORWARD
+//        forwardDerivationLabel.textProperty().bind(new StringBinding() {
+//            { bind(derivationSlider.valueProperty()); }
+//            @Override protected String computeValue() {
+//                return df.format(derivationSlider.getValue());
+//            }
+//        });
+
         Region derivedResultColor = new Region();
         derivedResultColor.setPrefSize(50, 20);
         derivedResultLabel.setGraphic(derivedResultColor);
         derivedResultColor.styleProperty().bind(new StringBinding() {
             { bind(derivationSlider.valueProperty(),baseColorPicker.colorProperty()); }
             @Override protected String computeValue() {
-                return "-fx-border-color: black; -fx-background-color: derive("+baseColorPicker.getWebColor()+", "+derivationSlider.getValue()+"%);";
+                return "-fx-border-color: #606060;" +
+                       " -fx-background-color: derive("+baseColorPicker.getWebColor() +", " +
+                        df.format(derivationSlider.getValue())+"%);";
             }
         });
         derivedResultLabel.textProperty().bind(new StringBinding() {
@@ -93,15 +100,16 @@ public class DerivationController extends AnchorPane {
                 return getColorString(result);
             }
         });
+
         // BACKWARD
         reverseResultColor = new Region();
         reverseResultColor.setPrefSize(50, 20);
         reverseResultLabel.setGraphic(reverseResultColor);
-        ChangeListener<Color> updateReverse = (ObservableValue<? extends Color> ov, Color t, Color desiredColor) -> {
-            updateReverse();
-        };
+        ChangeListener<Color> updateReverse = (ObservableValue<? extends Color> ov, Color t, Color desiredColor) -> updateReverse();
         baseColorPicker.colorProperty().addListener(updateReverse);
         desiredColorPicker.colorProperty().addListener(updateReverse);
+        baseColorPicker.colorProperty().setValue(Color.web("#BBBBBB"));
+        desiredColorPicker.colorProperty().setValue(Color.web("#C3C3C3"));
     }    
     
     private void updateReverse() {
@@ -130,9 +138,9 @@ public class DerivationController extends AnchorPane {
 //                    System.out.println("brightness difference = " + difference);
             if (difference < 0.0001) { // GOOD ENOUGH
                 break;
-            } else if(min == 1 || max == -1) { // TO DIFFERENT
+            } else if(min == 1 || max == -1) { // TOO DIFFERENT
                 break;
-            } else if(derivedBrightness > desiredBrightness) { // TO BRIGHT
+            } else if(derivedBrightness > desiredBrightness) { // TOO BRIGHT
 //                        System.out.println("NEED DARKER");
                 max = derivation;
                 derivation = derivation + ((min-derivation)/2);
@@ -144,9 +152,9 @@ public class DerivationController extends AnchorPane {
         }
 
 //       System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
-        reverseDerivationLabel.setText(String.format("%3.3f%%", derivation));
+        reverseDerivationLabel.setText(df.format(derivation));
         reverseResultLabel.setText(getColorString(derivedColor));
-        reverseResultColor.setStyle("-fx-border-color: black; "
+        reverseResultColor.setStyle("-fx-border-color: #606060; "
                 + "-fx-background-color: "+getWebColor(derivedColor) +";");
 
         alert.setVisible(!getWebColor(desiredColor).equals(getWebColor(derivedColor)));

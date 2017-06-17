@@ -38,6 +38,7 @@ import com.fxexperience.javafx.scene.control.gradientpicker.GradientPickerStop;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -223,7 +224,7 @@ public class ColorPickerControl extends VBox {
             // Update model
             setPaintProperty(color);
         });
-        alpha_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
+        alpha_slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number oldValue, Number newValue) -> {
             if (updating) {
                 return;
             }

@@ -108,11 +108,12 @@ class ColorPickerPopover extends Group {
         getStyleClass().add("color-picker-popover");
         popup.setAutoHide(true);
 
+        // load stylesheet
+        getStylesheets().add(ColorPickerTool.class.getResource("/styles/ColorPickerTool.css").toString());
+
         // add this to popup
         popup.getContent().add(this);
 
-        // load stylesheet
-        getStylesheets().add(ColorPickerTool.class.getResource("/styles/ColorPickerTool.css").toString());
 
         // create popover path for main shape
         final Path p = new Path();

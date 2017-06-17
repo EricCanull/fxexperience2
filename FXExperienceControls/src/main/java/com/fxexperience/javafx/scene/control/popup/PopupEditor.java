@@ -91,6 +91,7 @@ public class PopupEditor extends MenuButton implements PopupEditorValidation {
                 return getWebColor();
             }
         });
+
         this.showingProperty().addListener((ov, previousVal, newVal) -> {
             if (newVal) {
                 if (!initialized) {

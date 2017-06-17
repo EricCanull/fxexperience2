@@ -10,29 +10,75 @@ different terms and without source code for the larger work.
     Created on : May 8, 2017, 12:05:37 AM
     Author     : andje22
 */
+.root {
+    -fe-body-background: #31363B;
+    -fe-inner-background: #2E3134;
+    -fe-border: #616569;
+    -fe-body-text: #DCDCDC;
+    -fe-inner-text: #C2C2C3;
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+
+    -fx-background-color: #84b6eb;
+    -fx-focus-color: #339797;
+}
 .derivation-root {
-    -fx-background-image: url("/images/dirtyshirt.png");
+    -fx-background-image: url("../images/dirtyshirt.png");
 }
 
 #gridPane {
     -fx-background-color: radial-gradient(center 35% 40%, radius 70%, rgba(255,255,255,0.3), rgba(255,255,255,0.05)); 
 }
+.conversion-label {
+    -fx-font-family: cursive;
+    -fx-font-size: 22px;
+    -fx-text-fill: #3AA6DF;
+}
 .label {
     -fx-text-fill: white;
 }
-.slider .track {
-    -fx-background-color:
-        transparent,
-        derive(-fx-color,-90%),
-        linear-gradient(to bottom, derive(-fx-color,-15.5%), derive(-fx-color,34%) 30%, derive(-fx-color,68%));
+.color-picker .text {
+    -fx-fill: -fe-inner-text;
+}
+.color-picker {
+    -fx-color: #282828;
+    -fx-shadow-highlight-color: #323232;
 }
 
-.slider .thumb {
-    -fx-background-color:
-        derive(-fx-color,-90%),
-        derive(-fx-color,73%),
-        linear-gradient(to bottom, derive(-fx-color,-19%),derive(-fx-color,61%));
+.derivation-slider .track{
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
 }
+
+.derivation-slider .thumb {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.derivation-slider .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+.derivation-slider .axis:bottom {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: -fe-body-text;
+    -fx-font-size: .63333em;
+}
+/*.derivation-slider .track {*/
+    /*-fx-background-color:*/
+        /*transparent,*/
+        /*derive(-fx-color,-90%),*/
+        /*linear-gradient(to bottom, derive(-fx-color,-15.5%), derive(-fx-color,34%) 30%, derive(-fx-color,68%));*/
+/*}*/
+
+/*.derivation-slider .thumb {*/
+    /*-fx-background-color:*/
+        /*derive(-fx-color,-90%),*/
+        /*derive(-fx-color,73%),*/
+        /*linear-gradient(to bottom, derive(-fx-color,-19%),derive(-fx-color,61%));*/
+/*}*/
 .color-picker {
     -fx-text-fill: #333333;
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;

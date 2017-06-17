@@ -48,7 +48,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0">
       <children>
@@ -89,10 +89,10 @@
         </VBox>
       </children>
     </HBox>
-    <Slider fx:id="hue_slider" blockIncrement="1.0" max="360.0" styleClass="hue-slider" />
+    <Slider fx:id="hue_slider" blockIncrement="1.0" max="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" styleClass="hue-slider" VBox.vgrow="NEVER" />
     <GridPane gridLinesVisible="false" hgap="2.0">
       <children>
-        <StackPane id="StackPane" GridPane.columnIndex="0" GridPane.columnSpan="6" GridPane.rowIndex="0">
+        <StackPane id="StackPane" GridPane.columnIndex="0" GridPane.columnSpan="6" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
           <children>
             <Region maxWidth="1000.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="opacity-slider-background">
               <StackPane.margin>
@@ -121,18 +121,18 @@
         <Label styleClass="small-label" text="B" GridPane.columnIndex="6" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="8.0" minWidth="8.0" prefWidth="8.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="5.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
   </children>
