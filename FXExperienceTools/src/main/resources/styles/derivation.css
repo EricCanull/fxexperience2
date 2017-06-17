@@ -37,7 +37,7 @@ different terms and without source code for the larger work.
     -fx-text-fill: white;
 }
 .color-picker .text {
-    -fx-fill: -fe-inner-text;
+    -fx-fill: #C2C2C3;
 }
 .color-picker {
     -fx-color: #282828;
@@ -45,8 +45,8 @@ different terms and without source code for the larger work.
 }
 
 .derivation-slider .track{
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
+    -fx-background-color:  #2E3134;
+    -fx-border-color: #616569;
     -fx-background-insets: -0.2, 1, 2;
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
@@ -63,7 +63,7 @@ different terms and without source code for the larger work.
 }
 .derivation-slider .axis:bottom {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-tick-label-fill: -fe-body-text;
+    -fx-tick-label-fill: #C2C2C3;
     -fx-font-size: .63333em;
 }
 /*.derivation-slider .track {*/

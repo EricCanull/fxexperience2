@@ -91,6 +91,7 @@ public class DerivationController extends BorderPane {
                         df.format(derivationSlider.getValue())+"%);";
             }
         });
+
         derivedResultLabel.textProperty().bind(new StringBinding() {
             { bind(derivationSlider.valueProperty(),baseColorPicker.colorProperty()); }
             @Override protected String computeValue() {

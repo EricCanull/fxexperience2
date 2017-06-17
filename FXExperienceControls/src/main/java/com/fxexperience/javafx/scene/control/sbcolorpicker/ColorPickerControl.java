@@ -438,38 +438,26 @@ public class ColorPickerControl extends VBox {
         int red = (int) (color.getRed() * 255);
         int green = (int) (color.getGreen() * 255);
         int blue = (int) (color.getBlue() * 255);
+        int opacity = (int)(alpha * 255.99);
 
-      //  final String hexa = String.format("#%02x%02x%02x", red, green, blue); //NOI18N
-        final String hexa = "#" + color.toString().toUpperCase().substring(2, color.toString().length());
+        final String hexa = String.format("#%02x%02x%02x%02x", red, green, blue, opacity); //NOI18N
 
         // Set TextFields value
         hue_textfield.setText(String.valueOf((int) hue));
         saturation_textfield.setText(String.valueOf((int) (saturation * 100)));
         brightness_textfield.setText(String.valueOf((int) (brightness * 100)));
-        double alpha_rounded = round(alpha); // 2 decimals rounding
-        alpha_textfield.setText(Double.toString(alpha_rounded));
+       // double alpha_rounded = round(alpha); // 2 decimals rounding
+        alpha_textfield.setText(String.format("%.2f", alpha));
         red_textfield.setText(Integer.toString(red));
         green_textfield.setText(Integer.toString(green));
         blue_textfield.setText(Integer.toString(blue));
         hexa_textfield.setText(hexa);
 
-        // Set the background color of the chips
-        final StringBuilder sb = new StringBuilder();
-        sb.append("hsb("); //NOI18N
-        sb.append(hue);
-        sb.append(", "); //NOI18N
-        sb.append(saturation * 100);
-        sb.append("%, "); //NOI18N
-        sb.append(brightness * 100);
-        sb.append("%, "); //NOI18N
-        sb.append(alpha);
-        sb.append(")"); //NOI18N
-        final String hsbCssValue = sb.toString();
-        final String chipStyle = "-fx-background-color: " + hsbCssValue; //NOI18N
+        final String chipStyle = "-fx-background-color: " + hexa; //NOI18N
         chip_region.setStyle(chipStyle);
         picker_handle_chip_circle.setFill(Color.rgb(red, green, blue));
         final String alphaChipStyle = "-fx-background-color: " //NOI18N
-                + "linear-gradient(to right, transparent, " + hsbCssValue + ")"; //NOI18N
+                + "linear-gradient(to right, transparent, " + hexa + ")"; //NOI18N
         alpha_region.setStyle(alphaChipStyle);
 
         // Set the background color of the picker region
@@ -493,6 +481,8 @@ public class ColorPickerControl extends VBox {
         updating = false;
         return color;
     }
+
+
 
     private String makeHueSliderCSS() {
         final StringBuilder sb = new StringBuilder();
