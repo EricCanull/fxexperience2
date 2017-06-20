@@ -30,10 +30,10 @@
             <Label styleClass="conversion-label" text="Reverse Conversion" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <ColorPickerTool fx:id="desiredColorPicker" maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
             <ColorPickerTool fx:id="baseColorPicker" maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Rectangle fx:id="gradientSquare" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="190.0" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+            <Rectangle fx:id="gradientSquare" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="190.0" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.rowSpan="2" />
             <Label id="label7" layoutX="50.0" layoutY="412.0" text="Gradient:" GridPane.rowIndex="1" />
             <Label id="label7" text="Gradient CSS:" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <TextArea fx:id="gradientCSSText" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnSpan="6" GridPane.rowIndex="9" />
+            <TextArea fx:id="gradientCSSText" prefHeight="200.0" prefWidth="200.0" styleClass="gradient-text-area" wrapText="true" GridPane.columnSpan="6" GridPane.rowIndex="9" />
       </children>
       <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="70.0" />

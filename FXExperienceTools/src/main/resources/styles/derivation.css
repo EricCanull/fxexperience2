@@ -11,6 +11,7 @@ different terms and without source code for the larger work.
     Author     : andje22
 */
 .root {
+    -fx-base: #31363B;
     -fe-body-background: #31363B;
     -fe-inner-background: #2E3134;
     -fe-border: #616569;
@@ -18,9 +19,43 @@ different terms and without source code for the larger work.
     -fe-inner-text: #C2C2C3;
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 
+
+    -fx-background: #2E3134;
+
     -fx-background-color: #84b6eb;
     -fx-focus-color: #339797;
 }
+.gradient-text-area .content {
+    -fx-background-color: #2E3134;
+}
+
+.gradient-text-area {
+    -fx-text-fill: #C2C2C3;
+}
+.paint-picker-container {
+    -fx-background-color: #2E3134;
+    -fx-padding: 0;
+}
+.color-picker-popover {
+    -fx-font-size: 10px;
+
+    -fx-background: derive(-fx-base, -60%);
+    -fx-focus-color: rgb(105, 255, 205);
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.integer-field {
+    -fx-alignment: BASELINE_LEFT;
+    -fx-text-fill: white;
+}
+.webcolor-field {
+    -fx-alignment: BASELINE_LEFT;
+    -fx-text-fill: white;
+}
+
 .derivation-root {
     -fx-background-image: url("../images/dirtyshirt.png");
 }
@@ -61,11 +96,13 @@ different terms and without source code for the larger work.
 .derivation-slider .thumb:hover{
     -fx-background-color: rgb(147, 147, 147);
 }
+
 .derivation-slider .axis:bottom {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-tick-label-fill: #C2C2C3;
     -fx-font-size: .63333em;
 }
+
 /*.derivation-slider .track {*/
     /*-fx-background-color:*/
         /*transparent,*/

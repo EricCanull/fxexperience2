@@ -28,6 +28,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
@@ -73,10 +74,14 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        gradientTextColorPicker.setId("Gradient-picker");
         gridPane.add(gradientTextColorPicker, 1, 1);
 
-        final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateGradientCSS());
+        final ChangeListener<Paint> onPaintChanged = (ov, oldValue, newValue) -> {
+        if (newValue instanceof Color || newValue instanceof LinearGradient) {
+            updateGradientCSS();
+        }};
+
 
         gradientTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
 
@@ -180,19 +185,18 @@ public class DerivationController extends BorderPane {
        // alert.setVisible(!getWebColor(desiredColor).equals(getWebColor(derivedColor)));
     }
     
-    
     private static String getColorString(Color color) {
         final int red = (int) (color.getRed()*255);
         final int green = (int)(color.getGreen()*255);
         final int blue = (int)(color.getBlue()*255);
-        return String.format("#%02X%02X%02X R:%d G:%d B:%d", red,green,blue, red,green,blue);
+        return String.format("#%02X%02X%02X R:%d G:%d B:%d", red, green, blue, red, green, blue);
     }
     
     private static String getWebColor(Color color) {
         final int red = (int)(color.getRed()*255);
         final int green = (int)(color.getGreen()*255);
         final int blue = (int)(color.getBlue()*255);
-        return String.format("#%02X%02X%02X", red,green,blue);
+        return String.format("#%02X%02X%02X", red, green, blue);
     }
 
     public void setGradientSquare(String style){
