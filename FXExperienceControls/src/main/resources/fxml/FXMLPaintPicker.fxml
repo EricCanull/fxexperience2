@@ -37,17 +37,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root_vbox" spacing="5.0" styleClass="paint-picker-container" stylesheets="@../styles/paintpicker.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
+<VBox fx:id="root_vbox" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="304.0" spacing="1.0" styleClass="paint-picker-container" stylesheets="@../styles/paintpicker.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
   <children>
-    <HBox alignment="TOP_CENTER">
+    <HBox alignment="TOP_CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
       <children>
-        <ToggleButton fx:id="colorToggleButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onColorButtonAction" selected="true" styleClass="left-pill" text="Color" HBox.hgrow="ALWAYS">
+        <ToggleButton fx:id="colorToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onColorButtonAction" selected="true" styleClass="left-pill" text="Color" HBox.hgrow="ALWAYS">
           <toggleGroup>
             <ToggleGroup fx:id="modeswitch" />
           </toggleGroup>
         </ToggleButton>
-        <ToggleButton fx:id="linearToggleButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinearButtonAction" styleClass="center-pill" text="Linear Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
-        <ToggleButton fx:id="radialToggleButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRadialButtonAction" styleClass="right-pill" text="Radial Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
+        <ToggleButton fx:id="linearToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinearButtonAction" styleClass="center-pill" text="Linear Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
+        <ToggleButton fx:id="radialToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRadialButtonAction" styleClass="right-pill" text="Radial Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
       </children>
     </HBox>
   </children>

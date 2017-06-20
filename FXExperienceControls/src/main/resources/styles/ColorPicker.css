@@ -29,6 +29,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+#StackPane {
+    -fx-background-color: white;
+}
 .small-label {
     -fx-font-size: 0.750em;
     -fx-padding: 0;
@@ -40,26 +44,86 @@
     -fx-background-image: url("../images/chequers.png");
     -fx-background-position: center;
 }
-.hue-slider {
-    -fx-background-insets: 0 4 0 4;
-    -fx-background-radius: 0;
+
+.hue-slider .thumb {
+
+    -fx-background-radius: .2em; /* makes sure this remains circular */
+    -fx-border-radius: .2em;
+    -fx-border-width: 2;
+    -fx-background-size: 10 20 10 20;
+    -fx-border-color: #606060;
+    -fx-background-color: transparent;
 }
+.hue-slider:focused .thumb {
+    -fx-background-radius: .2em; /* makes sure this remains circular */
+    -fx-border-radius: .2em;
+    -fx-border-width: 2;
+    -fx-border-color: #606060;
+    -fx-background-color: transparent;
+    -fx-padding: .7em;  /* 7 */
+}
+
+.opacity-slider .thumb {
+    -fx-background-radius: 1.0em; /* makes sure this remains circular */
+    -fx-border-radius: 1.0em;
+    -fx-border-width: 2.5;
+    -fx-border-color: #878787;
+    -fx-background-color: transparent;
+}
+.opacity-slider:focused .thumb {
+    -fx-border-width: 2;
+    -fx-border-color: #878787;
+    -fx-background-color: transparent;
+
+}
+
 .hue-slider .track {
     -fx-background-color: transparent;
 }
 .opacity-slider .track {
     -fx-background-color: transparent;
 }
+.alpha-background{
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
 
+}
 /* opacity slider background is applied to a region behind the slider itself */
 .opacity-slider-background {
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
     -fx-background-image: url("../images/chequers.png");
-    -fx-background-position: left center;
-    -fx-background-radius: 0;
+    -fx-background-position: center;
+
+
+
 }
 .brightnessRect {
     -fx-background-color: linear-gradient(to bottom, transparent, black);
 }
 .saturationRect {
     -fx-background-color: linear-gradient(to bottom right, white, transparent);
+}
+
+#input-text-field {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
+}
+
+.color-field {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 3 5 3 5;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+    -fx-cursor: text;
+}
+
+.color-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.color-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
 }

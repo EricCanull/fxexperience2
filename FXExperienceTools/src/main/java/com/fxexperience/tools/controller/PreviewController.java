@@ -15,6 +15,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
+import org.w3c.dom.css.Rect;
 
 import java.io.IOException;
 import java.util.logging.Level;

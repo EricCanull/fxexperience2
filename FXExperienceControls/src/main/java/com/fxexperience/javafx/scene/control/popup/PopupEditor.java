@@ -7,63 +7,31 @@ package com.fxexperience.javafx.scene.control.popup;
 
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
-import java.io.IOException;
-import javafx.beans.binding.ObjectBinding;
-import javafx.beans.binding.StringBinding;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Paint;
-import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
-import com.fxexperience.javafx.util.encoders.ColorEncoder;
-import javafx.scene.control.ColorPicker;
 
-/**
- * FXML Controller class
- *
- * @author ericc
- */
-public class PopupEditor extends MenuButton implements PopupEditorValidation {
+import java.io.IOException;
 
-  
+public class PopupEditor extends MenuButton {
     @FXML private StackPane editorHost;
     @FXML private Rectangle rectangle;
-
-    ColorPicker colorPicker = new ColorPicker();
 
     private boolean initialized = false;
 
     private PaintPicker paintPicker;
 
-    private ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
-
-    public ObjectProperty<Color> colorProperty() {
-        return color;
-    }
-  
-    public Color getColor() {
-        return color.get();
-    }
-
-    public void setColor(Color newColor) {
-        color.set(newColor);
-    }
-
-    public PopupEditor(Object startColor) {
-        initialize(startColor);
+    public PopupEditor(Mode mode, Object startColor) {
+        initialize(mode, startColor);
 
     }
 
-    private void initialize(Object startColor) {
+    private void initialize(Mode mode, Object startColor) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/FXMLPopupEditor.fxml"));
             fxmlLoader.setRoot(this);
@@ -74,44 +42,28 @@ public class PopupEditor extends MenuButton implements PopupEditorValidation {
             throw new RuntimeException(exception);
         }
 
-        initializePopup(startColor);
+        initializePopup(mode, startColor);
     }
 
-    private void initializePopup(Object startColor) {
-        setText(getPreviewString(startColor));
-        color.set((Color) startColor);
+    private void initializePopup(Mode mode, Object value) {
+       final Color startColor = (Color) value;
 
-        this.textProperty().bind(new StringBinding() {
-            {
-                bind(color);
-            }
+        paintPicker = new PaintPicker(mode);
+        paintPicker.setPaintProperty(startColor);
+        setRectangleFill(startColor);
+        setTextField(startColor);
 
-            @Override
-            protected String computeValue() {
-                return getWebColor();
-            }
-        });
 
         this.showingProperty().addListener((ov, previousVal, newVal) -> {
             if (newVal) {
                 if (!initialized) {
-
-                    paintPicker = new PaintPicker(Mode.COLOR);
-                    editorHost.getChildren().add(getPopupContentNode());
-                    paintPicker.paintProperty().addListener(paintChangeListener);
+                    paintPicker = new PaintPicker(mode);
+                    paintPicker.setPaintProperty(startColor);
+                    editorHost.getChildren().add(paintPicker.getPickerPane());
+                    initialized = true;
                 }
-               
-                paintPicker.setPaintProperty(color.get());
-            }
 
-        });
-
-        rectangle.fillProperty().bind(new ObjectBinding<Paint>() {
-            { bind(color); }
-
-            @Override
-            protected Paint computeValue() {
-                return getColor();
+                paintPicker.paintProperty().addListener(paintChangeListener);
             }
         });
     }
@@ -124,162 +76,63 @@ public class PopupEditor extends MenuButton implements PopupEditorValidation {
         if (newValue instanceof LinearGradient
                 || newValue instanceof RadialGradient
                 || newValue instanceof ImagePattern) {
+            setRectangleFill(newValue);
+            textProperty().set(newValue.getClass().getSimpleName());
             return;
         }
         assert newValue instanceof Color;
 
-        setColor((Color) newValue);
-
+        setRectangleFill(newValue);
+        setTextField(newValue);
     };
 
-    public final String getColorText() {
-        return getPreviewString(this.color.getValue());
+    public final synchronized String getColorString() {
+        return getColorString(getPaintProperty());
     }
 
-    public String getPreviewString(Object value) {
+    private synchronized String getColorString(Object value) {
         if (value == null) {
             return null;
         }
-        assert value instanceof Paint;
-        if (value instanceof LinearGradient
-                || value instanceof RadialGradient
-                || value instanceof ImagePattern) {
-            return value.getClass().getSimpleName();
-        }
+
         assert value instanceof Color;
 
-        return ColorEncoder.encodeColor((Color) value);
+        return ColorEncoder.encodeColor((Color) value).toUpperCase();
     }
 
-    public String getWebColor() {
-        String webColor = color.get().toString().toUpperCase();
-        return "#" + webColor.substring(2, webColor.length());
+    public final synchronized String getGradientString() {
+        return getGradientString(getPaintProperty());
     }
 
-    private Node getPopupContentNode() {
-        return paintPicker;
-    }
+    private synchronized String getGradientString(Object value) {
+        if (value == null) {
+            return null;
+        }
 
-//    /**
-//     * Initializes the controller class.
-//     *
-//     * @param value
-//     */
-//    public PopupEditor(Object value) {
-//       paint = value;
-//       initialize();
-//    }
-//
-//    private void initialize() {
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLPopupEditor.fxml"));
-//            fxmlLoader.setRoot(this);
-//            fxmlLoader.setController(this);
-//            fxmlLoader.load();
-//
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
-//     
-//        initializeEditor();
-//
-//    }
-//
-//    public final String getColorText() {
-//        return getPreviewString(menuButton);
-//    }
-//
-//    private void initializeEditor() {
-//          menuButton.setText(getPreviewString(paint));
-//         rectangle.setFill((Paint) paint);
-//        // Lazy initialization of the editor,
-//        // the first time the popup is opened.
-//        menuButton.showingProperty().addListener((ChangeListener<Boolean>) (ov, previousVal, newVal) -> {
-//            if (newVal) {
-//                
-//                if (!initialized) {
-//                    initializePopup();
-//                    initialized = true;
-//                    setPopupContentValue((Paint) paint);
-//                }
-//            }
-//        });
-//    }
-//     public void setPopupContentValue(Object value) {
-//        assert value == null || value instanceof Paint;
-//       
-//        paintPicker.paintProperty().addListener(paintChangeListener);
-//      
-//    }
-//    private void initializePopup() {
-//        initializePopupContent();
-//        editorHost.getChildren().add(getPopupContentNode());
-//    }
-//
-//    private Node getPopupContentNode() {
-//        return paintPicker;
-//    }
-//
-//    private void initializePopupContent() {
-//        paintPicker = new PaintPicker(Mode.COLOR);
-//        paintPicker.setPaintProperty((Paint) paint);
-//        rectangle.fillProperty().bind(paintPicker.paintProperty());
-//    }
-//
-//    public String getPreviewString(Object value) {
-//        if (value == null) {
-//            return null;
-//        }
-//        assert value instanceof Paint;
-//        if (value instanceof LinearGradient
-//                || value instanceof RadialGradient
-//                || value instanceof ImagePattern) {
-//            return value.getClass().getSimpleName();
-//        }
-//        assert value instanceof Color;
-//
-//        return ColorEncoder.encodeColor((Color) value);
-//    }
-//
-//    private final ChangeListener<Paint> paintChangeListener = (ov, oldValue, newValue) -> {
-//       this.paint = newValue;
-//       menuButton.setText(getPreviewString(newValue));
-//    };
-//   
-//    public Rectangle getRectangle() {
-//       return rectangle;
-//   }
-//
-//    public Object getValue() {
-//        return paint;
-//    }
-//
-//    public void setValue(Object value) {
-//        commitValue(value);
-//    }
-//
-//    public void reset() {
-////      System.out.println(getPropertyNameText() + " : resetPopupContent()");
-//        menuButton.setText(null);
-//    }
-
-    /*
-     * PopupEditorValidation interface.
-     * Methods to be used by concrete popup editors
-     */
-    @Override
-    public void commitValue(Object value) {
-        //    userUpdateValueProperty(value);
+        if (value instanceof LinearGradient) {
+            return ColorEncoder.encodeLinearToCSS(value);
+        } else if (value instanceof  RadialGradient){
+            return ColorEncoder.encodeRadialToCSS(value);
+        } else {
+            return ColorEncoder.encodeColor((Color) value).toUpperCase();
+        }
 
     }
 
-    @Override
-    public void transientValue(Object value) {
-        //   userUpdateTransientValueProperty(value);
+    private void setRectangleFill(Object value) {
+        this.rectangle.fillProperty().set((Paint) value);
     }
 
-    @Override
-    public void invalidValue(Object value) {
-        // TBD
+    private void setTextField(Object value) {
+        textProperty().setValue(getColorString(value));
     }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public Paint getPaintProperty() {
+        return paintPicker.getPaintProperty();
+    }
+
 }

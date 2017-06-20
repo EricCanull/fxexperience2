@@ -8,9 +8,14 @@ and open the template in the editor.
     Author     : ericc
 */
 .root {
-    -fx-base:rgb(147, 147, 147);
-   -fx-background-color: derive(-fx-base, -60%);
-     -fx-focus-color: rgb(105, 255, 205);
+    -fx-base: #31363B;
+   -fx-background-color: #2E3134;
+    -fx-background: #2E3134;
+    -fx-focus-color: -fx-background-color;
+}
+
+.paint-picker-container {
+-fx-background-color: #2E3134;
     -fx-padding: 0;
 }
 .color-picker-popover {
@@ -31,37 +36,4 @@ and open the template in the editor.
 .webcolor-field {
     -fx-alignment: BASELINE_LEFT;
     -fx-text-fill: white;
-}
-
-#BrightnessSlider .track {
-    -fx-background-color:
-        derive(-fx-background,50%),
-        derive(-fx-background,-22%),
-        linear-gradient(to right, black, white);
-    -fx-background-insets: 0 0 -1 0, 0, 1;
-    -fx-background-radius: 8, 8, 7;
-    -fx-padding: 7px;
-    -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1);
-}
-
-#BrightnessSlider  .thumb{
-    -fx-padding: 7px;
-}
-.label-paint {
-    -fx-text-fill: #c9c7c8;
-}
-.paint-slider .track {
-    -fx-background-color:
-        derive(-fx-background,50%),
-        derive(-fx-background,-22%),
-        linear-gradient(to right, white, picker-color);
-    -fx-background-insets: 0 0 -1 0, 0, 1;
-    -fx-background-radius: 8, 8, 7;
-    -fx-background-radius: 8,7;
-    -fx-padding: 7px;
-    -fx-effect: innershadow(two-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1);
-}
-
-.paint-slider .thumb {
-    -fx-padding: 7px;
 }

@@ -11,6 +11,8 @@ package com.fxexperience.tools.controller;
 
 
 import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
+import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
+import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
@@ -19,12 +21,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.math.RoundingMode;
@@ -43,10 +48,13 @@ public class DerivationController extends BorderPane {
     @FXML private Label derivedResultLabel;
     @FXML private Label reverseDerivationLabel;
     @FXML private Label reverseResultLabel;
-    @FXML private ImageView alert;
+    @FXML private Rectangle gradientSquare;
+   // @FXML private ImageView alert;
     @FXML private ColorPickerTool baseColorPicker;
     @FXML private ColorPickerTool desiredColorPicker;
     private Region reverseResultColor;
+    private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.LINEAR, Color.web("#000000"));
+    @FXML private TextArea gradientCSSText;
 
     private DecimalFormat df = new DecimalFormat("#.###");
 
@@ -65,6 +73,12 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        gridPane.add(gradientTextColorPicker, 1, 1);
+
+        final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateGradientCSS());
+
+        gradientTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
 
         df.setRoundingMode(RoundingMode.CEILING);
 
@@ -111,7 +125,12 @@ public class DerivationController extends BorderPane {
         desiredColorPicker.colorProperty().addListener(updateReverse);
         baseColorPicker.colorProperty().setValue(Color.web("#BBBBBB"));
         desiredColorPicker.colorProperty().setValue(Color.web("#C3C3C3"));
-    }    
+    }
+
+    public void updateGradientCSS() {
+        setGradientSquare("-fx-fill: " + gradientTextColorPicker.getGradientString());
+        gradientCSSText.setText(gradientTextColorPicker.getGradientString());
+    }
     
     private void updateReverse() {
         Color desiredColor = desiredColorPicker.getColor();
@@ -158,7 +177,7 @@ public class DerivationController extends BorderPane {
         reverseResultColor.setStyle("-fx-border-color: #606060; "
                 + "-fx-background-color: "+getWebColor(derivedColor) +";");
 
-        alert.setVisible(!getWebColor(desiredColor).equals(getWebColor(derivedColor)));
+       // alert.setVisible(!getWebColor(desiredColor).equals(getWebColor(derivedColor)));
     }
     
     
@@ -176,6 +195,9 @@ public class DerivationController extends BorderPane {
         return String.format("#%02X%02X%02X", red,green,blue);
     }
 
+    public void setGradientSquare(String style){
+        this.gradientSquare.setStyle(style);
+    }
 
     public String getCodeOutput() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

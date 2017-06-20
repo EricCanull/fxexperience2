@@ -33,27 +33,20 @@ package com.fxexperience.javafx.scene.control.paintpicker;
  */
 
 
-
-import com.fxexperience.javafx.scene.control.sbcolorpicker.ColorPickerControl;
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
-
-
+import com.fxexperience.javafx.scene.control.sbcolorpicker.ColorPickerControl;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Paint;
-import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.*;
 import javafx.stage.Window;
 
 /**
@@ -61,21 +54,17 @@ import javafx.stage.Window;
  */
 public class PaintPickerController {
 
-    @FXML
-    private VBox root_vbox;
-    @FXML
-    private ToggleButton colorToggleButton;
-    @FXML
-    private ToggleButton linearToggleButton;
-    @FXML
-    private ToggleButton radialToggleButton;
+    @FXML private VBox root_vbox;
+    @FXML private ToggleButton colorToggleButton;
+    @FXML private ToggleButton linearToggleButton;
+    @FXML private ToggleButton radialToggleButton;
 
     private ColorPickerControl colorPicker;
     private GradientPicker gradientPicker;
-    private PaintPicker.Delegate delegate;
 
     private final ObjectProperty<Paint> paint = new SimpleObjectProperty<>();
     private final BooleanProperty liveUpdate = new SimpleBooleanProperty();
+    private PaintPicker.Delegate delegate;
 
     public final static Color DEFAULT_COLOR = Color.BLACK;
     public final static LinearGradient DEFAULT_LINEAR
@@ -115,12 +104,12 @@ public class PaintPickerController {
         return gradientPicker;
     }
 
-    public PaintPicker.Delegate getDelegate() {
-        return delegate;
-    }
-    
     public VBox getRoot() {
         return root_vbox;
+    }
+
+    public PaintPicker.Delegate getDelegate() {
+        return delegate;
     }
 
     /**
@@ -138,10 +127,6 @@ public class PaintPickerController {
         return value;
     }
 
-    void setDelegate(PaintPicker.Delegate delegate) {
-        this.delegate = delegate;
-    }
-    
     public Mode getMode() {
         final Mode mode;
         final Paint value = getPaintProperty();
@@ -182,6 +167,8 @@ public class PaintPickerController {
         colorPicker = new ColorPickerControl(this);
         gradientPicker = new GradientPicker(this);
 
+
+
         // Default value
         setPaintProperty(DEFAULT_COLOR);
 
@@ -192,6 +179,7 @@ public class PaintPickerController {
         });
         root_vbox.getChildren().add(colorPicker);
     }
+
 
     void setSingleMode(Mode mode) {
         // First disable toggle buttons so we cannot switch from 1 mode to another

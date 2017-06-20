@@ -39,18 +39,19 @@ import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 
 /**
  * Paint editor control.
  */
-public class PaintPicker extends Pane {
+public class PaintPicker {
 
     public enum Mode {
 
-        COLOR, LINEAR, RADIAL
+        COLOR, LINEAR, RADIAL, SINGLE
     }
-
+    private Pane pickerPane;
     private final PaintPickerController controller;
 
     public PaintPicker(Mode mode) {        
@@ -61,22 +62,24 @@ public class PaintPicker extends Pane {
             // Loading
             final Object rootObject = loader.load();
             assert rootObject instanceof Node;
-            final Node rootNode = (Node) rootObject;
-            getChildren().add(rootNode);
+            final Pane rootNode = (Pane) rootObject;
+            this.pickerPane = rootNode;
+
 
             // Retrieving the controller
             final Object ctl = loader.getController();
             assert ctl instanceof PaintPickerController;
             this.controller = (PaintPickerController) ctl;
+            if(mode.equals(Mode.SINGLE)) {
+                ((PaintPickerController) ctl).setSingleMode(mode);
+            }
            //this.controller.setDelegate(delegate);
         } catch (IOException ex) {
             throw new IllegalStateException(ex);
         }
     }
 
-    public final ObjectProperty<Paint> paintProperty() {
-        return controller.paintProperty();
-    }
+
 
     public final void setPaintProperty(Paint value) {
         // Update model
@@ -85,7 +88,15 @@ public class PaintPicker extends Pane {
         controller.updateUI(value);
     }
 
-    public final Paint getPaintProperty() {
+    public Pane getPickerPane() {
+        return pickerPane;
+    }
+
+    public ObjectProperty<Paint> paintProperty() {
+        return controller.paintProperty();
+    }
+
+    public Paint getPaintProperty() {
         return controller.getPaintProperty();
     }
     
@@ -96,8 +107,9 @@ public class PaintPicker extends Pane {
     public boolean isLiveUpdate() {
         return controller.isLiveUpdate();
     }
-    
-    public interface Delegate {
-        void handleError(String warningKey, Object... arguments);
+
+    public static interface Delegate {
+        public void handleError(String warningKey, Object... arguments);
     }
+
 }

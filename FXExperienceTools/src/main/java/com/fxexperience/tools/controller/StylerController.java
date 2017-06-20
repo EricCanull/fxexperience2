@@ -10,6 +10,7 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.javafx.scene.control.IntegerField;
+import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
@@ -22,6 +23,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
@@ -73,13 +75,15 @@ public class StylerController extends SplitPane {
     @FXML private ToggleButton shadowToggle;
     @FXML private ToggleButton inputBorderToggle;
 
-    private final PopupEditor basePicker = new PopupEditor(Color.web("#D0D0D0"));
-    private final PopupEditor backgroundColorPicker = new PopupEditor(Color.web("#f4f4f4"));
-    private final PopupEditor focusColorPicker = new PopupEditor(Color.web("#0093ff"));
-    private final PopupEditor textColorPicker = new PopupEditor(Color.web("#000000"));
-    private final PopupEditor bkgdTextColorPicker = new PopupEditor(Color.web("#000000"));
-    private final PopupEditor fieldBackgroundPicker = new PopupEditor(Color.web("#ffffff"));
-    private final PopupEditor fieldTextColorPicker = new PopupEditor(Color.web("#000000"));
+    private final PopupEditor basePicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#D0D0D0"));
+    private final PopupEditor backgroundColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#f4f4f4"));
+    private final PopupEditor focusColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
+    private final PopupEditor textColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final PopupEditor bkgdTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final PopupEditor fieldBackgroundPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#ffffff"));
+    private final PopupEditor fieldTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+
+
 
     public StylerController() {
         initialize();
@@ -173,10 +177,15 @@ public class StylerController extends SplitPane {
         inputBorderSlider.disableProperty().bind(inputBorderToggle.selectedProperty().not());
     }
 
+    private final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateCSS());
+
+
     private void addListeners() {
         // create listener to call update css
+
         AtomicReference<ChangeListener<Object>> updateCssListener =
-                new AtomicReference<>((ObservableValue<?> arg0, Object arg1, Object arg2) -> updateCSS());
+                new AtomicReference<>((ObservableValue<?> arg0, Object arg1, Object arg2) ->
+                        updateCSS());
 
         // add listeners to call update css
         fontChoiceBox.valueProperty().addListener(updateCssListener.get());
@@ -185,19 +194,20 @@ public class StylerController extends SplitPane {
         borderRadiusSlider.valueProperty().addListener(updateCssListener.get());
         borderWidthSlider.valueProperty().addListener(updateCssListener.get());
 
-        basePicker.colorProperty().addListener(updateCssListener.get());
-        backgroundColorPicker.colorProperty().addListener(updateCssListener.get());
-        focusColorPicker.colorProperty().addListener(updateCssListener.get());
-        textColorPicker.colorProperty().addListener(updateCssListener.get());
+        basePicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        backgroundColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        focusColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        textColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         baseTextToggle.selectedProperty().addListener(updateCssListener.get());
         textColorPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
-        fieldBackgroundPicker.colorProperty().addListener(updateCssListener.get());
-        fieldTextColorPicker.colorProperty().addListener(updateCssListener.get());
+        fieldBackgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        fieldTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         fieldTextToggle.selectedProperty().addListener(updateCssListener.get());
         fieldTextColorPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
-        bkgdTextColorPicker.colorProperty().addListener(updateCssListener.get());
+        bkgdTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         backgroundTextToggle.selectedProperty().addListener(updateCssListener.get());
         bkgdTextColorPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
+
 
         topHighlightSlider.valueProperty().addListener(updateCssListener.get());
         bottomHighlightSlider.valueProperty().addListener(updateCssListener.get());
@@ -245,29 +255,29 @@ public class StylerController extends SplitPane {
         //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorText() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorText() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorText() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getColorText() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorString() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorString() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorString() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getColorString() + ";", true, 4));
 
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-base-color: "
-                    + textColorPicker.getWebColor() + ";", true, 4));
+                    + textColorPicker.getColorString()+ ";", true, 4));
         } else {
              baseTextToggle.setText("AUTO");
         }
         if (backgroundTextToggle.isSelected()) {
             backgroundTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-background-color: "
-                    + bkgdTextColorPicker.getWebColor() + ";", true, 4));
+                    + bkgdTextColorPicker.getColorString() + ";", true, 4));
         } else {
              backgroundTextToggle.setText("AUTO");
         }
         if (fieldTextToggle.isSelected()) {
              fieldTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-inner-color: "
-                    + fieldTextColorPicker.getWebColor() + ";", true, 4));
+                    + fieldTextColorPicker.getColorString() + ";", true, 4));
         } else {
              fieldTextToggle.setText("AUTO");
         }
@@ -408,16 +418,11 @@ public class StylerController extends SplitPane {
         cssBuffer.append("}\n");
         cssBuffer.append(".menu-button .label { /* Workaround for RT-20015 */\n");
         cssBuffer.append(StringUtil.padWithSpaces("-fx-text-fill: -fx-text-base-color;", true, 4));
-        cssBuffer.append("}\n");
+        cssBuffer.append("}");
+
 
         return cssBuffer.toString();
     }
-
-//    @Override
-//    public void setParentTool(Node parentTool) {
-//        Node stylerController = parentTool;
-//    }
-
 
     public String getCodeOutput() {
      return createCSS();

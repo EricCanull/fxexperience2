@@ -36,7 +36,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -47,92 +46,116 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 
-<fx:root id="CONTENT" maxHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="CONTENT" maxHeight="-1.0" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="304.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0">
+    <GridPane gridLinesVisible="false" VBox.vgrow="NEVER">
       <children>
-        <ScrollPane fx:id="picker_scrollpane" fitToHeight="false" fitToWidth="false" hbarPolicy="NEVER" hmax="1.0" hmin="0.0" hvalue="0.5" maxHeight="80.0" maxWidth="220.0" minHeight="80.0" minWidth="220.0" prefViewportHeight="80.0" prefViewportWidth="200.0" vbarPolicy="NEVER" vmax="1.0" vvalue="0.5" HBox.hgrow="NEVER">
-          <content>
-            <AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="240.0">
-              <children>
-                <Region fx:id="picker_region" onMouseDragged="#onPickerRegionDragged" onMousePressed="#onPickerRegionPressed" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: red;&#10;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
-                <Region disable="true" prefHeight="80.0" prefWidth="200.0" style="" styleClass="saturationRect" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
-                <Region disable="true" prefHeight="80.0" prefWidth="200.0" style="" styleClass="brightnessRect" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0" />
-                <StackPane fx:id="picker_handle_stackpane" disable="true" layoutX="13.0" layoutY="13.0">
-                  <children>
-                    <Circle fill="TRANSPARENT" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-                    <Circle fx:id="picker_handle_chip_circle" fill="TRANSPARENT" radius="6.0" stroke="WHITE" strokeType="INSIDE" />
-                  </children>
-                </StackPane>
-              </children>
-            </AnchorPane>
-          </content>
-        </ScrollPane>
-        <VBox id="VBox" alignment="CENTER" spacing="2.0" HBox.hgrow="ALWAYS">
-          <children>
-            <StackPane VBox.vgrow="ALWAYS">
-              <children>
-                <Region style="" styleClass="chip-background" />
-                <Region fx:id="chip_region" style="">
-                  <padding>
-                    <Insets fx:id="x6" />
-                  </padding>
-                  <StackPane.margin>
-                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                  </StackPane.margin>
-                </Region>
-              </children>
-            </StackPane>
-            <TextField fx:id="hexa_textfield" onAction="#onActionHexa" prefColumnCount="6" prefHeight="-1.0" prefWidth="-1.0" text="#123456" />
-          </children>
-        </VBox>
-      </children>
-    </HBox>
-    <Slider fx:id="hue_slider" blockIncrement="1.0" max="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="360.0" styleClass="hue-slider" VBox.vgrow="NEVER" />
-    <GridPane gridLinesVisible="false" hgap="2.0">
-      <children>
-        <StackPane id="StackPane" GridPane.columnIndex="0" GridPane.columnSpan="6" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
-          <children>
-            <Region maxWidth="1000.0" prefHeight="-1.0" prefWidth="-1.0" styleClass="opacity-slider-background">
-              <StackPane.margin>
-                <Insets left="4.0" right="4.0" />
-              </StackPane.margin>
-            </Region>
-            <Region fx:id="alpha_region" maxWidth="1000.0" prefHeight="-1.0" prefWidth="-1.0" style="" />
-            <Slider fx:id="alpha_slider" blockIncrement="0.01" max="1.0" styleClass="opacity-slider" value="1.0" />
-          </children>
-          <GridPane.margin>
-            <Insets bottom="2.0" fx:id="x2" />
-          </GridPane.margin>
-        </StackPane>
-        <DoubleTextField fx:id="alpha_textfield" onAction="#onActionAlpha" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="6" GridPane.margin="$x2" GridPane.rowIndex="0" />
-        <DoubleTextField fx:id="hue_textfield" onAction="#onActionHue" prefColumnCount="3" prefWidth="-1.0" GridPane.rowIndex="1" />
-        <DoubleTextField fx:id="saturation_textfield" onAction="#onActionSaturation" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <DoubleTextField fx:id="brightness_textfield" onAction="#onActionBrightness" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <DoubleTextField fx:id="red_textfield" onAction="#onActionRed" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-        <DoubleTextField fx:id="green_textfield" onAction="#onActionGreen" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-        <DoubleTextField fx:id="blue_textfield" onAction="#onActionBlue" prefColumnCount="3" prefWidth="-1.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-        <Label styleClass="small-label" text="H°" GridPane.rowIndex="2" />
-        <Label styleClass="small-label" text="S %" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Label styleClass="small-label" text="B %" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <Label styleClass="small-label" text="R" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-        <Label styleClass="small-label" text="G" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-        <Label styleClass="small-label" text="B" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+        <DoubleTextField fx:id="alpha_textfield" onAction="#onActionAlpha" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="6" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+               <GridPane.margin>
+            <Insets fx:id="x2" />
+               </GridPane.margin>
+            </DoubleTextField>
+        <DoubleTextField fx:id="hue_textfield" onAction="#onActionHue" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.rowIndex="3" />
+        <DoubleTextField fx:id="saturation_textfield" onAction="#onActionSaturation" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <DoubleTextField fx:id="brightness_textfield" onAction="#onActionBrightness" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <DoubleTextField fx:id="red_textfield" onAction="#onActionRed" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+        <DoubleTextField fx:id="green_textfield" onAction="#onActionGreen" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <DoubleTextField fx:id="blue_textfield" onAction="#onActionBlue" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+        <Label styleClass="small-label" text="H°" GridPane.rowIndex="4" />
+        <Label styleClass="small-label" text="S %" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label styleClass="small-label" text="B %" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Label styleClass="small-label" text="R" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+        <Label styleClass="small-label" text="G" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+        <Label styleClass="small-label" text="B" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+          <HBox maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="1.0" GridPane.columnSpan="7">
+            <children>
+              <ScrollPane fx:id="picker_scrollpane" fitToHeight="false" fitToWidth="false" hbarPolicy="NEVER" hmax="1.0" hmin="0.0" hvalue="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefViewportHeight="80.0" prefViewportWidth="200.0" prefWidth="200.0" vbarPolicy="NEVER" vmax="1.0" vvalue="0.5" HBox.hgrow="NEVER">
+                <content>
+                  <AnchorPane id="AnchorPane">
+                    <children>
+                      <Region fx:id="picker_region" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onPickerRegionDragged" onMousePressed="#onPickerRegionPressed" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: red;&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                      <Region disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="200.0" style="" styleClass="saturationRect" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                      <Region disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="200.0" style="" styleClass="brightnessRect" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                      <StackPane fx:id="picker_handle_stackpane" disable="true" layoutX="13.0" layoutY="13.0">
+                        <children>
+                          <Circle fill="TRANSPARENT" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+                          <Circle fx:id="picker_handle_chip_circle" fill="TRANSPARENT" radius="6.0" stroke="WHITE" strokeType="INSIDE" />
+                        </children>
+                      </StackPane>
+                    </children>
+                  </AnchorPane>
+                </content>
+              </ScrollPane>
+              <VBox id="VBox" alignment="CENTER" spacing="1.0" HBox.hgrow="ALWAYS">
+                <children>
+                  <StackPane VBox.vgrow="ALWAYS">
+                    <children>
+                      <Region style="" styleClass="chip-background" />
+                      <Region fx:id="chip_region" style="">
+                        <padding>
+                          <Insets fx:id="x6" />
+                        </padding>
+                        <StackPane.margin>
+                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                        </StackPane.margin>
+                      </Region>
+                    </children>
+                  </StackPane>
+                  <TextField fx:id="hexa_textfield" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionHexa" prefColumnCount="6" prefHeight="22.0" prefWidth="103.0" styleClass="color-field" text="#123456" />
+                </children>
+              </VBox>
+            </children>
+          </HBox>
+            <HBox maxWidth="-Infinity" prefWidth="250.0" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+               <children>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="250.0" style="-fx-background-color: white;" HBox.hgrow="NEVER">
+                     <children>
+                  <Region fx:id="alpha_region" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="250.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Region fx:id="alpha_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onAlphaPickerDragged" onMouseReleased="#onAlphaPickerClicked" prefHeight="20.0" prefWidth="250.0" style="-fx-border-color: #606060;;" styleClass="opacity-slider-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane fx:id="alpha_handle_stackpane" layoutX="232.0" prefHeight="20.0">
+                           <children>
+                              <Circle fill="TRANSPARENT" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fill="TRANSPARENT" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox maxWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" GridPane.columnSpan="7" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Region fx:id="alpha_region1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Region fx:id="hue_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onHuePickerDragged" onMousePressed="#onHuePickerClicked" prefHeight="25.0" prefWidth="304.0" style="-fx-border-color: #606060;;" styleClass="hue-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane fx:id="hue_handle_stackpane" prefHeight="23.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff08" height="22.0" stroke="#545454" strokeType="INSIDE" strokeWidth="3.0" width="12.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff08" height="20.0" layoutX="10.0" layoutY="10.0" stroke="#c3c3c3" strokeType="INSIDE" strokeWidth="3.0" width="10.0" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
       </children>
       <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="8.0" minWidth="8.0" prefWidth="8.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-1.0" prefWidth="-1.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="4.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="NEVER" />
-        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" valignment="CENTER" vgrow="NEVER" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" vgrow="ALWAYS" />
       </rowConstraints>
     </GridPane>
   </children>

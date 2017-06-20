@@ -4,48 +4,45 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 
 <fx:root styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <center>
     <GridPane fx:id="gridPane" hgap="5.0" styleClass="derivation-hbox" vgap="5.0" BorderPane.alignment="CENTER">
       <children>
-        <Label fx:id="label" maxWidth="-Infinity" minHeight="16.0" minWidth="-Infinity" prefHeight="16.0" text="Base Color:" GridPane.rowIndex="1" />
-        <Label id="label1" text="Derivation:" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-        <Slider fx:id="derivationSlider" maxHeight="-Infinity" maxWidth="-Infinity" min="-100.0" minWidth="-Infinity" minorTickCount="10" prefWidth="220.0" showTickLabels="true" showTickMarks="true" styleClass="derivation-slider" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label fx:id="forwardDerivationLabel" prefWidth="80.0" text="0%" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-        <Label id="label3" text="Derived Result:" GridPane.rowIndex="4" />
-        <Label id="label4" text="Desired Color:" GridPane.rowIndex="6" />
-        <Label id="label5" text="Derivation:" GridPane.rowIndex="7" />
-        <Label fx:id="reverseDerivationLabel" text="30%" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-        <Label id="label7" text="Result Color:" GridPane.rowIndex="8" />
-        <Label fx:id="reverseResultLabel" prefHeight="21.0" prefWidth="250.0" text="#EEEEEE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-        <Label fx:id="derivedResultLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-            <Label styleClass="conversion-label" text="Forward Conversion" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Label styleClass="conversion-label" text="Reverse Conversion" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <ImageView pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="8">
-               <image>
-                  <Image url="@../images/note.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="alert" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.rowSpan="2">
-               <image>
-                  <Image url="@../images/alert.png" />
-               </image>
-            </ImageView>
-            <ColorPickerTool fx:id="desiredColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ColorPickerTool fx:id="baseColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label fx:id="label" maxWidth="-Infinity" minHeight="16.0" minWidth="-Infinity" prefHeight="16.0" text="Base Color:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+        <Label id="label1" text="Derivation:" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+        <Slider fx:id="derivationSlider" maxHeight="-Infinity" maxWidth="-Infinity" min="-100.0" minWidth="-Infinity" minorTickCount="10" prefWidth="220.0" showTickLabels="true" showTickMarks="true" styleClass="derivation-slider" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <Label fx:id="forwardDerivationLabel" prefWidth="80.0" text="0%" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+        <Label id="label3" text="Derived Result:" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+        <Label id="label4" text="Desired Color:" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+        <Label id="label5" text="Derivation:" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+        <Label fx:id="reverseDerivationLabel" text="30%" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+        <Label id="label7" text="Result Color:" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+        <Label fx:id="reverseResultLabel" prefHeight="21.0" prefWidth="250.0" text="#EEEEEE" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+        <Label fx:id="derivedResultLabel" text="Label" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <Label styleClass="conversion-label" text="Forward Conversion" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Label styleClass="conversion-label" text="Reverse Conversion" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <ColorPickerTool fx:id="desiredColorPicker" maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <ColorPickerTool fx:id="baseColorPicker" maxWidth="-Infinity" prefWidth="120.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Rectangle fx:id="gradientSquare" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="190.0" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+            <Label id="label7" layoutX="50.0" layoutY="412.0" text="Gradient:" GridPane.rowIndex="1" />
+            <Label id="label7" text="Gradient CSS:" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <TextArea fx:id="gradientCSSText" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnSpan="6" GridPane.rowIndex="9" />
       </children>
       <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="70.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="110.0" />
         <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
         <ColumnConstraints hgrow="NEVER" maxWidth="382.0" minWidth="-Infinity" prefWidth="225.0" />
         <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="450.0" />
       </columnConstraints>
       <padding>
         <Insets bottom="20.0" left="40.0" right="20.0" top="20.0" />

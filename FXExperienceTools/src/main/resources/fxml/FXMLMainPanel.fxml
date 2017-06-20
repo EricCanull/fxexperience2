@@ -29,9 +29,9 @@
    <top>
       <MenuBar styleClass="main-menu">
         <menus>
-          <Menu mnemonicParsing="false" styleClass="menu-item" text="File">
+          <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#copyButtonAction" text="Copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#copyButtonAction" styleClass="main-context-menu" text="Copy" />
                   <MenuItem mnemonicParsing="false" onAction="#saveButtonAction" text="Save As" />
               <MenuItem mnemonicParsing="false" onAction="#closeButtonAction" text="Close" />
             </items>

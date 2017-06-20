@@ -162,6 +162,7 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </ToggleButton>
+                                          <Label layoutX="13.0" layoutY="186.0" minWidth="-Infinity" styleClass="prop-label" text="Gradient Color:" GridPane.rowIndex="7" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="115.0" minWidth="-Infinity" prefWidth="115.0" />
@@ -176,6 +177,7 @@
                                           <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
                                           <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
                                           <RowConstraints minHeight="23.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="23.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                                        </rowConstraints>
                                        <padding>
                                           <Insets left="3.0" />

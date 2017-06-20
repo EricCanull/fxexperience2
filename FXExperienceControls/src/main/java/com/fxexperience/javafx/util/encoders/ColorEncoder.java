@@ -35,15 +35,31 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import javafx.scene.paint.Color;
+ import java.util.List;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.paint.*;
 
 /**
  *
  */
-public class ColorEncoder {
+public class ColorEncoder implements SyntaxConstants {
     
     private static Map<String, Color> standardColors;
     private static Map<Color, String> standardColorNames;
+
+    // Variables to which the values are binded to. And are used to build the gradient.
+    protected static SimpleBooleanProperty isFocusAngle = new SimpleBooleanProperty(true);
+    protected static SimpleIntegerProperty focusAngle = new SimpleIntegerProperty();
+    protected static SimpleBooleanProperty isFocusDistance = new SimpleBooleanProperty(true);
+    protected static SimpleIntegerProperty focusDistance = new SimpleIntegerProperty();
+    protected static SimpleBooleanProperty isCenter = new SimpleBooleanProperty(true);
+    protected static SimpleIntegerProperty centerX = new SimpleIntegerProperty();
+    protected static SimpleIntegerProperty centerY = new SimpleIntegerProperty();
+    protected static SimpleBooleanProperty isRadiusPixel = new SimpleBooleanProperty();
+    protected static SimpleIntegerProperty radiusPixel = new SimpleIntegerProperty();
+    protected static SimpleIntegerProperty radiusPercent = new SimpleIntegerProperty();
     
     public static String encodeColor(Color color) {
         final String colorName = getStandardColorNames().get(color);
@@ -222,15 +238,74 @@ public class ColorEncoder {
         
         if (standardColorNames == null) {
             standardColorNames = new HashMap<>();
-            getStandardColors().entrySet().forEach((e) -> {
+            for (Map.Entry<String, Color> e : getStandardColors().entrySet()) {
                 standardColorNames.put(e.getValue(), e.getKey());
-            });
+            }
             standardColorNames = Collections.unmodifiableMap(standardColorNames);
         }
         
         return standardColorNames;
     }
-    
+
+    public static String encodeRadialToCSS(Object radial) {
+        StringBuilder sytx = new StringBuilder(radial.toString());
+
+
+
+    return sytx.toString();
+    }
+
+    public static String encodeLinearToCSS(Object paint) {
+        assert paint instanceof LinearGradient;
+
+        LinearGradient linearGradient = (LinearGradient) paint;
+
+        List<Stop> stops = linearGradient.getStops();
+
+        boolean linear_proportional = linearGradient.isProportional();
+
+        final CycleMethod linear_cycleMethod = linearGradient.getCycleMethod();
+
+        double startX = linear_proportional  ? linearGradient.getStartX() * 100 : linearGradient.getStartX();
+        double startY = linear_proportional  ? linearGradient.getStartY() * 100 : linearGradient.getStartY();
+        double endX = linear_proportional    ? linearGradient.getEndX() * 100 : linearGradient.getEndX();
+        double endY = linear_proportional    ? linearGradient.getEndY() * 100 : linearGradient.getEndY();
+
+        String fromUnit = linear_proportional ? FROMPERCENTUNIT : FROMPIXELUNIT;
+        String toUnit = linear_proportional   ? TOPERCENTUNIT : TOPIXELUNIT;
+
+        StringBuilder sb = new StringBuilder(BGLINEAR);
+        sb.append(FROM);
+        sb.append(startX).append(fromUnit);
+        sb.append(startY).append(fromUnit);
+        sb.append(TO);
+        sb.append(endX).append(toUnit);
+        sb.append(endY).append(toUnit);
+        sb.append(SEPARATOR);
+
+        if (linear_cycleMethod.toString().equalsIgnoreCase("reflect")
+                || linear_cycleMethod.toString().equalsIgnoreCase("repeat")) {
+            sb.append(linear_cycleMethod);
+            sb.append(SEPARATOR);
+        }
+
+        // Color Stops
+        Color dto;
+        for (int i = 0; i < stops.size(); i++) {
+            dto = stops.get(i).getColor();
+            double offset = Math.round(stops.get(i).getOffset() * 100);
+            sb.append(encodeColor(dto));
+            sb.append(SPACER);
+            sb.append(offset);
+
+            sb.append(COLORSTOPUNIT);
+            if (i < (stops.size() - 1)) {
+                sb.append(SEPARATOR);
+            }
+        }
+
+        return  sb.append(BGGRADEND).toString();
+    }
     
     public static String encodeColorToRGBA(Color color) {
         final String result;
@@ -345,7 +420,7 @@ public class ColorEncoder {
             calcBrightness = 1;
         }
 
-        // window two take the calculated brightness multiplyer and derive color based on source color
+        // window two take the calculated brightness multiplier and derive color based on source color
         double[] hsb = null;
         hsb = RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue());
         // change brightness
