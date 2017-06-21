@@ -22,7 +22,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -30,6 +29,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
@@ -43,13 +43,14 @@ public class DerivationController extends BorderPane {
     public final static int INDEX_POS = 2;
 
     @FXML private AnchorPane anchorPane;
-    @FXML private GridPane gridPane;
+    @FXML private GridPane gradientGridPane;
     @FXML private Label forwardDerivationLabel;
     @FXML private Slider derivationSlider;
     @FXML private Label derivedResultLabel;
     @FXML private Label reverseDerivationLabel;
     @FXML private Label reverseResultLabel;
     @FXML private Rectangle gradientSquare;
+    @FXML private Circle gradientCircle;
    // @FXML private ImageView alert;
     @FXML private ColorPickerTool baseColorPicker;
     @FXML private ColorPickerTool desiredColorPicker;
@@ -74,8 +75,8 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        gradientTextColorPicker.setId("Gradient-picker");
-        gridPane.add(gradientTextColorPicker, 1, 1);
+
+        gradientGridPane.add(gradientTextColorPicker, 1, 0);
 
         final ChangeListener<Paint> onPaintChanged = (ov, oldValue, newValue) -> {
         if (newValue instanceof Color || newValue instanceof LinearGradient) {
@@ -133,7 +134,7 @@ public class DerivationController extends BorderPane {
     }
 
     public void updateGradientCSS() {
-        setGradientSquare("-fx-fill: " + gradientTextColorPicker.getGradientString());
+        setGradientStyles("-fx-fill: " + gradientTextColorPicker.getGradientString());
         gradientCSSText.setText(gradientTextColorPicker.getGradientString());
     }
     
@@ -199,8 +200,9 @@ public class DerivationController extends BorderPane {
         return String.format("#%02X%02X%02X", red, green, blue);
     }
 
-    public void setGradientSquare(String style){
+    public void setGradientStyles(String style){
         this.gradientSquare.setStyle(style);
+        this.gradientCircle.setStyle(style);
     }
 
     public String getCodeOutput() {

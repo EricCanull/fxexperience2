@@ -50,7 +50,7 @@
 
 <fx:root id="CONTENT" maxHeight="-1.0" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="304.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <GridPane gridLinesVisible="false" VBox.vgrow="NEVER">
+    <GridPane gridLinesVisible="false" vgap="1.0" VBox.vgrow="NEVER">
       <children>
         <DoubleTextField fx:id="alpha_textfield" onAction="#onActionAlpha" prefColumnCount="3" prefWidth="-1.0" styleClass="color-field" GridPane.columnIndex="6" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
                <GridPane.margin>
@@ -69,7 +69,7 @@
         <Label styleClass="small-label" text="R" GridPane.columnIndex="4" GridPane.rowIndex="4" />
         <Label styleClass="small-label" text="G" GridPane.columnIndex="5" GridPane.rowIndex="4" />
         <Label styleClass="small-label" text="B" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-          <HBox maxWidth="1.7976931348623157E308" prefHeight="-1.0" prefWidth="-1.0" spacing="1.0" GridPane.columnSpan="7">
+          <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="1.0" GridPane.columnSpan="7" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
             <children>
               <ScrollPane fx:id="picker_scrollpane" fitToHeight="false" fitToWidth="false" hbarPolicy="NEVER" hmax="1.0" hmin="0.0" hvalue="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefViewportHeight="80.0" prefViewportWidth="200.0" prefWidth="200.0" vbarPolicy="NEVER" vmax="1.0" vvalue="0.5" HBox.hgrow="NEVER">
                 <content>
@@ -103,7 +103,7 @@
                       </Region>
                     </children>
                   </StackPane>
-                  <TextField fx:id="hexa_textfield" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionHexa" prefColumnCount="6" prefHeight="22.0" prefWidth="103.0" styleClass="color-field" text="#123456" />
+                  <TextField fx:id="hexa_textfield" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionHexa" prefColumnCount="6" prefHeight="22.0" prefWidth="102.0" styleClass="color-field" text="#123456" />
                 </children>
               </VBox>
             </children>
@@ -124,19 +124,22 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <HBox maxWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" GridPane.columnSpan="7" GridPane.rowIndex="1">
+            <HBox maxWidth="-Infinity" prefHeight="30.0" prefWidth="304.0" GridPane.columnSpan="7" GridPane.rowIndex="1">
                <children>
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" HBox.hgrow="NEVER">
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="304.0" HBox.hgrow="NEVER">
                      <children>
-                        <Region fx:id="alpha_region1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="304.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Region fx:id="hue_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onHuePickerDragged" onMousePressed="#onHuePickerClicked" prefHeight="25.0" prefWidth="304.0" style="-fx-border-color: #606060;;" styleClass="hue-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <StackPane fx:id="hue_handle_stackpane" prefHeight="23.0">
+                        <Region fx:id="alpha_region1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="304.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Region fx:id="hue_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onHuePickerDragged" onMousePressed="#onHuePickerClicked" prefHeight="28.0" prefWidth="304.0" style="-fx-border-color: #606060;;" styleClass="hue-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <StackPane fx:id="hue_handle_stackpane" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff08" height="22.0" stroke="#545454" strokeType="INSIDE" strokeWidth="3.0" width="12.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff08" height="20.0" layoutX="10.0" layoutY="10.0" stroke="#c3c3c3" strokeType="INSIDE" strokeWidth="3.0" width="10.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7373730d" height="31.0" stroke="#5230fc" strokeType="INSIDE" strokeWidth="2.0" width="10.0" StackPane.alignment="CENTER" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="29.0" layoutX="10.0" layoutY="10.0" stroke="#f5f5f5" strokeType="INSIDE" strokeWidth="2.0" width="8.0" />
                            </children>
                         </StackPane>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </AnchorPane>
                </children>
             </HBox>
@@ -152,7 +155,7 @@
       </columnConstraints>
       <rowConstraints>
             <RowConstraints maxHeight="-Infinity" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="26.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="34.0" vgrow="NEVER" />
         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" valignment="CENTER" vgrow="NEVER" />
         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" vgrow="NEVER" />
         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="15.0" vgrow="ALWAYS" />

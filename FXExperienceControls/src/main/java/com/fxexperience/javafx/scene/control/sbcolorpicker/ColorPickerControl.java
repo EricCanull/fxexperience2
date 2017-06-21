@@ -284,72 +284,48 @@ public class ColorPickerControl extends VBox {
 
     @FXML
     void onActionHue(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onHSBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionSaturation(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onHSBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionBrightness(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onHSBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionAlpha(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onHSBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionRed(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onRGBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionGreen(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onRGBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionBlue(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onRGBChange(event);
         event.consume();
     }
 
     @FXML
     void onActionHexa(ActionEvent event) {
-        if(updating) {
-            return;
-        }
         onHexaChange(event);
         event.consume();
     }
@@ -415,8 +391,8 @@ public class ColorPickerControl extends VBox {
         }
         updating = true;
         final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnHueChanged(clamp(mx / 294) * 360);
-
+        setOnHueChanged(clamp(mx / 304) * 360);
+        System.out.println(alpha_bar.getWidth());
     }
 
 
@@ -427,7 +403,7 @@ public class ColorPickerControl extends VBox {
         }
 
         final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnHueChanged(clamp(mx / 294) * 360);
+        setOnHueChanged(clamp(mx / 300) * 360);
 
     }
 
@@ -534,8 +510,17 @@ public class ColorPickerControl extends VBox {
             System.out.println("Updating");
         }
         updating = true;
-        hue_handle_stackpane.setLayoutX(clampX((hue * 294) / 360, 0, 294));
-        alpha_handle_stackpane.setLayoutX(clampX(alpha * 232, 0, 232));
+        hue_handle_stackpane.setLayoutX(clampPos((hue * 296) / 360, 0, 296));
+        alpha_handle_stackpane.setLayoutX(clampPos(alpha * 232, 0, 232));
+        // Position the picker dot
+        double xSat = picker_region.getWidth() * saturation; // Saturation is on x axis
+        double yBri = picker_region.getHeight() * (1.0 - brightness); // Brightness is on y axis (reversed as white is top)
+        double xPos = (picker_region.getBoundsInParent().getMinX() + xSat) - picker_handle_stackpane.getWidth() / 2;
+        double yPos = (picker_region.getBoundsInParent().getMinY() + yBri) - picker_handle_stackpane.getHeight() / 2;
+//        xPos = clampPos(xPos, 0, picker_region.getPrefWidth() - (picker_handle_stackpane.getWidth()));
+//        yPos = clampPos(yPos, 0, picker_region.getPrefHeight() - (picker_handle_stackpane.getHeight());
+        picker_handle_stackpane.setLayoutX(xPos);
+        picker_handle_stackpane.setLayoutY(yPos);
 
         // update the HSB values so they are within range
         hue = PaintPickerController.clamp(0, hue, 360);
@@ -575,13 +560,7 @@ public class ColorPickerControl extends VBox {
                 + hue + ", 100%, 100%, 1.0);"; //NOI18N
         picker_region.setStyle(pickerRegionStyle);
 
-        // Position the picker dot
-        double xSat = picker_region.getWidth() * saturation; // Saturation is on x axis
-        double yBri = picker_region.getHeight() * (1.0 - brightness); // Brightness is on y axis (reversed as white is top)
-        double xPos = (picker_region.getBoundsInParent().getMinX() + xSat) - picker_handle_stackpane.getWidth() / 2;
-        double yPos = (picker_region.getBoundsInParent().getMinY() + yBri) - picker_handle_stackpane.getHeight() / 2;
-        picker_handle_stackpane.setLayoutX(xPos);
-        picker_handle_stackpane.setLayoutY(yPos);
+
 
         updating = false;
 
@@ -609,7 +588,7 @@ public class ColorPickerControl extends VBox {
         return value < 0 ? 0 : value > 1 ? 1 : value;
     }
 
-    private double clampX(double xPos, double min, double max) {
+    private double clampPos(double xPos, double min, double max) {
         return xPos < min ? min : xPos > max ? max : xPos;
     }
 
