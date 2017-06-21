@@ -392,7 +392,6 @@ public class ColorPickerControl extends VBox {
         updating = true;
         final double mx = e.getX() - alpha_bar.getLayoutX();
         setOnHueChanged(clamp(mx / 304) * 360);
-        System.out.println(alpha_bar.getWidth());
     }
 
 
