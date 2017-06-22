@@ -167,8 +167,6 @@ public class PaintPickerController {
         colorPicker = new ColorPickerControl(this);
         gradientPicker = new GradientPicker(this);
 
-
-
         // Default value
         setPaintProperty(DEFAULT_COLOR);
 

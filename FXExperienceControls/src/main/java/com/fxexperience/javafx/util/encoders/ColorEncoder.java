@@ -266,10 +266,10 @@ public class ColorEncoder implements SyntaxConstants {
 
         final CycleMethod linear_cycleMethod = linearGradient.getCycleMethod();
 
-        double startX = linear_proportional  ? linearGradient.getStartX() * 100 : linearGradient.getStartX();
-        double startY = linear_proportional  ? linearGradient.getStartY() * 100 : linearGradient.getStartY();
-        double endX = linear_proportional    ? linearGradient.getEndX() * 100 : linearGradient.getEndX();
-        double endY = linear_proportional    ? linearGradient.getEndY() * 100 : linearGradient.getEndY();
+        double startX = linear_proportional ? round(linearGradient.getStartX()) : round(linearGradient.getStartX());
+        double startY = linear_proportional ? round(linearGradient.getStartY()): round(linearGradient.getStartY());
+        double endX = linear_proportional   ? round(linearGradient.getEndX()) : round(linearGradient.getEndX());
+        double endY = linear_proportional   ? round(linearGradient.getEndY()) : round(linearGradient.getEndY());
 
         String fromUnit = linear_proportional ? FROMPERCENTUNIT : FROMPIXELUNIT;
         String toUnit = linear_proportional   ? TOPERCENTUNIT : TOPIXELUNIT;
@@ -446,5 +446,10 @@ public class ColorEncoder implements SyntaxConstants {
       
         // return hsb
         return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
+    }
+
+    private static double round(double value) {
+        double doubleRounded = Math.round(value * 100);
+        return doubleRounded;
     }
 }
