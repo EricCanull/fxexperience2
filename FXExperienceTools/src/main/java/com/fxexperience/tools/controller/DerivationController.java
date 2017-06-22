@@ -19,6 +19,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -49,6 +50,7 @@ public class DerivationController extends BorderPane {
     @FXML private Label derivedResultLabel;
     @FXML private Label reverseDerivationLabel;
     @FXML private Label reverseResultLabel;
+    @FXML private Button fxButton;
     @FXML private Rectangle gradientSquare;
     @FXML private Circle gradientCircle;
    // @FXML private ImageView alert;
@@ -134,7 +136,7 @@ public class DerivationController extends BorderPane {
     }
 
     public void updateGradientCSS() {
-        setGradientStyles("-fx-fill: " + gradientTextColorPicker.getGradientString());
+        setGradientStyles(gradientTextColorPicker.getGradientString());
         gradientCSSText.setText(gradientTextColorPicker.getGradientString());
     }
     
@@ -201,8 +203,9 @@ public class DerivationController extends BorderPane {
     }
 
     public void setGradientStyles(String style){
-        this.gradientSquare.setStyle(style);
-        this.gradientCircle.setStyle(style);
+        this.gradientSquare.setStyle("-fx-fill: " + style);
+        this.gradientCircle.setStyle("-fx-fill: " + style);
+        this.fxButton.setStyle("-fx-background-color: " + style);
     }
 
     public String getCodeOutput() {

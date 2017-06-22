@@ -121,7 +121,7 @@ public class ColorPickerControl extends VBox {
             Logger.getLogger(ColorPickerControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-       // assert hue_slider != null;
+        // assert hue_slider != null;
         assert picker_region != null;
         assert hue_textfield != null;
         assert saturation_textfield != null;
@@ -130,7 +130,7 @@ public class ColorPickerControl extends VBox {
         assert red_textfield != null;
         assert green_textfield != null;
         assert blue_textfield != null;
-    //    assert alpha_slider != null;
+        //    assert alpha_slider != null;
 
         hue_bar.setStyle(makeHueSliderCSS()); // Make the grad for hue slider
 
@@ -138,8 +138,6 @@ public class ColorPickerControl extends VBox {
                 paintPickerController.setLiveUpdate(newValue);
 
         picker_region.pressedProperty().addListener(liveUpdateListener);
-      //  hue_slider.pressedProperty().addListener(liveUpdateListener);
-      //  alpha_slider.pressedProperty().addListener(liveUpdateListener);
 
         // Investigate why height + width listeners do not work
         // Indeed, the picker_handle_stackpane bounds may still be null at this point
@@ -200,51 +198,7 @@ public class ColorPickerControl extends VBox {
         green_textfield.focusedProperty().addListener(onRGBFocusedChange);
         blue_textfield.focusedProperty().addListener(onRGBFocusedChange);
         hexa_textfield.focusedProperty().addListener(onHexaFocusedChange);
-
-
-//        // Slider ON VALUE CHANGE event handler
-//        hue_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
-//            if (updating) {
-//                return;
-//            }
-//            double hue = newValue.doubleValue();
-//            // retrieve HSB TextFields values
-//            double saturation = Double.valueOf(saturation_textfield.getText()) / 100.0;
-//            double brightness = Double.valueOf(brightness_textfield.getText()) / 100.0;
-//            double alpha = Double.valueOf(alpha_textfield.getText());
-//            // Update UI
-//            final Color color = updateUI(hue, saturation, brightness, alpha);
-//            // Update model
-//            setPaintProperty(color);
-//        });
-
-//        alpha_slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number oldValue, Number newValue) -> {
-//            if (updating) {
-//                return;
-//            }
-//            double alpha = newValue.doubleValue();
-//            // retrieve HSB TextFields values
-//            double hue = Double.valueOf(hue_textfield.getText());
-//            double saturation = Double.valueOf(saturation_textfield.getText()) / 100.0;
-//            double brightness = Double.valueOf(brightness_textfield.getText()) / 100.0;
-//            // Update UI
-//            final Color color = updateUI(hue, saturation, brightness, alpha);
-//            // Update model
-//            setPaintProperty(color);
-//        });
     }
-
-//    private final DoubleProperty hue = new SimpleDoubleProperty() {
-//        @Override
-//        protected void invalidated() {
-//            if (!updating) {
-//                updating = true;
-//                color.set(Color.hsb(hue.get(), clamp(sat.get() / 100), clamp(bright.get() / 100)));
-//                changeIsLocal = false;
-////            }
-//        }
-//    };
-
 
     /**
      * When updating the color picker, we may update :
@@ -507,6 +461,7 @@ public class ColorPickerControl extends VBox {
         if(updating) {
             System.out.println("Updating");
         }
+
         updating = true;
         hue_handle_stackpane.setLayoutX(clampPos((hue * 296) / 360, 0, 296));
         alpha_handle_stackpane.setLayoutX(clampPos(alpha * 240, 0, 240));
@@ -557,8 +512,6 @@ public class ColorPickerControl extends VBox {
         final String pickerRegionStyle = "-fx-background-color: hsb(" //NOI18N
                 + hue + ", 100%, 100%, 1.0);"; //NOI18N
         picker_region.setStyle(pickerRegionStyle);
-
-
 
         updating = false;
 

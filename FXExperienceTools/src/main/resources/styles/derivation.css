@@ -25,6 +25,7 @@ different terms and without source code for the larger work.
 }
 .custom-menu-button {
     -fx-background-color: #31363B;
+    -fx-pref-width: 200;
 }
 .prop-title {
     -fx-padding: 0;
@@ -34,7 +35,7 @@ different terms and without source code for the larger work.
     -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
 }
 .prop-grid {
-    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(232,232,232,0.3), rgba(232,232,232,0.05));
+    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(68,68,68,0.8), rgba(68,68,68,0.05));
 }
 .split-pane-main {
     -fx-background-color: transparent;
@@ -61,7 +62,6 @@ different terms and without source code for the larger work.
     -fx-fill: #C2C2C3;
 }
 
-
 .derivation-slider .track{
     -fx-background-color:  #2E3134;
     -fx-border-color: #616569;
@@ -75,6 +75,7 @@ different terms and without source code for the larger work.
     -fx-font-size: 22px;
     -fx-text-fill: #3AA6DF;
 }
+
 .label {
     -fx-text-fill: white;
 }
@@ -126,10 +127,35 @@ different terms and without source code for the larger work.
     -fx-background-color: transparent;
 }
 
-
 .gradient-text-area  .scroll-pane .content{
     -fx-background-color: transparent;
 }
+.gradient-object {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: 20px;
+    -fx-text-fill: #C2C2C3;
+    -fx-background-radius: 20;
+
+}
+
+.gradient-object {
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
+    #193a69b2 0.0%,
+    #3f2f6bb2 45.0%,
+    #1d2c43 75.0%,
+    #313ca3 98.0%,
+    #313ca3 100.0%);
+}
+
+.gradient-shape {
+    -fx-fill: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
+    #193a69b2 0.0%,
+    #3f2f6bb2 45.0%,
+    #1d2c43 75.0%,
+    #313ca3 98.0%,
+    #313ca3 100.0%);
+}
+
 .paint-picker-container {
     -fx-background-color: #5f5f5f;
     -fx-padding: 0;
