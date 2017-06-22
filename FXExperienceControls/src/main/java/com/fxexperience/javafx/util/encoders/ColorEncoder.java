@@ -49,17 +49,6 @@ public class ColorEncoder implements SyntaxConstants {
     private static Map<String, Color> standardColors;
     private static Map<Color, String> standardColorNames;
 
-    // Variables to which the values are binded to. And are used to build the gradient.
-    protected static SimpleBooleanProperty isFocusAngle = new SimpleBooleanProperty(true);
-    protected static SimpleIntegerProperty focusAngle = new SimpleIntegerProperty();
-    protected static SimpleBooleanProperty isFocusDistance = new SimpleBooleanProperty(true);
-    protected static SimpleIntegerProperty focusDistance = new SimpleIntegerProperty();
-    protected static SimpleBooleanProperty isCenter = new SimpleBooleanProperty(true);
-    protected static SimpleIntegerProperty centerX = new SimpleIntegerProperty();
-    protected static SimpleIntegerProperty centerY = new SimpleIntegerProperty();
-    protected static SimpleBooleanProperty isRadiusPixel = new SimpleBooleanProperty();
-    protected static SimpleIntegerProperty radiusPixel = new SimpleIntegerProperty();
-    protected static SimpleIntegerProperty radiusPercent = new SimpleIntegerProperty();
     
     public static String encodeColor(Color color) {
         final String colorName = getStandardColorNames().get(color);

@@ -58,6 +58,7 @@ public class DerivationController extends BorderPane {
     @FXML private ColorPickerTool desiredColorPicker;
     private Region reverseResultColor;
     private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.COLOR, Color.web("#000000"));
+    @FXML private TextArea derivationTextArea;
     @FXML private TextArea gradientCSSText;
 
     private DecimalFormat df = new DecimalFormat("#.###");
@@ -77,8 +78,10 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        derivationTextArea.setText(getInfoText());
 
         gradientGridPane.add(gradientTextColorPicker, 1, 0);
+
 
         final ChangeListener<Paint> onPaintChanged = (ov, oldValue, newValue) -> {
         if (newValue instanceof Color || newValue instanceof LinearGradient) {
@@ -206,6 +209,17 @@ public class DerivationController extends BorderPane {
         this.gradientSquare.setStyle("-fx-fill: " + style);
         this.gradientCircle.setStyle("-fx-fill: " + style);
         this.fxButton.setStyle("-fx-background-color: " + style);
+    }
+
+    private String getInfoText() {
+        String info = "Derived colors create a lighter or darker version of a source" +
+                "base color. It is specified as a percentage with positive being lighter" +
+                "and negative darker.\n\n" +
+                "Forward conversion lets you preview what resulting " +
+                "color you get for a given derivation percentage.\n\n" +
+                "Reverse Conversion helps you calculate what the derivation" +
+                "is for a given base color and required resulting color.";
+        return info;
     }
 
     public String getCodeOutput() {
