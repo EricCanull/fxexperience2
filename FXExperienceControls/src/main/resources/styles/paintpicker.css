@@ -7,22 +7,14 @@ and open the template in the editor.
     Created on : Apr 21, 2017, 11:29:46 PM
     Author     : ericc
 */
-.root {
-    -fx-base: #31363B;
-   -fx-background-color: #2E3134;
-    -fx-background: #2E3134;
-    -fx-focus-color: -fx-background-color;
-}
-
 .paint-picker-container {
--fx-background-color: #2E3134;
+-fx-background-color:  #31363B;
     -fx-padding: 0;
 }
 .color-picker-popover {
     -fx-font-size: 10px;
-    
-    -fx-background: derive(-fx-base, -60%);
-  -fx-focus-color: rgb(105, 255, 205);
+    -fx-background: #31363B;
+    -fx-focus-color: rgb(105, 255, 205);
 }
 
 .label {
@@ -36,4 +28,30 @@ and open the template in the editor.
 .webcolor-field {
     -fx-alignment: BASELINE_LEFT;
     -fx-text-fill: white;
+}
+
+.color-toggle {
+    -fx-background-color: #2E3134;
+    -fx-border-color: #606060;
+    -fx-text-fill: #C2C2C3;
+}
+
+.color-toggle:selected {
+    -fx-background-color: #31363B;
+}
+
+.derivation-slider .thumb {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.derivation-slider .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+
+.derivation-slider .axis:bottom {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: #C2C2C3;
+    -fx-font-size: .63333em;
 }

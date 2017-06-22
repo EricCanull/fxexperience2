@@ -394,7 +394,6 @@ public class ColorPickerControl extends VBox {
         setOnHueChanged(clamp(mx / 304) * 360);
     }
 
-
     @FXML
     void onHuePickerDragged(MouseEvent e) {
         if(updating) {
@@ -430,7 +429,7 @@ public class ColorPickerControl extends VBox {
         }
 
         final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnAlphaChanged(clamp(mx / 232));
+        setOnAlphaChanged(clamp(mx / 240));
     }
 
 
@@ -441,7 +440,7 @@ public class ColorPickerControl extends VBox {
         }
 
         final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnAlphaChanged(clamp(mx / 232));
+        setOnAlphaChanged(clamp(mx / 240));
     }
 
     private void setOnAlphaChanged(double alpha) {
@@ -510,14 +509,14 @@ public class ColorPickerControl extends VBox {
         }
         updating = true;
         hue_handle_stackpane.setLayoutX(clampPos((hue * 296) / 360, 0, 296));
-        alpha_handle_stackpane.setLayoutX(clampPos(alpha * 232, 0, 232));
+        alpha_handle_stackpane.setLayoutX(clampPos(alpha * 240, 0, 240));
         // Position the picker dot
         double xSat = picker_region.getWidth() * saturation; // Saturation is on x axis
         double yBri = picker_region.getHeight() * (1.0 - brightness); // Brightness is on y axis (reversed as white is top)
         double xPos = (picker_region.getBoundsInParent().getMinX() + xSat) - picker_handle_stackpane.getWidth() / 2;
         double yPos = (picker_region.getBoundsInParent().getMinY() + yBri) - picker_handle_stackpane.getHeight() / 2;
-//        xPos = clampPos(xPos, 0, picker_region.getPrefWidth() - (picker_handle_stackpane.getWidth()));
-//        yPos = clampPos(yPos, 0, picker_region.getPrefHeight() - (picker_handle_stackpane.getHeight());
+        xPos = clampPos(xPos, 0, picker_region.getPrefWidth() - (picker_handle_stackpane.getWidth()));
+        yPos = clampPos(yPos, 0, picker_region.getPrefHeight() - (picker_handle_stackpane.getHeight()));
         picker_handle_stackpane.setLayoutX(xPos);
         picker_handle_stackpane.setLayoutY(yPos);
 

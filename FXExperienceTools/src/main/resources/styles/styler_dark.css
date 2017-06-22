@@ -31,8 +31,8 @@
 }
 
 .custom-menu-button {
-    -fx-background-color: derive(rgb(147, 147, 147), -48%), -fe-border,
-                          derive(rgb(147, 147, 147), 40%), -fe-inner-background;
+    -fx-background-color: -fe-inner-background, -fe-inner-background,
+    -fe-inner-background, -fe-inner-background;
 
     -fx-border-color: -fe-border;
     -fx-font-size: 0.875em;
@@ -160,7 +160,7 @@
                           derive(rgb(147, 147, 147), 40%),
                           rgb(147, 147, 147);
 
-    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0; 
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
     -fx-font-size: 0.875em;
     -fx-alignment: center-left;
@@ -188,7 +188,7 @@
 }
 
 .titled-pane > .title > .arrow-button {
-    -fx-padding: -0.154em 0.583em 0.0em 0.0em; 
+    -fx-padding: -0.154em 0.583em 0.0em 0.0em;
 }
 .titled-pane > .title > .arrow-button > .arrow {
     -fx-background-color: derive(rgb(147, 147, 147), -32%);
@@ -286,30 +286,6 @@
 }
 
 .integer-field:disabled {
-    -fx-opacity: -fx-disabled-opacity;
-}
-
-.double-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
-    -fx-font-size: 0.83333em;
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-prompt-text-fill: -fe-inner-text;
-    -fx-cursor: text;
-}
-
-.double-field:focused {
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-}
-
-.double-field:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
 

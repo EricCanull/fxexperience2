@@ -23,25 +23,24 @@ different terms and without source code for the larger work.
 .derivation-root {
     -fx-background-image: url("../images/dirtyshirt.png");
 }
-
+.custom-menu-button {
+    -fx-background-color: #31363B;
+}
 .prop-title {
     -fx-padding: 0;
     -fx-border-width: -1;
 }
-
-
 .main-grid {
-    -fx-background-color: radial-gradient(center 35% 40%, radius 70%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
 }
 .prop-grid {
-    -fx-background-color: #2E3134;
+    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(232,232,232,0.3), rgba(232,232,232,0.05));
 }
 .split-pane-main {
     -fx-background-color: transparent;
 }
 .split-pane-divider {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
+    -fx-background-color: #1C1C1C;
 }
 .tab {
     -fx-background-color: #131313;
@@ -112,14 +111,26 @@ different terms and without source code for the larger work.
     -fx-background-color: #2E3134;
 }
 
-.gradient-text-area .scroll-pane:fitToWidth:fitToHeight .viewport .content {
-    -fx-border-color: transparent;
-}
 .gradient-text-area {
     -fx-text-fill: #C2C2C3;
+}
+.gradient-text-area  {
+    -fx-background-color: rgba(22,22,22,0.4);
+}
 
+.gradient-text-area  .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.gradient-text-area  .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.gradient-text-area  .scroll-pane .content{
+    -fx-background-color: transparent;
 }
 .paint-picker-container {
-    -fx-background-color: #2E3134;
+    -fx-background-color: #5f5f5f;
     -fx-padding: 0;
 }

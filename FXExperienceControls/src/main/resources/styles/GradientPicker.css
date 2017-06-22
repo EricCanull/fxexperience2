@@ -42,7 +42,7 @@
 }
 
 .gradient-background {
-    -fx-border-color: -fx-box-border, white;
+    -fx-border-color: -fx-box-border,#606060;
     -fx-border-insets: 0, 1;
     -fx-background-color: white;
     -fx-background-image: url("../images/chequers.png");
@@ -50,6 +50,6 @@
 }
 
 .track-background {
-    -fx-background-color: derive(rgb(147, 147, 147), -0%), derive(rgb(147, 147, 147), 32%);
+    -fx-background-color: derive(rgb(147, 147, 147), -0%), derive(rgb(147, 147, 147), -32%);
     -fx-background-insets: 0, 1;
 }

@@ -55,7 +55,7 @@ public class DerivationController extends BorderPane {
     @FXML private ColorPickerTool baseColorPicker;
     @FXML private ColorPickerTool desiredColorPicker;
     private Region reverseResultColor;
-    private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.LINEAR, Color.web("#000000"));
+    private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.COLOR, Color.web("#000000"));
     @FXML private TextArea gradientCSSText;
 
     private DecimalFormat df = new DecimalFormat("#.###");

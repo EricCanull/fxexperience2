@@ -41,13 +41,13 @@
   <children>
     <HBox alignment="TOP_CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
       <children>
-        <ToggleButton fx:id="colorToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onColorButtonAction" selected="true" styleClass="left-pill" text="Color" HBox.hgrow="ALWAYS">
+        <ToggleButton fx:id="colorToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onColorButtonAction" selected="true" styleClass="color-toggle" text="Color" HBox.hgrow="ALWAYS">
           <toggleGroup>
             <ToggleGroup fx:id="modeswitch" />
           </toggleGroup>
         </ToggleButton>
-        <ToggleButton fx:id="linearToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinearButtonAction" styleClass="center-pill" text="Linear Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
-        <ToggleButton fx:id="radialToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRadialButtonAction" styleClass="right-pill" text="Radial Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
+        <ToggleButton fx:id="linearToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLinearButtonAction" styleClass="color-toggle" text="Linear Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
+        <ToggleButton fx:id="radialToggleButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRadialButtonAction" styleClass="color-toggle" text="Radial Gradient" toggleGroup="$modeswitch" HBox.hgrow="ALWAYS" />
       </children>
     </HBox>
   </children>
