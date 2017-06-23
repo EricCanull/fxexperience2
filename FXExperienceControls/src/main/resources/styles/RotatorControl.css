@@ -29,18 +29,48 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#GridPane {
+    -fx-background-color: #31363B;
+}
+
 .button {
     -fx-min-width: 30;
     -fx-max-width: 30;
     -fx-min-height: 30;
     -fx-min-height: 30;
 }
+
 .rotation-dial {
     -fx-background-radius: 100;
 }
+
 .rotation-handle {
     -fx-background-color: null;
     -fx-background-image: url("../images/rotate-handle.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: right;
+}
+
+.LF3-textfield1 {
+    -fx-background-color: #31363B;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-border-color: #717171;
+    -fx-padding: 3 5 3 5;
+    -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: #606060;
+    -fx-cursor: text;
+}
+
+.LF3-textfield1:focused {
+    -fx-background-color: #31363B;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.LF3-textfield1:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+.rotation-label {
+    -fx-text-fill: #C2C2C3;
 }

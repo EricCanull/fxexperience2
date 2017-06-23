@@ -9,12 +9,19 @@ package com.fxexperience.tools.controller;
  * for the larger work.
  */
 
+import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
+import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 
 
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -25,7 +32,8 @@ public class AlertController extends AnchorPane {
     protected double panelWidth;
 
     @FXML private AnchorPane statusDialog;
-    @FXML private Label statusLabel;
+    @FXML private TextArea statusTextArea;
+    @FXML private Boolean displayActive;
 
 
     public AlertController(String text) {
@@ -47,7 +55,19 @@ public class AlertController extends AnchorPane {
             Logger.getLogger(AlertController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        statusLabel.setText(text);
+        statusTextArea.setText(text);
+    }
+
+    public void setDisplayActive(boolean showAlert) {
+        this.displayActive = showAlert;
+    }
+
+    public boolean getDisplayActive() {
+        return this.displayActive;
+    }
+
+    public void setStatusDialog(String newMessage) {
+        this.statusTextArea.setText(newMessage);
     }
 
     public void setPanelWidth(double panelWidth, int toolIndex) {
@@ -60,6 +80,9 @@ public class AlertController extends AnchorPane {
                     break;
                 case 1:
                     setPrefWidth(panelWidth);
+                    break;
+                case 2:
+                    setPrefWidth(panelWidth - 360d);
                     break;
                 default:
                     setPrefWidth(panelWidth);

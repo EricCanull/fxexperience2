@@ -10,15 +10,19 @@
 package com.fxexperience.tools.controller;
 
 
+import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import javafx.animation.PauseTransition;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -32,6 +36,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.math.RoundingMode;
@@ -42,7 +47,7 @@ import java.util.logging.Logger;
 public class DerivationController extends BorderPane {
 
     public final static int INDEX_POS = 2;
-
+    @FXML private BorderPane rootPane;
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gradientGridPane;
     @FXML private Label forwardDerivationLabel;
@@ -53,13 +58,14 @@ public class DerivationController extends BorderPane {
     @FXML private Button fxButton;
     @FXML private Rectangle gradientSquare;
     @FXML private Circle gradientCircle;
-   // @FXML private ImageView alert;
+    //@FXML private ImageView alert;
     @FXML private ColorPickerTool baseColorPicker;
     @FXML private ColorPickerTool desiredColorPicker;
     private Region reverseResultColor;
     private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.COLOR, Color.web("#000000"));
     @FXML private TextArea derivationTextArea;
     @FXML private TextArea gradientCSSText;
+    private AlertController alert;
 
     private DecimalFormat df = new DecimalFormat("#.###");
 
@@ -78,19 +84,16 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         derivationTextArea.setText(getInfoText());
-
         gradientGridPane.add(gradientTextColorPicker, 1, 0);
-
 
         final ChangeListener<Paint> onPaintChanged = (ov, oldValue, newValue) -> {
         if (newValue instanceof Color || newValue instanceof LinearGradient) {
             updateGradientCSS();
         }};
 
-
         gradientTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-
         df.setRoundingMode(RoundingMode.CEILING);
 
         // Set the socket values whenever the range changes
@@ -142,53 +145,64 @@ public class DerivationController extends BorderPane {
         setGradientStyles(gradientTextColorPicker.getGradientString());
         gradientCSSText.setText(gradientTextColorPicker.getGradientString());
     }
-    
+
     private void updateReverse() {
         Color desiredColor = desiredColorPicker.getColor();
         final Color base = baseColorPicker.getColor();
-//                System.out.println("base = " + base);
+        //System.out.println("base = " + base);
         double desiredBrightness = desiredColor.getBrightness();
-//                System.out.println("desiredBrightness = " + desiredBrightness);
-    //    double desiredSaturation = desiredColor.getSaturation();
-//                System.out.println("desiredSaturation = " + desiredSaturation);
+        //System.out.println("desiredBrightness = " + desiredBrightness);
+        //double desiredSaturation = desiredColor.getSaturation();
+        //System.out.println("desiredSaturation = " + desiredSaturation);
         double derivation = 0, max = 1, min = -1;
         Color derivedColor = Color.WHITE;
-        for(int i=0; i< 100;i++){
-//                    System.out.println("---------- "+i+" ----------------");
-//                    System.out.println("derivation = " + derivation);
-//                    System.out.println("max = " + max);
-//                    System.out.println("min = " + min);
+        for (int i = 0; i < 100; i++) {
+        //System.out.println("---------- "+i+" ----------------");
+        //System.out.println("derivation = " + derivation);
+        //System.out.println("max = " + max);
+        //System.out.println("min = " + min);
             derivedColor = ColorEncoder.deriveColor(base, derivation);
             double derivedBrightness = derivedColor.getBrightness();
-//                    System.out.println("derivedBrightness = " + derivedBrightness);
-        //    double derivedSaturation = derivedColor.getSaturation();
-//                    System.out.println("derivedSaturation = " + derivedSaturation);
-      //     double saturationDifference = Math.abs(derivedSaturation-desiredSaturation);
-//                    System.out.println("saturationDifference = " + saturationDifference);
-            double difference = Math.abs(derivedBrightness-desiredBrightness);
-//                    System.out.println("brightness difference = " + difference);
-            if (difference < 0.0001) { // GOOD ENOUGH
+            //System.out.println("derivedBrightness = " + derivedBrightness)
+            //double derivedSaturation = derivedColor.getSaturation();
+            //System.out.println("derivedSaturation = " + derivedSaturation);
+            //double saturationDifference = Math.abs(derivedSaturation-desiredSaturation);
+            //System.out.println("saturationDifference = " + saturationDifference);
+            double difference = Math.abs(derivedBrightness - desiredBrightness);
+            //System.out.println("brightness difference = " + difference);
+
+            if (difference < 0.0001) { //GOOD ENOUGH
                 break;
-            } else if(min == 1 || max == -1) { // TOO DIFFERENT
+            } else if (min == 1 || max == -1) { //TOO DIFFERENT
                 break;
-            } else if(derivedBrightness > desiredBrightness) { // TOO BRIGHT
-//                        System.out.println("NEED DARKER");
+            } else if (derivedBrightness > desiredBrightness) { //TOO BRIGHT
+                // System.out.println("NEED DARKER");
                 max = derivation;
-                derivation = derivation + ((min-derivation)/2);
+                derivation = derivation + ((min - derivation) / 2);
             } else { // TO DARK
-//                        System.out.println("NEED BRIGHTER");
+                // System.out.println("NEED BRIGHTER");
                 min = derivation;
-                derivation = derivation + ((max-derivation)/2);
+                derivation = derivation + ((max - derivation) / 2);
             }
         }
 
-//       System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
+        //System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
         reverseDerivationLabel.setText(df.format(derivation));
         reverseResultLabel.setText(getColorString(derivedColor));
-        reverseResultColor.setStyle("-fx-border-color: #606060; "
-                + "-fx-background-color: "+getWebColor(derivedColor) +";");
+        reverseResultColor.setStyle("-fx-border-color: #606060; -fx-background-color: " +
+                getWebColor(derivedColor) + ";");
 
-       // alert.setVisible(!getWebColor(desiredColor).equals(getWebColor(derivedColor)));
+        if (!getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
+            displayStatusAlert("Warning: Desired color hue must be the same as" +
+                    " the base color hue to derive the same color " +
+                    "(Base hue: " + desiredColor.getHue() + "!=" + "Desired hue: " + derivedColor.getHue());
+            alert.setDisplayActive(true);
+        }
+        else if (alert != null  && getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
+            alert.setDisplayActive(false);
+            removeAlert(alert);
+            alert = null;
+        }
     }
     
     private static String getColorString(Color color) {
@@ -212,14 +226,42 @@ public class DerivationController extends BorderPane {
     }
 
     private String getInfoText() {
-        String info = "Derived colors create a lighter or darker version of a source" +
-                "base color. It is specified as a percentage with positive being lighter" +
+        return  "Derived colors create a lighter or darker version of a source " +
+                "base color. It is specified as a percentage with positive being lighter " +
                 "and negative darker.\n\n" +
                 "Forward conversion lets you preview what resulting " +
                 "color you get for a given derivation percentage.\n\n" +
                 "Reverse Conversion helps you calculate what the derivation" +
                 "is for a given base color and required resulting color.";
-        return info;
+    }
+
+    private void displayStatusAlert(String textMessage) {
+        double prefWidth = rootPane.getBoundsInLocal().getWidth();
+        if(alert == null) {
+            alert = new AlertController(textMessage);
+            alert.setOpacity(0);
+            alert.setPanelWidth(prefWidth, this.INDEX_POS);
+
+            rootPane.layoutXProperty().addListener((observable, oldValue, newValue) ->
+                    alert.setPanelWidth(newValue.doubleValue(), this.INDEX_POS));
+
+            alert.setTranslateY(rootPane.getLayoutY()+alert.getPrefHeight());
+
+            AnchorPane.setTopAnchor(alert, 0d);
+            anchorPane.getChildren().add(alert);
+
+            new FadeInDownBigTransition(alert).play();
+        } else {
+            alert.setStatusDialog(textMessage);
+        }
+    }
+
+    private void removeAlert(Node alert) {
+        PauseTransition pauseTransition = new PauseTransition();
+        pauseTransition.setDuration(Duration.seconds(1));
+        pauseTransition.play();
+        pauseTransition.setOnFinished((ActionEvent t) -> anchorPane.getChildren().remove(alert));
+
     }
 
     public String getCodeOutput() {

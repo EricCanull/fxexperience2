@@ -31,9 +31,14 @@
  */
 .root {
     -sb-base: rgb(147, 147, 147);
-     -sb-content-text-dimmed: derive(-sb-base, 25%);
-      -sb-content-background: derive(-sb-base, -10%);
-      -fx-focus-color: transparent;
+    -sb-content-text-dimmed: derive(-sb-base, 25%);
+    -sb-content-background: derive(-sb-base, -10%);
+    -fx-focus-color: transparent;
+}
+
+.root-gradient {
+    -fx-background-color: #31363B;
+
 }
 .small-label {
     -fx-font-size: 0.750em;
@@ -42,7 +47,7 @@
 }
 
 .gradient-background {
-    -fx-border-color: -fx-box-border,#606060;
+    -fx-border-color: -fx-box-border, #606060;
     -fx-border-insets: 0, 1;
     -fx-background-color: white;
     -fx-background-image: url("../images/chequers.png");
@@ -50,6 +55,28 @@
 }
 
 .track-background {
-    -fx-background-color: derive(rgb(147, 147, 147), -0%), derive(rgb(147, 147, 147), -32%);
+    -fx-background-color: derive(rgb(147, 147, 147), -21%), derive(rgb(147, 147, 147), -32%);
     -fx-background-insets: 0, 1;
 }
+
+.slider .track {
+    -fx-background-color: #2E3134;
+    -fx-border-color: #616569;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slide .thumb {
+    -fx-border-color: #616569;
+    -fx-border-radius: 20px;
+    -fx-background-color: #2E3134;
+}
+
+.slider .thumb:hover {
+    -fx-background-color: #2E3134, #2E3134, #2E3124;
+}
+.slider .thumb {
+    -fx-fill: #2E3134;
+}
+

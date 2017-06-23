@@ -1,0 +1,22 @@
+.alert-text-area .content {
+    -fx-background-color: #2E3134;
+}
+
+.alert-text-area {
+    -fx-text-fill: #C2C2C3;
+}
+.alert-text-area  {
+    -fx-background-color: rgba(22,22,22,0.9);
+}
+
+.alert-text-area  .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.alert-text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.alert-text-area .scroll-pane .content {
+    -fx-background-color: transparent;
+}
