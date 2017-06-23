@@ -45,7 +45,7 @@ public interface SyntaxConstants {
     String REPEAT            = "repeat ";
     String REFLECT           = "reflect ";
     String COLORSTOPUNIT     = "% ";
-    String POINTPERCENTUNIT  = "% ";
+    String POINTPERCENTUNIT  = "%";
     String POINTPIXELUNIT    = "px ";
     String FROM              = "from ";
     String FROMPIXELUNIT     = "px ";

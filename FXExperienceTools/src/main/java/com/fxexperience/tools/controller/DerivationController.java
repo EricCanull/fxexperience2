@@ -16,12 +16,16 @@ import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.animation.PauseTransition;
+import javafx.beans.InvalidationListener;
 import javafx.beans.binding.StringBinding;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,8 +38,10 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.PopupWindow;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -50,6 +56,7 @@ public class DerivationController extends BorderPane {
     @FXML private BorderPane rootPane;
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gradientGridPane;
+    @FXML private GridPane derivationGrid;
     @FXML private Label forwardDerivationLabel;
     @FXML private Slider derivationSlider;
     @FXML private Label derivedResultLabel;
@@ -59,11 +66,14 @@ public class DerivationController extends BorderPane {
     @FXML private Rectangle gradientSquare;
     @FXML private Circle gradientCircle;
     //@FXML private ImageView alert;
-    @FXML private ColorPickerTool baseColorPicker;
-    @FXML private ColorPickerTool desiredColorPicker;
+   // @FXML private ColorPickerTool baseColorPicker;
+    //@FXML private ColorPickerTool desiredColorPicker;
+    private PopupEditor baseColorPicker;
+     private PopupEditor desiredColorPicker;
     private Region reverseResultColor;
-    private final PopupEditor gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.COLOR, Color.web("#000000"));
+    private PopupEditor gradientTextColorPicker;
     @FXML private TextArea derivationTextArea;
+    @FXML private TextArea derivationTextOutput;
     @FXML private TextArea gradientCSSText;
     private AlertController alert;
 
@@ -85,13 +95,21 @@ public class DerivationController extends BorderPane {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        baseColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#BBBBBB"));
+        baseColorPicker.setPrefWidth(140);
+
+        desiredColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#C3C3C3"));
+        baseColorPicker.setPrefWidth(140);
+
+        gradientTextColorPicker = new PopupEditor(PaintPicker.Mode.COLOR, Color.web("#C3C3C3"));
+        gradientTextColorPicker.setPrefWidth(200);
+
         derivationTextArea.setText(getInfoText());
         gradientGridPane.add(gradientTextColorPicker, 1, 0);
+        derivationGrid.add(baseColorPicker, 1, 1);
+        derivationGrid.add(desiredColorPicker, 1, 2);
 
-        final ChangeListener<Paint> onPaintChanged = (ov, oldValue, newValue) -> {
-        if (newValue instanceof Color || newValue instanceof LinearGradient) {
-            updateGradientCSS();
-        }};
+        final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) ->  updateGradientCSS());
 
         gradientTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         df.setRoundingMode(RoundingMode.CEILING);
@@ -112,18 +130,18 @@ public class DerivationController extends BorderPane {
         derivedResultColor.setPrefSize(50, 20);
         derivedResultLabel.setGraphic(derivedResultColor);
         derivedResultColor.styleProperty().bind(new StringBinding() {
-            { bind(derivationSlider.valueProperty(),baseColorPicker.colorProperty()); }
+            { bind(derivationSlider.valueProperty(), baseColorPicker.getRectangle().fillProperty()); }
             @Override protected String computeValue() {
                 return "-fx-border-color: #606060;" +
-                       " -fx-background-color: derive("+baseColorPicker.getWebColor() +", " +
+                       " -fx-background-color: derive("+baseColorPicker.getColorString() +", " +
                         df.format(derivationSlider.getValue())+"%);";
             }
         });
 
         derivedResultLabel.textProperty().bind(new StringBinding() {
-            { bind(derivationSlider.valueProperty(),baseColorPicker.colorProperty()); }
+            { bind(derivationSlider.valueProperty(),baseColorPicker.getRectangle().fillProperty()); }
             @Override protected String computeValue() {
-                Color base = baseColorPicker.getColor();
+                Color base = (Color) baseColorPicker.getPaintProperty();
                 double derivation = derivationSlider.getValue();
                 Color result = ColorEncoder.deriveColor(base, derivation/100);
                 return getColorString(result);
@@ -134,11 +152,9 @@ public class DerivationController extends BorderPane {
         reverseResultColor = new Region();
         reverseResultColor.setPrefSize(50, 20);
         reverseResultLabel.setGraphic(reverseResultColor);
-        ChangeListener<Color> updateReverse = (ObservableValue<? extends Color> ov, Color t, Color desiredColor) -> updateReverse();
-        baseColorPicker.colorProperty().addListener(updateReverse);
-        desiredColorPicker.colorProperty().addListener(updateReverse);
-        baseColorPicker.colorProperty().setValue(Color.web("#BBBBBB"));
-        desiredColorPicker.colorProperty().setValue(Color.web("#C3C3C3"));
+        ChangeListener<Paint> updateReverse = (ObservableValue<? extends Paint> ov, Paint t, Paint desiredColor) -> updateReverse();
+        baseColorPicker.getRectangle().fillProperty().addListener(updateReverse);
+        desiredColorPicker.getRectangle().fillProperty().addListener(updateReverse);
     }
 
     public void updateGradientCSS() {
@@ -147,54 +163,37 @@ public class DerivationController extends BorderPane {
     }
 
     private void updateReverse() {
-        Color desiredColor = desiredColorPicker.getColor();
-        final Color base = baseColorPicker.getColor();
-        //System.out.println("base = " + base);
+        Color desiredColor = (Color) desiredColorPicker.getPaintProperty();
+        final Color base = (Color) baseColorPicker.getPaintProperty();
         double desiredBrightness = desiredColor.getBrightness();
-        //System.out.println("desiredBrightness = " + desiredBrightness);
-        //double desiredSaturation = desiredColor.getSaturation();
-        //System.out.println("desiredSaturation = " + desiredSaturation);
+        double desiredSaturation = desiredColor.getSaturation();
         double derivation = 0, max = 1, min = -1;
         Color derivedColor = Color.WHITE;
         for (int i = 0; i < 100; i++) {
-        //System.out.println("---------- "+i+" ----------------");
-        //System.out.println("derivation = " + derivation);
-        //System.out.println("max = " + max);
-        //System.out.println("min = " + min);
             derivedColor = ColorEncoder.deriveColor(base, derivation);
             double derivedBrightness = derivedColor.getBrightness();
-            //System.out.println("derivedBrightness = " + derivedBrightness)
-            //double derivedSaturation = derivedColor.getSaturation();
-            //System.out.println("derivedSaturation = " + derivedSaturation);
-            //double saturationDifference = Math.abs(derivedSaturation-desiredSaturation);
-            //System.out.println("saturationDifference = " + saturationDifference);
             double difference = Math.abs(derivedBrightness - desiredBrightness);
-            //System.out.println("brightness difference = " + difference);
 
             if (difference < 0.0001) { //GOOD ENOUGH
                 break;
             } else if (min == 1 || max == -1) { //TOO DIFFERENT
                 break;
             } else if (derivedBrightness > desiredBrightness) { //TOO BRIGHT
-                // System.out.println("NEED DARKER");
                 max = derivation;
                 derivation = derivation + ((min - derivation) / 2);
             } else { // TO DARK
-                // System.out.println("NEED BRIGHTER");
                 min = derivation;
                 derivation = derivation + ((max - derivation) / 2);
             }
         }
 
-        //System.out.println("\nFINAL \nderivation = " + derivation+"\n\n");
         reverseDerivationLabel.setText(df.format(derivation));
         reverseResultLabel.setText(getColorString(derivedColor));
         reverseResultColor.setStyle("-fx-border-color: #606060; -fx-background-color: " +
                 getWebColor(derivedColor) + ";");
 
         if (!getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
-            displayStatusAlert("Warning: To derive the same color, desired color hue must equal" +
-                    " base color hue.");
+            displayStatusAlert("Warning: It's not possible to derive the exact same base color with the selected colors");
             alert.setDisplayActive(true);
         }
         else if (alert != null  && getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
@@ -257,10 +256,9 @@ public class DerivationController extends BorderPane {
 
     private void removeAlert(Node alert) {
         PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(1));
+        pauseTransition.setDuration(Duration.seconds(0));
         pauseTransition.play();
         pauseTransition.setOnFinished((ActionEvent t) -> anchorPane.getChildren().remove(alert));
-
     }
 
     public String getCodeOutput() {

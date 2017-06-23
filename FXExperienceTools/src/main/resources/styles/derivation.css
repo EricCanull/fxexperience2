@@ -25,7 +25,7 @@ different terms and without source code for the larger work.
 }
 .custom-menu-button {
     -fx-background-color: #31363B;
-    -fx-pref-width: 200;
+    /*-fx-pref-width: 200;*/
 }
 .prop-title {
     -fx-padding: 0;
@@ -54,6 +54,21 @@ different terms and without source code for the larger work.
 }
 .tab-pane:right .tab-header-area .headers-region .tab:right .tab-container .tab-label .text {
     -fx-fill: #C2C2C3;
+}
+.tab-pane:top .tab-header-area .headers-region .tab .tab-container .tab-label .text {
+    -fx-fill: #C2C2C3;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top .tab-container .tab-label .text {
+    -fx-fill: #C2C2C3;
+}
+.tab-pane:top .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top {
+    -fx-background-color: #2E3134;
+}
+.tab-pane:top .tab-header-area .headers-region .tab {
+    -fx-background-color: #2E3134;
 }
 .tab:selected:left {
     -fx-background-color: #2A5058;

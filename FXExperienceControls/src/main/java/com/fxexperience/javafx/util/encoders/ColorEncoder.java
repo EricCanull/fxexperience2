@@ -236,12 +236,45 @@ public class ColorEncoder implements SyntaxConstants {
         return standardColorNames;
     }
 
-    public static String encodeRadialToCSS(Object radial) {
-        StringBuilder sytx = new StringBuilder(radial.toString());
+    public static String encodeRadialToCSS(Object paint) {
+        assert paint instanceof RadialGradient;
+
+        RadialGradient radialGradient = (RadialGradient) paint;
+
+        List<Stop> stops = radialGradient.getStops();
+
+        boolean radial_proportional = radialGradient.isProportional();
+
+        final CycleMethod radial_cycleMethod = radialGradient.getCycleMethod();
+
+        double focusAngle = radialGradient.getFocusAngle();
+        double focusDistance = radialGradient.getFocusDistance();
+        double centerX = round(radialGradient.getCenterX());
+        double centerY = round(radialGradient.getCenterY());
+        double radius =   round(radialGradient.getRadius());
 
 
+        String radiusUnit = radial_proportional ? RADIUSPERCENTUNIT : RADIUSPIXELUNIT;
 
-    return sytx.toString();
+        StringBuilder sb = new StringBuilder(BGRADIAL);
+        sb.append(FOCUSANGLESTART);
+        sb.append(focusAngle).append(FOCUSANGLEUNIT).append(SEPARATOR);
+        sb.append(FOCUSDISTSTART);
+        sb.append(focusDistance).append(FOCUSDISTUNIT).append(SEPARATOR);
+        sb.append(CENTERSTART);
+        sb.append(centerX).append(CENTERUNIT).append(SPACER);
+        sb.append(centerY).append(CENTERUNIT).append(SEPARATOR);
+        sb.append(RADIUSSTART);
+        sb.append(radius).append(radiusUnit).append(SEPARATOR);
+
+        if (radial_cycleMethod.toString().equalsIgnoreCase("reflect")
+                || radial_cycleMethod.toString().equalsIgnoreCase("repeat")) {
+            sb.append(radial_cycleMethod);
+            sb.append(SEPARATOR);
+        }
+        sb.append(getColorStops(stops));
+
+        return  sb.append(BGGRADEND).toString();
     }
 
     public static String encodeLinearToCSS(Object paint) {
@@ -255,10 +288,10 @@ public class ColorEncoder implements SyntaxConstants {
 
         final CycleMethod linear_cycleMethod = linearGradient.getCycleMethod();
 
-        double startX = linear_proportional ? round(linearGradient.getStartX()) : round(linearGradient.getStartX());
-        double startY = linear_proportional ? round(linearGradient.getStartY()): round(linearGradient.getStartY());
-        double endX = linear_proportional   ? round(linearGradient.getEndX()) : round(linearGradient.getEndX());
-        double endY = linear_proportional   ? round(linearGradient.getEndY()) : round(linearGradient.getEndY());
+        double startX = round(linearGradient.getStartX());
+        double startY = round(linearGradient.getStartY());
+        double endX =   round(linearGradient.getEndX());
+        double endY =   round(linearGradient.getEndY());
 
         String fromUnit = linear_proportional ? FROMPERCENTUNIT : FROMPIXELUNIT;
         String toUnit = linear_proportional   ? TOPERCENTUNIT : TOPIXELUNIT;
@@ -278,8 +311,16 @@ public class ColorEncoder implements SyntaxConstants {
             sb.append(SEPARATOR);
         }
 
+        sb.append(getColorStops(stops));
+
+        return  sb.append(BGGRADEND).toString();
+    }
+
+
+    private static String getColorStops(List<Stop> stops) {
         // Color Stops
         Color dto;
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < stops.size(); i++) {
             dto = stops.get(i).getColor();
             double offset = Math.round(stops.get(i).getOffset() * 100);
@@ -293,7 +334,7 @@ public class ColorEncoder implements SyntaxConstants {
             }
         }
 
-        return  sb.append(BGGRADEND).toString();
+        return sb.toString();
     }
     
     public static String encodeColorToRGBA(Color color) {
