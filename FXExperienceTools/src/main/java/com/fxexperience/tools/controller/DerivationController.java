@@ -193,9 +193,8 @@ public class DerivationController extends BorderPane {
                 getWebColor(derivedColor) + ";");
 
         if (!getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
-            displayStatusAlert("Warning: Desired color hue must be the same as" +
-                    " the base color hue to derive the same color " +
-                    "(Base hue: " + desiredColor.getHue() + "!=" + "Desired hue: " + derivedColor.getHue());
+            displayStatusAlert("Warning: To derive the same color, desired color hue must equal" +
+                    " base color hue.");
             alert.setDisplayActive(true);
         }
         else if (alert != null  && getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
