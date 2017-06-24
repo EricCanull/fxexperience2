@@ -11,21 +11,16 @@ package com.fxexperience.tools.controller;
 
 
 import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
-import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.animation.PauseTransition;
-import javafx.beans.InvalidationListener;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,17 +31,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
-import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.PopupWindow;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,19 +58,18 @@ public class DerivationController extends BorderPane {
     @FXML private Button fxButton;
     @FXML private Rectangle gradientSquare;
     @FXML private Circle gradientCircle;
-    //@FXML private ImageView alert;
-   // @FXML private ColorPickerTool baseColorPicker;
-    //@FXML private ColorPickerTool desiredColorPicker;
-    private PopupEditor baseColorPicker;
-     private PopupEditor desiredColorPicker;
-    private Region reverseResultColor;
-    private PopupEditor gradientTextColorPicker;
     @FXML private TextArea derivationTextArea;
     @FXML private TextArea derivationTextOutput;
     @FXML private TextArea gradientCSSText;
+
+    private PopupEditor baseColorPicker;
+    private PopupEditor desiredColorPicker;
+    private Region reverseResultColor;
+    private PopupEditor gradientTextColorPicker;
     private AlertController alert;
 
-    private DecimalFormat df = new DecimalFormat("#.###");
+    private final DecimalFormat df = new DecimalFormat("##.###");
+    private final NumberFormat percentFormat = NumberFormat.getPercentInstance();
 
     public DerivationController() {
         initialize();
@@ -94,7 +86,7 @@ public class DerivationController extends BorderPane {
         } catch (IOException ex) {
             Logger.getLogger(DerivationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        percentFormat.setMaximumFractionDigits(3);
         baseColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#BBBBBB"));
         baseColorPicker.setPrefWidth(140);
 
@@ -166,7 +158,6 @@ public class DerivationController extends BorderPane {
         Color desiredColor = (Color) desiredColorPicker.getPaintProperty();
         final Color base = (Color) baseColorPicker.getPaintProperty();
         double desiredBrightness = desiredColor.getBrightness();
-        double desiredSaturation = desiredColor.getSaturation();
         double derivation = 0, max = 1, min = -1;
         Color derivedColor = Color.WHITE;
         for (int i = 0; i < 100; i++) {
@@ -187,13 +178,13 @@ public class DerivationController extends BorderPane {
             }
         }
 
-        reverseDerivationLabel.setText(df.format(derivation));
+        reverseDerivationLabel.setText(percentFormat.format(derivation));
         reverseResultLabel.setText(getColorString(derivedColor));
         reverseResultColor.setStyle("-fx-border-color: #606060; -fx-background-color: " +
                 getWebColor(derivedColor) + ";");
 
         if (!getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
-            displayStatusAlert("Warning: It's not possible to derive the exact same base color with the selected colors");
+            displayStatusAlert("Warning: The selected colors are too different to derive the same color.");
             alert.setDisplayActive(true);
         }
         else if (alert != null  && getWebColor(desiredColor).equals(getWebColor(derivedColor))) {
@@ -211,9 +202,9 @@ public class DerivationController extends BorderPane {
     }
     
     private static String getWebColor(Color color) {
-        final int red = (int)(color.getRed()*255);
-        final int green = (int)(color.getGreen()*255);
-        final int blue = (int)(color.getBlue()*255);
+        final int red =   (int) (color.getRed() * 255);
+        final int green = (int) (color.getGreen() * 255);
+        final int blue =  (int) (color.getBlue() * 255);
         return String.format("#%02X%02X%02X", red, green, blue);
     }
 
