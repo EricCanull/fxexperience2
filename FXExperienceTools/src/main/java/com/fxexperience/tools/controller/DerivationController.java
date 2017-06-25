@@ -9,7 +9,6 @@
  */
 package com.fxexperience.tools.controller;
 
-
 import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.PopupEditor;
@@ -46,6 +45,7 @@ import java.util.logging.Logger;
 public class DerivationController extends BorderPane {
 
     public final static int INDEX_POS = 2;
+
     @FXML private BorderPane rootPane;
     @FXML private AnchorPane anchorPane;
     @FXML private GridPane gradientGridPane;

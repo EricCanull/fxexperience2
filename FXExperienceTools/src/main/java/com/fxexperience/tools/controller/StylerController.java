@@ -38,8 +38,6 @@ public class StylerController extends SplitPane {
     @FXML private SplitPane rootSplitPane;
     @FXML private BorderPane previewPane;
 
-    private PreviewController previewPanel;
-
     @FXML private GridPane textGridPanel;
     @FXML private GridPane sizeGridPanel;
     @FXML private GridPane simpleGridPane;
@@ -75,6 +73,8 @@ public class StylerController extends SplitPane {
     @FXML private ToggleButton shadowToggle;
     @FXML private ToggleButton inputBorderToggle;
 
+    private PreviewController previewPanel;
+
     private final PopupEditor basePicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#D0D0D0"));
     private final PopupEditor backgroundColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#f4f4f4"));
     private final PopupEditor focusColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
@@ -82,8 +82,6 @@ public class StylerController extends SplitPane {
     private final PopupEditor bkgdTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
     private final PopupEditor fieldBackgroundPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#ffffff"));
     private final PopupEditor fieldTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
-
-
 
     public StylerController() {
         initialize();

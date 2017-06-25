@@ -31,9 +31,6 @@ package com.fxexperience.javafx.scene.control.gradientpicker;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-
-
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
 import com.fxexperience.javafx.scene.control.rotator.RotatorControl;
@@ -68,36 +65,21 @@ import javafx.scene.control.ChoiceBox;
  */
 public class GradientPicker extends VBox {
 
-    @FXML
-    private Pane track_pane;
-    @FXML
-    private Label stop_label;
-    @FXML
-    private Rectangle preview_rect;
-    @FXML
-    private StackPane slider_container;
-    @FXML
-    private VBox radial_container;
-    @FXML
-    private VBox shared_container;
-    @FXML
-    private HBox hbox_container;
-    @FXML
-    private Slider startX_slider;
-    @FXML
-    private Slider endX_slider;
-    @FXML
-    private Slider startY_slider;
-    @FXML
-    private Slider endY_slider;
-    @FXML
-    private Slider centerX_slider;
-    @FXML
-    private Slider centerY_slider;
-    @FXML
-    private CheckBox proportional_checkbox;
-    @FXML
-    private ChoiceBox<CycleMethod> cycleMethod_choicebox;
+    @FXML private Pane track_pane;
+    @FXML private Label stop_label;
+    @FXML private Rectangle preview_rect;
+    @FXML private StackPane slider_container;
+    @FXML private VBox radial_container;
+    @FXML private VBox shared_container;
+    @FXML private HBox hbox_container;
+    @FXML private Slider startX_slider;
+    @FXML private Slider endX_slider;
+    @FXML private Slider startY_slider;
+    @FXML private Slider endY_slider;
+    @FXML private Slider centerX_slider;
+    @FXML private Slider centerY_slider;
+    @FXML private CheckBox proportional_checkbox;
+    @FXML private ChoiceBox<CycleMethod> cycleMethod_choicebox;
 
     private final PaintPickerController paintPicker;
 

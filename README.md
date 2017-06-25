@@ -27,6 +27,8 @@ For more info about this app and other JavaFX features please
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
 ### FX-Derivation Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/derivationscreenshot.png "Derivation calculator")
+### FX-Gradient Tool
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/gradientscreenshot.png "Derivation calculator")
 
 
 
