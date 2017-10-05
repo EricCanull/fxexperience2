@@ -9,16 +9,12 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.javafx.scene.control.DoubleField;
-import com.fxexperience.javafx.scene.control.IntegerField;
 import com.fxexperience.javafx.scene.control.paintpicker.DoubleTextField;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.tools.util.Gradient;
-import com.fxexperience.tools.util.PropertyValue;
 import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
