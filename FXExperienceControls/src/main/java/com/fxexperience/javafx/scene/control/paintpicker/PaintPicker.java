@@ -92,12 +92,12 @@ public class PaintPicker {
         return pickerPane;
     }
 
-    public ObjectProperty<Paint> paintProperty() {
-        return controller.paintProperty();
+    public ObjectProperty<Paint> getPaintProperty() {
+        return controller.getPaintProperty();
     }
 
-    public Paint getPaintProperty() {
-        return controller.getPaintProperty();
+    public Paint getPaint() {
+        return controller.getPaint();
     }
     
     public final ReadOnlyBooleanProperty liveUpdateProperty() {

@@ -33,7 +33,6 @@ import javafx.scene.input.DataFormat;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.stage.FileChooser;
@@ -49,11 +48,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static javafx.scene.paint.Color.*;
+
 public final class MainController extends AbstractController implements Initializable {
 
     public enum Tool {
-
-        STYLER, SPLINE, DERIVATION
+        STYLER, SPLINE, DERIVATION, GRADIENT, ANIMATION
     }
 
     // Custom interpolator for the slide animation transition
@@ -68,6 +68,8 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private ToggleButton stylerToggle;
     @FXML private ToggleButton splineToggle;
     @FXML private ToggleButton derivedColorToggle;
+    @FXML private ToggleButton gradientBuilderToggle;
+    @FXML private ToggleButton animationToggle;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
@@ -77,6 +79,8 @@ public final class MainController extends AbstractController implements Initiali
     private StylerController stylerController;
     private SplineController splineController;
     private DerivationController derivationController;
+    private GradientController gradientController;
+    private AnimationController animationController;
 
     // Containers for the tools for slide animation
     private StackPane currentPane, sparePane;
@@ -105,7 +109,7 @@ public final class MainController extends AbstractController implements Initiali
     // Creates toggle group to bind color icon effect
     private void initToggleGroup() {
         ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle);
+        toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle, gradientBuilderToggle, animationToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);
     }
@@ -120,8 +124,7 @@ public final class MainController extends AbstractController implements Initiali
 
             @Override
             protected Effect computeValue() {
-                return toggle.isSelected()
-                        ? null : new ColorAdjust(0, -1, 0, 0);
+                return toggle.isSelected() ? null : new ColorAdjust(0, -1, 0, 0);
             }
         });
     }
@@ -130,10 +133,14 @@ public final class MainController extends AbstractController implements Initiali
         stylerController = new StylerController();
         splineController = new SplineController();
         derivationController = new DerivationController();
+        gradientController = new GradientController();
+        animationController = new AnimationController();
 
-        tools.put(StylerController.INDEX_POS, stylerController);
-        tools.put(SplineController.INDEX_POS, splineController);
-        tools.put(DerivationController.INDEX_POS, derivationController);
+        tools.put(Tool.STYLER.ordinal(), stylerController);
+        tools.put(Tool.SPLINE.ordinal(), splineController);
+        tools.put(Tool.DERIVATION.ordinal(), derivationController);
+        tools.put(Tool.GRADIENT.ordinal(), gradientController);
+        tools.put(Tool.ANIMATION.ordinal(), animationController);
 
         currentPane = new StackPane();
         sparePane = new StackPane();
@@ -141,13 +148,13 @@ public final class MainController extends AbstractController implements Initiali
 
         currentPane.getChildren().add(stylerController);
         rootContainer.getChildren().addAll(currentPane, sparePane);
-        currentToolIndex = StylerController.INDEX_POS;
+        currentToolIndex = Tool.STYLER.ordinal();
     }
 
     private void initToolBarArrow() {
         // create toolbar background path
-        toolBar.setClip(createToolBarPath(Color.WHEAT, null));
-        Path toolBarBackground = createToolBarPath(null, Color.web("#606060"));
+        toolBar.setClip(createToolBarPath(WHEAT, null));
+        Path toolBarBackground = createToolBarPath(null, web("#606060"));
         toolBar.getChildren().add(toolBarBackground);
     }
 
@@ -269,7 +276,7 @@ public final class MainController extends AbstractController implements Initiali
     private void displayStatusAlert(String textMessage) {
         double prefWidth = rootContainer.getLayoutBounds().getWidth();
 
-        AlertController alert = new AlertController(textMessage);
+        NotificationController alert = new NotificationController(textMessage);
         alert.setOpacity(0);
 
        alert.setPanelWidth(prefWidth, currentToolIndex);
@@ -334,6 +341,25 @@ public final class MainController extends AbstractController implements Initiali
             setArrow(derivedColorToggle);
         } else { // tool is already active reselect toggle
             derivedColorToggle.setSelected(true);
+        }
+    }
+    @FXML private void gradientToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
+        if (gradientBuilderToggle.isSelected()) {
+            setTool(Tool.GRADIENT);
+            setArrow(gradientBuilderToggle);
+        } else { // tool is already active reselect toggle
+            gradientBuilderToggle.setSelected(true);
+        }
+    }
+
+    @FXML private void animationToggleAction(ActionEvent event) {
+        // Prevent setting the same tool twice
+        if (animationToggle.isSelected()) {
+            setTool(Tool.ANIMATION);
+            setArrow(animationToggle);
+        } else { // tool is already active reselect toggle
+            animationToggle.setSelected(true);
         }
     }
 

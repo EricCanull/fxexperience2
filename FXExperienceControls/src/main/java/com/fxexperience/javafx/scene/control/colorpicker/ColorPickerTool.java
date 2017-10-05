@@ -60,7 +60,7 @@ public class ColorPickerTool extends Button {
         Rectangle colorRect = new Rectangle();
         colorRect.setWidth(16);
         colorRect.setHeight(16);
-        colorRect.fillProperty().bind(new ObjectBinding<Paint>() { { bind(color); }
+        colorRect.fillProperty().bind(new ObjectBinding<>() { { bind(color); }
             @Override protected Paint computeValue() {
                 return getColor();
             }

@@ -43,6 +43,25 @@ different terms and without source code for the larger work.
 .split-pane-divider {
     -fx-background-color: #1C1C1C;
 }
+
+.css-text-area {
+    -fx-text-fill: #FFF;
+}
+.css-text-area  {
+    -fx-background-color: transparent;
+}
+
+.css-text-area  .scroll-pane {
+    -fx-background-color: rgba(22, 22, 22, 0.8);
+}
+
+.css-text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.css-text-area .scroll-pane .content {
+    -fx-background-color: transparent;
+}
 .tab {
     -fx-background-color: #131313;
 }
@@ -53,13 +72,13 @@ different terms and without source code for the larger work.
     -fx-background-color: #2E3134;
 }
 .tab-pane:right .tab-header-area .headers-region .tab:right .tab-container .tab-label .text {
-    -fx-fill: #C2C2C3;
+    -fx-fill: #CDEFF1;
 }
 .tab-pane:top .tab-header-area .headers-region .tab .tab-container .tab-label .text {
-    -fx-fill: #C2C2C3;
+    -fx-fill: #CDEFF1;
 }
 .tab-pane:top .tab-header-area .headers-region .tab:selected:top .tab-container .tab-label .text {
-    -fx-fill: #C2C2C3;
+    -fx-fill: #CDEFF1;
 }
 .tab-pane:top .tab-header-area .tab-header-background {
     -fx-background-color: transparent;
@@ -74,104 +93,56 @@ different terms and without source code for the larger work.
     -fx-background-color: #2A5058;
 }
 .tab-pane:left .tab-header-area .headers-region .tab:left .tab-container .tab-label .text {
-    -fx-fill: #C2C2C3;
+    -fx-fill: #CDEFF1;
 }
-
-.derivation-slider .track{
-    -fx-background-color:  #2E3134;
-    -fx-border-color: #616569;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-}
-
-.conversion-label {
-    -fx-font-family: cursive;
-    -fx-font-size: 22px;
-    -fx-text-fill: #3AA6DF;
-}
-
 .label {
     -fx-text-fill: white;
 }
+.circle-button {
+    -fx-background-radius: 30em;
+    -fx-border-radius: 30em;
+    -fx-min-height: 180px;
+    -fx-min-width: 180px;
+    -fx-max-height: 180px;
+    -fx-max-width: 180px;
 
+}
+.derivation-slider .track {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+
+}
 .derivation-slider .thumb {
     -fx-border-color: #111;
     -fx-border-radius: 20px;
     -fx-background-color: rgba(147, 147, 147, .5);
 }
-
 .derivation-slider .thumb:hover{
     -fx-background-color: rgb(147, 147, 147);
 }
-
 .derivation-slider .axis:bottom {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-tick-label-fill: #C2C2C3;
+    -fx-tick-label-fill: #CDEFF1;
     -fx-font-size: .63333em;
 }
-
 .color-picker .text {
-    -fx-fill: #C2C2C3;
+    -fx-fill: #CDEFF1;
 }
 .color-picker {
     -fx-color: #282828;
     -fx-shadow-highlight-color: #323232;
 }
-
 .color-picker {
     -fx-text-fill: #333333;
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
 }
-.gradient-text-area .content {
-    -fx-background-color: #2E3134;
-}
-
-.gradient-text-area {
-    -fx-text-fill: #C2C2C3;
-}
-.gradient-text-area  {
-    -fx-background-color: rgba(22,22,22,0.4);
-}
-
-.gradient-text-area  .scroll-pane {
-    -fx-background-color: transparent;
-}
-
-.gradient-text-area  .scroll-pane .viewport{
-    -fx-background-color: transparent;
-}
-
-.gradient-text-area  .scroll-pane .content{
-    -fx-background-color: transparent;
-}
-.gradient-object {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-font-size: 20px;
-    -fx-text-fill: #C2C2C3;
-    -fx-background-radius: 20;
-
-}
-
-.gradient-object {
-    -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
-    #193a69b2 0.0%,
-    #3f2f6bb2 45.0%,
-    #1d2c43 75.0%,
-    #313ca3 98.0%,
-    #313ca3 100.0%);
-}
-
-.gradient-shape {
-    -fx-fill: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
-    #193a69b2 0.0%,
-    #3f2f6bb2 45.0%,
-    #1d2c43 75.0%,
-    #313ca3 98.0%,
-    #313ca3 100.0%);
-}
-
 .paint-picker-container {
     -fx-background-color: #5f5f5f;
     -fx-padding: 0;
+}
+
+.reverse-result-textfield {
+    -fx-background-color: transparent;
+    -fx-text-fill: #CDEFF1;
 }

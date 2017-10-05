@@ -84,7 +84,7 @@
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 }
 .context-menu {
-    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
     -fx-background-color: #31363B, #31363B,#31363B, #31363B;
     /*    -fx-background-insets: 0, 1, 2;*/
 

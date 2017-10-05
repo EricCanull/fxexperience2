@@ -162,12 +162,12 @@ different terms and without source code for the larger work.
     -fx-font-size: 0.83333em;
 }
 
-#input-text-field {
-    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
-    -fx-text-fill: -fe-inner-text;
-    -fx-font-size: 0.875em;
+/*#input-text-field {*/
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.IntegerFieldSkin";*/
+    /*-fx-text-fill: -fe-inner-text;*/
+    /*-fx-font-size: 0.875em;*/
 
-}
+/*}*/
 .floating:top .tab-content-area {
     -fx-padding: 0;
     -fx-border-insets: 3, 3;
@@ -176,15 +176,15 @@ different terms and without source code for the larger work.
     -fx-background-insets: 3, 3;
     -fx-background-radius: 3, 3;
 }
-.input-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
-    -fx-border-color: #65d2c6;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-cursor: text;
+/*.input-field {*/
+    /*!*-fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";*!*/
+    /*-fx-border-color: #65d2c6;*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+    /*-fx-cursor: text;*/
 
-}
+/*}*/
 
 .input-field:focused {
     -fx-background-insets: -0.2, 1, 2;
@@ -196,13 +196,13 @@ different terms and without source code for the larger work.
     -fx-opacity: -fx-disabled-opacity;
 }
 
-.integer-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-cursor: text;
-}
+/*.integer-field {*/
+    /*-fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+    /*-fx-cursor: text;*/
+/*}*/
 
 .integer-field:focused {
     -fx-background-insets: -0.2, 1, 2;
@@ -214,14 +214,14 @@ different terms and without source code for the larger work.
     -fx-opacity: -fx-disabled-opacity;
 }
 
-.double-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";
-    -fx-font-size: 0.83333em;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-cursor: text;
-}
+/*.double-field {*/
+    /*-fx-skin: "com.fxexperience.javafx.scene.control.skin.DoubleFieldSkin";*/
+    /*-fx-font-size: 0.83333em;*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+    /*-fx-cursor: text;*/
+/*}*/
 
 .double-field:focused {
     -fx-background-insets: -0.2, 1, 2;
@@ -233,14 +233,14 @@ different terms and without source code for the larger work.
     -fx-opacity: -fx-disabled-opacity;
 }
 
-.webcolor-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
-    -fx-font-size: 0.83333em;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-cursor: text;
-}
+/*.webcolor-field {*/
+    /*-fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";*/
+    /*-fx-font-size: 0.83333em;*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+    /*-fx-cursor: text;*/
+/*}*/
 
 .webcolor-field:focused {
     -fx-border-color: -fe-border;

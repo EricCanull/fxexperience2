@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root prefHeight="600.0" prefWidth="900.0" styleClass="root-stackpane" type="StackPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" styleClass="canned-split-pane" stylesheets="@../styles/animation_panel.css">
+        <items>
+          <AnchorPane maxHeight="240.0">
+               <children>
+                  <StackPane id="animateTestArea" minHeight="230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button id="animateTest" fx:id="btn" alignment="TOP_LEFT" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="154.0" prefWidth="144.0" text="fxexperience" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="120.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/fxexperience-logo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" top="25.0" />
+                     </padding>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="900.0" styleClass="button-anchorpane">
+               <children>
+                  <GridPane alignment="TOP_CENTER" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" style="-fx-background-color: #222;" vgap="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+                      <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" styleClass="section-label" text="Attention Seekers" GridPane.columnIndex="1" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Flippers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Fading Entrances" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Fading Exits" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Bouncing Entrances" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Bouncing Exits" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Rotating Entrances" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#flashAction" styleClass="section-buttons" text="Flash" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BounceAction" styleClass="section-buttons" text="Bounce" />
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#ShakeAction" styleClass="section-buttons" text="Shake" />
+                              <Button mnemonicParsing="false" onAction="#tadaAction" styleClass="section-buttons" text="Tada" />
+                              <Button mnemonicParsing="false" onAction="#swingAction" styleClass="section-buttons" text="Swing" />
+                              <Button mnemonicParsing="false" onAction="#wobbleAction" styleClass="section-buttons" text="Woble" />
+                              <Button mnemonicParsing="false" onAction="#pulseAction" styleClass="section-buttons" text="Pulse" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipAction" styleClass="section-buttons" text="Flip" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipInXAction" styleClass="section-buttons" text="Flip In X" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipOutXAction" styleClass="section-buttons" text="Flip Out X" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipInYAction" styleClass="section-buttons" text="Flip In Y" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipOutYAction" styleClass="section-buttons" text="Flip Out Y" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInAction" styleClass="section-buttons" text="Fade In" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInUpAction" styleClass="section-buttons" text="Fade In Up" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInDownAction" styleClass="section-buttons" text="Fade In Down" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInLeftAction" styleClass="section-buttons" text="Fade In Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInRightAction" styleClass="section-buttons" text="Fade In Right" />
+                              <Button mnemonicParsing="false" onAction="#fadeInUpBigAction" styleClass="section-buttons" text="Fade In Up Big" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#fadeInDownBigAction" styleClass="section-buttons" text="Fade In Down Big" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInLeftBigAction" styleClass="section-buttons" text="Fade In Left Big" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInRightBigAction" styleClass="section-buttons" text="Fade In Right Big" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutAction" styleClass="section-buttons" text="Fade Out" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutUpAction" styleClass="section-buttons" text="Fade Out Up" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutDownAction" styleClass="section-buttons" text="Fade Out Down" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutLeftAction" styleClass="section-buttons" text="Fade Out Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutRightAction" styleClass="section-buttons" text="Fade Out Right" />
+                              <Button mnemonicParsing="false" onAction="#fadeOutUpBigAction" styleClass="section-buttons" text="Fade Out Up Big" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <children>
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutDownBigAction" styleClass="section-buttons" text="Fade Out Down Big" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutLeftBigAction" styleClass="section-buttons" text="Fade Out Left Big" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutRightBigAction" styleClass="section-buttons" text="Fade Out Right Big" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInAction" styleClass="section-buttons" text="Bounce In" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInUpAction" styleClass="section-buttons" text="Bounce In Up" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInDownAction" styleClass="section-buttons" text="Bounce In Down" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInLeftAction" styleClass="section-buttons" text="Bounce In Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInRightAction" styleClass="section-buttons" text="Bounce In Right" />
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" styleClass="section-label" text="Rotating Exits" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Label alignment="CENTER" styleClass="section-label" text="Specials" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                           <children>
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#hingeAction" styleClass="section-buttons" text="Hinge" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rollInAction" styleClass="section-buttons" text="Roll In" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rollOutAction" styleClass="section-buttons" text="Roll Out" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutAction" styleClass="section-buttons" text="Bounce Out" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutUpAction" styleClass="section-buttons" text="Bounce Out Up" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutDownAction" styleClass="section-buttons" text="Bounce Out Down" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutLeftAction" styleClass="section-buttons" text="Bounce Out Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutRightAction" styleClass="section-buttons" text="Bounce Out Right" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateAction" styleClass="section-buttons" text="Rotate In" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInDownLeftAction" styleClass="section-buttons" text="Rotate In Down Left" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInDownRightAction" styleClass="section-buttons" text="Rotate in Down Right" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInUpLeftAction" styleClass="section-buttons" text="Rotate In Up Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInUpRightAction" styleClass="section-buttons" text="Rotate In Up Right" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                           <children>
+                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutAction" styleClass="section-buttons" text="Rotate Out" />
+                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutDownLeftAction" styleClass="section-buttons" text="Rotate Out Down Left" />
+                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutDownRightAction" styleClass="section-buttons" text="Rotate Out Down Right" />
+                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutUpLeftAction" styleClass="section-buttons" text="Rotate Out Up Left" />
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutUpRightAction" styleClass="section-buttons" text="Rotate Out Up Right" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</fx:root>

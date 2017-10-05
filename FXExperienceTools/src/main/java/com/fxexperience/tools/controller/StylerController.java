@@ -9,11 +9,16 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.javafx.scene.control.DoubleField;
 import com.fxexperience.javafx.scene.control.IntegerField;
+import com.fxexperience.javafx.scene.control.paintpicker.DoubleTextField;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
-import com.fxexperience.javafx.scene.control.popup.PopupEditor;
+import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.tools.util.Gradient;
+import com.fxexperience.tools.util.PropertyValue;
 import com.fxexperience.tools.util.StringUtil;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -32,8 +37,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StylerController extends SplitPane {
-
-    public static final int INDEX_POS = 0;
 
     @FXML private SplitPane rootSplitPane;
     @FXML private BorderPane previewPane;
@@ -59,10 +62,10 @@ public class StylerController extends SplitPane {
     @FXML private Slider shadowSlider;
     @FXML private Slider inputBorderSlider;
 
-    @FXML private IntegerField fontTextField;
-    @FXML private IntegerField paddingTextField;
-    @FXML private IntegerField borderWidthTextField;
-    @FXML private IntegerField borderRadiusTextField;
+    @FXML private DoubleTextField fontTextField;
+    @FXML private DoubleTextField paddingTextField;
+    @FXML private DoubleTextField borderWidthTextField;
+    @FXML private DoubleTextField borderRadiusTextField;
 
     @FXML private ToggleButton baseTextToggle;
     @FXML private ToggleButton backgroundTextToggle;
@@ -75,13 +78,13 @@ public class StylerController extends SplitPane {
 
     private PreviewController previewPanel;
 
-    private final PopupEditor basePicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#D0D0D0"));
-    private final PopupEditor backgroundColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#f4f4f4"));
-    private final PopupEditor focusColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
-    private final PopupEditor textColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
-    private final PopupEditor bkgdTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
-    private final PopupEditor fieldBackgroundPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#ffffff"));
-    private final PopupEditor fieldTextColorPicker = new PopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor basePicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#D0D0D0"));
+    private final ColorPopupEditor backgroundColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#f4f4f4"));
+    private final ColorPopupEditor focusColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
+    private final ColorPopupEditor textColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor bkgdTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor fieldBackgroundPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#ffffff"));
+    private final ColorPopupEditor fieldTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
 
     public StylerController() {
         initialize();
@@ -228,8 +231,8 @@ public class StylerController extends SplitPane {
     /**
      * Bind Slider values to the text fields
      */
-    private void addTextFieldBinding(Slider slider, IntegerField field) {
-        field.valueProperty().bindBidirectional(slider.valueProperty());
+    private void addTextFieldBinding(Slider slider, DoubleTextField field) {
+        field.textProperty().bind(Bindings.format("%.2f", slider.valueProperty()));
     }
 
     private void updateCSS() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.fxexperience.javafx.scene.control.IntegerField?>
+<?import com.fxexperience.javafx.scene.control.paintpicker.DoubleTextField?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="rootSplitPane" dividerPositions="0.011834319526627219" styleClass="split-pane" stylesheets="@../styles/styler_dark.css" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="rootSplitPane" dividerPositions="0.011834319526627219" styleClass="split-pane" stylesheets="@../styles/styler_dark.css" type="SplitPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
   <items>
     <AnchorPane id="ContentArea" fx:id="previewAnchorPane">
          <children>
@@ -62,11 +62,7 @@
                                           <Label alignment="CENTER" styleClass="prop-label" text="Font Name:" />
                                           <Slider fx:id="fontSizeSlider" majorTickUnit="5.0" max="30.0" min="6.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1" />
-                                          <IntegerField fx:id="fontTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefColumnCount="3" prefHeight="28.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                          </IntegerField>
+                                          <DoubleTextField fx:id="fontTextField" styleClass="double-field" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -87,6 +83,7 @@
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="NEVER" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
                                           <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="42.0" vgrow="NEVER" />
                                        </rowConstraints>
                                        <children>
                                           <Label id="label3" styleClass="prop-label" text="Padding:" GridPane.valignment="TOP">
@@ -113,12 +110,12 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <IntegerField fx:id="paddingTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.valignment="TOP" />
                                           <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" GridPane.columnIndex="1" />
-                                          <IntegerField fx:id="borderWidthTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                          <IntegerField fx:id="borderRadiusTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="28.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                          <DoubleTextField fx:id="paddingTextField" maxWidth="52.0" styleClass="double-field" text="0" GridPane.columnIndex="2" />
+                                          <DoubleTextField fx:id="borderWidthTextField" layoutX="304.0" layoutY="15.0" maxWidth="52.0" styleClass="double-field" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <DoubleTextField fx:id="borderRadiusTextField" layoutX="304.0" layoutY="15.0" maxWidth="52.0" styleClass="double-field" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
                                  </children>

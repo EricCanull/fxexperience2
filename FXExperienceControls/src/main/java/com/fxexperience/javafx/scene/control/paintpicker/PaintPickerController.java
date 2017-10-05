@@ -72,11 +72,11 @@ public class PaintPickerController {
     public final static RadialGradient DEFAULT_RADIAL
             = new RadialGradient(0.0, 0.0, 0.5, 0.5, 0.5, true, CycleMethod.NO_CYCLE);
 
-    public final ObjectProperty<Paint> paintProperty() {
+    public final ObjectProperty<Paint> getPaintProperty() {
         return paint;
     }
 
-    public final Paint getPaintProperty() {
+    public final Paint getPaint() {
         return paint.get();
     }
 
@@ -129,7 +129,7 @@ public class PaintPickerController {
 
     public Mode getMode() {
         final Mode mode;
-        final Paint value = getPaintProperty();
+        final Paint value = getPaint();
         if (value instanceof Color) {
             mode = Mode.COLOR;
         } else if (value instanceof LinearGradient) {

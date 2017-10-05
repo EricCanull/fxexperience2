@@ -8,6 +8,7 @@ package com.fxexperience.javafx.scene.control.popup;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
-public class PopupEditor extends MenuButton {
+public class ColorPopupEditor extends MenuButton {
     @FXML private StackPane editorHost;
     @FXML private Rectangle rectangle;
 
@@ -26,7 +27,7 @@ public class PopupEditor extends MenuButton {
 
     private PaintPicker paintPicker;
 
-    public PopupEditor(Mode mode, Object startColor) {
+    public ColorPopupEditor(Mode mode, Object startColor) {
         initialize(mode, startColor);
 
     }
@@ -63,7 +64,7 @@ public class PopupEditor extends MenuButton {
                     initialized = true;
                 }
 
-                paintPicker.paintProperty().addListener(paintChangeListener);
+                paintPicker.getPaintProperty().addListener(paintChangeListener);
             }
         });
     }
@@ -72,6 +73,7 @@ public class PopupEditor extends MenuButton {
         if (newValue == null) {
             return;
         }
+
         assert newValue instanceof Paint;
         if (newValue instanceof LinearGradient
                 || newValue instanceof RadialGradient
@@ -80,17 +82,18 @@ public class PopupEditor extends MenuButton {
             textProperty().set(newValue.getClass().getSimpleName());
             return;
         }
+
         assert newValue instanceof Color;
 
         setRectangleFill(newValue);
         setTextField(newValue);
     };
 
-    public final synchronized String getColorString() {
-        return getColorString(getPaintProperty());
+    public final String getColorString() {
+        return getColorString(getPaint());
     }
 
-    private synchronized String getColorString(Object value) {
+    private String getColorString(Object value) {
         if (value == null) {
             return null;
         }
@@ -100,8 +103,8 @@ public class PopupEditor extends MenuButton {
         return ColorEncoder.encodeColor((Color) value).toUpperCase();
     }
 
-    public final synchronized String getGradientString() {
-        return getGradientString(getPaintProperty());
+    public final String getGradientString() {
+        return getGradientString(getPaint());
     }
 
     private synchronized String getGradientString(Object value) {
@@ -131,8 +134,7 @@ public class PopupEditor extends MenuButton {
         return rectangle;
     }
 
-    public Paint getPaintProperty() {
-        return paintPicker.getPaintProperty();
-    }
+    public ObjectProperty<Paint> getPaintProperty() { return paintPicker.getPaintProperty(); }
 
+    public Paint getPaint() { return paintPicker.getPaint(); }
 }

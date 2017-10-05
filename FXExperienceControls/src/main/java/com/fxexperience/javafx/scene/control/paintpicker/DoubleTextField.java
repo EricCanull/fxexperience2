@@ -32,6 +32,9 @@
 package com.fxexperience.javafx.scene.control.paintpicker;
 
 import java.util.Locale;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 
@@ -41,6 +44,7 @@ import javafx.scene.input.Clipboard;
 public class DoubleTextField extends TextField {
 
     public DoubleTextField() {
+
     }
 
     @Override

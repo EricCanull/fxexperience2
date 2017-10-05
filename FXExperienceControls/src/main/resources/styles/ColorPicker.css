@@ -102,9 +102,9 @@
     -fx-background-color: linear-gradient(to bottom right, white, transparent);
 }
 
-#input-text-field {
-    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
-}
+/*#input-text-field {*/
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.IntegerFieldSkin";*/
+/*}*/
 .color-field {
     -fx-background-color: #31363B;
     -fx-background-insets: 0, 1, 2;

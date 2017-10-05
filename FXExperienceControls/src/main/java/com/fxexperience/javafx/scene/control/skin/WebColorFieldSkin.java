@@ -75,8 +75,8 @@ public class WebColorFieldSkin extends InputFieldSkin {
             }
         }
     }
-    
-    
+
+
     private static String getWebColor(Color color) {
         final int red = (int)(color.getRed()*255);
         final int green = (int)(color.getGreen()*255);

@@ -78,7 +78,7 @@ class ColorPickerPopover extends Group {
             }
         }
     };
-    private final ObjectProperty<Color> color = new SimpleObjectProperty<Color>(Color.RED) {
+    private final ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED) {
         @Override
         protected void invalidated() {
             if (!changeIsLocal) {

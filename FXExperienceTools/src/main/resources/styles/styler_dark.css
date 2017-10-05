@@ -228,8 +228,7 @@
     -fx-background-color: -fe-inner-background;
 }
 
-#input-text-field {
-    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
+.double-field {
     -fx-text-fill: -fe-inner-text;
     -fx-font-size: 0.833335em;
 }
@@ -244,8 +243,7 @@
     -fx-background-radius: 3, 3;
 }
 
-.input-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
+.double-field {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: #65d2c6;
     -fx-background-insets: -0.2, 1, 2;
@@ -255,7 +253,7 @@
     -fx-cursor: text;
 }
 
-.input-field:focused {
+.double-field:focused {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;
     -fx-background-insets: -0.2, 1, 2;
@@ -263,12 +261,11 @@
     -fx-border-radius: 2.2, 2, 2;
 }
 
-.input-field:disabled {
+.double-field:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
 
-.integer-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
+.double-field {
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;
     -fx-background-insets: -0.2, 1, 2;
@@ -283,34 +280,6 @@
     -fx-background-insets: -0.2, 1, 2;
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
-}
-
-.integer-field:disabled {
-    -fx-opacity: -fx-disabled-opacity;
-}
-
-.webcolor-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
-    -fx-font-size: 0.83333em;
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-prompt-text-fill: -fe-inner-text;
-    -fx-cursor: text;
-}
-
-.webcolor-field:focused {
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-}
-
-.webcolor-field:disabled {
-    -fx-opacity: -fx-disabled-opacity;
 }
 
 .properties-combo-box {

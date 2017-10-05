@@ -248,7 +248,7 @@ public class ColorEncoder implements SyntaxConstants {
         final CycleMethod radial_cycleMethod = radialGradient.getCycleMethod();
 
         double focusAngle = radialGradient.getFocusAngle();
-        double focusDistance = radialGradient.getFocusDistance();
+        double focusDistance = round(radialGradient.getFocusDistance());
         double centerX = round(radialGradient.getCenterX());
         double centerY = round(radialGradient.getCenterY());
         double radius =   round(radialGradient.getRadius());
@@ -481,5 +481,19 @@ public class ColorEncoder implements SyntaxConstants {
     private static double round(double value) {
         double doubleRounded = Math.round(value * 100);
         return doubleRounded;
+    }
+
+    public static String getColorString(Color color) {
+        final int red = (int) (color.getRed()*255);
+        final int green = (int)(color.getGreen()*255);
+        final int blue = (int)(color.getBlue()*255);
+        return String.format("#%02X%02X%02X R:%d G:%d B:%d", red, green, blue, red, green, blue);
+    }
+
+    public static String getWebColor(Color color) {
+        final int red =   (int) (color.getRed() * 255);
+        final int green = (int) (color.getGreen() * 255);
+        final int blue =  (int) (color.getBlue() * 255);
+        return String.format("#%02X%02X%02X", red, green, blue);
     }
 }

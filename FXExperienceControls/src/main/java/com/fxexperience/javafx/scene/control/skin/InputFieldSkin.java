@@ -1,12 +1,9 @@
 package com.fxexperience.javafx.scene.control.skin;
 
-import com.sun.javafx.event.EventDispatchChainImpl;
 import com.fxexperience.javafx.scene.control.InputField;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.event.ActionEvent;
 import javafx.event.EventDispatchChain;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
@@ -64,11 +61,8 @@ public abstract class InputFieldSkin implements Skin<InputField> {
 
         textField.setId("input-text-field");
         textField.getStyleClass().setAll(control.getStyleClass());
-        control.getStyleClass().addListener(InputFieldStyleClassListener = new InvalidationListener() {
-            @Override public void invalidated(Observable observable) {
-                textField.getStyleClass().setAll(control.getStyleClass());
-            }
-        });
+        control.getStyleClass().addListener(InputFieldStyleClassListener = observable ->
+                textField.getStyleClass().setAll(control.getStyleClass()));
 
 //        // Align the text to the right
 //        textField.setAlignment(Pos.BASELINE_RIGHT);
@@ -78,36 +72,27 @@ public abstract class InputFieldSkin implements Skin<InputField> {
 
         // Whenever the text of the textField changes, we may need to
         // update the value.
-        textField.textProperty().addListener((Observable observable) -> {
-            updateValue();
-        });
+        textField.textProperty().addListener((Observable observable) -> updateValue());
 
         // Right now there is some funny business regarding focus in JavaFX. So
         // we will just make sure the TextField gets focus whenever somebody tries
         // to give it to the InputField. This isn't right, but we need to fix
         // this in JavaFX, I don't think I can hack around it
         textField.setFocusTraversable(false);
-        control.focusedProperty().addListener(InputFieldFocusListener = new InvalidationListener() {
-            @Override public void invalidated(Observable observable) {
-                textField.handleFocus(control.isFocused());
-            }
+        control.focusedProperty().addListener(InputFieldFocusListener = observable ->
+                textField.handleFocus(control.isFocused()));
+
+        control.addEventFilter(InputEvent.ANY, t -> {
+            if (textField == null) return;
+            textField.fireEvent(t);
         });
 
-        control.addEventFilter(InputEvent.ANY, new EventHandler<InputEvent>() {
-            @Override public void handle(InputEvent t) {
-                if (textField == null) return;
-                textField.fireEvent(t);
-            }
-        });
-
-        textField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent actionEvent) {
-                // Because TextFieldBehavior fires an action event on the parent of the TextField
-                // (maybe a misfeature?) I don't need to do this. But I think this is
-                // a bug, because having to add an empty event handler to get an
-                // event on the control is odd to say the least!
+        // Because TextFieldBehavior fires an action event on the parent of the TextField
+        // (maybe a misfeature?) I don't need to do this. But I think this is
+        // a bug, because having to add an empty event handler to get an
+        // event on the control is odd to say the least!
+        textField.setOnAction(actionEvent -> {
 //                control.fireEvent(new ActionEvent(textField, textField));
-            }
         });
 
         updateText();
@@ -120,7 +105,7 @@ public abstract class InputFieldSkin implements Skin<InputField> {
     @Override public Node getNode() {
         return textField;
     }
-    
+
     /**
      * Called by a Skinnable when the Skin is replaced on the Skinnable. This method
      * allows a Skin to implement any logic necessary to clean up itself after
@@ -150,9 +135,8 @@ public abstract class InputFieldSkin implements Skin<InputField> {
         }
 
         @Override public EventDispatchChain buildEventDispatchChain(EventDispatchChain tail) {
-            EventDispatchChain chain = new EventDispatchChainImpl();
-            chain.append(textField.getEventDispatcher());
-            return chain;
+            System.out.println("EventDispatchChain");
+            return null;
         }
    }
 }

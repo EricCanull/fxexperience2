@@ -1,0 +1,78 @@
+.container-vbox {
+    -fx-background-color: #1f1f1f;
+}
+
+.title-label {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: 1.33em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3AA6DF;
+}
+.color-label {
+    -fx-font-family:"Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: .865em;
+    -fx-text-fill: #C2C2C3;
+}
+.derivation-textfield {
+    -fx-font-family:"Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: .865em;
+    -fx-background-color: transparent;
+    -fx-text-fill: #C2C2C3;
+}
+
+.derivation-slider .thumb {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.derivation-slider .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+
+.derivation-slider:vertical .axis:right {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: #C2C2C3;
+    -fx-font-size: .63333em;
+}
+.derivation-slider .track{
+    -fx-background-color: #1A1A1A;
+    -fx-border-color: #616569;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.color-textfield {
+    -fx-background-color: #1A1A1A;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-border-color: #717171;
+    -fx-padding: 3 5 3 5;
+    -fx-font-size: .645em;
+    -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: #606060;
+    -fx-cursor: text;
+}
+
+.color-textfield:focused {
+    -fx-background-color: #1A1A1A;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.color-textfield:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.hex-textfield {
+    -fx-background-color: #1A1A1A;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-border-color: #717171;
+    -fx-padding: 3 5 3 5;
+    -fx-font-size: .645em;
+    -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: #606060;
+    -fx-cursor: text;
+}

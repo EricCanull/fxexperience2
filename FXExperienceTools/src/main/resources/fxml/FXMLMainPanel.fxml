@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootBorderPane" minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -106,6 +106,30 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                  </ToggleButton>
+                  <ToggleButton fx:id="gradientBuilderToggle" contentDisplay="TOP" layoutX="10.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="90.0" prefWidth="90.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView onContextMenuRequested="#gradientToggleAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/gradient-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="animationToggle" contentDisplay="TOP" layoutX="10.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="90.0" prefWidth="90.0" styleClass="menu-toggle-button" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView onContextMenuRequested="#animationToggleAction" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/controls-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
                   </ToggleButton>
                </children>
                <cursor>

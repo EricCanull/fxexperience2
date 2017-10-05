@@ -34,7 +34,6 @@ public class AppViewHandler implements ViewHandler {
     }
 
     private void buildAndShowScene(Stage stage, AbstractWindow window) throws IOException {
-
         stage.getIcons().add(new Image(window.iconFilePath()));
         stage.setTitle(bundle.getString(window.titleBundleKey()));
         stage.setResizable(window.resizable());

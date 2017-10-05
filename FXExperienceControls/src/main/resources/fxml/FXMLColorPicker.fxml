@@ -132,8 +132,8 @@
                         <Region fx:id="hue_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onHuePickerDragged" onMousePressed="#onHuePickerClicked" prefHeight="28.0" prefWidth="304.0" style="-fx-border-color: #606060;;" styleClass="hue-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
                         <StackPane fx:id="hue_handle_stackpane" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7373730d" height="31.0" stroke="#5230fc" strokeType="INSIDE" strokeWidth="2.0" width="10.0" StackPane.alignment="CENTER" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="29.0" layoutX="10.0" layoutY="10.0" stroke="#f5f5f5" strokeType="INSIDE" strokeWidth="2.0" width="8.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7373730d" height="31.0" stroke="#b9b9b9" strokeType="INSIDE" width="10.0" StackPane.alignment="CENTER" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="29.0" layoutX="10.0" layoutY="10.0" stroke="#bcbcbc" strokeType="INSIDE" strokeWidth="2.0" width="8.0" />
                            </children>
                         </StackPane>
                      </children>

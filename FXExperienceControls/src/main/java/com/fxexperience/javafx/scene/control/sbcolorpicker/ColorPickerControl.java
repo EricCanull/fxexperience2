@@ -146,7 +146,7 @@ public class ColorPickerControl extends VBox {
             picker_scrollpane.setHvalue(0.5);
             picker_scrollpane.setVvalue(0.5);
             // Init time only
-            final Paint paint = paintPickerController.getPaintProperty();
+            final Paint paint = paintPickerController.getPaint();
             if (paint instanceof Color) {
                 updateUI((Color) paint);
             } else if (paint instanceof LinearGradient
@@ -551,8 +551,8 @@ public class ColorPickerControl extends VBox {
         final Color color;
         switch (paintPickerController.getMode()) {
             case COLOR:
-                assert paintPickerController.getPaintProperty() instanceof Color;
-                color = (Color) paintPickerController.getPaintProperty();
+                assert paintPickerController.getPaint() instanceof Color;
+                color = (Color) paintPickerController.getPaint();
                 break;
             case LINEAR:
             case RADIAL:

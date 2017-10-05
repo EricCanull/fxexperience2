@@ -1,244 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 
-<fx:root fx:id="rootPane" styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <TabPane side="RIGHT">
-         <tabs>
-            <Tab text="Derivation">
-               <content>
-                  <SplitPane dividerPositions="0.29797979797979796" styleClass="split-pane-main">
-                    <items>
-                      <AnchorPane fx:id="anchorPane" prefWidth="520.0">
-                           <children>
-                            <GridPane hgap="5.0" styleClass="main-grid" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                              <children>
-                                    <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="3">
-                                       <children>
-                                      <Label fx:id="derivedResultLabel" prefWidth="300.0" text="Label" />
-                                      <Slider fx:id="derivationSlider" maxHeight="-Infinity" maxWidth="-Infinity" min="-100.0" minWidth="-Infinity" minorTickCount="10" prefHeight="30.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" styleClass="derivation-slider">
-                                             <HBox.margin>
-                                                <Insets top="5.0" />
-                                             </HBox.margin>
-                                          </Slider>
-                                       </children>
-                                    </HBox>
-                                <Label fx:id="reverseResultLabel" maxWidth="-Infinity" prefWidth="300.0" text="#EEEEEE" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                                    <Label styleClass="conversion-label" text="Forward Conversion" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                    <Label styleClass="conversion-label" text="Reverse Conversion" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-                                <Label id="label3" maxWidth="-Infinity" prefWidth="101.0" text="Derived Result:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label id="label7" maxWidth="-Infinity" prefWidth="84.0" text="Result Color:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TabPane minHeight="-Infinity" prefHeight="250.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="8" GridPane.rowSpan="4">
-                                       <GridPane.margin>
-                                          <Insets right="5.0" />
-                                       </GridPane.margin>
-                                       <tabs>
-                                          <Tab text="Info">
-                                             <content>
-                                                <TextArea fx:id="derivationTextArea" editable="false" styleClass="gradient-text-area" wrapText="true" />
-                                             </content>
-                                          </Tab>
-                                          <Tab text="Output Feedback">
-                                             <content>
-                                                <TextArea fx:id="derivationTextOutput" editable="false" prefHeight="197.0" prefWidth="570.0" styleClass="gradient-text-area" wrapText="true" />
-                                             </content>
-                                          </Tab>
-                                       </tabs>
-                                    </TabPane>
-                                    <VBox alignment="CENTER" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                       <children>
-                                      <Label id="label1" prefWidth="53.0" text="Forward" />
-                                      <Label fx:id="forwardDerivationLabel" alignment="CENTER" maxWidth="-Infinity" prefWidth="100.0" text="0%" />
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </VBox>
-                                    <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
-                                       <children>
-                                      <Label id="label5" text="Reverse" />
-                                      <Label fx:id="reverseDerivationLabel" text="30%" />
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets left="15.0" />
-                                       </GridPane.margin>
-                                    </VBox>
-                              </children>
-                              <columnConstraints>
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="10.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="105.0" />
-                                <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                                    <ColumnConstraints />
-                                    <ColumnConstraints />
-                              </columnConstraints>
-                              <rowConstraints>
-                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                    <RowConstraints />
-                              </rowConstraints>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                            </GridPane>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="320.0" style="-fx-background-color: transparent;">
-                           <children>
-                              <GridPane fx:id="derivationGrid" layoutX="1.0" styleClass="prop-grid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="120.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="190.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                <Label fx:id="label" maxWidth="-Infinity" minHeight="16.0" minWidth="-Infinity" prefHeight="16.0" text="Base Color:" GridPane.rowIndex="1" />
-                                <Label id="label4" text="Desired Color:" GridPane.rowIndex="2" />
-                                 </children>
-                                 <padding>
-                                    <Insets left="10.0" top="20.0" />
-                                 </padding>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </content>
-            </Tab>
-            <Tab text="Gradients">
-               <content>
-                  <SplitPane dividerPositions="0.29797979797979796" styleClass="split-pane-main">
-                     <items>
-                        <AnchorPane>
-                           <children>
-                              <GridPane alignment="CENTER" styleClass="main-grid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="90.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="110.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="110.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
-                                    <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
-                                    <ColumnConstraints />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
-                                    <RowConstraints />
-                                 </rowConstraints>
-                                 <padding>
-                                    <Insets left="5.0" right="5.0" />
-                                 </padding>
-                                 <children>
-                                    <HBox alignment="CENTER" spacing="20.0" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="4">
-                                       <children>
-                                          <Rectangle fx:id="gradientSquare" arcHeight="20.0" arcWidth="20.0" fill="DODGERBLUE" height="80.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="gradient-shape" width="100.0" />
-                                          <Button fx:id="fxButton" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="200.0" prefWidth="160.0" styleClass="gradient-object" text="fx experience">
-                                             <graphic>
-                                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../images/fxexperience-logo.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Circle fx:id="gradientCircle" fill="#6b7b8a" radius="50.0" stroke="#b85c5c00" strokeType="INSIDE" styleClass="gradient-shape" />
-                                       </children>
-                                    </HBox>
-                                    <TextArea fx:id="gradientCSSText" maxHeight="-Infinity" prefHeight="130.0" prefWidth="180.0" styleClass="gradient-text-area" wrapText="true" GridPane.columnSpan="6" GridPane.rowIndex="6" GridPane.rowSpan="3">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" right="5.0" />
-                                       </GridPane.margin></TextArea>
-                                    <Label id="label7" text="Gradient CSS:" GridPane.columnSpan="2" GridPane.rowIndex="5">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <GridPane.margin>
-                                          <Insets top="15.0" />
-                                       </GridPane.margin></Label>
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="320.0">
-                           <children>
-                              <GridPane fx:id="gradientGridPane" layoutX="1.0" styleClass="prop-grid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="80.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <padding>
-                                    <Insets left="10.0" top="20.0" />
-                                 </padding>
-                                 <children>
-                                    <Label id="label7" text="Gradient:">
-                                       <GridPane.margin>
-                                          <Insets />
-                                       </GridPane.margin></Label>
-                                 </children>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </center>
+<fx:root fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane fx:id="gridPane" hgap="5.0" prefHeight="500.0" prefWidth="1005.0" styleClass="main-grid" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView id="forward" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../images/forward.png" />
+               </image>
+            </ImageView>
+            <Label id="label1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Derivation:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2">
+               <children>
+                  <Slider fx:id="derivationSlider" blockIncrement="0.5" majorTickUnit="0.5" max="1.0" maxWidth="250.0" min="-1.0" minWidth="-Infinity" prefWidth="250.0" showTickLabels="true" showTickMarks="true" styleClass="derivation-slider" />
+                  <Label fx:id="forwardSliderLabel" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="40.0" text="0%" />
+               </children>
+            </HBox>
+            <Label id="label3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Forward:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ImageView id="reverse" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../images/reverse.png" />
+               </image>
+            </ImageView>
+            <Label id="label5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Derivation:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="reverseDerivationLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="1.0%" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label id="label7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Reverse:" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="derivedResultLabel" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <graphic>
+                  <Region fx:id="forwardRegion" prefHeight="20.0" prefWidth="50.0" />
+               </graphic></Label>
+            <Label fx:id="reverseResultLabel" text="label" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <graphic>
+                  <Region fx:id="reverseRegion" prefHeight="20.0" prefWidth="50.0" />
+               </graphic></Label>
+            <VBox GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
+               <children>
+                  <TextField fx:id="hexReverseTextfield" styleClass="reverse-result-textfield" text="#9c9c9c" />
+                  <TextField fx:id="rgbReverseTextfield" styleClass="reverse-result-textfield" text="rgba(&quot;255, 255, 255, 1.0&quot;)" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+               <children>
+                  <TextField fx:id="hexDerivedTextfield" styleClass="reverse-result-textfield" text="#9c9c9c" />
+                  <TextField fx:id="rgbDerivedTextfield" styleClass="reverse-result-textfield" text="rgba(&quot;255, 255, 255, 1.0&quot;)" />
+               </children>
+            </VBox>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="60.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="30.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="200.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="100.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="102.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+   </children>
 </fx:root>

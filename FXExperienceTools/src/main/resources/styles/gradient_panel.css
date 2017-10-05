@@ -1,0 +1,100 @@
+.root {
+    -fe-body-background: #31363B;
+    -fe-inner-background: #2E3134;
+    -fe-border: #616569;
+    -fe-body-text: #DCDCDC;
+    -fe-inner-text: #C2C2C3;
+
+    -fx-background-color: #2E3134;
+    -fx-focus-color: #339797;
+}
+.label {
+    -fx-text-fill: #C2C2C3;
+}
+.split-pane-main {
+    -fx-background-image: url("../images/dirtyshirt.png");
+}
+.custom-menu-button {
+    -fx-background-color: #31363B;
+    /*-fx-pref-width: 200;*/
+}
+.prop-title {
+    -fx-padding: 0;
+    -fx-border-width: -1;
+}
+.main-grid {
+    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+}
+.prop-vbox {
+    -fx-background-color: radial-gradient(center 35% 40%, radius 90%, rgba(68,68,68,0.8), rgba(68,68,68,0.05));
+}
+.split-pane-main {
+    -fx-background-color: transparent;
+}
+.split-pane-divider {
+    -fx-background-color: #1C1C1C;
+}
+.color-picker .text {
+    -fx-fill: #C2C2C3;
+}
+.color-picker {
+    -fx-color: #282828;
+    -fx-shadow-highlight-color: #323232;
+}
+
+.color-picker {
+    -fx-text-fill: #333333;
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+}
+.gradient-text-area .content {
+    -fx-background-color: #2E3134;
+}
+
+.gradient-text-area {
+    -fx-text-fill: #C2C2C3;
+}
+.gradient-text-area  {
+    -fx-background-color: rgba(22,22,22,0.4);
+}
+
+.gradient-text-area  .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.gradient-text-area  .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.gradient-text-area  .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+.gradient-object {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-size: 20px;
+    -fx-text-fill: #C2C2C3;
+    -fx-background-radius: 20;
+
+}
+
+.gradient-object {
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
+    #193a69b2 0.0%,
+    #3f2f6bb2 45.0%,
+    #1d2c43 75.0%,
+    #313ca3 98.0%,
+    #313ca3 100.0%);
+}
+
+.gradient-shape {
+    -fx-fill: linear-gradient(from 0.0% 0.0% to 100.0% 100.0%,
+    #193a69b2 0.0%,
+    #3f2f6bb2 45.0%,
+    #1d2c43 75.0%,
+    #313ca3 98.0%,
+    #313ca3 100.0%);
+}
+
+.paint-picker-container {
+    -fx-background-color: #5f5f5f;
+    -fx-padding: 0;
+}

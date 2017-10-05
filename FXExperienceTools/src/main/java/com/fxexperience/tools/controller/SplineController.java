@@ -32,20 +32,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SplineController extends BorderPane {
-    public static final int INDEX_POS = 1;
 
-    @FXML
-    private GridPane gridPane;
-    @FXML
-    private TextField codeTextField;
-    @FXML
-    private Rectangle fadeSquare;
-    @FXML
-    private Circle linearCircle;
-    @FXML
-    private Circle scaleCircle;
-    @FXML
-    private Rectangle rotateRectangle;
+    @FXML private GridPane gridPane;
+    @FXML private TextField codeTextField;
+    @FXML private Rectangle fadeSquare;
+    @FXML private Circle linearCircle;
+    @FXML private Circle scaleCircle;
+    @FXML private Rectangle rotateRectangle;
 
     private Timeline timeline;
 
@@ -57,19 +50,16 @@ public class SplineController extends BorderPane {
 
     /* Initializes the controller class. */
     private void initialize() {
-
-        final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(SplineController.class.getResource("/fxml/FXMLSplinePanel.fxml")); //NOI18N
-        loader.setController(this);
-        loader.setRoot(this);
-
         try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SplineController.class.getResource("/fxml/FXMLSplinePanel.fxml")); //NOI18N
+            loader.setController(this);
+            loader.setRoot(this);
             loader.load();
+            loadSpineEditor();
         } catch (IOException ex) {
             Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        loadSpineEditor();
     }
 
     public void loadSpineEditor() {

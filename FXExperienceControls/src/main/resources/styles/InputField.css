@@ -1,9 +1,9 @@
 #input-text-field {
-    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
 }
 
 .input-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.InputFieldSkin";
+    -fx-skin: "com.fxexperience.javafx.scene.control.skin.IntegerFieldSkin";
     -fx-background-color: -fx-shadow-highlight-color, -fx-text-box-border, -fx-control-inner-background;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
@@ -64,7 +64,7 @@
 }
 
 .webcolor-field {
-    -fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";
+    /*-fx-skin: "com.fxexperience.javafx.scene.control.skin.WebColorFieldSkin";*/
     -fx-background-color: -fx-shadow-highlight-color, -fx-text-box-border, -fx-control-inner-background;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 2;
