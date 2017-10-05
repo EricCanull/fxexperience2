@@ -155,10 +155,7 @@
 .titled-pane > .title {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 
-    -fx-background-color: derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), 40%),
-                          rgb(147, 147, 147);
+    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
 
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
@@ -177,14 +174,11 @@
 
 }
 .titled-pane .context-menu {
-    -fx-background-color: derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), 40%),
-                          rgb(147, 147, 147);
+    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
 }
 
 .titled-pane > .title > .text {
-    -fx-fill: derive(rgb(147, 147, 147), -70%)
+    -fx-fill: #CDEFF1;
 }
 
 .titled-pane > .title > .arrow-button {

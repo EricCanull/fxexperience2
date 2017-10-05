@@ -10,8 +10,8 @@ different terms and without source code for the larger work.
     -fe-body-background: #31363B;
     -fe-inner-background: #2E3134;
     -fe-border: #616569;
-    -fe-body-text: #DCDCDC;
-    -fe-inner-text: #C2C2C3;
+    -fe-body-text:  #CDEFF1;
+    -fe-inner-text:  #CDEFF1;
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 
     -fx-background-color: #84b6eb;
@@ -50,7 +50,7 @@ different terms and without source code for the larger work.
 }
 .main-menu {
     /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
     -fx-font-size: 0.875em;
@@ -63,6 +63,10 @@ different terms and without source code for the larger work.
      * is shown properly on non-mac systems.
      */
     -fx-use-system-menu-bar: true;
+}
+
+.main-menu .container .menu:openvertically .label .text {
+    -fx-fill: #CDEFF1;
 }
 
 .menu-item:focused,
@@ -82,7 +86,7 @@ different terms and without source code for the larger work.
 }
 .context-menu {
     /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
-    -fx-background-color: derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), -60%), derive(rgb(147, 147, 147), 40%), rgb(147, 147, 147);
+    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
     /*    -fx-background-insets: 0, 1, 2;*/
 
     /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
