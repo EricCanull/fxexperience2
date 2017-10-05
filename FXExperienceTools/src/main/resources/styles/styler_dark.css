@@ -3,11 +3,11 @@
     Author     : Eric Canull
 */
 .root {
-    -fe-body-background: #31363B;
+    -fe-body-background: #232629;
     -fe-inner-background: #2E3134;
     -fe-border: #616569;
-    -fe-body-text: #DCDCDC;
-    -fe-inner-text: #C2C2C3;
+    -fe-body-text: #9BBBBB;
+    -fe-inner-text: #CDEFF1;
 
     -fx-background-color: #2E3134;
     -fx-focus-color: #339797;
@@ -18,8 +18,8 @@
  ******************************************************************************/
 .popup-pane {
     -fx-background-color: -fe-body-background;
-    -fx-border-color: -fe-border;
-    -fx-focus-color:-fe-border;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
     -fx-padding: 0;
 }
 .custom-menu-button {
@@ -27,7 +27,7 @@
     -fx-background-insets: -2;
 }
 .custom-menu-button .arrow {
-    -fx-background-color: #c9c7c8;
+    -fx-background-color: #878787;
 }
 
 .custom-menu-button {
