@@ -381,8 +381,8 @@ public class ColorPickerControl extends VBox {
         if(updating) {
             return;
         }
-        System.out.print("mx = " + e.getX() + " + " + alpha_bar.getLayoutX());
-        System.out.println(e.getX() - alpha_bar.getLayoutX());
+//        System.out.print("mx = " + e.getX() + " + " + alpha_bar.getLayoutX());
+//        System.out.println(e.getX() - alpha_bar.getLayoutX());
 
 
         final double mx = e.getX() - alpha_bar.getLayoutX();
