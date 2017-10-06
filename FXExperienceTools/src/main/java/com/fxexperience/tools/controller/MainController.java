@@ -103,7 +103,6 @@ public final class MainController extends AbstractController implements Initiali
         initializeTools();
 
         initToolBarArrow();
-
     }
 
     // Creates toggle group to bind color icon effect

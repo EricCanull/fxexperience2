@@ -1,4 +1,4 @@
-package com.fxexperience.javafx.scene.control.sbcolorpicker;
+package com.fxexperience.javafx.scene.control.colorpicker;
 
 /*
  * Copyright (c) 2012, 2014, Oracle and/or its affiliates.
@@ -381,6 +381,9 @@ public class ColorPickerControl extends VBox {
         if(updating) {
             return;
         }
+        System.out.print("mx = " + e.getX() + " + " + alpha_bar.getLayoutX());
+        System.out.println(e.getX() - alpha_bar.getLayoutX());
+
 
         final double mx = e.getX() - alpha_bar.getLayoutX();
         setOnAlphaChanged(clamp(mx / 240));
@@ -485,7 +488,6 @@ public class ColorPickerControl extends VBox {
         int red = (int) (color.getRed() * 255);
         int green = (int) (color.getGreen() * 255);
         int blue = (int) (color.getBlue() * 255);
-        int opacity = (int)(alpha * 255.99);
 
         String hexa = ColorEncoder.encodeColor(color);
 

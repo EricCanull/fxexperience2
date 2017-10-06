@@ -35,7 +35,7 @@ package com.fxexperience.javafx.scene.control.paintpicker;
 
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
-import com.fxexperience.javafx.scene.control.sbcolorpicker.ColorPickerControl;
+import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerControl;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -43,8 +43,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.*;
 import javafx.stage.Window;

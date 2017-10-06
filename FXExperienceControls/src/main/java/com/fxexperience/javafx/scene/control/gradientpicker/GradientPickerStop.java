@@ -33,7 +33,7 @@ package com.fxexperience.javafx.scene.control.gradientpicker;
  */
 
 
-import com.fxexperience.javafx.scene.control.sbcolorpicker.ColorPickerControl;
+import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerControl;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
 import javafx.fxml.FXML;
@@ -51,7 +51,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;

@@ -48,7 +48,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root id="CONTENT" maxHeight="-1.0" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="304.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="CONTENT" maxHeight="-1.0" maxWidth="-Infinity" prefHeight="-1.0" prefWidth="304.0" style="" stylesheets="@../styles/ColorPicker.css" type="javafx.scene.layout.VBox" visible="true" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <GridPane gridLinesVisible="false" hgap="1.0" vgap="2.0" VBox.vgrow="NEVER">
       <children>
@@ -110,10 +110,10 @@
           </HBox>
             <HBox maxWidth="-Infinity" prefWidth="258.0" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                <children>
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="258.0" style="-fx-background-color: white;" HBox.hgrow="NEVER">
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="260.0" style="-fx-background-color: white;" HBox.hgrow="NEVER">
                      <children>
-                  <Region fx:id="alpha_region" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="254.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Region fx:id="alpha_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onAlphaPickerDragged" onMouseReleased="#onAlphaPickerClicked" prefHeight="20.0" prefWidth="258.0" style="-fx-border-color: #606060;;" styleClass="opacity-slider-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Region fx:id="alpha_region" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="260.0" style="" styleClass="alpha-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Region fx:id="alpha_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onAlphaPickerDragged" onMouseReleased="#onAlphaPickerClicked" prefHeight="20.0" prefWidth="260.0" style="-fx-border-color: #606060;;" styleClass="opacity-slider-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <StackPane fx:id="alpha_handle_stackpane" layoutX="232.0" prefHeight="20.0">
                            <children>
                               <Circle fill="TRANSPARENT" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
@@ -132,8 +132,8 @@
                         <Region fx:id="hue_bar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#onHuePickerDragged" onMousePressed="#onHuePickerClicked" prefHeight="28.0" prefWidth="304.0" style="-fx-border-color: #606060;;" styleClass="hue-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
                         <StackPane fx:id="hue_handle_stackpane" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7373730d" height="31.0" stroke="#b9b9b9" strokeType="INSIDE" width="10.0" StackPane.alignment="CENTER" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="29.0" layoutX="10.0" layoutY="10.0" stroke="#bcbcbc" strokeType="INSIDE" strokeWidth="2.0" width="8.0" />
+                              <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#61616100" height="31.0" stroke="#b8b8b88b" strokeType="INSIDE" width="8.0" StackPane.alignment="CENTER" />
+                              <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#f8f8f800" height="29.0" layoutX="10.0" layoutY="10.0" stroke="#b2b2b2" strokeType="INSIDE" width="10.0" />
                            </children>
                         </StackPane>
                      </children>

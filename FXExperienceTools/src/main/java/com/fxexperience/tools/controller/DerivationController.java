@@ -64,6 +64,7 @@ public class DerivationController extends AnchorPane {
             loader.load();
 
             initialize();
+            updateForwardDerivation();
             updateReverseDerivation();
 
         } catch (IOException ex) {
@@ -98,7 +99,7 @@ public class DerivationController extends AnchorPane {
 
         Color forwardColorResult = ColorEncoder.deriveColor((Color) basePicker.getPaint(), brightness);
 
-         forwardRegion.setStyle("-fx-border-color: black; "
+        forwardRegion.setStyle("-fx-border-color: black; "
                  + "-fx-background-color: "+ ColorEncoder.getWebColor(forwardColorResult) +";");
 
         forwardSliderLabel.setText(String.format("%3.1f%%", brightness));
