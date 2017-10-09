@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root dividerPositions="0.5" prefHeight="500.0" prefWidth="900.0" styleClass="split-pane-main" stylesheets="@../styles/gradient_panel.css" type="SplitPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root dividerPositions="0.5" prefHeight="500.0" prefWidth="900.0" styleClass="split-pane-main" stylesheets="@../styles/gradient_panel.css" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <AnchorPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: transparent;">
          <children>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="derivation-root" stylesheets="@../styles/derivation.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane fx:id="gridPane" hgap="5.0" prefHeight="500.0" prefWidth="1005.0" styleClass="main-grid" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

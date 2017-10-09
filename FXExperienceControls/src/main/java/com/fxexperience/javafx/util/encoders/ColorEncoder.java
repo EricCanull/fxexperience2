@@ -478,6 +478,16 @@ public class ColorEncoder implements SyntaxConstants {
         return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
     }
 
+    /**
+     * Simple utility function which clamps the given value to be strictly
+     * between the min and max values.
+     */
+    public static double clamp(double min, double value, double max) {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
+
     private static double round(double value) {
         double doubleRounded = Math.round(value * 100);
         return doubleRounded;

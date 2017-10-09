@@ -53,7 +53,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root alignment="TOP_CENTER" maxHeight="-1.0" prefHeight="-1.0" styleClass="root-gradient" stylesheets="@../styles/GradientPicker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" maxHeight="-1.0" prefHeight="-1.0" styleClass="root-gradient" stylesheets="@../styles/GradientPicker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <StackPane fx:id="slider_container" minHeight="10.0" style="" styleClass="track-background">
       <children>

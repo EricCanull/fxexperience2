@@ -37,17 +37,17 @@ import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPickerStop;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
+import com.fxexperience.javafx.scene.control.slider.SliderControl;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
@@ -69,10 +69,6 @@ public class ColorPickerControl extends VBox {
     @FXML private Region picker_region;
     @FXML private StackPane picker_handle_stackpane;
     @FXML private Circle picker_handle_chip_circle;
-    @FXML private Region hue_bar;
-    @FXML private StackPane hue_handle_stackpane;
-    @FXML private Region alpha_bar;
-    @FXML private StackPane alpha_handle_stackpane;
     @FXML private TextField hue_textfield;
     @FXML private TextField saturation_textfield;
     @FXML private TextField brightness_textfield;
@@ -81,9 +77,12 @@ public class ColorPickerControl extends VBox {
     @FXML private TextField blue_textfield;
     @FXML private TextField alpha_textfield;
     @FXML private TextField hexa_textfield;
+    @FXML private GridPane grid_pane;
+    private SliderControl hue_slider;
+    private SliderControl alpha_slider;
 
     private final PaintPickerController paintPickerController;
-    private boolean updating = false;
+
 
     public ColorPickerControl(PaintPickerController pe) {
         paintPickerController = pe;
@@ -132,7 +131,19 @@ public class ColorPickerControl extends VBox {
         assert blue_textfield != null;
         //    assert alpha_slider != null;
 
-        hue_bar.setStyle(makeHueSliderCSS()); // Make the grad for hue slider
+        hue_slider = new SliderControl(0,360, 0);
+        hue_slider.setHueSliderCSS();
+
+        alpha_slider = new SliderControl(0,1, 1);
+        alpha_slider.setAlphaSliderCSS();
+
+        GridPane.setConstraints(hue_slider, 0, 1, 7, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(alpha_slider, 0, 2, 6,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
+        grid_pane.getChildren().addAll(hue_slider, alpha_slider);
+
+        hue_slider.getValueProperty().addListener((ov, oldValue, newValue) ->  setOnHueChanged(newValue.doubleValue()));
+        alpha_slider.getValueProperty().addListener((ov, oldValue, newValue) ->  setOnAlphaChanged(newValue.doubleValue()));
 
         final ChangeListener<Boolean> liveUpdateListener = (ov, oldValue, newValue) ->
                 paintPickerController.setLiveUpdate(newValue);
@@ -168,6 +179,7 @@ public class ColorPickerControl extends VBox {
                 setPaintProperty(color);
             }
         };
+
         final ChangeListener<Boolean> onRGBFocusedChange = (ov, oldValue, newValue) -> {
             if (newValue) {
                 // Update UI
@@ -176,6 +188,7 @@ public class ColorPickerControl extends VBox {
                 setPaintProperty(color);
             }
         };
+
         final ChangeListener<Boolean> onHexaFocusedChange = (ov, oldValue, newValue) -> {
             if (newValue) {
                 try {
@@ -236,90 +249,7 @@ public class ColorPickerControl extends VBox {
         paintPickerController.setPaintProperty(paint);
     }
 
-    @FXML
-    void onActionHue(ActionEvent event) {
-        onHSBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionSaturation(ActionEvent event) {
-        onHSBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionBrightness(ActionEvent event) {
-        onHSBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionAlpha(ActionEvent event) {
-        onHSBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionRed(ActionEvent event) {
-        onRGBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionGreen(ActionEvent event) {
-        onRGBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionBlue(ActionEvent event) {
-        onRGBChange(event);
-        event.consume();
-    }
-
-    @FXML
-    void onActionHexa(ActionEvent event) {
-        onHexaChange(event);
-        event.consume();
-    }
-
-    private void onHSBChange(ActionEvent event) {
-        // Update UI
-        final Color color = updateUI_OnHSBChange();
-        final Object source = event.getSource();
-        assert source instanceof TextField;
-        ((TextField) source).selectAll();
-        // Update model
-        setPaintProperty(color);
-    }
-
-    private void onRGBChange(ActionEvent event) {
-        // Update UI
-        final Color color = updateUI_OnRGBChange();
-        final Object source = event.getSource();
-        assert source instanceof TextField;
-        ((TextField) source).selectAll();
-        // Update model
-        setPaintProperty(color);
-    }
-
-    private void onHexaChange(ActionEvent event) {
-        try {
-            // Update UI
-            final Color color = updateUI_OnHexaChange();
-            final Object source = event.getSource();
-            assert source instanceof TextField;
-            ((TextField) source).selectAll();
-            // Update model
-            setPaintProperty(color);
-        } catch (IllegalArgumentException iae) {
-            handleHexaException();
-        }
-    }
-
-    @FXML
-    void onPickerRegionPressed(MouseEvent e) {
+    @FXML void onPickerRegionPressed(MouseEvent e) {
         double mx = e.getX();
         double my = e.getY();
         // Update UI
@@ -328,47 +258,22 @@ public class ColorPickerControl extends VBox {
         setPaintProperty(color);
     }
 
-    @FXML
-    void onPickerRegionDragged(MouseEvent e) {
+    @FXML void onPickerRegionDragged(MouseEvent e) {
         double mx = e.getX();
         double my = e.getY();
         // Update UI
         final Color color = updateUI_OnPickerChange(mx, my);
         // Update model
         setPaintProperty(color);
-    }
-
-    @FXML
-    void onHuePickerClicked(MouseEvent e) {
-        if(updating) {
-            return;
-        }
-        updating = true;
-        final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnHueChanged(clamp(mx / 304) * 360);
-    }
-
-    @FXML
-    void onHuePickerDragged(MouseEvent e) {
-        if(updating) {
-            return;
-        }
-
-        final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnHueChanged(clamp(mx / 300) * 360);
-
     }
 
     private void setOnHueChanged(double value) {
-        updating = true;
         double hue = value;
         // retrieve HSB TextFields values
         double saturation = Double.valueOf(saturation_textfield.getText()) / 100.0;
         double brightness = Double.valueOf(brightness_textfield.getText()) / 100.0;
         double alpha = Double.valueOf(alpha_textfield.getText());
 
-        // Update UI
-        updating = false;
         final Color color = updateUI(hue, saturation, brightness, alpha);
 
         // Update model
@@ -376,41 +281,13 @@ public class ColorPickerControl extends VBox {
 
     }
 
-    @FXML
-    void onAlphaPickerClicked(MouseEvent e) {
-        if(updating) {
-            return;
-        }
-//        System.out.print("mx = " + e.getX() + " + " + alpha_bar.getLayoutX());
-//        System.out.println(e.getX() - alpha_bar.getLayoutX());
-
-
-        final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnAlphaChanged(clamp(mx / 240));
-    }
-
-
-    @FXML
-    void onAlphaPickerDragged(MouseEvent e) {
-        if(updating) {
-            return;
-        }
-
-        final double mx = e.getX() - alpha_bar.getLayoutX();
-        setOnAlphaChanged(clamp(mx / 240));
-    }
-
     private void setOnAlphaChanged(double alpha) {
-        updating = true;
-
         // retrieve HSB TextFields values
         double hue = Double.valueOf(hue_textfield.getText());
         double saturation = Double.valueOf(saturation_textfield.getText()) / 100.0;
         double brightness = Double.valueOf(brightness_textfield.getText()) / 100.0;
 
-        // Update UI
-        updating = false;
-        final Color color = updateUI(hue, saturation, brightness, alpha);
+        final Color color = updateUI(hue, saturation, brightness, round(alpha));
 
         // Update model
         setPaintProperty(color);
@@ -461,28 +338,22 @@ public class ColorPickerControl extends VBox {
     }
 
     private Color updateUI(double hue, double saturation, double brightness, double alpha) {
-        if(updating) {
-            System.out.println("Updating");
-        }
 
-        updating = true;
-        hue_handle_stackpane.setLayoutX(clampPos((hue * 296) / 360, 0, 296));
-        alpha_handle_stackpane.setLayoutX(clampPos(alpha * 240, 0, 240));
         // Position the picker dot
         double xSat = picker_region.getWidth() * saturation; // Saturation is on x axis
         double yBri = picker_region.getHeight() * (1.0 - brightness); // Brightness is on y axis (reversed as white is top)
         double xPos = (picker_region.getBoundsInParent().getMinX() + xSat) - picker_handle_stackpane.getWidth() / 2;
         double yPos = (picker_region.getBoundsInParent().getMinY() + yBri) - picker_handle_stackpane.getHeight() / 2;
-        xPos = clampPos(xPos, 0, picker_region.getPrefWidth() - (picker_handle_stackpane.getWidth()));
-        yPos = clampPos(yPos, 0, picker_region.getPrefHeight() - (picker_handle_stackpane.getHeight()));
+        xPos = ColorEncoder.clamp(xPos, 0, picker_region.getPrefWidth() - (picker_handle_stackpane.getWidth()));
+        yPos = ColorEncoder.clamp(yPos, 0, picker_region.getPrefHeight() - (picker_handle_stackpane.getHeight()));
         picker_handle_stackpane.setLayoutX(xPos);
         picker_handle_stackpane.setLayoutY(yPos);
 
         // update the HSB values so they are within range
-        hue = PaintPickerController.clamp(0, hue, 360);
-        saturation = PaintPickerController.clamp(0, saturation, 1);
-        brightness = PaintPickerController.clamp(0, brightness, 1);
-        alpha = PaintPickerController.clamp(0, alpha, 1);
+        saturation = ColorEncoder.clamp(0, saturation, 1);
+        brightness = ColorEncoder.clamp(0, brightness, 1);
+      //  alpha = PaintPickerController.clamp(0, alpha, 1);
+
         // make an rgb color from the hsb
         final Color color = Color.hsb(hue, saturation, brightness, alpha);
         int red = (int) (color.getRed() * 255);
@@ -495,8 +366,8 @@ public class ColorPickerControl extends VBox {
         hue_textfield.setText(String.valueOf((int) hue));
         saturation_textfield.setText(String.valueOf((int) (saturation * 100)));
         brightness_textfield.setText(String.valueOf((int) (brightness * 100)));
-        double alpha_rounded = round(alpha); // 2 decimals rounding
-        alpha_textfield.setText(Double.toString(alpha_rounded));
+
+        alpha_textfield.setText(Double.toString(alpha));
         red_textfield.setText(Integer.toString(red));
         green_textfield.setText(Integer.toString(green));
         blue_textfield.setText(Integer.toString(blue));
@@ -507,7 +378,7 @@ public class ColorPickerControl extends VBox {
         picker_handle_chip_circle.setFill(Color.rgb(red, green, blue));
         final String alphaChipStyle = "-fx-background-color: " //NOI18N
                 + "linear-gradient(to right, transparent, " + hexa + ")"; //NOI18N
-        alpha_region.setStyle(alphaChipStyle);
+        alpha_slider.setAlphaChipCSS(alphaChipStyle);
 
         // Set the background color of the picker region
         // (force saturation and brightness to 100% - don't add opacity)
@@ -515,34 +386,12 @@ public class ColorPickerControl extends VBox {
                 + hue + ", 100%, 100%, 1.0);"; //NOI18N
         picker_region.setStyle(pickerRegionStyle);
 
-        updating = false;
-
         return color;
-    }
-
-    private String makeHueSliderCSS() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("-fx-background-color: linear-gradient(to right "); //NOI18N
-        for (int i = 0; i < 12; i++) { // max 12 gradient stops
-            sb.append(", hsb("); //NOI18N
-            sb.append(i * (360 / 11));
-            sb.append(", 100%, 100%)"); //NOI18N
-        }
-        sb.append(");"); //NOI18N
-        return sb.toString();
     }
 
     private double round(double value) {
         double doubleRounded = Math.round(value * 100);
         return doubleRounded / 100;
-    }
-
-    private static double clamp(double value) {
-        return value < 0 ? 0 : value > 1 ? 1 : value;
-    }
-
-    private double clampPos(double xPos, double min, double max) {
-        return xPos < min ? min : xPos > max ? max : xPos;
     }
 
     private void handleHexaException() {
@@ -575,4 +424,6 @@ public class ColorPickerControl extends VBox {
         updateUI(color);
         hexa_textfield.selectAll();
     }
+
+
 }

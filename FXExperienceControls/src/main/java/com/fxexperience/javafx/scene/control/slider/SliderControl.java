@@ -1,75 +1,36 @@
 package com.fxexperience.javafx.scene.control.slider;
 
-/*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates.
- * All rights reserved. Use is subject to license terms.
- *
- * This file is available and licensed under the following license:
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *  - Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *  - Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the distribution.
- *  - Neither the name of Oracle Corporation nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.DoublePropertyBase;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.AccessibleAttribute;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 
-
-import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
+public class SliderControl extends HBox {
 
-public class SliderControl extends GridPane {
+    @FXML private StackPane thumb;
+    @FXML private Region track_container;
+    @FXML private Region alpha_region;
 
-    @FXML
-    private Slider slider_slider;
-    @FXML
-    private Label slider_label;
-    @FXML
-    private TextField slider_textfield;
-    private final int roundingFactor = 100; // 2 decimals rounding
+    private double thumbWidth;
 
-    public SliderControl(String text, double min, double max, double initVal) {
-        initialize(text, min, max, initVal);
+    public SliderControl(double min, double max, double value) {
+        setMin(min);
+        setMax(max);
+        setValue(value);
+        initialize();
+        valueToPixels();
     }
 
-    public final Slider getSlider() {
-        return slider_slider;
-    }
-
-    /**
-     * Private
-     */
-    private void initialize(String text, double min, double max, double initVal) {
+    private void initialize() {
 
         final FXMLLoader loader = new FXMLLoader();
         loader.setLocation(SliderControl.class.getResource("/fxml/FXMLSliderControl.fxml")); //NOI18N
@@ -78,79 +39,103 @@ public class SliderControl extends GridPane {
         try {
             loader.load();
         } catch (IOException ex) {
-            Logger.getLogger(GradientPicker.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SliderControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        assert slider_label != null;
-        assert slider_slider != null;
-        assert slider_textfield != null;
-
-        slider_label.setText(text);
-        slider_slider.setMin(min);
-        slider_slider.setMax(max);
-        slider_slider.setValue(initVal);
-        slider_textfield.setText(Double.toString(initVal));
-
-        slider_slider.valueProperty().addListener((ov, oldValue, newValue) -> {
-            double rounded = round(newValue.doubleValue(), roundingFactor);
-            slider_textfield.setText(Double.toString(rounded));
+        // when we detect a width change, we know node layout is resolved so we position stop in track
+        thumb.widthProperty().addListener((ov, oldValue, newValue) -> {
+            if (newValue.doubleValue() > 0) {
+             thumbWidth = newValue.doubleValue();
+            }
         });
     }
 
-    @FXML
-    void sliderAction(ActionEvent event) {
-        double value = Double.valueOf(slider_textfield.getText());
-        double rounded = round(value, roundingFactor);
-        slider_slider.setValue(rounded);
-        if (rounded > slider_slider.getMax()) {
-            rounded = slider_slider.getMax();
-            slider_textfield.setText(Double.toString(rounded));
-        }
-        if (rounded < slider_slider.getMin()) {
-            rounded = slider_slider.getMin();
-            slider_textfield.setText(Double.toString(rounded));
-        }
-        slider_textfield.selectAll();
-        event.consume();
+    public void setAlphaSliderCSS() { track_container.setId("Alpha-Region"); }
+
+    public void setAlphaChipCSS(String css) {
+        track_container.setStyle(css);
     }
 
-    @FXML
-    void sliderKeyPressed(KeyEvent e) {
-        switch (e.getCode()) {
-            case UP:
-                incOrDecFieldValue(e, 0.1);
-                break;
-            case DOWN:
-                incOrDecFieldValue(e, -0.1);
-                break;
-            default:
-                break;
+    public void setHueSliderCSS() { track_container.setStyle(makeHueSliderCSS()); }
+
+    /**
+     * The maximum value represented by this Slider.
+     */
+    private Double max;
+
+    public final void setMax(double value) { max = value;  }
+
+    public final double getMax() {
+        return max == null ? 100 : max;
+    }
+
+
+    /**
+     * The minimum value represented by this Slider.
+     */
+    private Double min;
+
+    public final void setMin(double value) { min = value; }
+
+    public final double getMin() {
+        return min == null ? 0 : min;
+    }
+
+
+    private SimpleDoubleProperty valueProperty;
+
+    public final void setValue(double value) {
+        if (valueProperty == null) {
+            valueProperty = new SimpleDoubleProperty(0);
         }
+        valueProperty.setValue(value);
     }
 
-    private void incOrDecFieldValue(KeyEvent e, double x) {
-
-        if (!(e.getSource() instanceof TextField)) {
-            return; // check it's a textField
-        }        // increment or decrement the value
-        final TextField tf = (TextField) e.getSource();
-        final Double newValue = Double.valueOf(tf.getText()) + x;
-        double rounded = round(newValue, roundingFactor);
-        slider_slider.setValue(rounded);
-        tf.setText(Double.toString(newValue));
-        // Avoid using runLater
-        // This should be done somewhere else (need to investigate)
-//        Platform.runLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                // position caret after new value for easy editing
-//                tf.positionCaret(tf.getText().length());
-//            }
-//        });
+    public final double getValue() {
+        return valueProperty.getValue() == null ? 0 : valueProperty.get();
     }
 
-    private double round(double value, int roundingFactor) {
-        double doubleRounded = Math.round(value * roundingFactor);
-        return doubleRounded / roundingFactor;
+    public DoubleProperty getValueProperty() { return valueProperty; }
+
+    @FXML void onTrackDragged(MouseEvent event) { moveThumb(event); }
+
+    @FXML void onTrackPressed(MouseEvent event) { moveThumb(event); }
+
+    @FXML void onThumbDragged(MouseEvent event) { moveThumb(event); }
+
+    @FXML void onThumbPressed(MouseEvent event) { moveThumb(event); }
+
+    public void moveThumb(MouseEvent event) {
+        double deltaX = event.getSceneX() - thumbWidth * 2;
+        double trackWidth = track_container.getWidth() - thumbWidth;
+        final Double newX = ColorEncoder.clamp(0, deltaX, trackWidth);
+        thumb.setLayoutX(newX);
+        pixelsToValue();
+    }
+
+    private String makeHueSliderCSS() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("-fx-background-color: linear-gradient(to right "); //NOI18N
+        for (int i = 0; i < 12; i++) { // max 12 gradient stops
+            sb.append(", hsb("); //NOI18N
+            sb.append(i * (360 / 11));
+            sb.append(", 100%, 100%)"); //NOI18N
+        }
+        sb.append(");"); //NOI18N
+        return sb.toString();
+    }
+
+    private void valueToPixels() {
+        double stopValue = ColorEncoder.clamp(getMin(), getValue(), getMax());
+        double availablePixels = track_container.getPrefWidth();
+        double range = getMax() - getMin();
+        double pixelPosition = ((availablePixels / range) * stopValue);
+        thumb.setLayoutX(pixelPosition);
+    }
+
+    private void pixelsToValue() {
+        double range = getMax() - getMin();
+        double availablePixels = track_container.getWidth() - thumbWidth;
+        setValue(getMin() + (thumb.getLayoutX() * (range / availablePixels)));
     }
 }

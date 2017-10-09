@@ -34,7 +34,7 @@ package com.fxexperience.javafx.scene.control.gradientpicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController;
 import com.fxexperience.javafx.scene.control.rotator.RotatorControl;
-import com.fxexperience.javafx.scene.control.slider.SliderControl;
+import com.fxexperience.javafx.scene.control.slider.GradientSlider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -85,10 +85,10 @@ public class GradientPicker extends VBox {
 
     private final RotatorControl focusAngleRotator
             = new RotatorControl("Degree"); //NOI18N
-    private final SliderControl focusDistanceSlider
-            = new SliderControl("Distance", -1.0, 1.0, 0.0); //NOI18N
-    private final SliderControl radiusSlider
-            = new SliderControl("Radius", 0.0, 1.0, 0.5); //NOI18N
+    private final GradientSlider focusDistanceSlider
+            = new GradientSlider("Distance", -1.0, 1.0, 0.0); //NOI18N
+    private final GradientSlider radiusSlider
+            = new GradientSlider("Radius", 0.0, 1.0, 0.5); //NOI18N
     private final List<GradientPickerStop> gradientPickerStops = new ArrayList<>();
 
     public GradientPicker(PaintPickerController pe) {
@@ -275,6 +275,7 @@ public class GradientPicker extends VBox {
             // Update model
             paintPicker.setPaintProperty(value);
         };
+
         startX_slider.valueProperty().addListener(onValueChange);
         startY_slider.valueProperty().addListener(onValueChange);
         endX_slider.valueProperty().addListener(onValueChange);

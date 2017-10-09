@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootBorderPane" minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="600.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
