@@ -90,7 +90,7 @@
                 <Insets left="15.0" right="15.0" />
               </StackPane.margin>
             </Slider>
-            <Slider fx:id="startX_slider" max="1.0" showTickLabels="false" visible="true">
+            <Slider fx:id="startX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" visible="true">
               <contextMenu>
                 <ContextMenu>
                   <items>
@@ -113,11 +113,11 @@
         <StackPane GridPane.columnIndex="0" GridPane.rowIndex="1">
           <children>
             <Slider fx:id="centerY_slider" max="1.0" orientation="VERTICAL" rotate="180.0" value="0.5" visible="false" />
-            <Slider fx:id="startY_slider" max="1.0" orientation="VERTICAL" rotate="180.0" />
+            <Slider fx:id="startY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" />
           </children>
         </StackPane>
-        <Slider fx:id="endY_slider" max="1.0" orientation="VERTICAL" rotate="180.0" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Slider fx:id="endX_slider" max="1.0" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Slider fx:id="endY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Slider fx:id="endX_slider" max="1.0" onMouseDragged="#onSliderDragged" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" minWidth="-1.0" prefWidth="-1.0" />

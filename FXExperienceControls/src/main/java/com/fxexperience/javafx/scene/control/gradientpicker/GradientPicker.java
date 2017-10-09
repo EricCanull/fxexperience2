@@ -276,13 +276,13 @@ public class GradientPicker extends VBox {
             paintPicker.setPaintProperty(value);
         };
 
-        startX_slider.valueProperty().addListener(onValueChange);
-        startY_slider.valueProperty().addListener(onValueChange);
-        endX_slider.valueProperty().addListener(onValueChange);
-        endY_slider.valueProperty().addListener(onValueChange);
+//        startX_slider.valueProperty().addListener(onValueChange);
+//        startY_slider.valueProperty().addListener(onValueChange);
+//        endX_slider.valueProperty().addListener(onValueChange);
+//        endY_slider.valueProperty().addListener(onValueChange);
 
-        centerX_slider.valueProperty().addListener(onValueChange);
-        centerY_slider.valueProperty().addListener(onValueChange);
+//        centerX_slider.valueProperty().addListener(onValueChange);
+//        centerY_slider.valueProperty().addListener(onValueChange);
         focusAngleRotator.rotationProperty().addListener(onValueChange);
         focusDistanceSlider.getSlider().valueProperty().addListener(onValueChange);
         radiusSlider.getSlider().valueProperty().addListener(onValueChange);
@@ -303,7 +303,7 @@ public class GradientPicker extends VBox {
         focusAngleRotator.pressedProperty().addListener(liveUpdateListener);
         slider_container.pressedProperty().addListener(liveUpdateListener);
     }
-    
+
     @FXML
     void sliderPressed(MouseEvent event) {
         double percentH = ((100.0 / track_pane.getWidth()) * event.getX()) / 100;
