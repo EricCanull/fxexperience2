@@ -9,7 +9,7 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.javafx.scene.control.paintpicker.DoubleTextField;
+import com.fxexperience.javafx.control.textfields.DoubleTextField;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.tools.util.Gradient;

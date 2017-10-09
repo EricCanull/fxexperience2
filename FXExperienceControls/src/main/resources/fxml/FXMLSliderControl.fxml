@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root style="-fx-background-color: #111;" stylesheets="@../styles/slider_controller.css" type="HBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root stylesheets="@../styles/slider_controller.css" type="HBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane HBox.hgrow="ALWAYS">
          <children>
@@ -13,8 +13,8 @@
             <Region fx:id="track_container" onMouseDragged="#onTrackDragged" onMousePressed="#onTrackPressed" prefWidth="244.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <StackPane fx:id="thumb" maxWidth="-Infinity" onMouseDragged="#onThumbDragged" onMousePressed="#onThumbPressed" prefHeight="30.0" prefWidth="20.0">
                <children>
-                  <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #FDEAEA; -fx-border-radius: 6; -fx-border-insets: 0; -fx-border-width: 3;" />
-                  <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #585858; -fx-border-radius: 6; -fx-border-insets: 0; -fx-border-width: 2;" />
+                  <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #323232; -fx-border-radius: 2; -fx-border-insets: 1.5; -fx-border-width: 3;" />
+                  <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #9bbbbb; -fx-border-radius: 2; -fx-border-insets: .5; -fx-border-width: 1;" />
                </children>
             </StackPane>
          </children>
