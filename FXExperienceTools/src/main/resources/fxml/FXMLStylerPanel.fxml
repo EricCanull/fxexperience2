@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.fxexperience.javafx.control.textfields.DoubleTextField?>
+<?import com.fxexperience.javafx.scene.control.textfields.DoubleTextField?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>

@@ -1,4 +1,4 @@
-package com.fxexperience.javafx.control.textfields;
+package com.fxexperience.javafx.scene.control.textfields;
 
 import javafx.beans.property.*;
 import javafx.event.ActionEvent;

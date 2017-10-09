@@ -1,7 +1,7 @@
 package com.fxexperience.javafx.scene.control.colorpicker;
 
-import com.fxexperience.javafx.control.textfields.IntegerField;
-import com.fxexperience.javafx.control.textfields.WebColorField;
+import com.fxexperience.javafx.scene.control.textfields.IntegerField;
+import com.fxexperience.javafx.scene.control.textfields.WebColorField;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.binding.StringBinding;
