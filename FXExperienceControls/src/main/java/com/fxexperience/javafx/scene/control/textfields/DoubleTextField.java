@@ -81,7 +81,7 @@ public class DoubleTextField extends TextField {
         super.paste();
     }
 
-    private String getNewText(int start, int end, String text) {
+    protected String getNewText(int start, int end, String text) {
         String oldText = getText();
         String toReplace = oldText.substring(start, end);
         String newText;

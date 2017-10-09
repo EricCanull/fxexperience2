@@ -180,55 +180,53 @@ public class StylerController extends SplitPane {
     private void addListeners() {
         // create listener to call update css
 
-        AtomicReference<ChangeListener<Object>> updateCssListener =
-                new AtomicReference<>((ObservableValue<?> arg0, Object arg1, Object arg2) ->
-                        updateCSS());
+        ChangeListener<Object> updateCssListener = ((ov, oldValue, newValue) -> updateCSS());
 
         // add listeners to call update css
-        fontChoiceBox.valueProperty().addListener(updateCssListener.get());
-        fontSizeSlider.valueProperty().addListener(updateCssListener.get());
-        paddingSlider.valueProperty().addListener(updateCssListener.get());
-        borderRadiusSlider.valueProperty().addListener(updateCssListener.get());
-        borderWidthSlider.valueProperty().addListener(updateCssListener.get());
+        fontChoiceBox.valueProperty().addListener(updateCssListener);
+        fontSizeSlider.valueProperty().addListener(updateCssListener);
+        paddingSlider.valueProperty().addListener(updateCssListener);
+        borderRadiusSlider.valueProperty().addListener(updateCssListener);
+        borderWidthSlider.valueProperty().addListener(updateCssListener);
 
         basePicker.getRectangle().fillProperty().addListener(onPaintChanged);
         backgroundColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         focusColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         textColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        baseTextToggle.selectedProperty().addListener(updateCssListener.get());
+        baseTextToggle.selectedProperty().addListener(updateCssListener);
         textColorPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
         fieldBackgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         fieldTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        fieldTextToggle.selectedProperty().addListener(updateCssListener.get());
+        fieldTextToggle.selectedProperty().addListener(updateCssListener);
         fieldTextColorPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
         bkgdTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        backgroundTextToggle.selectedProperty().addListener(updateCssListener.get());
+        backgroundTextToggle.selectedProperty().addListener(updateCssListener);
         bkgdTextColorPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
 
 
-        topHighlightSlider.valueProperty().addListener(updateCssListener.get());
-        bottomHighlightSlider.valueProperty().addListener(updateCssListener.get());
-        bodyTopSlider.valueProperty().addListener(updateCssListener.get());
-        bodyTopMiddleSlider.valueProperty().addListener(updateCssListener.get());
-        bodyBottomMiddleSlider.valueProperty().addListener(updateCssListener.get());
-        bodyBottomSlider.valueProperty().addListener(updateCssListener.get());
-        borderSlider.valueProperty().addListener(updateCssListener.get());
-        shadowSlider.valueProperty().addListener(updateCssListener.get());
-        inputBorderSlider.valueProperty().addListener(updateCssListener.get());
+        topHighlightSlider.valueProperty().addListener(updateCssListener);
+        bottomHighlightSlider.valueProperty().addListener(updateCssListener);
+        bodyTopSlider.valueProperty().addListener(updateCssListener);
+        bodyTopMiddleSlider.valueProperty().addListener(updateCssListener);
+        bodyBottomMiddleSlider.valueProperty().addListener(updateCssListener);
+        bodyBottomSlider.valueProperty().addListener(updateCssListener);
+        borderSlider.valueProperty().addListener(updateCssListener);
+        shadowSlider.valueProperty().addListener(updateCssListener);
+        inputBorderSlider.valueProperty().addListener(updateCssListener);
 
         // Advanced toggle buttons
-        topMiddleToggle.selectedProperty().addListener(updateCssListener.get());
-        bottomMiddleToggle.selectedProperty().addListener(updateCssListener.get());
-        borderToggle.selectedProperty().addListener(updateCssListener.get());
-        shadowToggle.selectedProperty().addListener(updateCssListener.get());
-        inputBorderToggle.selectedProperty().addListener(updateCssListener.get());
+        topMiddleToggle.selectedProperty().addListener(updateCssListener);
+        bottomMiddleToggle.selectedProperty().addListener(updateCssListener);
+        borderToggle.selectedProperty().addListener(updateCssListener);
+        shadowToggle.selectedProperty().addListener(updateCssListener);
+        inputBorderToggle.selectedProperty().addListener(updateCssListener);
     }
 
     /**
      * Bind Slider values to the text fields
      */
     private void addTextFieldBinding(Slider slider, DoubleTextField field) {
-        field.textProperty().bind(Bindings.format("%.2f", slider.valueProperty()));
+        field.textProperty().bind(Bindings.format("%2.0f", slider.valueProperty()));
     }
 
     private void updateCSS() {

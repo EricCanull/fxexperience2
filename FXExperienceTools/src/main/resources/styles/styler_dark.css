@@ -222,11 +222,6 @@
     -fx-background-color: -fe-inner-background;
 }
 
-.double-field {
-    -fx-text-fill: -fe-inner-text;
-    -fx-font-size: 0.833335em;
-}
-
 .floating:top .tab-content-area {
     -fx-padding: 0;
     -fx-border-insets: 3, 3;
@@ -237,12 +232,14 @@
     -fx-background-radius: 3, 3;
 }
 
-.double-field {
+.double-field  {
     -fx-background-color: -fe-inner-background;
-    -fx-border-color: #65d2c6;
+    -fx-border-color: -fe-border;
+    -fx-font-size: 0.875em;
     -fx-background-insets: -0.2, 1, 2;
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
+    -fx-text-fill: #CDEFF1;
     -fx-prompt-text-fill: -fe-inner-text;
     -fx-cursor: text;
 }
@@ -259,22 +256,12 @@
     -fx-opacity: -fx-disabled-opacity;
 }
 
-.double-field {
-    -fx-background-color: -fe-inner-background;
-    -fx-border-color: -fe-border;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-    -fx-prompt-text-fill: -fe-inner-text;
-    -fx-cursor: text;
-}
-
-.integer-field:focused {
-    -fx-background-color: -fe-inner-background;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
-}
+/*.integer-field:focused {*/
+    /*-fx-background-color: -fe-inner-background;*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+/*}*/
 
 .properties-combo-box {
     -fx-background-color: -fe-inner-background;
