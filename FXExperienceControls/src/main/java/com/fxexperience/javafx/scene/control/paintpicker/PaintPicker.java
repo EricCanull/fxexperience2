@@ -79,8 +79,6 @@ public class PaintPicker {
         }
     }
 
-
-
     public final void setPaintProperty(Paint value) {
         // Update model
         controller.setPaintProperty(value);

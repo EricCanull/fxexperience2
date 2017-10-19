@@ -1,0 +1,49 @@
+#GridPane {
+    -fx-background-color: #31363B;
+}
+
+.label-paint {
+    -fx-text-fill: #C2C2C3;
+}
+
+.double-textfield {
+    -fx-background-color: #31363B;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-border-color: #616569;
+    -fx-padding: 3 5 3 5;
+    -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: #606060;
+    -fx-cursor: text;
+}
+
+.double-textfield:focused {
+    -fx-background-color: #31363B;
+}
+
+.double-textfield:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.slider-prop .track{
+    -fx-background-color: #2E3134;
+    -fx-border-color: #616569;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slider-prop .thumb {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.slider-prop .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+.slider-prop .axis:bottom {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: -fe-body-text;
+    -fx-font-size: .63333em;
+}

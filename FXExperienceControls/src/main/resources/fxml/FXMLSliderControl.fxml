@@ -10,8 +10,8 @@
       <AnchorPane HBox.hgrow="ALWAYS">
          <children>
             <Region fx:id="alpha_region" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Region fx:id="track_container" onMouseDragged="#onTrackDragged" onMousePressed="#onTrackPressed" prefWidth="244.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <StackPane fx:id="thumb" maxWidth="-Infinity" onMouseDragged="#onThumbDragged" onMousePressed="#onThumbPressed" prefHeight="30.0" prefWidth="20.0">
+            <Region fx:id="track_container" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefWidth="244.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <StackPane fx:id="thumb" maxWidth="-Infinity" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="30.0" prefWidth="20.0">
                <children>
                   <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #323232; -fx-border-radius: 2; -fx-border-insets: 1.5; -fx-border-width: 3;" />
                   <Region maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="18.0" prefWidth="18.0" style="-fx-background-color: transparent; -fx-border-color: #9bbbbb; -fx-border-radius: 2; -fx-border-insets: .5; -fx-border-width: 1;" />

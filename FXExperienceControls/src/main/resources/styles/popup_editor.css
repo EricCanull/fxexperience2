@@ -41,6 +41,7 @@
     -fx-fill: #C2C2C9;
     -fx-box-border: #606060;
 }
+
 .editor-host {
     -fx-background-color: #31363B;
 }
@@ -58,14 +59,15 @@
     -fx-background-color:  #31363B;
 
 }
+
 .main-menu {
-    /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
-    -fx-background-color:#31363B, #31363B, #31363B, #31363B;
+    /* -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
+    -fx-background-color: #31363B;
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
     -fx-padding: 0.385em 0.692em 0.231em 0.692em;
     -fx-font-size: 0.875em;
     -fx-alignment: center-left;
-    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+    /*-fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );*/
 
 
     /* Nothing more needed for Mac OS X than the following property!
@@ -74,23 +76,22 @@
      */
     -fx-use-system-menu-bar: true;
 }
+
 .menu-item,
 .menu-item:focused,
 .menu-item:hover{
     -fx-background-color: #31363B;
     /*       -fx-background-insets: 1, 1, 1;*/
 }
+
 .main-menu .container .menu:openvertically .label .text {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 }
-.context-menu {
-    /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
-    -fx-background-color: #31363B, #31363B,#31363B, #31363B;
-    /*    -fx-background-insets: 0, 1, 2;*/
 
-    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
-    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+.context-menu {
+    -fx-background-color: #31363B;
 }
+
 /*******************************************************************************
  *                                                                             *
  * PopupMenu                                                                   *
@@ -101,14 +102,17 @@
     -fx-background-insets: 0, 1;
     -fx-padding: 0.333333em 0.083333em 0.333333em 0.083333em; /* 4 1 8 1 */
 }
+
 .context-menu .separator:horizontal .line {
     -fx-border-color: #31363B transparent transparent transparent;
     -fx-border-insets: 1 0 0 0;
 }
+
 .context-menu > .scroll-arrow {
     -fx-padding: 0.416667em 0.416667em 0.416667em 0.416667em; /* 5 */
     -fx-background-color: transparent;
 }
+
 .context-menu > .scroll-arrow:hover {
     -fx-background: #31363B;
     -fx-background-color: #31363B;

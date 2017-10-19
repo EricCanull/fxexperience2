@@ -36,11 +36,13 @@
 #StackPane {
     -fx-background-color: white;
 }
+
 .small-label {
     -fx-text-fill: #C2C2C3;
     -fx-font-size: 0.750em;
     -fx-padding: 0;
 }
+
 .chip-background {
     -fx-border-color: #606060;
     -fx-border-insets: 0;
@@ -86,6 +88,7 @@
     -fx-background-radius: 3.4, 2, 2;
 
 }
+
 /* opacity slider background is applied to a region behind the slider itself */
 .opacity-slider-background {
     -fx-background-insets: -0.4, 1, 2;

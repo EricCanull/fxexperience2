@@ -38,7 +38,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root_vbox" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="316.0" spacing="2.0" styleClass="paint-picker-container" stylesheets="@../styles/paintpicker.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
+<VBox fx:id="root_vbox" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="316.0" spacing="2.0" styleClass="paint-picker-container" stylesheets="@../styles/paint_picker.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxexperience.javafx.scene.control.paintpicker.PaintPickerController">
   <children>
     <HBox alignment="TOP_CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
       <children>

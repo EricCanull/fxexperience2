@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root id="GridPane" hgap="4.0" stylesheets="@../styles/RotatorControl.css" type="javafx.scene.layout.GridPane" vgap="0.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="GridPane" hgap="4.0" stylesheets="@../styles/rotator_control.css" type="javafx.scene.layout.GridPane" vgap="0.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <Label fx:id="rotator_label" styleClass="rotation-label" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <DoubleTextField fx:id="rotator_textfield" onAction="#rotatorAction" prefColumnCount="4" prefWidth="-1.0" styleClass="LF3-textfield1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0" />

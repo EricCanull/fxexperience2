@@ -276,13 +276,13 @@ public class GradientPicker extends VBox {
             paintPicker.setPaintProperty(value);
         };
 
-//        startX_slider.valueProperty().addListener(onValueChange);
-//        startY_slider.valueProperty().addListener(onValueChange);
-//        endX_slider.valueProperty().addListener(onValueChange);
-//        endY_slider.valueProperty().addListener(onValueChange);
-//
-//        centerX_slider.valueProperty().addListener(onValueChange);
-//        centerY_slider.valueProperty().addListener(onValueChange);
+        startX_slider.valueProperty().addListener(onValueChange);
+        startY_slider.valueProperty().addListener(onValueChange);
+        endX_slider.valueProperty().addListener(onValueChange);
+        endY_slider.valueProperty().addListener(onValueChange);
+
+        centerX_slider.valueProperty().addListener(onValueChange);
+        centerY_slider.valueProperty().addListener(onValueChange);
         focusAngleRotator.rotationProperty().addListener(onValueChange);
         focusDistanceSlider.getSlider().valueProperty().addListener(onValueChange);
         radiusSlider.getSlider().valueProperty().addListener(onValueChange);
@@ -292,27 +292,36 @@ public class GradientPicker extends VBox {
         radial_container.setManaged(false);
 
         final ChangeListener<Boolean> liveUpdateListener = (ov, oldValue, newValue) -> paintPicker.setLiveUpdate(newValue);
-//        startX_slider.pressedProperty().addListener(liveUpdateListener);
-//        startY_slider.pressedProperty().addListener(liveUpdateListener);
-//        endX_slider.pressedProperty().addListener(liveUpdateListener);
-//        endY_slider.pressedProperty().addListener(liveUpdateListener);
-//        centerX_slider.pressedProperty().addListener(liveUpdateListener);
-//        centerY_slider.pressedProperty().addListener(liveUpdateListener);
+        startX_slider.pressedProperty().addListener(liveUpdateListener);
+        startY_slider.pressedProperty().addListener(liveUpdateListener);
+        endX_slider.pressedProperty().addListener(liveUpdateListener);
+        endY_slider.pressedProperty().addListener(liveUpdateListener);
+        centerX_slider.pressedProperty().addListener(liveUpdateListener);
+        centerY_slider.pressedProperty().addListener(liveUpdateListener);
         radiusSlider.pressedProperty().addListener(liveUpdateListener);
         focusDistanceSlider.pressedProperty().addListener(liveUpdateListener);
         focusAngleRotator.pressedProperty().addListener(liveUpdateListener);
         slider_container.pressedProperty().addListener(liveUpdateListener);
     }
+    @FXML
+    void sliderPressed(MouseEvent event) {
+        updateAngle();
+        event.consume();
+    }
 
     @FXML
-    void sliderDragged(MouseEvent event) {
+    void onSliderDragged(MouseEvent event) {
+        updateAngle();
+        event.consume();
+    }
+
+    void updateAngle() {
         final Mode mode = paintPicker.getMode();
         final Paint value = getValue(mode);
         // Update UI
         preview_rect.setFill(value);
         // Update model
         paintPicker.setPaintProperty(value);
-        event.consume();
     }
 
     GradientPickerStop addStop(double min, double max, double value, Color color) {

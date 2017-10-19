@@ -37,7 +37,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root alignment="BOTTOM_LEFT" cache="true" cacheShape="false" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="139.0" styleClass="custom-menu-button" stylesheets="@../styles/PopupEditor.css" text="value" type="MenuButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="BOTTOM_LEFT" cache="true" cacheShape="false" minWidth="-Infinity" mnemonicParsing="false" popupSide="RIGHT" prefHeight="-1.0" prefWidth="139.0" styleClass="custom-menu-button" stylesheets="@../styles/popup_editor.css" text="value" type="MenuButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
 <items>
   <CustomMenuItem hideOnClick="false" mnemonicParsing="false" styleClass="picker-content" text="Unspecified Action">
          <content>

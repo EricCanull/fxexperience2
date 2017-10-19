@@ -362,15 +362,12 @@ public final class MainController extends AbstractController implements Initiali
         }
     }
 
-
-    @FXML
-    private void setThemeAction() {
+    @FXML private void setThemeAction() {
         loadStyle(themeMenuItem.isSelected());
     }
 
 
-    @FXML
-    private void copyButtonAction(ActionEvent event) {
+    @FXML private void copyButtonAction(ActionEvent event) {
         if (stylerToggle.isSelected()) {
             Clipboard.getSystemClipboard().setContent(
                     Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
@@ -382,8 +379,7 @@ public final class MainController extends AbstractController implements Initiali
         }
     }
 
-    @FXML
-    private void saveButtonAction(ActionEvent event) {
+    @FXML private void saveButtonAction(ActionEvent event) {
         if (stylerToggle.isSelected()) {
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
@@ -399,8 +395,7 @@ public final class MainController extends AbstractController implements Initiali
         }
     }
 
-    @FXML
-    private void closeButtonAction(ActionEvent event) {
+    @FXML private void closeButtonAction(ActionEvent event) {
         Platform.exit();
         System.exit(0);
     }

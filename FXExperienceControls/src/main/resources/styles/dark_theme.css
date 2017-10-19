@@ -10,12 +10,12 @@
 }
 
 #animateTest {
-    -fx-background-color: 
+    -fx-background-color:
         #083156,
         #657c87,
         #46626f,
-        #123, 
-        linear-gradient(#234,#345,#234), 
+        #123,
+        linear-gradient(#234,#345,#234),
         linear-gradient(from 30% -10% to 70% 110%, rgba(100,155,155,0), rgba(100,155,155,.1) 50%, rgba(0,0,0,0) 50%);
     -fx-background-radius: 6,5,5,4,4,6;
     -fx-background-insets: 0, 1,2 1 1 1,2,2, 0;
@@ -26,67 +26,85 @@
     -fx-font-weight: bold;
     -fx-effect: dropshadow( three-pass-box , rgba(0,155,255,.3) , 7 , 0.4 , 0 , 0 );
 }
+
 .button, .toggle-button, .choice-box {
     -fx-background-radius: 5, 5, 4, 3;
     -fx-padding: 6px 15x 6px 15px;
 }
+
 .menu-button {
     -fx-background-radius: 5, 5, 4, 3;
 }
+
 .menu-button .label {
     -fx-padding: 3px 18px 3px 10px;
 }
+
 .menu-button .arrow-button {
     -fx-padding: 3px 6px 3px 0px;
 }
+
 .choice-box {
     -fx-padding: 0 6px 0 0;
 }
+
 .choice-box .label {
     -fx-padding: 3px 4px 3px 6px;
 }
+
 .choice-box .open-button {
     -fx-padding: 1 0 0 8px;
 }
+
 .combo-box-base:editable .text-field, .combo-box-base .arrow-button, .combo-box .list-cell {
     -fx-padding: 3px 6px 3px 6px;
 }
+
 .check-box .box {
     -fx-padding: 0.25em;
 }
+
 .radio-button .radio {
     -fx-padding: 0.333333em;
 }
+
 .label, .check-box, .radio-button {
     -fx-text-fill: -fx-text-background-color;
 }
+
 .button, .toggle-button, .check-box .box, .radio-button .radio, .choice-box, .menu-button, .tab, .combo-box-base {
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
 }
+
 .button:focused, .toggle-button:focused, .check-box:focused .box, .radio-button:focused .radio, .choice-box:focused, .menu-button:focused, .combo-box-base:focused {
     -fx-background-insets: -1.4, 0, 1, 2;
 }
+
 .combo-box-base .arrow-button {
     -fx-background-insets: 0, 1, 2;
 }
+
 .choice-box .label { /* Workaround for RT-20015 */
     -fx-text-fill: -fx-text-base-color;
 }
+
 .menu-button .label { /* Workaround for RT-20015 */
     -fx-text-fill: -fx-text-base-color;
 }
 
 #animateTestArea {
-     -fx-background-color: radial-gradient(center 35% 40%, radius 70%, rgba(255,255,255,0.3), rgba(255,255,255,0.05)); 
+     -fx-background-color: radial-gradient(center 35% 40%, radius 70%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
 }
 
 #Background {
     -fx-background-insets: 0, 0 1 0 1;
 }
+
 .scroll-bar:focused {
     -fx-background-color: derive(-fx-box-border,30%), linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));
     -fx-background-insets: 0, 1 0 1 0;
 }
+
 .scroll-bar:vertical:focused {
     -fx-background-color: derive(-fx-box-border,30%), linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));
     -fx-background-insets: 0, 0 1 0 1;
@@ -95,6 +113,7 @@
 .canned-split-pane {
     -fx-padding: -1;
 }
+
 .section-label {
     -fx-font-family: 'Francois One';
     -fx-font-weight: bold;

@@ -53,7 +53,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root alignment="TOP_CENTER" maxHeight="-1.0" prefHeight="-1.0" styleClass="root-gradient" stylesheets="@../styles/GradientPicker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" maxHeight="-1.0" prefHeight="-1.0" styleClass="root-gradient" stylesheets="@../styles/gradient_picker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <StackPane fx:id="slider_container" minHeight="10.0" style="" styleClass="track-background">
       <children>
@@ -62,7 +62,7 @@
             <Insets top="2.0" />
           </StackPane.margin>
         </Label>
-        <Pane fx:id="track_pane" onMouseDragged="#sliderDragged" onMousePressed="#sliderPressed" style="" />
+        <Pane fx:id="track_pane" onMouseDragged="#onSliderDragged" style="" />
       </children>
       <VBox.margin>
         <Insets bottom="8.0" fx:id="x2" />
@@ -85,12 +85,12 @@
         </StackPane>
         <StackPane GridPane.columnIndex="1" GridPane.rowIndex="0">
           <children>
-            <Slider fx:id="centerX_slider" max="1.0" showTickLabels="false" value="0.5" visible="false">
+            <Slider fx:id="centerX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" styleClass="gradient-slider" value="0.5" visible="false">
               <StackPane.margin>
                 <Insets left="15.0" right="15.0" />
               </StackPane.margin>
             </Slider>
-            <Slider fx:id="startX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" visible="true">
+            <Slider fx:id="startX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" styleClass="gradient-slider" visible="true">
               <contextMenu>
                 <ContextMenu>
                   <items>
@@ -112,12 +112,12 @@
         </StackPane>
         <StackPane GridPane.columnIndex="0" GridPane.rowIndex="1">
           <children>
-            <Slider fx:id="centerY_slider" max="1.0" orientation="VERTICAL" rotate="180.0" value="0.5" visible="false" />
-            <Slider fx:id="startY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" />
+            <Slider fx:id="centerY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" value="0.5" visible="false" />
+            <Slider fx:id="startY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" />
           </children>
         </StackPane>
-        <Slider fx:id="endY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Slider fx:id="endX_slider" max="1.0" onMouseDragged="#onSliderDragged" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Slider fx:id="endY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Slider fx:id="endX_slider" max="1.0" onMouseDragged="#onSliderDragged" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="ALWAYS" minWidth="-1.0" prefWidth="-1.0" />
@@ -135,9 +135,9 @@
         <GridPane id="GridPane" hgap="4.0" vgap="5.0">
           <children>
             <Label styleClass="small-label" text="proportional" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <CheckBox fx:id="proportional_checkbox" mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <CheckBox fx:id="proportional_checkbox" mnemonicParsing="false" style="-fx-background-color: #2E3134;" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label styleClass="small-label" text="cycleMethod" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="cycleMethod_choicebox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ChoiceBox fx:id="cycleMethod_choicebox" styleClass="cycle-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Item 1" />

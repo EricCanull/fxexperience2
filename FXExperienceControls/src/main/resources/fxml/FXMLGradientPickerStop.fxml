@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../styles/GradientPickerStop.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@../styles/gradient_picker_stop.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <Button fx:id="stop_button" mnemonicParsing="false" onKeyPressed="#thumbKeyPressed" onMouseDragged="#thumbMouseDragged" onMousePressed="#thumbMousePressed" onMouseReleased="#thumbMouseReleased" styleClass="gradient-stop-thumb" text="">
       <contextMenu>

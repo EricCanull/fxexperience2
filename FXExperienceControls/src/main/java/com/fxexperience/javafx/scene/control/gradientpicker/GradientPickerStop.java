@@ -63,18 +63,12 @@ import javafx.scene.paint.Paint;
  */
 public class GradientPickerStop extends VBox {
 
-    @FXML
-    private Rectangle chip_rect;
-    @FXML
-    private ImageView indicator_image;
-    @FXML
-    private TextField offset_textfield;
-    @FXML
-    private ContextMenu context_menu;
-    @FXML
-    private CustomMenuItem custom_menu_item;
-    @FXML
-    private Button stop_button;
+    @FXML private Rectangle chip_rect;
+    @FXML private ImageView indicator_image;
+    @FXML private TextField offset_textfield;
+    @FXML private ContextMenu context_menu;
+    @FXML private CustomMenuItem custom_menu_item;
+    @FXML private Button stop_button;
 
     private final double min;
     private final double max;

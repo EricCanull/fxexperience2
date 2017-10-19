@@ -53,14 +53,10 @@ import javafx.scene.layout.GridPane;
 
 public class RotatorControl extends GridPane {
 
-    @FXML
-    private TextField rotator_textfield;
-    @FXML
-    private Button rotator_dial;
-    @FXML
-    private Button rotator_handle;
-    @FXML
-    private Label rotator_label;
+    @FXML private TextField rotator_textfield;
+    @FXML private Button rotator_dial;
+    @FXML private Button rotator_handle;
+    @FXML private Label rotator_label;
     private final int roundingFactor = 100; // 2 decimals rounding
 
     private final DoubleProperty rotation = new SimpleDoubleProperty();
@@ -107,8 +103,7 @@ public class RotatorControl extends GridPane {
         });
     }
 
-    @FXML
-    void rotatorAction(ActionEvent event) {
+    @FXML void rotatorAction(ActionEvent event) {
         double value = Double.valueOf(rotator_textfield.getText());
         double rounded = round(value, roundingFactor);
         rotate(rounded);
@@ -116,13 +111,11 @@ public class RotatorControl extends GridPane {
         event.consume();
     }
 
-    @FXML
-    void rotatorMousePressed(MouseEvent e) {
+    @FXML void rotatorMousePressed(MouseEvent e) {
         rotatorMouseDragged(e);
     }
 
-    @FXML
-    void rotatorMouseDragged(MouseEvent e) {
+    @FXML void rotatorMouseDragged(MouseEvent e) {
         final Parent p = rotator_dial.getParent();
         final Bounds b = rotator_dial.getLayoutBounds();
         final Double centerX = b.getMinX() + (b.getWidth() / 2);

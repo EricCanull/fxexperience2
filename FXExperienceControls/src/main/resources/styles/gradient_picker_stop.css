@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 .gradient-stop-thumb {
-  -fx-padding: 0.25em 0.25em 0.25em 0.25em;
+    -fx-padding: 0.25em 0.25em 0.25em 0.25em;
     -fx-padding: 0;
     -fx-background-radius: 0;
 }

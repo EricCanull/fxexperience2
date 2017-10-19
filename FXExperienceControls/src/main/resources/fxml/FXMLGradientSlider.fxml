@@ -31,6 +31,7 @@
   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
+
 <?import com.fxexperience.javafx.scene.control.textfields.DoubleTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -38,11 +39,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root id="GridPane" hgap="4.0" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="GridPane" hgap="4.0" stylesheets="@../styles/gradient_slider.css" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <Label fx:id="slider_label" styleClass="label-paint" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <DoubleTextField fx:id="slider_textfield" onAction="#sliderAction" onKeyPressed="#sliderKeyPressed" prefColumnCount="4" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <Slider fx:id="slider_slider" max="1.0" prefWidth="100.0" styleClass="slider-paint" value="0.5" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+    <DoubleTextField fx:id="slider_textfield" onAction="#sliderAction" onKeyPressed="#sliderKeyPressed" prefColumnCount="4" prefWidth="-1.0" styleClass="double-textfield" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Slider fx:id="slider_slider" max="1.0" prefWidth="100.0" styleClass="slider-prop" value="0.5" GridPane.columnIndex="2" GridPane.rowIndex="0" />
   </children>
   <columnConstraints>
     <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" percentWidth="40.0" />

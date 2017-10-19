@@ -24,6 +24,7 @@ different terms and without source code for the larger work.
     -fx-background-insets: 1, -5, 1, -5;
     -fx-background-radius: 9;
 }
+
 /*******************************************************************************
  * Alert Notification		                                                   *
  ******************************************************************************/
@@ -46,8 +47,8 @@ different terms and without source code for the larger work.
 .menu-button .menu:hover {
     -fx-text-fill: white;
     -fx-background-color:  derive(rgb(147, 147, 147), -26%);
-
 }
+
 .main-menu {
     /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
     -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
@@ -70,13 +71,15 @@ different terms and without source code for the larger work.
 }
 
 .menu-item:focused,
-.menu-item:hover{
+.menu-item:hover {
     -fx-background-color: derive(rgb(147, 147, 147), -26%);
     /*       -fx-background-insets: 1, 1, 1;*/
 }
+
 .menu-button .menu {
     -fx-text-fill: derive(rgb(147, 147, 147), -70%)
 }
+
 .menu-bar .menu .label {
     -fx-text-fill: derive(rgb(147, 147, 147), -70%)
 }
@@ -84,6 +87,7 @@ different terms and without source code for the larger work.
 .main-menu .container .menu:openvertically .label .text {
     -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
 }
+
 .context-menu {
     /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
     -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
@@ -118,7 +122,7 @@ different terms and without source code for the larger work.
 .menu-toggle-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-     -fx-border-width: 0 4 0 0;
+    -fx-border-width: 0 4 0 0;
 }
 
 

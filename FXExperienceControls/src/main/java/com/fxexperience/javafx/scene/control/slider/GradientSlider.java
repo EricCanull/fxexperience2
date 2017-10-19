@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,12 +50,10 @@ import javafx.scene.layout.GridPane;
 
 public class GradientSlider extends GridPane {
 
-    @FXML
-    private Slider slider_slider;
-    @FXML
-    private Label slider_label;
-    @FXML
-    private TextField slider_textfield;
+    @FXML private Slider slider_slider;
+    @FXML private Label slider_label;
+    @FXML private TextField slider_textfield;
+
     private final int roundingFactor = 100; // 2 decimals rounding
 
     public GradientSlider(String text, double min, double max, double initVal) {
@@ -110,7 +109,6 @@ public class GradientSlider extends GridPane {
             slider_textfield.setText(Double.toString(rounded));
         }
         slider_textfield.selectAll();
-        event.consume();
     }
 
     @FXML
