@@ -11,11 +11,12 @@ blog](http://fxexperience.com/).
 	- Create JavaFX color-compatiable CSS themes. 
 	- Derived color calculator.
 	- Interpolation animation effect graph calculator.
+	- CSS Gradient Builder (beta)
+	- FXControls animation demos
 2. FXExperience-Controls
-	- 50+ animation effects for javafx controls.
-	- Demo app to preview the animations.
-	- Scenebuilder's colorpicker tool.
-	- Jasper's colorpicker tool.
+	- Lots of animation effects for javafx controls.
+	- Scenebuilder's colorpicker tool (Modified).
+	- Jasper's original colorpicker tool.
 	
 			
 For more info about this app and other JavaFX features please
