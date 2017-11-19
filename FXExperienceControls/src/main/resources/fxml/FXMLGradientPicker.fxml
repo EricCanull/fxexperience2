@@ -62,7 +62,7 @@
             <Insets top="2.0" />
           </StackPane.margin>
         </Label>
-        <Pane fx:id="track_pane" onMouseDragged="#onSliderDragged" style="" />
+        <Pane fx:id="track_pane" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderPressed" style="" />
       </children>
       <VBox.margin>
         <Insets bottom="8.0" fx:id="x2" />

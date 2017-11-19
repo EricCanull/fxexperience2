@@ -304,9 +304,11 @@ public class GradientPicker extends VBox {
         slider_container.pressedProperty().addListener(liveUpdateListener);
     }
     @FXML
-    void sliderPressed(MouseEvent event) {
-        updateAngle();
-        event.consume();
+    void onSliderPressed(MouseEvent event) {
+       double percentH = ((100.0 / track_pane.getWidth()) * event.getX()) / 100;
+        final Color color = paintPicker.getColorPicker().getValue();
+        addStop(0.0, 1.0, percentH, color);
+       updateAngle();
     }
 
     @FXML
