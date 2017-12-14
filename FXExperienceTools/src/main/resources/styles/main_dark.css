@@ -7,22 +7,37 @@ through interfaces provided by the licensed work may be distributed under
 different terms and without source code for the larger work.
 */
 .root {
-    -fe-body-background: #232629;
-    -fe-inner-background: #2E3134;
-    -fe-border: #616569;
-    -fe-body-text:  #CDEFF1;
-    -fe-inner-text:  #CDEFF1;
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-
-    -fx-background-color: #84b6eb;
+    -fe-body-background: #2c2f33;
+    -fe-inner-background: #23272a;
+    -fe-border: #676B6F;
+    -fe-body-text: #BBB;
+    -fe-inner-text: #FFF;
+    /*-font-family: 'Roboto';*/
+    -fx-background-color: #2c2f33;
     -fx-focus-color: #339797;
+    -dark-header: #23272a;
+    -gray-darker: #2c2f33;
+    -gray-dark: #2d2d2d;
+    -gray-one: #383838;
+    -gray-light: #444444;
+    -gray-lighter: #5c5c5c;
+    -text-primary: #FFF;
+    -text-secondary: #BBBBBB;
+    -text-disabled: derive(#FFF, -50%);
 }
+@font-face {
+    src: url('/fonts/Roboto-Light.ttf');
+
+}
+
 .nav-box {
-   -fx-background-image: url("../images/binding_dark.png");
-    -fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );
+   /*-fx-background-image: url("../images/binding_dark.png");*/
+    -fx-background-color: -dark-header;
+    -fx-border-width: 0;
+    /*-fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );*/
 /*    -fx-background-color:  -fe-dark-inner-background;*/
-    -fx-background-insets: 1, -5, 1, -5;
-    -fx-background-radius: 9;
+    /*-fx-background-insets: 1, -5, 1, -5;*/
+    /*-fx-background-radius: 9;*/
 }
 
 /*******************************************************************************
@@ -39,26 +54,23 @@ different terms and without source code for the larger work.
  * Menu Bar			                                                           *
  ******************************************************************************/
 .menu {
-    -fx-background-color: transparent;
-    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+
 }
 
 .menu:hover,
 .menu-button .menu:hover {
     -fx-text-fill: white;
-    -fx-background-color:  derive(rgb(147, 147, 147), -26%);
 }
 
 .main-menu {
     /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
-    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
-    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
-    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
-    -fx-font-size: 0.875em;
+    -fx-background-color: derive(-dark-header, 0%), derive(-dark-header, 25%),  derive(-dark-header, -20%),  -dark-header;
+    /*-fx-background-insets: 0 0 1 0, 0, 1 0 0 0, 1 0 0 0;*/
+    -fx-font-size: 16px;
     -fx-alignment: center-left;
-    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+    /*-fx-effect: dropshadow( two-pass-box, -gray-light, 2, 0.0, 0, 1 );*/
 
-
+    -fx-font-family: "Roboto";
     /* Nothing more needed for Mac OS X than the following property!
      * All other definitions kept from caspian, to ensure, that MenuBar
      * is shown properly on non-mac systems.
@@ -67,33 +79,32 @@ different terms and without source code for the larger work.
 }
 
 .main-menu .container .menu:openvertically .label .text {
-    -fx-fill: #CDEFF1;
+    -fx-fill: white;
 }
 
 .menu-item:focused,
 .menu-item:hover {
-    -fx-background-color: derive(rgb(147, 147, 147), -26%);
     /*       -fx-background-insets: 1, 1, 1;*/
 }
 
 .menu-button .menu {
-    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
+    -fx-text-fill: -text-secondary;
 }
 
 .menu-bar .menu .label {
-    -fx-text-fill: derive(rgb(147, 147, 147), -70%)
+    -fx-text-fill: -text-secondary;
 }
 
 .main-menu .container .menu:openvertically .label .text {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+
 }
 
 .context-menu {
     /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
-    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
+    -fx-background-color: #262626, #262626, #262626, #262626;
     /*    -fx-background-insets: 0, 1, 2;*/
 
-    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+     -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  /* 8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
 
@@ -103,7 +114,7 @@ different terms and without source code for the larger work.
 #ContentPanel {
 /*    -fx-background-color: transparent;*/
     -fx-background-color: -fx-background;
-    -fx-border-color: derive(rgb(147, 147, 147),60%);
+  //  -fx-border-color: derive(rgb(147, 147, 147),60%);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
 }
 
@@ -120,9 +131,16 @@ different terms and without source code for the larger work.
 }
 
 .menu-toggle-button {
+    -fx-font-family: "Roboto";
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-border-width: 0 4 0 0;
+    -fx-border-width: 0 0 0 0;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 12px;
+}
+
+.menu-toggle-button:hover, .menu-toggle-button:selected{
+    -fx-background-color: -fe-body-background;
 }
 
 

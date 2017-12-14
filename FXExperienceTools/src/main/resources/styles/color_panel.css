@@ -3,18 +3,15 @@
 }
 
 .title-label {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-size: 1.33em;
     -fx-font-weight: bold;
     -fx-text-fill: #3AA6DF;
 }
 .color-label {
-    -fx-font-family:"Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-size: .865em;
     -fx-text-fill: #C2C2C3;
 }
 .derivation-textfield {
-    -fx-font-family:"Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-size: .865em;
     -fx-background-color: transparent;
     -fx-text-fill: #C2C2C3;
@@ -31,7 +28,6 @@
 }
 
 .derivation-slider:vertical .axis:right {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-tick-label-fill: #C2C2C3;
     -fx-font-size: .63333em;
 }

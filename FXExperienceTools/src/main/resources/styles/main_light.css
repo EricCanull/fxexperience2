@@ -15,7 +15,7 @@ different terms and without source code for the larger work.
     -fe-body-text: #000;
     -fe-inner-text: #000;
     -fe-border: #282828;
-
+    -fx-font-family: "Rubik Medium";
     -fx-background-color:  #f0f5fa;
     -fx-focus-color: #339797;
 }
@@ -34,7 +34,6 @@ different terms and without source code for the larger work.
 }
 .status-label {
     -fx-text-fill: black;
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font: 1em bold;
 }
 /*******************************************************************************

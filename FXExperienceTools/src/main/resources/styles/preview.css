@@ -12,6 +12,6 @@ different terms and without source code for the larger work.
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );
 }
 
-#RECT {
-    -fx-fill: linear-gradient(from 0.0% 0.0% to 1.0% 1.0% , #cf3737c4 0.0% , #9c2a2a 0.6% , #9c2a2a 1.0% );
-}
+/*#RECT {*/
+    /*-fx-fill: linear-gradient(from 0.0% 0.0% to 1.0% 1.0% , #cf3737c4 0.0% , #9c2a2a 0.6% , #9c2a2a 1.0% );*/
+/*}*/

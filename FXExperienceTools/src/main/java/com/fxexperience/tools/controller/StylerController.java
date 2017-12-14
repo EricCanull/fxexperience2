@@ -42,7 +42,7 @@ public class StylerController extends SplitPane {
     @FXML private GridPane simpleGridPane;
 
     @FXML private ChoiceBox<String> fontChoiceBox;
-    @FXML private ComboBox<Gradient> gradientComboBox;
+    @FXML private ChoiceBox<Gradient> gradientComboBox;
 
     @FXML private Slider fontSizeSlider;
     @FXML private Slider paddingSlider;
@@ -74,12 +74,12 @@ public class StylerController extends SplitPane {
 
     private PreviewController previewPanel;
 
-    private final ColorPopupEditor basePicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#D0D0D0"));
-    private final ColorPopupEditor backgroundColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#f4f4f4"));
+    private final ColorPopupEditor basePicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#262931"));
+    private final ColorPopupEditor backgroundColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#2c2f33"));
     private final ColorPopupEditor focusColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
     private final ColorPopupEditor textColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
     private final ColorPopupEditor bkgdTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
-    private final ColorPopupEditor fieldBackgroundPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#ffffff"));
+    private final ColorPopupEditor fieldBackgroundPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#23272a"));
     private final ColorPopupEditor fieldTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
 
     public StylerController() {
@@ -130,27 +130,28 @@ public class StylerController extends SplitPane {
 
         // Populate gradient combo
         gradientComboBox.getItems().addAll(Gradient.GRADIENTS);
-        gradientComboBox.setCellFactory((ListView<Gradient> gradientList) -> {
-            ListCell<Gradient> cell = new ListCell<Gradient>() {
-                @Override protected void updateItem(Gradient gradient, boolean empty) {
-                    super.updateItem(gradient, empty);
-                    if (empty || gradient == null) {
-                        setText(null);
-                        setGraphic(null);
-                    } else {
-                        setText(gradient.getName());
-                        Region preview = new Region();
-                        preview.setPrefSize(30, 30);
-                        preview.setStyle("-fx-border-color: #111; -fx-background-color: " + gradient.getCss());
-                        setGraphic(preview);
-                    }
-                }
-            };
-            cell.setStyle("-fx-cell-size: 40;");
-            return cell;
-        });
+//        gradientComboBox.onActionProperty().ListView<Gradient> gradientList) -> {
+//            ListCell<Gradient> cell = new ListCell<Gradient>() {
+//                @Override protected void updateItem(Gradient gradient, boolean empty) {
+//                    super.updateItem(gradient, empty);
+//                    if (empty || gradient == null) {
+//                        setText(null);
+//                        setGraphic(null);
+//                    } else {
+//                        setText(gradient.getName());
+//                        Region preview = new Region();
+//                        preview.setPrefSize(30, 30);
+//                        preview.setStyle("-fx-border-color: #111; -fx-background-color: " + gradient.getCss());
+//                        setGraphic(preview);
+//                    }
+//                }
+//            };
+//            cell.setStyle("-fx-cell-size: 40;");
+//            return cell;
+//        });
 
-        gradientComboBox.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Gradient> arg0, Gradient arg1, Gradient newGradient) -> {
+        gradientComboBox.getSelectionModel().selectedItemProperty().addListener((
+                ObservableValue<? extends Gradient> arg0, Gradient arg1, Gradient newGradient) -> {
             bodyTopSlider.setValue(newGradient.getTopDerivation());
             bodyBottomSlider.setValue(newGradient.getBottomDerivation());
             if (newGradient.isShinny()) {
@@ -246,10 +247,12 @@ public class StylerController extends SplitPane {
 
         StringBuilder cssBuffer = new StringBuilder();
 
+
+
         cssBuffer.append(".root {\n");
         //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSizeSlider.getValue() + "px;", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: '" + fontChoiceBox.getValue() + "';", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + (int) fontSizeSlider.getValue() + "px;", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorString() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorString() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorString() + ";", true, 4));
@@ -277,12 +280,13 @@ public class StylerController extends SplitPane {
              fieldTextToggle.setText("AUTO");
         }
 
-        double innerTopDerivation = bodyTopSlider.getValue()
-                + ((100 - bodyTopSlider.getValue()) * (topHighlightSlider.getValue() / 100));
-        double innerBottomDerivation = bodyBottomSlider.getValue()
-                + ((100 - bodyBottomSlider.getValue()) * (bottomHighlightSlider.getValue() / 100));
+       String innerTopDerivation = String.format("%.1f", bodyTopSlider.getValue()
+                + ((100 - bodyTopSlider.getValue()) * (topHighlightSlider.getValue() / 100)));
 
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-inner-border: linear-gradient(to bottom, " + "derive(-fx-color," + innerTopDerivation + "%) 0%, "
+       String innerBottomDerivation = String.format("%.1f", bodyBottomSlider.getValue()
+                + ((100 - bodyBottomSlider.getValue()) * (bottomHighlightSlider.getValue() / 100)));
+
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-inner-border: linear-gradient(to bottom, " + "derive(-fx-color," + innerTopDerivation +"%) 0%, "
                 + "derive(-fx-color," + innerBottomDerivation + "%) 100%);", true, 4));
 
         cssBuffer.append(StringUtil.padWithSpaces("-fx-body-color: linear-gradient( to bottom, ", false, 4));
@@ -333,6 +337,13 @@ public class StylerController extends SplitPane {
         }
 
         cssBuffer.append("}\n");
+        cssBuffer.append("@font-face {\n" +
+                "src: url(“Roboto-Light.ttf”);\n" +
+                "}\n" +
+                "\n" +
+                ".label, .button, .toggle-button, .choice-box, .text {\n" +
+                "-fx-font-family: 'Roboto';\n" +
+                "}\n");
         cssBuffer.append(".button, .toggle-button, .choice-box {\n");
         cssBuffer.append(StringUtil.padWithSpaces("-fx-background-radius: "
                 + borderRadius + ", "
@@ -344,6 +355,8 @@ public class StylerController extends SplitPane {
                 + (padding + 7) + "px "
                 + padding + "px "
                 + (padding + 7) + "px;", true, 4));
+      //  cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontChoiceBox.getValue() + ";", true, 4));
+       // cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: 'Roboto';", true, 4));
         cssBuffer.append("}\n");
 
         cssBuffer.append(".menu-button {\n");

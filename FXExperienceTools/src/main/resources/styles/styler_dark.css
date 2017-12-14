@@ -3,14 +3,23 @@
     Author     : Eric Canull
 */
 .root {
-    -fe-body-background: #232629;
-    -fe-inner-background: #2E3134;
-    -fe-border: #616569;
-    -fe-body-text: #9BBBBB;
-    -fe-inner-text: #CDEFF1;
-
-    -fx-background-color: #2E3134;
+    -fe-body-background: #2c2f33;
+    -fe-inner-background: #23272a;
+    -fe-border: #676B6F;
+    -fe-body-text: #BBB;
+    -fe-inner-text: #FFF;
+    -font-family: 'Roboto';
+    -fx-background-color: #2c2f33;
     -fx-focus-color: #339797;
+    -dark-header: #23272a;
+    -gray-darker: #2c2f33;
+    -gray-dark: #2d2d2d;
+    -gray-one: #383838;
+    -gray-light: #444444;
+    -gray-lighter: #5c5c5c;
+    -text-primary: #FFF;
+    -text-secondary: derive(#FFF, -30%);
+    -text-disabled: derive(#FFF, -50%);
 }
 
 /*******************************************************************************
@@ -27,42 +36,40 @@
     -fx-background-insets: -2;
 }
 .custom-menu-button .arrow {
-    -fx-background-color: #878787;
+    -fx-background-color: #7a8390;
 }
 
 .custom-menu-button {
-    -fx-background-color: -fe-inner-background, -fe-inner-background,
-    -fe-inner-background, -fe-inner-background;
-
+    -fx-background-color: -gray-darker;
     -fx-border-color: -fe-border;
     -fx-font-size: 0.875em;
 }
 
 .custom-menu-item:focused,
 .custom-menu-item:hover{
-    -fx-text-fill: #FFF;
-    -fx-border-color: -fe-border;
-    -fx-focus-color: -fe-border;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: transparent;
+    -fx-focus-color: -gray-one;
     -fx-background-radius: 1, 1, 1;
 }
 
 .custom-menu-button .label .text {
-    -fx-fill: -fe-inner-text;
+    -fx-fill: -text-secondary;
 }
 
 .color-label {
-    -fx-text-fill: -fe-body-text;
+    -fx-text-fill: -text-primary;
     -fx-font-size: 0.1em;
     /*     -fx-padding: 0 0 0 5;*/
 }
 .color-text-field {
-    -fx-text-fill: -fe-body-text;
+    -fx-text-fill: -text-secondary;
     -fx-font-size: 0.1em;
     -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
 }
 
 .split-pane {
-       -fx-background-color: -fe-inner-background;
+       -fx-background-color: -gray-darker;
  }
 
 .split-pane-divider {
@@ -82,13 +89,12 @@
 }
 
 .gradient-combo-box .list-cell .text {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
     -fx-font-size: 0.8666em;
     -fx-fill: -fe-body-text;
 }
 .gradient-combo-box .combo-box-popup .list-view .list-cell {
     -fx-background-color: -fe-inner-background;
-    -fx-text-fill: -fe-body-text;
+    -fx-text-fill: -text-secondary;
 }
 
 .gradient-combo-box {
@@ -115,13 +121,13 @@
 }
 
 #font-box .context-menu {
-    -fx-text-fill: -fe-inner-text;
+    -fx-text-fill: -text-secondary;
     -fx-background-color: -fe-inner-background;
     -fx-border-color: -fe-border;
 }
 
 #font-box .label {
-    -fx-text-fill: -fe-body-text;
+    -fx-text-fill: -text-secondary;
     -fx-font-size: 1em;
 }
 
@@ -134,17 +140,17 @@
 }
 
 .slider-prop .thumb {
-    -fx-border-color: #111;
+    -fx-border-color: -fe-border;
     -fx-border-radius: 20px;
-    -fx-background-color: rgba(147, 147, 147, .5);
+    -fx-background-color: -fe-inner-background;
 }
 
 .slider-prop .thumb:hover{
-    -fx-background-color: rgb(147, 147, 147);
+    -fx-background-color: derive(-fe-body-background, 15%);
+    -fx-border-color: derive(-fe-border, 20%);
 }
 .slider-prop .axis:bottom {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-tick-label-fill: -fe-body-text;
+    -fx-tick-label-fill: -text-secondary;
     -fx-font-size: .63333em;
 }
 
@@ -153,15 +159,12 @@
  ******************************************************************************/
 
 .titled-pane > .title {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-
-    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
+    -fx-background-color:  derive(-dark-header, 0%), derive(-dark-header, 30%),  derive(-dark-header, -20%),  -dark-header;
 
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
-    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
-    -fx-font-size: 0.875em;
+    -fx-font-size: 13px;
     -fx-alignment: center-left;
-    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 2, 0.0, 0, 1 );
 }
 .titled-pane:expanded .content {
     -fx-background-color: -fe-body-background;
@@ -174,11 +177,11 @@
 
 }
 .titled-pane .context-menu {
-    -fx-background-color: derive(#353A3F, -60%), derive(#353A3F, -60%), derive(#353A3F, 40%), #353A3F;
+    -fx-background-color:  derive(-dark-header, 0%), derive(-dark-header, 30%),  derive(-dark-header, -20%),  -dark-header;
 }
 
 .titled-pane > .title > .text {
-    -fx-fill: #CDEFF1;
+    -fx-fill: -text-primary;
 }
 
 .titled-pane > .title > .arrow-button {
@@ -190,11 +193,11 @@
 }
 
 .sub-title {
-    -fx-text-fill: derive(rgb(147, 147, 147), 85%);
-    -fx-border-width: 0.5 0 0.5 0;
+    -fx-text-fill: -text-primary;
+    -fx-border-width: 0.8 0 0.8 0;
     -fx-border-color: derive(rgb(122, 122, 122), -85%);
-
-    -fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(#31363B, 21%), derive(#31363B, 10%));
+    -fx-background-color: -dark-header;
+    /*-fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(-dark-header, 21%), derive(-dark-header, 18%));*/
 }
 
 .pane-shadow {
@@ -203,19 +206,17 @@
 }
 
 .prop-label {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-text-fill: -fe-body-text;
-    -fx-font-size:  0.8666em;
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 13px;
 }
 
 .title-label {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-font-size: 0.93333em;
-    -fx-text-fill: -fe-body-text;
+    -fx-font-size: 13px;
+    -fx-text-fill: -text-secondary;
 }
 .check-box-prop {
-    -fx-text-fill: -fe-inner-text;
-    -fx-font-size: 0.83333em;
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 13px;
 }
 
 .check-box-prop > .box {
@@ -239,7 +240,7 @@
     -fx-background-insets: -0.2, 1, 2;
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
-    -fx-text-fill: #CDEFF1;
+    -fx-text-fill: #CCC;
     -fx-prompt-text-fill: -fe-inner-text;
     -fx-cursor: text;
 }
