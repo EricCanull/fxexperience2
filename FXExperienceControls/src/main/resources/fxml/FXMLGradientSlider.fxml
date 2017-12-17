@@ -35,10 +35,7 @@
 <?import com.fxexperience.javafx.scene.control.textfields.DoubleTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
+<?import javafx.scene.layout.*?>
 <fx:root id="GridPane" hgap="4.0" stylesheets="@../styles/gradient_slider.css" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <Label fx:id="slider_label" styleClass="label-paint" text="Label" GridPane.columnIndex="0" GridPane.rowIndex="0" />

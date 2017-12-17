@@ -33,14 +33,14 @@ package com.fxexperience.javafx.scene.control.paintpicker;
  */
 
 
-import java.io.IOException;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+
+import java.io.IOException;
 
 /**
  * Paint editor control.

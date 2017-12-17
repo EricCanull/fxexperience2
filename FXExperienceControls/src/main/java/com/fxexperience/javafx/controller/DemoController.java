@@ -5,67 +5,16 @@
  */
 package com.fxexperience.javafx.controller;
 
-import com.fxexperience.javafx.fxanimations.BounceInDownTransition;
-import com.fxexperience.javafx.fxanimations.BounceInLeftTransition;
-import com.fxexperience.javafx.fxanimations.BounceInRightTransition;
-import com.fxexperience.javafx.fxanimations.BounceInTransition;
-import com.fxexperience.javafx.fxanimations.BounceInUpTransition;
-import com.fxexperience.javafx.fxanimations.BounceOutDownTransition;
-import com.fxexperience.javafx.fxanimations.BounceOutLeftTransition;
-import com.fxexperience.javafx.fxanimations.BounceOutRightTransition;
-import com.fxexperience.javafx.fxanimations.BounceOutTransition;
-import com.fxexperience.javafx.fxanimations.BounceOutUpTransition;
-import com.fxexperience.javafx.fxanimations.BounceTransition;
-import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeInDownTransition;
-import com.fxexperience.javafx.fxanimations.FadeInLeftBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeInLeftTransition;
-import com.fxexperience.javafx.fxanimations.FadeInRightBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeInRightTransition;
-import com.fxexperience.javafx.fxanimations.FadeInTransition;
-import com.fxexperience.javafx.fxanimations.FadeInUpBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeInUpTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutDownBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutDownTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutLeftBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutLeftTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutRightBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutRightTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutUpBigTransition;
-import com.fxexperience.javafx.fxanimations.FadeOutUpTransition;
-import com.fxexperience.javafx.fxanimations.FlashTransition;
-import com.fxexperience.javafx.fxanimations.FlipInXTransition;
-import com.fxexperience.javafx.fxanimations.FlipInYTransition;
-import com.fxexperience.javafx.fxanimations.FlipOutXTransition;
-import com.fxexperience.javafx.fxanimations.FlipOutYTransition;
-import com.fxexperience.javafx.fxanimations.FlipTransition;
-import com.fxexperience.javafx.fxanimations.HingeTransition;
-import com.fxexperience.javafx.fxanimations.PulseTransition;
-import com.fxexperience.javafx.fxanimations.RollInTransition;
-import com.fxexperience.javafx.fxanimations.RollOutTransition;
-import com.fxexperience.javafx.fxanimations.RotateInDownLeftTransition;
-import com.fxexperience.javafx.fxanimations.RotateInDownRightTransition;
-import com.fxexperience.javafx.fxanimations.RotateInTransition;
-import com.fxexperience.javafx.fxanimations.RotateInUpLeftTransition;
-import com.fxexperience.javafx.fxanimations.RotateInUpRightTransition;
-import com.fxexperience.javafx.fxanimations.RotateOutDownLeftTransition;
-import com.fxexperience.javafx.fxanimations.RotateOutDownRightTransition;
-import com.fxexperience.javafx.fxanimations.RotateOutTransition;
-import com.fxexperience.javafx.fxanimations.RotateOutUpLeftTransition;
-import com.fxexperience.javafx.fxanimations.RotateOutUpRightTransition;
-import com.fxexperience.javafx.fxanimations.ShakeTransition;
-import com.fxexperience.javafx.fxanimations.SwingTransition;
-import com.fxexperience.javafx.fxanimations.TadaTransition;
-import com.fxexperience.javafx.fxanimations.WobbleTransition;
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.fxexperience.javafx.fxanimations.*;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /*
  * Simple Demo application for the Canned animation transitions in 

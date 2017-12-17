@@ -9,6 +9,7 @@ package com.fxexperience.tools.controller;
  * work may be distributed under different terms and without source code
  * for the larger work.
  */
+
 import com.fxexperience.javafx.fxanimations.*;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -16,9 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;

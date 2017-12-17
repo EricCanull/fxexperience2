@@ -12,6 +12,7 @@ package com.fxexperience.tools.view;
 import com.fxexperience.tools.controller.AbstractController;
 import com.fxexperience.tools.controller.MainController;
 import com.fxexperience.tools.handler.ViewHandler;
+
 import java.util.ResourceBundle;
 
 public enum WindowFactory {

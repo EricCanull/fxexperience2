@@ -31,12 +31,10 @@
  */
 package com.fxexperience.javafx.scene.control.textfields;
 
-import java.util.Locale;
-
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
+
+import java.util.Locale;
 
 /**
  * Define a text field that accept only doubles.

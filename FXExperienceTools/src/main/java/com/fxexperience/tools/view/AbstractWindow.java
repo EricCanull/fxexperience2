@@ -12,11 +12,12 @@ package com.fxexperience.tools.view;
 
 import com.fxexperience.tools.controller.AbstractController;
 import com.fxexperience.tools.util.AppPaths;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 public abstract class AbstractWindow {
 

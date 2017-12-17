@@ -16,6 +16,8 @@
  */
 package com.fxexperience.javafx.util.encoders;
 
+import javafx.scene.text.Font;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +29,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javafx.scene.text.Font;
 
 /**
  * This is a simple helper class that lets you use fonts from the Google 

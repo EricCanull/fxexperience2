@@ -10,10 +10,10 @@ package com.fxexperience.tools.controller;
  */
 
 import com.fxexperience.tools.handler.ViewHandler;
-import java.net.URL;
-
-import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public abstract class AbstractController implements Initializable {
 

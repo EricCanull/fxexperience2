@@ -34,9 +34,6 @@ package com.fxexperience.javafx.scene.control.rotator;
 
 
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
@@ -50,6 +47,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RotatorControl extends GridPane {
 

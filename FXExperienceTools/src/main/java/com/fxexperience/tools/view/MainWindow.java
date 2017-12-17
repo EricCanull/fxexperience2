@@ -10,6 +10,7 @@ package com.fxexperience.tools.view;
  */
 
 import com.fxexperience.tools.controller.AbstractController;
+
 import java.util.ResourceBundle;
 
 public class MainWindow extends AbstractWindow {

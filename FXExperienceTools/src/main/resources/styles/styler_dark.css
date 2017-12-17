@@ -6,7 +6,7 @@
     -fe-body-background: #2c2f33;
     -fe-inner-background: #23272a;
     -fe-border: #676B6F;
-    -fe-body-text: #BBB;
+    -fe-body-text: #D7D7D7;
     -fe-inner-text: #FFF;
     -font-family: 'Roboto';
     -fx-background-color: #2c2f33;
@@ -18,7 +18,7 @@
     -gray-light: #444444;
     -gray-lighter: #5c5c5c;
     -text-primary: #FFF;
-    -text-secondary: derive(#FFF, -30%);
+    -text-secondary: derive(#FFF, -5%);
     -text-disabled: derive(#FFF, -50%);
 }
 #Preview-Alpha {
@@ -283,6 +283,21 @@
 
 .properties-combo-box .text {
     -fx-text-fill: -fe-inner-text;
+}
+
+.style-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #5c5c5c;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 30px;
+    -fx-border-radius: 5;
+    -fx-text-fill: #E7E7E7;
+}
+
+.style-button:focused {
+    -fx-background-color: #334455;
+    -fx-border-color: #5c5c5c;
+    -fx-text-fill: #E7E7E7;
 }
 
 .toggle-switch {

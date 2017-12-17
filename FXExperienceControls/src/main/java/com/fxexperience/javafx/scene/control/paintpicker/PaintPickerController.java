@@ -33,9 +33,9 @@ package com.fxexperience.javafx.scene.control.paintpicker;
  */
 
 
+import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerControl;
 import com.fxexperience.javafx.scene.control.gradientpicker.GradientPicker;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
-import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerControl;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;

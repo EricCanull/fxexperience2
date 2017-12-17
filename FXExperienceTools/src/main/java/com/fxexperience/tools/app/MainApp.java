@@ -10,12 +10,14 @@ package com.fxexperience.tools.app;
  */
 
 import com.fxexperience.tools.handler.AppViewHandler;
-import static com.fxexperience.tools.util.AppPaths.RESOURCE_BUNDLE;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javafx.application.Application;
-import javafx.stage.Stage;
+
+import static com.fxexperience.tools.util.AppPaths.RESOURCE_BUNDLE;
 
 public class MainApp extends Application {
 

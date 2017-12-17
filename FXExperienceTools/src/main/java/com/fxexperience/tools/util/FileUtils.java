@@ -9,8 +9,9 @@
  */
 package com.fxexperience.tools.util;
 
-import java.io.File;
 import javafx.stage.FileChooser;
+
+import java.io.File;
 /*
  * Permissions of this free software license are conditioned on making available
  * complete source code of licensed works and modifications under the same 

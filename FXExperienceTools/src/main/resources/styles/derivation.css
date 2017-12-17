@@ -122,7 +122,7 @@ different terms and without source code for the larger work.
     -fx-background-color: rgb(147, 147, 147);
 }
 .derivation-slider .axis:bottom {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-family: "Noto Sans";
     -fx-tick-label-fill: #CDEFF1;
     -fx-font-size: .63333em;
 }

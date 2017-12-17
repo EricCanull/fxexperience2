@@ -31,15 +31,9 @@
  */
 package com.fxexperience.javafx.util.encoders;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
- import java.util.List;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.paint.*;
+
+import java.util.*;
 
 /**
  *

@@ -8,11 +8,10 @@ package com.fxexperience.tools.controller;
  * work may be distributed under different terms and without source code
  * for the larger work.
  */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-
-
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;

@@ -9,31 +9,30 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.javafx.scene.control.textfields.DoubleTextField;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
-import com.fxexperience.javafx.util.encoders.ColorEncoder;
-import com.fxexperience.tools.util.CSSTheme;
+import com.fxexperience.javafx.scene.control.textfields.DoubleTextField;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.ObjectBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Slider;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
-import javax.xml.transform.sax.SAXSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

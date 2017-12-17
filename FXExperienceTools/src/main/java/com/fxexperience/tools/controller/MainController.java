@@ -49,8 +49,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static javafx.scene.paint.Color.*;
-
 public final class MainController extends AbstractController implements Initializable {
 
     public enum Tool {
