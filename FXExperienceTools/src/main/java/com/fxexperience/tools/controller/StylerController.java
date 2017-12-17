@@ -12,23 +12,32 @@ package com.fxexperience.tools.controller;
 import com.fxexperience.javafx.scene.control.textfields.DoubleTextField;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
+import com.fxexperience.javafx.util.encoders.ColorEncoder;
+import com.fxexperience.tools.util.CSSTheme;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.DataFormat;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 
+import javax.xml.transform.sax.SAXSource;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,15 +81,17 @@ public class StylerController extends SplitPane {
     @FXML private ToggleButton shadowToggle;
     @FXML private ToggleButton inputBorderToggle;
 
-    private PreviewController previewPanel;
+  //  private CSSTheme theme = new CSSTheme();
+
+    PreviewController previewController;
 
     private final ColorPopupEditor basePicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#262931"));
-    private final ColorPopupEditor backgroundColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#2c2f33"));
-    private final ColorPopupEditor focusColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
-    private final ColorPopupEditor textColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
-    private final ColorPopupEditor bkgdTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor backgroundPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#2c2f33"));
+    private final ColorPopupEditor focusPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#0093ff"));
+    private final ColorPopupEditor textPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor foregroundTextPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
     private final ColorPopupEditor fieldBackgroundPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#23272a"));
-    private final ColorPopupEditor fieldTextColorPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
+    private final ColorPopupEditor fieldTextPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.web("#000000"));
 
     public StylerController() {
         initialize();
@@ -98,14 +109,26 @@ public class StylerController extends SplitPane {
             Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        previewPanel = new PreviewController();
-        previewPane.setCenter(previewPanel);
+        previewController = new PreviewController();
+        previewPane.setCenter(previewController);
+
+        previewController.cssProperty().bind(Bindings.createStringBinding(() -> String.format(
+                ".root { %n  "
+                        + "-fx-base: %s;%n  "
+                        + "-fx-background: %s;%n  "
+                        + "-fx-focus-color: %s;%n  "
+                        + "-fx-control-inner-background: %s;%n }",
+                basePicker.getColorString(),
+                backgroundPicker.getColorString(),
+                focusPicker.getColorString(),
+                fieldBackgroundPicker.getColorString(),
+                basePicker, backgroundPicker, focusPicker, fieldBackgroundPicker)));
 
         addListeners();
 
         // populate fonts choicebox
         fontChoiceBox.getItems().setAll(Font.getFamilies());
-        fontChoiceBox.getSelectionModel().select("System");
+        fontChoiceBox.getSelectionModel().select("Roboto");
 
         // create Integer Fields
         addTextFieldBinding(fontSizeSlider, fontTextField);
@@ -113,19 +136,18 @@ public class StylerController extends SplitPane {
         addTextFieldBinding(borderWidthSlider, borderWidthTextField);
         addTextFieldBinding(borderRadiusSlider, borderRadiusTextField);
 
-
         // Add color pickers Title Pane
-        simpleGridPane.getChildren().addAll(basePicker, backgroundColorPicker, focusColorPicker,
-                textColorPicker, fieldBackgroundPicker, fieldTextColorPicker, bkgdTextColorPicker);
+        simpleGridPane.getChildren().addAll(basePicker, backgroundPicker, focusPicker,
+                textPicker, fieldBackgroundPicker, fieldTextPicker, foregroundTextPicker);
 
         // Set color pickers grid constraints
         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
-        GridPane.setConstraints(textColorPicker, 1, 1);
-        GridPane.setConstraints(backgroundColorPicker, 1, 2);
-        GridPane.setConstraints(bkgdTextColorPicker, 1, 3);
+        GridPane.setConstraints(textPicker, 1, 1);
+        GridPane.setConstraints(backgroundPicker, 1, 2);
+        GridPane.setConstraints(foregroundTextPicker, 1, 3);
         GridPane.setConstraints(fieldBackgroundPicker, 1, 4);
-        GridPane.setConstraints(fieldTextColorPicker, 1, 5);
-        GridPane.setConstraints(focusColorPicker, 1, 6);
+        GridPane.setConstraints(fieldTextPicker, 1, 5);
+        GridPane.setConstraints(focusPicker, 1, 6);
 
 
         // Populate gradient combo
@@ -173,6 +195,7 @@ public class StylerController extends SplitPane {
         borderSlider.disableProperty().bind(borderToggle.selectedProperty().not());
         shadowSlider.disableProperty().bind(shadowToggle.selectedProperty().not());
         inputBorderSlider.disableProperty().bind(inputBorderToggle.selectedProperty().not());
+
     }
 
     private final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateCSS());
@@ -191,18 +214,18 @@ public class StylerController extends SplitPane {
         borderWidthSlider.valueProperty().addListener(updateCssListener);
 
         basePicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        backgroundColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        focusColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        textColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        backgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        focusPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        textPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         baseTextToggle.selectedProperty().addListener(updateCssListener);
-        textColorPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
+        textPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
         fieldBackgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        fieldTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        fieldTextPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         fieldTextToggle.selectedProperty().addListener(updateCssListener);
-        fieldTextColorPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
-        bkgdTextColorPicker.getRectangle().fillProperty().addListener(onPaintChanged);
+        fieldTextPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
+        foregroundTextPicker.getRectangle().fillProperty().addListener(onPaintChanged);
         backgroundTextToggle.selectedProperty().addListener(updateCssListener);
-        bkgdTextColorPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
+        foregroundTextPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
 
 
         topHighlightSlider.valueProperty().addListener(updateCssListener);
@@ -231,8 +254,9 @@ public class StylerController extends SplitPane {
     }
 
     private void updateCSS() {
-       String css = createCSS();
-       previewPanel.setPreviewPanelStyle(css);
+//      cssTheme.css.set(createCSS());
+
+    previewController.setPreviewPanelStyle(createCSS());
     }
 
     private String createCSS() {
@@ -247,35 +271,33 @@ public class StylerController extends SplitPane {
 
         StringBuilder cssBuffer = new StringBuilder();
 
-
-
         cssBuffer.append(".root {\n");
         //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: '" + fontChoiceBox.getValue() + "';", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-font-size: " + (int) fontSizeSlider.getValue() + "px;", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorString() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundColorPicker.getColorString() + ";", true, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusColorPicker.getColorString() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-background: " + backgroundPicker.getColorString() + ";", true, 4));
+        cssBuffer.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusPicker.getColorString() + ";", true, 4));
         cssBuffer.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getColorString() + ";", true, 4));
 
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-base-color: "
-                    + textColorPicker.getColorString()+ ";", true, 4));
+                    + textPicker.getColorString()+ ";", true, 4));
         } else {
              baseTextToggle.setText("AUTO");
         }
         if (backgroundTextToggle.isSelected()) {
             backgroundTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-background-color: "
-                    + bkgdTextColorPicker.getColorString() + ";", true, 4));
+                    + foregroundTextPicker.getColorString() + ";", true, 4));
         } else {
              backgroundTextToggle.setText("AUTO");
         }
         if (fieldTextToggle.isSelected()) {
              fieldTextToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-inner-color: "
-                    + fieldTextColorPicker.getColorString() + ";", true, 4));
+                    + fieldTextPicker.getColorString() + ";", true, 4));
         } else {
              fieldTextToggle.setText("AUTO");
         }
@@ -436,6 +458,27 @@ public class StylerController extends SplitPane {
      return createCSS();
     }
 
+    @FXML private void copyButtonAction(ActionEvent event) {
+            Clipboard.getSystemClipboard().setContent(
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, getCodeOutput()));
+          //  displayStatusAlert("Code has been copied to the clipboard.");
+
+    }
+
+    @FXML private void saveButtonAction(ActionEvent event) {
+
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showSaveDialog(this.getScene().getWindow());
+            if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write(getCodeOutput());
+                    //displayStatusAlert("Code saved to " + file.getAbsolutePath());
+                    writer.flush();
+                } catch (IOException ex) {
+                    Logger.getLogger(StylerController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+    }
 
     public void startAnimations() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

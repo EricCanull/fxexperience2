@@ -9,23 +9,54 @@
  */
 package com.fxexperience.tools.controller;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.css.StyleableProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import org.w3c.dom.css.Rect;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class PreviewController extends StackPane {
+public class PreviewController extends VBox {
 
-    @FXML private GridPane contentPanel;
+//    @FXML private GridPane contentPane;
+    private boolean changeIsLocal = true;
+
+    public String getCss() {
+        return css.get();
+    }
+
+    public StringProperty cssProperty() {
+        return css;
+    }
+
+    private final StringProperty css = new SimpleStringProperty() {
+        @Override
+        protected void invalidated() {
+            if (!changeIsLocal) {
+                changeIsLocal = true;
+                System.out.println(css.get());
+               // setPreviewPanelStyle();
+                changeIsLocal = false;
+            }
+        }
+    };
+
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
 
@@ -56,7 +87,7 @@ public class PreviewController extends StackPane {
         comboBox.getSelectionModel().select(0);
     }
 
-    public void setPreviewPanelStyle(String style) {
-        contentPanel.setStyle(style);
+    public void setPreviewPanelStyle(String css) {
+        setStyle(css);
     }
 }

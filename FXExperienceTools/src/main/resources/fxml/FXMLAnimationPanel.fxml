@@ -9,167 +9,155 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root prefHeight="600.0" prefWidth="900.0" styleClass="root-stackpane" type="StackPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" styleClass="canned-split-pane" stylesheets="@../styles/animation_panel.css">
-        <items>
-          <AnchorPane maxHeight="240.0">
+<fx:root dividerPositions="0.45" orientation="VERTICAL" styleClass="root-pane" stylesheets="@../styles/animation_panel.css" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <AnchorPane prefHeight="300.0">
+         <children>
+            <StackPane id="animateTestArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <StackPane id="animateTestArea" minHeight="230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button id="animateTest" fx:id="btn" alignment="TOP_LEFT" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="154.0" prefWidth="144.0" text="fxexperience" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fxexperience-logo.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <padding>
-                        <Insets bottom="25.0" top="25.0" />
-                     </padding>
-                  </StackPane>
+                  <Button id="animateTest" fx:id="btn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="140.0" prefWidth="380.0" text="Hey, this is a button!" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="120.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fxexperience-logo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
-            </AnchorPane>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="900.0" styleClass="button-anchorpane">
+            </StackPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane>
+         <children>
+            <GridPane alignment="TOP_CENTER" hgap="2.0" style="-fx-background-color: #2c2f33;" styleClass="buttons-grid" vgap="2.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="80.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="160.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="80.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="-Infinity" prefHeight="24.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="24.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+              </rowConstraints>
                <children>
-                  <GridPane alignment="TOP_CENTER" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" style="-fx-background-color: #222;" vgap="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
-                      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
-                      <ColumnConstraints hgrow="ALWAYS" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-                    </rowConstraints>
-                     <children>
-                        <Label alignment="CENTER" styleClass="section-label" text="Attention Seekers" GridPane.columnIndex="1" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Flippers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Fading Entrances" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Fading Exits" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Bouncing Entrances" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Bouncing Exits" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Rotating Entrances" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#flashAction" styleClass="section-buttons" text="Flash" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BounceAction" styleClass="section-buttons" text="Bounce" />
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#ShakeAction" styleClass="section-buttons" text="Shake" />
-                              <Button mnemonicParsing="false" onAction="#tadaAction" styleClass="section-buttons" text="Tada" />
-                              <Button mnemonicParsing="false" onAction="#swingAction" styleClass="section-buttons" text="Swing" />
-                              <Button mnemonicParsing="false" onAction="#wobbleAction" styleClass="section-buttons" text="Woble" />
-                              <Button mnemonicParsing="false" onAction="#pulseAction" styleClass="section-buttons" text="Pulse" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipAction" styleClass="section-buttons" text="Flip" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipInXAction" styleClass="section-buttons" text="Flip In X" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipOutXAction" styleClass="section-buttons" text="Flip Out X" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipInYAction" styleClass="section-buttons" text="Flip In Y" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#flipOutYAction" styleClass="section-buttons" text="Flip Out Y" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInAction" styleClass="section-buttons" text="Fade In" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInUpAction" styleClass="section-buttons" text="Fade In Up" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInDownAction" styleClass="section-buttons" text="Fade In Down" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInLeftAction" styleClass="section-buttons" text="Fade In Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInRightAction" styleClass="section-buttons" text="Fade In Right" />
-                              <Button mnemonicParsing="false" onAction="#fadeInUpBigAction" styleClass="section-buttons" text="Fade In Up Big" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#fadeInDownBigAction" styleClass="section-buttons" text="Fade In Down Big" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInLeftBigAction" styleClass="section-buttons" text="Fade In Left Big" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeInRightBigAction" styleClass="section-buttons" text="Fade In Right Big" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutAction" styleClass="section-buttons" text="Fade Out" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutUpAction" styleClass="section-buttons" text="Fade Out Up" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutDownAction" styleClass="section-buttons" text="Fade Out Down" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutLeftAction" styleClass="section-buttons" text="Fade Out Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutRightAction" styleClass="section-buttons" text="Fade Out Right" />
-                              <Button mnemonicParsing="false" onAction="#fadeOutUpBigAction" styleClass="section-buttons" text="Fade Out Up Big" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                           <children>
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutDownBigAction" styleClass="section-buttons" text="Fade Out Down Big" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutLeftBigAction" styleClass="section-buttons" text="Fade Out Left Big" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fadeOutRightBigAction" styleClass="section-buttons" text="Fade Out Right Big" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInAction" styleClass="section-buttons" text="Bounce In" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInUpAction" styleClass="section-buttons" text="Bounce In Up" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInDownAction" styleClass="section-buttons" text="Bounce In Down" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInLeftAction" styleClass="section-buttons" text="Bounce In Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceInRightAction" styleClass="section-buttons" text="Bounce In Right" />
-                           </children>
-                        </HBox>
-                        <Label alignment="CENTER" styleClass="section-label" text="Rotating Exits" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Label alignment="CENTER" styleClass="section-label" text="Specials" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
-                           <children>
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#hingeAction" styleClass="section-buttons" text="Hinge" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rollInAction" styleClass="section-buttons" text="Roll In" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rollOutAction" styleClass="section-buttons" text="Roll Out" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutAction" styleClass="section-buttons" text="Bounce Out" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutUpAction" styleClass="section-buttons" text="Bounce Out Up" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutDownAction" styleClass="section-buttons" text="Bounce Out Down" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutLeftAction" styleClass="section-buttons" text="Bounce Out Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#bounceOutRightAction" styleClass="section-buttons" text="Bounce Out Right" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateAction" styleClass="section-buttons" text="Rotate In" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInDownLeftAction" styleClass="section-buttons" text="Rotate In Down Left" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInDownRightAction" styleClass="section-buttons" text="Rotate in Down Right" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInUpLeftAction" styleClass="section-buttons" text="Rotate In Up Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateInUpRightAction" styleClass="section-buttons" text="Rotate In Up Right" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
-                           <children>
-                              <Button layoutX="75.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutAction" styleClass="section-buttons" text="Rotate Out" />
-                              <Button layoutX="140.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutDownLeftAction" styleClass="section-buttons" text="Rotate Out Down Left" />
-                              <Button layoutX="205.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutDownRightAction" styleClass="section-buttons" text="Rotate Out Down Right" />
-                              <Button layoutX="270.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutUpLeftAction" styleClass="section-buttons" text="Rotate Out Up Left" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rotateOutUpRightAction" styleClass="section-buttons" text="Rotate Out Up Right" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </GridPane>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Flippers" GridPane.columnIndex="5">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Fading Entries" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Fading Exits" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Alerts">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Bouncing Entries" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Bouncing Exits" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Rotating Entries" GridPane.columnIndex="4">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Rotating Exits" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" text="Specials" GridPane.columnIndex="5" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="section-label" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </GridPane.margin></Label>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pulseAction" styleClass="section-buttons" text="Pulse" GridPane.rowIndex="7" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#wobbleAction" styleClass="section-buttons" text="Woble" GridPane.rowIndex="6" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#swingAction" styleClass="section-buttons" text="Swing" GridPane.rowIndex="5" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tadaAction" styleClass="section-buttons" text="Tada" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ShakeAction" styleClass="section-buttons" text="Shake" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BounceAction" styleClass="section-buttons" text="Bounce" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flashAction" styleClass="section-buttons" text="Flash" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInLeftAction" styleClass="section-buttons" text="Fade In Left" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInDownAction" styleClass="section-buttons" text="Fade In Down" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInUpAction" styleClass="section-buttons" text="Fade In Up" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInAction" styleClass="section-buttons" text="Fade In" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInRightAction" styleClass="section-buttons" text="Fade In Right" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInUpBigAction" styleClass="section-buttons" text="Fade In Up Big" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInDownBigAction" styleClass="section-buttons" text="Fade In Down Big" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInLeftBigAction" styleClass="section-buttons" text="Fade In Left Big" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeInRightBigAction" styleClass="section-buttons" text="Fade In Right Big" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutAction" styleClass="section-buttons" text="Fade Out" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutUpAction" styleClass="section-buttons" text="Fade Out Up" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutDownAction" styleClass="section-buttons" text="Fade Out Down" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutLeftAction" styleClass="section-buttons" text="Fade Out Left" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutRightAction" styleClass="section-buttons" text="Fade Out Right" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutUpBigAction" styleClass="section-buttons" text="Fade Out Up Big" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutDownBigAction" styleClass="section-buttons" text="Fade Out Down Big" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutRightBigAction" styleClass="section-buttons" text="Fade Out Right Big" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#fadeOutLeftBigAction" styleClass="section-buttons" text="Fade Out Left Big" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceInAction" styleClass="section-buttons" text="Bounce In" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceInUpAction" styleClass="section-buttons" text="Bounce In Up" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceInDownAction" styleClass="section-buttons" text="Bounce In Down" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceInLeftAction" styleClass="section-buttons" text="Bounce In Left" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceInRightAction" styleClass="section-buttons" text="Bounce In Right" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateAction" styleClass="section-buttons" text="Rotate In" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateInDownLeftAction" styleClass="section-buttons" text="Rotate In Down Left" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateInDownRightAction" styleClass="section-buttons" text="Rotate in Down Right" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateInUpLeftAction" styleClass="section-buttons" text="Rotate In Up Left" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateInUpRightAction" styleClass="section-buttons" text="Rotate In Up Right" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flipAction" styleClass="section-buttons" text="Flip" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flipInXAction" styleClass="section-buttons" text="Flip In X" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flipOutXAction" styleClass="section-buttons" text="Flip Out X" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flipInYAction" styleClass="section-buttons" text="Flip In Y" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#flipOutYAction" styleClass="section-buttons" text="Flip Out Y" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#hingeAction" styleClass="section-buttons" text="Hinge" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rollInAction" styleClass="section-buttons" text="Roll In" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rollOutAction" styleClass="section-buttons" text="Roll Out" GridPane.columnIndex="5" GridPane.rowIndex="11" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateOutAction" styleClass="section-buttons" text="Rotate Out" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateOutDownLeftAction" styleClass="section-buttons" text="Rotate Out Down Left" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateOutDownRightAction" styleClass="section-buttons" text="Rotate Out Down Right" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateOutUpLeftAction" styleClass="section-buttons" text="Rotate Out Up Left" GridPane.columnIndex="4" GridPane.rowIndex="12" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rotateOutUpRightAction" styleClass="section-buttons" text="Rotate Out Up Right" GridPane.columnIndex="4" GridPane.rowIndex="13" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceOutAction" styleClass="section-buttons" text="Bounce Out" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceOutUpAction" styleClass="section-buttons" text="Bounce Out Up" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceOutDownAction" styleClass="section-buttons" text="Bounce Out Down" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceOutLeftAction" styleClass="section-buttons" text="Bounce Out Left" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bounceOutRightAction" styleClass="section-buttons" text="Bounce Out Right" GridPane.columnIndex="3" GridPane.rowIndex="13" />
                </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </items>
 </fx:root>

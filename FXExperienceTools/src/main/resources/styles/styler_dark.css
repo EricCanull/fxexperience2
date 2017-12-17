@@ -21,7 +21,12 @@
     -text-secondary: derive(#FFF, -30%);
     -text-disabled: derive(#FFF, -50%);
 }
-
+#Preview-Alpha {
+    -fx-background-image: url("../images/chequers.png");
+    -fx-background-color: #FFF;
+    -fx-border-color: #31363B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
 /*******************************************************************************
  * Popup Color Picker MenuButton 			                                   *
  ******************************************************************************/
@@ -160,7 +165,6 @@
 
 .titled-pane > .title {
     -fx-background-color:  derive(-dark-header, 0%), derive(-dark-header, 30%),  derive(-dark-header, -20%),  -dark-header;
-
     -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
     -fx-font-size: 13px;
     -fx-alignment: center-left;

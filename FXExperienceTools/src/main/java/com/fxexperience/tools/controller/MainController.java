@@ -33,6 +33,7 @@ import javafx.scene.input.DataFormat;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.stage.FileChooser;
@@ -152,8 +153,8 @@ public final class MainController extends AbstractController implements Initiali
 
     private void initToolBarArrow() {
         // create toolbar background path
-        toolBar.setClip(createToolBarPath(WHEAT, null));
-        Path toolBarBackground = createToolBarPath(null, web("#606060"));
+        toolBar.setClip(createToolBarPath(Color.web("#2c2f33"), null));
+        Path toolBarBackground = createToolBarPath(null, Color.web("#2c2f33"));
         toolBar.getChildren().add(toolBarBackground);
     }
 

@@ -14,6 +14,7 @@ import com.fxexperience.tools.view.WindowFactory;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.fxmisc.cssfx.CSSFX;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -39,5 +40,6 @@ public class AppViewHandler implements ViewHandler {
         stage.setResizable(window.resizable());
         stage.setScene(new Scene(window.root()));
         stage.show();
+        CSSFX.start();
     }
 }

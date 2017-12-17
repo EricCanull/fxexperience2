@@ -7,30 +7,28 @@ through interfaces provided by the licensed work may be distributed under
 different terms and without source code for the larger work.
 */
 .root {
-    -fe-header-background: #00466B;
-    -fe-body-background: #F1F4F6;
-    -fe-inner-background: #F1F4F6;
 
-    -fe-header-text: #F1F4F6;
-    -fe-body-text: #000;
-    -fe-inner-text: #000;
-    -fe-border: #282828;
-    -fx-font-family: "Rubik Medium";
-    -fx-background-color:  #f0f5fa;
-    -fx-focus-color: #339797;
+    /*-font-family: 'Roboto';*/
 }
+@font-face {
+    src: url('/fonts/Roboto-Light.ttf');
+
+}
+
 .nav-box {
-    -fx-background-image: url("../images/binding_dark.png");
-    -fx-effect: innershadow(three-pass-box, rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );
+    /*-fx-background-image: url("../images/binding_dark.png");*/
+    -fx-border-width: 0;
+    /*-fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );*/
     /*    -fx-background-color:  -fe-dark-inner-background;*/
-    -fx-background-insets: 1, -5, 1, -5;
-    -fx-background-radius: 9;
+    /*-fx-background-insets: 1, -5, 1, -5;*/
+    /*-fx-background-radius: 9;*/
 }
+
 /*******************************************************************************
  * Alert Notification		                                                   *
  ******************************************************************************/
 .status-dialog {
-    -fx-background-color: #3AA6DF;
+    -fx-background-color: #84b6eb;
 }
 .status-label {
     -fx-text-fill: black;
@@ -40,29 +38,21 @@ different terms and without source code for the larger work.
  * Menu Bar			                                                           *
  ******************************************************************************/
 .menu {
-    -fx-background-color: transparent;
-    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+
 }
 
-.menu-item:show-mnemonics > .mnemonic-underline {
-    -fx-stroke: -fx-text-base-color;
-}
 .menu:hover,
 .menu-button .menu:hover {
-    -fx-text-fill: -fe-header-text;
-    -fx-background-color: derive(-fe-header-background, 26%);
 }
-.main-menu .container .menu:openvertically .label .text {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-}
-.main-menu {
-    -fx-background-color: -fe-header-background;
-    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
-    -fx-padding: 0.385em 0.692em 0.231em 0.692em;
-    -fx-font-size: 0.875em;
-    -fx-alignment: center-left;
-    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1 );
 
+.main-menu {
+    /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
+    /*-fx-background-insets: 0 0 1 0, 0, 1 0 0 0, 1 0 0 0;*/
+    -fx-font-size: 16px;
+    -fx-alignment: center-left;
+    /*-fx-effect: dropshadow( two-pass-box, -gray-light, 2, 0.0, 0, 1 );*/
+
+    -fx-font-family: "Roboto";
     /* Nothing more needed for Mac OS X than the following property!
      * All other definitions kept from caspian, to ensure, that MenuBar
      * is shown properly on non-mac systems.
@@ -70,34 +60,29 @@ different terms and without source code for the larger work.
     -fx-use-system-menu-bar: true;
 }
 
+.main-menu .container .menu:openvertically .label .text {
+}
+
 .menu-item:focused,
-.menu-item:hover{
-    -fx-background-color: derive(-fe-header-background, 26%);
-    /*-fx-background-insets: 1, 1, 1;*/
+.menu-item:hover {
+    /*       -fx-background-insets: 1, 1, 1;*/
 }
 
 .menu-button .menu {
-    -fx-text-fill: -fe-header-text;
 }
 
 .menu-bar .menu .label {
-    -fx-text-fill: -fe-header-text;
 }
 
-.menu-button menu showing {
-    -fx-background-color: transparent;
+.main-menu .container .menu:openvertically .label .text {
+
 }
 
 .context-menu {
     /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
-    -fx-background-color: derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), -60%),
-                          derive(rgb(147, 147, 147), 40%),
-                          -fe-header-background;
-
     /*    -fx-background-insets: 0, 1, 2;*/
 
-    /*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  /* 8 1 8 1 */
     /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
 }
 
@@ -106,8 +91,6 @@ different terms and without source code for the larger work.
  ******************************************************************************/
 #ContentPanel {
     /*    -fx-background-color: transparent;*/
-    -fx-background-color: -fx-background;
-    -fx-border-color: derive(rgb(147, 147, 147),60%);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 2 );
 }
 
@@ -122,42 +105,14 @@ different terms and without source code for the larger work.
 .integer-field {
     -fx-alignment: BASELINE_LEFT;
 }
-.color-picker {
-    -fx-background-color: transparent;
-}
-.highlight-off-symbol {
-    -fx-background-color: #888888, -fx-background;
-    -fx-background-insets: 0,1;
-    -fx-background-radius: 4,3;
-    -fx-padding: 4;
-}
-.highlight-on-symbol {
-    -fx-background-color: #888888;
-    -fx-background-insets: 0;
-    -fx-background-radius: 4;
-    -fx-padding: 4;
-}
-
-.big-button {
-    -fx-text-fill: white;
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-}
 
 .menu-toggle-button {
-    -fx-background-color: transparent;
-
+    -fx-font-family: "Roboto";
+    -fx-border-width: 0 0 0 0;
+    -fx-font-size: 12px;
 }
 
-.menu-toggle-button:selected {
-
-
-}
-.menu-toggle-button:hover {
-
-
+.menu-toggle-button:hover, .menu-toggle-button:selected{
 }
 
 

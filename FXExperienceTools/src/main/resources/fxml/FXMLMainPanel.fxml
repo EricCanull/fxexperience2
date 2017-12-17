@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="780.0" styleClass="root" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="780.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -56,14 +56,11 @@
       </MenuBar>
    </top>
    <left>
-      <StackPane style="-fx-background-color: #669cf6;">
-         <BorderPane.margin>
-            <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
-         </BorderPane.margin>
+      <AnchorPane style="-fx-background-color: #1111EE;">
          <children>
-            <StackPane fx:id="toolBar" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" style="-fx-background-color: #669cf6;">
+            <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" styleClass="nav-box">
+                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="90.0" styleClass="nav-box">
                      <children>
                         <ToggleButton fx:id="stylerToggle" alignment="TOP_CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="CSS Builder" textAlignment="CENTER" wrapText="true">
                            <graphic>
@@ -92,7 +89,7 @@
                               <Font size="11.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="5.0" />
+                              <Insets />
                            </VBox.margin>
                         </ToggleButton>
                         <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" wrapText="true">
@@ -131,12 +128,12 @@
                               </ImageView>
                            </graphic>
                          
-                              </ToggleButton>
+                                                </ToggleButton>
                      </children>
                   </VBox>
                </children>
             </StackPane>
          </children>
-      </StackPane>
+      </AnchorPane>
    </left>
 </BorderPane>

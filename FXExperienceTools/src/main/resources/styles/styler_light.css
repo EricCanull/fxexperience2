@@ -11,28 +11,16 @@ different terms and without source code for the larger work.
     Author     : Eric Canull
 */
 .root {
-    -fe-header-background: #00466B;
-    -fe-body-background: #F1F4F6;
-    -fe-inner-background: #F1F4F6;
 
-    -fe-header-text: #F1F4F6;
-    -fe-body-text: #000;
-    -fe-inner-text: #000;
-    -fe-border: #282828;
-
-    -fx-background-color: #F1F4F6;
-    -fx-focus-color: #339797;
 }
 
 /*******************************************************************************
  * Popup Color Picker MenuButton 			                                   *
  ******************************************************************************/
 .popup-pane {
-    -fx-background-color: transparent;
     -fx-padding: 0;
 }
 .custom-menu-button {
-    -fx-background-color: linear-gradient(to bottom, #F2F2F2 20%, #A2A2A2 80%);
     -fx-border-insets: -2;
     -fx-background-insets: -2;
 }
@@ -40,7 +28,6 @@ different terms and without source code for the larger work.
 }
 
 .custom-menu-button {
-    -fx-border-color: -fe-border;
     -fx-font-size: 0.875em;
 }
 .custom-menu-item:focused,
@@ -95,7 +82,6 @@ different terms and without source code for the larger work.
     -fx-font-size:  0.83333em;
 }
 #font-box .context-menu {
-    -fx-background-color: rgb(189,189,189);
 }
 
 #font-box .label {
@@ -135,12 +121,8 @@ different terms and without source code for the larger work.
 }
 
 .sub-title {
-    -fx-text-fill: white;
     -fx-font-size: 0.875em;
     -fx-border-width: 0.5 0 0.5 0;
-    -fx-border-color: #B2B2B2;
-    -fx-background-color:
-            linear-gradient(to left,  white 18%, derive(#B2B2B2, 21%) 90%);
 }
 .pane-shadow {
     -fx-background-color: derive(rgb(147, 147, 147), -87%);
@@ -172,7 +154,6 @@ different terms and without source code for the larger work.
     -fx-padding: 0;
     -fx-border-insets: 3, 3;
     -fx-border-radius: 3, 3;
-    -fx-background-color: transparent;
     -fx-background-insets: 3, 3;
     -fx-background-radius: 3, 3;
 }
@@ -243,7 +224,6 @@ different terms and without source code for the larger work.
 /*}*/
 
 .webcolor-field:focused {
-    -fx-border-color: -fe-border;
     -fx-background-insets: -0.2, 1, 2;
     -fx-background-radius: 3.2, 2, 2;
     -fx-border-radius: 2.2, 2, 2;
