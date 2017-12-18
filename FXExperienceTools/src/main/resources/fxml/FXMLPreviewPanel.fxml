@@ -1,137 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
+
 <fx:root id="Preview-area" alignment="CENTER" stylesheets="@../styles/preview.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane id="ContentPanel" alignment="CENTER" hgap="2.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" vgap="2.0">
-         <children>
-            <Button id="button1" minWidth="120.0" text="Button" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </Button>
-            <ToggleButton id="toggleButton1" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ToggleButton>
-            <RadioButton maxWidth="1.7976931348623157E308" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets top="5.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
-               <children>
-                  <CheckBox indeterminate="true" maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
-                  <CheckBox id="checkBox1" maxWidth="1.7976931348623157E308" text="CheckBox" />
-                  <CheckBox maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
-               </children>
-            </VBox>
-            <RadioButton maxWidth="1.7976931348623157E308" selected="true" text="RadioButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-            <ToggleButton minWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <MenuButton minWidth="120.0" text="MenuButton" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <items>
-                  <MenuItem text="Action 1" />
-                  <MenuItem text="Action 2" />
-               </items>
-            </MenuButton>
-            <ChoiceBox fx:id="choiceBox" minWidth="180.0" GridPane.columnIndex="3" GridPane.halignment="CENTER">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="ChoiceBox" />
-                     <String fx:value="Item 1" />
-                     <String fx:value="Item 2" />
-                     <String fx:value="Item 3" />
-                  </FXCollections>
-               </items>
-            </ChoiceBox>
-            <ComboBox fx:id="comboBox" minWidth="180.0" value="ComboBox" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="ComboBox" />
-                     <String fx:value="Item 1" />
-                     <String fx:value="Item 2" />
-                     <String fx:value="Item 3" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
-            <ComboBox editable="true" value="Editable ComboBox" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="Editable ComboBox" />
-                     <String fx:value="Item 1" />
-                     <String fx:value="Item 2" />
-                     <String fx:value="Item 3" />
-                  </FXCollections>
-               </items>
-            </ComboBox>
-            <Hyperlink id="hyperlink1" maxWidth="1.7976931348623157E308" text="Hyperlink" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </Hyperlink>
-            <Label maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin>
-            </Label>
-            <HBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
-               <children>
-                  <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="134.0" HBox.hgrow="ALWAYS" />
-                  <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0" />
-               </children>
-            </HBox>
-            <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
-               <children>
-                  <ScrollBar id="scrollBarHorizontal1" maxWidth="1.7976931348623157E308" prefWidth="140.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ScrollBar>
-                  <ScrollBar id="scrollBarVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ScrollBar>
-               </children>
-            </VBox>
-            <VBox spacing="5.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-               <children>
-                  <TextField id="textField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" />
-                  <PasswordField id="passwordField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="Password" />
-                  <TextArea id="textArea1" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
-               </children>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" />
-               </GridPane.margin>
-            </VBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin>
-            </Text>
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="140.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="190.0" prefWidth="190.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" vgrow="NEVER" />
-            <RowConstraints minHeight="50.0" vgrow="NEVER" />
-            <RowConstraints minHeight="40.0" vgrow="NEVER" />
-            <RowConstraints minHeight="50.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="120.0" vgrow="NEVER" />
-         </rowConstraints>
-      </GridPane>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" text="Go" />
+            <TextField alignment="CENTER_RIGHT" prefWidth="100.0" promptText="Enter text" />
+            <Label text="Search" />
+            <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+        </items>
+      </ToolBar>
+      <TabPane side="RIGHT" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab text="Controls">
+               <content>
+                  <GridPane id="ContentPanel" alignment="CENTER" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="3.0">
+                     <children>
+                        <Button id="button1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="Button" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </ToggleButton>
+                        <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                           <children>
+                              <CheckBox indeterminate="true" maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
+                              <CheckBox id="checkBox1" maxWidth="1.7976931348623157E308" text="CheckBox" />
+                              <CheckBox maxWidth="1.7976931348623157E308" selected="true" text="CheckBox" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                           <children>
+                              <RadioButton maxWidth="1.7976931348623157E308" selected="true" text="RadioButton" />
+                              <RadioButton maxWidth="1.7976931348623157E308" text="RadioButton" />
+                              <RadioButton alignment="TOP_LEFT" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="RadioButton" />
+                           </children>
+                        </VBox>
+                        <ToggleButton maxWidth="1.7976931348623157E308" minWidth="120.0" selected="true" text="ToggleButton" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <MenuButton maxWidth="1.7976931348623157E308" minWidth="120.0" text="MenuButton" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <items>
+                              <MenuItem text="Action 1" />
+                              <MenuItem text="Action 2" />
+                           </items>
+                        </MenuButton>
+                        <ChoiceBox fx:id="choiceBox" maxWidth="1.7976931348623157E308" minWidth="180.0" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ChoiceBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                        <ComboBox fx:id="comboBox" maxWidth="1.7976931348623157E308" minWidth="180.0" value="ComboBox" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="ComboBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <ComboBox editable="true" value="Editable ComboBox" GridPane.columnIndex="4" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Editable ComboBox" />
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ComboBox>
+                        <VBox alignment="TOP_RIGHT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.vgrow="NEVER" />
+                        <Spinner maxWidth="1.7976931348623157E308" minWidth="180.0" GridPane.columnIndex="4" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" />
+                        <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                           <children>
+                              <PasswordField id="passwordField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="Password" />
+                              <TextArea id="textArea1" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
+                           </children>
+                        </VBox>
+                        <VBox GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Label" />
+                              <Hyperlink id="hyperlink1" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Hyperlink" />
+                           </children>
+                        </VBox>
+                        <ProgressBar prefWidth="200.0" progress="0.75" GridPane.rowIndex="3" />
+                        <Separator maxHeight="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="2" GridPane.rowSpan="6" />
+                        <HBox alignment="TOP_RIGHT" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+                           <children>
+                              <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="134.0" showTickLabels="true" showTickMarks="true" HBox.hgrow="ALWAYS" />
+                              <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0" showTickLabels="true" showTickMarks="true" />
+                           </children>
+                        </HBox>
+                        <ProgressIndicator progress="0.6" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <SplitMenuButton alignment="CENTER_RIGHT" mnemonicParsing="false" text="SplitMenuButton" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                        </SplitMenuButton>
+                        <TextField id="textField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="130.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="120.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="190.0" prefWidth="190.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="55.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="55.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="55.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="55.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="55.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="155.0" vgrow="NEVER" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </Tab>
+            <Tab text="Containers">
+               <content>
+                  <GridPane id="ContentPanel" alignment="CENTER" hgap="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="2.0">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                        <VBox alignment="TOP_RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                        <VBox maxWidth="1.7976931348623157E308" GridPane.columnSpan="2">
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <ListView prefHeight="220.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="ALWAYS" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                           <content>
+                              <TableView maxWidth="1.7976931348623157E308" prefHeight="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="134.0" text="C1" />
+                                  <TableColumn prefWidth="109.0" text="C2" />
+                                    <TableColumn prefWidth="148.0" text="Column X" />
+                                    <TableColumn prefWidth="148.0" text="Column X" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Pagination pageCount="8" GridPane.columnSpan="4" GridPane.rowIndex="2" />
+                        <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;Hello World&lt;/html&gt;" maxWidth="1.7976931348623157E308" prefHeight="200.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="140.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="190.0" prefWidth="190.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="50.0" valignment="CENTER" vgrow="NEVER" />
+                        <RowConstraints minHeight="-Infinity" prefHeight="45.0" valignment="CENTER" vgrow="NEVER" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </children>
-   <padding>
-      <Insets left="10.0" right="10.0" />
-   </padding>
 </fx:root>

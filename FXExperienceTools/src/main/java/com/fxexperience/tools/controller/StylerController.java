@@ -111,17 +111,17 @@ public class StylerController extends SplitPane {
         previewController = new PreviewController();
         previewPane.setCenter(previewController);
 
-        previewController.cssProperty().bind(Bindings.createStringBinding(() -> String.format(
-                ".root { %n  "
-                        + "-fx-base: %s;%n  "
-                        + "-fx-background: %s;%n  "
-                        + "-fx-focus-color: %s;%n  "
-                        + "-fx-control-inner-background: %s;%n }",
-                basePicker.getColorString(),
-                backgroundPicker.getColorString(),
-                focusPicker.getColorString(),
-                fieldBackgroundPicker.getColorString(),
-                basePicker, backgroundPicker, focusPicker, fieldBackgroundPicker)));
+//        previewController.cssProperty().bind(Bindings.createStringBinding(() -> String.format(
+//                ".root { %n  "
+//                        + "-fx-base: %s;%n  "
+//                        + "-fx-background: %s;%n  "
+//                        + "-fx-focus-color: %s;%n  "
+//                        + "-fx-control-inner-background: %s;%n }",
+//                basePicker.getColorString(),
+//                backgroundPicker.getColorString(),
+//                focusPicker.getColorString(),
+//                fieldBackgroundPicker.getColorString(),
+//                basePicker, backgroundPicker, focusPicker, fieldBackgroundPicker)));
 
         addListeners();
 
@@ -226,7 +226,6 @@ public class StylerController extends SplitPane {
         backgroundTextToggle.selectedProperty().addListener(updateCssListener);
         foregroundTextPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
 
-
         topHighlightSlider.valueProperty().addListener(updateCssListener);
         bottomHighlightSlider.valueProperty().addListener(updateCssListener);
         bodyTopSlider.valueProperty().addListener(updateCssListener);
@@ -307,17 +306,19 @@ public class StylerController extends SplitPane {
        String innerBottomDerivation = String.format("%.1f", bodyBottomSlider.getValue()
                 + ((100 - bodyBottomSlider.getValue()) * (bottomHighlightSlider.getValue() / 100)));
 
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-inner-border: linear-gradient(to bottom, " + "derive(-fx-color," + innerTopDerivation +"%) 0%, "
+        cssBuffer.append(StringUtil.padWithSpaces(
+              "-fx-inner-border: linear-gradient(to bottom, "
+                + "derive(-fx-color," + innerTopDerivation +"%) 0%, "
                 + "derive(-fx-color," + innerBottomDerivation + "%) 100%);", true, 4));
 
-        cssBuffer.append(StringUtil.padWithSpaces("-fx-body-color: linear-gradient( to bottom, ", false, 4));
-        cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
-                + bodyTopSlider.getValue() + "%) 0%, ", false, 0));
+        cssBuffer.append(StringUtil.padWithSpaces("" +
+                "-fx-body-color: linear-gradient( to bottom, "
+                + "derive(-fx-color, " + String.format("%.1f", bodyTopSlider.getValue()) + "%) 0%, ", false, 0));
 
         if (topMiddleToggle.isSelected()) {
             topMiddleToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
-                    + bodyTopMiddleSlider.getValue() + "%) 50%, ", false, 0));
+                    + String.format("%.1f", bodyTopMiddleSlider.getValue()) + "%) 50%, ", false, 0));
         } else {
             topMiddleToggle.setText("AUTO");
         }
@@ -325,18 +326,18 @@ public class StylerController extends SplitPane {
         if (bottomMiddleToggle.isSelected()) {
             bottomMiddleToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
-                    + bodyBottomMiddleSlider.getValue() + "%) 50.5%, ", false, 0));
+                    + String.format("%.1f",bodyBottomMiddleSlider.getValue()) + "%) 50.5%, ", false, 0));
         } else {
             bottomMiddleToggle.setText("AUTO");
         }
 
         cssBuffer.append(StringUtil.padWithSpaces("derive(-fx-color, "
-                + bodyBottomSlider.getValue() + "%) 100%);",true, 0));
+                + String.format("%.1f", bodyBottomSlider.getValue()) + "%) 100%);",true, 0));
 
         if (borderToggle.isSelected()) {
             borderToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-outer-border: derive(-fx-color,"
-                    + borderSlider.getValue() + "%);", true, 4));
+                    + String.format("%.1f", borderSlider.getValue()) + "%);", true, 4));
         } else {
             borderToggle.setText("AUTO");
         }
@@ -344,7 +345,7 @@ public class StylerController extends SplitPane {
         if (shadowToggle.isSelected()) {
             shadowToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-shadow-highlight-color: derive(-fx-background,"
-                    + shadowSlider.getValue() + "%);", true, 4));
+                    + String.format("%.1f", shadowSlider.getValue()) + "%);", true, 4));
         } else {
             shadowToggle.setText("AUTO");
         }
@@ -352,7 +353,7 @@ public class StylerController extends SplitPane {
         if (inputBorderToggle.isSelected()) {
             inputBorderToggle.setText("ON");
             cssBuffer.append(StringUtil.padWithSpaces("-fx-text-box-border: derive(-fx-background,"
-                    + inputBorderSlider.getValue() + "%);", true, 4));
+                    + String.format("%.1f", inputBorderSlider.getValue()) + "%);", true, 4));
         } else {
             inputBorderToggle.setText("AUTO");
         }
@@ -459,7 +460,7 @@ public class StylerController extends SplitPane {
 
     @FXML private void copyButtonAction(ActionEvent event) {
             Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, getCodeOutput()));
+                    Collections.singletonMap(DataFormat.PLAIN_TEXT, createCSS()));
           //  displayStatusAlert("Code has been copied to the clipboard.");
 
     }

@@ -31,7 +31,7 @@
          <children>
             <Accordion maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" styleClass="accordian-prop" AnchorPane.bottomAnchor="60.0" AnchorPane.topAnchor="0.0">
               <panes>
-                <TitledPane animated="false" text="Text">
+                <TitledPane animated="false" text="Text Style">
                   <content>
                     <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0">
                            <children>
@@ -78,7 +78,7 @@
                         </AnchorPane>
                   </content>
                 </TitledPane>
-                <TitledPane animated="false" text="Sizes">
+                <TitledPane animated="false" text="Border Sizes">
                   <content>
                     <AnchorPane styleClass="anchor-pane">
                            <children>
@@ -143,7 +143,7 @@
                         </AnchorPane>
                   </content>
                 </TitledPane>
-                  <TitledPane animated="false" text="Colors">
+                  <TitledPane animated="false" text="Root Colors">
                     <content>
                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0">
                            <children>
@@ -205,7 +205,7 @@
                         </AnchorPane>
                     </content>
                   </TitledPane>
-                  <TitledPane animated="false" text="Buttons">
+                  <TitledPane animated="false" text="Gradients">
                      <content>
                         <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="400.0">
                            <children>
@@ -413,6 +413,7 @@
                         </AnchorPane>
                      </content>
                   </TitledPane>
+                  <TitledPane fx:id="derivationCalculatorTab" animated="false" layoutX="10.0" layoutY="114.0" text="Derivation" />
               </panes>
             </Accordion>
             <HBox alignment="CENTER" spacing="25.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
