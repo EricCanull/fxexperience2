@@ -91,8 +91,6 @@ public class StyleController extends VBox {
     private final ColorPopupEditor fieldBackgroundPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#23272a"));
     private final ColorPopupEditor fieldTextPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#000000"));
 
-    private String[] styleCode = CSSBaseStyle.getCodeArray();
-
     public StyleController() {
         initialize();
     }
@@ -285,7 +283,7 @@ public class StyleController extends VBox {
 
             String fontSize = fontSizeBox.getValue() + fontRadioGroup.getSelectedToggle().getUserData();
 
-            sbRoot.append("*.root {\n");
+            sbRoot.append(".root {\n");
             //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-font-family: \"" + fontChoice.getValue() + "\";", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSize+ ";", true, 4));
@@ -507,7 +505,7 @@ public class StyleController extends VBox {
     }
 
     public String getCodeString() {
-     return sbRoot.toString();
+     return sbRoot.toString() + sbBody.toString() ;
     }
 
     private void setCodeAreaText() {
