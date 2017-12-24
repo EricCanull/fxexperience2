@@ -3,7 +3,6 @@ package com.fxexperience.tools.ui;
 import com.fxexperience.tools.controller.StyleController;
 import com.fxexperience.tools.util.css.CSSBaseStyle;
 import com.fxexperience.tools.util.css.CSSHighlight;
-import com.sun.javafx.css.parser.CSSParser;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
