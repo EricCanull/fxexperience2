@@ -9,11 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Remind to set -Xss1m to VM for large file if use regex
- * Selectors .root, .button
- * Property names for styles in JavaFX style sheets are preceded by -fx-
- * @author XDean
- */
+*/
 public class CSSHighlight {
 
 
