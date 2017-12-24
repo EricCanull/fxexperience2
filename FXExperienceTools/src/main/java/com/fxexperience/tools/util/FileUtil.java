@@ -10,8 +10,14 @@
 package com.fxexperience.tools.util;
 
 import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Permissions of this free software license are conditioned on making available
  * complete source code of licensed works and modifications under the same 
@@ -21,20 +27,22 @@ import java.io.File;
  * work may be distributed under different terms and without source code 
  * for the larger work.
  */
-public class FileUtils {
+public class FileUtil {
 
     /**
-     * Define file extension filters to filtering supported image files, matching files whose
-     * extensions are: *.css
      *
-     * @param fileChooser
      */
-    public static void configure(FileChooser fileChooser) {
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All CSS", "*.css"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"),
-                new FileChooser.ExtensionFilter("CSS", "*.css"));
-        // Set "." as default dir
-        fileChooser.setInitialDirectory(new File("."));
+    public static void saveCSSFile(Window window, String code) {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(window);
+        if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
+            try (FileWriter writer = new FileWriter(file)) {
+                writer.write(code);
+                // displayStatusAlert("Code saved to " + file.getAbsolutePath());
+                writer.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(FileUtil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

@@ -28,31 +28,22 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.DataFormat;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
-import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class MainController extends AbstractController implements Initializable {
 
     public enum Tool {
-        STYLER, SPLINE, DERIVATION, GRADIENT, ANIMATION
+        CSS, SPLINE, DERIVATION, GRADIENT, ANIMATION
     }
 
     // Custom interpolator for the slide animation transition
@@ -75,7 +66,7 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private StackPane rootContainer;
     @FXML private CheckMenuItem themeMenuItem;
 
-    private StylerController stylerController;
+    private StyleController StyleController;
     private SplineController splineController;
     private DerivationController derivationController;
     private GradientController gradientController;
@@ -93,21 +84,22 @@ public final class MainController extends AbstractController implements Initiali
        super(viewHandler);
     }
 
-    /* @param url @param rb */
+    /**
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        initToggleGroup();
-
-        initializeTools();
-
-        initToolBarArrow();
+        loadToggleGroup();
+        loadTools();
+        loadSelectedToolArrow();
     }
 
     // Creates toggle group to bind color icon effect
-    private void initToggleGroup() {
+    private void loadToggleGroup() {
         ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle, gradientBuilderToggle, animationToggle);
+        toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle,
+                gradientBuilderToggle, animationToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
         toggleGroup.selectToggle(stylerToggle);
     }
@@ -127,14 +119,14 @@ public final class MainController extends AbstractController implements Initiali
         });
     }
 
-    private void initializeTools() {
-        stylerController = new StylerController();
+    private void loadTools() {
+        StyleController = new StyleController();
         splineController = new SplineController();
         derivationController = new DerivationController();
         gradientController = new GradientController();
         animationController = new AnimationController();
 
-        tools.put(Tool.STYLER.ordinal(), stylerController);
+        tools.put(Tool.CSS.ordinal(), StyleController);
         tools.put(Tool.SPLINE.ordinal(), splineController);
         tools.put(Tool.DERIVATION.ordinal(), derivationController);
         tools.put(Tool.GRADIENT.ordinal(), gradientController);
@@ -144,12 +136,12 @@ public final class MainController extends AbstractController implements Initiali
         sparePane = new StackPane();
         sparePane.setVisible(false);
 
-        currentPane.getChildren().add(stylerController);
+        currentPane.getChildren().add(StyleController);
         rootContainer.getChildren().addAll(currentPane, sparePane);
-        currentToolIndex = Tool.STYLER.ordinal();
+        currentToolIndex = Tool.CSS.ordinal();
     }
 
-    private void initToolBarArrow() {
+    private void loadSelectedToolArrow() {
         // create toolbar background path
         toolBar.setClip(createToolBarPath(Color.web("#2c2f33"), null));
         Path toolBarBackground = createToolBarPath(null, Color.web("#2c2f33"));
@@ -274,7 +266,7 @@ public final class MainController extends AbstractController implements Initiali
     private void displayStatusAlert(String textMessage) {
         double prefWidth = rootContainer.getLayoutBounds().getWidth();
 
-        NotificationController alert = new NotificationController(textMessage);
+        AlertController alert = new AlertController(textMessage);
         alert.setOpacity(0);
 
        alert.setPanelWidth(prefWidth, currentToolIndex);
@@ -302,96 +294,67 @@ public final class MainController extends AbstractController implements Initiali
         String mainControllerCSS = isDarkThemeSelected
                 ? getClass().getResource(AppPaths.STYLE_PATH + "main_dark.css").toExternalForm()
                 : getClass().getResource(AppPaths.STYLE_PATH + "main_light.css").toExternalForm();
-        String stylerControllerCSS = isDarkThemeSelected
-                ? getClass().getResource(AppPaths.STYLE_PATH + "styler_dark.css").toExternalForm()
-                : getClass().getResource(AppPaths.STYLE_PATH + "styler_light.css").toExternalForm();
+        String styleControllerCSS = isDarkThemeSelected
+                ? getClass().getResource(AppPaths.STYLE_PATH + "style_panel_dark.css").toExternalForm()
+                : getClass().getResource(AppPaths.STYLE_PATH + "style_panel_light.css").toExternalForm();
 
         rootBorderPane.getStylesheets().clear();
         rootBorderPane.getStylesheets().add(mainControllerCSS);
-        stylerController.getStylesheets().clear();
-        stylerController.getStylesheets().add(stylerControllerCSS);
+        StyleController.getStylesheets().clear();
+        StyleController.getStylesheets().add(styleControllerCSS);
     }
 
     @FXML private void stylerToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (stylerToggle.isSelected()) {
-            setTool(Tool.STYLER);
-            setArrow(stylerToggle);
-        } else { // tool is already active reselect toggle
+        if (!stylerToggle.isSelected()) {
             stylerToggle.setSelected(true);
+        } else {
+            setTool(Tool.CSS);
+            setArrow(stylerToggle);
         }
     }
 
     @FXML private void splineToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (splineToggle.isSelected()) {
+        if (!splineToggle.isSelected()) {
+            splineToggle.setSelected(true);
+        } else {
             setTool(Tool.SPLINE);
             setArrow(splineToggle);
-        } else { // tool is already active reselect toggle
-            splineToggle.setSelected(true);
         }
     }
 
     @FXML private void derivedToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (derivedColorToggle.isSelected()) {
+        if (!derivedColorToggle.isSelected()) {
+            derivedColorToggle.setSelected(true);
+        } else {
             setTool(Tool.DERIVATION);
             setArrow(derivedColorToggle);
-        } else { // tool is already active reselect toggle
-            derivedColorToggle.setSelected(true);
         }
     }
     @FXML private void gradientToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (gradientBuilderToggle.isSelected()) {
+        if (!gradientBuilderToggle.isSelected()) {
+            gradientBuilderToggle.setSelected(true);
+        } else {
             setTool(Tool.GRADIENT);
             setArrow(gradientBuilderToggle);
-        } else { // tool is already active reselect toggle
-            gradientBuilderToggle.setSelected(true);
         }
     }
 
     @FXML private void animationToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (animationToggle.isSelected()) {
+        if (!animationToggle.isSelected()) {
+            animationToggle.setSelected(true);
+        } else {
             setTool(Tool.ANIMATION);
             setArrow(animationToggle);
-        } else { // tool is already active reselect toggle
-            animationToggle.setSelected(true);
         }
     }
 
     @FXML private void setThemeAction() {
         loadStyle(themeMenuItem.isSelected());
-    }
-
-
-    @FXML private void copyButtonAction(ActionEvent event) {
-        if (stylerToggle.isSelected()) {
-            Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, stylerController.getCodeOutput()));
-            displayStatusAlert("Code has been copied to the clipboard.");
-        } else if (splineToggle.isSelected()) {
-            Clipboard.getSystemClipboard().setContent(
-                    Collections.singletonMap(DataFormat.PLAIN_TEXT, splineController.getCodeOutput()));
-            displayStatusAlert("Code has been copied to the clipboard.");
-        }
-    }
-
-    @FXML private void saveButtonAction(ActionEvent event) {
-        if (stylerToggle.isSelected()) {
-            FileChooser fileChooser = new FileChooser();
-            File file = fileChooser.showSaveDialog(rootContainer.getScene().getWindow());
-            if (file != null && !file.exists() && file.getParentFile().isDirectory()) {
-                try (FileWriter writer = new FileWriter(file)) {
-                   writer.write(stylerController.getCodeOutput());
-                    displayStatusAlert("Code saved to " + file.getAbsolutePath());
-                    writer.flush();
-                } catch (IOException ex) {
-                    Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
     }
 
     @FXML private void closeButtonAction(ActionEvent event) {

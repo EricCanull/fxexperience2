@@ -1,4 +1,4 @@
-package com.fxexperience.tools.util;
+package com.fxexperience.tools.ui;
 
 /*
  * Permissions of this free software license are conditioned on making available

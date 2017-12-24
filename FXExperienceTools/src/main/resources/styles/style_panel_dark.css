@@ -1,0 +1,569 @@
+/*
+    Created on : Apr 24, 2017, 4:00:53 AM
+    Author     : Eric Canull
+*/
+.root {
+    -fe-body-background: #2c2f33;
+    -fe-inner-background: #23272a;
+    -fe-border: #676B6F;
+    -fe-body-text: #D7D7D7;
+    -fe-inner-text: #FFF;
+    -fe-color: #2c2f33;
+    -fe-body-color: #23272a;
+
+    -fe-shadow-highlight-color: #595b5d;
+    -fe-outer-border: #595b5d;
+    -fe-inner-border: #676B6F;
+
+    -fe-control-inner-background: #23272a;
+    -font-family: 'Roboto';
+    -fe-background-color: #23272a;
+    -fe-focus-background: #334455;
+    -fe-focus-color: #3397B7;
+    -dark-header: #23272a;
+    -gray-darker: #2c2f33;
+    -gray-dark: #2d2d2d;
+    -gray-one: #383838;
+    -gray-light: #444444;
+    -gray-lighter: #5c5c5c;
+    -text-primary: #FFF;
+    -text-secondary: derive(#FFF, -5%);
+    -text-disabled: derive(#FFF, -50%);
+
+    -fe-text-box-border: #676B6F;
+
+}
+
+.button-hbox {
+    -fx-background-color: #2c2f33;
+}
+.style-button,
+.font-choice-box,
+.font-combo-box,
+.font-combo-box .combo-box-base,
+.font-combo-box:editable > .arrow-button {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+
+}
+
+.font-choice-box .context-menu {
+    -fx-text-fill: -text-secondary;
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+}
+
+.font-choice-box .label {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 1em;
+}
+.font-choice-box {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-font-size:  0.93333em;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Editable ComboBox                                                           *
+ *                                                                             *
+ * The editable ComboBox TextBox inherits its properties from the TextBox      *
+ * Control. Only the properties with values that are different from the        *
+ * TextBox are specified here.                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.font-combo-box:editable > .arrow-button:focused {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+
+}
+/*.font-combo-box:editable > .arrow-button {*/
+    /*-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color;*/
+    /*-fx-background-insets: 1 1 1 0, 1, 2;*/
+    /*-fx-background-radius: 0 3 3 0, 0 2 2 0, 0 1 1 0;*/
+/*}*/
+.font-combo-box:editable> .text-field {
+    -fx-background-color:
+            linear-gradient(to bottom, -fe-text-box-border, -fe-text-box-border),
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-control-inner-background, -25%), -fe-control-inner-background);
+    -fx-text-fill: -fe-inner-text;
+    -fx-background-insets: 1 0 1 1;
+    -fx-background-radius: 2 0 0 2;
+}
+/*.font-combo-box:editable:focused {*/
+    /*-fx-background-color: -fe-focus-color;*/
+    /*-fx-background-insets: -0.2;*/
+    /*-fx-background-radius: 3;*/
+/*}*/
+.font-combo-box:editable:focused > .text-field,
+.font-combo-box:editable > .text-field:focused{
+    -fx-background-color:
+            -fe-control-inner-background,
+            -fe-outer-border,
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-control-inner-background, -20%), -fe-control-inner-background);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+.font-combo-box .combo-box-base:editable:focused > .arrow-button {
+    -fx-background-color: -fe-inner-border, -fe-body-color, -fe-text-box-border, -fe-body-color;
+    -fx-background-insets: 1, 2, 1, 2.6;
+    -fx-background-radius: 0 2 2 0, 0 1 1 0, 0 1 1 0, 0 1 1 0;
+}
+.gradient-combo-box .list-view,
+.font-combo-box .list-view {
+    -fx-background-color: -fe-outer-border, -fe-control-inner-background;
+}
+
+.font-radio-button {
+    -fx-text-fill: -fe-inner-text;
+}
+.font-radio-button > .radio {
+    -fx-background-color: -fe-body-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+}
+.font-radio-button:focused > .radio{
+    -fx-background-color: -fe-focus-color, -fe-inner-border, -fe-body-color, -fx-faint-focus-color, -fe-body-color;
+
+}
+#Preview-Alpha {
+    -fx-background-image: url("../images/chequers.png");
+    -fx-background-color: #FFF;
+    -fx-border-color: #31363B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+.style-button {
+    -fx-font-size: .825em;
+    -fx-background-color: transparent;
+    -fx-border-color: #5c5c5c;
+    -fx-pref-width: 82px;
+    -fx-pref-height: 42px;
+    -fx-border-radius: 5;
+    -fx-text-fill: #E7E7E7;
+}
+
+.style-button:focused {
+    -fx-background-color: -fe-focus-background;
+    -fx-border-color: #5c5c5c;
+    -fx-text-fill: #E7E7E7;
+}
+
+/*******************************************************************************
+ * Popup Color Picker MenuButton 			                                   *
+ ******************************************************************************/
+.popup-pane {
+    -fx-background-color: -fe-body-background;
+    -fx-border-color: transparent;
+    -fe-focus-color: transparent;
+    -fx-padding: 0;
+}
+.custom-menu-button {
+    -fx-border-insets: -2;
+    -fx-background-insets: -2;
+}
+.custom-menu-button .arrow {
+    -fx-background-color: #7a8390;
+}
+
+.custom-menu-button {
+    -fx-background-color: -gray-darker;
+    -fx-border-color: -fe-border;
+    -fx-font-size: 0.875em;
+}
+
+.custom-menu-item:focused,
+.custom-menu-item:hover{
+    -fx-text-fill: -text-primary;
+    -fx-border-color: transparent;
+    -fe-focus-color: -gray-one;
+    -fx-background-radius: 1, 1, 1;
+}
+
+.custom-menu-button .label .text {
+    -fx-fill: -text-secondary;
+}
+
+.color-label {
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 0.1em;
+    /*     -fx-padding: 0 0 0 5;*/
+}
+.color-text-field {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 0.1em;
+    -fx-padding: 0.166667em 0.7em 0.166667em 0.7em;
+}
+
+.split-pane {
+       -fx-background-color: -gray-darker;
+ }
+
+.split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 2;
+}
+
+.split-pane-caspian:horizontal {
+    -fx-background-insets: -1 -1 -1 -1;
+    -fx-padding: 0;
+}
+
+.split-pane-caspian:horizontal .split-pane-divider {
+    -fx-background-insets: -1 -1 -1 -1;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.gradient-combo-box .list-cell .text {
+    -fx-font-size: 0.8666em;
+    -fx-fill: -fe-body-text;
+}
+.gradient-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fe-inner-background;
+    -fx-text-fill: -text-secondary;
+}
+
+.gradient-combo-box {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    /*-fx-border-color: -fe-border;*/
+    /*-fx-background-insets: 0;*/
+}
+.gradient-combo-box .arrow-button {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    /*-fx-border-color: transparent;*/
+    /*-fx-border-width: 0.2 .2 0.2 .2;*/
+    /*-fx-background-insets: 0;*/
+    /*-fx-border-insets: 1;*/
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * Spinner                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+.font-spinner {
+    -fx-background-color:
+            linear-gradient(to bottom, derive(-fe-border, -10%), -fe-border),
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-inner-background, -9%), -fe-inner-background);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3, 2;
+}
+.font-spinner:focused,
+.font-spinner:contains-focus {
+    -fx-background-color: -fe-focus-color, -fe-border, -fe-body-background, -fx-faint-focus-color, -fe-body-color;
+    -fx-background-insets: -0.2, 1, 2, -1.4, 2.6;
+    -fx-background-radius: 3, 2, 1, 4, 1;
+}
+.font-spinner > .text-field {
+    -fx-background-color:
+            linear-gradient(to bottom, derive(-fe-border, -10%), -fe-border),
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-inner-background, -9%), -fe-inner-background);
+    -fx-background-insets: 0, 1 0 1 1;
+    -fx-background-radius: 3 0 0 3, 2 0 0 2;
+}
+.font-spinner:focused > .text-field,
+.font-spinner:contains-focus > .text-field {
+    -fx-background-color:
+            -fe-inner-background,
+            -fx-faint-focus-color,
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-inner-background, -9%), -fe-inner-background);
+    -fx-text-fill:  -fe-inner-text;
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+.font-spinner .increment-arrow-button {
+    -fx-background-color: -fe-border, -fe-border, -fe-body-background;
+    /*Change the two 0's here to -1 to get rid of the horizontal line */
+    -fx-background-insets: 0 0 -1 0, 1 1 0 1, 2 2 1 2;
+    -fx-background-radius: 0 3 0 0, 0 2 0 0, 0 1 0 0;
+    -fx-padding: 0.333335em 0.666667em 0.333335em 0.666667em;  /* 5 8 3 8 */
+}
+.font-spinner .decrement-arrow-button {
+    -fx-background-color: -fe-border, -fe-border, -fe-body-background;
+    -fx-background-insets: 0, 1 1 1 1, 1 2 2 2;
+    -fx-background-radius: 0 0 3 0, 0 0 2 0, 0 0 1 0;
+    -fx-padding: 0.333335em 0.666667em 0.333335em 0.666667em;  /* 3 8 5 8 */
+}
+.font-spinner:focused .increment-arrow-button,
+.font-spinner:contains-focus .increment-arrow-button,
+.font-spinner:focused .decrement-arrow-button,
+.font-spinner:contains-focus .decrement-arrow-button {
+    -fx-background-color: -fe-focus-color, -fe-body-background, -fx-faint-focus-color, -fe-body-background;
+}
+
+.font-spinner .increment-arrow-button .increment-arrow {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 0 0 -1 0, 0;
+    -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em;  /* 2 4 2 4 */
+    -fx-shape: "M 0 4 h 7 l -3.5 -4 z";
+}
+.font-spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 0 0 -1 0, 0;
+    -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em; /* 2 4 2 4 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.font-spinner > .button:pressed > .left-arrow,
+.date-picker-popup > * > .spinner > .button:pressed > .right-arrow {
+    -fx-background-color: -fx-mark-highlight-color, derive(-fx-base,-55%);
+}
+
+/*-fx-background-color: ;*/
+/*-fx-border-color: #5c5c5c;*/
+/*-fx-text-fill: #E7E7E7;*/
+/*.font-spinner .increment-arrow-button,*/
+/*.font-spinner .decrement-arrow-button {*/
+    /*-fe-body-color: ladder(#5c5c5c, -fe-body-background 0%, #334455 100%);*/
+/*}*/
+
+/*.font-spinner .increment-arrow-button:hover,*/
+/*.font-spinner .decrement-arrow-button:hover {*/
+    /*!* interpolate color between yellow and red based on first color brightness *!*/
+    /*-fe-body-color: ladder(#5c5c5c, -fe-body-background 0%, #334455 100%);*/
+/*}*/
+
+/*.font-spinner  .increment-arrow-button:hover:pressed,*/
+/*.font-spinner .decrement-arrow-button:hover:pressed,*/
+/*.font-spinner  .increment-arrow-button:pressed,*/
+/*.font-spinner .decrement-arrow-button:pressed {*/
+    /*!* interpolate color between yellow and red based on first color brightness *!*/
+    /*-fe-body-color: ladder(#5c5c5c, -fe-body-background 0%, #334455 100%);*/
+/*}*/
+
+.slider-prop .track{
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slider-prop .thumb {
+    -fx-border-color: -fe-border;
+    -fx-border-radius: 20px;
+    -fx-background-color: -fe-inner-background;
+}
+
+.slider-prop .thumb:hover{
+    -fx-background-color: derive(-fe-body-background, 15%);
+    -fx-border-color: derive(-fe-border, 20%);
+}
+.slider-prop .axis:bottom {
+    -fx-tick-label-fill: -text-secondary;
+    -fx-font-size: .63333em;
+}
+
+/*******************************************************************************
+ * Title Pane    	                                                           *
+ ******************************************************************************/
+
+.titled-pane > .title {
+    -fx-background-color:  derive(-dark-header, 0%), derive(-dark-header, 30%),  derive(-dark-header, -20%),  -dark-header;
+    -fx-background-insets: 0 0 -1 0, 0, 1 0 0 0, 2 0 0 0;
+    -fx-font-size: 13px;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.2), 2, 0.0, 0, 1 );
+}
+.titled-pane:expanded .content {
+    -fx-background-color: -fe-body-background;
+    -fx-border-color: transparent;
+
+}
+.titled-pane .content {
+    -fx-background-color: -fe-body-background;
+    -fx-border-color: transparent;
+
+}
+.titled-pane .context-menu {
+    -fx-background-color:  derive(-dark-header, 0%), derive(-dark-header, 30%),  derive(-dark-header, -20%),  -dark-header;
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: -text-primary;
+}
+
+.titled-pane > .title > .arrow-button {
+    -fx-padding: -0.154em 0.583em 0.0em 0.0em;
+}
+.titled-pane > .title > .arrow-button > .arrow {
+    -fx-background-color: derive(rgb(147, 147, 147), -32%);
+    -fx-padding: 0.154em 0.231em 0.231em 0.231em; /* 2 3 3 3 */
+}
+
+.sub-title {
+    -fx-text-fill: -text-primary;
+    -fx-border-width: 0.8 0 0.8 0;
+    -fx-border-color: derive(rgb(122, 122, 122), -85%);
+    -fx-background-color: -dark-header;
+    /*-fx-background-color: linear-gradient(from 93% 10% to 33% 83%, derive(-dark-header, 21%), derive(-dark-header, 18%));*/
+}
+
+.pane-shadow {
+    -fx-background-color: derive(rgb(147, 147, 147), -87%);
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 0 );
+}
+
+.prop-label {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 13px;
+}
+
+.title-label {
+    -fx-font-size: 13px;
+    -fx-font-family: "Noto Sans";
+    -fx-text-fill: -text-secondary;
+    -fx-background-color: -fe-background-color;
+}
+.check-box-prop {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 13px;
+}
+
+.check-box-prop > .box {
+    -fx-background-color: -fe-inner-background;
+}
+
+.floating:top .tab-content-area {
+    -fx-padding: 0;
+    -fx-border-insets: 3, 3;
+    -fx-border-radius: 3, 3;
+    -fx-border-color: -fe-border;
+    -fx-background-color: transparent;
+    -fx-background-insets: 3, 3;
+    -fx-background-radius: 3, 3;
+}
+
+.double-field  {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-font-size: 0.875em;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-text-fill: #CCC;
+    -fx-prompt-text-fill: -fe-inner-text;
+    -fx-cursor: text;
+}
+
+.double-field:focused {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.double-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*.integer-field:focused {*/
+    /*-fx-background-color: -fe-inner-background;*/
+    /*-fx-background-insets: -0.2, 1, 2;*/
+    /*-fx-background-radius: 3.2, 2, 2;*/
+    /*-fx-border-radius: 2.2, 2, 2;*/
+/*}*/
+
+.properties-combo-box {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -1;
+}
+
+.properties-combo-box .arrow-button {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -1;
+    -fx-font-size: 0.875em;
+}
+
+.properties-combo-box .text {
+    -fx-text-fill: -fe-inner-text;
+}
+
+.toggle-switch {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-text-fill: #C98989;
+    -fx-font-size: 0.63333em;
+}
+
+.toggle-switch:selected {
+    -fx-text-fill: #6699ff;
+    -fx-font-size: 0.63333em;
+}
+
+.virtualized-scroll-pane:vertical {
+    -fx-background-color: #31363B;
+}
+
+.virtualized-scroll-pane:horizontal {
+    -fx-background-color: #31363B;
+}
+
+.virtualized-scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #595B5D;
+}
+
+.virtualized-scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color:derive(#595B5D, 15%);
+}
+.virtualized-scroll-pane .scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+.virtualized-scroll-pane .scroll-bar > .increment-button > .increment-arrow,
+.virtualized-scroll-pane .scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color:derive(#31363B,-30%),derive(#31363B,-25%);
+}
+.virtualized-scroll-pane .scroll-bar > .increment-button:hover > .increment-arrow,
+.virtualized-scroll-pane .scroll-bar > .decrement-button:hover > .decrement-arrow {
+    -fx-background-color: derive(#31363B,-30%),derive(#31363B,-35%);
+}
+.virtualized-scroll-pane .scroll-bar > .increment-button:pressed > .increment-arrow,
+.virtualized-scroll-pane .scroll-bar > .decrement-button:pressed > .decrement-arrow {
+    -fx-background-color: derive(#31363B,-30%),derive(#31363B,-40%);
+}
+
+.virtualized-scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: derive(#31363B,-30%), linear-gradient(to bottom, derive(#31363B,-3%), derive(#31363B,5%) 50%, derive(#31363B,-3%));
+    -fx-background-insets: 0, 1 0 1 0;
+}
+.virtualized-scroll-pane  .scroll-bar:vertical {
+    -fx-background-color: derive(#31363B,-30%), linear-gradient(to right, derive(#31363B,-3%), derive(#31363B,5%) 50%, derive(#31363B,-3%));
+    -fx-background-insets: 0, 0 1 0 1;
+}
+/*.virtualized-scroll-pane .scroll-bar:focused {*/
+    /*-fx-background-color:*/
+            /*-fe-focus-color,*/
+            /*linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%)),*/
+            /*-fx-faint-focus-color,*/
+            /*linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));*/
+    /*-fx-background-insets: -0.2, 1, -1.4, 2.6;*/
+/*}*/
+/*.virtualized-scroll-pane .scroll-bar:vertical:focused {*/
+    /*-fx-background-color:*/
+            /*-fe-focus-color,*/
+            /*linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%)),*/
+            /*-fx-faint-focus-color,*/
+            /*linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));*/
+/*}*/
+/*.scroll-bar > .thumb {*/
+    /*-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color;*/
+    /*!*-fx-background-insets: 1, 2, 3;*!*/
+    /*-fx-background-insets: 2, 3, 4;*/
+    /*!*-fx-background-radius: 0.416667em, 0.333333em, 0.25em; *!!* 5, 4,3 *!*/
+    /*-fx-background-radius: 3, 2, 1;*/
+/*}*/
+/*.scroll-bar:vertical > .thumb {*/
+    /*-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color-to-right;*/
+/*}*/

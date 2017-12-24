@@ -12,6 +12,7 @@ public final class PropertyValue implements SyntaxConstants {
      * Creates a new PropertyValue based on a property and its value.
      */
     public PropertyValue() {
+
     }
 
     /**

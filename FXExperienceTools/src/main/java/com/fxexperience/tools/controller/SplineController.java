@@ -9,7 +9,7 @@
  */
 package com.fxexperience.tools.controller;
 
-import com.fxexperience.tools.util.SplineEditor;
+import com.fxexperience.tools.ui.SplineEditor;
 import javafx.animation.*;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.value.ChangeListener;
@@ -42,7 +42,7 @@ public class SplineController extends BorderPane {
 
     private Timeline timeline;
 
-    private com.fxexperience.tools.util.SplineEditor SplineEditor;
+    private com.fxexperience.tools.ui.SplineEditor SplineEditor;
 
     public SplineController() {
         initialize();

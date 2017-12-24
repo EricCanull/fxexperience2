@@ -9,16 +9,20 @@ package com.fxexperience.tools.controller;
  * for the larger work.
  */
 
+import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NotificationController extends AnchorPane {
+public class AlertController extends AnchorPane {
 
     protected double panelWidth;
 
@@ -27,7 +31,7 @@ public class NotificationController extends AnchorPane {
     @FXML private Boolean displayActive;
 
 
-    public NotificationController(String text) {
+    public AlertController(String text) {
         initialize(text);
     }
 
@@ -37,16 +41,36 @@ public class NotificationController extends AnchorPane {
     private void initialize(String text) {
         try {
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(NotificationController.class.getResource("/fxml/FXMLStatusDialog.fxml"));
+            loader.setLocation(AlertController.class.getResource("/fxml/FXMLStatusDialog.fxml"));
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
 
         } catch (IOException ex) {
-            Logger.getLogger(NotificationController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlertController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         notification_label.setText(text);
+    }
+
+    private void displayStatusAlert(String textMessage, StackPane rootContainer) {
+//        double prefWidth = rootContainer.getLayoutBounds().getWidth();
+//
+//        AlertController alert = new AlertController(textMessage);
+//        alert.setOpacity(0);
+//
+//        alert.setPanelWidth(prefWidth, currentToolIndex);
+//
+//        rootContainer.layoutXProperty().addListener((observable, oldValue, newValue) ->
+//                alert.setPanelWidth(newValue.doubleValue(), currentToolIndex));
+//
+//        alert.setTranslateY(rootContainer.getLayoutY()+alert.getPrefHeight());
+//
+//        AnchorPane.setTopAnchor(alert, 0d);
+//        rootAnchorPane.getChildren().add(alert);
+//
+//        new FadeInDownBigTransition(alert).play();
+//        removeAlert(alert);
     }
 
     public void setDisplayActive(boolean showAlert) {

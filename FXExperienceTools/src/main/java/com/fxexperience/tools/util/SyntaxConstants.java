@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * Created by andje22 on 6/4/17.
  */
 public interface SyntaxConstants {
 

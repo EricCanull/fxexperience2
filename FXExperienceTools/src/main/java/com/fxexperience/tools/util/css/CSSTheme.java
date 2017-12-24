@@ -1,4 +1,4 @@
-package com.fxexperience.tools.util;
+package com.fxexperience.tools.util.css;
 
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
 import javafx.beans.binding.Bindings;

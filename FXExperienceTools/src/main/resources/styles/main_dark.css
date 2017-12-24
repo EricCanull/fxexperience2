@@ -10,11 +10,21 @@ different terms and without source code for the larger work.
     -fe-body-background: #2c2f33;
     -fe-inner-background: #23272a;
     -fe-border: #676B6F;
-    -fe-body-text: #BBB;
+    -fe-body-text: #D7D7D7;
     -fe-inner-text: #FFF;
-    /*-font-family: 'Roboto';*/
-    -fx-background-color: #2c2f33;
-    -fx-focus-color: #339797;
+    -fe-color: #2c2f33;
+    -fe-body-color: #23272a;
+    -fe-background-color: #23272a;
+
+    -fe-shadow-highlight-color: #595b5d;
+    -fe-outer-border: #595b5d;
+    -fe-inner-border: #676B6F;
+
+    -fe-control-inner-background: #23272a;
+    -font-family: 'Roboto';
+    /*-fx-background-color: #2c2f33;*/
+    -fe-focus-background: #334455;
+    -fe-focus-color: #3397B7;
     -dark-header: #23272a;
     -gray-darker: #2c2f33;
     -gray-dark: #2d2d2d;
@@ -22,7 +32,10 @@ different terms and without source code for the larger work.
     -gray-light: #444444;
     -gray-lighter: #5c5c5c;
     -text-primary: #FFF;
-    -text-secondary: #BBBBBB;
+    -text-secondary: derive(#FFF, -5%);
+    -text-disabled: derive(#FFF, -50%);
+
+    -fe-text-box-border: #676B6F;
     -text-disabled: derive(#FFF, -50%);
 }
 @font-face {
@@ -78,35 +91,35 @@ different terms and without source code for the larger work.
     -fx-use-system-menu-bar: true;
 }
 
-.main-menu .container .menu:openvertically .label .text {
-    -fx-fill: white;
-}
+/*.main-menu .container .menu:openvertically .label .text {*/
+    /*-fx-fill: white;*/
+/*}*/
 
-.menu-item:focused,
-.menu-item:hover {
-    /*       -fx-background-insets: 1, 1, 1;*/
-}
+/*.menu-item:focused,*/
+/*.menu-item:hover {*/
+    /*!*       -fx-background-insets: 1, 1, 1;*!*/
+/*}*/
 
-.menu-button .menu {
-    -fx-text-fill: -text-secondary;
-}
+/*.menu-button .menu {*/
+    /*-fx-text-fill: -text-secondary;*/
+/*}*/
 
-.menu-bar .menu .label {
-    -fx-text-fill: -text-secondary;
-}
+/*.menu-bar .menu .label {*/
+    /*-fx-text-fill: -text-secondary;*/
+/*}*/
 
-.main-menu .container .menu:openvertically .label .text {
+/*.main-menu .container .menu:openvertically .label .text {*/
 
-}
+/*}*/
 
-.context-menu {
-    /*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
-    -fx-background-color: #262626, #262626, #262626, #262626;
-    /*    -fx-background-insets: 0, 1, 2;*/
+/*.context-menu {*/
+    /*!*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*!*/
+    /*-fx-background-color: #262626, #262626, #262626, #262626;*/
+    /*!*    -fx-background-insets: 0, 1, 2;*!*/
 
-     -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  /* 8 1 8 1 */
-    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
-}
+     /*-fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  !* 8 1 8 1 *!*/
+    /*!*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; !* 4 1 8 1 *!*/
+/*}*/
 
 /*******************************************************************************
  * Preview panel background		                                               *

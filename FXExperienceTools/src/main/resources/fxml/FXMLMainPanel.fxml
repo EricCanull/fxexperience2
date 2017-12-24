@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="780.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
@@ -15,39 +20,8 @@
 
       </AnchorPane>
    </center>
-   <top>
-      <MenuBar minHeight="-Infinity" prefHeight="50.0" prefWidth="1280.0" styleClass="main-menu">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem mnemonicParsing="false" onAction="#copyButtonAction" styleClass="main-context-menu" text="Copy" />
-                  <MenuItem mnemonicParsing="false" onAction="#saveButtonAction" text="Save As" />
-              <MenuItem mnemonicParsing="false" onAction="#closeButtonAction" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" styleClass="menu-item" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="View">
-              <items>
-                  <CheckMenuItem fx:id="themeMenuItem" mnemonicParsing="false" onAction="#setThemeAction" selected="true" text="Dark Theme" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" styleClass="menu-item" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </MenuBar>
-   </top>
    <left>
-      <AnchorPane style="-fx-background-color: #1111EE;">
+      <AnchorPane style="-fx-background-color: #0092c1;">
          <children>
             <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -127,4 +101,7 @@
          </children>
       </AnchorPane>
    </left>
+   <top>
+      <AnchorPane minHeight="-Infinity" minWidth="1280.0" prefHeight="50.0" prefWidth="200.0" styleClass="main-menu" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
