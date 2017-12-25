@@ -1,39 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.fxexperience.javafx.controller;
+
+/*
+ * Permissions of this free software license are conditioned on making available
+ * complete source code of licensed works and modifications under the same
+ * license or the GNU GPLv3. Copyright and license notices must be preserved.
+ * Contributors provide an express grant of patent rights. However, a larger
+ * work using the licensed work through interfaces provided by the licensed
+ * work may be distributed under different terms and without source code
+ * for the larger work.
+ */
 
 import com.fxexperience.javafx.fxanimations.*;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.util.Duration;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
- * Simple Demo application for the Canned animation transitions in 
+ * Simple Demo application for the Canned animation transitions in
  * FXExperience Controls
- * 
- * @author Jasper Potts, Eric Canull
+ *
  */
-public class DemoController implements Initializable {
+public class AnimationController extends SplitPane {
 
-    @FXML
-    private Button btn;
+    @FXML private Button btn;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) { }    
+    public AnimationController() {
+        try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AnimationController.class.getResource("/fxml/FXMLAnimationPanel.fxml")); //NOI18N
+            loader.setController(this);
+            loader.setRoot(this);
+            loader.load();
+
+        } catch (IOException ex) {
+            Logger.getLogger(AnimationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML private void flashAction(ActionEvent event)               { new FlashTransition(btn).play(); }
     @FXML private void BounceAction(ActionEvent event)              { new BounceTransition(btn).play(); }
     @FXML private void ShakeAction(ActionEvent event)               { new ShakeTransition(btn).play(); }
@@ -87,7 +100,7 @@ public class DemoController implements Initializable {
     @FXML private void hingeAction(ActionEvent event)               { new HingeTransition(btn).play(); bringBackAfter(); }
     @FXML private void rollInAction(ActionEvent event)              { new RollInTransition(btn).play(); }
     @FXML private void rollOutAction(ActionEvent event)             { new RollOutTransition(btn).play(); bringBackAfter(); }
-    
+
     private void bringBackAfter() {
         PauseTransition pauseTransition = new PauseTransition();
         pauseTransition.setDuration(Duration.seconds(1.5));

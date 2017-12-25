@@ -9,6 +9,7 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.javafx.controller.AnimationController;
 import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
