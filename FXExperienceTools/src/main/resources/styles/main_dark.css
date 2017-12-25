@@ -14,15 +14,14 @@ different terms and without source code for the larger work.
     -fe-inner-text: #FFF;
     -fe-color: #2c2f33;
     -fe-body-color: #23272a;
-    -fe-background-color: #23272a;
 
-    -fe-shadow-highlight-color: #595b5d;
-    -fe-outer-border: #595b5d;
-    -fe-inner-border: #676B6F;
+    -fe-shadow-highlight-color: #282828;
+    -fe-outer-border: #343434;
+    -fe-inner-border: #464646;
 
     -fe-control-inner-background: #23272a;
     -font-family: 'Roboto';
-    /*-fx-background-color: #2c2f33;*/
+    -fe-background-color: #23272a;
     -fe-focus-background: #334455;
     -fe-focus-color: #3397B7;
     -dark-header: #23272a;
@@ -36,7 +35,6 @@ different terms and without source code for the larger work.
     -text-disabled: derive(#FFF, -50%);
 
     -fe-text-box-border: #676B6F;
-    -text-disabled: derive(#FFF, -50%);
 }
 @font-face {
     src: url('/fonts/Roboto-Light.ttf');

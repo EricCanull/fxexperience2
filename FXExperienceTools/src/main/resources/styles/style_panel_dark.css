@@ -11,9 +11,9 @@
     -fe-color: #2c2f33;
     -fe-body-color: #23272a;
 
-    -fe-shadow-highlight-color: #595b5d;
-    -fe-outer-border: #595b5d;
-    -fe-inner-border: #676B6F;
+    -fe-shadow-highlight-color: #282828;
+    -fe-outer-border: #343434;
+    -fe-inner-border: #464646;
 
     -fe-control-inner-background: #23272a;
     -font-family: 'Roboto';
@@ -31,7 +31,6 @@
     -text-disabled: derive(#FFF, -50%);
 
     -fe-text-box-border: #676B6F;
-
 }
 
 .button-hbox {
@@ -443,7 +442,7 @@
 }
 
 .virtualized-scroll-pane .scroll-bar .thumb {
-    -fx-background-color: #595B5D;
+    -fx-background-color: #606060;
 }
 
 .virtualized-scroll-pane .scroll-bar .thumb:hover {
@@ -474,28 +473,105 @@
     -fx-background-color: derive(#31363B,-30%), linear-gradient(to right, derive(#31363B,-3%), derive(#31363B,5%) 50%, derive(#31363B,-3%));
     -fx-background-insets: 0, 0 1 0 1;
 }
-/*.virtualized-scroll-pane .scroll-bar:focused {*/
-    /*-fx-background-color:*/
-            /*-fe-focus-color,*/
-            /*linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%)),*/
-            /*-fx-faint-focus-color,*/
-            /*linear-gradient(to bottom, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));*/
-    /*-fx-background-insets: -0.2, 1, -1.4, 2.6;*/
-/*}*/
-/*.virtualized-scroll-pane .scroll-bar:vertical:focused {*/
-    /*-fx-background-color:*/
-            /*-fe-focus-color,*/
-            /*linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%)),*/
-            /*-fx-faint-focus-color,*/
-            /*linear-gradient(to right, derive(-fx-base,-3%), derive(-fx-base,5%) 50%, derive(-fx-base,-3%));*/
-/*}*/
-/*.scroll-bar > .thumb {*/
-    /*-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color;*/
-    /*!*-fx-background-insets: 1, 2, 3;*!*/
-    /*-fx-background-insets: 2, 3, 4;*/
-    /*!*-fx-background-radius: 0.416667em, 0.333333em, 0.25em; *!!* 5, 4,3 *!*/
-    /*-fx-background-radius: 3, 2, 1;*/
-/*}*/
-/*.scroll-bar:vertical > .thumb {*/
-    /*-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color-to-right;*/
-/*}*/
+.sample-text {
+    -fx-fill: -text-secondary;
+}
+.prop-label {
+    -fx-text-fill: -text-secondary;
+}
+.font-picker-pane {
+    -fx-background-color: -fe-body-background;
+}
+
+.font-radio-button {
+    -fx-text-fill: -fe-inner-text;
+}
+.font-radio-button > .radio {
+    -fx-background-color: -fe-body-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+}
+.font-radio-button:focused > .radio{
+    -fx-background-color: -fe-focus-color, -fe-inner-border, -fe-body-color, -fx-faint-focus-color, -fe-body-color;
+
+}
+.style-choice-box .context-menu {
+    -fx-text-fill: -text-secondary;
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+}
+
+.style-choice-box .label {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 1em;
+}
+.style-choice-box,
+.style-choice-box:focused {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-control-inner-background, -fe-border, -fe-body-color;
+    -fx-font-size:  0.93333em;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+}
+
+/*Drop down list*/
+.family-combo-box .list-view {
+    -fx-background-color: -fe-border, -fe-control-inner-background;
+}
+.family-combo-box .list-cell .text {
+    -fx-font-size: 0.8666em;
+    -fx-fill: -fe-body-text;
+}
+.family-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fe-inner-background;
+    -fx-text-fill: -text-secondary;
+}
+.family-combo-box,
+.family-combo-box .combo-box-base {
+    -fx-background-color: -fe-shadow-highlight-color,
+    -fe-control-inner-background, -fe-border,  -fe-control-inner-background;
+}
+/*Make focus mirror size and color scheme as default*/
+.family-combo-box:focused,
+.family-combo-box .combo-box-base:focused {
+    -fx-background-color: -fe-shadow-highlight-color,
+    -fe-control-inner-background, -fe-border,  -fe-control-inner-background;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Editable ComboBox                                                           *
+ *                                                                             *
+ * The editable ComboBox TextBox inherits its properties from the TextBox      *
+ * Control. Only the properties with values that are different from the        *
+ * TextBox are specified here.                                                 *
+ *                                                                             *
+ ******************************************************************************/
+/* Drop down list background and border */
+.size-combo-box .list-view {
+    -fx-background-color: -fe-border, -fe-control-inner-background;
+}
+.size-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fe-inner-background;
+    -fx-text-fill: -text-secondary;
+}
+/*Remove the border around arrow button*/
+.size-combo-box:editable > .arrow-button,
+.size-combo-box:editable > .arrow-button:focused {
+    -fx-background-color: -fe-control-inner-background, -fe-control-inner-background;
+}
+
+.size-combo-box:editable > .text-field {
+    -fx-background-color: -fe-control-inner-background;
+    -fx-text-fill: -fe-inner-text;
+}
+
+.size-combo-box:editable, .size-combo-box:editable:focused {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-border, -fe-control-inner-background, -fe-border;
+}
+.size-combo-box:editable .text-field {
+    /*-fx-highlight-fill: deepskyblue;*/
+    -fx-highlight-text-fill: -text-primary;
+}

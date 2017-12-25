@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-
 <fx:root maxWidth="1.7976931348623157E308" styleClass="font-picker-pane" stylesheets="@../styles/font_picker.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane fx:id="textGridPanel" hgap="5.0" maxWidth="1.7976931348623157E308" vgap="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,10 +29,13 @@
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="42.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" styleClass="prop-label" text="Family:" GridPane.halignment="LEFT" />
+            <Label alignment="CENTER" styleClass="prop-label" text="Family:" GridPane.halignment="LEFT">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Label styleClass="prop-label" text="Size:" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets />
+                  <Insets left="10.0" />
                </GridPane.margin>
             </Label>
             <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -47,9 +49,12 @@
                   <RadioButton mnemonicParsing="false" onAction="#onScalableFontSelected" styleClass="font-radio-button" text="em" toggleGroup="$fontRadioGroup" />
                </children>
             </HBox>
-            <ComboBox fx:id="familyComboBox" prefHeight="34.0" prefWidth="260.0" styleClass="family-combo-box" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="styleChoiceBox" prefHeight="34.0" prefWidth="150.0" styleClass="style-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label layoutX="10.0" layoutY="113.0" styleClass="prop-label" text="Style:" GridPane.rowIndex="1" />
+            <ComboBox fx:id="familyComboBox" prefHeight="38.0" prefWidth="260.0" styleClass="family-combo-box" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="styleChoiceBox" prefHeight="32.0" prefWidth="150.0" styleClass="style-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="113.0" styleClass="prop-label" text="Style:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
             <Text fx:id="sampleFontText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sample-text" text="Sample Text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>

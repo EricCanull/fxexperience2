@@ -70,6 +70,9 @@ public class FontPickerController extends AnchorPane {
             Logger.getLogger(ColorPickerControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        numberFormat.setMinimumFractionDigits(0);
+        numberFormat.setMaximumFractionDigits(5);
+
         // Family font combo-box
         familyComboBox.getItems().setAll(Font.getFamilies());
         familyComboBox.getSelectionModel().select(0);
@@ -97,9 +100,6 @@ public class FontPickerController extends AnchorPane {
         styleChoiceBox.getSelectionModel().select(3);
         styleChoiceBox.valueProperty().addListener(observable -> changeFont());
 
-        numberFormat.setMinimumFractionDigits(0);
-        numberFormat.setMaximumFractionDigits(0);
-
         // Size font combo-box
         sizeComboBox.getItems().setAll(fixedSizes);
         sizeComboBox.getSelectionModel().select(4);
@@ -126,6 +126,8 @@ public class FontPickerController extends AnchorPane {
 
     @FXML
     private void onFixedFontSelected(ActionEvent event) {
+        numberFormat.setMinimumFractionDigits(0);
+        numberFormat.setMaximumFractionDigits(0);
         sizeComboBox.getItems().setAll(fixedSizes);
     }
 

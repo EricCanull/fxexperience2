@@ -1,5 +1,6 @@
 package com.fxexperience.javafx.app;
 
+import com.fxexperience.javafx.control.fontpicker.FontPickerController;
 import com.fxexperience.javafx.controller.AnimationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        AnimationController animationController = new AnimationController();
+        FontPickerController animationController = new FontPickerController();
         Scene scene = new Scene(animationController);
 
         stage.setScene(scene);

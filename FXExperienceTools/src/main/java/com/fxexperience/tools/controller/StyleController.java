@@ -465,7 +465,8 @@ public class StyleController extends VBox {
     }
 
     private void setCodeAreaText() {
-        codeArea.replaceText(0, 0, getCodeString());
+        codeArea.replaceText(0, codeArea.getLength(), getCodeString());
+        codeArea.showParagraphAtTop(0);
     }
 
 
