@@ -1,0 +1,139 @@
+.root {
+    -fe-body-background: #2c2f33;
+    -fe-inner-background: #23272a;
+    -fe-border: #676B6F;
+    -fe-body-text: #D7D7D7;
+    -fe-inner-text: #FFF;
+    -fe-color: #2c2f33;
+    -fe-body-color: #23272a;
+
+    -fe-shadow-highlight-color: #343434;
+    -fe-outer-border: #343434;
+    -fe-inner-border: #343434;
+
+    -fe-control-inner-background: #23272a;
+    -font-family: 'Roboto';
+    -fe-background-color: #23272a;
+    -fe-focus-background: #334455;
+    -fe-focus-color: #3397B7;
+    -dark-header: #23272a;
+    -gray-darker: #2c2f33;
+    -gray-dark: #2d2d2d;
+    -gray-one: #383838;
+    -gray-light: #444444;
+    -gray-lighter: #5c5c5c;
+    -text-primary: #FFF;
+    -text-secondary: derive(#FFF, -5%);
+    -text-disabled: derive(#FFF, -50%);
+
+    -fe-text-box-border: #676B6F;
+}
+.sample-text {
+    -fx-fill: -text-secondary;
+}
+.font-picker-pane {
+    -fx-background-color: -fe-body-background;
+}
+
+.size-combo-box .list-view,
+.family-combo-box .list-view {
+    -fx-background-color: -fe-outer-border, -fe-control-inner-background;
+}
+
+.font-radio-button {
+    -fx-text-fill: -fe-inner-text;
+}
+.font-radio-button > .radio {
+    -fx-background-color: -fe-body-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+}
+.font-radio-button:focused > .radio{
+    -fx-background-color: -fe-focus-color, -fe-inner-border, -fe-body-color, -fx-faint-focus-color, -fe-body-color;
+
+}
+.family-combo-box,
+.family-combo-box .combo-box-base,
+.size-combo-box:editable > .arrow-button {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+
+}
+
+.style-choice-box .context-menu {
+    -fx-text-fill: -text-secondary;
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+}
+
+.style-choice-box .label {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 1em;
+}
+.style-choice-box {
+    -fx-background-color: -fe-inner-background;
+    -fx-border-color: -fe-border;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-font-size:  0.93333em;
+}
+
+.family-combo-box .list-cell .text {
+    -fx-font-size: 0.8666em;
+    -fx-fill: -fe-body-text;
+}
+.family-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fe-inner-background;
+    -fx-text-fill: -text-secondary;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Editable ComboBox                                                           *
+ *                                                                             *
+ * The editable ComboBox TextBox inherits its properties from the TextBox      *
+ * Control. Only the properties with values that are different from the        *
+ * TextBox are specified here.                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.size-combo-box:editable > .arrow-button:focused {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+
+}
+.size-combo-box:editable > .arrow-button {
+-fx-background-color: -fe-outer-border, -fe-inner-border, -fe-body-color;
+-fx-background-insets: 1 1 1 0, 1, 2;
+-fx-background-radius: 0 3 3 0, 0 2 2 0, 0 1 1 0;
+}
+.size-combo-box:editable > .text-field {
+    -fx-background-color:
+            linear-gradient(to bottom, -fe-text-box-border, -fe-text-box-border),
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-control-inner-background, -25%), -fe-control-inner-background);
+    -fx-text-fill: -fe-inner-text;
+    -fx-background-insets: 1 0 1 1;
+    -fx-background-radius: 2 0 0 2;
+}
+/*.size-combo-box:editable:focused {*/
+/*-fx-background-color: -fe-focus-color;*/
+/*-fx-background-insets: -0.2;*/
+/*-fx-background-radius: 3;*/
+/*}*/
+.size-combo-box:editable:focused > .text-field,
+.size-combo-box:editable > .text-field:focused{
+    -fx-background-color:
+            -fe-control-inner-background,
+            -fe-outer-border,
+            linear-gradient(from 0px 0px to 0px 5px, derive(-fe-control-inner-background, -20%), -fe-control-inner-background);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+.size-combo-box .combo-box-base:editable:focused > .arrow-button {
+    -fx-background-color: -fe-inner-border, -fe-body-color, -fe-text-box-border, -fe-body-color;
+    -fx-background-insets: 1, 2, 1, 2.6;
+    -fx-background-radius: 0 2 2 0, 0 1 1 0, 0 1 1 0, 0 1 1 0;
+}
+.size-combo-box:editable {
+    -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
+}
+.size-combo-box:editable .text-field {
+    -fx-highlight-fill: indigo;
+    -fx-highlight-text-fill: -text-primary;
+}

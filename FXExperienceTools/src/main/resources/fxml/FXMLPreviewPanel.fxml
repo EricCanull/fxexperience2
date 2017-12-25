@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.HTMLEditor?>
-<?import java.lang.*?>
+
 <fx:root id="Preview-area" alignment="CENTER" stylesheets="@../styles/preview.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
@@ -30,8 +65,8 @@
       </MenuBar>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Go" />
-            <TextField alignment="CENTER_RIGHT" prefWidth="160.0" text="Never odd or even" />
+          <Button fx:id="goButton" mnemonicParsing="false" text="Go" />
+            <TextField fx:id="searchTextField" alignment="CENTER_RIGHT" prefWidth="160.0" text="Never odd or even" />
             <Label text="Search" />
             <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
         </items>
@@ -177,7 +212,8 @@
                            <children>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ListView maxHeight="1.7976931348623157E308" prefHeight="220.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="integerValuesListView" prefHeight="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
+                                    <ListView fx:id="stringValuesListView" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -186,7 +222,7 @@
                            <children>
                               <ScrollPane hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0">
+                                    <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="225.0">
                                       <columns>
                                         <TableColumn prefWidth="134.0" text="C1" />
                                         <TableColumn prefWidth="109.0" text="C2" />
@@ -199,7 +235,7 @@
                            </children>
                         </VBox>
                         <Pagination pageCount="8" GridPane.columnSpan="4" GridPane.rowIndex="2" />
-                        <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body style=&quot;font-family:verdana; background-color:#2c2f33; color:#D7D7D7;&quot; contenteditable=&quot;true&quot;&gt;&lt;h1&gt; Hello World, I'm an HTML Editor!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;" maxWidth="1.7976931348623157E308" prefHeight="340.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+                        <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body style=&quot;font-family:verdana; background-color:#2c2f33; color:#D7D7D7;&quot; contenteditable=&quot;true&quot;&gt;&lt;h1&gt; Hello World!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;" maxWidth="1.7976931348623157E308" prefHeight="260.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />

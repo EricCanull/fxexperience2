@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root maxWidth="1.7976931348623157E308" styleClass="font-picker-pane" stylesheets="@../styles/font_picker.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane fx:id="textGridPanel" hgap="5.0" maxWidth="1.7976931348623157E308" vgap="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" prefWidth="75.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="42.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="42.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <Label alignment="CENTER" styleClass="prop-label" text="Family:" GridPane.halignment="LEFT" />
+            <Label styleClass="prop-label" text="Size:" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ComboBox fx:id="sizeComboBox" editable="true" prefHeight="32.0" prefWidth="95.0" styleClass="size-combo-box" />
+                  <RadioButton layoutX="72.0" layoutY="22.0" mnemonicParsing="false" onAction="#onFixedFontSelected" selected="true" styleClass="font-radio-button" text="px">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="fontRadioGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" onAction="#onScalableFontSelected" styleClass="font-radio-button" text="em" toggleGroup="$fontRadioGroup" />
+               </children>
+            </HBox>
+            <ComboBox fx:id="familyComboBox" prefHeight="34.0" prefWidth="260.0" styleClass="family-combo-box" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="styleChoiceBox" prefHeight="34.0" prefWidth="150.0" styleClass="style-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="113.0" styleClass="prop-label" text="Style:" GridPane.rowIndex="1" />
+            <Text fx:id="sampleFontText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sample-text" text="Sample Text" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

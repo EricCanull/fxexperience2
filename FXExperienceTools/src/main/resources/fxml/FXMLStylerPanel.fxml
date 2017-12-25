@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.fxexperience.javafx.scene.control.textfields.DoubleTextField?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
 <fx:root alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/style_panel_dark.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane fx:id="rootSplitPane" dividerPositions="0.82" styleClass="split-pane" VBox.vgrow="ALWAYS">
@@ -31,72 +44,21 @@
                            <children>
                               <Accordion minWidth="-Infinity" prefHeight="662.0" prefWidth="425.0" styleClass="accordian-prop" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <panes>
-                                  <TitledPane animated="false" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Text">
-                                    <content>
-                                      <AnchorPane maxWidth="1.7976931348623157E308">
-                                             <children>
-                                                <GridPane fx:id="textGridPanel" hgap="5.0" vgap="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                                   <columnConstraints>
-                                                      <ColumnConstraints hgrow="NEVER" />
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
-                                                      <ColumnConstraints hgrow="ALWAYS" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
-                                                   </columnConstraints>
-                                                   <rowConstraints>
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
-                                                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="42.0" vgrow="NEVER" />
-                                                   </rowConstraints>
-                                                   <children>
-                                                      <ChoiceBox fx:id="fontChoice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="190.0" styleClass="font-choice-box" GridPane.columnIndex="1" GridPane.halignment="LEFT">
-                                                         <items>
-                                                            <FXCollections fx:factory="observableArrayList">
-                                                               <String fx:value="Item 1" />
-                                                               <String fx:value="Item 2" />
-                                                               <String fx:value="Item 3" />
-                                                            </FXCollections>
-                                                         </items>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </ChoiceBox>
-                                                      <Label alignment="CENTER" styleClass="prop-label" text="Font Name:" GridPane.halignment="LEFT" />
-                                                      <Label styleClass="prop-label" text="Font Size:" GridPane.rowIndex="1">
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                         <children>
-                                                            <ComboBox fx:id="fontSizeBox" editable="true" prefHeight="32.0" prefWidth="90.0" styleClass="font-combo-box" />
-                                                            <RadioButton fx:id="fixedFontRadio" layoutX="72.0" layoutY="22.0" mnemonicParsing="false" onAction="#onFontRadioSelected" selected="true" styleClass="font-radio-button" text="px">
-                                                               <toggleGroup>
-                                                                  <ToggleGroup fx:id="fontRadioGroup" />
-                                                               </toggleGroup>
-                                                            </RadioButton>
-                                                            <RadioButton fx:id="scalableFontRadio" mnemonicParsing="false" onAction="#onFontRadioSelected" styleClass="font-radio-button" text="em" toggleGroup="$fontRadioGroup" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </GridPane>
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </TitledPane>
+                                  <TitledPane fx:id="textTitlePane" animated="false" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Text" />
                                     <TitledPane animated="false" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Colors">
                                       <content>
                                         <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0">
                                              <children>
                                                 <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                                    <children>
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="2" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="6" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="1" />
-                                                      <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="4" />
-                                                      <Label styleClass="prop-label" text="Field Text:" GridPane.rowIndex="5" />
-                                                      <Label styleClass="prop-label" text="Background Text:" GridPane.rowIndex="3" />
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="3" />
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="7" />
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="2" />
+                                                      <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="5" />
+                                                      <Label styleClass="prop-label" text="Field Text:" GridPane.rowIndex="6" />
+                                                      <Label styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
-                                                      <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                                                      <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
@@ -104,7 +66,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </ToggleButton>
-                                                      <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                      <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
@@ -112,7 +74,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </ToggleButton>
-                                                      <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                      <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
@@ -120,6 +82,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </ToggleButton>
+                                                      <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="1" />
                                                    </children>
                                                    <columnConstraints>
                                                       <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="35.0" />
@@ -128,6 +91,7 @@
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
@@ -266,7 +230,7 @@
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
                                                       </ToggleButton>
-                                                      <ComboBox fx:id="gradientComboBox" prefHeight="34.0" prefWidth="150.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
+                                                      <ComboBox fx:id="gradientCB" prefHeight="34.0" prefWidth="150.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
                                                       <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="30.0" prefWidth="425.0" styleClass="title-label" text="Highlights &amp; Shadows" GridPane.columnSpan="3" />
                                                    </children>
                                                    <columnConstraints>

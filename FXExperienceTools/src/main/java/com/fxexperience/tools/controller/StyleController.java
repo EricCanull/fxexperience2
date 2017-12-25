@@ -9,13 +9,13 @@
  */
 package com.fxexperience.tools.controller;
 
+import com.fxexperience.javafx.control.fontpicker.FontPickerController;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.javafx.scene.control.textfields.DoubleTextField;
 import com.fxexperience.tools.ui.CSSCodeArea;
 import com.fxexperience.tools.util.FileUtil;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
-import com.fxexperience.tools.util.css.CSSBaseStyle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -32,27 +32,19 @@ import javafx.util.Callback;
 import org.fxmisc.flowless.VirtualizedScrollPane;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.fxexperience.javafx.scene.control.paintpicker.PaintPicker.Mode;
 
 public class StyleController extends VBox {
-
+    @FXML private TitledPane textTitlePane;
     @FXML private BorderPane previewPane;
     @FXML private StackPane editorPane;
     @FXML private GridPane simpleGridPane;
 
-    @FXML private ChoiceBox<String> fontChoice;
-    @FXML private ComboBox<String> fontSizeBox;
-    @FXML private ComboBox<Gradient> gradientComboBox;
-    @FXML private ToggleGroup fontRadioGroup;
-    @FXML private RadioButton fixedFontRadio;
-    @FXML private RadioButton scalableFontRadio;
+    @FXML private ComboBox<Gradient> gradientCB;
 
     @FXML private Slider paddingSlider;
     @FXML private Slider borderWidthSlider;
@@ -80,10 +72,14 @@ public class StyleController extends VBox {
     @FXML private ToggleButton shadowToggle;
     @FXML private ToggleButton inputBorderToggle;
 
+    private Font font = Font.getDefault();
+
     private final CSSCodeArea codeArea = new CSSCodeArea();
+    private final FontPickerController fontPickerController = new FontPickerController();
     private final PreviewController previewController = new PreviewController();
 
     private final ColorPopupEditor basePicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#213870"));
+    private final ColorPopupEditor accentPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#0096C9"));
     private final ColorPopupEditor backgroundPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#2c2f33"));
     private final ColorPopupEditor focusPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#0093ff"));
     private final ColorPopupEditor textPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#000000"));
@@ -107,75 +103,37 @@ public class StyleController extends VBox {
             Logger.getLogger(StyleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        textTitlePane.setContent(fontPickerController);
+
 
         editorPane.getChildren().add(new VirtualizedScrollPane<>(codeArea));
         previewPane.setCenter(previewController);
 
         addListeners();
 
-        // populate fonts choicebox
-        fontChoice.getItems().setAll(Font.getFamilies());
-        fontSizeBox.getItems().setAll(getFixedFontSizes());
-
-        fontSizeBox.setCellFactory(l -> new ListCell<String>() {
-            @Override
-            protected void updateItem(String text, boolean empty) {
-                super.updateItem(text, empty);
-                if (empty || text == null
-                    || text.toLowerCase(Locale.ROOT).contains("d")
-                    || text.toLowerCase(Locale.ROOT).contains("f")) {
-                    setText("13");
-                    return;
-                }
-                try {
-                    setText(text);
-                } catch (NumberFormatException e) {
-                    Logger.getLogger(StyleController.class.getName()).log(Level.SEVERE, null, e);
-                }
-                buildRootStyle();
-            }
-        });
-        fontSizeBox.getSelectionModel().select(4);
-
-        fixedFontRadio.setUserData("px;");
-        scalableFontRadio.setUserData("em;");
-        fontRadioGroup.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
-            if (old_toggle.equals(new_toggle)) {
-                return;
-            }
-            if (fontRadioGroup.getSelectedToggle().equals(fixedFontRadio)) {
-                fontSizeBox.getItems().setAll(getFixedFontSizes());
-                fontSizeBox.getSelectionModel().select("13");
-            } else {
-                fontSizeBox.getItems().setAll(getScalableFontSizes());
-                fontSizeBox.getSelectionModel().select("1");
-            }
-            buildRootStyle();
-        });
-        fontChoice.getSelectionModel().select("Roboto");
 
         // create Integer Fields
         addTextFieldBinding(paddingSlider, paddingTextField);
         addTextFieldBinding(borderWidthSlider, borderWidthTextField);
         addTextFieldBinding(borderRadiusSlider, borderRadiusTextField);
 
-        // Add color pickers Title Pane
-        simpleGridPane.getChildren().addAll(basePicker, backgroundPicker, focusPicker,
-                textPicker, fieldBackgroundPicker, fieldTextPicker, foregroundTextPicker);
-
         // Set color pickers grid constraints
         GridPane.setConstraints(basePicker, 1, 0, 2, 1);
-        GridPane.setConstraints(textPicker, 1, 1);
-        GridPane.setConstraints(backgroundPicker, 1, 2);
-        GridPane.setConstraints(foregroundTextPicker, 1, 3);
-        GridPane.setConstraints(fieldBackgroundPicker, 1, 4);
-        GridPane.setConstraints(fieldTextPicker, 1, 5);
-        GridPane.setConstraints(focusPicker, 1, 6);
+        GridPane.setConstraints(accentPicker, 1, 1, 2, 1);
+        GridPane.setConstraints(textPicker, 1, 2);
+        GridPane.setConstraints(backgroundPicker, 1, 3);
+        GridPane.setConstraints(foregroundTextPicker, 1, 4);
+        GridPane.setConstraints(fieldBackgroundPicker, 1, 5);
+        GridPane.setConstraints(fieldTextPicker, 1, 6);
+        GridPane.setConstraints(focusPicker, 1, 7);
 
+        // Add color pickers Title Pane
+        simpleGridPane.getChildren().addAll(basePicker, accentPicker, backgroundPicker, focusPicker,
+                textPicker, fieldBackgroundPicker, fieldTextPicker, foregroundTextPicker);
 
         // Populate gradient combo
-        gradientComboBox.getItems().addAll(Gradient.GRADIENTS);
-        gradientComboBox.setCellFactory(new Callback<ListView<Gradient>, ListCell<Gradient>>() {
+        gradientCB.getItems().addAll(Gradient.GRADIENTS);
+        gradientCB.setCellFactory(new Callback<ListView<Gradient>, ListCell<Gradient>>() {
             @Override public ListCell<Gradient> call(ListView<Gradient> gradientList) {
                 ListCell<Gradient> cell = new ListCell<Gradient>() {
                     @Override protected void updateItem(Gradient gradient, boolean empty) {
@@ -196,7 +154,7 @@ public class StyleController extends VBox {
                 return cell;
             }
         });
-        gradientComboBox.getSelectionModel().selectedItemProperty().addListener((arg0, arg1, newGradient) -> {
+        gradientCB.getSelectionModel().selectedItemProperty().addListener((arg0, arg1, newGradient) -> {
             bodyTopSlider.setValue(newGradient.getTopDerivation());
             bodyBottomSlider.setValue(newGradient.getBottomDerivation());
             if (newGradient.isShinny()) {
@@ -210,7 +168,7 @@ public class StyleController extends VBox {
             }
             buildBodyStyle();
         });
-        gradientComboBox.getSelectionModel().select(0);
+        gradientCB.getSelectionModel().select(0);
 
         bodyTopMiddleSlider.disableProperty().bind(topMiddleToggle.selectedProperty().not());
         bodyBottomMiddleSlider.disableProperty().bind(bottomMiddleToggle.selectedProperty().not());
@@ -222,49 +180,48 @@ public class StyleController extends VBox {
     // Add listeners to update the css
     private void addListeners() {
         // Listeners
-        ChangeListener<Object> onRootCSSChange = ((ov, oldValue, newValue) -> buildRootStyle());
-        ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> buildRootStyle());
-        ChangeListener<Object> onBodyCSSChange = ((ov, oldValue, newValue) -> buildBodyStyle());
 
         // Font choice box
-        fontChoice.valueProperty().addListener(onRootCSSChange);
-        fontSizeBox.valueProperty().addListener(onRootCSSChange);
+     //   fontFamilyCB.valueProperty().addListener(onRootCSSChange);
+//        fontSizeSpinner.valueProperty().addListener(onRootCSSChange);
+        fontPickerController.fontProperty().addListener(observable -> buildRootStyle());
 
         // Paint pickers and toggles
-        basePicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        backgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        focusPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        textPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        baseTextToggle.selectedProperty().addListener(onRootCSSChange);
+        basePicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        accentPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        backgroundPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        focusPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        textPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        baseTextToggle.selectedProperty().addListener(observable -> buildRootStyle());
         textPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
-        fieldBackgroundPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        fieldTextPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        fieldTextToggle.selectedProperty().addListener(onRootCSSChange);
+        fieldBackgroundPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        fieldTextPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        fieldTextToggle.selectedProperty().addListener(observable -> buildRootStyle());
         fieldTextPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
-        foregroundTextPicker.getRectangle().fillProperty().addListener(onPaintChanged);
-        backgroundTextToggle.selectedProperty().addListener(onRootCSSChange);
+        foregroundTextPicker.getRectangle().fillProperty().addListener(observable -> buildRootStyle());
+        backgroundTextToggle.selectedProperty().addListener(observable -> buildRootStyle());
         foregroundTextPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
 
         // Slider controls
-        borderRadiusSlider.valueProperty().addListener(onBodyCSSChange);
-        borderWidthSlider.valueProperty().addListener(onBodyCSSChange);
-        paddingSlider.valueProperty().addListener(onBodyCSSChange);
-        topHighlightSlider.valueProperty().addListener(onRootCSSChange);
-        bottomHighlightSlider.valueProperty().addListener(onRootCSSChange);
-        bodyTopSlider.valueProperty().addListener(onRootCSSChange);
-        bodyTopMiddleSlider.valueProperty().addListener(onRootCSSChange);
-        bodyBottomMiddleSlider.valueProperty().addListener(onRootCSSChange);
-        bodyBottomSlider.valueProperty().addListener(onRootCSSChange);
-        borderSlider.valueProperty().addListener(onRootCSSChange);
-        shadowSlider.valueProperty().addListener(onRootCSSChange);
-        inputBorderSlider.valueProperty().addListener(onRootCSSChange);
+        borderRadiusSlider.valueProperty().addListener(observable -> buildBodyStyle());
+        borderWidthSlider.valueProperty().addListener(observable -> buildBodyStyle());
+        paddingSlider.valueProperty().addListener(observable -> buildBodyStyle());
+        topHighlightSlider.valueProperty().addListener(observable -> buildRootStyle());
+        bottomHighlightSlider.valueProperty().addListener(observable -> buildRootStyle());
+        bodyTopSlider.valueProperty().addListener(observable -> buildRootStyle());
+        bodyTopMiddleSlider.valueProperty().addListener(observable -> buildRootStyle());
+        bodyBottomMiddleSlider.valueProperty().addListener(observable -> buildRootStyle());
+        bodyBottomSlider.valueProperty().addListener(observable -> buildRootStyle());
+        borderSlider.valueProperty().addListener(observable -> buildRootStyle());
+        shadowSlider.valueProperty().addListener(observable -> buildRootStyle());
+        inputBorderSlider.valueProperty().addListener(observable -> buildRootStyle());
 
         // Toggle buttons
-        topMiddleToggle.selectedProperty().addListener(onRootCSSChange);
-        bottomMiddleToggle.selectedProperty().addListener(onRootCSSChange);
-        borderToggle.selectedProperty().addListener(onRootCSSChange);
-        shadowToggle.selectedProperty().addListener(onRootCSSChange);
-        inputBorderToggle.selectedProperty().addListener(onRootCSSChange);
+        topMiddleToggle.selectedProperty().addListener(observable -> buildRootStyle());
+        bottomMiddleToggle.selectedProperty().addListener(observable -> buildRootStyle());
+        borderToggle.selectedProperty().addListener(observable -> buildRootStyle());
+        shadowToggle.selectedProperty().addListener(observable -> buildRootStyle());
+        inputBorderToggle.selectedProperty().addListener(observable -> buildRootStyle());
     }
 
     /**
@@ -273,7 +230,7 @@ public class StyleController extends VBox {
     private void addTextFieldBinding(Slider slider, DoubleTextField field) {
         field.textProperty().bind(Bindings.format("%2.0f", slider.valueProperty()));
     }
-    
+
     private StringBuilder sbRoot = new StringBuilder();
     private StringBuilder sbBody = new StringBuilder();
 
@@ -281,13 +238,12 @@ public class StyleController extends VBox {
             sbRoot = new StringBuilder();
             //sbRoot.setLength(0);
 
-            String fontSize = fontSizeBox.getValue() + fontRadioGroup.getSelectedToggle().getUserData();
-
-            sbRoot.append(".root {\n");
+             sbRoot.append(".root {\n");
             //cssBuffer.append(StringUtil.padWithSpaces("-fx-font-family: " + fontSizeSlider.getValue() + "px " + "\"" + fontChoiceBox.getValue() + "\";", true, 4));
-            sbRoot.append(StringUtil.padWithSpaces("-fx-font-family: \"" + fontChoice.getValue() + "\";", true, 4));
-            sbRoot.append(StringUtil.padWithSpaces("-fx-font-size: " + fontSize+ ";", true, 4));
+            sbRoot.append(StringUtil.padWithSpaces("-fx-font-family: \"" + fontPickerController.fontProperty().get().getFamily() + "\";", true, 4));
+            sbRoot.append(StringUtil.padWithSpaces("-fx-font-size: " + fontPickerController.fontProperty().get().getSize()  + "px;", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-base: " + basePicker.getColorString() + ";", true, 4));
+            sbRoot.append(StringUtil.padWithSpaces("-fx-accent: " + accentPicker.getColorString() + ";", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-background: " + backgroundPicker.getColorString() + ";", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-focus-color: " + focusPicker.getColorString() + ";", true, 4));
             sbRoot.append(StringUtil.padWithSpaces("-fx-control-inner-background: " + fieldBackgroundPicker.getColorString() + ";", true, 4));
@@ -406,15 +362,15 @@ public class StyleController extends VBox {
     }
 
     public void buildBodyStyle() {
-
+        double fontSize = fontPickerController.fontProperty().get().getSize();
         sbBody = new StringBuilder();
         int borderWidth = (int) borderWidthSlider.getValue();
-//        int borderWidthForPadding = (borderWidth <= 1) ? 0 : borderWidth - 1;
-//        int padding = (int) paddingSlider.getValue() + borderWidthForPadding;
-        int padding = (int) paddingSlider.getValue();
+      int borderWidthForPadding = (borderWidth <= 1) ? 0 : borderWidth - 1;
+      int padding = (int) paddingSlider.getValue() + borderWidthForPadding;
+     //   int padding = (int) paddingSlider.getValue();
         int borderRadius = (int) borderRadiusSlider.getValue();
-//        double checkPadding = (((0.25 * fontSize) + borderWidthForPadding) / fontSize);
-//        double radioPadding = (((0.333333 * (int) fontSize.getValue() + borderWidthForPadding) / fontSize);
+       double checkPadding = ((0.25 * fontSize + borderWidthForPadding) / fontSize);
+       double radioPadding = ((0.333333 * (int) fontSize + borderWidthForPadding) / fontSize);
 
 
         sbBody.append(".button, .toggle-button, .choice-box {\n");
@@ -428,7 +384,7 @@ public class StyleController extends VBox {
                 + (padding + 7) + "px "
                 + padding + "px "
                 + (padding + 7) + "px;", true, 4));
-        //  sbBody.append(StringUtil.padWithSpaces("-fx-font-family: " + fontChoice.getValue() + ";", true, 4));
+        //  sbBody.append(StringUtil.padWithSpaces("-fx-font-family: " + fontFamilyCB.getValue() + ";", true, 4));
         // sbBody.append(StringUtil.padWithSpaces("-fx-font-family: 'Roboto';", true, 4));
         sbBody.append("}\n");
 
@@ -456,12 +412,12 @@ public class StyleController extends VBox {
         sbBody.append(".combo-box-base:editable .text-field, .combo-box-base .arrow-button, " + ".combo-box .list-cell {\n");
         sbBody.append(StringUtil.padWithSpaces("-fx-padding: " + padding + "px " + (padding + 3) + "px " + padding + "px " + (padding + 3) + "px;", true, 4));
         sbBody.append("}\n");
-        //  sbBody.append(".check-box .box {\n");
-        //sbBody.append(StringUtil.padWithSpaces("-fx-padding: " + checkPadding + "em;", true, 4));
-        //  sbBody.append("}\n");
-        //     sbBody.append(".radio-button .radio {\n");
-        //    sbBody.append(StringUtil.padWithSpaces("-fx-padding: " + radioPadding + "em;", true, 4));
-        //    sbBody.append("}\n");
+          sbBody.append(".check-box .box {\n");
+        sbBody.append(StringUtil.padWithSpaces("-fx-padding: " + checkPadding + "em;", true, 4));
+          sbBody.append("}\n");
+             sbBody.append(".radio-button .radio {\n");
+            sbBody.append(StringUtil.padWithSpaces("-fx-padding: " + radioPadding + "em;", true, 4));
+            sbBody.append("}\n");
         if (!baseTextToggle.isSelected()) {
             sbBody.append(".hyperlink {\n");
             sbBody.append(StringUtil.padWithSpaces("-fx-fill: -fx-text-background-color;", true, 4));
@@ -475,7 +431,7 @@ public class StyleController extends VBox {
         sbBody.append("}\n");
         sbBody.append(".text {\n");
 
-        sbBody.append(StringUtil.padWithSpaces("-fx-font-family: \"" + fontChoice.getValue() + "\";", true, 4));
+        sbBody.append(StringUtil.padWithSpaces("-fx-font-family: -fx-font-type;", true, 4));
         sbBody.append("}\n");
 
         sbBody.append(".button, .toggle-button, .check-box .box, .radio-button .radio, "
@@ -512,10 +468,6 @@ public class StyleController extends VBox {
         codeArea.replaceText(0, 0, getCodeString());
     }
 
-    @FXML
-    private void onFontRadioSelected(ActionEvent event) {
-
-    }
 
     @FXML
     private void displayEditorPane() {
@@ -539,19 +491,5 @@ public class StyleController extends VBox {
     private void saveButtonAction(ActionEvent event) {
         FileUtil.saveCSSFile(this.getScene().getWindow(), getCodeString());
     }
-
-    private static List<String> getFixedFontSizes() {
-        String[] predefinedFontSizes
-                = {"9", "10", "11", "12", "13", "14", "18", "24"};//NOI18N
-        return Arrays.asList(predefinedFontSizes);
-    }
-
-    private static List<String> getScalableFontSizes() {
-        String[] predefinedFontSizes
-                = {"0.083333", "0.166667", "0.25", "0.333333", "0.416667", "0.5",
-                   "0.583333", " 0.666667", "0.75", "0.833333", "0.916667", "1" };//NOI18N
-        return Arrays.asList(predefinedFontSizes);
-    }
-
 }
 

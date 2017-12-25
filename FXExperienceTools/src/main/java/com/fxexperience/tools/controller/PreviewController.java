@@ -9,10 +9,11 @@
  */
 package com.fxexperience.tools.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -24,6 +25,11 @@ public class PreviewController extends VBox {
 
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
+    @FXML private TextField searchTextField;
+    @FXML private Button goButton;
+    @FXML private ListView<String> stringValuesListView;
+    @FXML private ListView<Integer> integerValuesListView;
+
 
     public PreviewController() {
         initialize();
@@ -43,7 +49,11 @@ public class PreviewController extends VBox {
         } catch (IOException ex) {
             Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         setMenuBoxPresets();
+
+        ObservableList<String> values = FXCollections.observableArrayList("Alpha","Beta", "Gamma");
+        stringValuesListView.setItems(values);
     }
 
     private void setMenuBoxPresets() {

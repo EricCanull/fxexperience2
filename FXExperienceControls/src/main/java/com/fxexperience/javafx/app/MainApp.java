@@ -9,10 +9,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- * Simple Demo application for the Canned animation transitions in 
+ * Simple Demo application for the Canned animation transitions in
  * FXExperience Controls
- * 
- * @author Jasper Potts, Eric Canull
  */
 public class MainApp extends Application {
 

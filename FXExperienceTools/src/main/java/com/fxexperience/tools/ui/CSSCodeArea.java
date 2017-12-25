@@ -6,6 +6,7 @@ import com.fxexperience.tools.util.css.CSSHighlight;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
+
 public class CSSCodeArea extends CodeArea {
 
     public CSSCodeArea() {
@@ -14,6 +15,6 @@ public class CSSCodeArea extends CodeArea {
         richChanges()
                 .filter(ch -> !ch.getInserted().equals(ch.getRemoved())) // XXX
                 .subscribe(change -> this.setStyleSpans(0, CSSHighlight.computeHighlighting(this.getText())));
-        //replaceText(0, 0, CSSBaseStyle.getCodeString());
+        replaceText(0, 0, CSSBaseStyle.getCodeString());
     }
 }
