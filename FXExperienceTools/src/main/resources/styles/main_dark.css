@@ -20,7 +20,7 @@ different terms and without source code for the larger work.
     -fe-inner-border: #464646;
 
     -fe-control-inner-background: #23272a;
-    -font-family: 'Roboto';
+    -font-family: "Noto Sans";
     -fe-background-color: #23272a;
     -fe-focus-background: #334455;
     -fe-focus-color: #3397B7;
@@ -50,7 +50,9 @@ different terms and without source code for the larger work.
     /*-fx-background-insets: 1, -5, 1, -5;*/
     /*-fx-background-radius: 9;*/
 }
-
+#Main-Panel {
+    -fx-background-image: url("../images/bg.png")
+}
 /*******************************************************************************
  * Alert Notification		                                                   *
  ******************************************************************************/

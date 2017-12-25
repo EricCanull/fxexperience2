@@ -31,9 +31,9 @@
             </StackPane>
          </children>
       </AnchorPane>
-      <AnchorPane>
+      <AnchorPane styleClass="button-anchorpane">
          <children>
-            <GridPane alignment="TOP_CENTER" hgap="2.0" style="-fx-background-color: #2c2f33;" styleClass="buttons-grid" vgap="2.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+            <GridPane alignment="TOP_CENTER" hgap="2.0" style="-fx-background-color: #2c2f33;" styleClass="buttons-grid" vgap="2.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
               <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="80.0" />
                 <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="130.0" />

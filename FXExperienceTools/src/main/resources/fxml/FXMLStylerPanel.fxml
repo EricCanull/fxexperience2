@@ -24,7 +24,7 @@
    <children>
       <SplitPane fx:id="rootSplitPane" dividerPositions="0.82" styleClass="split-pane" VBox.vgrow="ALWAYS">
         <items>
-          <AnchorPane id="Content-Area" fx:id="previewAnchorPane" style="-fx-background-color: darkslategray;">
+          <AnchorPane id="Content-Area" fx:id="previewAnchorPane">
                <children>
                   <BorderPane id="Preview-Alpha" fx:id="previewPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="720.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
                </children>

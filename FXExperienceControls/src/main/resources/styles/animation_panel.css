@@ -21,13 +21,7 @@
 .label, .check-box, .radio-button {
     -fx-text-fill: -fx-text-background-color;
 }
-.button,
-.toggle-button,
-.check-box .box,
-.radio-button .radio,
-.choice-box,
-.menu-button, .tab,
-.combo-box-base {
+.button {
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-background-radius: 3px, 3px, 2px, 1px;
@@ -38,9 +32,12 @@
 }
 
 #animateTestArea {
-     -fx-background-color: darkslategray;
-}
+    -fx-background-color: darkslategray;
 
+}
+.button-anchorpane {
+    -fx-background-image: url("../images/bg.png");
+}
 .buttons-grid {
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
@@ -48,7 +45,6 @@
 
 #Background {
     -fx-background: #212528;
-    -fx-background-insets: 0, 0 1 0 1;
 }
 
 .split-pane-main {
@@ -59,7 +55,6 @@
 }
 
 .canned-split-pane {
-    -fx-padding: -1;
     -fx-background-color: transparent;
 }
 .button-anchorpane {

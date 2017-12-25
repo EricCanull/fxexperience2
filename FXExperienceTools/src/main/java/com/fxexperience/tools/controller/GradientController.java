@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -24,7 +25,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GradientController extends SplitPane {
+public class GradientController extends GridPane {
 
     @FXML private Rectangle gradientSquare;
     @FXML private Button fxButton;
@@ -55,9 +56,8 @@ public class GradientController extends SplitPane {
     public void initialize() {
 
         gradientPicker = new ColorPopupEditor(PaintPicker.Mode.COLOR, Color.web("#111111"));
-        gradientPicker.setPrefWidth(225);
-        gradientPicker.setPadding(new Insets(0, 0, 0, 20));
-        GridPane.setConstraints(gradientPicker, 3, 6);
+        gradientPicker.setPrefWidth(200);
+        GridPane.setConstraints(gradientPicker, 2, 3);
         gridPane.getChildren().add(gradientPicker);
 
         final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateGradientCSS());
