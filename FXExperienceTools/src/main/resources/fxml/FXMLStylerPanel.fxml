@@ -26,7 +26,7 @@
         <items>
           <AnchorPane id="Content-Area" fx:id="previewAnchorPane" style="-fx-background-color: darkslategray;">
                <children>
-                  <BorderPane id="Preview-Alpha" fx:id="previewPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="800.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+                  <BorderPane id="Preview-Alpha" fx:id="previewPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="720.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
                </children>
             </AnchorPane>
             <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0">

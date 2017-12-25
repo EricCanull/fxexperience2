@@ -57,7 +57,7 @@ public class GradientController extends SplitPane {
         gradientPicker = new ColorPopupEditor(PaintPicker.Mode.COLOR, Color.web("#111111"));
         gradientPicker.setPrefWidth(225);
         gradientPicker.setPadding(new Insets(0, 0, 0, 20));
-        GridPane.setConstraints(gradientPicker, 1, 1);
+        GridPane.setConstraints(gradientPicker, 3, 6);
         gridPane.getChildren().add(gradientPicker);
 
         final ChangeListener<Paint> onPaintChanged = ((ov, oldValue, newValue) -> updateGradientCSS());

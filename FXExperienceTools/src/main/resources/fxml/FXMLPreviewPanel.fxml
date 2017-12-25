@@ -212,8 +212,7 @@
                            <children>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ListView fx:id="integerValuesListView" prefHeight="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
-                                    <ListView fx:id="stringValuesListView" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="stringValuesListView" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -222,7 +221,7 @@
                            <children>
                               <ScrollPane hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                  <content>
-                                    <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="225.0">
+                                    <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0">
                                       <columns>
                                         <TableColumn prefWidth="134.0" text="C1" />
                                         <TableColumn prefWidth="109.0" text="C2" />
