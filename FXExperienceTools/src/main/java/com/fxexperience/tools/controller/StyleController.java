@@ -349,13 +349,13 @@ public class StyleController extends VBox {
             } else {
                 inputBorderToggle.setText("AUTO");
                 sbRoot.append("}\n");
-                sbRoot.append("@font-face {\n" +
-                        "src: url(“Roboto-Light.ttf”);\n" +
-                        "}\n" +
-                        "\n" +
-                        ".label, .button, .toggle-button, .choice-box, .text {\n" +
-                        "-fx-font-family: 'Roboto';\n" +
-                        "}\n");
+//                sbRoot.append("@font-face {\n" +
+//                        "src: url(“Roboto-Light.ttf”);\n" +
+//                        "}\n" +
+//                        "\n" +
+//                        ".label, .button, .toggle-button, .choice-box, .text {\n" +
+//                        "-fx-font-family: 'Roboto';\n" +
+//                        "}\n");
             }
 
         previewController.setPreviewPanelStyle(sbRoot.toString());
@@ -431,7 +431,7 @@ public class StyleController extends VBox {
         sbBody.append("}\n");
         sbBody.append(".text {\n");
 
-        sbBody.append(StringUtil.padWithSpaces("-fx-font-family: -fx-font-type;", true, 4));
+        sbBody.append(StringUtil.padWithSpaces("-fx-font-family: -fx-font-type; -fx-fill: -fx-text-background-color;", true, 4));
         sbBody.append("}\n");
 
         sbBody.append(".button, .toggle-button, .check-box .box, .radio-button .radio, "
