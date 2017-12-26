@@ -12,12 +12,11 @@ package com.fxexperience.tools.controller;
 import com.fxexperience.javafx.control.fontpicker.FontPickerController;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.javafx.scene.control.textfields.DoubleTextField;
-import com.fxexperience.tools.ui.CSSCodeArea;
+import com.fxexperience.tools.ui.CssEditor;
 import com.fxexperience.tools.util.FileUtil;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.StringUtil;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +25,6 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import org.fxmisc.flowless.VirtualizedScrollPane;
@@ -63,6 +61,8 @@ public class StyleController extends VBox {
     @FXML private DoubleTextField borderWidthTextField;
     @FXML private DoubleTextField borderRadiusTextField;
 
+    @FXML private Button btnEditor, btnSave, btnCopy;
+
     @FXML private ToggleButton baseTextToggle;
     @FXML private ToggleButton backgroundTextToggle;
     @FXML private ToggleButton fieldTextToggle;
@@ -74,7 +74,7 @@ public class StyleController extends VBox {
 
     private Font font = Font.getDefault();
 
-    private final CSSCodeArea codeArea = new CSSCodeArea();
+    private final CssEditor codeArea = new CssEditor();
     private final FontPickerController fontPickerController = new FontPickerController();
     private final PreviewController previewController = new PreviewController();
 
@@ -103,9 +103,8 @@ public class StyleController extends VBox {
             Logger.getLogger(StyleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+
         textTitlePane.setContent(fontPickerController);
-
-
         editorPane.getChildren().add(new VirtualizedScrollPane<>(codeArea));
         previewPane.setCenter(previewController);
 
@@ -474,10 +473,12 @@ public class StyleController extends VBox {
     private void displayEditorPane() {
         if (!editorPane.isVisible()) {
             editorPane.setVisible(true);
+            btnEditor.setText("Controls");
             setCodeAreaText();
         }
         else {
             editorPane.setVisible(false);
+            btnEditor.setText("CSS Editor");
         }
     }
 

@@ -41,11 +41,13 @@
             <Label fx:id="derivedResultLabel" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <graphic>
                   <Region fx:id="forwardRegion" prefHeight="20.0" prefWidth="50.0" />
-               </graphic></Label>
+               </graphic>
+            </Label>
             <Label fx:id="reverseResultLabel" text="label" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <graphic>
                   <Region fx:id="reverseRegion" prefHeight="20.0" prefWidth="50.0" />
-               </graphic></Label>
+               </graphic>
+            </Label>
             <VBox GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7">
                <children>
                   <TextField fx:id="hexReverseTextfield" styleClass="reverse-result-textfield" text="#9c9c9c" />

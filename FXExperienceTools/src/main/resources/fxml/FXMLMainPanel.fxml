@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="800.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -23,7 +24,7 @@
    <left>
       <AnchorPane style="-fx-background-color: #0092c1;">
          <children>
-            <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="90.0" styleClass="nav-box">
                      <children>
@@ -93,7 +94,7 @@
                               </ImageView>
                            </graphic>
                          
-                                                </ToggleButton>
+                                                            </ToggleButton>
                      </children>
                   </VBox>
                </children>
@@ -102,6 +103,12 @@
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane minHeight="-Infinity" minWidth="1080.0" prefHeight="50.0" styleClass="main-menu" BorderPane.alignment="CENTER" />
+      <AnchorPane minHeight="-Infinity" minWidth="1080.0" prefHeight="50.0" styleClass="main-menu" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow color="#333333" height="7.5" radius="2.8925" spread="0.74" width="6.07" />
+         </effect>
+         <BorderPane.margin>
+            <Insets right="1.0" />
+         </BorderPane.margin></AnchorPane>
    </top>
 </BorderPane>

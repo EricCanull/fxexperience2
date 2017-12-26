@@ -18,6 +18,7 @@ different terms and without source code for the larger work.
     -fe-shadow-highlight-color: #282828;
     -fe-outer-border: #343434;
     -fe-inner-border: #464646;
+    -fx-background-color: #111;
 
     -fe-control-inner-background: #23272a;
     -font-family: "Noto Sans";
@@ -36,15 +37,9 @@ different terms and without source code for the larger work.
 
     -fe-text-box-border: #676B6F;
 }
-@font-face {
-    src: url('/fonts/Roboto-Light.ttf');
-
-}
 
 .nav-box {
-   /*-fx-background-image: url("../images/binding_dark.png");*/
-    -fx-background-color: -dark-header;
-    -fx-border-width: 0;
+   -fx-background-image: url("../images/binding_dark.png");
     /*-fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );*/
 /*    -fx-background-color:  -fe-dark-inner-background;*/
     /*-fx-background-insets: 1, -5, 1, -5;*/
@@ -53,6 +48,7 @@ different terms and without source code for the larger work.
 #Main-Panel {
     -fx-background-image: url("../images/bg.png")
 }
+
 /*******************************************************************************
  * Alert Notification		                                                   *
  ******************************************************************************/
@@ -63,63 +59,16 @@ different terms and without source code for the larger work.
     -fx-text-fill: black;
     -fx-font: 1em bold;
 }
-/*******************************************************************************
- * Menu Bar			                                                           *
- ******************************************************************************/
-.menu {
-
-}
-
-.menu:hover,
-.menu-button .menu:hover {
-    -fx-text-fill: white;
-}
 
 .main-menu {
     /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
-    -fx-background-color: derive(-dark-header, 0%), derive(-dark-header, 25%),  derive(-dark-header, -20%),  -dark-header;
-    /*-fx-background-insets: 0 0 1 0, 0, 1 0 0 0, 1 0 0 0;*/
-    -fx-font-size: 16px;
-    -fx-alignment: center-left;
+    /*-fx-background-color: derive(-dark-header, 0%), derive(-dark-header, 25%),  derive(-dark-header, -20%),  -dark-header;*/
+-fx-background-color: #23272a;
+    -fx-padding: 0.0em 0.666667em 0.0em 0.666667em; /* 0 8 0 8 */
     /*-fx-effect: dropshadow( two-pass-box, -gray-light, 2, 0.0, 0, 1 );*/
-
-    -fx-font-family: "Roboto";
-    /* Nothing more needed for Mac OS X than the following property!
-     * All other definitions kept from caspian, to ensure, that MenuBar
-     * is shown properly on non-mac systems.
-     */
-    -fx-use-system-menu-bar: true;
+    -fx-background-insets: 0 0 0 0, 0 1 0 1;
+    -fx-background-radius: 0, 0;
 }
-
-/*.main-menu .container .menu:openvertically .label .text {*/
-    /*-fx-fill: white;*/
-/*}*/
-
-/*.menu-item:focused,*/
-/*.menu-item:hover {*/
-    /*!*       -fx-background-insets: 1, 1, 1;*!*/
-/*}*/
-
-/*.menu-button .menu {*/
-    /*-fx-text-fill: -text-secondary;*/
-/*}*/
-
-/*.menu-bar .menu .label {*/
-    /*-fx-text-fill: -text-secondary;*/
-/*}*/
-
-/*.main-menu .container .menu:openvertically .label .text {*/
-
-/*}*/
-
-/*.context-menu {*/
-    /*!*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*!*/
-    /*-fx-background-color: #262626, #262626, #262626, #262626;*/
-    /*!*    -fx-background-insets: 0, 1, 2;*!*/
-
-     /*-fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  !* 8 1 8 1 *!*/
-    /*!*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; !* 4 1 8 1 *!*/
-/*}*/
 
 /*******************************************************************************
  * Preview panel background		                                               *
@@ -161,7 +110,7 @@ different terms and without source code for the larger work.
 }
 
 .menu-toggle-button:hover, .menu-toggle-button:selected{
-    -fx-background-color: -fe-body-background;
+    -fx-background-color: rgba(35,39,42, .5);
 }
 
 

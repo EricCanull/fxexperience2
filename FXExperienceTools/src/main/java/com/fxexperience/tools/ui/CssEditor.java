@@ -1,5 +1,8 @@
-package com.fxexperience.tools.util.css;
+package com.fxexperience.tools.ui;
 
+import com.fxexperience.tools.controller.StyleController;
+import org.fxmisc.richtext.CodeArea;
+import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
 import org.fxmisc.richtext.model.StyleSpansBuilder;
 
@@ -8,17 +11,23 @@ import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
-*/
-public class CSSHighlight {
 
+public class CssEditor extends CodeArea {
 
-    public static StyleSpans<Collection<String>> computeHighlighting(String text) {
+    public CssEditor() {
+        getStylesheets().add(StyleController.class.getResource("/styles/code_area.css").toExternalForm());
+        setParagraphGraphicFactory(LineNumberFactory.get(this));
+        richChanges()
+                .filter(ch -> !ch.getInserted().equals(ch.getRemoved())) // XXX
+                .subscribe(change -> this.setStyleSpans(0, computeHighlighting(this.getText())));
+    }
+
+    private static StyleSpans<Collection<String>> computeHighlighting(String text) {
         return computeHighlightingRegex(text);
         //return computeHighlightingByRegex(text);
     }
 
- // private static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
+    // private static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
     private static final String SELECTOR_PATTERN = "\\.([^ 0-9,{])+|#([^ 0-9,{])+";
     private static final String PAREN_PATTERN = "\\(|\\)";
     private static final String BRACE_PATTERN = "\\{|\\}";
@@ -29,10 +38,10 @@ public class CSSHighlight {
     private static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
     //private static final String COMMENT_REGEX = "//[^\n]*" + "|" + "/\\*(.|\\R)*?\\*/";
     private static final String MUTI_COMMENT_REGE = "/\\*+([^*]|(\\*+[^*/]))*\\*+/";
-     private static final String ENTRY_REGE = "-fx-([^: 0-9,;\\n])+";
+    private static final String ENTRY_REGE = "-fx-([^: 0-9,;\\n])+";
 
     private static final Pattern PATTERN = Pattern.compile(
-                      "(?<SELECTOR>" + SELECTOR_PATTERN + ")"
+            "(?<SELECTOR>" + SELECTOR_PATTERN + ")"
                     + "|(?<ENTRY>" + ENTRY_REGE + ")"
                     + "|(?<PAREN>" + PAREN_PATTERN + ")"
                     + "|(?<BRACE>" + BRACE_PATTERN + ")"
