@@ -32,13 +32,17 @@
 
     -fe-text-box-border: #676B6F;
 }
-
+.accordian-prop {
+    -fx-background-color: #23272a;
+}
+.anchor-pane-prop,
 #Content-Area {
     -fx-background-image: url("../images/bg.png");
 }
 
 .button-hbox {
 -fx-background-color: #23272a;
+    -fx-background-radius: 3, 1, 2;
 }
 .style-button {
     -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;

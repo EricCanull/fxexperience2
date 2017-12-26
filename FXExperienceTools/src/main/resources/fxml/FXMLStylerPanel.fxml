@@ -30,7 +30,7 @@
                   <BorderPane id="Preview-Alpha" fx:id="previewPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="720.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
                </children>
             </AnchorPane>
-            <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0">
+            <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0" styleClass="anchor-pane-prop">
                <children>
                   <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="42.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.topAnchor="0.0">
                      <children>
