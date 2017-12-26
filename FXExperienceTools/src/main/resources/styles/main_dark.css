@@ -63,7 +63,7 @@ different terms and without source code for the larger work.
 .main-menu {
     /*    -fx-background-color:  derive(rgb(147, 147, 147), -60%);*/
     /*-fx-background-color: derive(-dark-header, 0%), derive(-dark-header, 25%),  derive(-dark-header, -20%),  -dark-header;*/
--fx-background-color: #23272a;
+-fx-background-color: derive(#23272a, -18%);
     -fx-padding: 0.0em 0.666667em 0.0em 0.666667em; /* 0 8 0 8 */
     /*-fx-effect: dropshadow( two-pass-box, -gray-light, 2, 0.0, 0, 1 );*/
     -fx-background-insets: 0 0 0 0, 0 1 0 1;
