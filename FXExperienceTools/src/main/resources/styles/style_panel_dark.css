@@ -330,15 +330,15 @@
 
 .virtualized-scroll-pane .scroll-bar > .increment-button > .increment-arrow,
 .virtualized-scroll-pane .scroll-bar > .decrement-button > .decrement-arrow {
-    -fx-background-color:derive(#31363B,-30%),derive(#31363B,-25%);
+    -fx-background-color:derive(#31363B,-30%), derive(#31363B,-25%);
 }
 .virtualized-scroll-pane .scroll-bar > .increment-button:hover > .increment-arrow,
 .virtualized-scroll-pane .scroll-bar > .decrement-button:hover > .decrement-arrow {
-    -fx-background-color: derive(#31363B,-30%),derive(#31363B,-35%);
+    -fx-background-color: derive(#31363B,-30%), derive(#31363B,-35%);
 }
 .virtualized-scroll-pane .scroll-bar > .increment-button:pressed > .increment-arrow,
 .virtualized-scroll-pane .scroll-bar > .decrement-button:pressed > .decrement-arrow {
-    -fx-background-color: derive(#31363B,-30%),derive(#31363B,-40%);
+    -fx-background-color: derive(#31363B,-30%), derive(#31363B,-40%);
 }
 
 .virtualized-scroll-pane .scroll-bar:horizontal {
