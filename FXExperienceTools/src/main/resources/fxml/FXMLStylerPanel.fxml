@@ -81,7 +81,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </ToggleButton>
-                                                      <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                      <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>

@@ -41,7 +41,11 @@
 }
 
 .button-hbox {
--fx-background-color: #23272a;
+    -fx-background-color: derive(-fe-inner-background,-30%),
+        linear-gradient(to bottom,
+            derive(-fe-inner-background,-3%),
+            derive(-fe-inner-background,5%) 50%,
+            derive(-fe-inner-background,-3%));
     -fx-background-radius: 3, 1, 2;
 }
 .style-button {
@@ -310,19 +314,19 @@
 }
 
 .virtualized-scroll-pane:vertical {
-    -fx-background-color: #31363B;
+    -fx-background-color: -fe-inner-background;
 }
 
 .virtualized-scroll-pane:horizontal {
-    -fx-background-color: #31363B;
+    -fx-background-color: -fe-inner-background;
 }
 
 .virtualized-scroll-pane .scroll-bar .thumb {
-    -fx-background-color: #606060;
+    -fx-background-color:derive(-fe-inner-background, 15%);
 }
 
 .virtualized-scroll-pane .scroll-bar .thumb:hover {
-    -fx-background-color:derive(#595B5D, 15%);
+    -fx-background-color:derive(-fe-inner-background, 30%);
 }
 .virtualized-scroll-pane .scroll-pane .corner {
     -fx-background-color: transparent;
@@ -342,11 +346,11 @@
 }
 
 .virtualized-scroll-pane .scroll-bar:horizontal {
-    -fx-background-color: derive(#31363B,-30%), linear-gradient(to bottom, derive(#31363B,-3%), derive(#31363B,5%) 50%, derive(#31363B,-3%));
+    -fx-background-color: derive(-fe-inner-background,-30%), linear-gradient(to bottom, derive(-fe-inner-background,-3%), derive(-fe-inner-background,5%) 50%, derive(-fe-inner-background,-3%));
     -fx-background-insets: 0, 1 0 1 0;
 }
 .virtualized-scroll-pane  .scroll-bar:vertical {
-    -fx-background-color: derive(#31363B,-30%), linear-gradient(to right, derive(#31363B,-3%), derive(#31363B,5%) 50%, derive(#31363B,-3%));
+    -fx-background-color: derive(-fe-inner-background,-30%), linear-gradient(to right, derive(-fe-inner-background,-3%), derive(-fe-inner-background,5%) 50%, derive(-fe-inner-background,-3%));
     -fx-background-insets: 0, 0 1 0 1;
 }
 .sample-text {
