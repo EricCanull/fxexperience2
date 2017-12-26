@@ -103,13 +103,11 @@ public class StyleController extends VBox {
             Logger.getLogger(StyleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
         textTitlePane.setContent(fontPickerController);
         editorPane.getChildren().add(new VirtualizedScrollPane<>(codeArea));
         previewPane.setCenter(previewController);
 
         addListeners();
-
 
         // create Integer Fields
         addTextFieldBinding(paddingSlider, paddingTextField);
@@ -473,12 +471,10 @@ public class StyleController extends VBox {
     private void displayEditorPane() {
         if (!editorPane.isVisible()) {
             editorPane.setVisible(true);
-            btnEditor.setText("Controls");
             setCodeAreaText();
         }
         else {
             editorPane.setVisible(false);
-            btnEditor.setText("CSS Editor");
         }
     }
 

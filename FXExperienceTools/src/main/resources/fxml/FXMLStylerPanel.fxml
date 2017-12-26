@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.fxexperience.javafx.scene.control.textfields.DoubleTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -31,16 +32,28 @@
             </AnchorPane>
             <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0">
                <children>
-                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="52.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="42.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="btnEditor" mnemonicParsing="false" onAction="#displayEditorPane" styleClass="style-button" text="CSS Editor">
+                        <Button fx:id="btnEditor" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#displayEditorPane" styleClass="style-button">
                            <graphic>
+                           </graphic>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="1.25em" />
                            </graphic></Button>
-                        <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveButtonAction" styleClass="style-button" text="Save CSS" />
-                        <Button fx:id="btnCopy" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#copyButtonAction" styleClass="style-button" text="Copy CSS" />
+                        <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveButtonAction" styleClass="style-button">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="1.25em" />
+                           </graphic></Button>
+                        <Button fx:id="btnCopy" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#copyButtonAction" styleClass="style-button">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="COPY" size="1.25em" />
+                           </graphic></Button>
                      </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
                   </HBox>
-                  <StackPane fx:id="controlsPane" alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                  <StackPane fx:id="controlsPane" alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
                      <children>
                         <AnchorPane>
                            <children>
@@ -287,7 +300,7 @@
                                     <content>
                                       <AnchorPane minWidth="-Infinity" prefWidth="425.0" styleClass="anchor-pane">
                                              <children>
-                                                <GridPane fx:id="sizeGridPanel" hgap="2.0" minWidth="-Infinity" prefHeight="505.0" prefWidth="425.0" vgap="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <GridPane fx:id="sizeGridPanel" hgap="3.0" minWidth="-Infinity" prefHeight="505.0" prefWidth="425.0" vgap="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <columnConstraints>
                                                       <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
                                                       <ColumnConstraints hgrow="ALWAYS" percentWidth="60.0" />

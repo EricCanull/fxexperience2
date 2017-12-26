@@ -38,7 +38,8 @@
 }
 
 .button-hbox {
-    -fx-background-color: #2c2f33;
+    -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%,
+    derive(#23272a, 20%) 0.0%, derive(#23272a, 17%) 21.0%, derive(#23272a, 16%) 38.0%, derive(#23272a, 10%) 100.0%);
 }
 .style-button {
     -fx-background-color: -fe-shadow-highlight-color, -fe-inner-border, -fe-inner-border, -fe-body-color;
@@ -66,8 +67,8 @@
     -fx-font-size: .825em;
     -fx-background-color: transparent;
     -fx-border-color: #5c5c5c;
-    -fx-pref-width: 82px;
-    -fx-pref-height: 42px;
+    -fx-pref-width: 35px;
+    -fx-pref-height: 35px;
     -fx-border-radius: 5;
     -fx-text-fill: #E7E7E7;
 }
@@ -75,6 +76,8 @@
 .style-button:focused {
     -fx-background-color: -fe-focus-background;
     -fx-border-color: #5c5c5c;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
     -fx-text-fill: #E7E7E7;
 }
 
