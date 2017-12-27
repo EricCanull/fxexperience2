@@ -15,7 +15,6 @@ import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
 import javafx.animation.*;
 import javafx.application.Platform;
-import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
@@ -26,9 +25,6 @@ import javafx.scene.Node;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.Effect;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -50,8 +46,6 @@ public final class MainController extends AbstractController implements Initiali
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
-    private final DoubleProperty arrowHeight = new SimpleDoubleProperty(52);
-
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> tools = new HashMap<>();
 
@@ -61,6 +55,7 @@ public final class MainController extends AbstractController implements Initiali
     @FXML private ToggleButton derivedColorToggle;
     @FXML private ToggleButton gradientBuilderToggle;
     @FXML private ToggleButton animationToggle;
+    @FXML private StackPane arrow;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
@@ -91,13 +86,16 @@ public final class MainController extends AbstractController implements Initiali
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadToggleGroup();
-        loadTools();
-        loadSelectedToolArrow();
+        initializeToggles();
+        initializeTools();
+
+        arrow.setManaged(false);
+        arrow.setLayoutY(30);
+        arrow.layoutXProperty().bind(stylerToggle.layoutXProperty().subtract(10));
     }
 
     // Creates toggle group to bind color icon effect
-    private void loadToggleGroup() {
+    private void initializeToggles() {
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle,
                 gradientBuilderToggle, animationToggle);
@@ -107,20 +105,20 @@ public final class MainController extends AbstractController implements Initiali
 
     // Adjusts the color of the toogle icons upon selection
     private void setIconBinding(ToggleButton toggle) {
-        ImageView icon = (ImageView) toggle.getGraphic();
-        icon.effectProperty().bind(new ObjectBinding<Effect>() {
-            {
-                bind(toggle.selectedProperty());
-            }
-
-            @Override
-            protected Effect computeValue() {
-                return toggle.isSelected() ? null : new ColorAdjust(0, -1, 0, 0);
-            }
-        });
+//        ImageView icon = (ImageView) toggle.getGraphic();
+//        icon.effectProperty().bind(new ObjectBinding<Effect>() {
+//            {
+//                bind(toggle.selectedProperty());
+//            }
+//
+//            @Override
+//            protected Effect computeValue() {
+//                return toggle.isSelected() ? null : new ColorAdjust(0, -1, 0, 0);
+//            }
+//        });
     }
 
-    private void loadTools() {
+    private void initializeTools() {
         StyleController = new StyleController();
         splineController = new SplineController();
         derivationController = new DerivationController();
@@ -140,13 +138,6 @@ public final class MainController extends AbstractController implements Initiali
         currentPane.getChildren().add(StyleController);
         rootContainer.getChildren().addAll(currentPane, sparePane);
         currentToolIndex = Tool.CSS.ordinal();
-    }
-
-    private void loadSelectedToolArrow() {
-        // create toolbar background path
-        toolBar.setClip(createToolBarPath(Color.web("#2c2f33"), null));
-        Path toolBarBackground = createToolBarPath(null, Color.web("#2c2f33"));
-        toolBar.getChildren().add(toolBarBackground);
     }
 
     // Displays a new tool and applies the slide transitions
@@ -232,36 +223,7 @@ public final class MainController extends AbstractController implements Initiali
     };
 
     private void setArrow(Node toggleButton) {
-        double minY = toggleButton.getBoundsInParent().getMinY();
-        double centerY = toggleButton.getLayoutBounds().getHeight() / 2.0;
-        arrowHeight.set(minY + centerY);
-    }
-
-    private Path createToolBarPath(Paint fill, Paint stroke) {
-        final double toolbarWidth = 90;
-        final Path toolPath = new Path();
-
-        toolPath.setFill(fill);
-        toolPath.setStroke(stroke);
-        toolPath.setStrokeType(StrokeType.CENTERED);
-        LineTo arrowTop = new LineTo(toolbarWidth,0);
-        arrowTop.yProperty().bind(arrowHeight.add(-8));
-        LineTo arrowTip = new LineTo(toolbarWidth-9,0);
-        arrowTip.yProperty().bind(arrowHeight);
-        LineTo arrowBottom = new LineTo(toolbarWidth,0);
-        arrowBottom.yProperty().bind(arrowHeight.add(8));
-        LineTo bottomRight = new LineTo(toolbarWidth,0);
-        bottomRight.yProperty().bind(toolBar.heightProperty());
-        LineTo bottomLeft = new LineTo(0,0);
-        bottomLeft.yProperty().bind(toolBar.heightProperty());
-        toolPath.getElements().addAll(
-                new MoveTo(0,0),
-                new LineTo(toolbarWidth,0),
-                arrowTop, arrowTip, arrowBottom,
-                bottomRight, bottomLeft,
-                new ClosePath()
-        );
-        return toolPath;
+        arrow.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(10));
     }
 
     private void displayStatusAlert(String textMessage) {

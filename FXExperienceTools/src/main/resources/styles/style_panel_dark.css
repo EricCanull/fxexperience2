@@ -44,7 +44,7 @@
     -fx-background-color: derive(-fe-inner-background,-30%),
         linear-gradient(to bottom,
             derive(-fe-inner-background,-3%),
-            derive(-fe-inner-background,5%) 50%,
+            derive(-fe-inner-background, 0%) 50%,
             derive(-fe-inner-background,-3%));
     -fx-background-radius: 3, 1, 2;
 }

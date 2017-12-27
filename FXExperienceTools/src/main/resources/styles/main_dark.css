@@ -40,7 +40,7 @@ different terms and without source code for the larger work.
 
 .nav-box {
    -fx-background-image: url("../images/binding_dark.png");
-    /*-fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );*/
+    -fx-effect: innershadow( three-pass-box , rgba(32,32, 32,0.5) ,60, 0.0 , 0 , 0 );
 /*    -fx-background-color:  -fe-dark-inner-background;*/
     /*-fx-background-insets: 1, -5, 1, -5;*/
     /*-fx-background-radius: 9;*/

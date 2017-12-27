@@ -1,114 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.ClosePath?>
+<?import javafx.scene.shape.LineTo?>
+<?import javafx.scene.shape.MoveTo?>
+<?import javafx.scene.shape.Path?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
-              <StackPane fx:id="rootContainer" alignment="TOP_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+              <StackPane fx:id="rootContainer" alignment="TOP_LEFT" layoutX="-14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
           </children>
 
       </AnchorPane>
    </center>
-   <left>
-      <AnchorPane style="-fx-background-color: #0092c1;">
+   <top>
+      <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="60.0" style="-fx-background-color: #0092c1;" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="90.0" styleClass="nav-box">
+                  <HBox alignment="CENTER" prefHeight="54.0" spacing="24.0" style="-fx-background-color: #111;">
                      <children>
-                        <ToggleButton fx:id="stylerToggle" alignment="TOP_CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="CSS Builder" textAlignment="CENTER" wrapText="true">
-                           <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/archive/caspianstyler-icon.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <ToggleButton fx:id="stylerToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="CSS Builder" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ToggleButton>
-                        <ToggleButton fx:id="splineToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="Spline Tool" textAlignment="CENTER" wrapText="true">
                            <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/archive/spline-editor-icon.png" />
-                                 </image>
-                              </ImageView>
+                              <FontAwesomeIconView fill="#cdcdcd" glyphName="PENCIL" size="42px" />
                            </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Spline Tool" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ToggleButton>
-                        <ToggleButton fx:id="derivedColorToggle" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" wrapText="true">
                            <graphic>
-                              <ImageView onContextMenuRequested="#derivedToggleAction" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/archive/derive-color-icon.png" />
-                                 </image>
-                              </ImageView>
+                              <FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="42px" />
                            </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="derivedColorToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ToggleButton>
-                        <ToggleButton fx:id="gradientBuilderToggle" contentDisplay="TOP" layoutX="10.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="Gradient Builder" textAlignment="CENTER" wrapText="true">
                            <graphic>
-                              <ImageView onContextMenuRequested="#gradientToggleAction" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/gradient-icon.png" />
-                                 </image>
-                              </ImageView>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="EXCHANGE" size="42px" />
                            </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="gradientBuilderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Gradient Builder" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
-                        </ToggleButton>
-                        <ToggleButton fx:id="animationToggle" contentDisplay="TOP" layoutX="10.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="100.0" prefWidth="90.0" styleClass="menu-toggle-button" text="Controls Demo" textAlignment="CENTER" wrapText="true">
                            <graphic>
-                              <ImageView onContextMenuRequested="#animationToggleAction" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/controls-icon.png" />
-                                 </image>
-                              </ImageView>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="PAINT_BRUSH" size="42px" />
                            </graphic>
-                         
-                                                            </ToggleButton>
+                        </ToggleButton>
+                        <ToggleButton fx:id="animationToggle" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Controls Demo" textAlignment="CENTER" wrapText="true">
+                           <graphic>
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="PLAY_CIRCLE" size="42px" />
+                           </graphic>
+                        </ToggleButton>
                      </children>
-                  </VBox>
+                  </HBox>
+               </children>
+            </StackPane>
+            <StackPane fx:id="arrow" layoutX="117.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Path fill="#c45656" stroke="#f2486700" strokeType="INSIDE">
+                     <elements>
+                        <MoveTo y="22.0" />
+                        <LineTo x="16.0" y="30.0" />
+                        <LineTo y="38.0" />
+                        <ClosePath />
+                     </elements>
+                  </Path>
                </children>
             </StackPane>
          </children>
       </AnchorPane>
-   </left>
-   <top>
-      <AnchorPane minHeight="-Infinity" minWidth="1080.0" prefHeight="50.0" styleClass="main-menu" BorderPane.alignment="CENTER">
-         <effect>
-            <DropShadow color="#333333" height="7.5" radius="2.8925" spread="0.74" width="6.07" />
-         </effect>
-         <BorderPane.margin>
-            <Insets right="1.0" />
-         </BorderPane.margin></AnchorPane>
    </top>
 </BorderPane>
