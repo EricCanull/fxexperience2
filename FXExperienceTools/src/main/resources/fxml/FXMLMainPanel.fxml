@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Path?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" stylesheets="@../styles/main_dark.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -29,20 +30,20 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="54.0" spacing="24.0" style="-fx-background-color: #111;">
                      <children>
-                        <ToggleButton fx:id="stylerToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stylerToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="CSS Builder" textAlignment="CENTER" wrapText="true">
+                        <ToggleButton fx:id="styleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#styleToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="CSS Style Builder" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#cdcdcd" glyphName="PENCIL" size="42px" />
+                              <FontAwesomeIconView fill="#cdcdcd" glyphName="PENCIL_SQUARE_ALT" size="42px" />
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Spline Tool" textAlignment="CENTER" wrapText="true">
+                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Interpolation Tool" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="42px" />
+                              <FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="40px" />
                            </graphic>
                         </ToggleButton>
                         <ToggleButton fx:id="derivedColorToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" wrapText="true">
@@ -50,7 +51,7 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="EXCHANGE" size="42px" />
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="EXCHANGE" size="40px" />
                            </graphic>
                         </ToggleButton>
                         <ToggleButton fx:id="gradientBuilderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Gradient Builder" textAlignment="CENTER" wrapText="true">
@@ -58,7 +59,7 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#b2b2b2" glyphName="PAINT_BRUSH" size="42px" />
+                              <FontAwesomeIconView fill="#b2b2b2" glyphName="PAINT_BRUSH" size="40px" />
                            </graphic>
                         </ToggleButton>
                         <ToggleButton fx:id="animationToggle" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Controls Demo" textAlignment="CENTER" wrapText="true">
@@ -70,7 +71,7 @@
                   </HBox>
                </children>
             </StackPane>
-            <StackPane fx:id="arrow" layoutX="117.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
+            <StackPane fx:id="arrowPane" layoutX="101.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
                <children>
                   <Path fill="#c45656" stroke="#f2486700" strokeType="INSIDE">
                      <elements>
@@ -85,4 +86,8 @@
          </children>
       </AnchorPane>
    </top>
+   <stylesheets>
+      <URL value="@../styles/fonts.css" />
+      <URL value="@../styles/main_dark.css" />
+   </stylesheets>
 </BorderPane>

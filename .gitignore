@@ -14,3 +14,7 @@ FXExperienceTools/src/test/
 FXExperienceTools.iml
 
 \.idea/
+/FXExperienceTools/src/main/java/com/fxexperience/tools/util/SyntaxConstants.java
+/FXExperienceTools/src/main/java/com/fxexperience/tools/util/Selector.java
+/FXExperienceTools/src/main/java/com/fxexperience/tools/util/Rule.java
+/FXExperienceTools/src/main/java/com/fxexperience/tools/util/PropertyValue.java

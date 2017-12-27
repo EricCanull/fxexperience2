@@ -106,7 +106,7 @@ different terms and without source code for the larger work.
     -fx-border-color: transparent;
     -fx-border-width: 0 0 0 0;
     -fx-text-fill: #FFF;
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
 }
 
 .menu-toggle-button:hover, .menu-toggle-button:selected{

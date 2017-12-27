@@ -15,8 +15,6 @@ import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
 import javafx.animation.*;
 import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,9 +26,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.*;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -50,17 +45,17 @@ public final class MainController extends AbstractController implements Initiali
     private final HashMap<Integer, Node> tools = new HashMap<>();
 
     @FXML private StackPane toolBar;
-    @FXML private ToggleButton stylerToggle;
+    @FXML private StackPane arrowPane;
+
+    @FXML private ToggleButton styleToggle;
     @FXML private ToggleButton splineToggle;
     @FXML private ToggleButton derivedColorToggle;
     @FXML private ToggleButton gradientBuilderToggle;
     @FXML private ToggleButton animationToggle;
-    @FXML private StackPane arrow;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
     @FXML private StackPane rootContainer;
-    @FXML private CheckMenuItem themeMenuItem;
 
     private StyleController StyleController;
     private SplineController splineController;
@@ -86,21 +81,22 @@ public final class MainController extends AbstractController implements Initiali
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initializeToggles();
-        initializeTools();
 
-        arrow.setManaged(false);
-        arrow.setLayoutY(30);
-        arrow.layoutXProperty().bind(stylerToggle.layoutXProperty().subtract(10));
+        initializeTools();
+        initializeToggles();
+
+        arrowPane.setManaged(false);
+        arrowPane.setLayoutY(30);
+        arrowPane.layoutXProperty().bind(styleToggle.layoutXProperty().subtract(10));
     }
 
     // Creates toggle group to bind color icon effect
     private void initializeToggles() {
         ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.getToggles().addAll(stylerToggle, splineToggle, derivedColorToggle,
+        toggleGroup.getToggles().addAll(styleToggle, splineToggle, derivedColorToggle,
                 gradientBuilderToggle, animationToggle);
         toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
-        toggleGroup.selectToggle(stylerToggle);
+        toggleGroup.selectToggle(styleToggle);
     }
 
     // Adjusts the color of the toogle icons upon selection
@@ -199,9 +195,9 @@ public final class MainController extends AbstractController implements Initiali
     private final EventHandler<ActionEvent> animationEndEventHandler = (ActionEvent t) -> {
 
         // switch panes
-        StackPane temp = currentPane;
+        StackPane tempPane = currentPane;
         currentPane = sparePane;
-        sparePane = temp;
+        sparePane = tempPane;
 
         // cleanup
         timeline = null;
@@ -222,8 +218,8 @@ public final class MainController extends AbstractController implements Initiali
         }
     };
 
-    private void setArrow(Node toggleButton) {
-        arrow.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(10));
+    private void setArrowPane(Node toggleButton) {
+        arrowPane.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(10));
     }
 
     private void displayStatusAlert(String textMessage) {
@@ -267,13 +263,13 @@ public final class MainController extends AbstractController implements Initiali
         StyleController.getStylesheets().add(styleControllerCSS);
     }
 
-    @FXML private void stylerToggleAction(ActionEvent event) {
+    @FXML private void styleToggleAction(ActionEvent event) {
         // Prevent setting the same tool twice
-        if (!stylerToggle.isSelected()) {
-            stylerToggle.setSelected(true);
+        if (!styleToggle.isSelected()) {
+            styleToggle.setSelected(true);
         } else {
             setTool(Tool.CSS);
-            setArrow(stylerToggle);
+            setArrowPane(styleToggle);
         }
     }
 
@@ -283,7 +279,7 @@ public final class MainController extends AbstractController implements Initiali
             splineToggle.setSelected(true);
         } else {
             setTool(Tool.SPLINE);
-            setArrow(splineToggle);
+            setArrowPane(splineToggle);
         }
     }
 
@@ -293,7 +289,7 @@ public final class MainController extends AbstractController implements Initiali
             derivedColorToggle.setSelected(true);
         } else {
             setTool(Tool.DERIVATION);
-            setArrow(derivedColorToggle);
+            setArrowPane(derivedColorToggle);
         }
     }
     @FXML private void gradientToggleAction(ActionEvent event) {
@@ -302,7 +298,7 @@ public final class MainController extends AbstractController implements Initiali
             gradientBuilderToggle.setSelected(true);
         } else {
             setTool(Tool.GRADIENT);
-            setArrow(gradientBuilderToggle);
+            setArrowPane(gradientBuilderToggle);
         }
     }
 
@@ -312,12 +308,12 @@ public final class MainController extends AbstractController implements Initiali
             animationToggle.setSelected(true);
         } else {
             setTool(Tool.ANIMATION);
-            setArrow(animationToggle);
+            setArrowPane(animationToggle);
         }
     }
 
     @FXML private void setThemeAction() {
-        loadStyle(themeMenuItem.isSelected());
+//        loadStyle(themeMenuItem.isSelected());
     }
 
     @FXML private void closeButtonAction(ActionEvent event) {
