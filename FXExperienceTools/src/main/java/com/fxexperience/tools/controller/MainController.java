@@ -84,10 +84,7 @@ public final class MainController extends AbstractController implements Initiali
 
         initializeTools();
         initializeToggles();
-
-        arrowPane.setManaged(false);
-        arrowPane.setLayoutY(30);
-        arrowPane.layoutXProperty().bind(styleToggle.layoutXProperty().subtract(10));
+        initializeLayout();
     }
 
     // Creates toggle group to bind color icon effect
@@ -218,8 +215,14 @@ public final class MainController extends AbstractController implements Initiali
         }
     };
 
+    private void initializeLayout() {
+        arrowPane.setManaged(false);
+        arrowPane.setLayoutY(30);
+        setArrowPane(styleToggle);
+    }
+
     private void setArrowPane(Node toggleButton) {
-        arrowPane.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(10));
+        arrowPane.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(12));
     }
 
     private void displayStatusAlert(String textMessage) {

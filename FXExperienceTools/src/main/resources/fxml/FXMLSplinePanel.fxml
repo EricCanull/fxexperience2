@@ -24,7 +24,7 @@
    <center>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <GridPane fx:id="gridPane" prefWidth="700.0" styleClass="spline-grid-pane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <GridPane fx:id="gridPane" prefWidth="700.0" styleClass="spline-grid-pane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
               </columnConstraints>

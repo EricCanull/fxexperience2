@@ -41,7 +41,7 @@
 }
 
 .button-hbox {
-    -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 99.0% , #606c57 0.0% , #606c57 1.0% , #732929 43.0% , #702a2a 82.0% , #723232 100.0% );
+    -fx-background-color: -fe-inner-background;
         /*linear-gradient(to bottom,*/
             /*derive(-fe-inner-background,-3%),*/
             /*derive(-fe-inner-background, 0%) 50%,*/
@@ -71,20 +71,21 @@
 }
 
 .style-button {
-    -fx-font-size: .825em;
     -fx-background-color: transparent;
-    -fx-border-color: lightgrey;
-    -fx-pref-width: 35px;
-    -fx-pref-height: 35px;
-    -fx-border-radius: 5;
-    -fx-text-fill: #E7E7E7;
+    -fx-border-color: #C2C2C3;
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+    -fx-text-fill: #f1f1f1;
 }
 
 .style-button:focused {
     /*-fx-background-color: -fe-focus-background;*/
-    -fx-border-color: lightseagreen;
-    -fx-max-width: 35px;
-    -fx-max-height: 35px;
+    -fx-border-color: lightslategray;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
     -fx-text-fill: #E7E7E7;
 }
 
@@ -109,6 +110,7 @@
     -fx-background-color: -gray-darker;
     -fx-border-color: -fe-border;
     -fx-font-size: 0.875em;
+    -fx-pref-width: 198px;
 }
 
 .custom-menu-item:focused,

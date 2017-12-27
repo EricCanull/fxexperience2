@@ -34,22 +34,28 @@
             </AnchorPane>
             <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0" styleClass="anchor-pane-prop">
                <children>
-                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="42.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="36.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button fx:id="btnEditor" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#displayEditorPane" styleClass="style-button">
                            <graphic>
                            </graphic>
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="1.25em" />
-                           </graphic></Button>
-                        <Pane maxHeight="-Infinity" prefHeight="42.0" prefWidth="300.0" />
+                              <FontAwesomeIconView fill="#f1f1f1" glyphName="PENCIL" size="1.33333em" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="4.0" />
+                           </HBox.margin></Button>
+                        <Pane maxHeight="-Infinity" prefHeight="36.0" prefWidth="267.0" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></Pane>
                         <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveButtonAction" styleClass="style-button">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="1.25em" />
+                              <FontAwesomeIconView fill="#f1f1f1" glyphName="SAVE" size="1.33333em" />
                            </graphic></Button>
                         <Button fx:id="btnCopy" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#copyButtonAction" styleClass="style-button">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="COPY" size="1.25em" />
+                              <FontAwesomeIconView fill="#f1f1f1" glyphName="COPY" size="1.33333em" />
                            </graphic></Button>
                      </children>
                      <padding>
@@ -59,7 +65,7 @@
                         <DropShadow color="#d34444" spread="0.31" />
                      </effect>
                   </HBox>
-                  <StackPane fx:id="controlsPane" alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
+                  <StackPane fx:id="controlsPane" alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
                      <children>
                         <AnchorPane>
                            <children>

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Path?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="Main-Panel" fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" styleClass="root-controller-panel" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane fx:id="rootAnchorPane" BorderPane.alignment="CENTER">
           <children>
@@ -28,7 +28,7 @@
          <children>
             <StackPane fx:id="toolBar" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="54.0" spacing="24.0" style="-fx-background-color: #111;">
+                  <HBox alignment="CENTER" prefHeight="54.0" spacing="24.0" styleClass="main-menu">
                      <children>
                         <ToggleButton fx:id="styleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#styleToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="CSS Style Builder" textAlignment="CENTER" wrapText="true">
                            <font>
@@ -71,9 +71,9 @@
                   </HBox>
                </children>
             </StackPane>
-            <StackPane fx:id="arrowPane" layoutX="101.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
+            <StackPane fx:id="arrowPane" layoutX="97.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
                <children>
-                  <Path fill="#c45656" stroke="#f2486700" strokeType="INSIDE">
+                  <Path fill="#d280ff" stroke="#4a4a4a00" strokeType="INSIDE">
                      <elements>
                         <MoveTo y="22.0" />
                         <LineTo x="16.0" y="30.0" />
