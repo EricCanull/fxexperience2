@@ -113,5 +113,11 @@ different terms and without source code for the larger work.
 .menu-toggle-button:hover, .menu-toggle-button:selected{
     -fx-background-color: rgba(35,39,42, .5);
 }
+.menu-toggle-button:selected .font-awesome-menu-icon,
+.menu-toggle-button:hover .font-awesome-menu-icon {
+    -fx-fill: whitesmoke;
+}
 
-
+.font-awesome-menu-icon {
+    -fx-fill: #111;
+}

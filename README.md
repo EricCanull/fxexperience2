@@ -15,8 +15,8 @@ blog](http://fxexperience.com/).
 	- FXControls animation demos
 2. FXExperience-Controls
 	- Lots of animation effects for javafx controls.
-	- Scenebuilder's colorpicker tool (Modified).
-	- Jasper's original colorpicker tool.
+	- Scenebuilder's colorpicker toolController (Modified).
+	- Jasper's original colorpicker toolController.
 	
 			
 For more info about this app and other JavaFX features please

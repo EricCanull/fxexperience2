@@ -58,7 +58,7 @@ public class SplineController extends BorderPane {
             loader.load();
             loadSpineEditor();
         } catch (IOException ex) {
-            Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SplineController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -118,9 +118,8 @@ public class SplineController extends BorderPane {
     }
 
     private void updateAnimation() {
-        if(timeline != null) {
-            timeline.stop();
-        }
+       if (timeline != null) timeline.stop();
+
 
         Interpolator spline = Interpolator.SPLINE(SplineEditor.getControlPoint1x(),
                 SplineEditor.getControlPoint1y(),

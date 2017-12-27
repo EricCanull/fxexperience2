@@ -10,17 +10,19 @@
 package com.fxexperience.tools.controller;
 
 import com.fxexperience.javafx.controller.AnimationController;
-import com.fxexperience.javafx.fxanimations.FadeInDownBigTransition;
 import com.fxexperience.tools.handler.ViewHandler;
 import com.fxexperience.tools.util.AppPaths;
-import javafx.animation.*;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -34,24 +36,22 @@ import java.util.ResourceBundle;
 
 public final class MainController extends AbstractController implements Initializable {
 
-    public enum Tool {
+    public enum ToolController {
         CSS, SPLINE, DERIVATION, GRADIENT, ANIMATION
     }
 
     // Custom interpolator for the slide animation transition
-    private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
+    private static final Interpolator INTERPOLATOR =
+            Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> tools = new HashMap<>();
 
-    @FXML private StackPane toolBar;
-    @FXML private StackPane arrowPane;
+    @FXML private StackPane selectedIconBullet;
 
-    @FXML private ToggleButton styleToggle;
-    @FXML private ToggleButton splineToggle;
-    @FXML private ToggleButton derivedColorToggle;
-    @FXML private ToggleButton gradientBuilderToggle;
-    @FXML private ToggleButton animationToggle;
+    @FXML private ToggleGroup menuToggleGroup;
+    @FXML private ToggleButton styleToggle, splineToggle, derivedColorToggle,
+            gradientBuilderToggle, animationToggle;
 
     @FXML private BorderPane rootBorderPane;
     @FXML private AnchorPane rootAnchorPane;
@@ -68,8 +68,9 @@ public final class MainController extends AbstractController implements Initiali
 
     private Timeline timeline;
 
-    private int currentToolIndex;
-    private Tool nextTool;
+    private SimpleIntegerProperty currentToolIndex =
+            new SimpleIntegerProperty(this, "currentToolIndex");
+    private ToolController nextToolController;
 
     public MainController(ViewHandler viewHandler) {
        super(viewHandler);
@@ -83,32 +84,7 @@ public final class MainController extends AbstractController implements Initiali
     public void initialize(URL url, ResourceBundle rb) {
 
         initializeTools();
-        initializeToggles();
         initializeLayout();
-    }
-
-    // Creates toggle group to bind color icon effect
-    private void initializeToggles() {
-        ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.getToggles().addAll(styleToggle, splineToggle, derivedColorToggle,
-                gradientBuilderToggle, animationToggle);
-        toggleGroup.getToggles().forEach((t) -> setIconBinding((ToggleButton) t));
-        toggleGroup.selectToggle(styleToggle);
-    }
-
-    // Adjusts the color of the toogle icons upon selection
-    private void setIconBinding(ToggleButton toggle) {
-//        ImageView icon = (ImageView) toggle.getGraphic();
-//        icon.effectProperty().bind(new ObjectBinding<Effect>() {
-//            {
-//                bind(toggle.selectedProperty());
-//            }
-//
-//            @Override
-//            protected Effect computeValue() {
-//                return toggle.isSelected() ? null : new ColorAdjust(0, -1, 0, 0);
-//            }
-//        });
     }
 
     private void initializeTools() {
@@ -118,11 +94,11 @@ public final class MainController extends AbstractController implements Initiali
         gradientController = new GradientController();
         animationController = new AnimationController();
 
-        tools.put(Tool.CSS.ordinal(), StyleController);
-        tools.put(Tool.SPLINE.ordinal(), splineController);
-        tools.put(Tool.DERIVATION.ordinal(), derivationController);
-        tools.put(Tool.GRADIENT.ordinal(), gradientController);
-        tools.put(Tool.ANIMATION.ordinal(), animationController);
+        tools.put(ToolController.CSS.ordinal(), StyleController);
+        tools.put(ToolController.SPLINE.ordinal(), splineController);
+        tools.put(ToolController.DERIVATION.ordinal(), derivationController);
+        tools.put(ToolController.GRADIENT.ordinal(), gradientController);
+        tools.put(ToolController.ANIMATION.ordinal(), animationController);
 
         currentPane = new StackPane();
         sparePane = new StackPane();
@@ -130,36 +106,36 @@ public final class MainController extends AbstractController implements Initiali
 
         currentPane.getChildren().add(StyleController);
         rootContainer.getChildren().addAll(currentPane, sparePane);
-        currentToolIndex = Tool.CSS.ordinal();
+        currentToolIndex.set(ToolController.CSS.ordinal());
     }
 
-    // Displays a new tool and applies the slide transitions
-    private void setTool(Tool tool) {
+    // Displays a new toolController and applies the slide transitions
+    private void setTool(ToolController toolController) {
 
         // check if existing animation running
         if (timeline != null) {
-            nextTool = tool;
-            timeline.setRate(4);
+            nextToolController = toolController;
+            timeline.setRate(5);
             return;
         } else {
-            nextTool = null;
+            nextToolController = null;
         }
 
-        // stop spline tool animations
-        if (tools.get(currentToolIndex) instanceof SplineController) {
+        // stop spline toolController animations
+        if (tools.get(currentToolIndex.get()) instanceof SplineController) {
            splineController.stopAnimations();
         }
 
         // load new content
-        sparePane.getChildren().setAll(tools.get(tool.ordinal()));
+        sparePane.getChildren().setAll(tools.get(toolController.ordinal()));
         sparePane.setCache(true);
         currentPane.setCache(true);
 
         // wait one pulse then animate
         Platform.runLater(() -> {
             // animate switch
-            if (tool.ordinal() > currentToolIndex) { // animate from bottom
-                currentToolIndex = tool.ordinal();
+            if (toolController.ordinal() > currentToolIndex.get()) { // animate from bottom
+                currentToolIndex.set(toolController.ordinal());
                 sparePane.setTranslateY(rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -173,7 +149,7 @@ public final class MainController extends AbstractController implements Initiali
                 timeline.play();
 
             } else { // animate from top
-                currentToolIndex = tool.ordinal();
+                currentToolIndex.set(toolController.ordinal());
                 sparePane.setTranslateY(-rootContainer.getHeight());
                 sparePane.setVisible(true);
                 timeline = new Timeline(
@@ -205,51 +181,24 @@ public final class MainController extends AbstractController implements Initiali
         sparePane.getChildren().clear();
 
         // start spline tool animations
-        if (tools.get(currentToolIndex) instanceof SplineController) {
+        if (tools.get(currentToolIndex.get()) instanceof SplineController) {
            splineController.startAnimations();
         }
 
         // Check if we have a animation waiting
-        if (nextTool != null) {
-           setTool(nextTool);
+        if (nextToolController != null) {
+           setTool(nextToolController);
         }
     };
 
     private void initializeLayout() {
-        arrowPane.setManaged(false);
-        arrowPane.setLayoutY(30);
-        setArrowPane(styleToggle);
+        selectedIconBullet.setManaged(false);
+        selectedIconBullet.setLayoutY(30);
+        setSelectedIconBullet(styleToggle);
     }
 
-    private void setArrowPane(Node toggleButton) {
-        arrowPane.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(12));
-    }
-
-    private void displayStatusAlert(String textMessage) {
-        double prefWidth = rootContainer.getLayoutBounds().getWidth();
-
-        AlertController alert = new AlertController(textMessage);
-        alert.setOpacity(0);
-
-       alert.setPanelWidth(prefWidth, currentToolIndex);
-
-       rootContainer.layoutXProperty().addListener((observable, oldValue, newValue) ->
-               alert.setPanelWidth(newValue.doubleValue(), currentToolIndex));
-
-        alert.setTranslateY(rootContainer.getLayoutY()+alert.getPrefHeight());
-
-        AnchorPane.setTopAnchor(alert, 0d);
-        rootAnchorPane.getChildren().add(alert);
-
-        new FadeInDownBigTransition(alert).play();
-        removeAlert(alert);
-    }
-
-    private void removeAlert(Node alert) {
-        PauseTransition pauseTransition = new PauseTransition();
-        pauseTransition.setDuration(Duration.seconds(4.5));
-        pauseTransition.play();
-        pauseTransition.setOnFinished((ActionEvent t) -> rootAnchorPane.getChildren().remove(alert));
+    private void setSelectedIconBullet(Node toggleButton) {
+        selectedIconBullet.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(12));
     }
 
     private void loadStyle(boolean isDarkThemeSelected) {
@@ -271,8 +220,8 @@ public final class MainController extends AbstractController implements Initiali
         if (!styleToggle.isSelected()) {
             styleToggle.setSelected(true);
         } else {
-            setTool(Tool.CSS);
-            setArrowPane(styleToggle);
+            setTool(ToolController.CSS);
+            setSelectedIconBullet(styleToggle);
         }
     }
 
@@ -281,8 +230,8 @@ public final class MainController extends AbstractController implements Initiali
         if (!splineToggle.isSelected()) {
             splineToggle.setSelected(true);
         } else {
-            setTool(Tool.SPLINE);
-            setArrowPane(splineToggle);
+            setTool(ToolController.SPLINE);
+            setSelectedIconBullet(splineToggle);
         }
     }
 
@@ -291,8 +240,8 @@ public final class MainController extends AbstractController implements Initiali
         if (!derivedColorToggle.isSelected()) {
             derivedColorToggle.setSelected(true);
         } else {
-            setTool(Tool.DERIVATION);
-            setArrowPane(derivedColorToggle);
+            setTool(ToolController.DERIVATION);
+            setSelectedIconBullet(derivedColorToggle);
         }
     }
     @FXML private void gradientToggleAction(ActionEvent event) {
@@ -300,8 +249,8 @@ public final class MainController extends AbstractController implements Initiali
         if (!gradientBuilderToggle.isSelected()) {
             gradientBuilderToggle.setSelected(true);
         } else {
-            setTool(Tool.GRADIENT);
-            setArrowPane(gradientBuilderToggle);
+            setTool(ToolController.GRADIENT);
+            setSelectedIconBullet(gradientBuilderToggle);
         }
     }
 
@@ -310,8 +259,8 @@ public final class MainController extends AbstractController implements Initiali
         if (!animationToggle.isSelected()) {
             animationToggle.setSelected(true);
         } else {
-            setTool(Tool.ANIMATION);
-            setArrowPane(animationToggle);
+            setTool(ToolController.ANIMATION);
+            setSelectedIconBullet(animationToggle);
         }
     }
 
