@@ -38,7 +38,7 @@
                               <FontAwesomeIconView fill="#cdcdcd" glyphName="PENCIL_SQUARE_ALT" size="42px" />
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Interpolation Tool" textAlignment="CENTER" wrapText="true">
+                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Animation Tool" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>

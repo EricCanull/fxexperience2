@@ -12,7 +12,7 @@
 }
 
 .code-area .lineno {
-    -fx-background-color: #313335;
+    -fx-background-color: #1e1e1e;
 }
 
 .code-area .lineno .text {

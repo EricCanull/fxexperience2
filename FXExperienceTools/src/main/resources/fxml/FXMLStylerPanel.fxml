@@ -11,11 +11,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -32,7 +34,7 @@
             </AnchorPane>
             <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0" styleClass="anchor-pane-prop">
                <children>
-                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="42.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="42.0" prefWidth="425.0" spacing="3.0" styleClass="button-hbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button fx:id="btnEditor" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#displayEditorPane" styleClass="style-button">
                            <graphic>
@@ -40,6 +42,7 @@
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="1.25em" />
                            </graphic></Button>
+                        <Pane maxHeight="-Infinity" prefHeight="42.0" prefWidth="300.0" />
                         <Button fx:id="btnSave" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#saveButtonAction" styleClass="style-button">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="SAVE" size="1.25em" />
@@ -52,6 +55,9 @@
                      <padding>
                         <Insets right="5.0" />
                      </padding>
+                     <effect>
+                        <DropShadow color="#d34444" spread="0.31" />
+                     </effect>
                   </HBox>
                   <StackPane fx:id="controlsPane" alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
                      <children>
