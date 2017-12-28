@@ -31,15 +31,18 @@ different terms and without source code for the larger work.
 }
 
 #SplineEditor {
-    -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 99.0% , #606c57 0.0% , #606c57 1.0% , #732929 43.0% , #702a2a 82.0% , #723232 100.0% );
+    -fx-background-color:
+            linear-gradient(from 100.0% 0.0% to 100.0% 99.0% , #606c57 0.0% , #606c57 1.0% , #732929 43.0% , #702a2a 82.0% , #723232 100.0% );
     /*-fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );*/
 }
 .spline-grid-pane {
-    -fx-background-color: rgba(24, 24, 24, .8);
+    -fx-background-color: rgba(24, 24, 24, .6);
     -fx-background-radius: 15px;
 }
 #Animation-preview {
-    -fx-background-color: rgba(24, 24, 24, .8);
+    -fx-background-color: rgba(24, 24, 24, .6);
+    /*-fx-background-color: radial-gradient(focus-angle 0.0deg , focus-distance 0.0% ,*/
+    /*center 50.0%  50.0% , radius 100.0% , #3d4754 0.0% , #3d4754 5.0% , #000000 97.0% , #000000 100.0% );*/
     -fx-background-radius: 15px;
 }
 
@@ -61,8 +64,8 @@ different terms and without source code for the larger work.
     -fx-font-size: 18px;
     -fx-text-fill: #BCBCBC;
     -fx-background-radius: 5px;
-    -fx-background-color: linear-gradient(from 100.0% 1.0% to 100.0% 100.0% ,
-        #804b4b 0.0% , #804b4b 1.0% , #694848 20.0% , #4d2121 84.0% , #4d2121 100.0% );
+    -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 99.0% , #606c57 0.0% ,
+    #606c57 1.0% , #732929 43.0% , #702a2a 82.0% , #723232 100.0% );
 }
 
 .chart-plot-background {

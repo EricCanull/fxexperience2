@@ -82,11 +82,9 @@ public class StyleController extends VBox {
 
     @FXML private Label baseTextLabel, backgroundTextLabel, fieldTextLabel;
 
-    private Font font = Font.getDefault();
-
     private final CssEditor codeArea = new CssEditor();
-    private final FontPickerController fontPickerController = new FontPickerController();
     private final PreviewController previewController = new PreviewController();
+    private final FontPickerController fontPickerController = new FontPickerController();
 
     private final ColorPopupEditor basePicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#213870"));
     private final ColorPopupEditor accentPicker = new ColorPopupEditor(Mode.SINGLE, Color.web("#0096C9"));
@@ -104,7 +102,7 @@ public class StyleController extends VBox {
     private void initialize() {
         try {
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(StyleController.class.getResource("/fxml/FXMLStylerPanel.fxml")); //NOI18N
+            loader.setLocation(StyleController.class.getResource("/fxml/FXMLStylePanel.fxml")); //NOI18N
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
@@ -190,6 +188,7 @@ public class StyleController extends VBox {
         // Font choice box
         fontPickerController.fontProperty().addListener(o -> buildRootStyle());
 
+        // Disabled properties
         baseTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
         baseTextPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
         backgroundTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
@@ -197,11 +196,12 @@ public class StyleController extends VBox {
         fieldTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
         fieldTextPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
 
+        // Toggles
         baseTextToggle.selectedProperty().addListener(o -> buildRootStyle());
         backgroundTextToggle.selectedProperty().addListener(o -> buildRootStyle());
         fieldTextToggle.selectedProperty().addListener(o -> buildRootStyle());
 
-        // Paint pickers and toggles
+        // Paint pickers
         basePicker.getRectangle().fillProperty().addListener(o -> buildRootStyle());
         accentPicker.getRectangle().fillProperty().addListener(o -> buildRootStyle());
         backgroundPicker.getRectangle().fillProperty().addListener(o -> buildRootStyle());
@@ -257,26 +257,9 @@ public class StyleController extends VBox {
 
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
-            sbRoot.append("-fx-text-base-color: ").append(fieldBackgroundPicker.getColorString()).append(";");
-        } else {
-            baseTextToggle.setText("AUTO");
-        }
-        if (backgroundTextToggle.isSelected()) {
-            backgroundTextToggle.setText("ON");
-            sbRoot.append("-fx-text-background-color: ").append(fieldTextPicker.getColorString()).append(";");
-        } else {
-            backgroundTextToggle.setText("AUTO");
-        }
-        if (fieldTextToggle.isSelected()) {
-            fieldTextToggle.setText("ON");
-            sbRoot.append("-fx-text-inner-color: ").append(fieldTextPicker.getColorString()).append(";");
-        } else {
-            fieldTextToggle.setText("AUTO");
-        }
-
-        if (baseTextToggle.isSelected()) {
-            baseTextToggle.setText("ON");
-            sbRoot.append("-fx-text-base-color: ").append(baseTextPicker.getColorString()).append(";");
+            sbRoot.append("-fx-text-base-color: ");
+            sbRoot.append(baseTextPicker.getColorString());
+            sbRoot.append(";");
         } else {
             baseTextToggle.setText("AUTO");
         }
@@ -296,7 +279,7 @@ public class StyleController extends VBox {
         } else {
             fieldTextToggle.setText("AUTO");
         }
-
+        
         String innerTopDerivation = String.format("%.1f", bodyTopSlider.getValue()
                 + (100 - bodyTopSlider.getValue()) * (topHighlightSlider.getValue() / 100));
 

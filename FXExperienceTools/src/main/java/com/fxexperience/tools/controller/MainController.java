@@ -204,8 +204,9 @@ public final class MainController extends AbstractController implements Initiali
     }
 
     private void setSelectedIconBullet(Node toggleButton) {
-        selectedIconBullet.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(12));
+        selectedIconBullet.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(13));
         setBulletEffect();
+
     }
 
     private void setBulletEffect() {
@@ -218,15 +219,17 @@ public final class MainController extends AbstractController implements Initiali
             timedAnimation.getKeyFrames().addAll(
                     new KeyFrame(
                             Duration.ZERO,
-                            new KeyValue(circleBullet.opacityProperty(), 1d, Interpolator.SPLINE(0.9077, 0.0087, 0.7832, 0.8566))
+                            new KeyValue(circleBullet.opacityProperty(),
+                                    1d, Interpolator.SPLINE(0.9077, 0.0087, 0.7832, 0.8566))
 
                     ),
                     new KeyFrame(
                             Duration.seconds(.5),
-                            new KeyValue(circleBullet.opacityProperty(), .2d, Interpolator.SPLINE(0.7301, 0.7570, 0.6597, 0.9930))
+                            new KeyValue(circleBullet.opacityProperty(),
+                                    .2d, Interpolator.SPLINE(0.7301, 0.7570, 0.6597, 0.9930))
                     )
-            );
-            timedAnimation.play();
+            ); timedAnimation.play();
+
         });
     }
 
