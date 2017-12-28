@@ -1,3 +1,7 @@
 .text {
     -fx-fill: -fx-text-background-color;
 }
+
+.hyperlink {
+    -fx-fill: -fx-accent;
+}

@@ -72,18 +72,11 @@
 
 .style-button {
     -fx-background-color: transparent;
-    -fx-border-color: #C2C2C3;
-    -fx-pref-width: 28px;
-    -fx-pref-height: 28px;
-    -fx-background-insets: -0.2, 1, 2;
-    -fx-background-radius: 3.2, 2, 2;
-    -fx-border-radius: 2.2, 2, 2;
     -fx-text-fill: #f1f1f1;
 }
 
 .style-button:focused {
     /*-fx-background-color: -fe-focus-background;*/
-    -fx-border-color: lightslategray;
     -fx-max-width: 28px;
     -fx-max-height: 28px;
     -fx-text-fill: #E7E7E7;
@@ -92,6 +85,12 @@
 /*******************************************************************************
  * Popup Color Picker MenuButton 			                                   *
  ******************************************************************************/
+.root.popup {
+    -fx-background-color: -fe-body-background;
+    -fx-border-color: transparent;
+    -fe-focus-color: transparent;
+    -fx-padding: 0;
+}
 .popup-pane {
     -fx-background-color: -fe-body-background;
     -fx-border-color: transparent;

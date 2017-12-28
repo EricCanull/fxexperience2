@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import javax.swing.text.html.StyleSheet;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +62,7 @@ public class PreviewController extends VBox {
         choiceBox.getSelectionModel().select(0);
         comboBox.getSelectionModel().select(0);
     }
+
 
     public void setPreviewPanelStyle(String code) {
         setStyle(code);

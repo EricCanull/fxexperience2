@@ -4,10 +4,15 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
@@ -28,7 +33,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="54.0" spacing="24.0" styleClass="main-menu">
                      <children>
-                        <ToggleButton fx:id="styleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#styleToggleAction" prefHeight="52.0" prefWidth="150.0" selected="true" styleClass="menu-toggle-button" text="CSS Style Builder" textAlignment="CENTER" wrapText="true">
+                        <ToggleButton fx:id="styleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#styleToggleAction" prefHeight="52.0" prefWidth="140.0" selected="true" styleClass="menu-toggle-button" text="CSS Style Builder" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -39,7 +44,7 @@
                               <ToggleGroup fx:id="menuToggleGroup" />
                            </toggleGroup>
                         </ToggleButton>
-                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Animation Tool" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
+                        <ToggleButton fx:id="splineToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#splineToggleAction" prefHeight="52.0" prefWidth="140.0" styleClass="menu-toggle-button" text="Animation Tool" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -47,7 +52,7 @@
                               <FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="40px" styleClass="font-awesome-menu-icon" />
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="derivedColorToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
+                        <ToggleButton fx:id="derivedColorToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="52.0" prefWidth="140.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -55,7 +60,7 @@
                               <FontAwesomeIconView fill="#b2b2b2" glyphName="EXCHANGE" size="40px" styleClass="font-awesome-menu-icon" />
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="gradientBuilderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Gradient Builder" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
+                        <ToggleButton fx:id="gradientBuilderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gradientToggleAction" prefHeight="52.0" prefWidth="140.0" styleClass="menu-toggle-button" text="Gradient Builder" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -63,7 +68,7 @@
                               <FontAwesomeIconView fill="#b2b2b2" glyphName="PAINT_BRUSH" size="40px" styleClass="font-awesome-menu-icon" />
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="animationToggle" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="52.0" prefWidth="150.0" styleClass="menu-toggle-button" text="Controls Demo" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
+                        <ToggleButton fx:id="animationToggle" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#animationToggleAction" prefHeight="52.0" prefWidth="140.0" styleClass="menu-toggle-button" text="Controls Demo" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
                            <graphic>
                               <FontAwesomeIconView fill="#b2b2b2" glyphName="PLAY_CIRCLE" size="42px" styleClass="font-awesome-menu-icon" />
                            </graphic>
@@ -72,9 +77,63 @@
                   </HBox>
                </children>
             </StackPane>
-            <StackPane fx:id="selectedIconBullet" layoutX="97.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
+            <StackPane fx:id="selectedIconBullet" layoutX="118.0" layoutY="15.0" maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: transparent;">
                <children>
-                  <Circle fill="WHITE" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle fx:id="circleBullet1" layoutX="16.0" layoutY="25.0" radius="7.0" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.4943820224719101" centerY="0.5" radius="0.6666666666666669">
+                           <stops>
+                              <Stop color="#0a0000" />
+                              <Stop color="#864e4e" offset="0.007407407407407408" />
+                              <Stop color="#572424" offset="0.6877777777777783" />
+                              <Stop color="#4d464600" offset="0.7370370370370372" />
+                              <Stop color="#24242404" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                     <effect>
+                        <InnerShadow choke="0.05" height="13.41" radius="4.3075" width="5.82" />
+                     </effect>
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#5b2727" />
+                              <Stop color="#5b2727" offset="0.007407407407407408" />
+                              <Stop color="#431f1f" offset="0.45185185185185195" />
+                              <Stop color="#5b1313" offset="0.7914814814814816" />
+                              <Stop color="#592626" offset="0.9088888888888889" />
+                              <Stop color="#610d0d" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke>
+                  </Circle>
+                  <Circle fx:id="circleBullet" radius="7.0" strokeType="OUTSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.4943820224719101" centerY="0.5" focusDistance="-0.023809523809523836" radius="1.0">
+                           <stops>
+                              <Stop color="#fc8c8c" />
+                              <Stop color="#ff6666" offset="0.007407407407407408" />
+                              <Stop color="#6b0707" offset="0.7914814814814816" />
+                              <Stop color="#654848" offset="0.8407407407407408" />
+                              <Stop color="#ff3b3b00" offset="0.9148148148148152" />
+                              <Stop color="#ff3b3b00" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#ae5858" height="42.0" radius="20.5" spread="0.4" width="42.0" />
+                     </effect>
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#9e5050" />
+                              <Stop color="#572121" offset="0.08518518518518518" />
+                              <Stop color="#6b0707" offset="0.93962962962963" />
+                              <Stop color="#833a3a" offset="0.9962962962962963" />
+                              <Stop color="#723939" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke></Circle>
                </children>
             </StackPane>
          </children>

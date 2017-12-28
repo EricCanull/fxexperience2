@@ -56,13 +56,13 @@ public class SplineController extends BorderPane {
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
-            loadSpineEditor();
+            createSpineEditor();
         } catch (IOException ex) {
             Logger.getLogger(SplineController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void loadSpineEditor() {
+    private void createSpineEditor() {
 
         SplineEditor = new SplineEditor();
 

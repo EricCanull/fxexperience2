@@ -80,10 +80,10 @@
                                                    <children>
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="3" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="7" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="2" />
+                                                      <Label fx:id="baseTextLabel" minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="2" />
                                                       <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="5" />
-                                                      <Label styleClass="prop-label" text="Field Text:" GridPane.rowIndex="6" />
-                                                      <Label styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
+                                                      <Label fx:id="fieldTextLabel" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="6" />
+                                                      <Label fx:id="backgroundTextLabel" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
                                                       <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                                                          <font>

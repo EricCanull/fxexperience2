@@ -80,16 +80,11 @@ public class DerivationController extends AnchorPane {
         desiredPicker = new ColorPopupEditor(PaintPicker.Mode.SINGLE, Color.DEEPSKYBLUE);
         desiredPicker.setPrefWidth(200);
 
-        ChangeListener<Paint> updateForward = (ObservableValue<? extends Paint> ov, Paint t, Paint desiredColor) -> updateForwardDerivation();
-        basePicker.getRectangle().fillProperty().addListener(updateForward);
+        basePicker.getRectangle().fillProperty().addListener(o ->    updateForwardDerivation());
+        desiredPicker.getRectangle().fillProperty().addListener(o -> updateReverseDerivation());
+        derivationSlider.valueProperty().addListener(o ->            updateForwardDerivation());
 
-        ChangeListener<Paint> updateReverse = (ObservableValue<? extends Paint> ov, Paint t, Paint desiredColor) -> updateReverseDerivation();
-        desiredPicker.getRectangle().fillProperty().addListener(updateReverse);
-
-        ChangeListener<Number> onSliderChanged =  (ObservableValue<? extends Number> ov, Number o, Number n) -> updateForwardDerivation();
-        derivationSlider.valueProperty().addListener(onSliderChanged);
-
-        GridPane.setConstraints(basePicker, 4, 1);
+        GridPane.setConstraints(basePicker,    4, 1);
         GridPane.setConstraints(desiredPicker, 4, 5);
         gridPane.getChildren().addAll(basePicker, desiredPicker);
     }

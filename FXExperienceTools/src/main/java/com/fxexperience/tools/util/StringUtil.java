@@ -26,4 +26,36 @@ public class StringUtil {
 
         return stringBuilder.toString();
     }
+
+    public static String formatCSStoString(String text) {
+        StringBuilder sb = new StringBuilder();
+        char charArray[] = text.trim().toCharArray();
+        char ch;
+        boolean newline = false;
+        for(int i = 0; i < charArray.length; i++) {
+            ch = charArray[i];
+                 switch (ch) {
+                    case '{':
+                        newline = false;
+                        sb.append(ch).append("\n  ");
+                        break;
+                    case ';':
+                        sb.append(ch).append("\n");
+                        break;
+                    case '}':
+                        newline = true;
+                        sb.append(ch).append("\n\n");
+                        break;
+                     case ',':
+                         if(newline) {
+                             sb.append(ch).append("\n");
+                         }
+                        break;
+                    default:
+                        sb.append(ch);
+                }
+            }
+
+        return sb.toString();
+    }
 }

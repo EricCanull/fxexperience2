@@ -17,6 +17,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,6 +30,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -44,10 +47,13 @@ public final class MainController extends AbstractController implements Initiali
     private static final Interpolator INTERPOLATOR =
             Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
 
+    BooleanProperty on = new SimpleBooleanProperty();
+
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> tools = new HashMap<>();
 
     @FXML private StackPane selectedIconBullet;
+    @FXML private Circle circleBullet;
 
     @FXML private ToggleGroup menuToggleGroup;
     @FXML private ToggleButton styleToggle, splineToggle, derivedColorToggle,
@@ -66,7 +72,7 @@ public final class MainController extends AbstractController implements Initiali
     // Containers for the tools for slide animation
     private StackPane currentPane, sparePane;
 
-    private Timeline timeline;
+    private Timeline timeline, timedAnimation;
 
     private SimpleIntegerProperty currentToolIndex =
             new SimpleIntegerProperty(this, "currentToolIndex");
@@ -199,6 +205,29 @@ public final class MainController extends AbstractController implements Initiali
 
     private void setSelectedIconBullet(Node toggleButton) {
         selectedIconBullet.layoutXProperty().bind(toggleButton.layoutXProperty().subtract(12));
+        setBulletEffect();
+    }
+
+    private void setBulletEffect() {
+        if (timedAnimation != null) timedAnimation.stop();
+        // wait one pulse then animate
+        Platform.runLater(() -> {
+            timedAnimation = new Timeline();
+            timedAnimation.setCycleCount(20);
+            timedAnimation.setAutoReverse(true);
+            timedAnimation.getKeyFrames().addAll(
+                    new KeyFrame(
+                            Duration.ZERO,
+                            new KeyValue(circleBullet.opacityProperty(), 1d, Interpolator.SPLINE(0.9077, 0.0087, 0.7832, 0.8566))
+
+                    ),
+                    new KeyFrame(
+                            Duration.seconds(.5),
+                            new KeyValue(circleBullet.opacityProperty(), .2d, Interpolator.SPLINE(0.7301, 0.7570, 0.6597, 0.9930))
+                    )
+            );
+            timedAnimation.play();
+        });
     }
 
     private void loadStyle(boolean isDarkThemeSelected) {

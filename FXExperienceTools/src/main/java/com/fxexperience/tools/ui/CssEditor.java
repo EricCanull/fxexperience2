@@ -1,6 +1,9 @@
 package com.fxexperience.tools.ui;
 
 import com.fxexperience.tools.controller.StyleController;
+import com.fxexperience.tools.util.CSSFormatter;
+import com.fxexperience.tools.util.css.CSSBaseStyle;
+import com.fxexperience.tools.util.css.CSSTheme;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
@@ -19,13 +22,13 @@ public class CssEditor extends CodeArea {
         setParagraphGraphicFactory(LineNumberFactory.get(this));
         richChanges()
                 .filter(ch -> !ch.getInserted().equals(ch.getRemoved())) // XXX
-                .subscribe(change -> this.setStyleSpans(0, computeHighlighting(this.getText())));
+                .subscribe(change -> this.setStyleSpans(0, CSSFormatter.computeHighlighting(this.getText())));
     }
 
-    private static StyleSpans<Collection<String>> computeHighlighting(String text) {
-        return computeHighlightingRegex(text);
-        //return computeHighlightingByRegex(text);
-    }
+//    private static StyleSpans<Collection<String>> computeHighlighting(String text) {
+//        return computeHighlightingRegex(text);
+//        //return computeHighlightingByRegex(text);
+//    }
 
     // private static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
     private static final String SELECTOR_PATTERN = "\\.([^ 0-9,{])+|#([^ 0-9,{])+";
@@ -53,29 +56,29 @@ public class CssEditor extends CodeArea {
                     + "|(?<COMMENT>" + MUTI_COMMENT_REGE + ")"
     );
 
-    private static StyleSpans<Collection<String>> computeHighlightingRegex(String text) {
-        Matcher matcher = PATTERN.matcher(text);
-        int lastKwEnd = 0;
-        StyleSpansBuilder<Collection<String>> spansBuilder
-                = new StyleSpansBuilder<>();
-        while(matcher.find()) {
-            String styleClass =
-                    matcher.group("SELECTOR")  != null ? "selector"  :
-                    matcher.group("ENTRY")     != null ? "entry"     :
-                    matcher.group("PAREN")     != null ? "paren"     :
-                    matcher.group("BRACE")     != null ? "brace"     :
-                    matcher.group("BRACKET")   != null ? "bracket"   :
-                    matcher.group("COLON")     != null ? "colon"     :
-                    matcher.group("SEMICOLON") != null ? "semicolon" :
-                    matcher.group("COMMA")     != null ? "comma"     :
-                    matcher.group("STRING")    != null ? "string"    :
-                    matcher.group("COMMENT")   != null ? "comment"   :
-                    null; /* never happens */ assert styleClass != null;
-            spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
-            spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
-            lastKwEnd = matcher.end();
-        }
-        spansBuilder.add(Collections.emptyList(), text.length() - lastKwEnd);
-        return spansBuilder.create();
-    }
+  //  private static StyleSpans<Collection<String>> computeHighlightingRegex(String text) {
+//        Matcher matcher = PATTERN.matcher(text);
+//        int lastKwEnd = 0;
+//        StyleSpansBuilder<Collection<String>> spansBuilder
+//                = new StyleSpansBuilder<>();
+//        while(matcher.find()) {
+//            String styleClass =
+//                    matcher.group("SELECTOR")  != null ? "selector"  :
+//                    matcher.group("ENTRY")     != null ? "entry"     :
+//                    matcher.group("PAREN")     != null ? "paren"     :
+//                    matcher.group("BRACE")     != null ? "brace"     :
+//                    matcher.group("BRACKET")   != null ? "bracket"   :
+//                    matcher.group("COLON")     != null ? "colon"     :
+//                    matcher.group("SEMICOLON") != null ? "semicolon" :
+//                    matcher.group("COMMA")     != null ? "comma"     :
+//                    matcher.group("STRING")    != null ? "string"    :
+//                    matcher.group("COMMENT")   != null ? "comment"   :
+//                    null; /* never happens */ assert styleClass != null;
+//            spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
+//            spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
+//            lastKwEnd = matcher.end();
+//        }
+//        spansBuilder.add(Collections.emptyList(), text.length() - lastKwEnd);
+//        return spansBuilder.create();
+//    }
 }
