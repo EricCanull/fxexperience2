@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -49,7 +49,7 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="40px" styleClass="font-awesome-menu-icon" />
+                              <!--<FontAwesomeIconView fill="#aeaeae" glyphName="LINE_CHART" size="40px" styleClass="font-awesome-menu-icon" />-->
                            </graphic>
                         </ToggleButton>
                         <ToggleButton fx:id="derivedColorToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#derivedToggleAction" prefHeight="52.0" prefWidth="140.0" styleClass="menu-toggle-button" text="Derivation Tool" textAlignment="CENTER" toggleGroup="$menuToggleGroup" wrapText="true">
