@@ -31,37 +31,39 @@
  */
 package com.fxexperience.javafx.util.encoders;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.List;
 import javafx.scene.paint.*;
-
-import java.util.*;
 
 /**
  *
  */
 public class ColorEncoder implements SyntaxConstants {
-    
+
     private static Map<String, Color> standardColors;
     private static Map<Color, String> standardColorNames;
 
-    
     public static String encodeColor(Color color) {
         final String colorName = getStandardColorNames().get(color);
         final String result;
-        
+
         if (colorName != null) {
             result = colorName;
         } else {
             result = makeColorEncoding(color);
         }
-        
+
         return result;
     }
 
     private static synchronized Map<String, Color> getStandardColors() {
-        
+
         if (standardColors == null) {
             standardColors = new HashMap<>();
-            
+
             standardColors.put("ALICEBLUE", Color.ALICEBLUE); //NOI18N
             standardColors.put("ANTIQUEWHITE", Color.ANTIQUEWHITE); //NOI18N
             standardColors.put("AQUA", Color.AQUA); //NOI18N
@@ -213,12 +215,12 @@ public class ColorEncoder implements SyntaxConstants {
 
             standardColors = Collections.unmodifiableMap(standardColors);
         }
-        
+
         return standardColors;
     }
-    
+
     public static synchronized Map<Color, String> getStandardColorNames() {
-        
+
         if (standardColorNames == null) {
             standardColorNames = new HashMap<>();
             for (Map.Entry<String, Color> e : getStandardColors().entrySet()) {
@@ -226,7 +228,7 @@ public class ColorEncoder implements SyntaxConstants {
             }
             standardColorNames = Collections.unmodifiableMap(standardColorNames);
         }
-        
+
         return standardColorNames;
     }
 
@@ -245,8 +247,7 @@ public class ColorEncoder implements SyntaxConstants {
         double focusDistance = round(radialGradient.getFocusDistance());
         double centerX = round(radialGradient.getCenterX());
         double centerY = round(radialGradient.getCenterY());
-        double radius =   round(radialGradient.getRadius());
-
+        double radius = round(radialGradient.getRadius());
 
         String radiusUnit = radial_proportional ? RADIUSPERCENTUNIT : RADIUSPIXELUNIT;
 
@@ -268,7 +269,7 @@ public class ColorEncoder implements SyntaxConstants {
         }
         sb.append(getColorStops(stops));
 
-        return  sb.append(BGGRADEND).toString();
+        return sb.append(BGGRADEND).toString();
     }
 
     public static String encodeLinearToCSS(Object paint) {
@@ -284,20 +285,19 @@ public class ColorEncoder implements SyntaxConstants {
 
         double startX = round(linearGradient.getStartX());
         double startY = round(linearGradient.getStartY());
-        double endX =   round(linearGradient.getEndX());
-        double endY =   round(linearGradient.getEndY());
+        double endX = round(linearGradient.getEndX());
+        double endY = round(linearGradient.getEndY());
 
         String fromUnit = linear_proportional ? FROMPERCENTUNIT : FROMPIXELUNIT;
-        String toUnit = linear_proportional   ? TOPERCENTUNIT : TOPIXELUNIT;
+        String toUnit = linear_proportional ? TOPERCENTUNIT : TOPIXELUNIT;
 
         StringBuilder sb = new StringBuilder(BGLINEAR);
         sb.append(FROM);
-        sb.append(startX).append(fromUnit);
-        sb.append(startY).append(fromUnit);
+        sb.append(startX).append(fromUnit).append(SPACER);
+        sb.append(startY).append(fromUnit).append(SPACER);
         sb.append(TO);
-        sb.append(endX).append(toUnit);
-        sb.append(endY).append(toUnit);
-        sb.append(SEPARATOR);
+        sb.append(endX).append(toUnit).append(SPACER);
+        sb.append(endY).append(toUnit).append(SEPARATOR);
 
         if (linear_cycleMethod.toString().equalsIgnoreCase("reflect")
                 || linear_cycleMethod.toString().equalsIgnoreCase("repeat")) {
@@ -307,9 +307,8 @@ public class ColorEncoder implements SyntaxConstants {
 
         sb.append(getColorStops(stops));
 
-        return  sb.append(BGGRADEND).toString();
+        return sb.append(BGGRADEND).toString();
     }
-
 
     private static String getColorStops(List<Stop> stops) {
         // Color Stops
@@ -330,7 +329,7 @@ public class ColorEncoder implements SyntaxConstants {
 
         return sb.toString();
     }
-    
+
     public static String encodeColorToRGBA(Color color) {
         final String result;
         if (color == null) {
@@ -339,9 +338,9 @@ public class ColorEncoder implements SyntaxConstants {
             final int red = (int) (color.getRed() * 255);
             final int green = (int) (color.getGreen() * 255);
             final int blue = (int) (color.getBlue() * 255);
-            result = "rgba("+red+","+green+","+blue +","+color.getOpacity()+")";//NOI18N
+            result = "rgba(" + red + "," + green + "," + blue + "," + color.getOpacity() + ")";//NOI18N
         }
-        return result;    
+        return result;
     }
 
     /*
@@ -350,33 +349,38 @@ public class ColorEncoder implements SyntaxConstants {
     private static String makeColorEncoding(Color c) {
         final int red, green, blue, alpha;
         final String result;
-        
-        red   = (int) Math.round(c.getRed() * 255.0);
+
+        red = (int) Math.round(c.getRed() * 255.0);
         green = (int) Math.round(c.getGreen() * 255.0);
-        blue  = (int) Math.round(c.getBlue() * 255.0);
+        blue = (int) Math.round(c.getBlue() * 255.0);
         alpha = (int) Math.round(c.getOpacity() * 255.0);
         if (alpha == 255) {
-            result = String.format((Locale)null, "#%02x%02x%02x", red, green, blue); //NOI18N
+            result = String.format((Locale) null, "#%02x%02x%02x", red, green, blue); //NOI18N
         } else {
-            result = String.format((Locale)null, "#%02x%02x%02x%02x", red, green, blue, alpha); //NOI18N
+            result = String.format((Locale) null, "#%02x%02x%02x%02x", red, green, blue, alpha); //NOI18N
         }
-        
-        return result;
+
+        return result.toUpperCase();
     }
-    
+
     private static double[] RGBtoHSB(double r, double g, double b) {
-       double hue, saturation, brightness;
+        double hue, saturation, brightness;
         double[] hsbvals = new double[3];
         double cmax = (r > g) ? r : g;
-        if (b > cmax) cmax = b;
+        if (b > cmax) {
+            cmax = b;
+        }
         double cmin = (r < g) ? r : g;
-        if (b < cmin) cmin = b;
+        if (b < cmin) {
+            cmin = b;
+        }
 
         brightness = cmax;
-        if (cmax != 0)
+        if (cmax != 0) {
             saturation = (cmax - cmin) / cmax;
-        else
+        } else {
             saturation = 0;
+        }
 
         if (saturation == 0) {
             hue = 0;
@@ -384,27 +388,29 @@ public class ColorEncoder implements SyntaxConstants {
             double redc = (cmax - r) / (cmax - cmin);
             double greenc = (cmax - g) / (cmax - cmin);
             double bluec = (cmax - b) / (cmax - cmin);
-            if (r == cmax)
+            if (r == cmax) {
                 hue = bluec - greenc;
-            else if (g == cmax)
+            } else if (g == cmax) {
                 hue = 2.0 + redc - bluec;
-            else
+            } else {
                 hue = 4.0 + greenc - redc;
+            }
             hue = hue / 6.0;
-            if (hue < 0)
+            if (hue < 0) {
                 hue = hue + 1.0;
+            }
         }
         hsbvals[0] = hue * 360;
         hsbvals[1] = saturation;
         hsbvals[2] = brightness;
         return hsbvals;
     }
-    
+
     private static double calculateBrightness(Color c) {
         double red = c.getRed();
-        double green =  c.getGreen();
-        double blue =  c.getBlue();
-        
+        double green = c.getGreen();
+        double blue = c.getBlue();
+
         return Math.sqrt(
                 red * red * 0.241
                 + green * green * 0.691
@@ -414,7 +420,7 @@ public class ColorEncoder implements SyntaxConstants {
     public static Color deriveColor(Color c, double brightness) {
         double baseBrightness = calculateBrightness(c);
         double calcBrightness = brightness;
-        
+
         // Fine adjustments to colors in ranges of brightness to adjust the contrast for them
         if (brightness > 0) {
             if (baseBrightness > 0.85) {
@@ -430,7 +436,7 @@ public class ColorEncoder implements SyntaxConstants {
             } else {
                 calcBrightness = calcBrightness * 0.6;
             }
-            
+
         } else {
             if (baseBrightness < 0.2) {
                 calcBrightness = calcBrightness * 0.6;
@@ -454,7 +460,7 @@ public class ColorEncoder implements SyntaxConstants {
         } else { // darker
             hsb[2] *= calcBrightness + 1;
         }
-        
+
         // clip saturation and brightness
         if (hsb[1] < 0) {
             hsb[1] = 0;
@@ -467,7 +473,6 @@ public class ColorEncoder implements SyntaxConstants {
             hsb[2] = 1;
         }
 
-      
         // return hsb
         return Color.hsb((int) hsb[0], hsb[1], hsb[2], c.getOpacity());
     }
@@ -477,8 +482,12 @@ public class ColorEncoder implements SyntaxConstants {
      * between the min and max values.
      */
     public static double clamp(double min, double value, double max) {
-        if (value < min) return min;
-        if (value > max) return max;
+        if (value < min) {
+            return min;
+        }
+        if (value > max) {
+            return max;
+        }
         return value;
     }
 
@@ -488,16 +497,16 @@ public class ColorEncoder implements SyntaxConstants {
     }
 
     public static String getColorString(Color color) {
-        final int red = (int) (color.getRed()*255);
-        final int green = (int)(color.getGreen()*255);
-        final int blue = (int)(color.getBlue()*255);
+        final int red = (int) (color.getRed() * 255);
+        final int green = (int) (color.getGreen() * 255);
+        final int blue = (int) (color.getBlue() * 255);
         return String.format("#%02X%02X%02X R:%d G:%d B:%d", red, green, blue, red, green, blue);
     }
 
     public static String getWebColor(Color color) {
-        final int red =   (int) (color.getRed() * 255);
+        final int red = (int) (color.getRed() * 255);
         final int green = (int) (color.getGreen() * 255);
-        final int blue =  (int) (color.getBlue() * 255);
+        final int blue = (int) (color.getBlue() * 255);
         return String.format("#%02X%02X%02X", red, green, blue);
     }
 }

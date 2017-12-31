@@ -33,26 +33,26 @@ public interface SyntaxConstants {
     String BGLINEAR          = "linear-gradient(";
     String BGGRADEND         = ");";
     String FOCUSANGLESTART   = "focus-angle ";
-    String FOCUSANGLEUNIT    = "deg ";
+    String FOCUSANGLEUNIT    = "deg";
     String FOCUSDISTSTART    = "focus-distance ";
-    String FOCUSDISTUNIT     = "% ";
+    String FOCUSDISTUNIT     = "%";
     String CENTERSTART       = "center ";
-    String CENTERUNIT        = "% ";
+    String CENTERUNIT        = "%";
     String RADIUSSTART = "radius ";
     String RADIUS            = "radius ";
-    String RADIUSPERCENTUNIT = "% ";
+    String RADIUSPERCENTUNIT = "%";
     String RADIUSPIXELUNIT   = "px ";
     String REPEAT            = "repeat ";
     String REFLECT           = "reflect ";
-    String COLORSTOPUNIT     = "% ";
+    String COLORSTOPUNIT     = "%";
     String POINTPERCENTUNIT  = "%";
     String POINTPIXELUNIT    = "px ";
     String FROM              = "from ";
     String FROMPIXELUNIT     = "px ";
-    String FROMPERCENTUNIT   = "% ";
+    String FROMPERCENTUNIT   = "%";
     String TO                = "to ";
     String TOPIXELUNIT       = "px ";
-    String TOPERCENTUNIT     = "% ";
+    String TOPERCENTUNIT     = "%";
 
     enum BaseConstants {
         COLOR("-fx-color: "),

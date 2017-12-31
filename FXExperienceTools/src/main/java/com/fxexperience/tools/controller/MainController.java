@@ -88,7 +88,6 @@ public final class MainController extends AbstractController implements Initiali
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         initializeTools();
         initializeLayout();
     }
@@ -210,25 +209,27 @@ public final class MainController extends AbstractController implements Initiali
     }
 
     private void setBulletEffect() {
-        if (timedAnimation != null) timedAnimation.stop();
+        if (timedAnimation != null) {
+            timedAnimation.stop();
+        }
         // wait one pulse then animate
         Platform.runLater(() -> {
             timedAnimation = new Timeline();
-            timedAnimation.setCycleCount(20);
+            timedAnimation.setCycleCount(10);
             timedAnimation.setAutoReverse(true);
             timedAnimation.getKeyFrames().addAll(
                     new KeyFrame(
                             Duration.ZERO,
                             new KeyValue(circleBullet.opacityProperty(),
                                     1d, Interpolator.SPLINE(0.9077, 0.0087, 0.7832, 0.8566))
-
                     ),
                     new KeyFrame(
                             Duration.seconds(.5),
                             new KeyValue(circleBullet.opacityProperty(),
                                     .2d, Interpolator.SPLINE(0.7301, 0.7570, 0.6597, 0.9930))
                     )
-            ); timedAnimation.play();
+            );
+            timedAnimation.play();
 
         });
     }

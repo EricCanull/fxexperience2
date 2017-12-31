@@ -1,12 +1,8 @@
 package com.fxexperience.javafx.app;
 
 import com.fxexperience.javafx.control.fontpicker.FontPickerController;
-import com.fxexperience.javafx.controller.AnimationController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
