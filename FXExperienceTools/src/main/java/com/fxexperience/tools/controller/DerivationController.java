@@ -10,11 +10,10 @@
 package com.fxexperience.tools.controller;
 
 
+import com.fxexperience.javafx.scene.control.colorpicker.ColorPickerTool;
 import com.fxexperience.javafx.scene.control.paintpicker.PaintPicker;
 import com.fxexperience.javafx.scene.control.popup.ColorPopupEditor;
 import com.fxexperience.javafx.util.encoders.ColorEncoder;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -25,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 import java.util.logging.Level;
