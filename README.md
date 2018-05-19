@@ -23,17 +23,17 @@ For more info about this app and other JavaFX features please
  see this [blog announcement](http://fxexperience.com/2012/03/announcing-fx-experience-tools/).
 
 ### Screenshots
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/fxexperience-gif.gif "Animated Gif")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/fxexperience-gif.gif "Animated Gif")
 ### FX-Styler Tool
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/fxtoolscreenshot.png "CSS Styler")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/fxtoolscreenshot.png "CSS Styler")
 ### FX-Spline Tool
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
 ### FX-Derivation Tool
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/derivationscreenshot.png "Derivation calculator")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/derivationscreenshot.png "Derivation calculator")
 ### FX-Gradient Tool
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/gradientscreenshot.png "Gradient Tool")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/gradientscreenshot.png "Gradient Tool")
 ### FX-Controls demo
-![alt text](https://github.com/EricCanull/fxexperience2/blob/master/FXExperienceTools/src/main/resources/images/screenshots/fxcontrolscreenshot.png "fxControls Demo")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/fxcontrolscreenshot.png "fxControls Demo")
 
 
 
