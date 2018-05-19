@@ -9,6 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fxstylepreviwer</artifactId>
-    <name>fxstylepreviwer</name>
+    <artifactId>fxstylepreviewer</artifactId>
+    <name>fxstylepreviewer</name>
 </project>

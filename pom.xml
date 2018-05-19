@@ -12,9 +12,9 @@
     </properties>
   <modules>
     <module>fxcontrols</module>
-    <module>fxstylepreviwer</module>
     <module>fxtools</module>
     <module>fxcodemirror</module>
     <module>fxpaintpicker</module>
+    <module>fxstylepreviewer</module>
   </modules>
 </project>
