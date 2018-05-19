@@ -83,44 +83,47 @@
                                                       <Label fx:id="fieldTextLabel" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="6" />
                                                       <Label fx:id="backgroundTextLabel" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
-                                                      <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="SansSerif Bold" size="8.0" />
-                                                         </font>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </ToggleButton>
-                                                      <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                         <font>
-                                                            <Font name="SansSerif Bold" size="8.0" />
-                                                         </font>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </ToggleButton>
-                                                      <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="6">
-                                                         <font>
-                                                            <Font name="SansSerif Bold" size="8.0" />
-                                                         </font>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </ToggleButton>
                                                       <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="1" />
-                                                      <PaintPicker fx:id="basePicker" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" />
-                                                      <PaintPicker fx:id="accentPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <PaintPicker fx:id="baseTextPicker" layoutX="147.0" layoutY="59.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                      <PaintPicker fx:id="backgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                      <PaintPicker fx:id="backgroundTextPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                      <PaintPicker fx:id="fieldBackgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <PaintPicker fx:id="fieldTextPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                      <PaintPicker fx:id="focusPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <PaintPicker fx:id="basePicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" />
+                                                      <PaintPicker fx:id="accentPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                                         <children>
+                                                            <PaintPicker fx:id="baseTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
+                                                               <font>
+                                                                  <Font name="SansSerif Bold" size="8.0" />
+                                                               </font>
+                                                            </ToggleButton>
+                                                         </children>
+                                                      </HBox>
+                                                      <PaintPicker fx:id="backgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                         <children>
+                                                            <PaintPicker fx:id="backgroundTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
+                                                               <font>
+                                                                  <Font name="SansSerif Bold" size="8.0" />
+                                                               </font>
+                                                            </ToggleButton>
+                                                         </children>
+                                                      </HBox>
+                                                      <PaintPicker fx:id="fieldBackgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                                         <children>
+                                                            <PaintPicker fx:id="fieldTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
+                                                               <font>
+                                                                  <Font name="SansSerif Bold" size="8.0" />
+                                                               </font>
+                                                            </ToggleButton>
+                                                         </children>
+                                                      </HBox>
+                                                      <PaintPicker fx:id="focusPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                    </children>
                                                    <columnConstraints>
                                                       <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="35.0" />
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="55.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="15.0" />
+                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="40.0" />
+                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="25.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
@@ -142,14 +145,14 @@
                                           </AnchorPane>
                                       </content>
                                     </TitledPane>
-                                    <TitledPane fx:id="gradientTitlePane" animated="false" layoutX="10.0" layoutY="62.0" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Gradients">
+                                    <TitledPane fx:id="gradientTitlePane" animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Gradients">
                                        <font>
                                           <Font name="Noto Sans" size="13.0" />
                                        </font>
                                        <content>
-                                          <AnchorPane>
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                              <children>
-                                                <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" minWidth="-Infinity" prefHeight="565.0" prefWidth="425.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" maxWidth="1.7976931348623157E308" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
                                                       <Label styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
                                                          <GridPane.margin>
@@ -270,9 +273,9 @@
                                                       <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Highlights &amp; Shadows" GridPane.columnSpan="3" />
                                                    </children>
                                                    <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+                                                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="75.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="75.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />

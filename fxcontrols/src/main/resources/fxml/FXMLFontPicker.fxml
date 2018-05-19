@@ -40,7 +40,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ComboBox fx:id="sizeComboBox" editable="true" prefHeight="32.0" prefWidth="95.0" styleClass="size-combo-box" />
+                  <ComboBox fx:id="sizeComboBox" editable="true" prefHeight="30.0" prefWidth="95.0" styleClass="size-combo-box" />
                   <RadioButton layoutX="72.0" layoutY="22.0" mnemonicParsing="false" onAction="#onFixedFontSelected" selected="true" styleClass="font-radio-button" text="px">
                      <toggleGroup>
                         <ToggleGroup fx:id="fontRadioGroup" />
@@ -49,8 +49,8 @@
                   <RadioButton mnemonicParsing="false" onAction="#onScalableFontSelected" styleClass="font-radio-button" text="em" toggleGroup="$fontRadioGroup" />
                </children>
             </HBox>
-            <ComboBox fx:id="familyComboBox" prefHeight="38.0" prefWidth="260.0" styleClass="family-combo-box" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="styleChoiceBox" prefHeight="32.0" prefWidth="150.0" styleClass="style-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="familyComboBox" prefHeight="30.0" prefWidth="260.0" styleClass="family-combo-box" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="styleChoiceBox" prefHeight="30.0" prefWidth="150.0" styleClass="style-choice-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label layoutX="10.0" layoutY="113.0" styleClass="prop-label" text="Style:" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />

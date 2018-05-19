@@ -83,8 +83,8 @@ public class DerivationController extends AnchorPane {
         GridPane.setConstraints(desiredPicker, 4, 5);
         gridPane.getChildren().addAll(basePicker, desiredPicker);
         
-//        updateForwardDerivation();
-//        updateReverseDerivation();
+        updateForwardDerivation();
+        updateReverseDerivation();
     }
 
      private void updateForwardDerivation() {
@@ -92,8 +92,8 @@ public class DerivationController extends AnchorPane {
 
         Color forwardColorResult = ColorEncoder.deriveColor((Color) basePicker.getValue(), brightness);
 
-//        forwardRegion.setStyle("-fx-border-color: black; "
-//                 + "-fx-background-color: "+ ColorEncoder.getWebColor(forwardColorResult) +";");
+        forwardRegion.setStyle("-fx-border-color: black; "
+                 + "-fx-background-color: "+ ColorEncoder.getWebColor(forwardColorResult) +";");
 
         forwardSliderLabel.setText(String.format("%3.1f%%", brightness));
         hexDerivedTextfield.setText(ColorEncoder.encodeColor(forwardColorResult).toUpperCase());

@@ -30,7 +30,7 @@ public class MainApp extends Application {
         Font.loadFont(MainApp.class.getResource("/fonts/FiraCode-Regular.ttf").toExternalForm(), 10);
         
         new AppViewHandler(stage, ResourceBundle.getBundle(
-                RESOURCE_BUNDLE, Locale.getDefault())).launchMainWindow();
+                    RESOURCE_BUNDLE, Locale.getDefault())).launchMainWindow();
     }
 
     /* @param args the command line arguments */

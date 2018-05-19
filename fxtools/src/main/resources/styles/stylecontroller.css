@@ -17,7 +17,17 @@ and open the template in the editor.
     -fx-text-fill: #CCC;
     -fx-font-size: 13px;
 }
+.color-picker {
+    -fx-background-color: transparent; 
+}
+.color-picker .arrow-button  {
+    -fx-opacity: 0.0;
+    -fx-cursor: text;
+}
 
+.color-picker .color-picker-label .text {
+    -fx-fill: #ccc;
+}
 .row-label {
     -fx-font-size: 13px;
     -fx-font-family: OpenSans-Regular;
