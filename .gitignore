@@ -52,3 +52,4 @@ logs/
 \.gradle/2\.10/taskArtifacts/
 
 RUNNING_PID
+/fxcodemirror/src/main/resources/codemirror/node_modules/

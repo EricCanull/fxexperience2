@@ -1,0 +1,91 @@
+html, body {
+    background: #171a1d!important;
+    color: #c2c2c3!important;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.CodeMirror { height: 100%; width: 100%; }
+
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+   background-color: #171a1d !important;
+}
+
+::-webkit-scrollbar, ::-webkit-scrollbar:horizontal, ::-webkit-scrollbar:vertical {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: rgb(56, 56, 56) !important;
+}
+
+::-webkit-scrollbar-button {
+    background-color: rgb(59, 65, 71) !important;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px inset !important;
+    display: block !important;
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: rgb(36, 36, 36) !important;
+    border-image: initial !important;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+    background-color: rgb(56, 56, 56) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(69, 90, 100) !important;
+    box-shadow: rgb(41, 41, 41) 0px 0px 0px inset !important;
+    border-radius: 0px !important;
+    border-width: 0.42px !important;
+    border-style: solid !important;
+    border-color: rgb(38, 38, 38) !important;
+    border-image: initial !important;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgb(54, 54, 54) !important;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px inset !important;
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: rgb(0, 0, 0) !important;
+    border-image: initial !important;
+    border-radius: 0px !important;
+}
+
+ ::-webkit-scrollbar-button:vertical:decrement {
+     background-image: url(images/vertical-up-arrow.png);
+     background-repeat: no-repeat;
+  
+}
+
+ ::-webkit-scrollbar-button:vertical:increment {
+     background-image: url(images/vertical-down-arrow.png);
+     background-repeat: no-repeat;
+
+ }
+
+  ::-webkit-scrollbar-button:horizontal:decrement {
+     background-image: url(images/horizontal-right-arrow.png);
+     background-repeat: no-repeat;
+  
+}
+
+ ::-webkit-scrollbar-button:horizontal:increment {
+     background-image: url(images/horizontal-left-arrow.png);
+     background-repeat: no-repeat;
+
+ }
+ */*corner y resizer*/
+.scroll::-webkit-resizer {
+	 background: rgb(56, 56, 56)!important;
+	 border-color: rgb(38, 38, 38) !important;
+}
+.scroll::-webkit-scrollbar-corner {
+	background: rgb(56, 56, 56)!important;
+        border-color: rgb(38, 38, 38) !important;
+}

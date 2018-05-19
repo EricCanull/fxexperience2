@@ -50,7 +50,7 @@ public class EditorController extends AnchorPane {
 
         webEngine = webView.getEngine();
         webEngine.setOnAlert(this::alertWorker);
-        webEngine.load(this.getClass().getResource("/codemirror/public_html/index.html").toExternalForm());
+        webEngine.load(this.getClass().getResource("/codemirror/index.html").toExternalForm());
         webEngine.getLoadWorker().stateProperty().addListener(this::stateChangeListener);
     }
 
