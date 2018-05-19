@@ -1,0 +1,100 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: .875em;
+    -fx-base: #151D26;
+    -fx-background: #151D26;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #151D26;
+    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,85%) 0%, derive(-fx-color,94%) 100%);
+    -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 45.0%) 0%, derive(-fx-color, 34.0%) 50%, derive(-fx-color, -52%) 50.5%, derive(-fx-color, 67%) 100%);
+    -fx-outer-border: derive(-fx-color,56%);
+    -fx-shadow-highlight-color: derive(-fx-background,-26.0%);
+    
+}
+#input-text-field {
+    -fx-skin: "com.sun.javafx.scene.control.skin.TextFieldSkin";
+}
+
+.input-field {
+    -fx-skin: "com.paintpicker.scene.control.fields.skins.InputFieldSkin";
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 3 5 3 5;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+    -fx-cursor: text;
+}
+
+.input-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.input-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.integer-field {
+    -fx-skin: "com.paintpicker.scene.control.fields.skins.IntegerFieldSkin";
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-text-fill: #C2C2C3;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 3 5 3 5;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, 30%);
+    -fx-cursor: text;
+}
+
+.integer-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.integer-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.double-field {
+    -fx-skin: "com.paintpicker.scene.control.fields.skins.DoubleFieldSkin";
+    -fx-background-color: -fx-shadow-highlight-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 3 5 3 5;
+     -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+    -fx-cursor: text;
+}
+
+.double-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.double-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+.webcolor-field {
+    -fx-skin: "com.paintpicker.scene.control.fields.skins.WebColorFieldSkin";
+    -fx-background-color: -fx-shadow-highlight-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 2;
+    -fx-padding: 3 5 3 5;
+     -fx-text-fill: #C2C2C3;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+    -fx-cursor: text;
+}
+
+.webcolor-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.webcolor-field:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}

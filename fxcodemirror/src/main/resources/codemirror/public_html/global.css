@@ -1,0 +1,85 @@
+html, body{
+    background: #171a1d!important;
+    color: #c2c2c3!important;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.CodeMirror { height: auto; width: auto; }
+
+.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
+    background-color: #171a1d!important;
+}
+
+::-webkit-scrollbar {    
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #31363b !important;
+
+}
+::-webkit-scrollbar-button {    
+    background-color:#363636 !important;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px inset !important;
+    display: block !important;
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: rgb(36, 36, 36) !important;
+    border-image: initial !important;
+
+}
+::-webkit-scrollbar-track {    
+    background: #31363b;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-track-piece {   
+    background-color: #31363b !important;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px inset !important;
+    border-width: 0px !important;
+    border-style: solid !important;
+    border-color: rgb(0, 0, 0) !important;
+    border-image: initial !important;
+}
+::-webkit-scrollbar-thumb {    
+    background-color: rgb(69, 90, 100) !important;
+    box-shadow: rgb(41, 41, 41) 0px 0px 0px inset !important;
+    border-radius: 6px !important;
+    border-width: 0.42px !important;
+    border-style: solid !important;
+    border-color: rgb(38, 38, 38) !important;
+    border-image: initial !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #3daee9;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #3daee9;
+}
+::-webkit-scrollbar-corner {    
+    background-color: rgb(59, 65, 71) !important;
+}
+::-webkit-resizer {    
+    background: rgb(56, 56, 56)!important;
+    border-color: rgb(38, 38, 38) !important;
+}
+::-webkit-scrollbar-button:vertical:start {
+    width: 14px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-image: url(images/vertical-up-arrow.png);*/
+
+}
+
+::-webkit-scrollbar-button:vertical:end {
+    width: 14px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*    background-image: url(images/vertical-down-arrow.png);*/
+
+}
+

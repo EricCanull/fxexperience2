@@ -1,0 +1,102 @@
+.code-area {
+    -fx-background-color: #1a1b1d;
+/*    -fx-background-image: url("../images/bg.png");*/
+    -fx-highlight-fill: #253362;
+}
+
+.code-area .text {
+    -fx-fill: #E0E2E4;
+}
+
+.code-area .string {
+    -fx-fill: darkgreen;
+}
+
+.code-area .lineno {
+    -fx-background-color: #1e1e1e;
+}
+
+.code-area .lineno .text {
+    -fx-fill: #60635d;
+}
+/*.code-area .lineno .text {*/
+    /*-fx-text-fill: #60635d;*/
+/*}*/
+
+/*.code-area .css {*/
+    /*-fx-fill: #A9B7C6;*/
+    /*-fx-font-weight: bold;*/
+/*}*/
+.code-area .paragraph-box:has-caret {
+    -fx-background-color: #353538;
+}
+
+.code-area .selector {
+    -fx-fill: #A8C023;
+    -fx-font-weight: bold;
+}
+
+/* .label, .button, .toggle-button, etc */
+.code-area .selector-class {
+    -fx-font-weight: bold;
+    -fx-fill: #A8C023;
+}
+/* selected, hover, editable */
+.code-area .selector-state {
+    -fx-font-weight: bold;
+    -fx-fill: #A8C023;
+}
+
+.code-area .selector-java-class {
+    -fx-font-weight: bold;
+    -fx-fill: #A9B7C6;
+}
+/* { } */
+.code-area .leftbrace,
+.code-area .rightbrace {
+    -fx-fill: #A9B7C6;
+}
+
+/* .background-fill-color:, .text-fill-color:, etc */
+.code-area .key,
+.code-area .comma,
+.code-area .colon {
+    -fx-fill: #A9B7C6;
+}
+
+/* bold, #111111, etc */
+.code-area .value {
+    -fx-font-weight: bold;
+    -fx-fill: #A8C023;
+}
+
+.code-area .entry {
+    -fx-fill: #A9B7C6;
+}
+.code-area .brace {
+    -fx-fill: #A9B7C6;
+}
+
+.code-area .semicolon {
+    -fx-fill: green;
+}
+.code-area .comment,
+.code-area .muticomment {
+    -fx-fill: #008800;
+}
+.code-area .tagmark {
+    -fx-fill: gray;
+}
+.code-area .anytag {
+    -fx-fill: orangered;
+}
+.code-area .paren {
+    -fx-fill: #A9B7C6;
+}
+.code-area .attribute {
+    -fx-fill: green;
+}
+.code-area .avalue {
+    -fx-fill: green;
+}
+

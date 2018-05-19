@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles/custom_color_square.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox spacing="2.0" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane fx:id="circlePalleteGrid" alignment="CENTER" hgap="2.0" vgap="1.5">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="24.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="-Infinity" prefHeight="24.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="-Infinity" prefHeight="24.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="2" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="3" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="4" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="5" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Circle fill="WHITE" radius="12.0" stroke="WHITE" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

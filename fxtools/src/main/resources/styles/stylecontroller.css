@@ -1,0 +1,73 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 3, 2018, 3:52:36 AM
+    Author     : andje22
+*/
+
+#Preview-Alpha {
+    -fx-background-image: url("../images/chequers.png");
+    -fx-background-color: #FFF;
+}
+
+.prop-label {
+    -fx-text-fill: #CCC;
+    -fx-font-size: 13px;
+}
+
+.row-label {
+    -fx-font-size: 13px;
+    -fx-font-family: OpenSans-Regular;
+    -fx-text-fill: #fcb215;
+    -fx-background-color: #41424a;
+    -fx-border-color: #232629;
+    -fx-border-width: 1px;
+}
+.row-label .text {
+        -fx-font-size: 13px;
+    -fx-font-family: OpenSans-Regular;
+    -fx-text-fill: #fcb215;
+}
+.toggle-switch {
+    -fx-text-fill: #C98989;
+    -fx-font-size: 0.63333em;
+}
+
+.toggle-switch:selected {
+    -fx-text-fill: #6699ff;
+    -fx-font-size: 0.63333em;
+}
+
+.slider-prop .track{
+    /*-fx-background-color: #6699ff;*/
+    /*-fx-border-color: #23232D;*/
+     -fx-fill: #FFF;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slider-prop .axis:bottom {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: #C2C2C3;
+    -fx-font-size: .63333em;
+}
+.slider-prop .axis {
+    -fx-tick-label-fill: #FFF;
+    -fx-tick-length: 5px;
+    -fx-minor-tick-length: 3px;
+    -fx-border-color: null;
+}
+.slider-prop .axis:bottom .axis-tick-mark {
+    -fx-stroke: #b4c4cb;
+}
+
+.slider-prop .axis:bottom .axis-minor-tick-mark {
+    -fx-stroke: #51525a;
+}
+.slider-prop .axis:bottom .axis-tick-mark {
+    -fx-fill: #FFF;
+}

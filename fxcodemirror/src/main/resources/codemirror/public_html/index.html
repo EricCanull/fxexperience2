@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Code Mirror</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="global.css" rel="stylesheet">
+
+        <script src="lib/codemirror.js"></script>
+
+        <link rel="stylesheet" href="lib/codemirror.css">
+        <link rel="stylesheet" href="theme/dracula.css">
+
+        <script src="mode/fxcss/fxcss.js"></script>
+
+        <link href="addon/search/matchesonscrollbar.css" rel="stylesheet">
+        <script src="addon/search/matchesonscrollbar.js"></script>
+<!--        <script src="addon/scroll/simplescrollbars.js"></script>-->
+<!--        <link rel="stylesheet" href="addon/scroll/simplescrollbars.css">-->
+
+        
+        <script src="addon/search/match-highlighter.js"></script>
+        <script src="addon/search/searchcursor.js"></script>
+        
+        <style></style>
+        <style> .CodeMirror { height: 100%; width: 100%; } </style>
+    </head>
+    <body>
+        <form><textarea id="editor" name="code">
+            </textarea></form>
+        <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+                mode: "fxcss",
+                lineNumbers: true,
+                matchBrackets: true,
+                theme: "dracula"
+            });
+        </script>
+    </body>
+</html>

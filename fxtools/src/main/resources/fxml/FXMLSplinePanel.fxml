@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<fx:root id="SplineEditor" prefHeight="600.0" stylesheets="@../styles/spline.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane fx:id="gridPane" alignment="TOP_CENTER" prefWidth="700.0" styleClass="spline-graph" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="40.0" prefWidth="40.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints prefHeight="30.0" vgrow="ALWAYS" />
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="90.0" vgrow="ALWAYS" />
+                  <RowConstraints prefHeight="25.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" vgrow="ALWAYS" />
+                  <RowConstraints prefHeight="40.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="ALWAYS" />
+                <RowConstraints vgrow="NEVER" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <Pane minWidth="-Infinity" prefHeight="55.0" prefWidth="40.0" />
+                        <TextField fx:id="codeTextField" alignment="CENTER" prefHeight="55.0" styleClass="code-text" text="INTERPOLATOR" HBox.hgrow="ALWAYS" />
+                        <Pane layoutX="10.0" layoutY="10.0" minWidth="-Infinity" prefHeight="55.0" prefWidth="5.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <right>
+      <AnchorPane minWidth="-Infinity" prefWidth="245.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane id="AnimationPane" alignment="CENTER_RIGHT" styleClass="animation-preview" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="1.0" valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="139.0" vgrow="ALWAYS" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="75.0" valignment="TOP" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="animation-label" text="Scale" VBox.vgrow="ALWAYS" />
+                        <Circle fx:id="scaleCircle" radius="58.0" stroke="TRANSPARENT" strokeType="INSIDE" VBox.vgrow="ALWAYS">
+                           <fill>
+                              <RadialGradient centerX="0.5" centerY="0.5" focusDistance="-0.33333333333333326" radius="0.7380952380952381">
+                                 <stops>
+                                    <Stop color="#6e47c9" />
+                                    <Stop color="#b9a2a2" offset="0.007246376811594203" />
+                                    <Stop color="#140d25" offset="0.7200000000000001" />
+                                    <Stop color="#72171700" offset="0.7296296296296297" />
+                                    <Stop color="#72171700" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </fill>
+                        </Circle>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="25.0" style="-fx-background-color: transparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                     <children>
+                        <VBox alignment="CENTER" spacing="30.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="animation-label" text="Rotate" VBox.vgrow="ALWAYS" />
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="rotateRectangle" arcHeight="5.0" arcWidth="5.0" height="115.0" stroke="#24252f" strokeType="INSIDE" width="115.0">
+                                       <fill>
+                                          <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+                                             <stops>
+                                                <Stop color="#343339" />
+                                                <Stop color="#343339" offset="0.04074074074074077" />
+                                                <Stop color="#7a7886" offset="0.5188888888888888" />
+                                                <Stop color="#484851" offset="0.8222222222222227" />
+                                                <Stop color="#313139" offset="1.0" />
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <Label alignment="BOTTOM_CENTER" prefHeight="0.0" styleClass="animation-label" text="Fade" VBox.vgrow="ALWAYS" />
+                        <Rectangle fx:id="fadeSquare" arcHeight="5.0" arcWidth="5.0" height="115.0" stroke="#65655fab" strokeType="INSIDE" strokeWidth="3.0" width="140.0" VBox.vgrow="ALWAYS">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#232425" />
+                                    <Stop color="#232425" offset="0.007407407407407408" />
+                                    <Stop color="#282628" offset="0.10056360708534631" />
+                                    <Stop color="#4c4c51" offset="0.8407407407407415" />
+                                    <Stop color="#574d4d" offset="0.9927536231884059" />
+                                    <Stop color="#574d4d" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="5.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                     <children>
+                        <Label alignment="CENTER" styleClass="animation-label" text="Linear" VBox.vgrow="ALWAYS" />
+                        <StackPane>
+                           <children>
+                              <Group>
+                                 <children>
+                                    <Rectangle arcHeight="20.0" arcWidth="20.0" height="20.0" stroke="#ffffff80" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="190.0">
+                                       <fill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" focusDistance="0.047619047619047894" radius="0.8571428571428571">
+                                             <stops>
+                                                <Stop color="#403f3f" />
+                                                <Stop color="#121112d5" offset="0.7718518518518523" />
+                                                <Stop color="#4d484800" offset="1.0" />
+                                             </stops>
+                                          </RadialGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <Circle fx:id="linearCircle" centerX="10.0" centerY="10.0" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                                       <fill>
+                                          <RadialGradient centerX="0.5112359550561798" centerY="0.5" focusDistance="-0.09523809523809512" radius="0.5476190476190477">
+                                             <stops>
+                                                <Stop color="#6e47c9" />
+                                                <Stop color="#ccc6da" offset="0.007407407407407408" />
+                                                <Stop color="#140d25" offset="0.7348148148148149" />
+                                                <Stop color="#72171700" offset="0.7962962962962966" />
+                                                <Stop color="#72171700" offset="0.9037037037037039" />
+                                                <Stop color="#72171700" offset="1.0" />
+                                             </stops>
+                                          </RadialGradient>
+                                       </fill>
+                                    </Circle>
+                                 </children>
+                              </Group>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </right>
+</fx:root>

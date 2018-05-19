@@ -1,0 +1,58 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    /*-fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);*/
+    -fx-body-color: #31363b;
+    /*-fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,*/
+    /*derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);*/
+    -fx-outer-border: derive(-fx-color,35%);
+    -fx-shadow-highlight-color: derive(-fx-background,-25.0%);
+}
+
+.gradient-popover {
+    -fx-background-color: #31363B;
+}
+
+.popover  {
+	-fx-background-color: #31363B;
+}
+
+.popover > .border {
+	-fx-stroke: linear-gradient(to bottom, rgba(0,0,0, .3), rgba(0, 0, 0, .7)) ;
+	-fx-stroke-width: 0.5;
+	-fx-fill: rgba(255.0,255.0,255.0, .95);
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,.2), 10.0, 0.5, 2.0, 2.0);
+}
+
+.popover > .content {
+    -fx-background-color: #31363B;
+}
+
+.popover > .detached {
+    -fx-background-color: #31363B;
+}
+
+.popover > .content > .title > .text  {
+	-fx-padding: 6.0 6.0 0.0 6.0;
+	-fx-text-fill: rgba(120, 120, 120, .8);
+	-fx-font-weight: bold;
+}
+
+.popover > .content > .title > .icon {
+	-fx-padding: 6.0 0.0 0.0 10.0;
+}
+
+.popover > .content > .title > .icon > .graphics > .circle {
+	-fx-fill: gray;
+	-fx-effect: innershadow(gaussian, rgba(0,0,0,.2), 3, 0.5, 1.0, 1.0);
+}
+
+.popover > .content > .title > .icon > .graphics > .line {
+	-fx-stroke: darksalmon;
+	-fx-stroke-width: 2;
+}
+

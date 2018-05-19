@@ -1,0 +1,205 @@
+/*
+ * Copyright (c) 2012, 2014, Oracle and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * This file is available and licensed under the following license:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of Oracle Corporation nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    /*-fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);*/
+    -fx-body-color: #31363b;
+    /*-fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,*/
+    /*derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);*/
+    -fx-outer-border: derive(-fx-color,35%);
+    -fx-shadow-highlight-color: derive(-fx-background,-25.0%);
+}
+
+.root-gradient {
+    -fx-background-color: #31363B;
+}
+
+.css-button{
+    -fx-border-color: derive(-fx-base, 48%);
+    /*    -fx-background-insets: -0.2, 1, 1.6;
+        -fx-background-radius: 3, 2, 1;*/
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.css-button:focused,
+.css-button:hover {
+    -fx-background-color: #464951;
+    -fx-border-color: -fx-focus-color;
+
+}
+
+
+.separator-gradient {
+    -fx-border-style: solid;
+    -fx-border-width: 1 0 1 0;
+    -fx-background-color:
+            radial-gradient(
+                    focus-angle 0.0deg ,
+                    focus-distance 0.0% ,
+                    center 50.0%  50.0% ,
+                    radius 100.0% ,
+                    #63607e 0.0% ,
+                    #878891 1.0% ,
+                    #041626fa 100.0% );
+}
+
+.gradient-rect {
+    -fx-fill: radial-gradient(
+                    focus-angle 0.0deg,
+                    focus-distance 0.0%,
+                    center 50.0%  50.0%,
+                    radius 100.0%,
+                    #42b0fe 0.0%,
+                    #42b0fe 1.0%,
+                    #041626fa 100.0%);
+
+}
+
+.small-label {
+    -fx-font-size: 0.925em;
+    -fx-text-fill: derive(rgb(147, 147, 147), 25%);
+    -fx-padding: 0;
+}
+
+.gradient-background {
+    -fx-border-color: -fx-box-border, #63607e;
+    -fx-border-insets: 0, 1;
+    -fx-background-color: #606060;
+    -fx-background-image: url("../images/chequers.png");
+    -fx-background-position: center;
+}
+
+.check-box:determinate .box {
+    -fx-background-color: #606468, #676B6F, #232629;
+    /*-fx-background-color: #2E3134, #2E3134, #2E3134, #2E3134;*/
+    /*-fx-border-color: #616569;*/
+}
+
+.track-background {
+    -fx-background-color: derive(rgb(147, 147, 147), -21%), derive(rgb(147, 147, 147), -32%);
+    -fx-background-insets: 0, 1;
+}
+
+.choice-box {
+    -fx-background-color: #606468, #676B6F, #232629;
+    -fx-background-radius: 3px;
+    /*-fx-border-color: #616569;*/
+}
+.cycle-choice-box .context-menu {
+    -fx-text-fill: derive(#FFF, -5%);
+    -fx-background-color: #23272a;
+    -fx-border-color: #676B6F;
+}
+
+.cycle-choice-box .label {
+    -fx-text-fill: derive(#FFF, -5%);
+    -fx-font-size: 1em;
+}
+.cycle-choice-box,
+.cycle-choice-box:focused {
+    -fx-background-color:  #282828, #23272a, #676B6F, #23272a;
+    -fx-font-size:  0.93333em;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+}
+/*.cycle-choice-box .open-button {
+    -fx-background-color: -fx-control-inner-background;
+}
+
+.cycle-choice-box .context-menu {
+    -fx-text-fill: #C2C2C3;
+    -fx-background-color: #2E3134;
+}
+
+.cycle-choice-box .label {
+    -fx-text-fill: #C2C2C3;
+}*/
+
+
+/*
+.gradient-slider .track {
+    -fx-background-color: #232629;
+    -fx-border-color: #616569;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.gradient-slider .thumb {
+    -fx-background-color: #2E3134, #2E3134, #2E3124;
+    -fx-border-color: #717171;
+    -fx-border-radius: 20px;
+}
+
+.gradient-slider .thumb:hover {
+    -fx-background-color: #424242;
+    -fx-border-color: #717171;
+}
+
+.gradient-slider .thumb {
+    -fx-fill: #2E3134;
+}*/
+
+.gradient-slider .thumb  {
+    -fx-background-color: transparent;
+    -fx-border-color: #232629, #9899A9;
+    -fx-border-insets: .5;
+    -fx-border-radius: 1.83333333em;
+    -fx-pref-height: 18;
+    -fx-pref-width: 18;
+    /*-fx-background-radius: 1.0em; !* makes sure this remains circular *!*/
+    -fx-padding: 1em; /* !* 7 *!*/
+    -fx-effect: dropshadow(two-pass-box , rgba(0, 0, 0, 0.1), 5, 0.0 , 0, 2);
+}
+.gradient-slider .thumb:hover,
+.gradient-slider .thumb:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: #232323, #0093FF;
+    -fx-border-insets: 0.5;
+    -fx-border-radius: 1.8333333em;
+    /*-fx-background-radius: 1.0em; !* makes sure this remains circular *!*/
+}
+
+.gradient-slider .track {
+    -fx-border-color: #676B6F;
+    -fx-effect: dropshadow(gaussian , #293133 , 5, 0.2 , 0 , .2 );
+    /*-fx-border-color: #31363b;*/
+    /*-fx-border-width: 1;*/
+    /*-fx-border-radius: 5;*/
+}

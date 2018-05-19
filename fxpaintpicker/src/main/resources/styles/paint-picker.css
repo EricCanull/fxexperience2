@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 21, 2017, 4:40:47 AM
+    Author     : andje22
+*/
+/*.root {
+     -fx-font-family: "Segoe UI";
+    -fx-font-size: 1em;
+    -fx-base: #31363B;
+    -fx-background: #31363B;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,85%) 0%, derive(-fx-color,94%) 100%);
+    -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 45.0%) 0%, derive(-fx-color, 34.0%) 50%, derive(-fx-color, -52%) 50.5%, derive(-fx-color, 67%) 100%);
+    -fx-outer-border: derive(-fx-color,56%);
+    -fx-shadow-highlight-color: derive(-fx-background,-26.0%);
+    
+}*/
+/*.color-picker {*/
+/*    -fx-background-color:
+         linear-gradient(from 100.0% 0.0% to 100.0% 100.0% , REPEAT, #363B40 0.0% , #363B40 1.0% ,  #31363b 100.0% );*/
+/*    -fx-background-color: transparent;
+}*/
+/*.color-picker .arrow-icon-right {
+  
+}
+
+
+#color-picker {
+    -fx-skin: "com.paintpicker.scene.control.fields.PaintPickerSkin";
+   
+}
+.color-palette-region {
+    -fx-background-color: #31363B;
+}
+
+.color-picker-grid {
+    -fx-background-color: #31363B;
+}
+
+.color-picker-popover {
+    -fx-skin: "com.paintpicker.scene.control.fields.PaintPickerSkin";
+    -fx-font-size: 10px;
+    -fx-base: #31363B;
+    -fx-background: #31363B;
+    -fx-control-inner-background: #232629;
+}
+
+.label {
+    -fx-text-fill: #C2C2C3;
+}*/

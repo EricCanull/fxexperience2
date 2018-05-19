@@ -1,0 +1,93 @@
+/*
+ * Copyright (c) 2012, 2014, Oracle and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * This file is available and licensed under the following license:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of Oracle Corporation nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    /*-fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);*/
+    -fx-body-color: #31363b;
+    /*-fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,*/
+    /*derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);*/
+    -fx-outer-border: derive(-fx-color,35%);
+    -fx-shadow-highlight-color: derive(-fx-background,-25.0%);
+}
+#GridPane {
+    -fx-background-color: #31363B;
+}
+
+.button {
+    -fx-min-width: 30;
+    -fx-max-width: 30;
+    -fx-min-height: 30;
+    -fx-max-height: 30;
+}
+
+.rotation-dial {
+    -fx-background-radius: 100;
+    -fx-background-color: #424242;
+    -fx-border-radius: 100;
+    -fx-border-color: #606468;
+}
+
+.rotation-handle {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/rotate-handle.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right;
+}
+
+.LF3-textfield1 {
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-min-width: 62;
+    -fx-pref-width: 62;
+}
+
+.LF3-textfield1:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.LF3-textfield1:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.LF3-textfield1:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+.rotation-label {
+    -fx-text-fill: #C2C2C3;
+}

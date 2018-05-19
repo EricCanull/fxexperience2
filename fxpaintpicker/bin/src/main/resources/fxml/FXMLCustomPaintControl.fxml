@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.paintpicker.scene.control.fields.IntegerField?>
+<?import com.paintpicker.scene.control.fields.WebColorField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root stylesheets="@../styles/custom-paint-control.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane fx:id="colorPickerGrid" hgap="2.0" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="510.0" styleClass="controls-grid-pane" vgap="2.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+        <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="42.5" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="42.5" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="42.5" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="42.5" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="32.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" prefWidth="26.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="26.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="6.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="-Infinity" prefHeight="4.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="-Infinity" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <IntegerField fx:id="hueTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" />
+            <IntegerField fx:id="satTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <IntegerField fx:id="brightTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <IntegerField fx:id="redTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <IntegerField fx:id="greenTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <IntegerField fx:id="blueTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <WebColorField fx:id="hexTextField" styleClass="controls-web-field" GridPane.columnIndex="7" GridPane.columnSpan="7" GridPane.rowIndex="9" />
+            <IntegerField fx:id="alphaTextField" styleClass="controls-integer-field" GridPane.columnIndex="12" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Label text="HEX:" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+            <StackPane fx:id="colorRect" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="4" GridPane.rowSpan="8">
+               <children>
+                  <StackPane fx:id="alphaPane" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <Pane fx:id="colorRectHue" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                        <Pane fx:id="colorRectOverlayOne" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                        <Pane fx:id="colorRectOverlayTwo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="color-rect" />
+                        <String fx:value="transparent-pattern" />
+                     </styleClass>
+                  </StackPane>
+                  <Pane fx:id="colorRectBorder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mouseTransparent="true">
+                     <styleClass>
+                        <String fx:value="color-rect" />
+                        <String fx:value="color-rect-border" />
+                     </styleClass>
+                  </Pane>
+                  <Region id="circle-handle" fx:id="circleHandle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" StackPane.alignment="TOP_LEFT" />
+               </children>
+               <styleClass>
+                  <String fx:value="color-rect" />
+                  <String fx:value="transparent-pattern" />
+               </styleClass>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </StackPane>
+            <AnchorPane GridPane.columnSpan="4" GridPane.rowIndex="9">
+               <children>
+                  <HBox minWidth="-Infinity" prefWidth="180.0" styleClass="transparent-pattern">
+                     <children>
+                        <Region fx:id="currentColorRect" minWidth="-Infinity" prefWidth="90.0" style="-fx-background-color: black;" styleClass="current-color-rect" HBox.hgrow="ALWAYS" />
+                        <Region fx:id="previousColorRect" minWidth="-Infinity" prefWidth="90.0" style="-fx-background-color: white;" styleClass="previous-color-rect" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <Label text="H" GridPane.columnIndex="5" />
+            <Label layoutX="226.0" layoutY="17.0" text="G" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Label layoutX="226.0" layoutY="17.0" text="R" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Label layoutX="226.0" layoutY="17.0" text="B" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label layoutX="226.0" layoutY="17.0" text="S" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label layoutX="226.0" layoutY="149.0" text="B" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Label layoutX="226.0" layoutY="179.0" text="A" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+             <StackPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="228.0" prefWidth="20.0" styleClass="color-rect-border" GridPane.columnIndex="4" GridPane.rowSpan="8">
+               <children>
+                  <Pane fx:id="hueBar" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefHeight="228.0" prefWidth="20.0" styleClass="hue-bar">
+                     <children>
+                        <Region id="hue-bar-handle" fx:id="hueBarHandle" layoutY="-5.0" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="26.0" />
+                     </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Pane>
+               </children>
+            </StackPane>
+            <HBox alignment="CENTER_LEFT" layoutX="238.0" layoutY="289.0" spacing="2.0" GridPane.columnSpan="2" GridPane.rowIndex="11">
+               <children>
+                  <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onGradientButtonAction" prefHeight="35.0" prefWidth="85.0" text="Gradients" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="289.0" spacing="2.0" GridPane.columnIndex="7" GridPane.columnSpan="7" GridPane.rowIndex="11">
+               <children>
+                  <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onSaveButtonAction" prefHeight="35.0" prefWidth="85.0" text="Save" />
+                  <Button layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelButtonAction" prefHeight="35.0" prefWidth="85.0" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

@@ -1,20 +1,54 @@
-/FXExperienceControls/dist/
-/FXExperienceControls/target/
-/FXExperienceTools/target/
-/temp/fxexperience-2-master/FXExperienceControls/target/
-/temp/fxexperience-2-master/FXExperienceTools/target/
-/fxexperience-2-master/FXExperienceControls/target/
-/fxexperience-2-master/FXExperienceTools/target/
-/target/
-.idea/workspace.xml
-.directory
-fxexperience2.iml
-FXExperienceControls.iml
-FXExperienceTools/src/test/
-FXExperienceTools.iml
+/fxwebview/src/main/resources/codemirror/nbproject/private/
+/fxwebview/src/main/resources/codemirror/public_html/nbproject/private/
+/fxwebview/target/classes/codemirror/nbproject/private/
+/fxwebview/target/classes/codemirror/public_html/nbproject/private/
+/fxwebview/target/
+/fxwebview/src/main/resources/codemirror/public_html/node_modules/
+/fxcodemirror/target/
+/fxcodemirror/src/main/resources/codemirror/nbproject/private/
+/fxcodemirror/src/main/resources/codemirror/public_html/nbproject/private/
+/fxcodemirror/src/main/resources/codemirror/public_html/node_modules/
 
-\.idea/
-/FXExperienceTools/src/main/java/com/fxexperience/tools/util/SyntaxConstants.java
-/FXExperienceTools/src/main/java/com/fxexperience/tools/util/Selector.java
-/FXExperienceTools/src/main/java/com/fxexperience/tools/util/Rule.java
-/FXExperienceTools/src/main/java/com/fxexperience/tools/util/PropertyValue.java
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+.idea
+*.iml
+out
+gen
+.gitignore
+src/test/
+target/generated-sources/
+target/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# NetBeans specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+
+
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
+logs/statistics/
+
+logs/
+
+\.gradle/2\.10/taskArtifacts/
+
+RUNNING_PID

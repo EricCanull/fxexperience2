@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox stylesheets="@../styles/paint-picker.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintpicker.app.DemoControl">
+   <children>
+      <HBox fx:id="menuBar" alignment="TOP_RIGHT" spacing="10.0">
+         <VBox.margin>
+            <Insets left="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+      <StackPane fx:id="rootPane" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #424344;" stylesheets="@../styles/paint-picker.css" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</VBox>

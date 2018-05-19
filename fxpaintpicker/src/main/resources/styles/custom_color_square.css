@@ -1,0 +1,6 @@
+.color-square-pane {
+    -fx-border-color: derive(-fx-base, 48%);
+    -fx-background-insets: -0.2, 1, 1.6;
+    -fx-background-radius: 3, 2, 1;
+    -fx-border-radius: 3px;
+}

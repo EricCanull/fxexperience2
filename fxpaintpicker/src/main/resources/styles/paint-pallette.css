@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 21, 2017, 8:22:43 AM
+    Author     : andje22
+*/
+
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 1em;
+    -fx-base: #31363B;
+    -fx-background: #31363B;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,85%) 0%, derive(-fx-color,94%) 100%);
+    -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 45.0%) 0%, derive(-fx-color, 34.0%) 50%, derive(-fx-color, -52%) 50.5%, derive(-fx-color, 67%) 100%);
+    -fx-outer-border: derive(-fx-color,56%);
+    -fx-shadow-highlight-color: derive(-fx-background,-26.0%);
+    
+}
+
+.custom-color-label {
+    -fx-text-fill: #CCC;
+}
+.color-palette-region {
+     -fx-background-color: #31363B;
+}
+
+.color-picker-grid {
+    -fx-background-color: #31363B;
+}
+
+.color-palette {
+    -fx-background-color: #31363B;
+}
+
+.separator *,line {
+    -fx-border-style: solid;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color:
+        radial-gradient(
+        focus-angle 0.0deg , 
+        focus-distance 0.0% , center 50.0%  50.0% , 
+        radius 100.0% , 
+        #42b0fe 0.0% , 
+        #42b0fe 1.0% , 
+        #041626fa 100.0% );
+}
+
+.custom-color-link {
+    -fx-text-fill: #C2C2C3;
+}
+
+.custom-color-link:hover {
+    -fx-text-fill: #42b0fe;
+}

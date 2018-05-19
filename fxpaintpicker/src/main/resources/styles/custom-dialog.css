@@ -1,0 +1,244 @@
+/*
+ * Copyright (c) 2012, 2014, Oracle and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * This file is available and licensed under the following license:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of Oracle Corporation nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+
+/* ------- CUSTOM COLOR DIALOG ------- */
+
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 1em;
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-color: #363941;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);
+    -fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,
+                                               derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);
+    -fx-outer-border: derive(-fx-color,25%);
+    -fx-shadow-highlight-color: derive(-fx-background,-25.0%);
+}
+
+.custom-paint-pane {
+    -fx-padding: .625em .625em .625em .625em; /* 10 px */
+}
+
+.color-rect-vbox {
+    -fx-vgap: 1em;
+    -fx-fill-height: true;
+    -fx-fill-width: true;
+}
+
+.color-rect-hbox {
+   -fx-spacing: 0.7em;
+   -fx-pref-height: -1;
+   -fx-pref-width: -1;
+   -fx-alignment: top-left;
+   -fx-fill-height: true;
+   -fx-padding: 0 0 0.7em 0;
+/* -fx-vgap: 1em;
+   -fx-hgap: 1em;
+   -fx-min-height: -1;
+   -fx-pref-height: -1;
+   -fx-max-height: -1;
+   -fx-min-width: -1;
+   -fx-pref-width: -1;
+   -fx-max-width: -1;*/
+}
+
+#preview-color-rect {
+    -fx-pref-height: 1.25em;
+    -fx-pref-width:  7.5em;
+    -fx-fill-width: true;
+}
+
+.color-rect-pane {
+    -fx-spacing: 0.75em;
+    -fx-pref-height: -1;
+    -fx-pref-width: -1;
+    -fx-alignment: top-left;
+    -fx-fill-height: true;
+}
+    
+.color-rect {
+    -fx-min-width: 170;
+    -fx-pref-width: 170px;
+    /*-fx-max-width: 10em;*/
+    -fx-min-height: 232px;
+    /*-fx-fill-height: true;*/
+    /*-fx-min-height: 13em;*/
+    /*-fx-pref-height: 13em;*/
+    -fx-pref-height: 232px;
+    /*-fx-max-height: 13em;*/
+    -fx-cursor: hand;
+}
+
+.color-rect-border {
+    -fx-border-color: derive(-fx-base, 35%);
+}
+
+#circle-handle {
+    -fx-background-color: null;
+    -fx-border-color: white;
+    -fx-border-radius: 0.4166667em;
+    -fx-translate-x: -0.4166667em;
+    -fx-translate-y: -0.4166667em;
+    -fx-pref-width: 0.833333em;
+    -fx-pref-height: 0.833333em;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+}
+
+.hue-bar {
+    -fx-min-width: 1.666667em;
+    -fx-max-width: 1.666667em;
+    -fx-min-height: 14.6666667em;
+    -fx-pref-height: 14.6666667em;
+/*    -fx-max-height: 13em;*/
+    -fx-border-color: derive(-fx-base, 35%);
+}
+
+#hue-bar-handle {
+    -fx-border-radius: 0.333333em;
+    -fx-border-color: white;
+    -fx-pref-width: 2em;
+    -fx-pref-height: 0.833333em;
+    -fx-translate-x: -0.1666667em;
+    -fx-translate-y: -0.4166667em;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+}
+
+#current-new-color-border {
+    -fx-min-width: 10.666667em;
+    -fx-pref-width: 10.666667em;
+    -fx-min-height: 3.5em;
+    -fx-pref-height: 3.5em;
+   
+}
+
+.current-color-rect {
+    -fx-border-color: derive(-fx-base, 20%);
+    -fx-border-width: 1.5 1.5 0 1.5;
+    -fx-min-width: 8.00em;
+    -fx-pref-width: 8.00em;
+    -fx-min-height: 1.75em;
+    -fx-pref-height: 1.75em;
+}
+
+.previous-color-rect {
+    -fx-border-color: derive(-fx-base, 20%);
+     -fx-border-width: 0 1.5 1.5 1.5;
+    -fx-min-width: 8.00em;
+    -fx-pref-width: 8.00em;
+    -fx-min-height: 1.75em;
+    -fx-pref-height: 1.75em;
+}
+
+.transparent-pattern {
+    -fx-background-image:  url("../images/chequers.png");
+    -fx-background-repeat: repeat;
+    -fx-background-size: auto;
+}
+
+#controls-grid-pane {
+    -fx-hgap: 3px;
+    -fx-vgap: 3px;
+    -fx-padding: 0 0 0 5;
+ 
+    -fx-min-width: -1;
+    -fx-pref-width: -1;
+    -fx-max-width: -1;
+    -fx-min-height: -1;
+    -fx-pref-height: -1;
+    -fx-max-height: -1;
+}
+
+.controls-label {
+    -fx-font-size: 1em;
+    -fx-min-width: 1em;
+    -fx-pref-width: 1em;
+}
+
+.controls-paint-slider { 
+    -fx-min-width: 11em;
+    -fx-pref-width: 11em;
+}
+
+.controls-paint-slider .alpha-track { 
+     -fx-min-width: 11em;
+    -fx-pref-width: 11em;
+}
+
+.controls-integer-field {
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-pref-column-count: 3;
+/*    -fx-max-width: 3.25em;*/
+    -fx-min-width: 3.25em;
+    -fx-pref-width: 3.25em;
+}
+
+.controls-integer-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.controls-web-field {
+   -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+        -fx-pref-column-count: 6;
+    -fx-pref-width: 8.25em;
+    -fx-fill-width: true;
+}
+
+.controls-web-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.preview-grid-pane {
+    -fx-hgap: 0.5em
+}
+
+.buttons-pane {
+    -fx-spacing: 0.50em;
+    -fx-padding: 1em 0 0 0;
+    -fx-alignment: bottom-right;
+}
+
+.footer-button {
+    -fx-min-width: 5em;
+    -fx-pref-width: 5em;
+    -fx-max-width: 5em;
+    -fx-min-height: 2em;
+    -fx-pref-height: 2em;
+    -fx-max-height: 2em;
+}

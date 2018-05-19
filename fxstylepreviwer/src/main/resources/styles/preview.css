@@ -1,0 +1,13 @@
+.text {
+    -fx-fill: -fx-text-background-color;
+    -fx-fill: #ccc;
+}
+#PreviewArea {
+        -fx-background-color: -fx-background;
+}
+#ContentPane{
+    -fx-background-color: -fx-background;
+}
+.hyperlink {
+    -fx-fill: -fx-accent;
+}

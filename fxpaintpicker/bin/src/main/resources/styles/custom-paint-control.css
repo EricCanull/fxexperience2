@@ -1,0 +1,259 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Oct 21, 2017, 4:34:59 AM
+    Author     : andje22
+*/
+
+
+/* ------- CUSTOM COLOR DIALOG ------- */
+
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    /*-fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);*/
+    -fx-body-color: #31363b;
+    /*-fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,*/
+    /*derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);*/
+    -fx-outer-border: derive(-fx-color,35%);
+    -fx-shadow-highlight-color: derive(-fx-background,-25.0%);
+}
+
+.custom-paint-pane {
+    -fx-padding: .625em .625em .625em .625em; /* 10 px */
+}
+
+.color-rect-vbox {
+    -fx-vgap: 1em;
+    -fx-fill-height: true;
+    -fx-fill-width: true;
+}
+
+.color-rect-hbox {
+}
+
+#preview-color-rect {
+    -fx-pref-height: 1.25em;
+    -fx-pref-width:  7.5em;
+    -fx-fill-width: true;
+}
+
+.color-rect-pane {
+/*    -fx-spacing: 0.75em;
+    -fx-pref-height: -1;
+    -fx-pref-width: -1;
+    -fx-alignment: top-left;*/
+    -fx-fill-height: true;
+}
+
+.color-rect {
+    -fx-min-width: 170px;
+    -fx-pref-width: 170px;
+    -fx-min-height: 170px;
+    -fx-pref-height: 170px;
+    
+    -fx-cursor: hand;
+}
+
+.color-rect-border {
+    -fx-border-color: derive(-fx-base, 35%);
+}
+
+#circle-handle {
+    -fx-background-color: null;
+    -fx-border-color: white;
+    -fx-border-radius: 5;
+    -fx-translate-x: -5;
+    -fx-translate-y: -5;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+}
+
+.hue-bar {
+/*    -fx-min-width: 20px;
+    -fx-max-width: 20px;
+    -fx-min-height: 250px;
+    -fx-pref-height: 250px;*/
+    -fx-border-color: derive(-fx-base, 35%);
+}
+
+#hue-bar-handle {
+    -fx-border-radius: 6px;
+    -fx-border-color: #C2C2C3;
+    -fx-border-width: 1.5px;
+    /*-fx-pref-width: 30px;*/
+    -fx-pref-height: 10px;
+    -fx-translate-x: -3;
+    -fx-translate-y: -5;
+    
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+}
+#hue-bar-handle:pressed,
+#hue-bar-handle:hover {
+     -fx-border-color: #232323, -fx-focus-color;
+}
+
+#current-new-color-border {
+    -fx-min-width: 10.666667em;
+    -fx-pref-width: 10.666667em;
+    -fx-min-height: 3.5em;
+    -fx-pref-height: 3.5em;
+
+}
+
+.current-color-rect {
+    -fx-border-color: derive(-fx-base, 40%);
+   
+    -fx-min-height:  30px;
+    -fx-pref-height: 30px;
+    -fx-border-width: 1 0 1 1;
+}
+
+.previous-color-rect {
+   -fx-border-color: derive(-fx-base, 40%);
+    
+    -fx-min-height:  30px;
+    -fx-pref-height: 30px;
+    -fx-border-width: 1 1 1 0;
+}
+
+.transparent-pattern {
+    -fx-background-image:  url("../images/chequers.png");
+    -fx-background-repeat: repeat;
+    -fx-background-size: auto;
+}
+
+#controls-grid-pane {
+}
+
+.controls-label {
+
+}
+
+/*.controls-paint-slider .color-thumb {*/
+    /*-fx-background-color:*/
+            /*-fx-shadow-highlight-color,*/
+            /*linear-gradient(to bottom, derive(-fx-outer-border, 10%), transparent),*/
+            /*linear-gradient(to bottom,*/
+            /*transparent 0%,*/
+            /*transparent 45%,*/
+            /*transparent 60%);*/
+    /*!*-fx-pref-height: 9px;*!*/
+    /*!*-fx-background-insets: 6, 3, 2;*!*/
+    /*!*-fx-background-radius: 8, 4, 6, 2;*!*/
+
+/*}*/
+
+.controls-paint-slider .color-thumb {
+    -fx-background-color: transparent;
+    -fx-border-color: #232629, #9899A9;
+    -fx-border-insets: .5;
+    -fx-border-radius: 1.83333333em;
+    -fx-pref-height: 18;
+    -fx-pref-width: 18;
+    /*-fx-background-radius: 1.0em; !* makes sure this remains circular *!*/
+    -fx-padding: 1em; /* !* 7 *!*/
+    -fx-effect: dropshadow(two-pass-box , rgba(0, 0, 0, 0.1), 5, 0.0 , 0, 2);
+}
+.controls-paint-slider:focused .color-thumb {
+    -fx-background-color: transparent;
+    -fx-border-color: #232323, -fx-focus-color;
+    -fx-border-insets: 0.5;
+    -fx-border-radius: 1.8333333em;
+    /*-fx-background-radius: 1.0em; !* makes sure this remains circular *!*/
+}
+
+.controls-paint-slider .color-track {
+    -fx-min-width: 150px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 8px;
+    -fx-effect: dropshadow(gaussian , #293133 , 5, 0.2 , 0 , .2 );
+   -fx-background-radius: 10px;
+}
+
+.controls-integer-field {
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-pref-column-count: 3;
+    /*    -fx-max-width: 3.25em;*/
+    -fx-min-width: 50px;
+    -fx-pref-width: 50px;
+}
+
+.controls-integer-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.controls-web-field {
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-pref-column-count: 6;
+    -fx-pref-width: 8.25em;
+    -fx-fill-width: true;
+
+}
+
+.controls-web-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.preview-grid-pane {
+    -fx-hgap: 0.5em
+}
+
+.save-button-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C2C2C3;
+}
+
+.color-square-button {
+    -fx-border-color: derive(-fx-base, 48%);
+    /*    -fx-background-insets: -0.2, 1, 1.6;
+        -fx-background-radius: 3, 2, 1;*/
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.arrow-icon-right:hover {
+    -fx-fill: #FFF;
+}
+.color-square-button:focused,
+.color-square-button:hover {
+    -fx-background-color: #464951;
+    -fx-border-color: -fx-focus-color;
+
+}
+
+/*.toggle-button {*/
+     /*-fx-background-color: #606468, derive(-fx-text-box-border, 40%), -fx-control-inner-background;*/
+    /*!*-fx-border-color: derive(-fx-base, 40%);*!*/
+    /*-fx-min-width: 140px;*/
+    /*-fx-pref-width:  140px;*/
+    /*-fx-min-height: 32px;*/
+    /*-fx-pref-height: 32px;*/
+    /*-fx-background-insets: -0.4, 1, 2;*/
+    /*-fx-background-radius: 3.4, 2, 2;*/
+
+    /*-fx-background-insets: -0.4, 1, 2;*/
+    /*-fx-background-radius: 3.4, 2, 2;*/
+
+    /*-fx-border-insets: -0.4, 1, 2;*/
+    /*-fx-border-radius: 3.4, 2, 2;*/
+
+    /*-fx-max-width: 6.65em;*/
+    /*-fx-min-height: 2.316666667em;*/
+    /*-fx-pref-width: 2em;*/
+    /*-fx-max-width: 2em;*/
+/*}*/

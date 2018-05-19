@@ -1,0 +1,66 @@
+/*
+Permissions of this copyleft license are conditioned on making available complete 
+source code of licensed works and modifications under the same license or the 
+GNU GPLv3. Copyright and license notices must be preserved. Contributors provide
+an express grant of patent rights. However, a larger work using the licensed work
+through interfaces provided by the licensed work may be distributed under
+different terms and without source code for the larger work.
+
+ 
+    Created on : May 8, 2017, 12:05:37 AM
+    Author     : andje22
+*/
+
+#SplineEditor {
+    /*-fx-background-color: #31363b;*/
+/*    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 80, 0.0 , 0 , 0 );*/
+
+}
+
+.spline-graph {
+    -fx-background-color: #2c2f33;
+-fx-background-radius: 3,5,5,4,3,5;
+    -fx-background-insets: 0, 1,2 1 1 1,2,2, 0;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,.3) , 1 , 0.2 , 0 , 0 );
+}
+.animation-preview {
+-fx-background-color: #2c2f33;
+-fx-background-radius: 3,5,5,4,3,5;
+    -fx-background-insets: 0, 1,2 1 1 1,2,2, 0;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,.3) , 1 , 0.2 , 0 , 0 );
+}
+
+.label {
+    -fx-text-fill: derive(#FFF, -10%);
+    -fx-underline: true;
+}
+
+.animation-label {
+    -fx-font-family: OpenSans-Regular;
+    -fx-font-size: 1.25em;
+    -fx-text-fill: derive(#FFF, -10%);
+
+}
+
+.code-text {
+   -fx-font-family: FiraCode-Regular;
+    -fx-font-size: 18px;
+    -fx-text-fill: #C2C2C3;
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: rgba(255,255,255,0.05);
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: rgba(255,255,255,0.4);
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(255,255,255,0.4);
+}
+.tick-mark {
+    -fx-fill: #FFF;
+    -fx-font-size: 11px;
+}
+
+

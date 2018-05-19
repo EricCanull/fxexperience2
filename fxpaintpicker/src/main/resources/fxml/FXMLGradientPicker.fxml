@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2012, 2014, Oracle and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="340.0" prefWidth="528.0" stylesheets="@../styles/gradient_picker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+      <Separator prefWidth="200.0" styleClass="separator-gradient" />
+      <HBox maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+         <children>
+          <GridPane hgap="4.0" maxHeight="1.7976931348623157E308" vgap="4.0" HBox.hgrow="ALWAYS">
+            <children>
+                  <AnchorPane fx:id="previewAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <StackPane layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="transparent-pattern" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane fx:id="preview_rect" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="preview-rect" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+                <children>
+                  <Slider fx:id="centerX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" styleClass="gradient-slider" value="0.5" visible="false">
+                    <StackPane.margin>
+                      <Insets left="15.0" right="15.0" />
+                    </StackPane.margin>
+                  </Slider>
+                  <Slider fx:id="startX_slider" max="1.0" onMouseDragged="#onSliderDragged" showTickLabels="false" styleClass="gradient-slider" visible="true">
+                    <contextMenu>
+                      <ContextMenu>
+                        <items>
+                          <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="">
+                            <content>
+                              <HBox alignment="CENTER_LEFT" spacing="0.0">
+                                <children>
+                                  <Label text="startX" />
+                                  <TextField prefColumnCount="3" />
+                                </children>
+                              </HBox>
+                            </content>
+                          </CustomMenuItem>
+                        </items>
+                      </ContextMenu>
+                    </contextMenu>
+                  </Slider>
+                </children>
+              </StackPane>
+              <StackPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <children>
+                  <Slider fx:id="centerY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" value="0.5" visible="false" />
+                  <Slider fx:id="startY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" />
+                </children>
+              </StackPane>
+              <Slider fx:id="endY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+              <Slider fx:id="endX_slider" max="1.0" onMouseDragged="#onSliderDragged" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <StackPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="280.0" style="" styleClass="track-background" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                  <children>
+                    <Label styleClass="small-label" text="Double click to add stop" StackPane.alignment="TOP_CENTER">
+                      <StackPane.margin>
+                        <Insets top="2.0" />
+                      </StackPane.margin>
+                    </Label>
+                    <Pane fx:id="track_pane" onMouseClicked="#onSliderClicked" onMouseDragged="#onSliderDragged" style="" />
+                  </children>
+                </StackPane>
+            </children>
+            <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="10.0" />
+              <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
+              <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" prefWidth="240.0" />
+              <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="5.0" prefWidth="5.0" />
+            </columnConstraints>
+            <rowConstraints>
+                  <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="240.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+          </GridPane>
+          <VBox maxHeight="-1.0" maxWidth="1.7976931348623157E308" spacing="5.0" HBox.hgrow="NEVER">
+            <children>
+                  <GridPane hgap="4.0" maxWidth="1.7976931348623157E308" vgap="2.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="5.0" />
+                      <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="75.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="-Infinity" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="5.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="32.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="5.0" prefHeight="5.0" vgrow="NEVER" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                    </rowConstraints>
+                     <children>
+                  <Label styleClass="small-label" text="Cycle Method" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ChoiceBox fx:id="cycleMethod_choicebox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                    <items>
+                      <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Item 1" />
+                        <String fx:value="Item 2" />
+                        <String fx:value="Item 3" />
+                      </FXCollections>
+                    </items>
+                  </ChoiceBox>
+                  <Label styleClass="small-label" text="Proportional" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="proportional_checkbox" mnemonicParsing="false" text="" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="gradient_choicebox" layoutX="98.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                 <String fx:value="Item 1" />
+                                 <String fx:value="Item 2" />
+                                 <String fx:value="Item 3" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                        <Label layoutX="19.0" layoutY="93.0" styleClass="small-label" text="Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="19.0" layoutY="48.0" styleClass="small-label" text="Copy CSS" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#copyCSSAction" prefHeight="32.0" prefWidth="32.0" GridPane.columnIndex="2">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="COPY" size="1.25em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="gradientControlGrid" hgap="4.0" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="5.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="75.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="-Infinity" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="5.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="25.0" vgrow="ALWAYS" />
+                     </rowConstraints>
+                  </GridPane>
+            </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+          </VBox>
+         </children>
+      </HBox>
+  </children>
+</fx:root>

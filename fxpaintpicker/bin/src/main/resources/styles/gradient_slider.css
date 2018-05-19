@@ -1,0 +1,61 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    -fx-base: #31363b;
+    -fx-background: #31363b;
+    -fx-focus-color: #0093FF;
+    -fx-control-inner-background: #232629;
+    /*-fx-inner-border: linear-gradient(to bottom, derive(-fx-color, 25%), derive(-fx-color,35%) 100%);*/
+    -fx-body-color: #31363b;
+    /*-fx-body-color: linear-gradient(to bottom, derive(-fx-color, 15.0%) 0%, derive(-fx-color, 25.0%) 50%,*/
+    /*derive(-fx-color, -42%) 50.5%, derive(-fx-color, 25%) 100%);*/
+    -fx-outer-border: derive(-fx-color, 35%);
+    -fx-shadow-highlight-color: derive(-fx-background, -25.0%);
+}
+
+#GridPane {
+    -fx-background-color: #31363B;
+}
+
+.label-paint {
+    -fx-text-fill: #C2C2C3;
+}
+
+.double-textfield {
+    -fx-background-color: #606468, -fx-text-box-border, -fx-control-inner-background;
+    -fx-min-width: 62;
+    -fx-pref-width: 62;
+}
+
+.double-textfield:focused {
+    -fx-background-color: -fx-focus-color, -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: -0.4, 1, 2;
+    -fx-background-radius: 3.4, 2, 2;
+}
+
+.double-textfield:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.slider-prop .track{
+    -fx-background-color: -fx-control-inner-background;
+    -fx-border-color: #616569;
+    -fx-background-insets: -0.2, 1, 2;
+    -fx-background-radius: 3.2, 2, 2;
+    -fx-border-radius: 2.2, 2, 2;
+}
+
+.slider-prop .thumb {
+    -fx-border-color: #111;
+    -fx-border-radius: 20px;
+    -fx-background-color: rgba(147, 147, 147, .5);
+}
+
+.slider-prop .thumb:hover{
+    -fx-background-color: rgb(147, 147, 147);
+}
+.slider-prop .axis:bottom {
+    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-tick-label-fill: -fe-body-text;
+    -fx-font-size: .63333em;
+}

@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 25, 2017, 9:44:15 PM
+    Author     : andje22
+*/
+
+.root-slider-hbox {
+    -fx-background-color: transparent;
+    
+}
+
+.container-stackpane {
+    -fx-background-color: transparent;
+}
+
+.color-slider .track {
+    -fx-background-color:null;  /* Hide the track */
+/*    -fx-background-insets: 1 0 -1 0, 0, 1;
+    -fx-background-radius: 2.5, 2.5, 1.5;
+    -fx-padding: 0.208333em;  2.5 */
+}
+
+.color-slider {
+     -fx-min-width: 9.6em;
+    -fx-pref-width: 9.6em;
+}
+
+.colored-track {
+    -fx-background-color: palegreen;
+      -fx-min-width: 9.6em;
+    -fx-pref-width: 9.6em;
+    -fx-pref-height: 2;
+    -fx-max-height: 2;
+        -fx-background-insets: -1 0 0 0, 0, 1;
+    -fx-background-radius: 0.25em, 0.25em, 0.166667em; /* 3 3 2 */
+    -fx-padding: 0.25em; 
+    
+}
