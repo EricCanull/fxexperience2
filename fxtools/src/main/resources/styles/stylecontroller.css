@@ -32,14 +32,18 @@ and open the template in the editor.
     -fx-font-size: 13px;
     -fx-font-family: OpenSans-Regular;
     -fx-text-fill: #fcb215;
-    -fx-background-color: #41424a;
-    -fx-border-color: #232629;
-    -fx-border-width: 1px;
+
+  
 }
 .row-label .text {
         -fx-font-size: 13px;
     -fx-font-family: OpenSans-Regular;
     -fx-text-fill: #fcb215;
+}
+.row-title-hbox {
+        -fx-background-color: #41424a;
+          -fx-border-color: #232629;
+    -fx-border-width: 1px;
 }
 .toggle-switch {
     -fx-text-fill: #C98989;

@@ -84,11 +84,11 @@
                                                       <Label fx:id="backgroundTextLabel" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
                                                       <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="1" />
-                                                      <PaintPicker fx:id="basePicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" />
-                                                      <PaintPicker fx:id="accentPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <PaintPicker fx:id="base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" />
+                                                      <PaintPicker fx:id="accent" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                                          <children>
-                                                            <PaintPicker fx:id="baseTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <PaintPicker fx:id="txt_base_color" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <ToggleButton fx:id="baseTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
                                                                <font>
                                                                   <Font name="SansSerif Bold" size="8.0" />
@@ -96,10 +96,10 @@
                                                             </ToggleButton>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="backgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <PaintPicker fx:id="background" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                       <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                                                          <children>
-                                                            <PaintPicker fx:id="backgroundTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <PaintPicker fx:id="txt_bg_color" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <ToggleButton fx:id="backgroundTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
                                                                <font>
                                                                   <Font name="SansSerif Bold" size="8.0" />
@@ -107,10 +107,10 @@
                                                             </ToggleButton>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="fieldBackgroundPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <PaintPicker fx:id="cntrl_inner_bg_color" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                                       <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
                                                          <children>
-                                                            <PaintPicker fx:id="fieldTextPicker" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <PaintPicker fx:id="txt_inner_bg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <ToggleButton fx:id="fieldTextToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="52.0" styleClass="toggle-switch" text="AUTO">
                                                                <font>
                                                                   <Font name="SansSerif Bold" size="8.0" />
@@ -118,12 +118,11 @@
                                                             </ToggleButton>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="focusPicker" layoutX="147.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <PaintPicker fx:id="focus_color" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                    </children>
                                                    <columnConstraints>
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="35.0" />
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="40.0" />
-                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" percentWidth="25.0" />
+                                                      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" />
+                                                      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
@@ -145,59 +144,44 @@
                                           </AnchorPane>
                                       </content>
                                     </TitledPane>
-                                    <TitledPane fx:id="gradientTitlePane" animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" text="Gradients">
+                                    <TitledPane fx:id="gradientTitlePane" animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Gradients">
                                        <font>
                                           <Font name="Noto Sans" size="13.0" />
                                        </font>
                                        <content>
                                           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                              <children>
-                                                <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" maxWidth="1.7976931348623157E308" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                <GridPane id="Gridpane-advanced" fx:id="buttonGridPane" hgap="4.0" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="423.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <Label styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Top:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label styleClass="prop-label" text="Mid Top:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Mid Top:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label id="label26" styleClass="prop-label" text="Mid Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                                                      <Label id="label26" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Mid Bottom:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label styleClass="prop-label" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Bottom:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label styleClass="prop-label" text="Sides:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Sides:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Slider fx:id="bodyTopSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                      <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                      <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                      <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                      <Slider fx:id="bodyTopSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                      <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                      <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                                                       <ToggleButton fx:id="topMiddleToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
@@ -218,64 +202,68 @@
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
                                                       </ToggleButton>
-                                                      <Slider fx:id="topHighlightSlider" maxHeight="0.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <Label styleClass="prop-label" text="Top:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                      <Slider fx:id="topHighlightSlider" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Top:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Slider fx:id="bottomHighlightSlider" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Bottom:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                         <GridPane.margin>
+                                                            <Insets right="10.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <HBox styleClass="row-title-hbox" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Gradients" HBox.hgrow="ALWAYS">
+                                                               <padding>
+                                                                  <Insets right="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label alignment="CENTER_RIGHT" styleClass="prop-label" text="Preset:" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                                                         <GridPane.margin>
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
                                                          <padding>
-                                                            <Insets left="10.0" />
+                                                            <Insets right="3.0" top="2.0" />
                                                          </padding>
                                                       </Label>
-                                                      <Slider fx:id="bottomHighlightSlider" maxHeight="0.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                      <Label styleClass="prop-label" text="Bottom:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Shadow:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Gradients" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS" />
-                                                      <Label alignment="CENTER_RIGHT" styleClass="prop-label" text="Preset:" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                                                      <Slider fx:id="shadowSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Slider fx:id="borderSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Border:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
-                                                            <Insets />
+                                                            <Insets right="10.0" />
                                                          </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
                                                       </Label>
-                                                      <Label styleClass="prop-label" text="Shadow:" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
-                                                      </Label>
-                                                      <Slider fx:id="shadowSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                      <Slider fx:id="borderSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Border:" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                         <padding>
-                                                            <Insets left="10.0" />
-                                                         </padding>
-                                                      </Label>
-                                                      <Slider fx:id="inputBorderSlider" majorTickUnit="50.0" maxHeight="0.0" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="230.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Slider fx:id="inputBorderSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                                       <ToggleButton fx:id="inputBorderToggle" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#onToggleSelected" prefHeight="24.0" prefWidth="44.0" styleClass="toggle-switch" text="AUTO" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                                          <font>
                                                             <Font name="SansSerif Bold" size="8.0" />
                                                          </font>
                                                       </ToggleButton>
                                                       <ComboBox fx:id="gradientComboBox" prefHeight="34.0" prefWidth="150.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-                                                      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Highlights &amp; Shadows" GridPane.columnSpan="3" />
+                                                      <HBox maxWidth="1.7976931348623157E308" styleClass="row-title-hbox" GridPane.columnSpan="3">
+                                                         <children>
+                                                            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Highlights &amp; Shadows" HBox.hgrow="ALWAYS">
+                                                               <padding>
+                                                                  <Insets right="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                    <columnConstraints>
-                                                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="75.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="75.0" />
+                                                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="250.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="80.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />

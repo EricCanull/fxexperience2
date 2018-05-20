@@ -17,7 +17,6 @@ import com.fxexperience.previewer.controller.PreviewController;
 import com.fxexperience.tools.util.Gradient;
 
 import com.fxexperience.tools.util.FileUtil;
-import com.fxexperience.tools.util.StringUtil;
 import com.paintpicker.scene.control.fields.DoubleTextField;
 
 import com.paintpicker.utils.ColorEncoder;
@@ -38,9 +37,11 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.event.Event;
 
 import javafx.scene.input.MouseEvent;
-
 
 public class StyleController extends VBox {
 
@@ -61,22 +62,18 @@ public class StyleController extends VBox {
 
     @FXML private Label baseTextLabel, backgroundTextLabel, fieldTextLabel;
     
-    @FXML private PaintPicker basePicker, accentPicker, backgroundPicker;
-    @FXML private PaintPicker focusPicker, baseTextPicker, backgroundTextPicker; 
-    @FXML private PaintPicker fieldBackgroundPicker, fieldTextPicker;
+    @FXML private PaintPicker base, accent, background;
+    @FXML private PaintPicker focus_color, txt_base_color, txt_bg_color; 
+    @FXML private PaintPicker cntrl_inner_bg_color, txt_inner_bg;
     
-    private final FontPickerController fontPickerController = new FontPickerController();
-    
+    private final FontPickerController font = new FontPickerController();
     private final EditorController editor = new EditorController();
-    
-    private final PreviewController previewController = new PreviewController();
+    private final PreviewController previewer = new PreviewController();
     
     DecimalFormat df = new DecimalFormat("##.##");
     SimpleDoubleProperty innerTopDerivation = new SimpleDoubleProperty();
     SimpleDoubleProperty innerBottomDerivation= new SimpleDoubleProperty(); 
         
-  
-
     public StyleController() {
         initialize();
     }
@@ -94,30 +91,36 @@ public class StyleController extends VBox {
             Logger.getLogger(StyleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        textTitlePane.setContent(fontPickerController);
+        textTitlePane.setContent(font);
         editorPane.getChildren().add(editor);
-        previewPane.setCenter(previewController);
+        previewPane.setCenter(previewer);
         
         // create Integer Fields
         addTextFieldBinding(paddingSlider, paddingTextField);
         addTextFieldBinding(borderWidthSlider, borderWidthTextField);
         addTextFieldBinding(borderRadiusSlider, borderRadiusTextField);
         
-        basePicker.setValue(Color.web("#213870"));
-        accentPicker.setValue(Color.web("#0096C9"));
-        backgroundPicker.setValue(Color.web("#2c2f33"));
-        focusPicker.setValue(Color.web("#0093ff"));
-        baseTextPicker.setValue(Color.web("#000000"));
-        backgroundTextPicker.setValue(Color.web("#000000"));
-        fieldBackgroundPicker.setValue(Color.web("#23272a"));
-        fieldTextPicker.setValue(Color.web("#000000"));
+        base.setValue(Color.web("#213870"));
+        accent.setValue(Color.web("#0096C9"));
+        background.setValue(Color.web("#2c2f33"));
+        focus_color.setValue(Color.web("#0093ff"));
+        txt_base_color.setValue(Color.web("#000000"));
+        txt_bg_color.setValue(Color.web("#000000"));
+        cntrl_inner_bg_color.setValue(Color.web("#23272a"));
+        txt_inner_bg.setValue(Color.web("#000000"));
+       
         addControlsListeners();
-        
+
         // Populate gradient combo
-        gradientComboBox.getItems().addAll(Gradient.GRADIENTS);
+        gradientComboBox.getItems().addAll(FXCollections.observableArrayList(Gradient.GRADIENTS));
+        gradientComboBox.setValue(Gradient.GRADIENTS[0]);
+        gradientComboBox.setOnAction(Event::consume);
+        gradientComboBox.getSelectionModel().selectedItemProperty().addListener(this::onGradientSelection);
+       
         gradientComboBox.setCellFactory((ListView<Gradient> gradientList) -> {
             ListCell<Gradient> cell = new ListCell<Gradient>() {
-                @Override protected void updateItem(Gradient gradient, boolean empty) {
+                @Override
+                protected void updateItem(Gradient gradient, boolean empty) {
                     super.updateItem(gradient, empty);
                     if (empty || gradient == null) {
                         setText(null);
@@ -126,7 +129,7 @@ public class StyleController extends VBox {
                         setText(gradient.getName());
                         Region preview = new Region();
                         preview.setPrefSize(30, 30);
-                        preview.setStyle("-fx-border-color: #676B6F; -fx-background-color: "+ gradient.getCss());
+                        preview.setStyle("-fx-border-color: #676B6F; -fx-background-color: " + gradient.getCss());
                         setGraphic(preview);
                     }
                 }
@@ -134,24 +137,8 @@ public class StyleController extends VBox {
             cell.setStyle("-fx-cell-size: 32;");
             return cell;
         });
-        gradientComboBox.getSelectionModel().selectedItemProperty().addListener((arg0, arg1, newGradient) -> {
-            bodyTopSlider.setValue(newGradient.getTopDerivation());
-            bodyBottomSlider.setValue(newGradient.getBottomDerivation());
-            if (newGradient.isShinny()) {
-                topMiddleToggle.setSelected(true);
-                bottomMiddleToggle.setSelected(true);
-                bodyTopMiddleSlider.setValue(newGradient.getTopMidDerivation());
-                bodyBottomMiddleSlider.setValue(newGradient.getBottomMidDerivation());
-            } else {
-                topMiddleToggle.setSelected(false);
-                bottomMiddleToggle.setSelected(false);
-            }
-            onGradientChange();
-        });
-        gradientComboBox.getSelectionModel().select(0);
     }
     
-
     // Add listeners to update the css
     private void addControlsListeners() {
         editorPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
@@ -166,25 +153,50 @@ public class StyleController extends VBox {
         inputBorderSlider.disableProperty().bind(inputBorderToggle.selectedProperty().not());
 
         // Font choice box
-        fontPickerController.fontProperty().addListener(o -> createCSS());
+        font.fontProperty().addListener(o -> createCSS());
 
         // Disabled properties
         baseTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
-        baseTextPicker.disableProperty().bind(baseTextToggle.selectedProperty().not());
+        txt_base_color.disableProperty().bind(baseTextToggle.selectedProperty().not());
         backgroundTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
-        backgroundTextPicker.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
+        txt_bg_color.disableProperty().bind(backgroundTextToggle.selectedProperty().not());
         fieldTextLabel.disableProperty().bind(baseTextToggle.selectedProperty().not());
-        fieldTextPicker.disableProperty().bind(fieldTextToggle.selectedProperty().not());
+        txt_inner_bg.disableProperty().bind(fieldTextToggle.selectedProperty().not());
 
         // Paint pickers
-        basePicker.valueProperty().addListener(o -> createCSS());
-        accentPicker.valueProperty().addListener(o -> createCSS());
-        backgroundPicker.valueProperty().addListener(o -> createCSS());
-        baseTextPicker.valueProperty().addListener(o -> createCSS());
-        fieldBackgroundPicker.valueProperty().addListener(o -> createCSS());
-        backgroundTextPicker.valueProperty().addListener(o -> createCSS());
-        fieldTextPicker.valueProperty().addListener(o -> createCSS());
-        focusPicker.valueProperty().addListener(o -> createCSS());
+        base.valueProperty().addListener(o -> createCSS());
+        accent.valueProperty().addListener(o -> createCSS());
+        background.valueProperty().addListener(o -> createCSS());
+        txt_base_color.valueProperty().addListener(o -> createCSS());
+        cntrl_inner_bg_color.valueProperty().addListener(o -> createCSS());
+        txt_bg_color.valueProperty().addListener(o -> createCSS());
+        txt_inner_bg.valueProperty().addListener(o -> createCSS());
+        focus_color.valueProperty().addListener(o -> createCSS());
+    }
+    
+    private void onGradientSelection(ObservableValue<? extends Object> observable, Gradient oldValue, Gradient newValue) {
+        bodyTopSlider.setValue(newValue.getTopDerivation());
+        bodyBottomSlider.setValue(newValue.getBottomDerivation());
+        if (newValue.isShinny()) {
+            topMiddleToggle.setSelected(true);
+            bottomMiddleToggle.setSelected(true);
+            bodyTopMiddleSlider.setValue(newValue.getTopMidDerivation());
+            bodyBottomMiddleSlider.setValue(newValue.getBottomMidDerivation());
+        } else {
+            topMiddleToggle.setSelected(false);
+            bottomMiddleToggle.setSelected(false);
+        }
+        onGradientChange();
+    }
+    
+     private void onGradientChange() {
+        innerTopDerivation.set(bodyTopSlider.getValue()
+                + (100 - bodyTopSlider.getValue()) 
+                * (topHighlightSlider.getValue() / 100));
+        innerBottomDerivation.set(bodyBottomSlider.getValue()
+                + (100 - bodyBottomSlider.getValue()) 
+                * (bottomHighlightSlider.getValue() / 100));
+        createCSS();
     }
     
     @FXML
@@ -200,16 +212,7 @@ public class StyleController extends VBox {
     private void fontChanged() {
 
     }
-    private void onGradientChange() {
-        innerTopDerivation.set(bodyTopSlider.getValue()
-                + (100 - bodyTopSlider.getValue()) 
-                * (topHighlightSlider.getValue() / 100));
-        innerBottomDerivation.set(bodyBottomSlider.getValue()
-                + (100 - bodyBottomSlider.getValue()) 
-                * (bottomHighlightSlider.getValue() / 100));
-        createCSS();
-    }
-
+   
     /**
      * Bind Slider values to the text fields
      */
@@ -223,18 +226,18 @@ public class StyleController extends VBox {
         cssBuffer = new StringBuilder();
    
         cssBuffer.append(".root {\n  ");
-        cssBuffer.append("-fx-font-family: \"").append(fontPickerController.fontProperty().get().getFamily()).append("\";\n  ");
-        cssBuffer.append("-fx-font-size: ").append(fontPickerController.fontProperty().get().getSize()).append("px;\n  ");
-        cssBuffer.append("-fx-base: ").append(ColorEncoder.encodeColor((Color)basePicker.getValue())).append(";\n  ");
-        cssBuffer.append("-fx-accent: ").append(ColorEncoder.encodeColor((Color)accentPicker.getValue())).append(";\n  ");
-        cssBuffer.append("-fx-background: ").append(ColorEncoder.encodeColor((Color)backgroundPicker.getValue())).append(";\n  ");
-        cssBuffer.append("-fx-focus-color: ").append(ColorEncoder.encodeColor((Color)focusPicker.getValue())).append(";\n  ");
-        cssBuffer.append("-fx-control-inner-background: ").append(ColorEncoder.encodeColor((Color)fieldBackgroundPicker.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-font-family: \"").append(font.fontProperty().get().getFamily()).append("\";\n  ");
+        cssBuffer.append("-fx-font-size: ").append(font.fontProperty().get().getSize()).append("px;\n  ");
+        cssBuffer.append("-fx-base: ").append(ColorEncoder.encodeColor((Color)base.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-accent: ").append(ColorEncoder.encodeColor((Color)accent.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-background: ").append(ColorEncoder.encodeColor((Color)background.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-focus-color: ").append(ColorEncoder.encodeColor((Color)focus_color.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-control-inner-background: ").append(ColorEncoder.encodeColor((Color)cntrl_inner_bg_color.getValue())).append(";\n  ");
         
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
             cssBuffer.append("-fx-text-base-color: ");
-            cssBuffer.append(ColorEncoder.encodeColor((Color)baseTextPicker.getValue()));
+            cssBuffer.append(ColorEncoder.encodeColor((Color)txt_base_color.getValue()));
             cssBuffer.append(";\n  ");
         } else {
             baseTextToggle.setText("AUTO");
@@ -242,7 +245,7 @@ public class StyleController extends VBox {
         if (backgroundTextToggle.isSelected()) {
             backgroundTextToggle.setText("ON");
             cssBuffer.append("-fx-text-background-color: ");
-            cssBuffer.append(ColorEncoder.encodeColor((Color)backgroundTextPicker.getValue()));
+            cssBuffer.append(ColorEncoder.encodeColor((Color)txt_bg_color.getValue()));
             cssBuffer.append(";\n  ");
         } else {
             backgroundTextToggle.setText("AUTO");
@@ -250,13 +253,12 @@ public class StyleController extends VBox {
         if (fieldTextToggle.isSelected()) {
             fieldTextToggle.setText("ON");
             cssBuffer.append("-fx-text-inner-color: ");
-            cssBuffer.append(ColorEncoder.encodeColor((Color)fieldTextPicker.getValue()));
+            cssBuffer.append(ColorEncoder.encodeColor((Color)txt_inner_bg.getValue()));
             cssBuffer.append(";\n  ");
         } else {
             fieldTextToggle.setText("AUTO");
         }
       
-
         cssBuffer.append("-fx-inner-border: linear-gradient(to bottom,\n    ");
         cssBuffer.append("derive(-fx-color,").append(df.format(innerTopDerivation.get())).append("%) 0%,\n    ");
         cssBuffer.append("derive(-fx-color,").append(df.format(innerBottomDerivation.get())).append("%) 100%);\n  ");
@@ -311,7 +313,7 @@ public class StyleController extends VBox {
         cssBuffer.append("  -fx-text-fill: -fx-text-base-color;\n");
         cssBuffer.append("}\n");
         
-        previewController.setPreviewPanelStyle(cssBuffer.toString());
+        previewer.setPreviewPanelStyle(cssBuffer.toString());
     }
 
     public String getCodeString() {
