@@ -53,3 +53,4 @@ logs/
 
 RUNNING_PID
 /fxcodemirror/src/main/resources/codemirror/node_modules/
+/fxtools/src/main/resources/styles/blank.css

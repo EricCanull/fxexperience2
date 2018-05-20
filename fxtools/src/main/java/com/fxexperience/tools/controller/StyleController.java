@@ -24,6 +24,7 @@ import com.paintpicker.utils.ColorEncoder;
 
 import fxwebview.app.EditorController;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ import javafx.scene.paint.Color;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleDoubleProperty;
 
 import javafx.scene.input.MouseEvent;
 
@@ -45,8 +47,7 @@ public class StyleController extends VBox {
     @FXML private TitledPane textTitlePane;
     @FXML private BorderPane previewPane;
     @FXML private StackPane editorPane;
-    @FXML private GridPane simpleGridPane;
- 
+  
     @FXML private ComboBox<Gradient> gradientComboBox;
 
     @FXML private Slider paddingSlider, borderWidthSlider, borderRadiusSlider, topHighlightSlider;
@@ -60,16 +61,21 @@ public class StyleController extends VBox {
 
     @FXML private Label baseTextLabel, backgroundTextLabel, fieldTextLabel;
     
-    private final EditorController editor = new EditorController();
-
-    @FXML
-    private PaintPicker basePicker, accentPicker, backgroundPicker,
-                        focusPicker, baseTextPicker, backgroundTextPicker, 
-                        fieldBackgroundPicker, fieldTextPicker;
+    @FXML private PaintPicker basePicker, accentPicker, backgroundPicker;
+    @FXML private PaintPicker focusPicker, baseTextPicker, backgroundTextPicker; 
+    @FXML private PaintPicker fieldBackgroundPicker, fieldTextPicker;
     
-   
-    private final PreviewController previewController = new PreviewController();
     private final FontPickerController fontPickerController = new FontPickerController();
+    
+    private final EditorController editor = new EditorController();
+    
+    private final PreviewController previewController = new PreviewController();
+    
+    DecimalFormat df = new DecimalFormat("##.##");
+    SimpleDoubleProperty innerTopDerivation = new SimpleDoubleProperty();
+    SimpleDoubleProperty innerBottomDerivation= new SimpleDoubleProperty(); 
+        
+  
 
     public StyleController() {
         initialize();
@@ -106,7 +112,7 @@ public class StyleController extends VBox {
         fieldBackgroundPicker.setValue(Color.web("#23272a"));
         fieldTextPicker.setValue(Color.web("#000000"));
         addControlsListeners();
-
+        
         // Populate gradient combo
         gradientComboBox.getItems().addAll(Gradient.GRADIENTS);
         gradientComboBox.setCellFactory((ListView<Gradient> gradientList) -> {
@@ -140,10 +146,11 @@ public class StyleController extends VBox {
                 topMiddleToggle.setSelected(false);
                 bottomMiddleToggle.setSelected(false);
             }
-            createCSS();
+            onGradientChange();
         });
         gradientComboBox.getSelectionModel().select(0);
     }
+    
 
     // Add listeners to update the css
     private void addControlsListeners() {
@@ -182,7 +189,7 @@ public class StyleController extends VBox {
     
     @FXML
     private void onSliderDragged(MouseEvent event) {
-        createCSS();
+        onGradientChange();
     }
     
     @FXML
@@ -190,9 +197,17 @@ public class StyleController extends VBox {
         createCSS();
     }
     
-     private void fontChanged() {
-         
-        
+    private void fontChanged() {
+
+    }
+    private void onGradientChange() {
+        innerTopDerivation.set(bodyTopSlider.getValue()
+                + (100 - bodyTopSlider.getValue()) 
+                * (topHighlightSlider.getValue() / 100));
+        innerBottomDerivation.set(bodyBottomSlider.getValue()
+                + (100 - bodyBottomSlider.getValue()) 
+                * (bottomHighlightSlider.getValue() / 100));
+        createCSS();
     }
 
     /**
@@ -204,31 +219,23 @@ public class StyleController extends VBox {
     
     private StringBuilder cssBuffer = new StringBuilder();
     
-    private String createCSS() {
+    private void createCSS() {
         cssBuffer = new StringBuilder();
-      
-        int fontSize = (int) fontPickerController.fontProperty().get().getSize();
-        int borderWidth = (int) borderWidthSlider.getValue();
-        int borderWidthForPadding = (borderWidth <= 1) ? 0 : borderWidth - 1;
-        int padding = (int) paddingSlider.getValue() + borderWidthForPadding;
-        int borderRadius = (int) borderRadiusSlider.getValue();
-        double checkPadding = (((0.25 * fontSize) + borderWidthForPadding) / fontSize);
-        double radioPadding = (((0.333333 * fontSize) + borderWidthForPadding) / fontSize);
-        
-        cssBuffer.append(".root { ");
-        cssBuffer.append("-fx-font-family: \"").append(fontPickerController.fontProperty().get().getFamily()).append("\";");
-        cssBuffer.append("-fx-font-size: ").append(fontPickerController.fontProperty().get().getSize()).append("px;");
-        cssBuffer.append("-fx-base: ").append(ColorEncoder.encodeColor((Color)basePicker.getValue())).append(";");
-        cssBuffer.append("-fx-accent: ").append(ColorEncoder.encodeColor((Color)accentPicker.getValue())).append(";");
-        cssBuffer.append("-fx-background: ").append(ColorEncoder.encodeColor((Color)backgroundPicker.getValue())).append(";");
-        cssBuffer.append("-fx-focus-color: ").append(ColorEncoder.encodeColor((Color)focusPicker.getValue())).append(";");
-        cssBuffer.append("-fx-control-inner-background: ").append(ColorEncoder.encodeColor((Color)fieldBackgroundPicker.getValue())).append(";");
+   
+        cssBuffer.append(".root {\n  ");
+        cssBuffer.append("-fx-font-family: \"").append(fontPickerController.fontProperty().get().getFamily()).append("\";\n  ");
+        cssBuffer.append("-fx-font-size: ").append(fontPickerController.fontProperty().get().getSize()).append("px;\n  ");
+        cssBuffer.append("-fx-base: ").append(ColorEncoder.encodeColor((Color)basePicker.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-accent: ").append(ColorEncoder.encodeColor((Color)accentPicker.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-background: ").append(ColorEncoder.encodeColor((Color)backgroundPicker.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-focus-color: ").append(ColorEncoder.encodeColor((Color)focusPicker.getValue())).append(";\n  ");
+        cssBuffer.append("-fx-control-inner-background: ").append(ColorEncoder.encodeColor((Color)fieldBackgroundPicker.getValue())).append(";\n  ");
         
         if (baseTextToggle.isSelected()) {
             baseTextToggle.setText("ON");
             cssBuffer.append("-fx-text-base-color: ");
             cssBuffer.append(ColorEncoder.encodeColor((Color)baseTextPicker.getValue()));
-            cssBuffer.append(";");
+            cssBuffer.append(";\n  ");
         } else {
             baseTextToggle.setText("AUTO");
         }
@@ -236,7 +243,7 @@ public class StyleController extends VBox {
             backgroundTextToggle.setText("ON");
             cssBuffer.append("-fx-text-background-color: ");
             cssBuffer.append(ColorEncoder.encodeColor((Color)backgroundTextPicker.getValue()));
-            cssBuffer.append(";");
+            cssBuffer.append(";\n  ");
         } else {
             backgroundTextToggle.setText("AUTO");
         }
@@ -244,121 +251,80 @@ public class StyleController extends VBox {
             fieldTextToggle.setText("ON");
             cssBuffer.append("-fx-text-inner-color: ");
             cssBuffer.append(ColorEncoder.encodeColor((Color)fieldTextPicker.getValue()));
-            cssBuffer.append(";");
+            cssBuffer.append(";\n  ");
         } else {
             fieldTextToggle.setText("AUTO");
         }
-            
+      
 
-        double innerTopDerivation = bodyTopSlider.getValue() + ((100 - bodyTopSlider.getValue()) * (topHighlightSlider.getValue() / 100));
-        double innerBottomDerivation = bodyBottomSlider.getValue() + ((100 - bodyBottomSlider.getValue()) * (bottomHighlightSlider.getValue() / 100));
-        
-        cssBuffer.append("    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,").append(innerTopDerivation).append("%) 0%, derive(-fx-color,").append(innerBottomDerivation).append("%) 100%);\n");
+        cssBuffer.append("-fx-inner-border: linear-gradient(to bottom,\n    ");
+        cssBuffer.append("derive(-fx-color,").append(df.format(innerTopDerivation.get())).append("%) 0%,\n    ");
+        cssBuffer.append("derive(-fx-color,").append(df.format(innerBottomDerivation.get())).append("%) 100%);\n  ");
 
-        cssBuffer.append("    -fx-body-color: linear-gradient( to bottom, ");
-        cssBuffer.append("derive(-fx-color, ").append(bodyTopSlider.getValue()).append("%) 0%, ");
+        cssBuffer.append("-fx-body-color: linear-gradient( to bottom,\n  ");
+        cssBuffer.append("  derive(-fx-color, ").append(df.format(bodyTopSlider.getValue())).append("%) 0%,\n  ");
+       
         if (topMiddleToggle.isSelected()) {
-            cssBuffer.append("derive(-fx-color, ").append(bodyTopMiddleSlider.getValue()).append("%) 50%, ");
+            cssBuffer.append("  derive(-fx-color, ")
+                     .append(df.format(bodyTopMiddleSlider.getValue())).append("%) 50%,\n  ");
         }
         if (bottomMiddleToggle.isSelected()) {
-            cssBuffer.append("derive(-fx-color, ").append(bodyBottomMiddleSlider.getValue()).append("%) 50.5%, ");
+            cssBuffer.append("  derive(-fx-color, ")
+                     .append(df.format(bodyBottomMiddleSlider.getValue())).append("%) 50.5%,\n  ");
         }
-        cssBuffer.append("derive(-fx-color, ").append(bodyBottomSlider.getValue()).append("%) 100%);\n");
+        
+        cssBuffer.append("  derive(-fx-color, ").append(df.format(bodyBottomSlider.getValue())).append("%) 100%);\n  ");
 
         if (borderToggle.isSelected()) {
-            cssBuffer.append("    -fx-outer-border: derive(-fx-color,").append(borderSlider.getValue()).append("%);\n");
+            cssBuffer.append("-fx-outer-border: derive(-fx-color, ")
+                     .append(df.format(borderSlider.getValue())).append("%);\n  ");
         }
 
         if (shadowToggle.isSelected()) {
-            cssBuffer.append("    -fx-shadow-highlight-color: derive(-fx-background,").append(shadowSlider.getValue()).append("%);\n");
+            cssBuffer.append("-fx-shadow-highlight-color: derive(-fx-background,")
+                     .append(df.format(shadowSlider.getValue())).append("%);\n  ");
         }
 
         if (inputBorderToggle.isSelected()) {
-            cssBuffer.append("    -fx-text-box-border: derive(-fx-background,").append(inputBorderSlider.getValue()).append("%);\n");
+            cssBuffer.append("-fx-text-box-border: derive(-fx-background,")
+                     .append(df.format(inputBorderSlider.getValue())).append("%);\n");
         }
 
         cssBuffer.append("}\n");
-        cssBuffer.append(".button, .toggle-button, .choice-box {\n");
-        cssBuffer.append("    -fx-background-radius: ").append(borderRadius).append(", ").append(borderRadius).append(", ").append(borderRadius - 1).append(", ").append(borderRadius - 2).append(";\n");
-        cssBuffer.append("    -fx-padding: ").append(padding).append("px ").append(padding).append(7).append("px ").append(padding).append("px ").append(padding).append(7).append("px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".menu-button {\n");
-        cssBuffer.append("    -fx-background-radius: ").append(borderRadius).append(", ").append(borderRadius).append(", ").append(borderRadius - 1).append(", ").append(borderRadius - 2).append(";\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".menu-button .label {\n");
-        cssBuffer.append("    -fx-padding: ").append(padding).append("px ").append(padding).append(15).append("px ").append(padding).append("px ").append(padding).append(7).append("px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".menu-button .arrow-button {\n");
-        cssBuffer.append("    -fx-padding: ").append(padding).append("px ").append(padding).append(3).append("px ").append(padding).append("px 0px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".choice-box {\n");
-        cssBuffer.append("    -fx-padding: 0 ").append(padding).append(3).append("px 0 0;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".choice-box .label {\n");
-        cssBuffer.append("    -fx-padding: ").append(padding).append("px ").append(padding).append(1).append("px ").append(padding).append("px ").append(padding).append(3).append("px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".choice-box .open-button {\n");
-        cssBuffer.append("    -fx-padding: 1 0 0 ").append(padding).append(5).append("px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".combo-box-base:editable .text-field, .combo-box-base .arrow-button, .combo-box .list-cell {\n");
-        cssBuffer.append("    -fx-padding: ").append(padding).append("px ").append(padding).append(3).append("px ").append(padding).append("px ").append(padding).append(3).append("px;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".check-box .box {\n");
-        cssBuffer.append("    -fx-padding: ").append(checkPadding).append("em;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".radio-button .radio {\n");
-        cssBuffer.append("    -fx-padding: ").append(radioPadding).append("em;\n");
-        cssBuffer.append("}\n");
+
         if (!baseTextToggle.isSelected()) {
             cssBuffer.append(".hyperlink, {\n");
-            cssBuffer.append("    -fx-text-fill: -fx-text-background-color;\n");
+            cssBuffer.append("  -fx-text-fill: -fx-text-background-color;\n");
             cssBuffer.append("}\n");
             cssBuffer.append(".toggle-button:selected {\n");
-            cssBuffer.append("    -fx-text-fill: -fx-text-base-color;\n");
+            cssBuffer.append("  -fx-text-fill: -fx-text-base-color;\n");
             cssBuffer.append("}\n");
         }
-        cssBuffer.append(".label, .check-box, .radio-button {\n");
-        cssBuffer.append("    -fx-text-fill: -fx-text-background-color;\n");
+        cssBuffer.append(".label,\n.check-box,\n.radio-button {\n");
+        cssBuffer.append("  -fx-text-fill: -fx-text-background-color;\n");
         cssBuffer.append("}\n");
 
-        cssBuffer.append(".button, .toggle-button, .check-box .box, .radio-button .radio, .choice-box, .menu-button, .tab, .combo-box-base {\n");
-        cssBuffer.append("    -fx-background-insets: 0 0 -1 0, 0, ").append(borderWidth).append(", ").append(borderWidth).append(1).append(";\n");
+        cssBuffer.append(".choice-box .label { \n");
+        cssBuffer.append("  -fx-text-fill: -fx-text-base-color;\n");
         cssBuffer.append("}\n");
-        cssBuffer.append(".button:focused, .toggle-button:focused, .check-box:focused .box, .radio-button:focused .radio, .choice-box:focused, .menu-button:focused, .combo-box-base:focused {\n");
-        cssBuffer.append("    -fx-background-insets: -1.4, 0, ").append(borderWidth).append(", ").append(borderWidth).append(1).append(";\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".combo-box-base .arrow-button {\n");
-        cssBuffer.append("    -fx-background-insets: 0, ").append(borderWidth).append(", ").append(borderWidth).append(1).append(";\n");
-        cssBuffer.append("}\n");
-
-        cssBuffer.append(".choice-box .label { /* Workaround for RT-20015 */\n");
-        cssBuffer.append("    -fx-text-fill: -fx-text-base-color;\n");
-//        cssBuffer.append("    -fx-text-fill: blue;\n");
-        cssBuffer.append("}\n");
-        cssBuffer.append(".menu-button .label { /* Workaround for RT-20015 */\n");
-        cssBuffer.append("    -fx-text-fill: -fx-text-base-color;\n");
-//        cssBuffer.append("    -fx-text-fill: green;\n");
+        cssBuffer.append(".menu-button .label { \n");
+        cssBuffer.append("  -fx-text-fill: -fx-text-base-color;\n");
         cssBuffer.append("}\n");
         
-         previewController.setPreviewPanelStyle(cssBuffer.toString());
-
-        return cssBuffer.toString();
+        previewController.setPreviewPanelStyle(cssBuffer.toString());
     }
 
     public String getCodeString() {
         return cssBuffer.toString();
-    // return cssBuffer.append(cssBuffer.toString()).toString();
     }
 
     private void setCodeAreaText() {
-      editor.setEditorCode(StringUtil.formatCSStoString(getCodeString()));
+      editor.setEditorCode(cssBuffer.toString());
     }
-
 
     @FXML
     private void displayEditorPane() {
             editorPane.setVisible(!editorPane.isVisible());
-           
     }
 
     @FXML

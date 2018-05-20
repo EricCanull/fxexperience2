@@ -78,6 +78,7 @@ public class Gradient {
     
     public static final Gradient[] GRADIENTS = new Gradient[]{
         new Gradient("Default",34,-18),
+        new Gradient("Flat", 0, 0, 0, 0),
         new Gradient("Subtle",35,-6),
         new Gradient("Shinny",45,34,5,-10)
     };

@@ -74,7 +74,7 @@
                                       <content>
                                         <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0">
                                              <children>
-                                                <GridPane id="GridPane-Properties" fx:id="simpleGridPane" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                <GridPane id="GridPane-Properties" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                                    <children>
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="3" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="7" />

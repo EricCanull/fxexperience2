@@ -74,6 +74,7 @@ public class EditorController extends AnchorPane {
      */
     public void setEditorCode(String newCode) {
         newCode = newCode.replace("\n", "\\n");
+        newCode = newCode.replace("\t", "\\t");
         webEngine.executeScript("editor.setValue('" + newCode + "' );");
     }
 
