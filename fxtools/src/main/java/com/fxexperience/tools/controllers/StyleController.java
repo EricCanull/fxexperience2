@@ -175,8 +175,6 @@ public class StyleController extends VBox {
         createCSS();
     }
     
-//     private void onToggleSelection(ObservableValue<? extends Object> observable, Gradient oldValue, Gradient newValue) {
-       
     private void onGradientSelection(ObservableValue<? extends Object> observable, Gradient oldValue, Gradient newValue) {
         bodyTopSlider.setValue(newValue.getTopDerivation());
         bodyBottomSlider.setValue(newValue.getBottomDerivation());
