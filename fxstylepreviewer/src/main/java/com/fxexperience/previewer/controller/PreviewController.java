@@ -10,7 +10,6 @@
 package com.fxexperience.previewer.controller;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -25,11 +24,7 @@ public class PreviewController extends VBox {
 
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
-    @FXML private TextField searchTextField;
-    @FXML private Button goButton;
-    @FXML private ListView<String> stringValuesListView;
-    @FXML private ListView<Integer> integerValuesListView;
-
+    @FXML private ListView<String> listView;
 
     public PreviewController() {
         initialize();
@@ -50,18 +45,11 @@ public class PreviewController extends VBox {
             Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        setMenuBoxPresets();
-
-        ObservableList<String> values = FXCollections.observableArrayList("Alpha","Beta", "Gamma");
-        stringValuesListView.setItems(values);
-    }
-
-    private void setMenuBoxPresets() {
-        // set presets for menu-boxes
         choiceBox.getSelectionModel().select(0);
         comboBox.getSelectionModel().select(0);
-    }
 
+        listView.setItems(FXCollections.observableArrayList("Alpha","Beta", "Gamma"));
+    }
 
     public void setPreviewPanelStyle(String code) {
          setStyle(code);

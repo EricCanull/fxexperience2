@@ -1,89 +1,61 @@
 .root{
     -fx-base: #31363b;
-    -fx-accent: #a0c8ff;
     -fx-background: #31363b;
     -fx-focus-color: #3073b4;
     -fx-control-inner-background: #232629;
     -fx-inner-border: linear-gradient(to bottom,
-    derive(-fx-color,30%) 0%,
-    derive(-fx-color,-5%) 100%);
+        derive(-fx-color,30%) 0%,
+        derive(-fx-color,-5%) 100%);
     -fx-body-color: linear-gradient(to bottom,
-    derive(-fx-color, -0%) 0%,
-    derive(-fx-color, -2%) 20%,
-    derive(-fx-color, -5%) 60%,
-    derive(-fx-color, -8%) 100%);
+        derive(-fx-color, -0%) 0%,
+        derive(-fx-color, -2%) 20%,
+        derive(-fx-color, -5%) 60%,
+        derive(-fx-color, -8%) 100%);
 }
+
 .main-menu {
     -fx-background-color: #41424a;
-/*    -fx-background-color: derive(-dark-header, 0%), derive(-dark-header, 25%),  derive(-dark-header, -20%),  -dark-header;*/
-/*    -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 99.0%, 
-        #606c57 0.0% , 
-        #606c57 1.0% ,
-        #732929 43.0%,
-        #702a2a 82.0% , 
-        #723232 100.0% );*/
-  
     -fx-padding: 0.0em 0.666667em 0.0em 0.666667em; /* 0 8 0 8 */
     -fx-effect: dropshadow( two-pass-box, rgba(0,0,0,.33), 2, 0.0, 0, 1 );
     -fx-background-insets: 0 0 0 0, 0 1 0 1;
     -fx-background-radius: 0, 0;
 }
+
 .menu-toggle-button {
     -fx-font-family: "Roboto";
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-border-width: 0 0 0 0;
-/*     -fx-text-fill: #b4c4cb;*/
-     -fx-text-fill: #b4c4cb;
+    -fx-text-fill: #b4c4cb;
     -fx-font-size: 14px;
 }
 
 .menu-toggle-button .text {
-      -fx-fill: #b4c4cb;
-     -fx-text-fill: #b4c4cb;
+    -fx-fill: #b4c4cb;
+    -fx-text-fill: #b4c4cb;
 }
 
 .menu-toggle-button:hover, .menu-toggle-button:selected{
     -fx-background-color: rgba(35,39,42, .5);
-      -fx-background-color: #51525a;
+    -fx-background-color: #51525a;
 }
+
 .menu-toggle-button:selected .font-awesome-menu-icon,
 .menu-toggle-button:hover .font-awesome-menu-icon {
-     
     -fx-fill: #6699ff;
 }
 
 .font-awesome-menu-icon {
     -fx-fill: #b4c4cb;
-   
 }
 
 .tab-pane-pages:top .tab-header-area .headers-region .tab:selected:top {
     -fx-tab-min-width: 180px;
     -fx-pref-width: 180px;
-
-}
-.search-text-field .text {
-    -fx-font-family: OpenSans-Regular;
-    -fx-font-size: 13px;
-}
-
-.hyperlink {
-    -fx-fill: -fx-text-background-color;
 }
 
 .font-awesome-icon {
     -fx-fill: derive(-fx-text-base-color, -20%);
-}
-
-.control-label {
-    -fx-font-family: OpenSans-Regular;
-    -fx-font-size: 12px;
-}
-
-.status-label {
-    -fx-font-family: OpenSans-Regular;
-    -fx-font-size: 12px;
 }
 
 .split-pane {
@@ -98,28 +70,17 @@
     -fx-text-fill: -fx-text-base-color;
 }
 
-.label,
-.check-box,
-.text,
-.radio-button {
-    -fx-fill: -fx-text-background-color;
-/*    -fx-text-fill: -fx-text-background-color;*/
-}
 .tab-pane:top .tab-header-area .tab-header-background {
     -fx-background-color: #4b5055, #31363b, #31363b;
 }
 
-.button, .toggle-button, .check-box .box, .radio-button .radio, .choice-box, .menu-button, .tab, .combo-box-base {
-    /*    -fx-background-insets: 0 0 0 0, 0, 1, 1;*/
-}
-
 .choice-box .label {
-    /* Workaround for RT-20015 */
+    /*     Workaround for RT-20015 */
     -fx-text-fill: -fx-text-base-color;
 }
 
 .menu-button .label {
-    /* Workaround for RT-20015 */
+    /*     Workaround for RT-20015 */
     -fx-text-fill: -fx-text-base-color;
 }
 

@@ -9,7 +9,7 @@ package com.fxexperience.tools.view;
  * for the larger work.
  */
 
-import com.fxexperience.tools.controller.AbstractController;
+import com.fxexperience.tools.controllers.AbstractController;
 
 import java.util.ResourceBundle;
 

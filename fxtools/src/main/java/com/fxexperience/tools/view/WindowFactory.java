@@ -9,8 +9,8 @@ package com.fxexperience.tools.view;
  * for the larger work.
  */
 
-import com.fxexperience.tools.controller.AbstractController;
-import com.fxexperience.tools.controller.MainController;
+import com.fxexperience.tools.controllers.AbstractController;
+import com.fxexperience.tools.controllers.MainController;
 import com.fxexperience.tools.handler.ViewHandler;
 
 import java.util.ResourceBundle;

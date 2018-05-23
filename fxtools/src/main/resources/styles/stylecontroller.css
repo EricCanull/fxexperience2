@@ -7,15 +7,22 @@ and open the template in the editor.
     Created on : May 3, 2018, 3:52:36 AM
     Author     : andje22
 */
-
+.body {
+    -fx-background-color: #404952;
+    -fx-background-image: url("../images/primary_bg.png");
+}
 #Preview-Alpha {
     -fx-background-image: url("../images/chequers.png");
     -fx-background-color: #FFF;
 }
-
+.button-hbox {
+     -fx-background-color: #31363b;
+}
 .prop-label {
+    -fx-font-family: OpenSans-Regular;
     -fx-text-fill: #CCC;
-    -fx-font-size: 13px;
+    -fx-font-size: 0.833333em;
+    -fx-font-weight: bold;
 }
 .color-picker {
     -fx-background-color: transparent; 
@@ -32,8 +39,38 @@ and open the template in the editor.
     -fx-font-size: 13px;
     -fx-font-family: OpenSans-Regular;
     -fx-text-fill: #fcb215;
-
-  
+}
+/* ==== SWITCH STYLED CHECKBOX ============================================== */
+.switch .box{
+    -fx-background-color: transparent;
+}
+.switch:selected .box {
+    -fx-background-color: transparent;
+}
+.switch:focused .box{
+    -fx-background-color: transparent;
+}
+.switch:focused:selected .box {
+    -fx-background-color: transparent;
+}
+.fa-switch-icon {
+    -glyph-name: "TOGGLE_OFF";
+    -fx-fill: #986488;
+}
+.switch:selected .fa-switch-icon {
+    -glyph-name: "TOGGLE_ON";
+    -fx-fill: #6699ff;
+}
+.switch:focused .fa-switch-icon {
+    -glyph-name: "TOGGLE_OFF";  
+}
+.switch:focused:selected .fa-switch-icon {
+    -glyph-name: "TOGGLE_ON";
+}
+.switch .mark {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-shape: null;
 }
 .row-label .text {
         -fx-font-size: 13px;
@@ -44,15 +81,6 @@ and open the template in the editor.
         -fx-background-color: #41424a;
           -fx-border-color: #232629;
     -fx-border-width: 1px;
-}
-.toggle-switch {
-    -fx-text-fill: #C98989;
-    -fx-font-size: 0.63333em;
-}
-
-.toggle-switch:selected {
-    -fx-text-fill: #6699ff;
-    -fx-font-size: 0.63333em;
 }
 
 .slider-prop .track{
@@ -65,7 +93,7 @@ and open the template in the editor.
 }
 
 .slider-prop .axis:bottom {
-    -fx-font-family: "Helvetica Neue", "Lucida Grande", "sans-serif";
+    -fx-font-family: OpenSans-Regular;
     -fx-tick-label-fill: #C2C2C3;
     -fx-font-size: .63333em;
 }

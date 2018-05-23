@@ -65,8 +65,8 @@
       </MenuBar>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button fx:id="goButton" mnemonicParsing="false" text="Go" />
-            <TextField fx:id="searchTextField" alignment="CENTER_RIGHT" prefWidth="160.0" text="Never odd or even" />
+          <Button mnemonicParsing="false" text="Go" />
+            <TextField alignment="CENTER_RIGHT" prefWidth="160.0" text="javafx" />
             <Label text="Search" />
             <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
         </items>
@@ -212,7 +212,7 @@
                            <children>
                               <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ListView fx:id="stringValuesListView" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <ListView fx:id="listView" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>

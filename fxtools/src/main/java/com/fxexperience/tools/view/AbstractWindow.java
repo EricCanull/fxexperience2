@@ -10,7 +10,7 @@
 
 package com.fxexperience.tools.view;
 
-import com.fxexperience.tools.controller.AbstractController;
+import com.fxexperience.tools.controllers.AbstractController;
 import com.fxexperience.tools.util.AppPaths;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
