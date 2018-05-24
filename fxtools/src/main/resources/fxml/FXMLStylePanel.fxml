@@ -183,17 +183,17 @@
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="bodyTopSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                      <Slider fx:id="bodyTopMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                      <Slider fx:id="bodyBottomMiddleSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                      <Slider fx:id="bodyBottomSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                      <Slider fx:id="topHighlightSlider" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Slider fx:id="sl_top_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                      <Slider fx:id="sl_top_mid_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                      <Slider fx:id="sl_bottom_mid_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                      <Slider fx:id="sl_bottom_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                      <Slider fx:id="sl_top_hlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Top:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="bottomHighlightSlider" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Slider fx:id="sl_bottom_hlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Bottom:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
@@ -217,14 +217,14 @@
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="shadowSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <Slider fx:id="borderSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Slider fx:id="sl_shadow" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Slider fx:id="sl_border" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Border:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="inputBorderSlider" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <Slider fx:id="sl_input_border" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                       <ComboBox fx:id="gradientComboBox" prefHeight="32.0" prefWidth="150.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
                                                       <HBox maxWidth="1.7976931348623157E308" styleClass="row-title-hbox" GridPane.columnSpan="3">
                                                          <children>
@@ -253,9 +253,9 @@
                                                       </CheckBox>
                                                    </children>
                                                    <columnConstraints>
-                                                      <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="90.0" />
+                                                      <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="112.0" />
                                                       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="260.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" prefWidth="80.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" prefWidth="50.0" />
                                                    </columnConstraints>
                                                    <rowConstraints>
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -296,7 +296,7 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="paddingSlider" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="sl_padding" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
@@ -323,7 +323,7 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="borderWidthSlider" majorTickUnit="10.0" max="20.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="sl_border_width" majorTickUnit="10.0" max="20.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
@@ -347,7 +347,7 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="borderRadiusSlider" majorTickUnit="10.0" max="30.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="sl_border_radius" majorTickUnit="10.0" max="30.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>

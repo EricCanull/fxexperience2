@@ -48,25 +48,20 @@ public class StyleController extends VBox {
     @FXML private TitledPane textTitlePane;
     @FXML private BorderPane previewPane;
     @FXML private StackPane editorPane;
-  
     @FXML private ComboBox<Gradient> gradientComboBox;
-
-    @FXML private Slider paddingSlider, borderWidthSlider, borderRadiusSlider, topHighlightSlider;
-    @FXML private Slider bottomHighlightSlider, bodyTopSlider, bodyTopMiddleSlider, bodyBottomMiddleSlider;
-    @FXML private Slider bodyBottomSlider, borderSlider, shadowSlider, inputBorderSlider;
-
-    @FXML private DoubleTextField paddingTextField, borderWidthTextField, borderRadiusTextField;
+    @FXML private PaintPicker pp_base, pp_accent, pp_background, pp_txt_base,
+                  pp_txt_bg, pp_cntrl_inner_bg, pp_txt_inner_bg, pp_focus;
     
-    @FXML 
-    private CheckBox cb_txt_base, cb_txt_bg, cb_txt_inner_bg,
-            cb_border, cb_shadow, cb_input_border, cb_top_mid, cb_bottom_mid;
-
-    @FXML
-    private Label lbl_txt_base, lbl_txt_bg, lbl_txt_inner_bg;
- 
-    @FXML
-    private PaintPicker pp_base, pp_accent, pp_background, pp_txt_base,
-            pp_txt_bg, pp_cntrl_inner_bg, pp_txt_inner_bg, pp_focus;
+    @FXML private CheckBox cb_txt_base, cb_txt_bg, cb_txt_inner_bg,
+                  cb_border, cb_shadow, cb_input_border, cb_top_mid, cb_bottom_mid;
+    
+    @FXML private Slider sl_padding, sl_border_width, sl_border_radius, sl_top_hlight,
+                  sl_bottom_hlight, sl_top_body, sl_top_mid_body, sl_bottom_mid_body,
+                  sl_bottom_body, sl_border, sl_shadow, sl_input_border;
+   
+    @FXML private Label lbl_txt_base, lbl_txt_bg, lbl_txt_inner_bg;
+    
+    @FXML private DoubleTextField paddingTextField, borderWidthTextField, borderRadiusTextField;
 
     private final FontPickerController font = new FontPickerController();
     private final EditorController editor = new EditorController();
@@ -98,9 +93,9 @@ public class StyleController extends VBox {
         previewPane.setCenter(previewer);
         
         // create Integer Fields
-        addTextFieldBinding(paddingSlider, paddingTextField);
-        addTextFieldBinding(borderWidthSlider, borderWidthTextField);
-        addTextFieldBinding(borderRadiusSlider, borderRadiusTextField);
+        addTextFieldBinding(sl_padding, paddingTextField);
+        addTextFieldBinding(sl_border_width, borderWidthTextField);
+        addTextFieldBinding(sl_border_radius, borderRadiusTextField);
         
         pp_base.setValue(Color.web("#213870"));
         pp_accent.setValue(Color.web("#0096C9"));
@@ -124,19 +119,12 @@ public class StyleController extends VBox {
            // Font choice box
         font.fontProperty().addListener(o -> createCSS());
 
-        editorPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true) {
-                 setCodeAreaText();
-            }
-        });
-        
            // Disabled properties
-        bodyTopMiddleSlider.disableProperty().bind(cb_top_mid.selectedProperty().not());
-        bodyBottomMiddleSlider.disableProperty().bind(cb_bottom_mid.selectedProperty().not());
-        borderSlider.disableProperty().bind(cb_border.selectedProperty().not());
-        shadowSlider.disableProperty().bind(cb_shadow.selectedProperty().not());
-        inputBorderSlider.disableProperty().bind(cb_input_border.selectedProperty().not());
-
+        sl_top_mid_body.disableProperty().bind(cb_top_mid.selectedProperty().not());
+        sl_bottom_mid_body.disableProperty().bind(cb_bottom_mid.selectedProperty().not());
+        sl_border.disableProperty().bind(cb_border.selectedProperty().not());
+        sl_shadow.disableProperty().bind(cb_shadow.selectedProperty().not());
+        sl_input_border.disableProperty().bind(cb_input_border.selectedProperty().not());
      
         lbl_txt_base.disableProperty().bind(cb_txt_base.selectedProperty().not());
         lbl_txt_bg.disableProperty().bind(cb_txt_bg.selectedProperty().not());
@@ -172,17 +160,23 @@ public class StyleController extends VBox {
             return cell;
         });
         
+        editorPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == true) {
+                 setCodeAreaText();
+            }
+        });
+        
         createCSS();
     }
     
     private void onGradientSelection(ObservableValue<? extends Object> observable, Gradient oldValue, Gradient newValue) {
-        bodyTopSlider.setValue(newValue.getTopDerivation());
-        bodyBottomSlider.setValue(newValue.getBottomDerivation());
+        sl_top_body.setValue(newValue.getTopDerivation());
+        sl_bottom_body.setValue(newValue.getBottomDerivation());
         if (newValue.isShinny()) {
             cb_top_mid.setSelected(true);
             cb_bottom_mid.setSelected(true);
-            bodyTopMiddleSlider.setValue(newValue.getTopMidDerivation());
-            bodyBottomMiddleSlider.setValue(newValue.getBottomMidDerivation());
+            sl_top_mid_body.setValue(newValue.getTopMidDerivation());
+            sl_bottom_mid_body.setValue(newValue.getBottomMidDerivation());
         } else {
             cb_top_mid.setSelected(false);
             cb_bottom_mid.setSelected(false);
@@ -191,12 +185,12 @@ public class StyleController extends VBox {
     }
     
      private void onGradientChange() {
-        innerTopDerivation.set(bodyTopSlider.getValue()
-                + (100 - bodyTopSlider.getValue()) 
-                * (topHighlightSlider.getValue() / 100));
-        innerBottomDerivation.set(bodyBottomSlider.getValue()
-                + (100 - bodyBottomSlider.getValue()) 
-                * (bottomHighlightSlider.getValue() / 100));
+        innerTopDerivation.set(sl_top_body.getValue()
+                + (100 - sl_top_body.getValue()) 
+                * (sl_top_hlight.getValue() / 100));
+        innerBottomDerivation.set(sl_bottom_body.getValue()
+                + (100 - sl_bottom_body.getValue()) 
+                * (sl_bottom_hlight.getValue() / 100));
         createCSS();
     }
     
@@ -255,29 +249,29 @@ public class StyleController extends VBox {
         cssBuffer.append("derive(-fx-color,").append(df.format(innerBottomDerivation.get())).append("%) 100%);\n  ");
 
         cssBuffer.append("-fx-body-color: linear-gradient( to bottom,\n  ");
-        cssBuffer.append("  derive(-fx-color, ").append(df.format(bodyTopSlider.getValue())).append("%) 0%,\n  ");
+        cssBuffer.append("  derive(-fx-color, ").append(df.format(sl_top_body.getValue())).append("%) 0%,\n  ");
        
         if (cb_top_mid.isSelected()) {
             cssBuffer.append("  derive(-fx-color, ")
-                     .append(df.format(bodyTopMiddleSlider.getValue())).append("%) 50%,\n  ");
+                     .append(df.format(sl_top_mid_body.getValue())).append("%) 50%,\n  ");
         }
         if (cb_bottom_mid.isSelected()) {
             cssBuffer.append("  derive(-fx-color, ")
-                     .append(df.format(bodyBottomMiddleSlider.getValue())).append("%) 50.5%,\n  ");
+                     .append(df.format(sl_bottom_mid_body.getValue())).append("%) 50.5%,\n  ");
         }        
-        cssBuffer.append("  derive(-fx-color, ").append(df.format(bodyBottomSlider.getValue())).append("%) 100%);\n  ");
+        cssBuffer.append("  derive(-fx-color, ").append(df.format(sl_bottom_body.getValue())).append("%) 100%);\n  ");
 
         if (cb_border.isSelected()) {
             cssBuffer.append("-fx-outer-border: derive(-fx-color, ")
-                     .append(df.format(borderSlider.getValue())).append("%);\n  ");
+                     .append(df.format(sl_border.getValue())).append("%);\n  ");
         }
         if (cb_shadow.isSelected()) {
             cssBuffer.append("-fx-shadow-highlight-color: derive(-fx-background,")
-                     .append(df.format(shadowSlider.getValue())).append("%);\n  ");
+                     .append(df.format(sl_shadow.getValue())).append("%);\n  ");
         }
         if (cb_input_border.isSelected()) {
             cssBuffer.append("-fx-text-box-border: derive(-fx-background,")
-                     .append(df.format(inputBorderSlider.getValue())).append("%);\n");
+                     .append(df.format(sl_input_border.getValue())).append("%);\n");
         }
 
         cssBuffer.append("}\n");

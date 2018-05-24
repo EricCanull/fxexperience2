@@ -19,12 +19,14 @@ import java.util.ResourceBundle;
 
 import static com.fxexperience.tools.util.AppPaths.RESOURCE_BUNDLE;
 import javafx.scene.text.Font;
+import org.fxmisc.cssfx.CSSFX;
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-       
+        CSSFX.start();
+        
         // Load custom fonts used in css stylesheet
         Font.loadFont(MainApp.class.getResource("/fonts/OpenSans-Regular.ttf").toExternalForm(), 10);
         Font.loadFont(MainApp.class.getResource("/fonts/FiraCode-Regular.ttf").toExternalForm(), 10);

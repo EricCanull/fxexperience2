@@ -11,18 +11,22 @@ and open the template in the editor.
     -fx-background-color: #404952;
     -fx-background-image: url("../images/primary_bg.png");
 }
+.titled-pane:expanded .content,
+.titled-pane:collapsed .content {
+    -fx-background-color: transparent;
+}
 #Preview-Alpha {
     -fx-background-image: url("../images/chequers.png");
     -fx-background-color: #FFF;
 }
 .button-hbox {
-     -fx-background-color: #31363b;
+     -fx-background-color: #303942;
 }
 .prop-label {
     -fx-font-family: OpenSans-Regular;
     -fx-text-fill: #CCC;
-    -fx-font-size: 0.833333em;
-    -fx-font-weight: bold;
+    -fx-font-size: 1em;
+
 }
 .color-picker {
     -fx-background-color: transparent; 
@@ -78,8 +82,8 @@ and open the template in the editor.
     -fx-text-fill: #fcb215;
 }
 .row-title-hbox {
-        -fx-background-color: #41424a;
-          -fx-border-color: #232629;
+        -fx-background-color: #30394266;
+          -fx-border-color: derive(#303942, -22%);
     -fx-border-width: 1px;
 }
 

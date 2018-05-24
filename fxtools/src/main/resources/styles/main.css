@@ -1,8 +1,8 @@
 .root{
-    -fx-base: #31363b;
+    -fx-base: #303942;
     -fx-background: #31363b;
     -fx-focus-color: #3073b4;
-    -fx-control-inner-background: #232629;
+    -fx-control-inner-background: derive(-fx-base, -20%);
     -fx-inner-border: linear-gradient(to bottom,
         derive(-fx-color,30%) 0%,
         derive(-fx-color,-5%) 100%);
