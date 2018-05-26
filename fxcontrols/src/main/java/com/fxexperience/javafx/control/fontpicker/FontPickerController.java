@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.input.MouseEvent;
 
 public class FontPickerController extends AnchorPane {
 
@@ -31,9 +32,7 @@ public class FontPickerController extends AnchorPane {
     @FXML private ComboBox<String> familyComboBox;
     @FXML private ChoiceBox<String> styleChoiceBox;
     @FXML private ComboBox<String> sizeComboBox;
-    @FXML private ToggleGroup fontRadioGroup;
-    @FXML private RadioButton fixedFontRadio;
-    @FXML private RadioButton scalableFontRadio;
+    @FXML private Slider sl_font_size;
     @FXML private Text sampleFontText;
 
     private ObjectProperty<Font> font = new SimpleObjectProperty<>(Font.getDefault());
@@ -75,9 +74,7 @@ public class FontPickerController extends AnchorPane {
         // Family font combo-box
         familyComboBox.getItems().setAll(Font.getFamilies());
         familyComboBox.getSelectionModel().select(0);
-
         familyComboBox.valueProperty().addListener(observable -> changeFont());
-
         familyComboBox.setCellFactory((ListView<String> listView) -> {
             final ListCell<String> cell = new ListCell<String>() {
                 @Override
@@ -122,17 +119,17 @@ public class FontPickerController extends AnchorPane {
             Logger.getLogger(FontPickerController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @FXML 
+    private void onSliderUpdate(MouseEvent event) {
+        sizeComboBox.setValue(Double.toString(sl_font_size.getValue()));
+    }
 
     @FXML
     private void onFixedFontSelected(ActionEvent event) {
         numberFormat.setMinimumFractionDigits(0);
         numberFormat.setMaximumFractionDigits(0);
         sizeComboBox.getItems().setAll(fixedSizes);
-    }
-
-    @FXML
-    private void onScalableFontSelected(ActionEvent event) {
-
     }
 
     private static List<String> getFixedFontSizes() {

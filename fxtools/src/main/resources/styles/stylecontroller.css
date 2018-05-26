@@ -7,13 +7,14 @@ and open the template in the editor.
     Created on : May 3, 2018, 3:52:36 AM
     Author     : andje22
 */
+
 .body {
     -fx-background-color: #404952;
     -fx-background-image: url("../images/primary_bg.png");
 }
 .titled-pane:expanded .content,
 .titled-pane:collapsed .content {
-    -fx-background-color: transparent;
+    -fx-background-color: #2c343c77;
 }
 #Preview-Alpha {
     -fx-background-image: url("../images/chequers.png");
@@ -82,7 +83,7 @@ and open the template in the editor.
     -fx-text-fill: #fcb215;
 }
 .row-title-hbox {
-        -fx-background-color: #30394266;
+        -fx-background-color: #6699ff36;
           -fx-border-color: derive(#303942, -22%);
     -fx-border-width: 1px;
 }

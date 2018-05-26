@@ -29,7 +29,12 @@
     -fx-text-fill: #b4c4cb;
     -fx-font-size: 14px;
 }
-
+.status-bar {
+    -fx-background-color: #404952;
+    -fx-background-image: url("../images/primary_bg.png");
+    -fx-border-color: -fx-inner-border;
+    -fx-border-width: 1 0 0 0;
+}
 .menu-toggle-button .text {
     -fx-fill: #b4c4cb;
     -fx-text-fill: #b4c4cb;

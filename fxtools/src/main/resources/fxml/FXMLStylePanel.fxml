@@ -73,19 +73,19 @@
                                       <content>
                                         <AnchorPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="425.0">
                                              <children>
-                                                <GridPane id="GridPane-Properties" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                                <GridPane id="GridPane-Properties" hgap="2.0" vgap="5.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="10.0">
                                                    <children>
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="3" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="7" />
-                                                      <Label fx:id="lbl_txt_base" minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="2" />
-                                                      <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="5" />
-                                                      <Label fx:id="lbl_txt_inner_bg" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="6" />
-                                                      <Label fx:id="lbl_txt_bg" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="4" />
-                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" />
-                                                      <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="1" />
-                                                      <PaintPicker fx:id="pp_base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" />
-                                                      <PaintPicker fx:id="pp_accent" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="4" />
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="8" />
+                                                      <Label fx:id="lbl_txt_base" minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="3" />
+                                                      <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="6" />
+                                                      <Label fx:id="lbl_txt_inner_bg" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="7" />
+                                                      <Label fx:id="lbl_txt_bg" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="5" />
+                                                      <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" GridPane.rowIndex="1" />
+                                                      <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="2" />
+                                                      <PaintPicker fx:id="pp_base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <PaintPicker fx:id="pp_accent" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                                          <children>
                                                             <PaintPicker fx:id="pp_txt_base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <CheckBox fx:id="cb_txt_base" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
@@ -95,8 +95,8 @@
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_background" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                      <PaintPicker fx:id="pp_background" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
                                                          <children>
                                                             <PaintPicker fx:id="pp_txt_bg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <CheckBox fx:id="cb_txt_bg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
@@ -106,8 +106,8 @@
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_cntrl_inner_bg" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                                      <PaintPicker fx:id="pp_cntrl_inner_bg" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                                                          <children>
                                                             <PaintPicker fx:id="pp_txt_inner_bg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
                                                             <CheckBox fx:id="cb_txt_inner_bg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
@@ -117,14 +117,20 @@
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_focus" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <PaintPicker fx:id="pp_focus" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                      <HBox maxWidth="1.7976931348623157E308" styleClass="row-title-hbox" GridPane.columnSpan="2">
+                                                         <children>
+                                                            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Root colors" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                    <columnConstraints>
-                                                      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" prefWidth="200.0" />
+                                                      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" prefWidth="165.0" />
                                                       <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
                                                       <ColumnConstraints />
                                                    </columnConstraints>
                                                    <rowConstraints>
+                                                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
@@ -136,9 +142,6 @@
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" valignment="CENTER" vgrow="ALWAYS" />
                                                    </rowConstraints>
-                                                   <padding>
-                                                      <Insets left="3.0" />
-                                                   </padding>
                                                 </GridPane>
                                              </children>
                                           </AnchorPane>
@@ -301,7 +304,7 @@
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="paddingTextField" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tf_padding" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>
@@ -328,7 +331,7 @@
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="borderWidthTextField" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tf_border_width" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>
@@ -352,7 +355,7 @@
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="borderRadiusTextField" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tf_border_radius" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>

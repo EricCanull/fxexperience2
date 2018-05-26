@@ -9,22 +9,31 @@
  */
 package com.fxexperience.previewer.controller;
 
+import java.io.FileNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
+import java.net.URLStreamHandlerFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import org.apache.commons.io.IOUtils;
 
 public class PreviewController extends VBox {
-
+    
     @FXML private ChoiceBox<?> choiceBox;
     @FXML private ComboBox<?> comboBox;
     @FXML private ListView<String> listView;
+    
+    private String style = "";
 
     public PreviewController() {
         initialize();
@@ -52,6 +61,68 @@ public class PreviewController extends VBox {
     }
 
     public void setPreviewPanelStyle(String code) {
-         setStyle(code);
+         this.setStyle(code);
+//        Platform.runLater(() -> {
+//            style = code;
+//            this.getStylesheets().clear();
+//            this.getParent().add("internal:stylesheet.css");
+//        });
+    }
+
+    public void setFont(Font font) {
+       this.getChildren()
+          .filtered(node -> node instanceof TextField)
+          .forEach(node -> ((TextField)node).setFont(font));
+    }
+    
+     
+    {
+        // URL Handler to create magic "internal:stylesheet.css" url for our css string
+        URL.setURLStreamHandlerFactory(new StringURLStreamHandlerFactory());
+    }
+
+    /**
+     * URLConnection implementation that returns the css string property, as a
+     * stream, in the getInputStream method.
+     */
+    private class StringURLConnection extends URLConnection {
+
+        public StringURLConnection(URL url) {
+            super(url);
+        }
+
+        @Override
+        public void connect() throws IOException {
+        }
+
+        @Override
+        public InputStream getInputStream() throws IOException {
+            return IOUtils.toInputStream(style, "UTF-8");
+        }
+    }
+
+    /**
+     * URL Handler to create magic "internal:stylesheet.css" url for our css
+     * string
+     */
+    private class StringURLStreamHandlerFactory implements URLStreamHandlerFactory {
+
+        URLStreamHandler streamHandler = new URLStreamHandler() {
+            @Override
+            protected URLConnection openConnection(URL url) throws IOException {
+                if (url.toString().toLowerCase().endsWith(".css")) {
+                    return new StringURLConnection(url);
+                }
+                throw new FileNotFoundException();
+            }
+        };
+
+        @Override
+        public URLStreamHandler createURLStreamHandler(String protocol) {
+            if ("internal".equals(protocol)) {
+                return streamHandler;
+            }
+            return null;
+        }
     }
 }

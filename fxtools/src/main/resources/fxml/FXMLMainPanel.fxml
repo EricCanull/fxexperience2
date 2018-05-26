@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="760.0" styleClass="root-controller-panel" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorderPane" minHeight="-Infinity" prefHeight="795.0" styleClass="root-controller-panel" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
           <children>

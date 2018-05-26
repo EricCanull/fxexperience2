@@ -9,8 +9,6 @@
  */
 package com.fxexperience.tools.controllers;
 
-
-
 import com.paintpicker.scene.control.picker.PaintPicker;
 import com.paintpicker.scene.control.picker.mode.Mode;
 import com.paintpicker.utils.ColorEncoder;

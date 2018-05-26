@@ -42,34 +42,35 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<fx:root id="PreviewArea" alignment="CENTER" stylesheets="@../styles/preview.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+
+<fx:root id="PreviewArea" fx:id="previewBox" alignment="CENTER" prefHeight="662.0" prefWidth="720.0" stylesheets="@../styles/preview.css" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
       <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" text="Go" />
+         <items>
+            <Button mnemonicParsing="false" text="Go" />
             <TextField alignment="CENTER_RIGHT" prefWidth="160.0" text="javafx" />
             <Label text="Search" />
             <Separator orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
-        </items>
+         </items>
       </ToolBar>
       <TabPane side="RIGHT" VBox.vgrow="ALWAYS">
          <tabs>
@@ -153,13 +154,15 @@
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Text">
                                        <HBox.margin>
                                           <Insets left="5.0" />
-                                       </HBox.margin></Text>
+                                       </HBox.margin>
+                                    </Text>
                                  </children>
                               </HBox>
                               <Label maxWidth="1.7976931348623157E308" text="Label">
                                  <VBox.margin>
                                     <Insets left="5.0" />
-                                 </VBox.margin></Label>
+                                 </VBox.margin>
+                              </Label>
                               <Hyperlink id="hyperlink1" text="Hyperlink" />
                            </children>
                         </VBox>
@@ -174,10 +177,10 @@
                         <ProgressIndicator progress="0.6" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <SplitMenuButton alignment="CENTER_RIGHT" mnemonicParsing="false" text="SplitMenuButton" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
                         </SplitMenuButton>
                         <TextField id="textField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                      </children>
@@ -222,12 +225,12 @@
                               <ScrollPane hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                  <content>
                                     <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0">
-                                      <columns>
-                                        <TableColumn prefWidth="134.0" text="C1" />
-                                        <TableColumn prefWidth="109.0" text="C2" />
+                                       <columns>
+                                          <TableColumn prefWidth="134.0" text="C1" />
+                                          <TableColumn prefWidth="109.0" text="C2" />
                                           <TableColumn prefWidth="300.0" text="C3" />
                                           <TableColumn prefWidth="148.0" text="Column X" />
-                                      </columns>
+                                       </columns>
                                     </TableView>
                                  </content>
                               </ScrollPane>

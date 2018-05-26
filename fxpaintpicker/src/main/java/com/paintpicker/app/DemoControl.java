@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.ComboBox;
 
 /**
  * 
@@ -25,8 +26,7 @@ public class DemoControl implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         PaintPicker paintPicker = new PaintPicker(Color.web("#1A4C9C"), Mode.SINGLE);
-        // paintPicker.setEditable(true);
-       // paintPicker.get
+
 
         menuBar.widthProperty().addListener((observable, oldValue, newValue) -> {
             if ((double) newValue > 0) {

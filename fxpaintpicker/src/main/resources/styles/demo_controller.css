@@ -14,10 +14,10 @@ and open the template in the editor.
     -fx-background: #31363B;
     -fx-focus-color: #0093FF;
     -fx-control-inner-background: #232629;
-    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,85%) 0%, derive(-fx-color,94%) 100%);
+/*    -fx-inner-border: linear-gradient(to bottom, derive(-fx-color,85%) 0%, derive(-fx-color,94%) 100%);
     -fx-body-color: linear-gradient( to bottom, derive(-fx-color, 45.0%) 0%, derive(-fx-color, 34.0%) 50%, derive(-fx-color, -52%) 50.5%, derive(-fx-color, 67%) 100%);
     -fx-outer-border: derive(-fx-color,56%);
-    -fx-shadow-highlight-color: derive(-fx-background,-26.0%);
+    -fx-shadow-highlight-color: derive(-fx-background,-26.0%);*/
     
 }
 .root-pane {
@@ -26,12 +26,12 @@ and open the template in the editor.
 
 .color-picker {
      -fx-skin: "com.paintpicker.scene.control.picker.skins.PaintPickerSkin";
-    -fx-background-color: transparent; 
+/*    -fx-background-color: transparent; */
 }
 
 .color-picker .arrow-button  {
-    -fx-opacity: 0.0;
-    -fx-cursor: text;
+/*    -fx-opacity: 0.0;
+    -fx-cursor: text;*/
 }
 
 .color-picker .color-picker-label .text {

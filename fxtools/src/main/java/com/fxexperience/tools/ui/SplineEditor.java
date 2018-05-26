@@ -172,24 +172,15 @@ public final class SplineEditor extends XYChart<Number, Number> {
         return value < 0 ? 0 : value > 1 ? 1 : value;
     }
     
-
+    /* unused methods */
     @Override
-    protected void dataItemAdded(Series<Number, Number> series, int i, Data<Number, Number> data) {
-    }
-
+    protected void dataItemAdded(Series<Number, Number> series, int i, Data<Number, Number> data) { }
     @Override
-    protected void dataItemRemoved(Data<Number, Number> data, Series<Number, Number> series) {
-    }
-
+    protected void dataItemRemoved(Data<Number, Number> data, Series<Number, Number> series) { }
     @Override
-    protected void dataItemChanged(Data<Number, Number> data) {
-    }
-
+    protected void dataItemChanged(Data<Number, Number> data) { }
     @Override
-    protected void seriesAdded(Series<Number, Number> series, int i) {
-    }
-
+    protected void seriesAdded(Series<Number, Number> series, int i) { }
     @Override
-    protected void seriesRemoved(Series<Number, Number> series) {
-    }
+    protected void seriesRemoved(Series<Number, Number> series) { }
 }

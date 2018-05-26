@@ -12,13 +12,10 @@ package com.fxexperience.tools.controllers;
 
 import com.paintpicker.scene.control.picker.PaintPicker;
 import com.fxexperience.javafx.control.fontpicker.FontPickerController;
-
 import com.fxexperience.previewer.controller.PreviewController;
 import com.fxexperience.tools.util.Gradient;
-
 import com.fxexperience.tools.util.FileUtil;
 import com.paintpicker.scene.control.fields.DoubleTextField;
-
 import com.paintpicker.utils.ColorEncoder;
 
 import fxwebview.app.EditorController;
@@ -49,6 +46,7 @@ public class StyleController extends VBox {
     @FXML private BorderPane previewPane;
     @FXML private StackPane editorPane;
     @FXML private ComboBox<Gradient> gradientComboBox;
+    
     @FXML private PaintPicker pp_base, pp_accent, pp_background, pp_txt_base,
                   pp_txt_bg, pp_cntrl_inner_bg, pp_txt_inner_bg, pp_focus;
     
@@ -61,16 +59,16 @@ public class StyleController extends VBox {
    
     @FXML private Label lbl_txt_base, lbl_txt_bg, lbl_txt_inner_bg;
     
-    @FXML private DoubleTextField paddingTextField, borderWidthTextField, borderRadiusTextField;
+    @FXML private DoubleTextField tf_padding, tf_border_width, tf_border_radius;
 
     private final FontPickerController font = new FontPickerController();
     private final EditorController editor = new EditorController();
     private final PreviewController previewer = new PreviewController();
-    
-    DecimalFormat df = new DecimalFormat("##.##");
-    SimpleDoubleProperty innerTopDerivation = new SimpleDoubleProperty();
-    SimpleDoubleProperty innerBottomDerivation= new SimpleDoubleProperty(); 
-        
+
+    private final DecimalFormat df = new DecimalFormat("##.##");
+    private final SimpleDoubleProperty innerTopDerivation = new SimpleDoubleProperty();
+    private final SimpleDoubleProperty innerBottomDerivation = new SimpleDoubleProperty();
+
     public StyleController() {
        
         final FXMLLoader loader = new FXMLLoader();
@@ -93,10 +91,11 @@ public class StyleController extends VBox {
         previewPane.setCenter(previewer);
         
         // create Integer Fields
-        addTextFieldBinding(sl_padding, paddingTextField);
-        addTextFieldBinding(sl_border_width, borderWidthTextField);
-        addTextFieldBinding(sl_border_radius, borderRadiusTextField);
+        addTextFieldBinding(sl_padding, tf_padding);
+        addTextFieldBinding(sl_border_width, tf_border_width);
+        addTextFieldBinding(sl_border_radius, tf_border_radius);
         
+        // set default paint picker colors
         pp_base.setValue(Color.web("#213870"));
         pp_accent.setValue(Color.web("#0096C9"));
         pp_background.setValue(Color.web("#2c2f33"));
@@ -106,7 +105,7 @@ public class StyleController extends VBox {
         pp_cntrl_inner_bg.setValue(Color.web("#23272a"));
         pp_txt_inner_bg.setValue(Color.web("#000000"));
        
-        // Paint pickers
+        // add listeners to paint pickers
         pp_base.valueProperty().addListener(o -> createCSS());
         pp_accent.valueProperty().addListener(o -> createCSS());
         pp_background.valueProperty().addListener(o -> createCSS());
@@ -116,10 +115,10 @@ public class StyleController extends VBox {
         pp_txt_inner_bg.valueProperty().addListener(o -> createCSS());
         pp_focus.valueProperty().addListener(o -> createCSS());
        
-           // Font choice box
-        font.fontProperty().addListener(o -> createCSS());
+        // add listener to font choice box
+        font.fontProperty().addListener(o -> fontChanged());
 
-           // Disabled properties
+        // bind disabled properties
         sl_top_mid_body.disableProperty().bind(cb_top_mid.selectedProperty().not());
         sl_bottom_mid_body.disableProperty().bind(cb_bottom_mid.selectedProperty().not());
         sl_border.disableProperty().bind(cb_border.selectedProperty().not());
@@ -133,7 +132,7 @@ public class StyleController extends VBox {
         pp_txt_bg.disableProperty().bind(cb_txt_bg.selectedProperty().not());
         pp_txt_inner_bg.disableProperty().bind(cb_txt_inner_bg.selectedProperty().not());
 
-        // Populate gradient combo
+        // populate gradient combo
         gradientComboBox.getItems().addAll(FXCollections.observableArrayList(Gradient.GRADIENTS));
         gradientComboBox.setValue(Gradient.GRADIENTS[0]);
         gradientComboBox.setOnAction(Event::consume);
@@ -151,6 +150,7 @@ public class StyleController extends VBox {
                         setText(gradient.getName());
                         Region preview = new Region();
                         preview.setPrefSize(30, 30);
+                        System.out.println(gradient.getCss());
                         preview.setStyle("-fx-border-color: #676B6F; -fx-background-color: " + gradient.getCss());
                         setGraphic(preview);
                     }
@@ -158,12 +158,6 @@ public class StyleController extends VBox {
             };
             cell.setStyle("-fx-cell-size: 32;");
             return cell;
-        });
-        
-        editorPane.visibleProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == true) {
-                 setCodeAreaText();
-            }
         });
         
         createCSS();
@@ -205,7 +199,8 @@ public class StyleController extends VBox {
     }
     
     private void fontChanged() {
-
+        previewer.setFont(font.fontProperty().get());
+        createCSS();
     }
    
     /**
@@ -277,7 +272,7 @@ public class StyleController extends VBox {
         cssBuffer.append("}\n");
 
         if (cb_txt_base.isSelected()) {
-            cssBuffer.append(".hyperlink, {\n");
+            cssBuffer.append(".hyperlink, .text {\n");
             cssBuffer.append("  -fx-text-fill: -fx-text-background-color;\n");
             cssBuffer.append("}\n");
             cssBuffer.append(".toggle-button:selected {\n");
@@ -302,13 +297,16 @@ public class StyleController extends VBox {
         return cssBuffer.toString();
     }
 
-    private void setCodeAreaText() {
+    private void setEditorCode() {
       editor.setEditorCode(cssBuffer.toString());
     }
 
     @FXML
     private void displayEditorPane() {
-            editorPane.setVisible(!editorPane.isVisible());
+        editorPane.setVisible(!editorPane.isVisible());
+        if (editorPane.isVisible()) {
+            setEditorCode();
+        }
     }
 
     @FXML

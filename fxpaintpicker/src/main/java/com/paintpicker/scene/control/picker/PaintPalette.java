@@ -112,18 +112,18 @@ public class PaintPalette extends Region {
         customColorLink.setOnAction((ActionEvent t) -> {
             if (customPaintControl == null) {
                 customPaintControl = new CustomPaintControl(popupControl, paintPicker.getMode());
+                customPaintControl.setCustomColor((Color) paintPicker.getValue());
                 customPaintControl.customColorProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue instanceof LinearGradient || newValue instanceof RadialGradient) {
                         return;
                     }
                     paintPicker.setValue(customPaintControl.customColorProperty().get());
                 });
-
                 customPaintControl.customPaintProperty().addListener((observable) -> {
-                    if (customPaintControl.isGradientShowing())
-                    paintPicker.setValue(customPaintControl.customPaintProperty().get());
+                    if (customPaintControl.isGradientShowing()) {
+                        paintPicker.setValue(customPaintControl.customPaintProperty().get());
+                    }
                 });
-
                 customPaintControl.setOnSave(() -> {
                     Paint customColor = customPaintControl.customColorProperty().get();
                     buildCustomColors();
@@ -140,7 +140,7 @@ public class PaintPalette extends Region {
             
             if (paintPicker.valueProperty().get() instanceof LinearGradient
                     || paintPicker.valueProperty().get() instanceof RadialGradient) {
-
+                        return;
             } else {
                 customPaintControl.currentColorProperty().set(paintPicker.valueProperty().get());
             }
