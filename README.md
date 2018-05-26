@@ -27,8 +27,7 @@ For more info about this app and other JavaFX features please
 ### FX-Styler Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/fxtoolscreenshot.png "CSS Styler")
 ### FX-Codemirror CSS editor
-![alt text]
-(https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/codemirrorscreenshot.png "css editor")
+![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/codemirrorscreenshot.png "FXCSS Editor")
 ### FX-Spline Tool
 ![alt text](https://github.com/EricCanull/fxexperience2/blob/master/fxtools/src/main/resources/images/screenshots/splinescreenshot.png "Spline Tool")
 ### FX-Derivation Tool
