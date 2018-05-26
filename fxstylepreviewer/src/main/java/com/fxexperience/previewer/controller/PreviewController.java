@@ -9,6 +9,7 @@
  */
 package com.fxexperience.previewer.controller;
 
+import com.sun.javafx.css.StyleManager;
 import java.io.FileNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
@@ -36,32 +38,27 @@ public class PreviewController extends VBox {
     private String style = "";
 
     public PreviewController() {
-        initialize();
-    }
-
-    /**
-     * Private
-     */
-    private void initialize() {
         try {
             final FXMLLoader loader = new FXMLLoader();
             loader.setLocation(PreviewController.class.getResource("/fxml/FXMLPreviewPanel.fxml")); //NOI18N
-            loader.setController(this);
-            loader.setRoot(this);
+            loader.setController(PreviewController.this);
+            loader.setRoot(PreviewController.this);
             loader.load();
 
         } catch (IOException ex) {
             Logger.getLogger(PreviewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       
+        
         choiceBox.getSelectionModel().select(0);
         comboBox.getSelectionModel().select(0);
 
-        listView.setItems(FXCollections.observableArrayList("Alpha","Beta", "Gamma"));
+        listView.setItems(FXCollections.observableArrayList("Alpha", "Beta", "Gamma"));
+//           System.out.println(this.getUserAgentStylesheet());
     }
 
     public void setPreviewPanelStyle(String code) {
-         this.setStyle(code);
+        this.setStyle(code);
 //        Platform.runLater(() -> {
 //            style = code;
 //            this.getStylesheets().clear();
