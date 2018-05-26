@@ -2,24 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>fxexperience2</artifactId>
-        <groupId>com.fxexperience</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+    <artifactId>fxexperience2</artifactId>
+    <groupId>com.fxexperience</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 
-    <artifactId>fxtools</artifactId>
+    <groupId>com.fxexperience</groupId>
+    <artifactId>fxfontpicker</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>fxtools</name>
+    <name>fxfontpicker</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.fxexperience.tools.app.MainApp</mainClass>
+        <mainClass>fxfontpicker.app.MainApp</mainClass>
     </properties>
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>FXExperience</name>
+        <name>Your Organisation</name>
     </organization>
 
     <build>
@@ -93,7 +95,6 @@
                     <compilerArguments>
                         <bootclasspath>${sun.boot.class.path}${path.separator}${java.home}/lib/jfxrt.jar</bootclasspath>
                     </compilerArguments>
-                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
             <plugin>
@@ -108,42 +109,5 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx -->
-        <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx</artifactId>
-            <version>8.9</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>fxcontrols</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.paintpicker</groupId>
-            <artifactId>fxpaintpicker</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>fxwebview</groupId>
-            <artifactId>fxcodemirror</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>fxstylepreviewer</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.fxmisc.cssfx</groupId>
-            <artifactId>cssfx</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>fxfontpicker</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+
 </project>

@@ -76,14 +76,14 @@
          <tabs>
             <Tab text="Controls">
                <content>
-                  <GridPane id="#ContentPane" alignment="CENTER" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="3.0">
+                  <GridPane id="ContentPane" alignment="CENTER" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="3.0">
                      <children>
-                        <Button id="button1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="Button" GridPane.columnIndex="3">
+                        <Button maxWidth="1.7976931348623157E308" minWidth="120.0" text="Button" GridPane.columnIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <ToggleButton id="toggleButton1" maxWidth="1.7976931348623157E308" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <ToggleButton maxWidth="1.7976931348623157E308" minWidth="120.0" text="ToggleButton" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
@@ -143,8 +143,8 @@
                         <Spinner maxWidth="1.7976931348623157E308" minWidth="180.0" GridPane.columnIndex="4" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" />
                         <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5">
                            <children>
-                              <PasswordField id="passwordField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="Password" />
-                              <TextArea id="textArea1" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
+                              <PasswordField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="Password" />
+                              <TextArea maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="140.0" text="TextArea" wrapText="true" />
                            </children>
                         </VBox>
                         <VBox spacing="4.0" GridPane.rowIndex="2">
@@ -163,15 +163,15 @@
                                     <Insets left="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Hyperlink id="hyperlink1" text="Hyperlink" />
+                              <Hyperlink text="Hyperlink" />
                            </children>
                         </VBox>
                         <ProgressBar prefWidth="200.0" progress="0.75" GridPane.rowIndex="3" />
                         <Separator maxHeight="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="2" GridPane.rowSpan="6" />
                         <HBox alignment="TOP_RIGHT" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
                            <children>
-                              <Slider id="sliderHorizontal1" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="134.0" showTickLabels="true" showTickMarks="true" HBox.hgrow="ALWAYS" />
-                              <Slider id="sliderVertical1" maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0" showTickLabels="true" showTickMarks="true" />
+                              <Slider maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="134.0" showTickLabels="true" showTickMarks="true" HBox.hgrow="ALWAYS" />
+                              <Slider maxHeight="1.7976931348623157E308" minHeight="-Infinity" orientation="VERTICAL" prefHeight="151.0" showTickLabels="true" showTickMarks="true" />
                            </children>
                         </HBox>
                         <ProgressIndicator progress="0.6" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -182,7 +182,7 @@
                               <MenuItem mnemonicParsing="false" text="Action 2" />
                            </items>
                         </SplitMenuButton>
-                        <TextField id="textField1" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minWidth="171.0" prefWidth="171.0" text="TextField" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="130.0" />

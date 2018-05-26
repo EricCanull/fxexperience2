@@ -16,5 +16,6 @@
     <module>fxcodemirror</module>
     <module>fxpaintpicker</module>
     <module>fxstylepreviewer</module>
+    <module>fxfontpicker</module>
   </modules>
 </project>

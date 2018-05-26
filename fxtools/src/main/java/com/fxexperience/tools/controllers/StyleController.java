@@ -11,12 +11,13 @@ package com.fxexperience.tools.controllers;
 
 
 import com.paintpicker.scene.control.picker.PaintPicker;
-import com.fxexperience.javafx.control.fontpicker.FontPickerController;
+
 import com.fxexperience.previewer.controller.PreviewController;
 import com.fxexperience.tools.util.Gradient;
 import com.fxexperience.tools.util.FileUtil;
 import com.paintpicker.scene.control.fields.DoubleTextField;
 import com.paintpicker.utils.ColorEncoder;
+import fxfontpicker.app.FontPicker;
 
 import fxwebview.app.EditorController;
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class StyleController extends VBox {
     
     @FXML private DoubleTextField tf_padding, tf_border_width, tf_border_radius;
 
-    private final FontPickerController font = new FontPickerController();
+    private final FontPicker font = new FontPicker();
     private final EditorController editor = new EditorController();
     private final PreviewController previewer = new PreviewController();
 

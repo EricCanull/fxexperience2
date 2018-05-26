@@ -1,10 +1,8 @@
-package com.fxexperience.javafx.control.fontpicker;
+package fxfontpicker.app;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -17,25 +15,20 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.MouseEvent;
 
-public class FontPickerController extends AnchorPane {
-
-    private final ObservableList<String> fixedSizes = FXCollections.observableArrayList(getFixedFontSizes());
-    private final NumberFormat numberFormat = DecimalFormat.getInstance(Locale.getDefault());
-
+public class FontPicker extends AnchorPane {
+    
     @FXML private ComboBox<String> familyComboBox;
     @FXML private ChoiceBox<String> styleChoiceBox;
     @FXML private ComboBox<String> sizeComboBox;
     @FXML private Slider sl_font_size;
     @FXML private Text sampleFontText;
 
-    private ObjectProperty<Font> font = new SimpleObjectProperty<>(Font.getDefault());
+    private final ObjectProperty<Font> font = new SimpleObjectProperty<>(Font.getDefault());
 
     public Font getFont() {
         return font.get();
@@ -46,35 +39,32 @@ public class FontPickerController extends AnchorPane {
     }
 
     public void setFont(Font font) {
+        assert font instanceof Font;
+        
         this.font.set(font);
     }
-
-    public FontPickerController() {
-        initialize();
-    }
-
-    /**
-     * Private
-     */
-    private void initialize() {
-
-        final FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(FontPickerController.class.getResource("/fxml/FXMLFontPicker.fxml")); //NOI18N
-        loader.setController(this);
-        loader.setRoot(this);
+    
+    public FontPicker() {
+       
         try {
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(FontPicker.class.getResource("/fxml/FXMLFontPicker.fxml")); //NOI18N
+            loader.setController(FontPicker.this);
+            loader.setRoot(FontPicker.this);
+
             loader.load();
         } catch (IOException ex) {
-            Logger.getLogger(FontPickerController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FontPicker.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        numberFormat.setMinimumFractionDigits(0);
-        numberFormat.setMaximumFractionDigits(5);
+        
+        final NumberFormat nf = DecimalFormat.getInstance(Locale.getDefault());
+        nf.setMinimumFractionDigits(0);
+        nf.setMaximumFractionDigits(5);
 
         // Family font combo-box
         familyComboBox.getItems().setAll(Font.getFamilies());
         familyComboBox.getSelectionModel().select(0);
-        familyComboBox.valueProperty().addListener(observable -> changeFont());
+        familyComboBox.valueProperty().addListener(observable -> changeFont(nf));
         familyComboBox.setCellFactory((ListView<String> listView) -> {
             final ListCell<String> cell = new ListCell<String>() {
                 @Override
@@ -94,17 +84,18 @@ public class FontPickerController extends AnchorPane {
         styleChoiceBox.setItems(FXCollections.observableArrayList(
                 "Bold", "Bold Italic", "Italic", "Regular"));
         styleChoiceBox.getSelectionModel().select(3);
-        styleChoiceBox.valueProperty().addListener(observable -> changeFont());
+        styleChoiceBox.valueProperty().addListener(observable -> changeFont(nf));
 
         // Size font combo-box
-        sizeComboBox.getItems().setAll(fixedSizes);
+        sizeComboBox.getItems().setAll(FXCollections.observableArrayList(
+                "9",  "10", "11", "12", "13", "14", "18", "24", "36", "48", "72"));
         sizeComboBox.getSelectionModel().select(4);
-        sizeComboBox.valueProperty().addListener(observable -> changeFont());
+        sizeComboBox.valueProperty().addListener(observable -> changeFont(nf));
     }
 
-    private void changeFont() {
+    private void changeFont(NumberFormat nf) {
         try {
-            double size = numberFormat.parse(sizeComboBox.getValue()).doubleValue();
+            double size = nf.parse(sizeComboBox.getValue()).doubleValue();
 
             FontWeight weight = styleChoiceBox.getSelectionModel().isSelected(0) ||
                     styleChoiceBox.getSelectionModel().isSelected(1)
@@ -116,33 +107,12 @@ public class FontPickerController extends AnchorPane {
             font.setValue(Font.font(family, weight, posture, size));
             sampleFontText.setFont(font.get());
         } catch (java.text.ParseException ex) {
-            Logger.getLogger(FontPickerController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FontPicker.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     @FXML 
     private void onSliderUpdate(MouseEvent event) {
-        sizeComboBox.setValue(Double.toString(sl_font_size.getValue()));
-    }
-
-    @FXML
-    private void onFixedFontSelected(ActionEvent event) {
-        numberFormat.setMinimumFractionDigits(0);
-        numberFormat.setMaximumFractionDigits(0);
-        sizeComboBox.getItems().setAll(fixedSizes);
-    }
-
-    private static List<String> getFixedFontSizes() {
-        String[] predefinedFontSizes
-                = {"9.0", "10.0", "11.0", "12.0",
-                  "13.0", "14.0", "18.0", "24.0"};
-        return Arrays.asList(predefinedFontSizes);
-    }
-
-    private static List<String> getScalableFontSizes() {
-        String[] predefinedFontSizes
-                = {"0.083333", "0.166667", "0.25", "0.333333", "0.416667", "0.5",
-                   "0.583333", "0.666667", "0.75", "0.833333", "0.916667", "1.0" };
-        return Arrays.asList(predefinedFontSizes);
+        sizeComboBox.setValue(Integer.toString((int) sl_font_size.getValue()));
     }
 }

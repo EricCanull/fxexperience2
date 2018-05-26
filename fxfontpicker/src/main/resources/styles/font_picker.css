@@ -1,0 +1,15 @@
+.sample-text {
+    -fx-fill: -fx-text-background-color;
+}
+
+.prop-label {
+    /*-fx-text-fill: #D7D7D7;*/
+}
+
+.style-choice-box .label {
+/*   -fx-text-fill: #D7D7D7;*/
+    -fx-font-size: 1em;
+}
+
+
+
