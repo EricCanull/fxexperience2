@@ -29,7 +29,7 @@
         <items>
           <AnchorPane id="Content-Area" fx:id="previewAnchorPane">
                <children>
-                  <BorderPane id="Preview-Alpha" fx:id="previewPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="720.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+                  <BorderPane id="Preview-Alpha" fx:id="previewContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="720.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
                </children>
             </AnchorPane>
             <AnchorPane minWidth="-Infinity" prefHeight="722.0" prefWidth="425.0">
@@ -77,47 +77,47 @@
                                                    <children>
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Background:" GridPane.rowIndex="4" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Focus Color:" GridPane.rowIndex="8" />
-                                                      <Label fx:id="lbl_txt_base" minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="3" />
+                                                      <Label fx:id="lblTxtBase" minWidth="-Infinity" styleClass="prop-label" text="Base Text:" GridPane.rowIndex="3" />
                                                       <Label styleClass="prop-label" text="Field Background:" GridPane.rowIndex="6" />
-                                                      <Label fx:id="lbl_txt_inner_bg" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="7" />
-                                                      <Label fx:id="lbl_txt_bg" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="5" />
+                                                      <Label fx:id="lblTxtInnerBg" styleClass="prop-label" text="Field Text:" GridPane.rowIndex="7" />
+                                                      <Label fx:id="lblTxtBg" styleClass="prop-label" text="Background Text:" GridPane.rowIndex="5" />
                                                       <Label minWidth="-Infinity" styleClass="prop-label" text="Base:" GridPane.rowIndex="1" />
                                                       <Label layoutX="13.0" layoutY="21.0" minWidth="-Infinity" styleClass="prop-label" text="Accent:" GridPane.rowIndex="2" />
-                                                      <PaintPicker fx:id="pp_base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <PaintPicker fx:id="pp_accent" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                                      <PaintPicker fx:id="ppBase" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <PaintPicker fx:id="ppAccent" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                          <children>
-                                                            <PaintPicker fx:id="pp_txt_base" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
-                                                            <CheckBox fx:id="cb_txt_base" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
+                                                            <PaintPicker fx:id="ppTxtBase" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <CheckBox fx:id="cbTxtBase" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
                                                                <graphic>
                                                                   <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                                </graphic>
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_background" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                                      <PaintPicker fx:id="ppBackground" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                          <children>
-                                                            <PaintPicker fx:id="pp_txt_bg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
-                                                            <CheckBox fx:id="cb_txt_bg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
+                                                            <PaintPicker fx:id="ppTxtBg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <CheckBox fx:id="cbTxtBg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
                                                                <graphic>
                                                                   <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                                </graphic>
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_cntrl_inner_bg" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                                                      <PaintPicker fx:id="ppCntrlInnerBg" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                          <children>
-                                                            <PaintPicker fx:id="pp_txt_inner_bg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
-                                                            <CheckBox fx:id="cb_txt_inner_bg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
+                                                            <PaintPicker fx:id="ppTxtInnerBg" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" />
+                                                            <CheckBox fx:id="cbTxtInnerBg" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch">
                                                                <graphic>
                                                                   <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                                </graphic>
                                                             </CheckBox>
                                                          </children>
                                                       </HBox>
-                                                      <PaintPicker fx:id="pp_focus" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                      <PaintPicker fx:id="ppFocus" layoutX="147.0" layoutY="16.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="140.0" styleClass="color-picker" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                                       <HBox maxWidth="1.7976931348623157E308" styleClass="row-title-hbox" GridPane.columnSpan="2">
                                                          <children>
                                                             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Root colors" HBox.hgrow="ALWAYS" />
@@ -156,7 +156,7 @@
                                              <children>
                                                 <GridPane fx:id="buttonGridPane" hgap="4.0" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="423.0" vgap="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <CheckBox fx:id="cb_border" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                      <CheckBox fx:id="cbBorder" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                                          <graphic>
                                                             <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                          </graphic>
@@ -186,17 +186,17 @@
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="sl_top_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                      <Slider fx:id="sl_top_mid_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                      <Slider fx:id="sl_bottom_mid_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                      <Slider fx:id="sl_bottom_body" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                      <Slider fx:id="sl_top_hlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Slider fx:id="slTopBody" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                      <Slider fx:id="slTopMidBody" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                      <Slider fx:id="slBottomMidBody" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                      <Slider fx:id="slBottomBody" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                      <Slider fx:id="slTopHlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Top:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="sl_bottom_hlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Slider fx:id="slBottomHlight" maxHeight="0.0" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Bottom:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
@@ -220,36 +220,36 @@
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="sl_shadow" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <Slider fx:id="sl_border" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Slider fx:id="slShadow" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Slider fx:id="slBorder" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                       <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="prop-label" text="Border:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                                          <GridPane.margin>
                                                             <Insets bottom="8.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <Slider fx:id="sl_input_border" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <Slider fx:id="slInputBorder" majorTickUnit="50.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" min="-100.0" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" showTickMarks="true" styleClass="slider-prop" value="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                       <ComboBox fx:id="gradientComboBox" prefHeight="32.0" prefWidth="150.0" styleClass="gradient-combo-box" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
                                                       <HBox maxWidth="1.7976931348623157E308" styleClass="row-title-hbox" GridPane.columnSpan="3">
                                                          <children>
                                                             <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="425.0" style="-fx-text-fill: #b4c4cb;" styleClass="row-label" text="Highlights &amp; Shadows" HBox.hgrow="ALWAYS" />
                                                          </children>
                                                       </HBox>
-                                                      <CheckBox fx:id="cb_shadow" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                      <CheckBox fx:id="cbShadow" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                                          <graphic>
                                                             <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                          </graphic>
                                                       </CheckBox>
-                                                      <CheckBox fx:id="cb_input_border" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                      <CheckBox fx:id="cbInputBorder" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                                          <graphic>
                                                             <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                          </graphic>
                                                       </CheckBox>
-                                                      <CheckBox fx:id="cb_top_mid" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                                                      <CheckBox fx:id="cbTopMid" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="140.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="9">
                                                          <graphic>
                                                             <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                          </graphic>
                                                       </CheckBox>
-                                                      <CheckBox fx:id="cb_bottom_mid" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="306.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                                      <CheckBox fx:id="cbBottomMid" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="380.0" layoutY="306.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#onCheckBoxSelected" styleClass="switch" GridPane.columnIndex="2" GridPane.rowIndex="11">
                                                          <graphic>
                                                             <FontAwesomeIconView size="25" styleClass="fa-switch-icon" />
                                                          </graphic>
@@ -299,12 +299,12 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="sl_padding" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="slPadding" majorTickUnit="10.0" max="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="3.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="tf_padding" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tfPadding" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>
@@ -326,12 +326,12 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="sl_border_width" majorTickUnit="10.0" max="20.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="slBorderWidth" majorTickUnit="10.0" max="20.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="1.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="tf_border_width" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tfBorderWidth" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>
@@ -350,12 +350,12 @@
                                                       <HBox alignment="CENTER_RIGHT" spacing="5.0">
                                                          <children>
                                                             <Pane prefWidth="55.0" />
-                                                            <Slider fx:id="sl_border_radius" majorTickUnit="10.0" max="30.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" HBox.hgrow="ALWAYS">
+                                                            <Slider fx:id="slBorderRadius" majorTickUnit="10.0" max="30.0" maxWidth="1.7976931348623157E308" onDragDetected="#onSliderDragged" onMouseDragged="#onSliderDragged" onMousePressed="#onSliderDragged" prefWidth="280.0" showTickLabels="true" showTickMarks="true" styleClass="slider-prop" value="5.0" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets />
                                                                </HBox.margin>
                                                             </Slider>
-                                                            <DoubleTextField fx:id="tf_border_radius" maxWidth="52.0" styleClass="double-field" text="0">
+                                                            <DoubleTextField fx:id="tfBorderRadius" maxWidth="52.0" styleClass="double-field" text="0">
                                                                <HBox.margin>
                                                                   <Insets right="10.0" />
                                                                </HBox.margin>
@@ -393,7 +393,7 @@
                               </Accordion>
                            </children>
                         </AnchorPane>
-                        <StackPane fx:id="editorPane" minWidth="-Infinity" prefWidth="400.0" visible="false" StackPane.alignment="TOP_CENTER" />
+                        <StackPane fx:id="editorContainer" minWidth="-Infinity" prefWidth="400.0" visible="false" StackPane.alignment="TOP_CENTER" />
                      </children>
                   </StackPane>
                </children>

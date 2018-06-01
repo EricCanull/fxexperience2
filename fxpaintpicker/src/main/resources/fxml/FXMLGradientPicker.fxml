@@ -45,6 +45,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -54,7 +55,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="340.0" prefWidth="528.0" stylesheets="@../styles/gradient_picker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="340.0" prefWidth="540.0" stylesheets="@../styles/gradient_picker.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <children>
       <Separator prefWidth="200.0" styleClass="separator-gradient" />
       <HBox maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
@@ -63,8 +64,8 @@
             <children>
                   <AnchorPane fx:id="previewAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                      <children>
-                        <StackPane layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="transparent-pattern" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <StackPane fx:id="preview_rect" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="preview-rect" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="transparent-pattern" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <StackPane fx:id="preview_rect" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="240.0" styleClass="preview-rect" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
               <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -102,21 +103,21 @@
               </StackPane>
               <Slider fx:id="endY_slider" max="1.0" onMouseDragged="#onSliderDragged" orientation="VERTICAL" rotate="180.0" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
               <Slider fx:id="endX_slider" max="1.0" onMouseDragged="#onSliderDragged" styleClass="gradient-slider" value="1.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                <StackPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="280.0" style="" styleClass="track-background" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="240.0" style="" styleClass="track-background" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
                   <children>
                     <Label styleClass="small-label" text="Double click to add stop" StackPane.alignment="TOP_CENTER">
                       <StackPane.margin>
                         <Insets top="2.0" />
                       </StackPane.margin>
                     </Label>
-                    <Pane fx:id="track_pane" onMouseClicked="#onSliderClicked" onMouseDragged="#onSliderDragged" style="" />
+                    <Pane fx:id="track_pane" maxWidth="1.7976931348623157E308" onMouseClicked="#onSliderClicked" onMouseDragged="#onSliderDragged" style="" />
                   </children>
                 </StackPane>
             </children>
             <columnConstraints>
                   <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="10.0" />
               <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
-              <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" prefWidth="240.0" />
+              <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="240.0" />
               <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" />
                   <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="5.0" prefWidth="5.0" />
             </columnConstraints>
@@ -147,7 +148,7 @@
                     </rowConstraints>
                      <children>
                   <Label styleClass="small-label" text="Cycle Method" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ChoiceBox fx:id="cycleMethod_choicebox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <ChoiceBox fx:id="cycleMethod_choicebox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="4">
                     <items>
                       <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Item 1" />
@@ -158,7 +159,7 @@
                   </ChoiceBox>
                   <Label styleClass="small-label" text="Proportional" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <CheckBox fx:id="proportional_checkbox" mnemonicParsing="false" text="" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <ChoiceBox fx:id="gradient_choicebox" layoutX="98.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <ChoiceBox fx:id="gradient_choicebox" layoutX="98.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="115.0" styleClass="cycle-choice-box" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Item 1" />
@@ -169,10 +170,13 @@
                         </ChoiceBox>
                         <Label layoutX="19.0" layoutY="93.0" styleClass="small-label" text="Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label layoutX="19.0" layoutY="48.0" styleClass="small-label" text="Copy CSS" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#copyCSSAction" prefHeight="32.0" prefWidth="32.0" GridPane.columnIndex="2">
+                        <Button mnemonicParsing="false" onAction="#copyCSSAction" prefHeight="28.0" prefWidth="28.0" GridPane.columnIndex="2">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="COPY" size="1.25em" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="COPY" size="1.15em" styleClass="fa-copy" />
                            </graphic>
+                           <tooltip>
+                              <Tooltip autoHide="true" text="Copy CSS" />
+                           </tooltip>
                         </Button>
                      </children>
                   </GridPane>

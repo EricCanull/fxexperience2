@@ -28,7 +28,6 @@ package com.paintpicker.scene.control.picker;
 import com.paintpicker.scene.control.fields.IntegerField;
 import com.paintpicker.scene.control.fields.WebColorField;
 import com.paintpicker.scene.control.gradientpicker.GradientControl;
-import com.paintpicker.scene.control.gradientpicker.GradientDialog;
 import com.paintpicker.scene.control.gradientpicker.GradientPickerStop;
 import com.paintpicker.scene.control.picker.mode.Mode;
 import com.paintpicker.scene.control.slider.PaintSlider;
@@ -71,6 +70,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -85,10 +85,9 @@ import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 /**
- *
+ * 
  */
-public class CustomPaintControl extends AnchorPane {
-    
+public class CustomPaintControl extends VBox {
     @FXML private GridPane colorPickerGrid;
     @FXML private IntegerField hueTextField, satTextField, brightTextField,
                                redTextField, greenTextField, blueTextField, 
@@ -109,7 +108,6 @@ public class CustomPaintControl extends AnchorPane {
 
     private PaintSlider[] sliders = new PaintSlider[7];
 
-    private GradientDialog gradientDialog = null;
     private GradientControl gradientPicker = null;
 
     public CustomPaintControl(PopupControl owner, Mode mode) {
@@ -128,6 +126,7 @@ public class CustomPaintControl extends AnchorPane {
         customScene = new Scene(this);
 
         stage.setScene(customScene);
+        stage.getScene().setFill(Color.web("#31363b"));
 
         stage.setOnCloseRequest((WindowEvent e) -> {
             if (onSave != null) {
@@ -137,7 +136,7 @@ public class CustomPaintControl extends AnchorPane {
 
         if (mode.equals(Mode.GRADIENT)) {
             gradientButton.setVisible(true);
-            createGradientDialog();
+            createGradientControl();
         }
     }
 
@@ -382,7 +381,6 @@ public class CustomPaintControl extends AnchorPane {
     }
 
     /**
-     *
      * @param onCancel
      */
     public void setOnCancel(Runnable onCancel) {
@@ -390,7 +388,6 @@ public class CustomPaintControl extends AnchorPane {
     }
 
     /**
-     *
      * @param onSave
      */
     public void setOnSave(Runnable onSave) {
@@ -398,7 +395,6 @@ public class CustomPaintControl extends AnchorPane {
     }
 
     /**
-     *
      * @return
      */
     public Runnable getOnUse() {
@@ -406,7 +402,6 @@ public class CustomPaintControl extends AnchorPane {
     }
 
     /**
-     *
      * @param onUse
      */
     public void setOnUse(Runnable onUse) {
@@ -415,19 +410,25 @@ public class CustomPaintControl extends AnchorPane {
 
     @Override
     public void layoutChildren() {
-        super.layoutChildren();
-
+        super.layoutChildren(); 
+        if (gradientPicker != null) {
+            if (!gradientPicker.isVisible()) {
+                resize(540, 342);
+                stage.setHeight(342 + 30);
+            } else {
+                resize(540, 342 + 340);
+                stage.setHeight(342 + 340 + 30);
+            }
+        }
         circleHandle.setManaged(false);
         circleHandle.autosize();
     }
 
-    private void createGradientDialog() {
+    private void createGradientControl() {
         if (gradientPicker == null) {
             gradientPicker = new GradientControl(this);
-            
         }
-        gradientDialog = new GradientDialog(this.getScene().getWindow(),
-                gradientPicker);
+        getChildren().add(gradientPicker);
     }
 
     private void bindControlsValue(int index, int maxValue, Property<Number> prop) {
@@ -566,15 +567,16 @@ public class CustomPaintControl extends AnchorPane {
      * change.
      */
     private void updateSelectedGradientStop(Color newColor) {
-        if (gradientDialog != null) {
-            if (gradientDialog.isShowing()) {
-                GradientPickerStop gradientPickerStop = gradientPicker.getSelectedStop();
-                if (gradientPickerStop != null) {
-                    gradientPickerStop.setColor(newColor);
-                    // Update gradient preview
-                    gradientPicker.updatePreviewRect(gradientPicker.getPaint());
-                    setCustomPaint(gradientPicker.getPaint());
-                }
+        if (gradientPicker == null) {
+            return;
+        }
+        if (gradientPicker.visibleProperty().get()) {
+            GradientPickerStop gradientPickerStop = gradientPicker.getSelectedStop();
+            if (gradientPickerStop != null) {
+                gradientPickerStop.setColor(newColor);
+                // Update gradient preview
+                gradientPicker.updatePreviewRect(gradientPicker.getPaint());
+                setCustomPaint(gradientPicker.getPaint());
             }
         }
     }
@@ -621,22 +623,7 @@ public class CustomPaintControl extends AnchorPane {
     }
     
     public boolean isGradientShowing() {
-        return gradientDialog.isShowing();
-    }
-
-    /**
-     * @param e
-     */
-    @FXML
-    private void onGradientButtonAction(ActionEvent e) {
-        if (gradientDialog.isShowing() == false) {
-            gradientDialog.show();    
-            updateSelectedGradientStop(getCustomColor());
-             gradientPicker.updatePreviewRect(gradientPicker.getPaint());
-             
-        } else {
-            gradientDialog.hide();
-        }
+        return gradientPicker.isVisible();
     }
 
     /**
@@ -649,9 +636,24 @@ public class CustomPaintControl extends AnchorPane {
         }
         hide();
     }
+        /**
+     *
+     * @param event
+     */
+    @FXML
+    private void onGradientButtonAction(ActionEvent event) {
+        if (gradientPicker.isVisible()) {
+            getChildren().remove(gradientPicker);
+            gradientPicker.setVisible(false);
+            layoutChildren();
+        } else {
+            getChildren().add(gradientPicker);
+            gradientPicker.setVisible(true);
+             layoutChildren();
+        }
+    }
 
     /**
-     *
      * @param event
      */
     @FXML

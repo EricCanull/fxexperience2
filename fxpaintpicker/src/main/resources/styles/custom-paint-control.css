@@ -33,8 +33,8 @@
 /* ------- CUSTOM COLOR DIALOG ------- */
 
 .root {
-    -fx-font-family: "Arial";
-    -fx-font-size: 1em; /* 14pt - 2 more than the default font */
+    /*-fx-font-family: "Arial";*/
+/*    -fx-font-size: 1em;  14pt - 2 more than the default font */
     -fx-base: #31363b;
     -fx-background: #31363b;
     -fx-focus-color: #0093FF;
@@ -149,13 +149,6 @@
     -fx-background-image:  url("../images/chequers.png");
     -fx-background-repeat: repeat;
     -fx-background-size: auto;
-}
-
-#controls-grid-pane {
-}
-
-.controls-label {
-
 }
 
 /*.controls-paint-slider .color-thumb {*/

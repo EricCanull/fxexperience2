@@ -9,7 +9,6 @@
  */
 package com.fxexperience.previewer.controller;
 
-import com.sun.javafx.css.StyleManager;
 import java.io.FileNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -18,7 +17,6 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;

@@ -7,11 +7,19 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="380.0" prefWidth="340.0" stylesheets="@../styles/demo_controller.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintpicker.app.DemoControl">
+<VBox fx:id="vbox" prefHeight="380.0" prefWidth="340.0" stylesheets="@../styles/demo_controller.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.paintpicker.app.DemoControl">
    <children>
-      <HBox fx:id="menuBar" alignment="CENTER_LEFT" prefHeight="50.0">
+      <HBox fx:id="menuBar" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="50.0">
          <children>
-            <Label minWidth="-Infinity" prefWidth="145.0" text="-fx-background-color: " HBox.hgrow="ALWAYS" />
+            <Label minWidth="-Infinity" prefWidth="145.0" text="gradient picker" HBox.hgrow="NEVER" />
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="menuBar1" alignment="CENTER_LEFT" focusTraversable="true" layoutX="10.0" layoutY="10.0" prefHeight="50.0">
+         <children>
+            <Label minWidth="-Infinity" prefWidth="145.0" text="paint picker" HBox.hgrow="NEVER" />
          </children>
          <padding>
             <Insets left="10.0" />

@@ -40,11 +40,11 @@ public final class MainController extends AbstractController implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         switchScreen = new SwitchScreen(rootContainer);
-        switchScreen.addScreen(Screen.CSS.ordinal(), new StyleController());
-        switchScreen.addScreen(Screen.SPLINE.ordinal(), new SplineController());
-        switchScreen.addScreen(Screen.DERIVATION.ordinal(), new DerivationController());
-        switchScreen.addScreen(Screen.GRADIENT.ordinal(), new GradientController());
-        switchScreen.addScreen(Screen.ANIMATION.ordinal(), new AnimationController());
+        switchScreen.putScreen(Screen.CSS.ordinal(), new StyleController());
+        switchScreen.putScreen(Screen.SPLINE.ordinal(), new SplineController());
+        switchScreen.putScreen(Screen.DERIVATION.ordinal(), new DerivationController());
+        switchScreen.putScreen(Screen.GRADIENT.ordinal(), new GradientController());
+        switchScreen.putScreen(Screen.ANIMATION.ordinal(), new AnimationController());
         switchScreen.setDefaultScreen(switchScreen.getScreens().get(0));
     }
 

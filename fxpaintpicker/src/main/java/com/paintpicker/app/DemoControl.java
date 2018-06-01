@@ -11,7 +11,6 @@ import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.control.ComboBox;
 
 /**
  * 
@@ -20,25 +19,26 @@ import javafx.scene.control.ComboBox;
 public class DemoControl implements Initializable {
        
     @FXML private StackPane rootPane;
-    @FXML private HBox menuBar;
+    @FXML private HBox menuBar, menuBar1;
+    @FXML private VBox vbox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        PaintPicker paintPicker = new PaintPicker(Color.web("#1A4C9C"), Mode.SINGLE);
-
-
-        menuBar.widthProperty().addListener((observable, oldValue, newValue) -> {
-            if ((double) newValue > 0) {
-                paintPicker.setPrefWidth((double) newValue);
-            }
-        });
-
-        menuBar.getChildren().add(paintPicker);
+        PaintPicker gradientPicker = new PaintPicker(Color.web("#1A4C9C"), Mode.GRADIENT);
+        gradientPicker.setPrefWidth(150);
+//        gradientPicker.focusedProperty().addListener((observable) -> {
+//            rootPane.backgroundProperty().re;
+//        });
+        PaintPicker paintPicker = new PaintPicker();
+        paintPicker.setPrefWidth(150);
+                
+        menuBar.getChildren().add(gradientPicker);
+        menuBar1.getChildren().add(paintPicker);
 
         rootPane.backgroundProperty().bind(Bindings.createObjectBinding(() -> 
-                new Background(new BackgroundFill(paintPicker.getValue(),
+                new Background(new BackgroundFill(gradientPicker.getValue(),
                 CornerRadii.EMPTY, Insets.EMPTY)),
-                paintPicker.valueProperty()));
+                gradientPicker.valueProperty()));
     }
 }

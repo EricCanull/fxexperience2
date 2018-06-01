@@ -34,8 +34,7 @@
 /* ------- CUSTOM COLOR DIALOG ------- */
 
 .root {
-    -fx-font-family: "Segoe UI";
-    -fx-font-size: 1em;
+/*    -fx-font-family: "Segoe UI";*/
     -fx-base: #31363b;
     -fx-background: #31363b;
     -fx-color: #363941;

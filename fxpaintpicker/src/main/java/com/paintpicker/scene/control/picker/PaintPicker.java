@@ -40,15 +40,15 @@ public class PaintPicker extends ComboBoxBase<Paint> {
     /**
      * The custom colors added to the Color Palette by the user.
      */
-    private final ObservableList<Paint> customColors = FXCollections.observableArrayList();
+    private final ObservableList<Paint> customPaints = FXCollections.observableArrayList();
 
     /**
      * Gets the list of custom colors added to the Color Palette by the user.
      *
      * @return
      */
-    public final ObservableList<Paint> getCustomColors() {
-        return customColors;
+    public final ObservableList<Paint> getCustomPaints() {
+        return customPaints;
     }
 
     private final Mode mode;
@@ -96,7 +96,7 @@ public class PaintPicker extends ComboBoxBase<Paint> {
      *                                                                         *
      * @return
      **************************************************************************/
-    private static final String DEFAULT_STYLE_CLASS = "color-picker";
+    private static final String DEFAULT_STYLE_CLASS = "paint-picker";
 
     /**
      * The style class to specify a Button like appearance of ColorPicker control.

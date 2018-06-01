@@ -28,6 +28,8 @@ public class SwitchScreen {
     // Custom interpolator for the slide animation transition
     private static final Interpolator INTERPOLATOR = Interpolator.SPLINE(0.4829, 0.5709, 0.6803, 0.9928);
     
+//    private final ObservableMap<Integer, Node> screeny = FXCollections.observableHashMap();
+    
     // Holds the tools to be displayed
     private final HashMap<Integer, Node> screens = new HashMap<>();
    
@@ -52,7 +54,7 @@ public class SwitchScreen {
         sparePane.setVisible(false);
         currentPane.getChildren().add(node);
         rootContainer.getChildren().addAll(currentPane, sparePane);
-        screenIndex.set(Screen.CSS.ordinal());
+        screenIndex.set(0);
     }
 
      // Displays a new toolController and applies the slide transitions
@@ -137,9 +139,13 @@ public class SwitchScreen {
         }
     };  
     
-    public void addScreen(Integer index, Node node) {
+    public void putScreen(Integer index, Node node) {
         screens.put(index, node);
     }
+    
+//    public void setScreens(ObservableMap<Integer, Node> map) {
+//        screeny.putAll(map);
+//    }
     
     public HashMap<Integer, Node> getScreens() {
         return screens;

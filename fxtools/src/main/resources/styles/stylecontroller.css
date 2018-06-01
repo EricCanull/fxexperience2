@@ -29,17 +29,7 @@ and open the template in the editor.
     -fx-font-size: 1em;
 
 }
-.color-picker {
-    -fx-background-color: transparent; 
-}
-.color-picker .arrow-button  {
-    -fx-opacity: 0.0;
-    -fx-cursor: text;
-}
 
-.color-picker .color-picker-label .text {
-    -fx-fill: #ccc;
-}
 .row-label {
     -fx-font-size: 13px;
     -fx-font-family: OpenSans-Regular;
@@ -47,6 +37,8 @@ and open the template in the editor.
 }
 /* ==== SWITCH STYLED CHECKBOX ============================================== */
 .switch .box{
+    -fx-padding: -1;
+    -fx-background-insets: 0;
     -fx-background-color: transparent;
 }
 .switch:selected .box {
@@ -74,7 +66,7 @@ and open the template in the editor.
 }
 .switch .mark {
     -fx-background-color: transparent;
-    -fx-padding: 0;
+    -fx-padding: -1;
     -fx-shape: null;
 }
 .row-label .text {

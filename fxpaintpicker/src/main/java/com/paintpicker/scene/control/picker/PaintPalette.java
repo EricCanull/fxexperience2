@@ -26,7 +26,6 @@
 package com.paintpicker.scene.control.picker;
 
 import com.paintpicker.scene.control.picker.skins.PaintPickerSkin;
-import static com.paintpicker.scene.control.picker.skins.PaintPickerSkin.getString;
 
 import java.util.List;
 
@@ -66,6 +65,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import static com.paintpicker.scene.control.picker.skins.PaintPickerSkin.getColorString;
 
 public class PaintPalette extends Region {
 
@@ -73,12 +73,12 @@ public class PaintPalette extends Region {
 
     // package protected for testing purposes
     ColorPickerGrid colorPickerGrid;
-    final Hyperlink customColorLink = new Hyperlink(getString("customColorLink"));
+    final Hyperlink customColorLink = new Hyperlink(getColorString("customColorLink"));
     private PaintPicker paintPicker;
     private CustomPaintControl customPaintControl = null;
      
     private final GridPane customColorGrid = new GridPane();
-    private final Label customColorLabel = new Label(getString("customColorLabel"));
+    private final Label customColorLabel = new Label(getColorString("customColorLabel"));
 
     private PopupControl popupControl;
     private ColorSquare focusedSquare;
@@ -127,7 +127,7 @@ public class PaintPalette extends Region {
                 customPaintControl.setOnSave(() -> {
                     Paint customColor = customPaintControl.customColorProperty().get();
                     buildCustomColors();
-                    paintPicker.getCustomColors().add(customColor);
+                    paintPicker.getCustomPaints().add(customColor);
                     updateSelection(customColor);
                     Event.fireEvent(paintPicker, new ActionEvent());
                     paintPicker.hide();
@@ -166,7 +166,7 @@ public class PaintPalette extends Region {
         customColorGrid.getStyleClass().add("color-picker-grid");
         customColorGrid.setVisible(false);
         buildCustomColors();
-        paintPicker.getCustomColors().addListener((ListChangeListener.Change<? extends Paint> change) -> {
+        paintPicker.getCustomPaints().addListener((ListChangeListener.Change<? extends Paint> change) -> {
             buildCustomColors();
         });
         
@@ -222,7 +222,7 @@ public class PaintPalette extends Region {
     }
 
     private void buildCustomColors() {
-        final ObservableList<Paint> customColors = paintPicker.getCustomColors();
+        final ObservableList<Paint> customColors = paintPicker.getCustomPaints();
         customColorNumber = customColors.size();
 
         customColorGrid.getChildren().clear();
@@ -238,7 +238,7 @@ public class PaintPalette extends Region {
             customColorGrid.setVisible(true);
             customColorGrid.setManaged(true);
             if (contextMenu == null) {
-                MenuItem item = new MenuItem(getString("removeColor"));
+                MenuItem item = new MenuItem(getColorString("removeColor"));
                 item.setOnAction((ActionEvent e) -> {
                     ColorSquare square = (ColorSquare)contextMenu.getOwnerNode();
                     customColors.remove(square.rectangle.getFill());

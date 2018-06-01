@@ -36,52 +36,46 @@ import java.util.Map;
 import com.paintpicker.scene.control.behavior.PaintPickerBehavior;
 import com.paintpicker.scene.control.picker.PaintPalette;
 import com.paintpicker.scene.control.picker.PaintPicker;
-import com.sun.javafx.css.StyleManager;
 import com.sun.javafx.css.converters.BooleanConverter;
-import com.sun.javafx.css.converters.SizeConverter;
-import com.sun.javafx.css.converters.StringConverter;
 import com.sun.javafx.scene.control.skin.ComboBoxBaseSkin;
+import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
 import com.sun.javafx.scene.control.skin.ComboBoxPopupControl;
 import com.sun.javafx.scene.control.skin.resources.ControlResources;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 
-import javafx.beans.property.StringProperty;
 import javafx.css.CssMetaData;
-import javafx.css.StyleOrigin;
 import javafx.css.Styleable;
 import javafx.css.StyleableBooleanProperty;
-import javafx.css.StyleableDoubleProperty;
 import javafx.css.StyleableProperty;
-import javafx.css.StyleableStringProperty;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
-import javafx.scene.shape.Rectangle;
 
 /**
  *
  */
 public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
 
-    private TextField textField;
-    private Label displayNode;
-    private StackPane pickerColorBox;
-    private final Rectangle colorRect;
     private PaintPalette popupContent;
+    Pattern colorPattern = Pattern.compile("#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})");
+    
    
-    StyleableProperty<Boolean> paintLabelVisible = new StyleableBooleanProperty(true) {
+    StyleableProperty<Boolean> displayNodeVisable = new StyleableBooleanProperty(true) {
         @Override public void invalidated() {
-            if (displayNode != null) {
-                if (paintLabelVisible.getValue()) {
-                    displayNode.setText(colorDisplayName((Color) getSkinnable().getValue()));
+            if (getEditor() != null) {
+                if (displayNodeVisable.getValue()) {
+                    getEditor().setText(colorDisplayName((Color) getSkinnable().getValue()));
                 } else {
-                    displayNode.setText("");
+                    getEditor().setText("");
                 }
             }
         }
@@ -89,191 +83,78 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
             return PaintPickerSkin.this;
         }
         @Override public String getName() {
-            return "paintLabelVisible";
+            return "displayNodeVisible";
         }
         @Override public CssMetaData<PaintPicker,Boolean> getCssMetaData() {
-            return StyleableProperties.PAINT_LABEL_VISIBLE.get();
+            return StyleableProperties.PAINT_NODE_VISABLE.get();
         }
     };
-
-
-//      /**
-//     * Subclasses are responsible for getting the editor. This will be removed
-//     * in FX 9 when the editor property is moved up to ComboBoxBase.
-//     *
-//     * Note: ComboBoxListViewSkin should return null if editable is false, even
-//     * if the ComboBox does have an editor set.
-//     * @return 
-//     */
-//    @Override
-//    protected TextField getEditor(){
-//        return textField;
-//    }
-//
-//  
-//    private String initialTextFieldValue = null;
-//    
-//    @Override
-//    protected TextField getEditableInputNode() {
-//        if (textField == null && getEditor() != null) {
-//            textField = getEditor();
-//            textField.setFocusTraversable(false);
-//            textField.promptTextProperty().bind(comboBoxBase.promptTextProperty());
-//            textField.tooltipProperty().bind(comboBoxBase.tooltipProperty());
-//
-//            // Fix for RT-21406: ComboBox do not show initial text value
-//            initialTextFieldValue = textField.getText();
-//            // End of fix (see updateDisplayNode below for the related code)
-//        }
-//
-//        return textField;
-//    }
     
-//    @Override
-//     protected void updateDisplayNode() {
-//        if (textField != null && getEditor() != null) {
-//            T value = comboBoxBase.getValue();
-//            javafx.util.StringConverter<T> c = getConverter();
-//
-//            if (initialTextFieldValue != null && ! initialTextFieldValue.isEmpty()) {
-//                // Remainder of fix for RT-21406: ComboBox do not show initial text value
-//                textField.setText(initialTextFieldValue);
-//                initialTextFieldValue = null;
-//                // end of fix
-//            } else {
-//                String stringValue = c.toString(value);
-//                if (value == null || stringValue == null) {
-//                    textField.setText("");
-//                } else if (! stringValue.equals(textField.getText())) {
-//                    textField.setText(stringValue);
-//                }
-//            }
-//        }
-//    }
-    public StringProperty imageUrlProperty() { return imageUrl; }
-    private final StyleableStringProperty imageUrl = new StyleableStringProperty() {
-        @Override public void applyStyle(StyleOrigin origin, String v) {
-            super.applyStyle(origin, v);
-            if (v == null) {
-                // remove old image view
-                if (pickerColorBox.getChildren().size() == 2) pickerColorBox.getChildren().remove(1);
-            } else {
-                if (pickerColorBox.getChildren().size() == 2) {
-                    ImageView imageView = (ImageView)pickerColorBox.getChildren().get(1);
-                    imageView.setImage(StyleManager.getInstance().getCachedImage(v));
-                } else {
-                    pickerColorBox.getChildren().add(new ImageView(StyleManager.getInstance().getCachedImage(v)));
-                }
-            }
+     // --- Editor
+    private TextField textField;
+    /**
+     * The editor for the ComboBox. The editor is null if the ComboBox is not
+     * {@link #editableProperty() editable}.
+     * @since JavaFX 2.2
+     */
+    private ReadOnlyObjectWrapper<TextField> editor;
+    @Override
+    public final TextField getEditor() {
+        return editorProperty().get();
+    }
+    public final ReadOnlyObjectProperty<TextField> editorProperty() {
+        if (editor == null) {
+            editor = new ReadOnlyObjectWrapper<>(this, "editor");
+            textField = new ComboBoxListViewSkin.FakeFocusTextField();
+            editor.set(textField);
         }
-        @Override public Object getBean() {
-            return PaintPickerSkin.this;
-        }
-        @Override public String getName() {
-            return "imageUrl";
-        }
-        @Override public CssMetaData<PaintPicker, String> getCssMetaData() {
-            return StyleableProperties.GRAPHIC;
-        }
-    };
-    private final StyleableDoubleProperty colorRectWidth =  new StyleableDoubleProperty(12) {
-        @Override protected void invalidated() {
-            if(pickerColorBox!=null) pickerColorBox.requestLayout();
-        }
-        @Override public CssMetaData<PaintPicker,Number> getCssMetaData() {
-            return StyleableProperties.COLOR_RECT_WIDTH;
-        }
-        @Override public Object getBean() {
-            return PaintPickerSkin.this;
-        }
-        @Override public String getName() {
-            return "colorRectWidth";
-        }
-    };
-    private final StyleableDoubleProperty colorRectHeight =  new StyleableDoubleProperty(12) {
-        @Override protected void invalidated() {
-            if(pickerColorBox!=null) pickerColorBox.requestLayout();
-        }
-        @Override public CssMetaData<PaintPicker,Number> getCssMetaData() {
-            return StyleableProperties.COLOR_RECT_HEIGHT;
-        }
-        @Override public Object getBean() {
-            return PaintPickerSkin.this;
-        }
-        @Override public String getName() {
-            return "colorRectHeight";
-        }
-    };
-   
-    private final StyleableDoubleProperty colorRectX =  new StyleableDoubleProperty(0) {
-        @Override protected void invalidated() {
-            if(pickerColorBox!=null) pickerColorBox.requestLayout();
-        }
-        @Override public CssMetaData<PaintPicker,Number> getCssMetaData() {
-            return StyleableProperties.COLOR_RECT_X;
-        }
-        @Override public Object getBean() {
-            return PaintPickerSkin.this;
-        }
-        @Override public String getName() {
-            return "colorRectX";
-        }
-    };
-    private final StyleableDoubleProperty colorRectY =  new StyleableDoubleProperty(0) {
-        @Override protected void invalidated() {
-            if(pickerColorBox!=null) pickerColorBox.requestLayout();
-        }
-        @Override public CssMetaData<PaintPicker,Number> getCssMetaData() {
-            return StyleableProperties.COLOR_RECT_Y;
-        }
-        @Override public Object getBean() {
-            return PaintPickerSkin.this;
-        }
-        @Override public String getName() {
-            return "colorRectY";
-        }
-    };
+        return editor.getReadOnlyProperty();
+    }
 
     public PaintPickerSkin(final PaintPicker paintPicker) {
         super(paintPicker, new PaintPickerBehavior(paintPicker));
         updateComboBoxMode();
         registerChangeListener(paintPicker.valueProperty(), "VALUE");
-//        this.getSkinnable().setEditable(true);
-//        
-//        textField = new TextField();
-//         textField.setText("EEE");
-       
-        // create displayNode
-        displayNode = new Label();
-        displayNode.getStyleClass().add("color-picker-label");
-        displayNode.setManaged(false);
-
-        // label graphic
-        pickerColorBox = new PickerColorBox();
-        pickerColorBox.getStyleClass().add("picker-color");
-        colorRect = new Rectangle(12, 12);
-        colorRect.getStyleClass().add("picker-color-rect");
-
+        
         updateColor();
-
-        pickerColorBox.getChildren().add(colorRect);
-        displayNode.setGraphic(pickerColorBox);
+        
+        getEditor().textProperty().addListener(focusTextListener); 
     }
+    
+    private final InvalidationListener focusTextListener = (Observable ignored) -> {
+        if (getEditor().focusedProperty().get() == false) {
+            return;
+        }
+
+        String text = getEditor().getText();
+        if (text.length() < 7) {
+        //    System.out.println("text < 7");
+            return;
+        }
+        Matcher m = colorPattern.matcher(text);
+        if (m.matches()) {
+          //  System.out.println("text matches");
+            final PaintPicker paintPicker = (PaintPicker) getSkinnable();
+            paintPicker.setValue(Color.web(text));
+            //  popupContent.updateSelection(paintPicker.getValue());
+        }
+
+    };
 
 
     @Override protected double computePrefWidth(double height, double topInset, double rightInset, double bottomInset, double leftInset) {
-        if (!paintLabelVisible.getValue()) {
+        if (!displayNodeVisable.getValue()) {
             return super.computePrefWidth(height, topInset, rightInset, bottomInset, leftInset);
         }
-        String displayNodeText = displayNode.getText();
+        String displayNodeText = getEditor().getText();
         double width = 0;
         for (String name : COLOR_NAME_MAP.values()) {
-            displayNode.setText(name);
+            getEditor().setText(name);
             width = Math.max(width, super.computePrefWidth(height, topInset, rightInset, bottomInset, leftInset));
         }
-        displayNode.setText(formatHexString(Color.BLACK)); // #000000
+       // displayNode.setText(formatHexString(Color.BLACK)); // #000000
         width = Math.max(width, super.computePrefWidth(height, topInset, rightInset, bottomInset, leftInset));
-        displayNode.setText(displayNodeText);
+        getEditor().setText(displayNodeText);
         return width;
     }
 
@@ -290,30 +171,30 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
     private static final Map<Paint, String> CSS_NAME_MAP = new HashMap<>(139);
     static {
         // Translatable display names for the most common colors
-        COLOR_NAME_MAP.put(TRANSPARENT, getString("colorName.transparent"));
-        COLOR_NAME_MAP.put(BLACK,       getString("colorName.black"));
-        COLOR_NAME_MAP.put(BLUE,        getString("colorName.blue"));
-        COLOR_NAME_MAP.put(CYAN,        getString("colorName.cyan"));
-        COLOR_NAME_MAP.put(DARKBLUE,    getString("colorName.darkblue"));
-        COLOR_NAME_MAP.put(DARKCYAN,    getString("colorName.darkcyan"));
-        COLOR_NAME_MAP.put(DARKGRAY,    getString("colorName.darkgray"));
-        COLOR_NAME_MAP.put(DARKGREEN,   getString("colorName.darkgreen"));
-        COLOR_NAME_MAP.put(DARKMAGENTA, getString("colorName.darkmagenta"));
-        COLOR_NAME_MAP.put(DARKRED,     getString("colorName.darkred"));
-        COLOR_NAME_MAP.put(GRAY,        getString("colorName.gray"));
-        COLOR_NAME_MAP.put(GREEN,       getString("colorName.green"));
-        COLOR_NAME_MAP.put(LIGHTBLUE,   getString("colorName.lightblue"));
-        COLOR_NAME_MAP.put(LIGHTCYAN,   getString("colorName.lightcyan"));
-        COLOR_NAME_MAP.put(LIGHTGRAY,   getString("colorName.lightgray"));
-        COLOR_NAME_MAP.put(LIGHTGREEN,  getString("colorName.lightgreen"));
-        COLOR_NAME_MAP.put(LIGHTYELLOW, getString("colorName.lightyellow"));
-        COLOR_NAME_MAP.put(MAGENTA,     getString("colorName.magenta"));
-        COLOR_NAME_MAP.put(MEDIUMBLUE,  getString("colorName.mediumblue"));
-        COLOR_NAME_MAP.put(ORANGE,      getString("colorName.orange"));
-        COLOR_NAME_MAP.put(PINK,        getString("colorName.pink"));
-        COLOR_NAME_MAP.put(RED,         getString("colorName.red"));
-        COLOR_NAME_MAP.put(WHITE,       getString("colorName.white"));
-        COLOR_NAME_MAP.put(YELLOW,      getString("colorName.yellow"));
+        COLOR_NAME_MAP.put(TRANSPARENT, getColorString("colorName.transparent"));
+        COLOR_NAME_MAP.put(BLACK,       getColorString("colorName.black"));
+        COLOR_NAME_MAP.put(BLUE,        getColorString("colorName.blue"));
+        COLOR_NAME_MAP.put(CYAN,        getColorString("colorName.cyan"));
+        COLOR_NAME_MAP.put(DARKBLUE,    getColorString("colorName.darkblue"));
+        COLOR_NAME_MAP.put(DARKCYAN,    getColorString("colorName.darkcyan"));
+        COLOR_NAME_MAP.put(DARKGRAY,    getColorString("colorName.darkgray"));
+        COLOR_NAME_MAP.put(DARKGREEN,   getColorString("colorName.darkgreen"));
+        COLOR_NAME_MAP.put(DARKMAGENTA, getColorString("colorName.darkmagenta"));
+        COLOR_NAME_MAP.put(DARKRED,     getColorString("colorName.darkred"));
+        COLOR_NAME_MAP.put(GRAY,        getColorString("colorName.gray"));
+        COLOR_NAME_MAP.put(GREEN,       getColorString("colorName.green"));
+        COLOR_NAME_MAP.put(LIGHTBLUE,   getColorString("colorName.lightblue"));
+        COLOR_NAME_MAP.put(LIGHTCYAN,   getColorString("colorName.lightcyan"));
+        COLOR_NAME_MAP.put(LIGHTGRAY,   getColorString("colorName.lightgray"));
+        COLOR_NAME_MAP.put(LIGHTGREEN,  getColorString("colorName.lightgreen"));
+        COLOR_NAME_MAP.put(LIGHTYELLOW, getColorString("colorName.lightyellow"));
+        COLOR_NAME_MAP.put(MAGENTA,     getColorString("colorName.magenta"));
+        COLOR_NAME_MAP.put(MEDIUMBLUE,  getColorString("colorName.mediumblue"));
+        COLOR_NAME_MAP.put(ORANGE,      getColorString("colorName.orange"));
+        COLOR_NAME_MAP.put(PINK,        getColorString("colorName.pink"));
+        COLOR_NAME_MAP.put(RED,         getColorString("colorName.red"));
+        COLOR_NAME_MAP.put(WHITE,       getColorString("colorName.white"));
+        COLOR_NAME_MAP.put(YELLOW,      getColorString("colorName.yellow"));
 
         // CSS names.
         // Note that synonyms (such as "grey") have been removed here,
@@ -538,42 +419,51 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
         popupContent.updateSelection(paintPicker.getValue());
     }
 
-    @Override protected void handleControlPropertyChanged(String p) {
+    @Override
+    protected void handleControlPropertyChanged(String p) {
         super.handleControlPropertyChanged(p);
 
         if ("SHOWING".equals(p)) {
             if (getSkinnable().isShowing()) {
+                getEditor().textProperty().removeListener(focusTextListener);
                 show();
             } else {
-                if (!popupContent.isCustomColorDialogShowing()) hide();
+                if (!popupContent.isCustomColorDialogShowing()) {
+                    hide();
+                }
+                getEditor().textProperty().addListener(focusTextListener);
+
             }
         } else if ("VALUE".equals(p)) {
             updateColor();
-           // Change the current selected color in the grid if ColorPicker value changes
+            // Change the current selected color in the grid if ColorPicker value changes
             if (popupContent != null) {
                 popupContent.updateSelection(getSkinnable().getValue());
             }
         }
     }
     @Override public Node getDisplayNode() {
-        return displayNode;
+        return getEditor();
     }
 
     private void updateColor() {
         final PaintPicker colorPicker = (PaintPicker) getSkinnable();
-        if (paintLabelVisible.getValue()) {
+        if (displayNodeVisable.getValue()) {
             if (colorPicker.getValue() instanceof LinearGradient) {
-                displayNode.setText("Linear Gradient");
+                getEditor().setText("Linear Gradient");
             } else if (colorPicker.getValue() instanceof RadialGradient) {
-                  displayNode.setText("Radial Gradient");
+                  getEditor().setText("Radial Gradient");
             } else {
-                displayNode.setText(colorDisplayName((Color) colorPicker.getValue()));
-              
+                getEditor().setText(colorDisplayName((Color) colorPicker.getValue()));
+                ((ComboBoxBase) getSkinnable().lookup(".combo-box-base")).setStyle("-fx-base: "
+                        + colorDisplayName((Color) colorPicker.getValue()) + "; -fx-background-color: -fx-base;");
+                getEditor().setStyle("-fx-base: " + colorDisplayName((Color) colorPicker.getValue()) + ";"
+                        + " -fx-background-color: -fx-base;"
+                        + "  -fx-text-fill: -fx-text-base-color;");
             }
         } else {
-            displayNode.setText("");
+            getEditor().setText("");
         }
-        colorRect.setFill(colorPicker.getValue());
     }
     public void syncWithAutoUpdate() {
         if (!getPopup().isShowing() && getSkinnable().isShowing()) {
@@ -589,48 +479,8 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
         super.layoutChildren(x,y,w,h);
     }
 
-    public static String getString(String key) {
+    public static String getColorString(String key) {
         return ControlResources.getString("ColorPicker."+key);
-    }
-
-
-    /***************************************************************************
-    *                                                                         *
-    *                         picker-color-cell                               *
-    *                                                                         *
-    **************************************************************************/
-
-    private class PickerColorBox extends StackPane {
-        @Override protected void layoutChildren() {
-            final double top = snappedTopInset();
-            final double left = snappedLeftInset();
-            final double width = getWidth();
-            final double height = getHeight();
-            final double right = snappedRightInset();
-            final double bottom = snappedBottomInset();
-            colorRect.setX(snapPosition(colorRectX.get()));
-            colorRect.setY(snapPosition(colorRectY.get()));
-            colorRect.setWidth(snapSize(colorRectWidth.get()));
-            colorRect.setHeight(snapSize(colorRectHeight.get()));
-            if (getChildren().size() == 2) {
-                final ImageView icon = (ImageView) getChildren().get(1);
-                Pos childAlignment = StackPane.getAlignment(icon);
-                layoutInArea(icon, left, top,
-                             width - left - right, height - top - bottom,
-                             0, getMargin(icon),
-                             childAlignment != null? childAlignment.getHpos() : getAlignment().getHpos(),
-                             childAlignment != null? childAlignment.getVpos() : getAlignment().getVpos());
-                colorRect.setLayoutX(icon.getLayoutX());
-                colorRect.setLayoutY(icon.getLayoutY());
-            } else {
-                Pos childAlignment = StackPane.getAlignment(colorRect);
-                layoutInArea(colorRect, left, top,
-                             width - left - right, height - top - bottom,
-                             0, getMargin(colorRect),
-                             childAlignment != null? childAlignment.getHpos() : getAlignment().getHpos(),
-                             childAlignment != null? childAlignment.getVpos() : getAlignment().getVpos());
-            }
-        }
     }
 
     /***************************************************************************
@@ -639,86 +489,31 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
     *                                                                         *
     **************************************************************************/
 
-     private static class StyleableProperties {
-        private static final ThreadLocal<CssMetaData<PaintPicker, Boolean>> PAINT_LABEL_VISIBLE =
-                ThreadLocal.withInitial(() -> new CssMetaData<PaintPicker, Boolean>("-fx-paint-label-visible",
-                        BooleanConverter.getInstance(), Boolean.TRUE) {
-                    @Override
-                    public boolean isSettable(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return skin.paintLabelVisible == null || !skin.paintLabelVisible.getValue();
-                    }
-                    @Override
-                    public StyleableProperty<Boolean> getStyleableProperty(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return  skin.paintLabelVisible;
-                    }
-                });
-        private static final CssMetaData<PaintPicker,Number> COLOR_RECT_WIDTH =
-                new CssMetaData<PaintPicker,Number>("-fx-color-rect-width", SizeConverter.getInstance(), 12d) {
-                    @Override public boolean isSettable(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return !skin.colorRectWidth.isBound();
-                    }
-                    @Override public StyleableProperty<Number> getStyleableProperty(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return skin.colorRectWidth;
-                    }
-                };
-        private static final CssMetaData<PaintPicker,Number> COLOR_RECT_HEIGHT =
-                new CssMetaData<PaintPicker,Number>("-fx-color-rect-height", SizeConverter.getInstance(), 12d) {
-                    @Override public boolean isSettable(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return !skin.colorRectHeight.isBound();
-                    }
-                    @Override public StyleableProperty<Number> getStyleableProperty(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return skin.colorRectHeight;
-                    }
-                };
-        private static final CssMetaData<PaintPicker,Number> COLOR_RECT_X =
-                new CssMetaData<PaintPicker,Number>("-fx-color-rect-x", SizeConverter.getInstance(), 0) {
-                    @Override public boolean isSettable(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return !skin.colorRectX.isBound();
-                    }
-                    @Override public StyleableProperty<Number> getStyleableProperty(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return skin.colorRectX;
-                    }
-                };
-        private static final CssMetaData<PaintPicker,Number> COLOR_RECT_Y =
-                new CssMetaData<PaintPicker,Number>("-fx-color-rect-y", SizeConverter.getInstance(), 0) {
-                    @Override public boolean isSettable(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return !skin.colorRectY.isBound();
-                    }
-                    @Override public StyleableProperty<Number> getStyleableProperty(PaintPicker n) {
-                        final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                        return skin.colorRectY;
-                    }
-                };
-        private static final CssMetaData<PaintPicker,String> GRAPHIC =
-            new CssMetaData<PaintPicker,String>("-fx-graphic", StringConverter.getInstance()) {
-                @Override public boolean isSettable(PaintPicker n) {
-                    final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                    return !skin.imageUrl.isBound();
-                }
-                @Override public StyleableProperty<String> getStyleableProperty(PaintPicker n) {
-                    final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
-                    return skin.imageUrl;
-                }
-            };
+    private static class StyleableProperties {
+
+        private static final ThreadLocal<CssMetaData<PaintPicker, Boolean>> PAINT_NODE_VISABLE
+                = ThreadLocal.withInitial(() -> new CssMetaData<PaintPicker, Boolean>("-fx-paint-node-visible",
+                BooleanConverter.getInstance(), Boolean.TRUE) {
+            @Override
+            public boolean isSettable(PaintPicker n) {
+                final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
+                return skin.displayNodeVisable == null || !skin.displayNodeVisable.getValue();
+            }
+
+            @Override
+            public StyleableProperty<Boolean> getStyleableProperty(PaintPicker n) {
+                final PaintPickerSkin skin = (PaintPickerSkin) n.getSkin();
+                return skin.displayNodeVisable;
+            }
+        });
+
         private static final List<CssMetaData<? extends Styleable, ?>> STYLEABLES;
+
         static {
-            final List<CssMetaData<? extends Styleable, ?>> styleables =
-                new ArrayList<>(ComboBoxBaseSkin.getClassCssMetaData());
-            styleables.add(PAINT_LABEL_VISIBLE.get());
-            styleables.add(COLOR_RECT_WIDTH);
-            styleables.add(COLOR_RECT_HEIGHT);
-            styleables.add(COLOR_RECT_X);
-            styleables.add(COLOR_RECT_Y);
-            styleables.add(GRAPHIC);
+            final List<CssMetaData<? extends Styleable, ?>> styleables
+                    = new ArrayList<>(ComboBoxBaseSkin.getClassCssMetaData());
+            styleables.add(PAINT_NODE_VISABLE.get());
+
             STYLEABLES = Collections.unmodifiableList(styleables);
         }
     }
@@ -740,14 +535,6 @@ public class PaintPickerSkin extends ComboBoxPopupControl<Paint> {
     }
 
     @Override protected javafx.util.StringConverter<Paint> getConverter() {
-        return null;
-    }
-
-    /**
-     * ColorPicker does not use a main text field.
-     * @return 
-     */
-    @Override protected TextField getEditor() {
         return null;
     }
 }

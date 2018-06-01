@@ -21,39 +21,6 @@
     -fx-background-radius: 0, 0;
 }
 
-.menu-switch {
-    
-}
-.menu-switch .box .mark {
-    -fx-padding: -1;
-    -fx-background-insets: 0;
-    -fx-background-color: transparent;
-}
-.menu-switch .box {
-    -fx-padding: -1;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
-}
-.menu-switch .text {
-    -fx-font-family: "Roboto";
-    -fx-font-size: 14px;
-    -fx-fill: #b4c4cb; 
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0 0 0 0;
-   
-}
-.menu-switch .fa-menu-icon,
-.menu-switch .fa-menu-icon {
-    -fx-fill: #b4c4cb;
-    -fx-text-fill: #b4c4cb;
-}
-.menu-switch:selected .fa-menu-icon,
-.menu-switch:hover .fa-menu-icon {
-    -fx-fill: #6699ff;
-}
-
-
 .menu-toggle-button {
     -fx-font-family: "Roboto";
     -fx-background-color: transparent;
